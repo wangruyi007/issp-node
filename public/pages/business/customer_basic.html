@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>客户信息</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no">
+    <link rel="stylesheet" href="/css/business/customer.css">
+</head>
+<body>
+<section class="left-section">
+    <div class="header">
+        <a href="javascript:void(0)" title="issp平台" class="logo">
+            <img src="/images/organization/logo.png" alt="">
+        </a>
+        <span>issp平台</span>
+    </div>
+    <div class="nav">
+        <div class="nav-list">
+            <h3 class="header-menu big"><i class="nav-arrow"></i>客户信息</h3>
+            <ul class="menu">
+                <li class="active"><a  href="/customer/customerbaseinfo">客户基本信息</a></li>
+                <li><a  href="/customer/customeredetailed">客户详细信息</a></li>
+                <li><a href="/customer/customerlevel">客户级别设置</a></li>
+                <li><a href="/customer/customeremail">邮件发送定制</a></li>
+            </ul>
+        </div>
+    </div>
+</section>
+<section class="right-section">
+    <div class="top-content">
+        <div class="top-fixed">
+            <div class="top">
+                <div class="top-back">
+                    <a href="javascript:void(0)" class="back">返回</a>
+                </div>
+                <div class="search">
+                    <a href="javascript:void(0)" class="search-btn"></a>
+                    <select class="selected">
+                        <option value="0">张三三</option>
+                        <option value="1">张四四</option>
+                        <option value="2">张五五</option>
+                        <option value="3">张六六</option>
+                        <option value="4">张七七</option>
+                        <option value="5">张八八</option>
+                        <option value="6">张九九</option>
+                    </select>
+                    <span class="arrow"></span>
+                </div>
+            </div>
+            <ul class="list">
+                <li class="current" onclick="listBtn(this)">
+                    <a href="javascript:void(0)" class="lis">列表<span>Tabulate</span></a>
+                </li>
+                <li onclick="addBtn(this)">
+                    <a href="javascript:void(0)" class="add">添加<span>Add</span></a>
+                </li>
+                <li onclick="editBtn(this)">
+                    <a href="javascript:void(0)" class="same-one">编辑<span>Edit</span></a>
+                </li>
+                <li onclick="alertBtn('delete',this)">
+                    <a href="javascript:void(0)" class="same-two" >删除<span>Delete</span></a>
+                </li>
+                <li onclick="alertBtn('frozen',this)">
+                    <a href="javascript:void(0)" class="same-three" >冻结<span>Frozen</span></a>
+                </li>
+
+            </ul>
+        </div>
+        <div class="content">
+            <div class="content-tab list">
+                <ul class="table">
+                    <li class="list-head">
+                        <span></span>
+                        <span class="data-id">id</span>
+                        <span>客户信息编号</span>
+                        <span>客户姓名</span>
+                        <span>地区</span>
+                        <span>性别</span>
+                        <span>客户类别</span>
+                        <span>客户状态</span>
+                        <span>关系程度</span>
+                        <span></span>
+                    </li>
+                    <li class="list-all">
+                    </li>
+                </ul>
+                <footer class="footer"> <div class="pagination-click" id="pages"></div></footer>
+            </div>
+            <div class="content-input add">
+                <div class="input-list">
+                    <section>
+                        <ul>
+                            <li class="required">
+                                <label><i><img src="/images/data/mandatory.png"></i><em>客户信息编号</em></label>
+                                <input type="text"  class="customerNum">
+                            </li>
+                            <li class="required">
+                                <label><i><img src="/images/data/mandatory.png"></i><em>客户姓名</em></label>
+                                <input type="text"  class="customerName">
+                            </li>
+                            <li class="required">
+                                <label><i><img src="/images/data/mandatory.png"></i><em>地区</em></label>
+                                <input type="text" class="area">
+                            </li>
+                            <li class="required">
+                                <label><i><img src="/images/data/mandatory.png"></i><em>性别</em></label>
+                                <select class="sele customerSex" >
+                                    <option value="MAN">男</option>
+                                    <option value="WOMAN">女</option>
+                                </select>
+                            </li>
+                            <li class="required">
+                                <label><i><img src="/images/data/mandatory.png"></i><em>客户类别</em></label>
+                                <select class="sele customerType">
+                                    <option value="VIP">VIP</option>
+                                    <option value="OLD">老客户</option>
+                                    <option value="COOPERATOR">合作伙伴</option>
+                                    <option value="ORDINARY">普通客户</option>
+                                </select>
+                            </li>
+                            <li class="required">
+                                <label><i><img src="/images/data/mandatory.png"></i><em>客户状态</em></label>
+                                <select class="sele customerStatus">
+                                    <option value="COMPLETEPROJECT">已完成项目客户</option>
+                                    <option value="PROJECTING">现项目客户</option>
+                                    <option value="POTENTIAL">潜在客户</option>
+                                </select>
+                            </li>
+                            <li class="required">
+                                <label><i><img src="/images/data/mandatory.png"></i><em>关系程度</em></label>
+                                <input type="text" class="relation">
+                            </li>
+                            <li class="required">
+                                <label><i><img src="/images/data/mandatory.png"></i><em>重要级别</em></label>
+                                <select class="sele customerLevelTO">
+                                    <option value="1星">1星</option>
+                                    <option value="2星">2星</option>
+                                    <option value="3星">3星</option>
+                                    <option value="4星">4星</option>
+                                    <option value="5星">5星</option>
+                                </select>
+                            </li>
+                            <li class="required">
+                                <label><i><img src="/images/data/mandatory.png"></i><em>客户来源</em></label>
+                                <input type="text" class="origin">
+                            </li>
+                            <li class="required">
+                                <label><i><img src="/images/data/mandatory.png"></i><em>手机号</em></label>
+                                <input type="text" class="tel">
+                            </li>
+                            <li class="required">
+                                <label><i><img src="/images/data/mandatory.png"></i><em>行业</em></label>
+                                <input type="text" class="workProfession">
+                            </li>
+                            <li>
+                                <label><em>第一介绍人姓名</em></label>
+                                <input type="text" class="introducer">
+                            </li>
+                            <li>
+                                <label><em>邮箱</em></label>
+                                <input type="text" class="cusEmail">
+                            </li>
+                            <li>
+                                <label><em>座机</em></label>
+                                <input type="text" class="phone">
+                            </li>
+                            <li>
+                                <label><em>微信</em></label>
+                                <input type="text" class="weChart">
+                            </li>
+                            <li>
+                                <label><em>QQ</em></label>
+                                <input type="text" class="qq">
+                            </li>
+                            <li>
+                                <label><em>组织机构名称</em></label>
+                                <input type="text" class="origanizion">
+                            </li>
+                            <li>
+                                <label><em>组织规模</em></label>
+                                <input type="text" class="origanizationSize">
+                            </li>
+                            <li>
+                                <label><em>岗位</em></label>
+                                <input type="text" class="workPosition">
+                            </li>
+                            <li>
+                                <label><em>职级</em></label>
+                                <input type="text" class="workLevel">
+                            </li>
+                            <li>
+                                <label><em>职权</em></label>
+                                <input type="text" class="workRight">
+                            </li>
+                            <li>
+                                <label><em>生活地区</em></label>
+                                <input type="text" class="lifeArea">
+                            </li>
+                            <li>
+                                <label><em>成长地区</em></label>
+                                <input type="text" class="grouthArea">
+                            </li>
+                            <li>
+                                <label><em>以往工作地区</em></label>
+                                <input type="text" class="oldWorkPlace">
+                            </li>
+                            <li>
+                                <label><em>最近一次市场招待时间</em></label>
+                                <input type="text" class="add_image marketReceptTime" >
+                            </li>
+                        </ul>
+                    </section>
+                </div>
+                <p class="dataBottom">
+                    <span class="imPrompt"><i><img src="/images/data/prompt.png"></i>带有<i><img src="/images/data/mandatory.png"></i>的为必填项</span>
+                    <button onclick="add()">提交</button>
+                </p>
+            </div>
+            <div class="content-input edit">
+                <div class="input-list">
+                    <section>
+                        <ul>
+                            <li style="display: none">
+                                <label><em>id</em></label>
+                                <input type="text"  class="id-hide" disabled>
+                            </li>
+                            <li class="required">
+                                <label><i><img src="/images/data/mandatory.png"></i><em>客户信息编号</em></label>
+                                <input type="text" disabled class="customerNum">
+                            </li>
+                            <li class="required">
+                                <label><i><img src="/images/data/mandatory.png"></i><em>客户姓名</em></label>
+                                <input type="text" disabled class="customerName">
+                            </li>
+                            <li class="required">
+                                <label><i><img src="/images/data/mandatory.png"></i><em>地区</em></label>
+                                <input type="text" class="area">
+                            </li>
+                            <li class="required">
+                                <label><i><img src="/images/data/mandatory.png"></i><em>性别</em></label>
+                                <select class="sele customerSex" >
+                                    <option value="MAN">男</option>
+                                    <option value="WOMAN">女</option>
+                                </select>
+                            </li>
+                            <li class="required">
+                                <label><i><img src="/images/data/mandatory.png"></i><em>客户类别</em></label>
+                                <select class="sele customerType">
+                                    <option value="VIP">VIP</option>
+                                    <option value="OLD">老客户</option>
+                                    <option value="COOPERATOR">合作伙伴</option>
+                                    <option value="ORDINARY">普通客户</option>
+                                </select>
+                            </li>
+                            <li class="required">
+                                <label><i><img src="/images/data/mandatory.png"></i><em>客户状态</em></label>
+                                <select class="sele customerStatus">
+                                    <option value="COMPLETEPROJECT">已完成项目客户</option>
+                                    <option value="PROJECTING">现项目客户</option>
+                                    <option value="POTENTIAL">潜在客户</option>
+                                </select>
+                            </li>
+                            <li class="required">
+                                <label><i><img src="/images/data/mandatory.png"></i><em>关系程度</em></label>
+                                <input type="text" class="relation">
+                            </li>
+                            <li class="required">
+                                <label><i><img src="/images/data/mandatory.png"></i><em>重要级别</em></label>
+                                <select class="sele customerLevelTO">
+                                    <option value="1星">1星</option>
+                                    <option value="2星">2星</option>
+                                    <option value="3星">3星</option>
+                                    <option value="4星">4星</option>
+                                    <option value="5星">5星</option>
+                                </select>
+                            </li>
+                            <li class="required">
+                                <label><i><img src="/images/data/mandatory.png"></i><em>客户来源</em></label>
+                                <input type="text" class="origin">
+                            </li>
+                            <li class="required">
+                                <label><i><img src="/images/data/mandatory.png"></i><em>手机号</em></label>
+                                <input type="text" class="tel">
+                            </li>
+                            <li class="required">
+                                <label><i><img src="/images/data/mandatory.png"></i><em>行业</em></label>
+                                <input type="text" class="workProfession">
+                            </li>
+                            <li>
+                                <label><em>第一介绍人姓名</em></label>
+                                <input type="text" class="introducer">
+                            </li>
+                            <li>
+                                <label><em>邮箱</em></label>
+                                <input type="text" class="cusEmail">
+                            </li>
+                            <li>
+                                <label><em>座机</em></label>
+                                <input type="text" class="phone">
+                            </li>
+                            <li>
+                                <label><em>微信</em></label>
+                                <input type="text" class="weChart">
+                            </li>
+                            <li>
+                                <label><em>QQ</em></label>
+                                <input type="text" class="qq">
+                            </li>
+                            <li>
+                                <label><em>组织机构名称</em></label>
+                                <input type="text" class="origanizion">
+                            </li>
+                            <li>
+                                <label><em>组织规模</em></label>
+                                <input type="text" class="origanizationSize">
+                            </li>
+                            <li>
+                                <label><em>岗位</em></label>
+                                <input type="text" class="workPosition">
+                            </li>
+                            <li>
+                                <label><em>职级</em></label>
+                                <input type="text" class="workLevel">
+                            </li>
+                            <li>
+                                <label><em>职权</em></label>
+                                <input type="text" class="workRight">
+                            </li>
+                            <li>
+                                <label><em>生活地区</em></label>
+                                <input type="text" class="lifeArea">
+                            </li>
+                            <li>
+                                <label><em>成长地区</em></label>
+                                <input type="text" class="grouthArea">
+                            </li>
+                            <li>
+                                <label><em>以往工作地区</em></label>
+                                <input type="text" class="oldWorkPlace">
+                            </li>
+                            <li>
+                                <label><em>最近一次市场招待时间</em></label>
+                                <input type="text" class="add_image marketReceptTime" >
+                            </li>
+                        </ul>
+                    </section>
+                </div>
+                </form>
+                <p class="dataBottom">
+                    <span class="imPrompt"><i><img src="/images/data/prompt.png"></i>带有<i><img src="/images/data/mandatory.png"></i>的为必填项</span>
+                    <button onclick="edit()">提交</button>
+                </p>
+            </div>
+            <div class="delete">
+                <div class="del-head">
+                    <h5>温馨提示</h5>
+                </div>
+                <div class="del-con">
+                    <p>确定要删除这条数据？</p>
+                    <div class="btn">
+                        <button onclick="deleted()">确定</button>
+                        <button onclick="cancelBtn('delete')">取消</button>
+                    </div>
+                </div>
+            </div>
+            <div class="frozen">
+                <div class="fro-head">
+                    <h5>温馨提示</h5>
+                </div>
+                <div class="fro-con">
+                    <p>确定要冻结这条数据？</p>
+                    <div class="btn">
+                        <button onclick="frozen()">确定</button>
+                        <button  onclick="cancelBtn('frozen')">取消</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<div id="modalbg"></div>
+<script src="/js/jquery-2.1.1.min.js"></script>
+<script src="/plugs/laypage/laypage.js"></script>
+<script src="/js/format.js"></script>
+<script src="/controller/business/customer_baseinfo.js"></script>
+<script src="/js/common.js"></script>
+<script type="text/javascript">
+    laypage({
+        cont: $('#pages'),  //容器。值支持id名、原生dom对象，jquery对象,
+        pages: 10, //总页数
+        skin: 'molv', //皮肤
+        first: 1, //将首页显示为数字1,。若不显示，设置false即可
+        last: 10, //将尾页显示为总页数。若不显示，设置false即可
+    });
+</script>
+</body>
+</html>
