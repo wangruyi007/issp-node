@@ -1,0 +1,9 @@
+{
+  "default":"dev",
+  "dev": {
+    "port":7777,
+    "customer": {
+      "rurl": "http://192.168.0.176:51202"
+    }
+  }
+}
