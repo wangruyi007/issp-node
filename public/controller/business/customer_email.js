@@ -313,13 +313,29 @@ function collectSelect(self){
         type:'post',
         data:{works:collectSelArr},
         success:function(data){
-            // var collectList="";
-            // $.each(data.data,function(index,list){
-            //     collectList+="<p><span></span>"
-            //     // for(var ind in list.areaMap){
-            //     //
-            //     // }
-            // })
+            var collectList="";
+            $.each(data.data,function(index,list){
+                collectList+="<p><span class='work'>%{work}</span>".format({work:list.work});
+                // collectList+="<>"
+                    for(var i in list.areaMap){
+                        collectList+="<span class='area'>%{area}</span>".format({area:list.areaMap[i].count})
+                    }
+                    for(var j in list.cusTypeMap){
+                        collectList+="<span class='cusTypeMap'>%{cusTypeMap}</span>".format({cusTypeMap:list.cusTypeMap[j].count})
+                    }for(var k in list.cusStatusMap){
+                        collectList+="<span class='cusStatusMap'>%{cusStatusMap}</span>".format({cusStatusMap:list.cusStatusMap[k].count})
+                    }
+                    // for(var i=0,len=obj.length; i<len; i++){
+                    //
+                    // }
+                    console.info(list);
+
+                collectList+="</p>";
+                $('.collect .sum-tbody').html(collectList);
+
+            });
+
+
         },
         error:function(msg){
         
