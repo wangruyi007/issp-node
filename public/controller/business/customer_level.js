@@ -129,9 +129,12 @@ function thaw(self){
     })
 }
 
+
+
 //编辑按钮
 function editBtn(self){
     if($('section.selected').length>0){
+        $('.content-input.edit').fadeIn().siblings().hide();
         $(self).addClass('current').siblings().removeClass('current');
         var level = $('section.selected .name').text();
         var remark = $('section.selected .remark').text();
@@ -140,4 +143,9 @@ function editBtn(self){
         $('.content-input.edit .remark input').val(remark);
         $('.content-input.edit .id-hide input').val(id);
     }
+}
+
+function addBtn(self){
+    $('.content-input.add').fadeIn().siblings().hide();
+    $(self).addClass('current').siblings().removeClass('current');
 }

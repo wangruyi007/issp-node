@@ -173,9 +173,6 @@ var i18n = {
 
 //子模块tab
 $('.boarding ').on("click",".boa-title li",function(){
-    // $(this).addClass("boa-cur").siblings().removeClass('boa-cur');
-    // var index = $(this).index();
-    // $(this).parents('.boarding').children('.boa-body').children('ul').eq(index).css('display','flex').siblings().hide();
 
     var dataTitle = $(this).attr('data-title');
     $(this).addClass("boa-cur").siblings().removeClass('boa-cur');
@@ -198,8 +195,9 @@ function proChange(slef){
 
 
 function alertBtn(name,self){
-    $(self).addClass('current').siblings().removeClass('current');
+
     if($('section.selected').length>0){
+        $(self).addClass('current').siblings().removeClass('current');
         $('#modalbg,.content .'+name).show();
     }
 }
@@ -235,5 +233,18 @@ function listBtn(self){
     $(self).addClass('current').siblings().removeClass('current');
     $('.content .list').fadeIn().siblings().hide()
 }
+
+$('.multiselect').on('click','.multiselect-inp',function(){
+    if(!$(this).hasClass('ac')){
+        $(this).addClass('ac');
+        $(this).siblings('.multiselect-sel').slideDown("fast")
+    }else {
+        $(this).removeClass('ac');
+        $(this).siblings('.multiselect-sel').slideUp("fast")
+    }
+
+});
+
+
 
 

@@ -307,6 +307,20 @@ module.exports = function(){
         };
         return request(options);
     };
+    this.cusemailCollect = function(argvs){
+
+        var options = {
+            method : 'GET',
+            timeout : 3000,
+            uri : config()['customer']['rurl'] + '/customer/cusemail/v1/Collect/?works='+argvs.works,
+            headers : {
+                // token : token
+            }
+
+        };
+        console.info(argvs);
+        return request(options);
+    };
 
     //获取图片流
     this.captcha = function(argvs){

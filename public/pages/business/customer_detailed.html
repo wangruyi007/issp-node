@@ -146,7 +146,7 @@
                             </li>
                             <li class="big">
                                 <label><em>出生年月日</em></label>
-                                <input type="text"  class="add_image  birthday " >
+                                <input type="text"  id="addBirthday" class="add_image  birthday " >
                             </li>
                             <li class="big">
                                 <label><em>地区</em></label>
@@ -412,7 +412,8 @@
                             <textarea class="big-input characterEvaluation" ></textarea>
                         </li>
                     </ul></div>
-                    <div class="b-family"><ul>
+                    <div class="b-family">
+                        <ul>
                         <li class="big">
                             <label><em>称谓</em></label>
                             <input type="text" class="cusFamilyMemberVO-title " >
@@ -437,7 +438,34 @@
                             <label><em>职位</em></label>
                             <input type="text" class="cusFamilyMemberVO-jobPost " disabled>
                         </li>
-                    </ul></div>
+                    </ul>
+                        <ul>
+                            <li class="big">
+                                <label><em>称谓</em></label>
+                                <input type="text" class="cusFamilyMemberVO-title " >
+                            </li>
+                            <li class="big">
+                                <label><em>姓名</em></label>
+                                <input type="text" class="cusFamilyMemberVO-name " >
+                            </li>
+                            <li class="big">
+                                <label><em>联系方式</em></label>
+                                <input type="text" class="cusFamilyMemberVO-relationWay " >
+                            </li>
+                            <li class="big">
+                                <label><em>性格爱好</em></label>
+                                <input type="text" class="cusFamilyMemberVO-charactLove " >
+                            </li>
+                            <li class="big">
+                                <label><em>工作单位</em></label>
+                                <input type="text" class="cusFamilyMemberVO-workPlace " >
+                            </li>
+                            <li class="big">
+                                <label><em>职位</em></label>
+                                <input type="text" class="cusFamilyMemberVO-jobPost " disabled>
+                            </li>
+                        </ul>
+                    </div>
 
                 </div>
                 <p class="dataBottom">
@@ -684,6 +712,17 @@
     var editBirthday = new Pikaday({
         numberOfMonths: 1,
         field:jQuery('#editBirthday')[0],
+        minDate: new Date('2000-01-01'),
+        maxDate: new Date('2020-12-31'),
+        yearRange: [2000,2020],
+        i18n: i18n,
+        onSelect: function() {
+            var date = document.createTextNode(this.getMoment().format('YYYY-MM-DD') + ' ');
+        }
+    });
+    var addBirthday = new Pikaday({
+        numberOfMonths: 1,
+        field:jQuery('#addBirthday')[0],
         minDate: new Date('2000-01-01'),
         maxDate: new Date('2020-12-31'),
         yearRange: [2000,2020],

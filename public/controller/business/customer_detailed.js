@@ -75,12 +75,20 @@ function editBtn(self){
 function edit(){
     var data={};
     var $edit = $('.content-input.edit');
+    var familyLen = $edit.find('.b-family ul').length;
     data.customerNum = $('.content-input.edit .boa-body .customerNum').val();
     data.age = $('.content-input.edit .boa-body .age').val();
     data.workExperience = $('.content-input.edit .boa-body .workExperience').val();
     data.studyExperience = $('.content-input.edit .boa-body .studyExperience').val();
     data.love = $('.content-input.edit .boa-body .love').val();
     data.characterEvaluation = $('.content-input.edit .boa-body .characterEvaluation').val();
+    data.birthday = $edit.find('.birthday').val();
+    // data.cusFamilyMemberTOList=[];
+    // data.cusFamilyMemberTOList[0]['title']=$edit.find('.cusFamilyMemberVO-title ').val();
+    // data.cusFamilyMemberTOList[0]={
+    //     title:$edit.find('.cusFamilyMemberVO-title ').val(),
+    //     name:$edit.find('.cusFamilyMemberVO-name ').val()
+    // };
     // data.cusFamilyMemberTOList=[
     //     {title:$edit.find('.cusFamilyMemberVO-title ').val()},
     //     {name:$edit.find('.cusFamilyMemberVO-name ').val()},
@@ -114,14 +122,19 @@ function addBtn(self){
         url:"/customer/customerbaseinfo/getCusNum",
         type:"get",
         success:function(data){
-            var option="";
-            $.each(data.data,function(index,cusNum){
-                option+="<option value='%{cusNum}'>%{cusNum}</option>".format({
-                    cusNum:cusNum
-                })
-            });
-            $('.content-input.add .customerNum').html(option);
-            cusBaseInfoSel("add")
+            if(data.data.length===0){
+                return
+            }else {
+                var option="";
+                $.each(data.data,function(index,cusNum){
+                    option+="<option value='%{cusNum}'>%{cusNum}</option>".format({
+                        cusNum:cusNum
+                    })
+                });
+                $('.content-input.add .customerNum').html(option);
+                cusBaseInfoSel("add")
+            }
+
         },
         error:function(msg){
 
@@ -166,13 +179,11 @@ function cusBaseInfoSel(name){
     }else if(name==="edit"){
        cusNum = $('section.selected .customerNum').text();
     }
-    console.info(cusNum);
     $.ajax({
         url:"/customer/customerbaseinfo/getCustomer",
         type:"post",
         data:{customerNum:cusNum},
         success:function(data){
-            console.info(data);
             var item = data.data;
                     $('.content-input.'+name+' .customerNum').val(item.customerNum);
                     $('.content-input.'+name+' .customerLevelTO').val(item.customerLevelTO);

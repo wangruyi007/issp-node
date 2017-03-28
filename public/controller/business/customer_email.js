@@ -283,5 +283,58 @@ function thaw(self){
 }
 
 function collectd(){
+    $('.collect').fadeIn().siblings().hide();
+    $.ajax({
+        url:"/customer/customerbaseinfo/getWorks",
+        type:"get",
+        success:function(data){
+            var option = "";
+            $.each(data.data,function(index,word){
+                option+="<p class='option' onclick='collectSelect(this)'>%{word}</p>".format({
+                    word:word
+                });
+                $('.collect .multiselect-sel').html(option)
+            })
+        },
+        error:function(msg){
+
+        }
+    })
 
 }
+var collectSel=[];
+function collectSelect(self){
+    var name = $(self).text();
+    collectSel.push(name);
+    var collectSelArr = collectSel.distinct();
+    $('.multiselect-inp').html(collectSelArr.join(','));
+    $.ajax({
+        url:"/customer/cusemail/Collect",
+        type:'post',
+        data:{works:collectSelArr},
+        success:function(data){
+            // var collectList="";
+            // $.each(data.data,function(index,list){
+            //     collectList+="<p><span></span>"
+            //     // for(var ind in list.areaMap){
+            //     //
+            //     // }
+            // })
+        },
+        error:function(msg){
+        
+        }
+    })
+}
+
+Array.prototype.distinct = function() {
+    var arr = this,
+        result = [],
+        len = arr.length;
+        for (var i = 0; i < len; i++) {
+        if (result.indexOf(arr[i]) === -1) {
+            result.push(arr[i]);
+        }
+    }
+    return result;
+};
