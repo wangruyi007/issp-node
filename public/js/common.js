@@ -205,6 +205,8 @@ function alertBtn(name,self){
 function cancelBtn(name){
     $('.'+name).hide();
     $('#modalbg').hide();
+    $('.content .list').fadeIn().siblings().hide();
+    $('.top-fixed .list li').eq(0).addClass('current').siblings().removeClass('current')
 }
 
 
