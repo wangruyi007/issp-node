@@ -375,6 +375,19 @@ module.exports = function(){
                     $self.status = 408;
                 }
             }));
+    }).post('/customer/cusemail/Collect', function*(){ //汇总邮件
+        var collectData = this.request.body;
+        var $self = this;
+        yield (server().cusemailCollect(collectData)
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                if(error.error && error.error.code && error.error.code == 'ETIMEDOUT'){
+                    $self.body = {'msg' : '请求错误！', errno : 3};
+                    $self.status = 408;
+                }
+            }));
     });
     return router;
 };
