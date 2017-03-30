@@ -23,12 +23,12 @@ function listCustomerDetail(){
                         index:i+1,
                         id:item.id,
                         customerNum:item.customerNum,
-                        age:item.age,
-                        birthday:item.birthday,
-                        workExperience:item.workExperience,
-                        studyExperience:item.studyExperience,
-                        love:item.love,
-                        characterEvaluation:item.characterEvaluation
+                        age:item.age==null?"":item.area,
+                        birthday:item.birthday==null?"":item.birthday,
+                        workExperience:item.workExperience==null?"":item.workExperience,
+                        studyExperience:((item.studyExperience)==null?"":item.studyExperience),
+                        love:item.love==null?"":item.love,
+                        characterEvaluation:item.characterEvaluation==null?"":item.characterEvaluation
                     });
 
                 });

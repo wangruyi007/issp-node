@@ -17,9 +17,9 @@ function listCustomerLevel(){
                 "<p class='remark'>%{remark}</p></div><div class='frozen-m'><button onclick='thaw(this)'>解冻</button></div></section>").format({
                     index:i+1,
                     id:item.id,
-                    name:item.name,
-                    remark:item.remark,
-                    status:item.status
+                    name:item.name==null?"":item.name,
+                    remark:(item.remark==null?"":item.remark),
+                    status:item.status==null?"":item.status
                 });
 
                 addSelect+="<a href='javascript:void(0)'>"+item.name+"</a>";
