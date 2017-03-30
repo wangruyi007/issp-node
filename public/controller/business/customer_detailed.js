@@ -23,7 +23,7 @@ function listCustomerDetail(){
                         index:i+1,
                         id:item.id,
                         customerNum:item.customerNum,
-                        age:item.age==null?"":item.area,
+                        age:item.age==null?"":item.age,
                         birthday:item.birthday==null?"":item.birthday,
                         workExperience:item.workExperience==null?"":item.workExperience,
                         studyExperience:((item.studyExperience)==null?"":item.studyExperience),
@@ -57,7 +57,6 @@ function editBtn(self){
         var studyExperience = $('section.selected .studyExperience').text();
         var love = $('section.selected .love').text();
         var characterEvaluation = $('section.selected .characterEvaluation').text();
-
 
         cusBaseInfoSel("edit");
         var $edit =  $('.content-input.edit');
@@ -163,6 +162,19 @@ function add(){
     data.characterEvaluation = $('.content-input.add .characterEvaluation').val();
     data.createTime = $('.content-input.add .createTime').val();
     data.modifyTime = $('.content-input.add .modifyTime').val();
+
+    var _cusFamilyMemberTO={'title':$add.find('.cusFamilyMemberVO-title ').val(),
+        'name':$add.find('.cusFamilyMemberVO-name ').val(),
+        'relationWay':$add.find('.cusFamilyMemberVO-relationWay ').val(),
+        'charactLove':$add.find('.cusFamilyMemberVO-charactLove ').val(),
+        'workPlace':$add.find('.cusFamilyMemberVO-workPlace ').val(),
+        'jobPost':$add.find('.cusFamilyMemberVO-jobPost ').val(),
+    };
+
+    var _strCusFamilyMemberTO = JSON.stringify(_cusFamilyMemberTO);
+    var cusFamilyMember =new Array();
+    cusFamilyMember.push(_strCusFamilyMemberTO);
+    data.cusFamilyMemberTOLists = cusFamilyMember;
 
     $.ajax({
         url:"/customer/customerdetail/add",
@@ -299,12 +311,14 @@ function  userDetail(self){
     if($('section.selected').length>0){
         $('.content-input.details').fadeIn().siblings().hide();
         var customerNum = $('section.selected .customerNum').text();
+        console.info(customerNum);
         $(self).addClass('current').siblings().removeClass('current');
         $.ajax({
             url:"/customer/customerdetail/getInfoByCustomerNum",
             type:"POST",
             data:{customerNum:customerNum},
             success:function(data){
+                console.info(data);
                var item = data.data;
                var $detail = $('.content-input.details');
                 $detail.find($('.customerNum')).val(item.customerNum);
