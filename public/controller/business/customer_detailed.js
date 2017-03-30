@@ -83,20 +83,29 @@ function edit(){
     data.love = $('.content-input.edit .boa-body .love').val();
     data.characterEvaluation = $('.content-input.edit .boa-body .characterEvaluation').val();
     data.birthday = $edit.find('.birthday').val();
-    // data.cusFamilyMemberTOList=[];
-    // data.cusFamilyMemberTOList[0]['title']=$edit.find('.cusFamilyMemberVO-title ').val();
-    // data.cusFamilyMemberTOList[0]={
-    //     title:$edit.find('.cusFamilyMemberVO-title ').val(),
-    //     name:$edit.find('.cusFamilyMemberVO-name ').val()
-    // };
-    // data.cusFamilyMemberTOList=[
-    //     {title:$edit.find('.cusFamilyMemberVO-title ').val()},
-    //     {name:$edit.find('.cusFamilyMemberVO-name ').val()},
-    //     {relationWay:$edit.find('.cusFamilyMemberVO-relationWay ').val()},
-    //     {charactLove:$edit.find('.cusFamilyMemberVO-charactLove ').val()},
-    //     {workPlace:$edit.find('.cusFamilyMemberVO-workPlace ').val()},
-    //     {jobPost:$edit.find('.cusFamilyMemberVO-jobPost ').val()},
-    // ];
+    // var cusFamilyMember=[];
+    var _cusFamilyMemberTO={'title':$edit.find('.cusFamilyMemberVO-title ').val(),
+        'name':$edit.find('.cusFamilyMemberVO-name ').val(),
+        'relationWay':$edit.find('.cusFamilyMemberVO-relationWay ').val(),
+        'charactLove':$edit.find('.cusFamilyMemberVO-charactLove ').val(),
+        'workPlace':$edit.find('.cusFamilyMemberVO-workPlace ').val(),
+        'jobPost':$edit.find('.cusFamilyMemberVO-jobPost ').val(),
+    };
+
+    var _strCusFamilyMemberTO = JSON.stringify(_cusFamilyMemberTO);
+    var cusFamilyMember =new Array();
+    cusFamilyMember.push(_strCusFamilyMemberTO);
+    data.cusFamilyMemberTOLists = cusFamilyMember;
+
+   // data.cusFamilyMemberTOLists =JSON.stringify( cusFamilyMember );
+   //  var cusFamilyMember =new Array();
+   //  cusFamilyMember.push('{"title":"22","name":"1","relationWay":"","charactLove":"","workPlace":"","jobPost":""}');
+   //  cusFamilyMember.push('{"title":"33","name":"3","relationWay":"","charactLove":"","workPlace":"","jobPost":""}');
+   //  data.cusFamilyMemberTOLists = cusFamilyMember;
+
+
+
+
     console.info(data);
     $.ajax({
         url:"/customer/customerdetail/edit",

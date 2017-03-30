@@ -197,9 +197,12 @@ function addBtn(self){
         success:function(data){
             var option="";
             $.each(data.data,function(index,val){
-                option+="<option value='%{val}'>%{val}</option>".format({val:val.name})
+                option+="<option value='%{val}'>%{val}</option>".format({val:val.name});
+                $('.content-input.add .customerLevelTO').html(option);
+
             });
-            $('.content-input.add .customerLevelTO').html(option)
+
+
         },
         error:function(msg){
 

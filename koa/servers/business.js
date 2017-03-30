@@ -168,6 +168,7 @@ module.exports = function(){
                 // token : token
             }
         };
+        console.info(argvs);
         return request(options);
     };
     this.customerdetailAdd = function(argvs){
@@ -318,7 +319,6 @@ module.exports = function(){
             }
 
         };
-        console.info(argvs);
         return request(options);
     };
 
