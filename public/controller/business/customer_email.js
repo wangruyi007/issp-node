@@ -152,9 +152,9 @@ function editBtn(self){
             $.each(data.data,function(index,work){
                 workList+="<option value='%{work}'>%{work}</option>".format({
                     work:work
-                })
+                });
+                $edit.find('.works').html(workList);
             });
-            $edit.find('.works').html(workList);
             $edit.find('.sendNum').val(sendNum);
             $edit.find('.customerSendUnit option[value='+ customerSendUnit+']').attr("selected", true);
             $edit.find('.customerCollectUnit option[value='+ customerCollectUnit+']').attr("selected", true);
