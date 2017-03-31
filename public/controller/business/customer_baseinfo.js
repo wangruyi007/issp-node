@@ -443,4 +443,86 @@ function thaw(self){
     })
 }
 
+laypage({
+    cont: $('#pages'),  //容器。值支持id名、原生dom对象，jquery对象,
+    pages: 10, //总页数
+    skin: 'molv', //皮肤
+    first: 1, //将首页显示为数字1,。若不显示，设置false即可
+    last: 10, //将尾页显示为总页数。若不显示，设置false即可
+    jump:function(obj){
+        var curr = obj.curr;
+        $.ajax({
+            url:'/customer/customerbaseinfo/listCustomerBaseInfo',
+            type:"post",
+            data:{page:curr},
+            success:function(data){
+                if(data.data===null){
+                    return;
+                }else {
+                    var list = "";
+                    $.each(data.data, function(i, item){
+                        list += ("<section class='%{statusType}'><div class='list-text'><p>%{index}</p><p class='data-id'>%{id}</p><p class='customerNum'>%{customerNum}</p>" +
+                        "<p class='customerName'>%{customerName}</p><p class='area'>%{area}</p><p class='customerSex'>%{customerSex}</p>" +
+                        "<p class='customerType'>%{customerType}</p><p class='customerStatus'>%{customerStatus}</p><p class='relation'>%{relation}</p>" +
+                        "<p><a href='javascript:void(0)' onclick='listMore(this)' class='more'>更多详细</a></p></div><div class='can'><ul class='can-see'><li><p class='see-parent'>" +
+                        "<span>重要级别</span><span>客户来源</span><span>第一个介绍人姓名</span><span>邮箱</span><span>手机号</span><span>座机</span><span>微信</span>" +
+                        "<span>QQ</span></p><p class='see-children'><span class='customerLevelTO'>%{customerLevelTO}</span><span class='origin'>%{origin}</span>" +
+                        "<span class='introducer'>%{introducer}</span><span class='cusEmail'>%{cusEmail}</span><span class='tel'>%{tel}</span>" +
+                        "<span class='phone'>%{phone}</span><span class='weChart'>%{weChart}</span><span class='qq'>%{qq}</span></p></li>" +
+                        "<li><p class='see-parent'><span>行业</span><span>组织机构名称</span><span>组织规模</span><span>岗位</span><span>职级</span>" +
+                        "<span>职权</span><span>生活地区</span><span>成长地区</span></p><p class='see-children'><span class='workProfession'>%{workProfession}</span>" +
+                        "<span class='origanizion'>%{origanizion}</span><span class='origanizationSize'>%{origanizationSize}</span>" +
+                        "<span class='workPosition'>%{workPosition}</span><span class='workLevel'>%{workLevel}</span><span class='workRight'>%{workRight}</span>" +
+                        "<span class='lifeArea'>%{lifeArea}</span><span class='grouthArea'>%{grouthArea}</span></p></li>" +
+                        "<li><p class='see-parent'><span>以往工作地区</span><span>客户详细信息完整度(%)</span><span>最近一次市场招待时间</span><span>最近一次更新人</span>" +
+                        "<span>更新时间</span><span>客户启用状态</span><span>创建时间</span></p><p class='see-children'><span class='oldWorkPlace'>%{oldWorkPlace}</span><span class='infoComplet'>%{infoComplet}</span>" +
+                        "<span class='marketReceptTime'>%{marketReceptTime}</span><span class='modifyPersion'>%{modifyPersion}</span>" +
+                        "<span class='modifyTime'>%{modifyTime}</span><span class='status'>%{status}</span><span class='createTime'>%{createTime}</span></p></li></ul>" +
+                        "<div class='module'><div class='see-module'><p class='see-type'></p><p class='see-description'></p><button class='btn' onclick='canMod(this)'>关闭</button></div></div></div>" +
+                        "<div class='frozen-m'><button onclick='thaw(this)'>解冻</button></div></section>").format({
+                            index : i + 1,
+                            id : item.id,
+                            customerNum : item.customerNum,
+                            customerName : item.customerName==null?"":item.customerName,
+                            area : item.area==null?"":item.area,
+                            customerSex : cover(item.customerSex),
+                            customerType : cover(item.customerType),
+                            customerStatus : cover(item.customerStatus),
+                            relation : item.relation==null?"0":item.relation,
+                            customerLevelTO : item.customerLevelTO==null?"":item.customerLevelTO,
+                            origin : item.origin==null?"":item.origin,
+                            introducer : item.introducer==null?"":item.introducer,
+                            cusEmail : item.cusEmail==null?"":item.cusEmail,
+                            tel : item.tel==null?"":item.tel,
+                            phone : item.phone==null?"":item.phone,
+                            weChart : item.weChart==null?"":item.weChart,
+                            qq : item.qq==null?"":item.qq,
+                            workProfession : item.workProfession==null?"":item.workProfession,
+                            origanizion : item.origanizion==null?"":item.origanizion,
+                            origanizationSize : item.origanizationSize==null?"":item.origanizationSize,
+                            workPosition : item.workPosition==null?"":item.workPosition,
+                            workLevel : item.workLevel==null?"":item.workLevel,
+                            workRight : item.workRight==null?"":item.workRight,
+                            lifeArea : item.lifeArea==null?"":item.lifeArea,
+                            grouthArea : item.grouthArea==null?"":item.grouthArea,
+                            oldWorkPlace : item.oldWorkPlace==null?"":item.oldWorkPlace,
+                            marketReceptTime : item.marketReceptTime==null?"":item.marketReceptTime,
+                            modifyPersion : item.modifyPersion==null?"":item.modifyPersion,
+                            infoComplet : item.infoComplet==null?"":item.infoComplet,
+                            status : cover(item.status),
+                            createTime : item.createTime==null?"":item.createTime,
+                            modifyTime : item.modifyTime==null?"":item.modifyTime,
+                            statusType : item.status==null?"":item.status
+                        });
+                    });
+                    $('.list-all').html(list);
+                }
+            },
+            error:function(msg){
+
+            }
+        })
+    }
+});
+
 
