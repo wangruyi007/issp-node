@@ -76,10 +76,22 @@ module.exports = function(){
 
     //客户基本信息
     this.listCustomerBaseInfo = function(){
+
         var options = {
             method : 'GET',
             timeout : 3000,
             uri : config()['customer']['rurl'] + '/customer/customerbaseinfo/v1/listCustomerBaseInfo',
+            headers : {
+                // token : token
+            }
+        };
+        return request(options);
+    };
+    this.listCustomerBaseInfoPages = function(argvs){
+        var options = {
+            method : 'GET',
+            timeout : 3000,
+            uri : config()['customer']['rurl'] + '/customer/customerbaseinfo/v1/listCustomerBaseInfo?limit=10&page='+argvs.page,
             headers : {
                 // token : token
             }
