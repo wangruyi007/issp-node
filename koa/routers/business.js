@@ -24,6 +24,20 @@ module.exports = function(){
                     $self.status = 408;
                 }
             }));
+    }).post('/customer/customerlevel/listCustomerLevel', function*(){
+        var $self = this;
+        var pageData = this.request.body;
+
+        yield (server().customerlevelPage(pageData)
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                if(error.error && error.error.code && error.error.code == 'ETIMEDOUT'){
+                    $self.body = {'msg' : '请求错误！', errno : 3};
+                    $self.status = 408;
+                }
+            }));
     }).post('/customer/customerlevel/add', function*(){
         var addData = this.request.body;
         var $self = this;
@@ -215,6 +229,19 @@ module.exports = function(){
                     $self.status = 408;
                 }
             }));
+    }).post('/customer/customerdetail/listCustomerDetail', function*(){
+        var $self = this;
+        var pages = this.request.body;
+        yield (server().listCustomerDetailPages(pages)
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                if(error.error && error.error.code && error.error.code == 'ETIMEDOUT'){
+                    $self.body = {'msg' : '请求错误！', errno : 3};
+                    $self.status = 408;
+                }
+            }));
     }).post('/customer/customerdetail/edit', function*(){//客户详细信息编辑
         var editData = this.request.body;
         var $self = this;
@@ -392,6 +419,42 @@ module.exports = function(){
         var collectData = this.request.body;
         var $self = this;
         yield (server().cusemailCollect(collectData)
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                if(error.error && error.error.code && error.error.code == 'ETIMEDOUT'){
+                    $self.body = {'msg' : '请求错误！', errno : 3};
+                    $self.status = 408;
+                }
+            }));
+    }).get('/customer/customerbaseinfo/count', function*(){
+        var $self = this;
+        yield (server().cusBaseinfoCount()
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                if(error.error && error.error.code && error.error.code == 'ETIMEDOUT'){
+                    $self.body = {'msg' : '请求错误！', errno : 3};
+                    $self.status = 408;
+                }
+            }));
+    }).get('/customer/customerdetail/count', function*(){
+        var $self = this;
+        yield (server().customerDetailCount()
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                if(error.error && error.error.code && error.error.code == 'ETIMEDOUT'){
+                    $self.body = {'msg' : '请求错误！', errno : 3};
+                    $self.status = 408;
+                }
+            }));
+    }).get('/customer/customerlevel/count', function*(){
+        var $self = this;
+        yield (server().customerLevelCount()
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
                 $self.body = responseText;

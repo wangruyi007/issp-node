@@ -1,8 +1,4 @@
-$(document).ready(function(){
 
-    listCustomerDetail()
-
-});
 
 
 function listCustomerDetail(){
@@ -11,30 +7,7 @@ function listCustomerDetail(){
         url:"/customer/customerdetail/listCustomerDetail",
         type:"get",
         success:function(data){
-            if(data.data==null){
-               return;
-            }else {
-                var list="";
-                $.each(data.data,function(i,item){
-                    list += ("<section class='%{status}'><div class='list-text'><p>%{index}</p><p class='data-id'>%{id}</p><p class='customerNum'>%{customerNum}</p>" +
-                    "<p class='age'>%{age}</p><p class='birthday'>%{birthday}</p><p class='workExperience'>%{workExperience}</p>" +
-                    "<p class='studyExperience'>%{studyExperience}</p><p class='love'>%{love}</p><p class='characterEvaluation'>%{characterEvaluation}</p>" +
-                    "</div><div class='frozen-m'><button onclick='thaw(this)'>解冻</button></div></section>").format({
-                        index:i+1,
-                        id:item.id,
-                        customerNum:item.customerNum,
-                        age:item.age==null?"":item.age,
-                        birthday:item.birthday==null?"":item.birthday,
-                        workExperience:item.workExperience==null?"":item.workExperience,
-                        studyExperience:((item.studyExperience)==null?"":item.studyExperience),
-                        love:item.love==null?"":item.love,
-                        characterEvaluation:item.characterEvaluation==null?"":item.characterEvaluation
-                    });
-
-                });
-
-                $('.list-all').html(list);
-            }
+           listSuccess(data)
 
         },
         error:function(msg){
@@ -95,12 +68,6 @@ function edit(){
     var cusFamilyMember =new Array();
     cusFamilyMember.push(_strCusFamilyMemberTO);
     data.cusFamilyMemberTOLists = cusFamilyMember;
-
-   // data.cusFamilyMemberTOLists =JSON.stringify( cusFamilyMember );
-   //  var cusFamilyMember =new Array();
-   //  cusFamilyMember.push('{"title":"22","name":"1","relationWay":"","charactLove":"","workPlace":"","jobPost":""}');
-   //  cusFamilyMember.push('{"title":"33","name":"3","relationWay":"","charactLove":"","workPlace":"","jobPost":""}');
-   //  data.cusFamilyMemberTOLists = cusFamilyMember;
 
 
 
@@ -181,7 +148,7 @@ function add(){
         type:"POST",
         data:data,
         success:function(data){
-            listCustomerDetail()
+            detailedCount()
             $('.top-fixed .list li').eq(0).addClass('current').siblings().removeClass('current');
             $('.content .list').show().siblings().hide();
         },
@@ -207,7 +174,7 @@ function cusBaseInfoSel(name){
         success:function(data){
             var item = data.data;
                     $('.content-input.'+name+' .customerNum').val(item.customerNum);
-                    $('.content-input.'+name+' .customerLevelTO').val(item.customerLevelTO);
+                    $('.content-input.'+name+' .customerLevelTO').val(item.customerLevelVO.name);
                     $('.content-input.'+name+' .customerType').val(cover(item.customerType));
                     $('.content-input.'+name+' .customerStatus').val(cover(item.customerStatus));
                     $('.content-input.'+name+' .origin').val(item.origin);
@@ -381,6 +348,66 @@ function  userDetail(self){
 
 }
 
+
+
+var detailedCount = function(){
+    $.get('/customer/customerdetail/count',function(resdata){
+        console.info(resdata);
+        var count = resdata.data;
+        var cusBasicPages =Math.ceil(count/10);
+        laypage({
+            cont: $('#pages'),  //容器。值支持id名、原生dom对象，jquery对象,
+            pages: cusBasicPages, //总页数
+            skin: 'molv', //皮肤
+            first: 1, //将首页显示为数字1,。若不显示，设置false即可
+            last: cusBasicPages, //将尾页显示为总页数。若不显示，设置false即可
+            jump:function(obj){
+                var curr = obj.curr;
+                $.ajax({
+                    url:'/customer/customerdetail/listCustomerDetail',
+                    type:"post",
+                    data:{page:curr},
+                    success:function(data){
+                        listSuccess(data)
+                    },
+                    error:function(msg){
+
+                    }
+                })
+            }
+        });
+    });
+};
+
+detailedCount()
+function listSuccess(data){
+    if(data.data==null){
+        return;
+    }else {
+        var list="";
+        $.each(data.data,function(i,item){
+            list += ("<section class='%{status}'><div class='list-text'><p>%{index}</p><p class='data-id'>%{id}</p><p class='customerNum'>%{customerNum}</p>" +
+            "<p class='age'>%{age}</p><p class='birthday'>%{birthday}</p><p class='workExperience'>%{workExperience}</p>" +
+            "<p class='studyExperience'>%{studyExperience}</p><p class='love'>%{love}</p><p class='characterEvaluation'>%{characterEvaluation}</p>" +
+            "</div><div class='frozen-m'><button onclick='thaw(this)'>解冻</button></div></section>").format({
+                index:i+1,
+                id:item.id,
+                customerNum:item.customerNum,
+                age:item.age==null?"":item.age,
+                birthday:item.birthday==null?"":item.birthday,
+                workExperience:item.workExperience==null?"":item.workExperience,
+                studyExperience:((item.studyExperience)==null?"":item.studyExperience),
+                love:item.love==null?"":item.love,
+                characterEvaluation:item.characterEvaluation==null?"":item.characterEvaluation
+            });
+
+        });
+
+        $('.list-all').html(list);
+
+    }
+
+}
 
 
 

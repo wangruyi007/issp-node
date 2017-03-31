@@ -333,6 +333,67 @@ module.exports = function(){
         };
         return request(options);
     };
+    this.cusBaseinfoCount = function(){
+
+        var options = {
+            method : 'GET',
+            timeout : 3000,
+            uri : config()['customer']['rurl'] + '/customer/customerbaseinfo/v1/count',
+            headers : {
+                // token : token
+            }
+
+        };
+        return request(options);
+    };
+    this.customerDetailCount = function(){
+
+        var options = {
+            method : 'GET',
+            timeout : 3000,
+            uri : config()['customer']['rurl'] + '/customer/customerdetail/v1/count',
+            headers : {
+                // token : token
+            }
+
+        };
+        return request(options);
+    };
+    this.customerLevelCount = function(){
+
+        var options = {
+            method : 'GET',
+            timeout : 3000,
+            uri : config()['customer']['rurl'] + '/customer/customerlevel/v1/count',
+            headers : {
+                // token : token
+            }
+
+        };
+        return request(options);
+    };
+    this.listCustomerDetailPages = function(argvs){
+        var options = {
+            method : 'GET',
+            timeout : 3000,
+            uri : config()['customer']['rurl'] + '/customer/customerdetail/v1/listCustomerDetail?limit=10&page='+argvs.page,
+            headers : {
+                // token : token
+            }
+        };
+        return request(options);
+    };
+    this.customerlevelPage = function(argvs){
+        var options = {
+            method : 'GET',
+            timeout : 3000,
+            uri : config()['customer']['rurl'] + '/customer/customerdetail/v1/listCustomerDetail?limit=10&page='+argvs.page,
+            headers : {
+                // token : token
+            }
+        };
+        return request(options);
+    };
 
     //获取图片流
     this.captcha = function(argvs){
