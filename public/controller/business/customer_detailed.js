@@ -285,7 +285,8 @@ function  userDetail(self){
             type:"POST",
             data:{customerNum:customerNum},
             success:function(data){
-                console.info(data);
+                console.info(data.data.customerBaseInfoVO.customerLevelVO.name);
+
                var item = data.data;
                var $detail = $('.content-input.details');
                 $detail.find($('.customerNum')).val(item.customerNum);
@@ -295,13 +296,13 @@ function  userDetail(self){
                 $detail.find($('.studyExperience')).val(item.studyExperience);
                 $detail.find($('.love')).val(item.love);
                 $detail.find($('.characterEvaluation')).val(item.characterEvaluation);
-                $detail.find($('.customerLevelTO')).val(item.customerBaseInfoVO.customerLevelTO);
-                $detail.find($('.customerType')).val(item.customerBaseInfoVO.customerType);
-                $detail.find($('.customerStatus')).val(item.customerBaseInfoVO.customerStatus);
+                $detail.find($('.customerLevel')).val((item.customerBaseInfoVO.customerLevelVO.name));
+                $detail.find($('.customerType')).val(cover(item.customerBaseInfoVO.customerType));
+                $detail.find($('.customerStatus')).val(cover(item.customerBaseInfoVO.customerStatus));
                 $detail.find($('.origin')).val(item.customerBaseInfoVO.origin);
                 $detail.find($('.relation')).val(item.customerBaseInfoVO.relation);
                 $detail.find($('.customerName')).val(item.customerBaseInfoVO.customerName);
-                $detail.find($('.customerSex')).val(item.customerBaseInfoVO.customerSex);
+                $detail.find($('.customerSex')).val(cover(item.customerBaseInfoVO.customerSex));
                 $detail.find($('.area')).val(item.customerBaseInfoVO.area);
                 $detail.find($('.cusEmail')).val(item.customerBaseInfoVO.cusEmail);
                 $detail.find($('.tel')).val(item.customerBaseInfoVO.tel);
@@ -316,9 +317,7 @@ function  userDetail(self){
                 $detail.find($('.grouthArea')).val(item.customerBaseInfoVO.grouthArea);
                 $detail.find($('.oldWorkPlace')).val(item.customerBaseInfoVO.oldWorkPlace);
                 $detail.find($('.workLevel')).val(item.customerBaseInfoVO.workLevel);
-
                 var familyList="";
-
                 $.each(data.data.cusFamilyMemberVOList,function(index,family){
                     familyList+=("<ul><li class='big'><label><em>称谓</em></label><input type='text' class='disabled' disabled value='%{title}'></li>" +
                         "<li class='big'><label><em>姓名</em></label><input type='text' class='disabled' disabled value='%{name}'></li>" +
@@ -336,6 +335,7 @@ function  userDetail(self){
 
                         });
                     $detail.find('.family').html(familyList);
+
                 })
 
             },
@@ -348,7 +348,55 @@ function  userDetail(self){
 
 }
 
+function cover(status){
+    var result;
+    switch(status){
+        case "WOMAN":
+            result = "女";
+            break;
+        case "MAN":
+            result = "男";
+            break;
+        case "VIP":
+            result = "VIP";
+            break;
+        case "OLD":
+            result = "老客户";
+            break;
+        case "COOPERATOR":
+            result = "合作伙伴";
+            break;
+        case "ORDINARY":
+            result = "普通客户";
+            break;
+        case "COMPLETEPROJECT":
+            result = "已完成项目客户";
+            break;
+        case "PROJECTING":
+            result = "现项目客户";
+            break;
+        case "POTENTIAL":
+            result = "潜在客户";
+            break;
+        case "THAW":
+            result = "解冻";
+            break;
+        case "CONGEAL":
+            result = "冻结";
+            break;
+        case "DELETE":
+            result = "删除";
+            break;
+        case "NOACTIVE":
+            result = "未激活";
+            break;
+        case "UNREVIEW":
+            result = "未审核";
+            break;
+    }
+    return result;
 
+}
 
 var detailedCount = function(){
     $.get('/customer/customerdetail/count',function(resdata){
