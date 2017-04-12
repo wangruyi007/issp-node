@@ -1,7 +1,5 @@
 var app = angular.module('basicinfoList', ['ng-pagination','toastr']);
 app.controller('basicinfoListCtrl',function($scope,basicinfoSer,toastr){
-
-
     $scope.moreList = function(event){
         angular.forEach($scope.basicinfoLists.data,function(obj){
             if(event.id!==obj.id){
@@ -15,24 +13,15 @@ app.controller('basicinfoListCtrl',function($scope,basicinfoSer,toastr){
         angular.forEach($scope.basicinfoLists.data,function(obj){
                 obj._selectList = false
         });
-        event._selectList = true
+        event._selectList = true;
+        $scope.idList = event.id;
+        $scope.cusNum = event.customerNum;
+        //向父Ctrl传递事件
+        $scope.$emit('changeId', $scope.idList)
+        $scope.$emit('changeCusnum', $scope.cusNum)
     }
 
-    //冻结
-    $scope.congeal = function(event){
-        var data = {
-            id :event.id
-        }
-        basicinfoSer.congealCustomerbaseinfo(data).then(function(response){
-            if(response.data.code==0){
-                event.status = "CONGEAL";
-                event._selectList = false;
-                toastr.success( event.customerName +"已冻结", '温馨提示');
-            }else if(response.data.code==403){
-                toastr.error( "请登录用户", '温馨提示');
-            }
-        })
-    }
+
     //解冻
     $scope.thaw = function(event){
         var data = {
@@ -47,28 +36,13 @@ app.controller('basicinfoListCtrl',function($scope,basicinfoSer,toastr){
 
         })
     }
-    //删除
-    $scope.delete = function(event){
 
 
-        var data = {
-            id :event.id
-        }
-        basicinfoSer.deleteCustomerbaseinfo(data).then(function(response){
-            if(response.data.code==0){
-                event._delete = true;
-                toastr.info( event.customerName +"已删除", '温馨提示');
-            }else if(response.data.code==403){
-                toastr.error( "请登录用户", '温馨提示');
-            }
-        })
-    }
 
-
-//分页
+    //分页
     $scope.custom = {
-        itemsCount: 11,
-        take: 10,
+        itemsCount: 11,//总条数
+        take: 10,        //每页显示
         activatePage: activatePage
     };
 
@@ -94,6 +68,22 @@ app.controller('basicinfoListCtrl',function($scope,basicinfoSer,toastr){
     })
 
 
+    $scope.$on('deletedId',function(event,delid){
+       angular.forEach($scope.basicinfoLists.data,function(obj){
+        if(obj.id == delid){
+            obj._delete = true
+        }
+       })
+    })
+
+    $scope.$on('congealId',function(event,conid){
+        angular.forEach($scope.basicinfoLists.data,function(obj){
+            if(obj.id == conid){
+                obj.status = 'CONGEAL';
+                obj._selectList = false;
+            }
+        })
+    })
 })
 ;
 

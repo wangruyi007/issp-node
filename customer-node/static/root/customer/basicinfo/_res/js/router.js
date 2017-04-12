@@ -8,14 +8,7 @@ app.config(function($provide, $stateProvider){
                 controller:"basicinfoCtrl"
             },"menu@root.customer" : {
                 templateUrl : "root/customer/basicinfo/_res/html/menu.html",
-            }
-        }
-    }).state("root.customer.basicinfo.list[12]",{
-        url:"/list[12]",
-        views:{
-            "content@root.customer.basicinfo":{
-                templateUrl : "root/customer/basicinfo/list/_res/html/index.html",
-                controller:'basicinfoListCtrl'
+                controller:"basicinfoMenuCtrl"
             }
         }
     }).state("root.customer.basicinfo.add[12]",{

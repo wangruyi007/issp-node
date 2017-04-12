@@ -1,15 +1,41 @@
 var app = angular.module('basicinfo', [{
     files:[
-        "root/customer/basicinfo/_res/js/service.js",
-        "root/customer/basicinfo/_res/js/directive.js"
+        "root/customer/basicinfo/_res/js/service.js"
     ]
 }]);
 app.controller('basicinfoCtrl',function ($scope,$state) {
+
     if ($state.current.url == '/basicinfo') {//默认加载列表
-        $state.go('root.customer.basicinfo.list[12]')
+        $state.go('root.customer.basicinfo.list')
     }
 
+}).controller('basicinfoMenuCtrl',function($scope,$state){
 
+    //监听到父Ctrl后改变事件
+    $scope.$on("listId", function(event, msg){
+        $scope.idList = msg;
+    });
+    $scope.$on("getCustomer", function(event, num){
+        $scope.customerNum = num;
+    });
+
+
+    $scope.delete = function(){
+        if($scope.idList){
+            $state.go('root.customer.basicinfo.list.delete[12]',{id:$scope.idList});
+        }
+    }
+
+    $scope.congeal = function(){
+        if($scope.idList){
+            $state.go('root.customer.basicinfo.list.congeal[12]',{id:$scope.idList});
+        }
+    }
+    $scope.edit = function(){
+        if($scope.customerNum){
+            $state.go('root.customer.basicinfo.edit[12]',{cusNum:$scope.customerNum})
+        }
+    }
 });
 //自定义过滤器
 app.filter('cover', function(){

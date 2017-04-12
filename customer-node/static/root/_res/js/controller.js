@@ -1,4 +1,4 @@
-var app = angular.module('app', ['ngVerify','ngDialog','ipCookie',
+var app = angular.module('app', ['ngVerify','ipCookie',
     'indexSerModule'
 ]);
 app.controller('rootCtrl', function ($scope,$rootScope,$state,ipCookie) {

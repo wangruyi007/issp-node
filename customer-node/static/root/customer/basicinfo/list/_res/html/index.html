@@ -101,32 +101,6 @@
                         </div>
                     </div>
                 </div>
-                <div class="freeze mod" style="display: {{list._isCongeal?'block':'none'}};">
-                    <div class="del-head">
-                        <h5>温馨提示</h5>
-                    </div>
-                    <div class="del-con">
-                        <p>确定要冻结这条数据？</p>
-                        <span>客户姓名：{{list.customerName}}</span>
-                        <div class="btn">
-                            <button ng-click="congeal(list)" congealsuc>确定</button>
-                            <button cancel>取消</button>
-                        </div>
-                    </div>
-                </div>
-                <div class="delete mod" style="display: none;">
-                    <div class="del-head">
-                        <h5>温馨提示</h5>
-                    </div>
-                    <div class="del-con">
-                        <p>确定要删除这条数据？</p>
-                        <span>客户姓名：{{list.customerName}}</span>
-                        <div class="btn">
-                            <button ng-click="delete(list)" deletesuc>确定</button>
-                            <button cancel>取消</button>
-                        </div>
-                    </div>
-                </div>
                 <div class="thaw-modal">
                     <button ng-click="thaw(list)">解冻</button>
                 </div>
@@ -137,7 +111,8 @@
         <pagination count="custom.itemsCount" take="custom.take" activate="custom.activatePage"></pagination>
     </footer>
 </div>
-<div id="modalbg"></div>
+<div ui-view="modal"></div>
+
 
 
 
