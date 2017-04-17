@@ -1,5 +1,6 @@
 var app = angular.module('basicinfoList', ['ng-pagination','toastr']);
 app.controller('basicinfoListCtrl',function($scope,basicinfoSer,toastr){
+    $scope.$emit('changeCusnum', null)
     $scope.moreList = function(event){
         angular.forEach($scope.basicinfoLists.data,function(obj){
             if(event.id!==obj.id){
@@ -17,7 +18,7 @@ app.controller('basicinfoListCtrl',function($scope,basicinfoSer,toastr){
         $scope.idList = event.id;
         $scope.cusNum = event.customerNum;
         //向父Ctrl传递事件
-        $scope.$emit('changeId', $scope.idList)
+        $scope.$emit('changeId', $scope.idList);
         $scope.$emit('changeCusnum', $scope.cusNum)
     }
 

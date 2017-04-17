@@ -8,6 +8,7 @@ app.config(function ($provide, $stateProvider) {
                 controller: "businessCtrl"
             },"nav@root": {
                 templateUrl: "root/customer/_res/html/nav.html",
+                controller:"navCtrl"
             }
         }
     })
