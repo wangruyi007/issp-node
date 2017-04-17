@@ -10,6 +10,15 @@ app.controller('businessCtrl', function ($scope,$state) {
     $scope.$on('changeCusnum',function(event,num){
         $scope.$broadcast('getCustomer',num)
     });
+    $scope.$on('changeLevelName',function(event,name){
+        $scope.$broadcast('levelName',name)
+    });
 
+}).controller('navCtrl',function($scope,$state,$location){
+
+    $scope.navCla=$location.path().split('/')[3]
+    $scope.navClass= function(name){
+       $scope.navCla=name
+    }
 });
 

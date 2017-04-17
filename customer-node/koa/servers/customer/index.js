@@ -8,7 +8,7 @@ module.exports = function(){
         var options = {
             method : 'GET',
             timeout : 3000,
-            uri : config()['customer']['rurl'] + '/customerbaseinfo/v1/listCustomerBaseInfo?limit=10&page='+argvs.page,
+            uri : config()['customer']['rurl'] + '/customerbaseinfo/v1/listCustomerBaseInfo?limit=10&page=' + argvs.page,
             headers : {
                 // token : token
             }
@@ -53,7 +53,7 @@ module.exports = function(){
             method : 'POST',
             timeout : 3000,
             uri : config()['customer']['rurl'] + '/customerbaseinfo/v1/add',
-            form:argvs,
+            form : argvs,
             headers : {
                 // token : token
             }
@@ -65,7 +65,7 @@ module.exports = function(){
             method : 'PUT',
             timeout : 3000,
             uri : config()['customer']['rurl'] + '/customerbaseinfo/v1/edit',
-            form:argvs,
+            form : argvs,
             headers : {
                 // token : token
             }
@@ -76,7 +76,7 @@ module.exports = function(){
         var options = {
             method : 'DELETE',
             timeout : 3000,
-            uri : config()['customer']['rurl'] + '/customerbaseinfo/v1/delete/'+argvs.id+'?userToken='+argvs.userToken,
+            uri : config()['customer']['rurl'] + '/customerbaseinfo/v1/delete/' + argvs.id + '?userToken=' + argvs.userToken,
         };
         return request(options);
     };
@@ -84,7 +84,7 @@ module.exports = function(){
         var options = {
             method : 'PUT',
             timeout : 3000,
-            uri : config()['customer']['rurl'] + '/customerbaseinfo/v1/congeal/'+argvs.id+'?userToken='+argvs.userToken,
+            uri : config()['customer']['rurl'] + '/customerbaseinfo/v1/congeal/' + argvs.id + '?userToken=' + argvs.userToken,
         };
         return request(options);
     };
@@ -92,7 +92,7 @@ module.exports = function(){
         var options = {
             method : 'PUT',
             timeout : 3000,
-            uri : config()['customer']['rurl'] + '/customerbaseinfo/v1/thaw/'+argvs.id+'?userToken='+argvs.userToken,
+            uri : config()['customer']['rurl'] + '/customerbaseinfo/v1/thaw/' + argvs.id + '?userToken=' + argvs.userToken,
         };
         return request(options);
     };
@@ -101,7 +101,7 @@ module.exports = function(){
         var options = {
             method : 'GET',
             timeout : 3000,
-            uri : config()['customer']['rurl'] + '/customerbaseinfo/v1/getCustomer?customerNum='+argvs.customerNum,
+            uri : config()['customer']['rurl'] + '/customerbaseinfo/v1/getCustomer?customerNum=' + argvs.customerNum,
             headers : {
                 // token : token
             }
@@ -140,7 +140,7 @@ module.exports = function(){
         var options = {
             method : 'DELETE',
             timeout : 3000,
-            uri : config()['customer']['rurl'] + '/customerlevel/v1/delete/'+argvs.id+'?userToken='+argvs.userToken,
+            uri : config()['customer']['rurl'] + '/customerlevel/v1/delete/' + argvs.id + '?userToken=' + argvs.userToken,
 
         };
         return request(options);
@@ -150,8 +150,7 @@ module.exports = function(){
         var options = {
             method : 'GET',
             timeout : 3000,
-            uri : config()['customer']['rurl'] + '/customerlevel/v1/getCustomerLevel?name='+argvs.name,
-
+            uri : config()['customer']['rurl'] + '/customerlevel/v1/getCustomerLevel?name=' + argvs.name,
         };
         return request(options);
     };
@@ -163,32 +162,165 @@ module.exports = function(){
             timeout : 3000,
             uri : config()['customer']['rurl'] + '/customerlevel/v1/edit',
             form : argvs,
-            headers : {
-                // token : token
-            }
         };
         return request(options);
     };
     //客户详细信息
-    this.listCustomerDetail = function(){
+    this.listCustomerDetail = function(argvs){
         var options = {
             method : 'GET',
             timeout : 3000,
-            uri : config()['customer']['rurl'] + '/customerdetail/v1/listCustomerDetail',
-            headers : {
-            }
+            uri : config()['customer']['rurl'] + '/customerdetail/v1/listCustomerDetail?limit=10&page=' + argvs.page,
         };
         return request(options);
     };
-    //客户邮箱
-    this.listCusEmail = function(){
+    //获取客户详细信息条数
+    this.getDetailCount = function(){
         var options = {
             method : 'GET',
             timeout : 3000,
-            uri : config()['customer']['rurl'] + '/cusemail/v1/listCusEmail',
-            headers : {
-                // token : token
-            }
+            uri : config()['customer']['rurl'] + '/customerdetail/v1/count',
+        };
+        return request(options);
+    };
+    //获取客户编号
+    this.getCusNum = function(){
+        var options = {
+            method : 'GET',
+            timeout : 3000,
+            uri : config()['customer']['rurl'] + '/customerbaseinfo/v1/getCusNum',
+        };
+        return request(options);
+    };
+    //添加客户详情
+    this.addCusDetail = function(argvs){
+        var options = {
+            method : 'POST',
+            timeout : 3000,
+            uri : config()['customer']['rurl'] + '/customerdetail/v1/add',
+            form : argvs,
+        };
+        return request(options);
+    };
+    //获取客户详情
+    this.getCusDetail = function(argvs){
+        var options = {
+            method : 'GET',
+            timeout : 3000,
+            uri : config()['customer']['rurl'] + '/customerdetail/v1/getInfoByCustomerNum?customerNum=' + argvs.customerNum,
+            form : argvs,
+        };
+        return request(options);
+    };
+    //编辑客户详情
+    this.editDetail = function(argvs){
+        var options = {
+            method : 'PUT',
+            timeout : 3000,
+            uri : config()['customer']['rurl'] + '/customerdetail/v1/edit',
+            form : argvs,
+        };
+        return request(options);
+
+    };
+
+    //删除
+    this.deteleDetail = function(argvs){
+        var options = {
+            method : 'DELETE',
+            timeout : 3000,
+            uri : config()['customer']['rurl'] + '/customerdetail/v1/delete/' + argvs.id + '?userToken=' + argvs.userToken,
+        };
+        return request(options);
+
+    };
+    //客户邮箱
+    this.listCusEmail = function(argvs){
+        var options = {
+            method : 'GET',
+            timeout : 3000,
+            uri : config()['customer']['rurl'] + '/cusemail/v1/listCusEmail?limit=10&page=' + argvs.page,
+        };
+        return request(options);
+    };
+    //邮件条数
+    this.emailCount = function(){
+        var options = {
+            method : 'GET',
+            timeout : 3000,
+            uri : config()['customer']['rurl'] + '/cusemail/v1/count',
+        };
+        return request(options);
+    };
+    //行业
+    this.getWork = function(argvs){
+        var options = {
+            method : 'GET',
+            timeout : 3000,
+            uri : config()['customer']['rurl'] + '/customerbaseinfo/v1/getWorks',
+            form:argvs
+        };
+        return request(options);
+    };
+    //添加邮件
+    this.cusemailAdd = function(argvs){
+        var options = {
+            method : 'POST',
+            timeout : 3000,
+            uri : config()['customer']['rurl'] + '/cusemail/v1/add',
+            form:argvs,
+        };
+        return request(options);
+    };
+    //删除邮件
+    this.cusemailDel = function(argvs){
+        var options = {
+            method : 'DELETE',
+            timeout : 3000,
+            uri : config()['customer']['rurl'] + '/cusemail/v1/delete/'+argvs.id + '?userToken=' + argvs.userToken,
+        };
+        return request(options);
+    };
+    //冻结邮件
+    this.cusemailCongeal = function(argvs){
+        var options = {
+            method : 'PUT',
+            timeout : 3000,
+            uri : config()['customer']['rurl'] + '/cusemail/v1/congeal/'+argvs.id + '?userToken=' + argvs.userToken,
+        };
+        return request(options);
+    };
+    //借冻邮件
+    this.cusemailThaw = function(argvs){
+        var options = {
+            method : 'PUT',
+            timeout : 3000,
+            uri : config()['customer']['rurl'] + '/cusemail/v1/thaw/'+argvs.id + '?userToken=' + argvs.userToken,
+        };
+        return request(options);
+    };
+    this.getCusEmailId = function(argvs){
+        var options = {
+            method : 'GET',
+            timeout : 3000,
+            uri : config()['customer']['rurl'] + '/cusemail/v1/getCusEmailById/'+argvs.id,
+        };
+        return request(options);
+    };
+    this.editEmail = function(argvs){
+        var options = {
+            method : 'PUT',
+            timeout : 3000,
+            uri : config()['customer']['rurl'] + '/cusemail/v1/edit',
+            form:argvs
+        };
+        return request(options);
+    };
+    this.getCollect = function(argvs){
+        var options = {
+            method : 'GET',
+            timeout : 3000,
+            uri : config()['customer']['rurl'] + '/cusemail/v1/collect?works='+encodeURIComponent(argvs.join(','))
         };
         return request(options);
     };

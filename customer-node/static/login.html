@@ -102,6 +102,7 @@
     </div>
     <script src="/common/jquery/dist/jquery.js"></script>
     <script src="/common/jquery/dist/jquery.cookie.js"></script>
+    <script src="/common/jsencrypt.min.js"></script>
 </body>
 </html>
 <script>
@@ -133,18 +134,24 @@
 
     }
 function login(){
+
+    var encrypt = new JSEncrypt();
+    encrypt.setPublicKey("MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDadt1D5UWFHW03aYdIyU6Qmxb26KuVCN29mjAooiNua2/8TpbzjjvwlNrBVQzcBQ2ViQJsARJiuf3Soyi1m7pITAMuN5SJjXWGNX51tNRsOWfK3W9KlwqZjt+jlsdgv+fZ/GRujldj/oH64kwaVmBBchcV19HVLOipLbLbeKOOeQIDAQAB");
+    var encrypted = encrypt.encrypt($('#password').val());
     var user={
         account:$('#username').val(),
-        password:$('#password').val()
+        password:encrypted
     }
+
     $.ajax({
         url:"/user/login",
         type:"POST",
         data:user,
         success:function(response){
+            console.info(response);
             if(response.code==0){
                 $.cookie("userName",user.account,{ expires: 7 })
-                window.location.href="/customer"
+                window.location.href="/"
             }
         }
     })

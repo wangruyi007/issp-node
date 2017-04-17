@@ -1,0 +1,25 @@
+<div class="content-tab list">
+    <ul class="table">
+        <li class="list-head">
+            <span></span>
+            <span class="data-id">id</span>
+            <span>级别名称</span>
+            <span>定义</span>
+        </li>
+        <li class="list-all" ng-repeat="level in levelLists" style="display: {{level._delete?'none':'block'}};">
+            <section >
+                <div class="list-text {{level._selectList?'selectList':''}}" ng-click="selectList(level)">
+                    <p>{{$index+1}}</p>
+                    <p>{{level.name}}</p>
+                    <p>{{level.remark}}</p>
+                </div>
+            </section>
+        </li>
+    </ul>
+</div>
+<div ui-view="modal"></div>
+
+
+
+
+
