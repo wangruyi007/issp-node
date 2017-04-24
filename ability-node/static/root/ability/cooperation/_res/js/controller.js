@@ -37,7 +37,6 @@ app.controller('cooperationCtrl',function ($scope,$state) {
     };
     //编辑
     $scope.edit = function(){
-        console.log("可以点击");
         if($scope.idList){
             $state.go('root.ability.cooperation.edit[12]',{id:$scope.idList});
             $scope.menuClass = 'editMenu'

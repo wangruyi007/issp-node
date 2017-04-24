@@ -39,8 +39,6 @@ app.controller('companyAddCtrl', function($scope, companycapSer,$state,toastr){
     };
     //可手填的下拉框
     $scope.changeSelect=function(){
-         // document.getElementById("input").value=$scope.name2;
-        //this.document.getElementsByClassName("inputDom")[0].value=$scope.name2;
         $scope.addprofessionAuthen1 = $scope.addprofessionAuthen2;
     };
     $scope.changeSelect2=function(){

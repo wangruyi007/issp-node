@@ -3,7 +3,6 @@ app.factory('cooperationSer',function ($http) {
     return {
         listAbilityCooperation : listAbilityCooperation,
         countCooperation:countCooperation,
-       // searchCooperationAbility:searchCooperationAbility,
         deleteCooperationSelf:deleteCooperationSelf,
         addCooperationAbility:addCooperationAbility,
         editCooperationAbility:editCooperationAbility,
@@ -21,10 +20,6 @@ app.factory('cooperationSer',function ($http) {
     function countCooperation(){
         return $http.get('/countCooperation/count')
     }
-    //搜索
-/*    function searchCooperationAbility(data) {
-        return $http.post('/ability/searchCooperationAbility',data)
-    }*/
     //删除
     function deleteCooperationSelf(data){
         return $http.post('/ability/deleteCooperationSelf/delete',data)

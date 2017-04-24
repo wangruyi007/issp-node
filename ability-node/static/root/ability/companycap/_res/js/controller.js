@@ -6,7 +6,6 @@ var app = angular.module('companycap', [{
 app.controller('companycapCtrl',function ($scope,$state) {
     if ($state.current.url == '/companycap') {//默认加载列表
         $state.go('root.ability.companycap.list');
-        console.log("需要加载列表咯")
     }
 }).controller('companycapMenuCtrl',function($scope,$state,$rootScope,$location){
     var urlName = $state.current.url.split('/')[1].split('[')[0];
@@ -30,14 +29,8 @@ app.controller('companycapCtrl',function ($scope,$state) {
             $scope.menuClass = 'deleteMenu'
         }
     };
-//关于搜索
-/*    $scope.search = function(){
-        $state.go('root.ability.companycap.list.search[12]');
-        console.log("搜索可以单击")
-    };*/
     //编辑
     $scope.edit = function(){
-        console.log("可以点击");
         if($scope.idList){
             $state.go('root.ability.companycap.edit[12]',{id:$scope.idList});
             $scope.menuClass = 'editMenu'
