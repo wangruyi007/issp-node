@@ -1,0 +1,139 @@
+<div class="content-input add" verify-scope="tipStyle: 1">  <!--表单验证插件-->
+    <div class="input-list">
+        <section>
+            <ul>
+                  <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>公司名称</em></label>
+                    <input type="text"  ng-verify="{}" ng-model="addCompany">
+                </li>
+                  <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>专业资质认证</em></label>
+                    <select class="sele" ng-model="addprofessionAuthen2" ng-change="changeSelect()" ng-init="addprofessionAuthen2='电信工程专业承包企业资质'">
+                        <option>电信工程专业承包企业资质</option>
+                        <option>通信工程施工总承包企业资质</option>
+                        <option>通信息系网络系统集成企业资质</option>
+                        <option>电子通信广电行业的工程设计资质</option>
+                        <option>通信信息专业工程咨询资质</option>
+                    </select>
+                    <input type="text"  class="inputDom" ng-verify="{}" ng-model="addprofessionAuthen1" ng-init="addprofessionAuthen1='电信工程专业承包企业资质'">
+                </li>
+                  <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>管理资质认证</em></label>
+                    <select class="sele" ng-model="addmanageAuthen2" ng-change="changeSelect2()" ng-init="addmanageAuthen2='9000族质量管理体系或同类认证'">
+                        <option>9000族质量管理体系或同类认证</option>
+                        <option>27000族信息安全管理体系或同类认证</option>
+                        <option>14000族环境管理体系认证证书</option>
+                        <option>建筑业企业资质证书</option>
+                    </select>
+                    <input type="text"  class="inputDom" ng-verify="{}" ng-model="addmanageAuthen1" ng-init="addmanageAuthen1='9000族质量管理体系或同类认证'">
+                </li>
+                  <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>公司合作对象</em></label>
+                    <select class="sele" ng-model="addcooperate2" ng-change="changeSelect3()" ng-init="addcooperate2='运营商'">
+                        <option>运营商</option>
+                        <option>厂商</option>
+                        <option>集成商</option>
+                        <option>政府机关</option>
+                    </select>
+                    <input type="text"  class="inputDom" ng-verify="{}" ng-model="addcooperate1" ng-init="addcooperate1='运营商'">
+                </li>
+                  <li>
+                    <label><em>公司荣誉证书</em></label>
+                    <input type="text"  ng-model="addcompanyCertificate">
+                </li>
+                  <li>
+                    <label><em>公司发展规划</em></label>
+                    <select class="sele" ng-model="addcompanyDevelop2" ng-change="changeSelect4()" ng-change="changeSelect()" ng-init="addcompanyDevelop2='公司发展规划'">
+                        <option>公司发展规划</option>
+                    </select>
+                    <input type="text"  class="inputDom" ng-model="addcompanyDevelop1" ng-init="addcompanyDevelop1='公司发展规划'">
+                </li>
+                  <li>
+                    <label><em>项目发展规划</em></label>
+                    <input type="text"  ng-model="addprojectDevelop">
+                </li>
+                  <li>
+                    <label><em>公司所在地区</em></label>
+                    <select class="sele" ng-model="addarea2" ng-change="changeSelect5()" ng-init="addarea2='公司发展地区'">
+                        <option>公司发展地区</option>
+                    </select>
+                    <input type="text"  class="inputDom" ng-model="addarea1" ng-init="addarea1='公司发展地区'">
+                </li>
+                  <li>
+                    <label><em>公司资金</em></label>
+                    <select class="sele" ng-model="addmoney2" ng-change="changeSelect6()" ng-init="addmoney2='公司资金'">
+                        <option>公司资金</option>
+                    </select>
+                    <input type="text"  class="inputDom" ng-model="addmoney1" ng-init="addmoney1='公司资金'">
+                </li>
+                  <li>
+                    <label><em>人员组成</em></label>
+                    <select class="sele" ng-model="addpersonForm2" ng-change="changeSelect7()" ng-init="addpersonForm2='人员组成'">
+                        <option>人员组成</option>
+                    </select>
+                    <input type="text"  class="inputDom" ng-model="addpersonForm1" ng-init="addpersonForm1='人员组成'">
+                </li>
+                  <li>
+                    <label><em>配置</em></label>
+                    <input type="text"  ng-model="addconfig">
+                </li>
+                  <li>
+                    <label><em>设备</em></label>
+                    <input type="text"  ng-model="adddevice">
+                </li>
+                  <li>
+                    <label><em>公司占地面积</em></label>
+                    <input type="text"  ng-model="addcompanyArea">
+                </li>
+                  <li>
+                    <label><em>公司业务</em></label>
+                    <input type="text"  ng-model="addcompanyBusiness">
+                </li>
+                  <li>
+                    <label><em>已完成项目</em></label>
+                    <select class="sele" ng-model="addcompletePro" ng-init="addcompletePro='INDEPENDENT'">
+                        <option value="INDEPENDENT">独立完成</option>
+                        <option value="COOPER">合作完成</option>
+                        <option value="STAGEPARTICIPATION">阶段完成</option>
+                    </select>
+                  </li>
+                 <li>
+                    <label><em>尚在进行中项目</em></label>
+                    <input type="text"  ng-model="addinProjct">
+                </li>
+                 <li>
+                    <label><em>公司文化体系交流</em></label>
+                    <input type="text"  ng-model="addculture">
+                </li>
+                 <li>
+                    <label><em>员工节假日活动</em></label>
+                    <input type="text"  ng-model="addholidayActive">
+                </li>
+                 <li>
+                    <label><em>公司公告栏</em></label>
+                    <input type="text"  ng-model="addbulletinBoard">
+                </li>
+                 <li>
+                    <label><em>创建时间</em></label>
+                    <input type="text" onClick="laydate({istime: true, format: 'YYYY-MM-DD hh:mm:ss'})" class="add_image addMarketReceptTime" >
+                </li>
+                 <li>
+                    <label><em>修改时间</em></label>
+                    <input type="text" onClick="laydate({istime: true, format: 'YYYY-MM-DD hh:mm:ss'})" class="add_image addMarketReceptTime" >
+                </li>
+
+
+            </ul>
+        </section>
+    </div>
+    <p class="dataBottom">
+        <span class="imPrompt"><i><img src="/images/prompt.png"></i>带有<i><img src="/images/mandatory.png"></i>的为必填项</span>
+        <button ng-verify="{control:'myform'}" ng-click="companyAddFun()">提交</button>
+    </p>
+</div>
+
+<script type="text/javascript">
+    !function(){
+        laydate.skin('dahong');//切换皮肤，请查看skins下面皮肤库
+    }();
+</script>

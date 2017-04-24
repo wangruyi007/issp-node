@@ -1,0 +1,60 @@
+<div class="content-input add" verify-scope="tipStyle: 1">  <!--表单验证插件-->
+    <div class="input-list">
+        <section>
+            <ul>
+                  <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>姓名</em></label>
+                    <select class="sele" ng-model="addname2" ng-change="changeSelect()" ng-init="addname2='请选择姓名'">
+                        <option disabled>请选择姓名</option>
+                    </select>
+                    <input type="text"  class="inputDom" ng-verify="{}" ng-model="addname">
+                </li>
+                <li>
+                    <label><em>个人资质</em></label>
+                    <select class="sele" ng-model="addcapacity2" ng-change="changeSelect2()" ng-init="addcapacity2='请选择个人资质'">
+                        <option disabled>请选择个人资质</option>
+                    </select>
+                    <input type="text"  class="inputDom" ng-model="addcapacity">
+                </li>
+                <li>
+                    <label><em>个人职称</em></label>
+                    <select class="sele" ng-model="addselfJobTitle2" ng-change="changeSelect3()" ng-init="addselfJobTitle2='请选择个人职称'">
+                        <option disabled>请选择个人职称</option>
+                    </select>
+                    <input type="text"  class="inputDom"  ng-model="addselfJobTitle">
+                </li>
+                <li>
+                    <label><em>岗位职能</em></label>
+                    <select class="sele" ng-model="addpositionTitle2" ng-change="changeSelect4()" ng-init="addpositionTitle2='请选择岗位职能'">
+                        <option disabled>请选择岗位职能</option>
+                    </select>
+                    <input type="text"  class="inputDom"  ng-model="addpositionTitle">
+                </li>
+                <li>
+                    <label><em>工作年限</em></label>
+                    <select class="sele" ng-model="addworkYear2" ng-change="changeSelect5()" ng-init="addworkYear2='请选择工作年限'">
+                        <option disabled>请选择工作年限</option>
+                    </select>
+                    <input type="text"  class="inputDom"  ng-model="addworkYear">
+                </li>
+                <li>
+                    <label><em>个人经手项目</em></label>
+                    <select class="sele" ng-model="addselfProject2" ng-change="changeSelect6()" ng-init="addselfProject2='请选择个人经手项目'">
+                        <option disabled>请选择个人经手项目</option>
+                    </select>
+                    <input type="text"  class="inputDom" ng-model="addselfProject">
+                </li>
+             </ul>
+        </section>
+    </div>
+    <p class="dataBottom">
+        <span class="imPrompt"><i><img src="/images/prompt.png"></i>带有<i><img src="/images/mandatory.png"></i>的为必填项</span>
+        <button ng-verify="{control:'myform'}" ng-click="personAddFun()">提交</button>
+    </p>
+</div>
+
+<script type="text/javascript">
+    !function(){
+        laydate.skin('dahong');//切换皮肤，请查看skins下面皮肤库
+    }();
+</script>
