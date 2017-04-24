@@ -1,0 +1,97 @@
+<div class="content-input add" verify-scope="tipStyle: 1">
+    <div class="input-list">
+        <section>
+            <ul>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>序号</em></label>
+                    <input type="text" ng-verify="{}" ng-model="addSerialNumber">
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>时间</em></label>
+                    <input type="text" ng-verify="{}" onClick="laydate({istime: true, format: 'YYYY-MM-DD'})" class="add_image addTime" >
+
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>业务状态</em></label>
+                    <select class="sele" ng-model="addBusiness" ng-init="addBusiness='true'">
+                        <option value=true>立项前</option>
+                        <option value=false>立项后</option>
+                    </select>
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>业务类型</em></label>
+                    <select class="sele" ng-model="addType" ng-init="addType='0'">
+                        <option value="0">1</option>
+                        <option value="1">2</option>
+                        <option value="2">3</option>
+                    </select>
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>业务方向科目</em></label>
+                    <select class="sele" ng-model="addSource" ng-init="addSource='0'">
+                        <option value="0">1</option>
+                        <option value="1">2</option>
+                        <option value="2">3</option>
+                    </select>
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>公司名称</em></label>
+                    <input type="text" ng-verify="{}" ng-model="addName">
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>计划工作内容</em></label>
+                    <input type="text" ng-verify="{}" ng-model="addContent">
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>所属阶段</em></label>
+                    <input type="text" ng-verify="{}" ng-model="addPhase">
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>任务量</em></label>
+                    <input type="number" ng-verify="{}" ng-model="addQuota">
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>任务人</em></label>
+                    <input type="text" ng-verify="{}" ng-model="addOwn">
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>洽谈方式</em></label>
+                    <input type="text" ng-verify="{}" ng-model="addNegotiation">
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>商务预算费</em></label>
+                    <input type="number" ng-verify="{}" ng-model="addBudget">
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>客户姓名</em></label>
+                    <input type="text" ng-verify="{}" ng-model="addCustomer">
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>客户电话</em></label>
+                    <input type="text" ng-model="addPhone" ng-verify="{}">
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>商务内容</em></label>
+                    <input type="text" ng-verify="{}" ng-model="addBusinessContent">
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>配合人</em></label>
+                    <input type="text" ng-model="addCoordinate" ng-verify="{}">
+                </li>
+            </ul>
+        </section>
+    </div>
+    <p class="dataBottom">
+        <span class="imPrompt"><i><img src="/images/prompt.png"></i>带有<i><img src="/images/mandatory.png"></i>的为必填项</span>
+        <button ng-verify="{control:'myform'}" ng-click="dayPlanAddFun()">提交</button>
+    </p>
+</div>
+
+<script type="text/javascript">
+
+    !function(){
+        laydate.skin('dahong');//切换皮肤，请查看skins下面皮肤库
+    }();
+
+
+</script>

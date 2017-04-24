@@ -1,0 +1,36 @@
+<div class="content-tab list">
+    <ul class="table">
+        <li class="list-head">
+            <span></span>
+            <span class="data-id">id</span>
+            <span>业务类型</span>
+            <span>业务对象</span>
+            <span>人员</span>
+            <span>资质</span>
+            <span>其他</span>
+            <span>备注</span>
+        </li>
+        <li class="list-all" ng-repeat="lists in miningLists" style="display: {{lists._delete?'none':'block'}};">
+            <section>
+                <div class="list-text {{lists._selectList?'selectList':''}}" ng-click="selectList(lists)">
+                    <p>{{$index+1}}</p>
+                    <p class="data-id"></p>
+                    <p>{{lists.type}}</p>
+                    <p>{{lists.course}}</p>
+                    <p>{{lists.staff}}</p>
+                    <p>{{lists.qualification}}</p>
+                    <p>{{lists.other}}</p>
+                    <p>{{lists.remark}}</p>
+                </div>
+            </section>
+        </li>
+    </ul>
+    <footer class="footer">
+        <pagination count="custom.itemsCount" take="custom.take" activate="custom.activatePage"></pagination>
+    </footer>
+</div>
+<div ui-view="modal"></div>
+
+
+
+
