@@ -8,8 +8,6 @@ app.controller('emailEditCtrl', function($scope, emailSer,$state,toastr,$statePa
     emailSer.getFourById(emaiId).then(function(response){
         if(response.data.code==0){
             $scope.editInfo = response.data.data;
-           /* var type={type:$scope.editInfo.type}
-            console.log($scope.editInfo)*/
             $scope.myFunc = function() {
                 var type={type:$scope.editInfo.type};
                 emailSer.listNameType(type).then(function(response){
@@ -35,9 +33,7 @@ app.controller('emailEditCtrl', function($scope, emailSer,$state,toastr,$statePa
             status: vm.editInfo.status,
             sendObjectList: vm.editInfo.sendObjectList,
         };
-        console.log(data)
         emailSer.editEmail(data).then(function(response){
-            console.log(response);
             if(response.data.code == 0){
                 $state.go('root.ability.email.list');
                 toastr.success(vm.editInfo.type+ "已成功编辑", '温馨提示');

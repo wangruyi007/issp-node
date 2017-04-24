@@ -44,7 +44,6 @@ app.controller('companycapListCtrl',function($scope,companycapSer,toastr) {
         activatePage: activatePage
     };
     companycapSer.countBaseInfo().then(function(response){
-        console.log(response);
         if(response.data.code==0){
             $scope.abili.itemsCount = response.data.data;
         }else{

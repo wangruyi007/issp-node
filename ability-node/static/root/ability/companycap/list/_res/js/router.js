@@ -19,13 +19,5 @@ app.config(function($provide, $stateProvider){
                 controller:'companycapDeleteCtrl'
             }
         }
-    })/*.state("root.ability.companycap.list.search[12]",{
-        url:"/search[12]",
-        views:{
-            "modal@root.ability.companycap.list":{
-                templateUrl : "root/ability/companycap/list/search/_res/html/index.html",
-                controller:'companycapSearchCtrl'
-            }
-        }
-    })*/
+    })
 });

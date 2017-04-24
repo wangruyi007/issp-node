@@ -5,30 +5,6 @@ var app = angular.module('emailList', ['ng-pagination','toastr']);
 app.controller('emailListCtrl',function($scope,emailSer,toastr) {
     $scope.$emit('changeId', null);
     //分页
-/*    function activatePage(page) {
-        var listData = {
-            page:page
-        }
-        emailSer.listAbilityEmail(listData).then(function(response){
-            if(response.data.code==0){
-                $scope.emailLists = response.data
-            }else{
-                toastr.error( "请求超时，请联系管理员", '温馨提示');
-            }
-        });
-    }
-    $scope.abili = {
-        itemsCount: 11, //总条数
-        take: 10, //每页显示
-        activatePage: activatePage
-    };
-    emailSer.countEmail().then(function(response){
-        if(response.data.code==0){
-            $scope.abili.itemsCount = response.data.data;
-        }else{
-            toastr.error( "请求超时，请联系管理员", '温馨提示');
-        }
-    });*/
     function activatePage(page) {
         var listData = {
             page:page
@@ -47,7 +23,6 @@ app.controller('emailListCtrl',function($scope,emailSer,toastr) {
         activatePage: activatePage
     };
     emailSer.countEmail().then(function(response){
-        console.log(response);
         if(response.data.code==0){
             $scope.abili.itemsCount = response.data.data;
         }else{

@@ -31,7 +31,6 @@ app.controller('emailAddCtrl', function($scope, emailSer,$state,toastr){
            };
 
         emailSer.addEmail(data).then(function(response){
-            console.log(response);
             if(response.data.code == 0){
                 $state.go('root.ability.email.list');
                 toastr.success( vm.type+"已成功添加", '温馨提示');
@@ -40,13 +39,6 @@ app.controller('emailAddCtrl', function($scope, emailSer,$state,toastr){
             }
         });
 
-    };
-    //可手填的下拉框
-    $scope.changeSelect=function(){
-        $scope.addprofessionAuthen = $scope.addprofessionAuthen2;
-    };
-    $scope.changeSelect2=function(){
-        $scope.addmanageAuthen = $scope.addmanageAuthen2;
     };
 });
 
