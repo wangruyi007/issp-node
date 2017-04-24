@@ -16,7 +16,7 @@ app.config(function($provide, $stateProvider){
         views:{
             "content@root.developProgress.market.marketResearch":{
                 templateUrl : "root/developProgress/market/marketResearch/add/_res/html/index.html",
-                controller:'marketResearchAddCtrl'
+                controller:'researchAddCtrl'
             }
         }
     }).state("root.developProgress.market.marketResearch.edit[12]",{
@@ -24,7 +24,7 @@ app.config(function($provide, $stateProvider){
         views:{
             "content@root.developProgress.market.marketResearch":{
                 templateUrl : "root/developProgress/market/marketResearch/edit/_res/html/index.html",
-                controller:'marketResearchEditCtrl'
+                controller:'researchEditCtrl'
             }
         }
     })

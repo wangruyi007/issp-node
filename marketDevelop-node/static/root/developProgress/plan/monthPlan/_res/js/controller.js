@@ -11,7 +11,6 @@ app.controller('monthPlanCtrl',function ($scope,$state) {
 
 }).controller('monthPlanMenuCtrl',function($scope,$state,$rootScope,$location){
     var urlName = $state.current.url.split('/')[1].split('[')[0];
-    console.log(urlName);
     $scope.menuClass = urlName + "Menu";
     $rootScope.$on('$locationChangeSuccess', function () {//url地扯改变或者刷新
         if($location.path().split('/').slice(-1)=='list'){
@@ -30,7 +29,6 @@ app.controller('monthPlanCtrl',function ($scope,$state) {
     }
 
     $scope.edit = function(){
-        console.log($scope.idList);
         if($scope.idList){
             $state.go('root.developProgress.plan.monthPlan.edit[12]',{id:$scope.idList});
             $scope.menuClass = 'editMenu'

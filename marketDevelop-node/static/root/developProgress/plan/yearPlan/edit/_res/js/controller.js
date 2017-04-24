@@ -5,7 +5,6 @@ app.controller('yearPlanEditCtrl', function($scope, yearPlanSer,$stateParams,$st
     //年份
     yearPlanSer.yearSearch(yearData).then(function(response){
         if(response.data.code=='0'){
-            console.log(response)
             $scope.editYear = response.data.data;
         }else if (response.data.code==403){
             toastr.error( "请登录用户", '温馨提示');
@@ -29,9 +28,7 @@ app.controller('yearPlanEditCtrl', function($scope, yearPlanSer,$stateParams,$st
             courseAccounted : vm.editYear.courseAccounted,
             quota : vm.editYear.quota
         };
-        console.log(data);
         yearPlanSer.editYearPlan(data).then(function(response){
-            console.log(response);
             if(response.data.code == 0){
                 $state.go('root.developProgress.plan.yearPlan.list')
                 toastr.success( "编辑成功", '温馨提示');

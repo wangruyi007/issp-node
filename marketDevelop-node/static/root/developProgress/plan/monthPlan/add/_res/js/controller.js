@@ -3,20 +3,13 @@ app.controller('monthPlanAddCtrl', function($scope, monthPlanSer,$state,toastr){
 
     monthPlanSer.getChoice().then(function(response){
        if(response.data.code==0){
-           console.log(response.data.data)
            $scope.choiceGetYears = response.data.data
        } else if(response.data.code == 403){
            toastr.error("请登录用户", '温馨提示');
        }
     });
-    // monthPlanSer.monthSearch().then(function(response){
-    //     if(response.data.code == 0){
-    //         $scope.monthGetYear = response.data.data
-    //     } else if(response.data.code == 403){
-    //         toastr.error("请登录用户", '温馨提示');
-    //     }
-    // });
-    //年计划添加
+
+    //月计划添加
     $scope.monthPlanAddFun = function(){
         var vm = $scope;
         var data = {
@@ -29,7 +22,6 @@ app.controller('monthPlanAddCtrl', function($scope, monthPlanSer,$state,toastr){
             leastQuota : vm.addLeastQuota
         };
         monthPlanSer.addMonthPlan(data).then(function(response){
-            console.log(response);
             if(response.data.code == 0){
                 $state.go('root.developProgress.plan.monthPlan.list');
                 toastr.success( "已成功添加", '温馨提示');

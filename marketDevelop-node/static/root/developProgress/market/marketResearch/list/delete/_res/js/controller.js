@@ -1,5 +1,5 @@
-var app = angular.module('marketResearchDelete', ['toastr']);
-app.controller('marketResearchDeleteCtrl',function($scope,marketResearchSer,toastr,$stateParams,$state){
+var app = angular.module('researchDelete', ['toastr']);
+app.controller('researchDeleteCtrl',function($scope,researchSer,toastr,$stateParams,$state){
     //删除
     $scope.delYes = function(){
 
@@ -7,7 +7,7 @@ app.controller('marketResearchDeleteCtrl',function($scope,marketResearchSer,toas
             id :$stateParams.id
         }
 
-        marketResearchSer.researchDelete(data).then(function(response){
+        researchSer.researchDelete(data).then(function(response){
             if(response.data.code==0){
                 toastr.info( "信息已删除", '温馨提示');
                 $state.go('root.developProgress.market.marketResearch.list');

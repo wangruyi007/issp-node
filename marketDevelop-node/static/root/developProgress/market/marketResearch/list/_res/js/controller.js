@@ -1,10 +1,10 @@
-var app = angular.module('marketResearchList', ['ng-pagination','toastr']);
-app.controller('marketResearchListCtrl',function($scope,marketResearchSer,toastr){
+var app = angular.module('researchList', ['ng-pagination','toastr']);
+app.controller('researchListCtrl',function($scope,researchSer,toastr){
     function activatePage(page) {
         var listData = {
             page:page
         }
-        marketResearchSer.researchList(listData).then(function(response){
+        researchSer.listResearch(listData).then(function(response){
             if(response.data.code==0){
 
                 $scope.rsearchLists = response.data.data
@@ -36,12 +36,12 @@ app.controller('marketResearchListCtrl',function($scope,marketResearchSer,toastr
 
 //分页
     $scope.custom = {
-        itemsCount: 2, //总条数
+        itemsCount: 3, //总条数
         take: 10, //每页显示
         activatePage: activatePage
     };
 
-    marketResearchSer.countResearch().then(function(response){
+    researchSer.countResearch().then(function(response){
         console.log(response);
         if(response.data.code==0){
             $scope.custom.itemsCount = response.data.data;

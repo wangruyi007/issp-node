@@ -1,11 +1,11 @@
-var app = angular.module('marketResearchEdit', ['toastr']);
-app.controller('marketResearchEditCtrl', function($scope, marketResearchSer,$stateParams,$state,toastr){
+var app = angular.module('researchEdit', ['toastr']);
+app.controller('researchEditCtrl', function($scope, researchSer,$stateParams,$state,toastr){
     var channelData ={channelId: $stateParams.id};
 
     //获取ID
-    marketResearchSer.findResearchId(channelData).then(function(response){
+    researchSer.findResearchId(channelData).then(function(response){
         if(response.data.code=='0'){
-            $scope.editchannel= response.data.data;
+            $scope.editResearch= response.data.data;
         }else if (response.data.code==403){
             toastr.error( "请登录用户", '温馨提示');
         }
@@ -14,20 +14,19 @@ app.controller('marketResearchEditCtrl', function($scope, marketResearchSer,$sta
 
 
     //编辑点击提交
-    $scope.MiningEditFun = function(){
+    $scope.ResearchEditFun = function(){
 
         var vm = $scope;
         var data = {
-            id:vm.editchannel.id,
-            type : vm.editchannel.type,
-            course : vm.editchannel.course,
-            staff : vm.editchannel.staff,
-            qualification : vm.editchannel.qualification,
-            other : vm.editchannel.other,
-            remark : vm.editchannel.remark
+            id:vm.editResearch.id,
+            type : vm.editResearch.type,
+            course : vm.editResearch.course,
+            business : vm.editResearch.business,
+            competitors : vm.editResearch.competitors,
+            evaluate : vm.editResearch.evaluate,
+            remark : vm.editResearch.remark
         };
-        console.log(data);
-        marketResearchSer.researchEdit(data).then(function(response){
+        researchSer.researchEdit(data).then(function(response){
             console.log(response);
             if(response.data.code == 0){
                 $state.go('root.developProgress.market.marketResearch.list');

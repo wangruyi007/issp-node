@@ -15,10 +15,9 @@ module.exports = function(){
                 var responseText = JSON.parse(parsedBody);
                 $self.body = responseText;
             }).catch((error) =>{
-                if(error.error && error.error.code && error.error.code == 'ETIMEDOUT'){
-                    $self.body = {'msg' : '请求错误！', errno : 3};
-                    $self.status = 408;
-                }
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
             }));
     }).post('/plan/yearplan/save', function*(){//保存年计划数据
         var $self = this;
@@ -28,10 +27,9 @@ module.exports = function(){
                 var responseText = JSON.parse(parsedBody);
                 $self.body = responseText;
             }).catch((error) =>{
-                if(error.error && error.error.code && error.error.code == 'ETIMEDOUT'){
-                    $self.body = {'msg' : '请求错误！', errno : 3};
-                    $self.status = 408;
-                }
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
             }));
     }).post('/plan/yearplan/update', function*(){//修改年计划数据
         var $self = this;
@@ -41,10 +39,9 @@ module.exports = function(){
                 var responseText = JSON.parse(parsedBody);
                 $self.body = responseText;
             }).catch((error) =>{
-                if(error.error && error.error.code && error.error.code == 'ETIMEDOUT'){
-                    $self.body = {'msg' : '请求错误！', errno : 3};
-                    $self.status = 408;
-                }
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
             }));
     }).post('/plan/yearplan/findById', function*(){//查询年计划数据
         var $self = this;
@@ -54,10 +51,9 @@ module.exports = function(){
                 var responseText = JSON.parse(parsedBody);
                 $self.body = responseText;
             }).catch((error) =>{
-                if(error.error && error.error.code && error.error.code == 'ETIMEDOUT'){
-                    $self.body = {'msg' : '请求错误！', errno : 3};
-                    $self.status = 408;
-                }
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
             }));
     }).get('/plan/yearplan/delete', function*(){//删除年计划数据
         var $self = this;
@@ -67,10 +63,9 @@ module.exports = function(){
                 var responseText = JSON.parse(parsedBody);
                 $self.body = responseText;
             }).catch((error) =>{
-                if(error.error && error.error.code && error.error.code == 'ETIMEDOUT'){
-                    $self.body = {'msg' : '请求错误！', errno : 3};
-                    $self.status = 408;
-                }
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
             }));
     }).get('/plan/yearplan/getTotal', function*(){//获取年计划总条数
         var $self = this;
@@ -79,10 +74,9 @@ module.exports = function(){
                 var responseText = JSON.parse(parsedBody);
                 $self.body = responseText;
             }).catch((error) =>{
-                if(error.error && error.error.code && error.error.code == 'ETIMEDOUT'){
-                    $self.body = {'msg' : '请求错误！', errno : 3};
-                    $self.status = 408;
-                }
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
             }));
     }).get('/plan/monthplan/maps', function*(){//月计划列表
         var $self = this;
@@ -93,11 +87,9 @@ module.exports = function(){
                 var responseText = JSON.parse(parsedBody);
                 $self.body = responseText;
             }).catch((error) =>{
-                console.log(error)
-                if(error.error && error.error.code && error.error.code == 'ETIMEDOUT'){
-                    $self.body = {'msg' : '请求错误！', errno : 3};
-                    $self.status = 408;
-                }
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
             }));
     }).post('/plan/monthplan/save', function*(){//保存月计划数据
         var $self = this;
@@ -107,10 +99,9 @@ module.exports = function(){
                 var responseText = JSON.parse(parsedBody);
                 $self.body = responseText;
             }).catch((error) =>{
-                if(error.error && error.error.code && error.error.code == 'ETIMEDOUT'){
-                    $self.body = {'msg' : '请求错误！', errno : 3};
-                    $self.status = 408;
-                }
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
             }));
     }).post('/plan/monthplan/update', function*(){//修改月计划数据
         var $self = this;
@@ -120,10 +111,9 @@ module.exports = function(){
                 var responseText = JSON.parse(parsedBody);
                 $self.body = responseText;
             }).catch((error) =>{
-                if(error.error && error.error.code && error.error.code == 'ETIMEDOUT'){
-                    $self.body = {'msg' : '请求错误！', errno : 3};
-                    $self.status = 408;
-                }
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
             }));
     }).get('/plan/monthplan/findById', function*(){//获取年计划ID
         var $self = this;
@@ -133,10 +123,9 @@ module.exports = function(){
                 var responseText = JSON.parse(parsedBody);
                 $self.body = responseText;
             }).catch((error) =>{
-                if(error.error && error.error.code && error.error.code == 'ETIMEDOUT'){
-                    $self.body = {'msg' : '请求错误！', errno : 3};
-                    $self.status = 408;
-                }
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
             }));
     }).get('/plan/yearplan/getChoice', function*(){//获取年计划ID
         var $self = this;
@@ -145,10 +134,9 @@ module.exports = function(){
                 var responseText = JSON.parse(parsedBody);
                 $self.body = responseText;
             }).catch((error) =>{
-                if(error.error && error.error.code && error.error.code == 'ETIMEDOUT'){
-                    $self.body = {'msg' : '请求错误！', errno : 3};
-                    $self.status = 408;
-                }
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
             }));
     }).post('/plan/monthplan/findByYearId', function*(){//根据年计划ID查询月计划
         var $self = this;
@@ -158,10 +146,9 @@ module.exports = function(){
                 var responseText = JSON.parse(parsedBody);
                 $self.body = responseText;
             }).catch((error) =>{
-                if(error.error && error.error.code && error.error.code == 'ETIMEDOUT'){
-                    $self.body = {'msg' : '请求错误！', errno : 3};
-                    $self.status = 408;
-                }
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
             }));
     }).get('/plan/monthplan/getTotal', function*(){//获取月计划总条数
         var $self = this;
@@ -170,10 +157,9 @@ module.exports = function(){
                 var responseText = JSON.parse(parsedBody);
                 $self.body = responseText;
             }).catch((error) =>{
-                if(error.error && error.error.code && error.error.code == 'ETIMEDOUT'){
-                    $self.body = {'msg' : '请求错误！', errno : 3};
-                    $self.status = 408;
-                }
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
             }));
     }).get('/plan/monthplan/delete/', function*(){//删除月计划
         var $self = this;
@@ -183,10 +169,9 @@ module.exports = function(){
                 var responseText = JSON.parse(parsedBody);
                 $self.body = responseText;
             }).catch((error) =>{
-                if(error.error && error.error.code && error.error.code == 'ETIMEDOUT'){
-                    $self.body = {'msg' : '请求错误！', errno : 3};
-                    $self.status = 408;
-                }
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
             }));
     }).get('/plan/weekplan/maps', function*(){//周计划列表
         var $self = this;
@@ -196,11 +181,9 @@ module.exports = function(){
                 var responseText = JSON.parse(parsedBody);
                 $self.body = responseText;
             }).catch((error) =>{
-                console.log(error)
-                if(error.error && error.error.code && error.error.code == 'ETIMEDOUT'){
-                    $self.body = {'msg' : '请求错误！', errno : 3};
-                    $self.status = 408;
-                }
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
             }));
     }).post('/plan/weekplan/save', function*(){//保存周计划数据
         var $self = this;
@@ -210,10 +193,9 @@ module.exports = function(){
                 var responseText = JSON.parse(parsedBody);
                 $self.body = responseText;
             }).catch((error) =>{
-                if(error.error && error.error.code && error.error.code == 'ETIMEDOUT'){
-                    $self.body = {'msg' : '请求错误！', errno : 3};
-                    $self.status = 408;
-                }
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
             }));
     }).post('/plan/weekplan/update', function*(){//修改周计划数据
         var $self = this;
@@ -223,10 +205,9 @@ module.exports = function(){
                 var responseText = JSON.parse(parsedBody);
                 $self.body = responseText;
             }).catch((error) =>{
-                if(error.error && error.error.code && error.error.code == 'ETIMEDOUT'){
-                    $self.body = {'msg' : '请求错误！', errno : 3};
-                    $self.status = 408;
-                }
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
             }));
     }).get('/plan/weekplan/findById', function*(){//获取周计划ID
         var $self = this;
@@ -236,10 +217,9 @@ module.exports = function(){
                 var responseText = JSON.parse(parsedBody);
                 $self.body = responseText;
             }).catch((error) =>{
-                if(error.error && error.error.code && error.error.code == 'ETIMEDOUT'){
-                    $self.body = {'msg' : '请求错误！', errno : 3};
-                    $self.status = 408;
-                }
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
             }));
     }).get('/plan/monthplan/getChoice', function*(){//获取月计划选择对象
         var $self = this;
@@ -250,10 +230,9 @@ module.exports = function(){
                 var responseText = JSON.parse(parsedBody);
                 $self.body = responseText;
             }).catch((error) =>{
-                if(error.error && error.error.code && error.error.code == 'ETIMEDOUT'){
-                    $self.body = {'msg' : '请求错误！', errno : 3};
-                    $self.status = 408;
-                }
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
             }));
     }).get('/plan/weekplan/findByMonth', function*(){//根据月计划ID查询周计划
         var $self = this;
@@ -263,10 +242,9 @@ module.exports = function(){
                 var responseText = JSON.parse(parsedBody);
                 $self.body = responseText;
             }).catch((error) =>{
-                if(error.error && error.error.code && error.error.code == 'ETIMEDOUT'){
-                    $self.body = {'msg' : '请求错误！', errno : 3};
-                    $self.status = 408;
-                }
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
             }));
     }).get('/plan/weekplan/getTotal', function*(){//获取周计划总条数
         var $self = this;
@@ -275,10 +253,9 @@ module.exports = function(){
                 var responseText = JSON.parse(parsedBody);
                 $self.body = responseText;
             }).catch((error) =>{
-                if(error.error && error.error.code && error.error.code == 'ETIMEDOUT'){
-                    $self.body = {'msg' : '请求错误！', errno : 3};
-                    $self.status = 408;
-                }
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
             }));
     }).get('/plan/weekplan/delete', function*(){//删除年计划数据
         var $self = this;
@@ -288,10 +265,9 @@ module.exports = function(){
                 var responseText = JSON.parse(parsedBody);
                 $self.body = responseText;
             }).catch((error) =>{
-                if(error.error && error.error.code && error.error.code == 'ETIMEDOUT'){
-                    $self.body = {'msg' : '请求错误！', errno : 3};
-                    $self.status = 408;
-                }
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
             }));
     }).get('/plan/dayplan/maps', function*(){//天计划列表
         var $self = this;
@@ -301,11 +277,9 @@ module.exports = function(){
                 var responseText = JSON.parse(parsedBody);
                 $self.body = responseText;
             }).catch((error) =>{
-                console.log(error)
-                if(error.error && error.error.code && error.error.code == 'ETIMEDOUT'){
-                    $self.body = {'msg' : '请求错误！', errno : 3};
-                    $self.status = 408;
-                }
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
             }));
     }).post('/plan/dayplan/save', function*(){//保存周计划数据
         var $self = this;
@@ -315,10 +289,9 @@ module.exports = function(){
                 var responseText = JSON.parse(parsedBody);
                 $self.body = responseText;
             }).catch((error) =>{
-                if(error.error && error.error.code && error.error.code == 'ETIMEDOUT'){
-                    $self.body = {'msg' : '请求错误！', errno : 3};
-                    $self.status = 408;
-                }
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
             }));
     }).post('/plan/dayplan/update', function*(){//编辑天计划数据
         var $self = this;
@@ -328,10 +301,9 @@ module.exports = function(){
                 var responseText = JSON.parse(parsedBody);
                 $self.body = responseText;
             }).catch((error) =>{
-                if(error.error && error.error.code && error.error.code == 'ETIMEDOUT'){
-                    $self.body = {'msg' : '请求错误！', errno : 3};
-                    $self.status = 408;
-                }
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
             }));
     }).get('/plan/dayplan/getTotal', function*(){//获取天计划总条数
         var $self = this;
@@ -340,10 +312,9 @@ module.exports = function(){
                 var responseText = JSON.parse(parsedBody);
                 $self.body = responseText;
             }).catch((error) =>{
-                if(error.error && error.error.code && error.error.code == 'ETIMEDOUT'){
-                    $self.body = {'msg' : '请求错误！', errno : 3};
-                    $self.status = 408;
-                }
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
             }));
     }).get('/plan/dayplan/findById', function*(){//获取周计划ID
         var $self = this;
@@ -353,10 +324,9 @@ module.exports = function(){
                 var responseText = JSON.parse(parsedBody);
                 $self.body = responseText;
             }).catch((error) =>{
-                if(error.error && error.error.code && error.error.code == 'ETIMEDOUT'){
-                    $self.body = {'msg' : '请求错误！', errno : 3};
-                    $self.status = 408;
-                }
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
             }));
     }).get('/plan/dayplan/delete', function*(){//删除年计划数据
         var $self = this;
@@ -366,10 +336,9 @@ module.exports = function(){
                 var responseText = JSON.parse(parsedBody);
                 $self.body = responseText;
             }).catch((error) =>{
-                if(error.error && error.error.code && error.error.code == 'ETIMEDOUT'){
-                    $self.body = {'msg' : '请求错误！', errno : 3};
-                    $self.status = 408;
-                }
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
             }));
     })
     return router;

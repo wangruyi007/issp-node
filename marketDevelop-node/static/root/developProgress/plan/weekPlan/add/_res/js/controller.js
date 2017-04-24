@@ -9,20 +9,12 @@ app.controller('weekPlanAddCtrl', function($scope, weekPlanSer,$state,toastr){
             toastr.error("请登录用户", '温馨提示');
         }
     });
-    // weekPlanSer.weekByMonth().then(function(response){
-    //     if(response.data.code == 0){
-    //         $scope.weekGetmonth = response.data.data
-    //     } else if(response.data.code == 403){
-    //         toastr.error("请登录用户", '温馨提示');
-    //     }
-    // });
+
     //添加
     $scope.weekPlanAddFun = function(){
         var vm = $scope;
         var data = {
             month_id: vm.weekGetmonth.month_id,
-
-            // month_id: vm.addMonth_id,
             monthTotal : vm.addMonthTotal,
             course : vm.addCourse,
             startCycle : angular.element('.addStartCycle').val(),

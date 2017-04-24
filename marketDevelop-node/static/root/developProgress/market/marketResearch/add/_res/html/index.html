@@ -5,26 +5,30 @@
                 <li class="required">
                     <label><i><img src="/images/mandatory.png"></i><em>业务类型</em></label>
                     <select class="sele" ng-model="addType" ng-init="addType='0'">
-                        <option value="0">1</option>
-                        <option value="1">2</option>
-                        <option value="2">3</option>
+                        <option value="0">项目</option>
+                        <option value="1">项目2</option>
+                        <option value="2">项目3</option>
+                    </select>
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>业务方向科目</em></label>
+                    <select class="sele" ng-model="addCourse" ng-init="addCourse='0'">
+                        <option value="0">jishu</option>
+                        <option value="1">shuji</option>
+                        <option value="2">kjsgn</option>
                     </select>
                 </li>
                 <li class="required">
                     <label><i><img src="/images/mandatory.png"></i><em>业务对象</em></label>
-                    <input type="text" ng-verify="{}" ng-model="addCourse">
+                    <input type="text" ng-verify="{}" ng-model="addBusiness">
                 </li>
                 <li class="required">
-                    <label><i><img src="/images/mandatory.png"></i><em>人员</em></label>
-                    <input type="text" ng-verify="{}" ng-model="addStaff">
+                    <label><i><img src="/images/mandatory.png"></i><em>竞争对手名称</em></label>
+                    <input type="text" ng-verify="{}" ng-model="addCompetitors">
                 </li>
                 <li class="required">
-                    <label><i><img src="/images/mandatory.png"></i><em>资质</em></label>
-                    <input type="text" ng-verify="{}" ng-model="addQualification">
-                </li>
-                <li>
-                    <label><i><img src="/images/mandatory.png"></i><em>其他</em></label>
-                    <input type="text" ng-model="addOther">
+                    <label><i><img src="/images/mandatory.png"></i><em>价格评估</em></label>
+                    <input type="text" ng-verify="{}" ng-model="addEvaluate">
                 </li>
                 <li>
                     <label><i><img src="/images/mandatory.png"></i><em>备注</em></label>
@@ -35,7 +39,7 @@
     </div>
     <p class="dataBottom">
         <span class="imPrompt"><i><img src="/images/prompt.png"></i>带有<i><img src="/images/mandatory.png"></i>的为必填项</span>
-        <button ng-verify="{control:'myform'}" ng-click="MiningAddFun()">提交</button>
+        <button ng-verify="{control:'myform'}" ng-click="ResearchAddFun()">提交</button>
     </p>
 </div>
 

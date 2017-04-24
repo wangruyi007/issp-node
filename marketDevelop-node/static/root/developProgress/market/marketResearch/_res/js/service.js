@@ -1,14 +1,14 @@
-var app = angular.module('marketResearchServer',[]);
-app.factory('marketResearchSer',function ($http) {
+var app = angular.module('researchServer',[]);
+app.factory('researchSer',function ($http) {
     return {
-        researchList : researchList,
+        listResearch : listResearch,
         researchAdd:researchAdd,
         researchEdit:researchEdit,
         findResearchId:findResearchId,
         countResearch:countResearch,
         researchDelete:researchDelete
     };
-    function researchList(data) {
+    function listResearch(data) {
         return $http.get('/market/marketresearch/maps',{
             params: data
 

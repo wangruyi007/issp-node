@@ -225,7 +225,7 @@ module.exports = function(){
     }).get('/market/marketresearch/maps', function*(){  //市场调研列表
         var $self = this;
         var page = $self.request.query;
-        yield (server().marketList(page)
+        yield (server().researchList(page)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
                 $self.body = responseText;
@@ -237,7 +237,7 @@ module.exports = function(){
     }).post('/market/marketresearch/save', function*(){//添加市场调研
         var $self = this;
         var addData = $self.request.body;
-        yield (server().channelAdd(addData)
+        yield (server().searchAdd(addData)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
                 $self.body = responseText;
@@ -250,7 +250,7 @@ module.exports = function(){
         var $self = this;
         var editData = $self.request.body;
         console.log(editData);
-        yield (server().marketEdit(editData)
+        yield (server().researchEdit(editData)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
                 $self.body = responseText;
@@ -262,7 +262,7 @@ module.exports = function(){
     }).get('/market/marketresearch/findById', function*(){//ID查询市场调研
         var $self = this;
         var findById = $self.request.query;
-        yield (server().findMarketId(findById)
+        yield (server().findSearchId(findById)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
                 $self.body = responseText;
@@ -274,7 +274,7 @@ module.exports = function(){
     }).get('/market/marketresearch/delete', function*(){//删除市场调研
         var $self = this;
         var deleteData = $self.request.query;
-        yield (server().channelDelete(deleteData)
+        yield (server().deleteResearch(deleteData)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
                 $self.body = responseText;
@@ -285,7 +285,79 @@ module.exports = function(){
             }));
     }).get('/market/marketresearch/getTotal', function*(){//获取市场调研总条数
         var $self = this;
-        yield (server().getChannelTotal()
+        yield (server().getResearchTotal()
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
+    }).get('/market/marketmeasure/maps', function*(){  //市场测算列表
+        var $self = this;
+        var page = $self.request.query;
+        yield (server().measureList(page)
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
+    }).post('/market/marketmeasure/save', function*(){//添加市场测算
+        var $self = this;
+        var addData = $self.request.body;
+        yield (server().measureAdd(addData)
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
+    }).post('/market/marketmeasure/update', function*(){//修改市场测算
+        var $self = this;
+        var editData = $self.request.body;
+        console.log(editData);
+        yield (server().measureEdit(editData)
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
+    }).get('/market/marketmeasure/findById', function*(){//ID查询市场测算
+        var $self = this;
+        var findById = $self.request.query;
+        yield (server().findMeasureId(findById)
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
+    }).get('/market/marketmeasure/delete', function*(){//删除市场测算
+        var $self = this;
+        var deleteData = $self.request.query;
+        yield (server().deleteMeasure(deleteData)
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
+    }).get('/market/marketmeasure/getTotal', function*(){//获取市场测算总条数
+        var $self = this;
+        yield (server().getMeasureTotal()
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
                 $self.body = responseText;

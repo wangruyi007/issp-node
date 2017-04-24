@@ -8,7 +8,6 @@ app.controller('dayPlanDeleteCtrl',function($scope,dayPlanSer,toastr,$stateParam
         }
 
         dayPlanSer.deleteDayPlan(data).then(function(response){
-                console.log(response);
             if(response.data.code==0){
                 toastr.info( "信息已删除", '温馨提示');
                 $state.go('root.developProgress.plan.dayPlan.list');

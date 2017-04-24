@@ -30,13 +30,19 @@
         <li ng-click="navClass('marketResearch')" ng-class="{'active':navCla=='marketResearch'}" ui-sref="_root.developProgress.market.marketResearch.list">
             <a href="javascript:void(0)">市场调研</a>
         </li>
-        <li><a href="javascript:void(0)">市场测算</a></li>
+        <li ng-click="navClass('marketMeasured')" ng-class="{'active':navCla=='marketMeasured'}" ui-sref="_root.developProgress.market.marketMeasured.list">
+            <a href="javascript:void(0)">市场测算</a>
+        </li>
     </ul>
 </div>
 <div class="nav-list">
     <h3 class="header-menu big"><i class="nav-arrow"></i>其他</h3>
     <ul class="menu">
-        <li><a href="javascript:void(0)">业务类型管理</a></li>
-        <li><a href="javascript:void(0)">业务方向科目</a></li>
+        <li ng-click="navClass('businessType')" ng-class="{'active':navCla=='businessType'}" ui-sref="_root.developProgress.other.businessType.list">
+            <a href="javascript:void(0)">业务类型管理</a>
+        </li>
+        <li ng-click="navClass('directionSubjects')" ng-class="{'active':navCla=='directionSubjects'}" ui-sref="_root.developProgress.other.directionSubjects.list">
+            <a href="javascript:void(0)">业务方向科目</a>
+        </li>
     </ul>
 </div>

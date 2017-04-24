@@ -2,11 +2,8 @@ var app = angular.module('dayPlanEdit', ['toastr']);
 app.controller('dayPlanEditCtrl', function($scope, dayPlanSer,$stateParams,$state,toastr){
     var dayData ={dayId: $stateParams.id};
 
-
     dayPlanSer.daySearch(dayData).then(function(response){
-
         if(response.data.code=='0'){
-            console.log(response)
             $scope.editDay = response.data.data;
         }else if (response.data.code==403){
             toastr.error( "请登录用户", '温馨提示');

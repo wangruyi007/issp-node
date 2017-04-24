@@ -60,14 +60,10 @@ router.get(/^\/module\/_config(?:\/.|$)/, function *(next) {
 
 //============路由===========
 app.use(require(path.join(__dirname,routersPath,'/common/index.js'))().routes());//登录路由
-<<<<<<< HEAD:marketDevelop-node/index.js
 app.use(require(path.join(__dirname,routersPath,'/plan/index.js'))().routes());//计划路由
 app.use(require(path.join(__dirname,routersPath,'/market/index.js'))().routes());//市场路由
+app.use(require(path.join(__dirname,routersPath,'/other/index.js'))().routes());//其他路由
 
-=======
-// app.use(require(path.join(__dirname,routersPath,'/business/customer/basicinfo.js'))().routes());//商务
-app.use(require(path.join(__dirname,routersPath,'/customer/index.js'))().routes());//客户信息
->>>>>>> ea13faf0fcee1ac096264f54947786e04b0472e9:customer-node/index.js
 app.use(router.routes());
 
 

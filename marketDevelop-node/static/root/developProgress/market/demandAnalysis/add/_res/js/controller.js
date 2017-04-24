@@ -1,7 +1,7 @@
 var app = angular.module('demandAnalysisAdd', ['toastr']);
 app.controller('demandAnalysisAddCtrl', function($scope, demandAnalysisSer,$state,toastr){
 
-    //年计划添加
+    //添加
     $scope.analysisAddFun = function(){
         var vm = $scope;
         var data = {

@@ -4,9 +4,7 @@ app.controller('weekPlanEditCtrl', function($scope, weekPlanSer,$stateParams,$st
 
     //周计划id
     weekPlanSer.weekSearch(weekData).then(function(response){
-        console.log(weekData);
         if(response.data.code=='0'){
-            console.log(response)
             $scope.editWeek = response.data.data;
         }else if (response.data.code==403){
             toastr.error( "请登录用户", '温馨提示');
@@ -32,7 +30,6 @@ app.controller('weekPlanEditCtrl', function($scope, weekPlanSer,$stateParams,$st
             activity : vm.editWeek.activity
         };
         weekPlanSer.editWeekPlan(data).then(function(response){
-            console.log(response);
             if(response.data.code == 0){
                 $state.go('root.developProgress.plan.weekPlan.list')
                 toastr.success( "编辑成功", '温馨提示');
@@ -42,11 +39,6 @@ app.controller('weekPlanEditCtrl', function($scope, weekPlanSer,$stateParams,$st
         });
 
     };
-    // 遍历年份
-    $scope.yearArr=[];
-    for (var y = 1990; y <= 2999; y++) {
-        $scope.yearArr.push(y);
-    }
 
 });
 

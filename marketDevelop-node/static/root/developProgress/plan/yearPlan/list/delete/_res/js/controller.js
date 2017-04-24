@@ -2,7 +2,6 @@ var app = angular.module('yearPlanDelete', ['toastr']);
 app.controller('yearPlanDeleteCtrl',function($scope,yearPlanSer,toastr,$stateParams,$state){
     //删除
     $scope.delYes = function(){
-
         var data = {
             id :$stateParams.id
         }

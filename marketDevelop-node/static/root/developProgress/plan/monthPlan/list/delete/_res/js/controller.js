@@ -5,8 +5,8 @@ app.controller('monthPlanDeleteCtrl',function($scope,monthPlanSer,toastr,$stateP
         console.log(123);
         var data = {
             id :$stateParams.id
-        }
-        console.log(data);
+        };
+
         monthPlanSer.deleteMonthplan(data).then(function(response){
             if(response.data.code==0){
                 toastr.info( "信息已删除", '温馨提示');

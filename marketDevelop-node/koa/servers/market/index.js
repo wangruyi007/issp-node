@@ -190,5 +190,129 @@ module.exports = function(){
         };
         return request(options);
     };
+    //市场调研列表
+    this.researchList = function(argvs){
+        var options = {
+            method : 'GET',
+            timeout : 3000,
+            uri : config()['market']['rurl'] + '/marketresearch/v1/maps?limit=10&page='+argvs.page,
+            headers : {
+                // token : token
+            }
+        };
+        return request(options);
+    };
+    // 添加
+    this.searchAdd = function(argvs){
+        var options = {
+            method : 'POST',
+            timeout : 3000,
+            uri : config()['market']['rurl'] + '/marketresearch/v1/save',
+            form:argvs,
+            headers : {
+                // token : token
+            }
+        };
+        return request(options);
+    };
+    // 编辑
+    this.researchEdit = function(argvs){
+        var options = {
+            method : 'PUT',
+            timeout : 3000,
+            uri : config()['market']['rurl'] + '/marketresearch/v1/update/' + argvs.id,
+            form:argvs
+        };
+        return request(options);
+    };
+    //获取ID
+    this.findSearchId = function(argvs){
+        var options = {
+            method : 'GET',
+            timeout : 3000,
+            uri : config()['market']['rurl'] + '/marketresearch/v1/findById/' + argvs.channelId
+        };
+        return request(options);
+    };
+    //删除
+    this.deleteResearch = function(argvs){
+        var options = {
+            method : 'DELETE',
+            timeout : 3000,
+            uri : config()['market']['rurl'] + '/marketresearch/v1/delete/' + argvs.id
+        };
+        return request(options);
+    };
+    //获取总条数
+    this.getResearchTotal = function(){
+        var options = {
+            method : 'GET',
+            timeout : 3000,
+            uri : config()['market']['rurl'] + '/marketresearch/v1/getTotal'
+        };
+        return request(options);
+    };
+    //市场测算列表
+    this.measureList = function(argvs){
+        var options = {
+            method : 'GET',
+            timeout : 3000,
+            uri : config()['market']['rurl'] + '/marketmeasure/v1/maps?limit=10&page='+argvs.page,
+            headers : {
+                // token : token
+            }
+        };
+        return request(options);
+    };
+    // 市场测算添加
+    this.measureAdd = function(argvs){
+        var options = {
+            method : 'POST',
+            timeout : 3000,
+            uri : config()['market']['rurl'] + '/marketmeasure/v1/save',
+            form:argvs,
+            headers : {
+                // token : token
+            }
+        };
+        return request(options);
+    };
+    // 市场测算编辑
+    this.measureEdit = function(argvs){
+        var options = {
+            method : 'PUT',
+            timeout : 3000,
+            uri : config()['market']['rurl'] + '/marketmeasure/v1/update/' + argvs.id,
+            form:argvs
+        };
+        return request(options);
+    };
+    //市场测算获取ID
+    this.findMeasureId = function(argvs){
+        var options = {
+            method : 'GET',
+            timeout : 3000,
+            uri : config()['market']['rurl'] + '/marketmeasure/v1/findById/' + argvs.measuredId
+        };
+        return request(options);
+    };
+    //市场测算删除
+    this.deleteMeasure = function(argvs){
+        var options = {
+            method : 'DELETE',
+            timeout : 3000,
+            uri : config()['market']['rurl'] + '/marketmeasure/v1/delete/' + argvs.id
+        };
+        return request(options);
+    };
+    //市场测算获取总条数
+    this.getMeasureTotal = function(){
+        var options = {
+            method : 'GET',
+            timeout : 3000,
+            uri : config()['market']['rurl'] + '/marketmeasure/v1/getTotal'
+        };
+        return request(options);
+    };
     return this;
 }

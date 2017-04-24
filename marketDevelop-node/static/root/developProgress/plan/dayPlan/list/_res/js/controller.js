@@ -47,9 +47,8 @@ app.controller('dayPlanListCtrl',function($scope,dayPlanSer,toastr){
             page:page
         }
         dayPlanSer.dayPlanList(listData).then(function(response){
-            console.log(listData);
             if(response.data.code==0){
-                $scope.dayPlanLists = response.data.data
+                $scope.dayPlanLists = response.data.data;
                 console.log($scope.dayPlanLists);
             }else{
                 toastr.error( "请求超时，请联系管理员", '温馨提示');

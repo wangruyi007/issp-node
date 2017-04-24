@@ -1,18 +1,18 @@
 var app = angular.module('marketResearchAdd', ['toastr']);
-app.controller('marketResearchAddCtrl', function($scope, marketResearchSer,$state,toastr){
+app.controller('researchAddCtrl', function($scope, researchSer,$state,toastr){
 
     //年计划添加
-    $scope.MiningAddFun = function(){
+    $scope.ResearchAddFun = function(){
         var vm = $scope;
         var data = {
             type : vm.addType,
             course : vm.addCourse,
-            staff : vm.addStaff,
-            qualification : vm.addQualification,
-            other : vm.addOther,
+            business : vm.addBusiness,
+            competitors : vm.addCompetitors,
+            evaluate : vm.addEvaluate,
             remark : vm.addRemark
         };
-        marketResearchSer.researchAdd(data).then(function(response){
+        researchSer.researchAdd(data).then(function(response){
 
             if(response.data.code == 0){
                 $state.go('root.developProgress.market.marketResearch.list');

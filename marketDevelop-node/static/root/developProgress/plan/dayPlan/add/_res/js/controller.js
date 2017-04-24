@@ -23,7 +23,6 @@ app.controller('dayPlanAddCtrl', function($scope, dayPlanSer,$state,toastr){
             coordinate : vm.addCoordinate
         };
         dayPlanSer.addDayPlan(data).then(function(response){
-            console.log(response)
             if(response.data.code == 0){
                 $state.go('root.developProgress.plan.dayPlan.list');
                 toastr.success("天计划已成功添加", '温馨提示');

@@ -27,7 +27,6 @@ app.controller('monthPlanEditCtrl', function($scope, monthPlanSer,$stateParams,$
             leastQuota : vm.editMonth.leastQuota
         };
         monthPlanSer.monthPlanEdit(data).then(function(response){
-            console.log(response);
             if(response.data.code == 0){
                 $state.go('root.developProgress.plan.monthPlan.list')
                 toastr.success("编辑成功", '温馨提示');

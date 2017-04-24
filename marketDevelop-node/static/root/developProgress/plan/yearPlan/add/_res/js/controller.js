@@ -15,7 +15,6 @@ app.controller('yearPlanAddCtrl', function($scope, yearPlanSer,$state,toastr){
             quota : vm.addQuota
         };
         yearPlanSer.addYearPlan(data).then(function(response){
-                console.log(response);
             if(response.data.code == 0){
                 $state.go('root.developProgress.plan.yearPlan.list');
                 toastr.success("年计划已成功添加", '温馨提示');
