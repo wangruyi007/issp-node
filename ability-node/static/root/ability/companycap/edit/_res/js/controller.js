@@ -36,6 +36,7 @@ app.controller('companyEditCtrl', function($scope, companycapSer,$state,toastr,$
             createTime: vm.editInfo.createTime,
             modifyTime: vm.editInfo.modifyTime,
         };
+
         companycapSer.editCompanyAbility(data).then(function(response){
             if(response.data.code == 0){
                 $state.go('root.ability.companycap.list');
@@ -46,7 +47,10 @@ app.controller('companyEditCtrl', function($scope, companycapSer,$state,toastr,$
         });
     };
     //可手填的下拉框
-    $scope.changeSelect=function(){$scope.editInfo.professionAuthen = $scope.editInfo.professionAuthen2;};
+    $scope.changeSelect=function(){
+        $scope.editInfo.professionAuthen = $scope.editInfo.professionAuthen2;
+        $scope.editInfo.professionAuthen2 = '通信工程施工总承包企业资质';
+    };
     $scope.changeSelect2=function(){$scope.editInfo.manageAuthen = $scope.editInfo.manageAuthen2;};
     $scope.changeSelect3=function(){$scope.editInfo.companyDevelop = $scope.editInfo.companyDevelop2;};
     $scope.changeSelect4=function(){$scope.editInfo.area = $scope.editInfo.area2;};
