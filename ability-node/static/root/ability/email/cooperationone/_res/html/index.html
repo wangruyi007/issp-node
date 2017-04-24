@@ -1,0 +1,25 @@
+<div class="collect">
+    <div class="sum-select">
+        <label><i><img src="/images/mandatory.png"></i><em>个人姓名</em></label>
+        <div class="select">
+        <p class="select-text" >
+        <span ng-repeat="word in words">{{word}}, </span>
+       </p>
+        <div class="mymultiselect" events="getSummary" ng-dropdown-multiselect="" options="workOptions" selected-model="words" extra-settings="stringSettings"></div>
+       </div>
+    </div>
+    <ul class="sum-list">
+        <li class="sum-thead">
+            <span>公司名称</span>
+            <span>专业资质认证数量</span>
+            <span>管理资质认证数量</span>
+            <span>公司参与项目</span>
+        </li>
+        <li class="sum-tbody" ng-repeat="summaryList in summarycooperationones">
+            <span></span>
+            <span>{{summaryList.name}}</span>
+            <span>{{summaryList.counts}}</span>
+            <span></span>
+        </li>
+    </ul>
+</div>
