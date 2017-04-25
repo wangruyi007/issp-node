@@ -1,0 +1,68 @@
+<div class="content-input edit" verify-scope="tipStyle: 1">
+    <div class="input-list">
+        <section>
+            <ul>
+                <li class="required" style="display: none;">
+                    <label><i><img src="/images/mandatory.png"></i><em>id</em></label>
+                    <input type="text"  class=" disabled" disabled ng-model="editYear.id">
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>年份</em></label>
+                    <input type="text" ng-model="editYear.year" disabled>
+                    <!--<select class="sele" ng-model="editYear.year" ng-init="editYear.year=yearArr[0]">-->
+                        <!--<option ng-repeat="year in yearArr" value="{{year}}">{{year}}</option>-->
+                    <!--</select>-->
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>业务类型</em></label>
+                    <select class="sele" ng-model="editYear.type">
+                        <option value="0">业务类型0</option>
+                        <option value="1">业务类型8</option>
+                        <option value="2">业务类型9</option>
+                    </select>
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>工作量权重</em></label>
+                    <input type="number" ng-verify="{}" ng-model="editYear.workloadWeight">
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>业务方向科目</em></label>
+                    <select class="sele" ng-model="editYear.course">
+                        <option value="0">业务方向科目1</option>
+                        <option value="1">业务方向科目2</option>
+                        <option value="2">业务方向科目3</option>
+                    </select>
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>业务科发展对象</em></label>
+                    <input type="number" ng-verify="{}" ng-model="editYear.development">
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>同意类业务类型中占比</em></label>
+                    <input type="number" ng-verify="{}" ng-model="editYear.businessAccounted">
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>各类业务科目年度占比</em></label>
+                    <input type="number" ng-verify="{}" ng-model="editYear.courseAccounted">
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>年任务量</em></label>
+                    <input type="number" ng-verify="{}" ng-model="editYear.quota">
+                </li>
+            </ul>
+        </section>
+    </div>
+    <p class="dataBottom">
+        <span class="imPrompt"><i><img src="/images/prompt.png"></i>带有<i><img src="/images/mandatory.png"></i>的为必填项</span>
+        <button ng-verify="{control:'myform'}" ng-click="yearPlanEditFun()">提交</button>
+    </p>
+</div>
+
+<script type="text/javascript">
+
+    !function(){
+        laydate.skin('dahong');//切换皮肤，请查看skins下面皮肤库
+    }();
+
+
+</script>

@@ -1,0 +1,69 @@
+<div class="content-tab list">
+    <ul class="table">
+        <li class="list-head">
+            <span></span>
+            <span class="data-id">id</span>
+            <span>年份</span>
+            <span>月份</span>
+            <span>总任务量</span>
+            <span>业务方向科目</span>
+            <span>周期</span>
+            <span>各周工作量在整月占比</span>
+            <span>查询</span>
+            <span></span>
+        </li>
+        <li class="list-all" ng-repeat="weekList in weekPlanLists" style="display: {{weekList._delete?'none':'block'}};">
+            <section>
+                <div class="list-text {{weekList._selectList?'selectList':''}}" ng-click="selectList(weekList)">
+                    <p>{{$index+1}}</p>
+                    <p class="data-id"></p>
+                    <p>{{weekList.year}}</p>
+                    <p>{{weekList.type}}</p>
+                    <p>{{weekList.monthTotal}}</p>
+                    <p>{{weekList.course}}</p>
+                    <p>{{weekList.cycle}}</p>
+                    <p>{{weekList.accounted}}%</p>
+                    <p>{{weekList.inquire}}</p>
+                    <p>
+                        <a href="javascript:void(0)" class="more" ng-click="moreList(weekList)">更多详细</a>
+                    </p>
+                </div>
+                <div class="can">
+                    <ul class="can-see" style="display: {{weekList._moreList?'block':'none'}};">
+                        <li>
+                            <p class="see-parent">
+                                <span>了解</span>
+                                <span>接触</span>
+                                <span>拜访</span>
+                                <span>活动</span>
+                                <span>合计</span>
+                            </p>
+                            <p class="see-children">
+                                <span>{{weekList.know}}</span>
+                                <span>{{weekList.contact}}</span>
+                                <span>{{weekList.visit}}</span>
+                                <span>{{weekList.activity}}</span>
+                                <span>{{weekList.total}}</span>
+                            </p>
+                        </li>
+                    </ul>
+                    <div class="module">
+                        <div class="see-module">
+                            <p class="see-type">体现类型</p>
+                            <p class="see-description"></p>
+                            <button class="btn">关闭</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </li>
+    </ul>
+    <footer class="footer">
+        <pagination count="custom.weekCount" take="custom.take" activate="custom.activatePage"></pagination>
+    </footer>
+</div>
+<div ui-view="modal"></div>
+
+
+
+

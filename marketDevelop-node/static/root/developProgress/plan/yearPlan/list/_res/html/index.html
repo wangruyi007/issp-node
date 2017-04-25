@@ -1,0 +1,38 @@
+<div class="content-tab list">
+    <ul class="table">
+        <li class="list-head">
+            <span></span>
+            <span class="data-id">id</span>
+            <span>年份</span>
+            <span>业务类型</span>
+            <span>工作量权重</span>
+            <span>业务方向科目</span>
+            <span>业务科发展对象</span>
+            <span>同一类业务类型中占比</span>
+            <span>各业务科目年度占比</span>
+        </li>
+        <li class="list-all" ng-repeat="yearList in yearPlanLists" style="display: {{yearList._delete?'none':'block'}};">
+            <section>
+                <div class="list-text {{yearList._selectList?'selectList':''}}" ng-click="selectList(yearList)">
+                    <p>{{$index+1}}</p>
+                    <p class="data-id"></p>
+                    <p>{{yearList.year}}</p>
+                    <p>{{yearList.type}}</p>
+                    <p>{{yearList.workloadWeight}}</p>
+                    <p>{{yearList.course}}</p>
+                    <p>{{yearList.development}}</p>
+                    <p>{{yearList.businessAccounted}}</p>
+                    <p>{{yearList.courseAccounted}}</p>
+                </div>
+            </section>
+        </li>
+    </ul>
+    <footer class="footer">
+        <pagination count="custom.itemsCount" take="custom.take" activate="custom.activatePage"></pagination>
+    </footer>
+</div>
+<div ui-view="modal"></div>
+
+
+
+

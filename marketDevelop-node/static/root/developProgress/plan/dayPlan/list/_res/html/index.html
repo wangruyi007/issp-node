@@ -1,0 +1,81 @@
+<div class="content-tab list">
+    <ul class="table">
+        <li class="list-head">
+            <span></span>
+            <span class="data-id">id</span>
+            <span>时间</span>
+            <span>业务状态</span>
+            <span>业务类型</span>
+            <span>业务方向科目</span>
+            <span>公司名称</span>
+            <span>计划工作内容</span>
+            <span></span>
+        </li>
+        <li class="list-all" ng-repeat="dayList in dayPlanLists" style="display: {{dayList._delete?'none':'block'}};">
+            <section>
+                <div class="list-text {{dayList._selectList?'selectList':''}}" ng-click="selectList(dayList)">
+                    <p >{{dayList.serialNumber}}</p>
+                    <p class="data-id"></p>
+                    <p>{{dayList.time}}</p>
+                    <p>{{dayList.business}}</p>
+                    <p>{{dayList.type}}</p>
+                    <p>{{dayList.source}}</p>
+                    <p>{{dayList.name}}</p>
+                    <p>{{dayList.content}}</p>
+                    <p>
+                        <a href="javascript:void(0)" class="more" ng-click="moreList(dayList)">更多详细</a>
+                    </p>
+                </div>
+                <div class="can">
+                    <ul class="can-see" style="display: {{dayList._moreList?'block':'none'}};">
+                        <li>
+                            <p class="see-parent">
+                                <span>所属阶段</span>
+                                <span>任务量</span>
+                                <span>任务人</span>
+                                <span>洽谈方式</span>
+                                <span>商务预算费</span>
+                                <span>客户姓名</span>
+                                <span>客户电话</span>
+                                <span>商务内容</span>
+                            </p>
+                            <p class="see-children">
+                                <span>{{dayList.phase}}</span>
+                                <span>{{dayList.quota}}</span>
+                                <span>{{dayList.own}}</span>
+                                <span>{{dayList.negotiation}}</span>
+                                <span>{{dayList.budget}}</span>
+                                <span>{{dayList.customer}}</span>
+                                <span>{{dayList.phone}}</span>
+                                <span>{{dayList.businessContent}}</span>
+                            </p>
+                        </li>
+                        <li>
+                            <p class="see-parent">
+                                <span>配合人</span>
+                            </p>
+                            <p class="see-children">
+                                <span>{{dayList.coordinate}}</span>
+                            </p>
+                        </li>
+                    </ul>
+                    <div class="module">
+                        <div class="see-module">
+                            <p class="see-type">体现类型</p>
+                            <p class="see-description"></p>
+                            <button class="btn">关闭</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </li>
+    </ul>
+    <footer class="footer">
+        <pagination count="custom.dayCount" take="custom.take" activate="custom.activatePage"></pagination>
+    </footer>
+</div>
+<div ui-view="modal"></div>
+
+
+
+
