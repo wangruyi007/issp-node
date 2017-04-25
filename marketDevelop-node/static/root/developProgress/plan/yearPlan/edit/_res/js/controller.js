@@ -17,18 +17,7 @@ app.controller('yearPlanEditCtrl', function($scope, yearPlanSer,$stateParams,$st
     $scope.yearPlanEditFun = function(){
 
         var vm = $scope;
-        var data = {
-            id: vm.editYear.id,
-            year: vm.editYear.year,
-            type : vm.editYear.type,
-            workloadWeight : vm.editYear.workloadWeight,
-            course : vm.editYear.course,
-            development : vm.editYear.development,
-            businessAccounted : vm.editYear.businessAccounted,
-            courseAccounted : vm.editYear.courseAccounted,
-            quota : vm.editYear.quota
-        };
-        yearPlanSer.editYearPlan(data).then(function(response){
+        yearPlanSer.editYearPlan(vm.editYear).then(function(response){
             if(response.data.code == 0){
                 $state.go('root.developProgress.plan.yearPlan.list')
                 toastr.success( "编辑成功", '温馨提示');

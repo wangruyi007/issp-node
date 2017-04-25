@@ -4,7 +4,7 @@
             <ul>
                 <li class="required">
                     <label><i><img src="/images/mandatory.png"></i><em>业务类型</em></label>
-                    <select class="sele" ng-model="addType" ng-init="addType='0'">
+                    <select class="sele" ng-model="mining.type" ng-init="mining.type='0'">
                         <option value="0">1</option>
                         <option value="1">2</option>
                         <option value="2">3</option>
@@ -12,23 +12,23 @@
                 </li>
                 <li class="required">
                     <label><i><img src="/images/mandatory.png"></i><em>业务对象</em></label>
-                    <input type="text" ng-verify="{}" ng-model="addCourse">
+                    <input type="text" ng-verify="{}" ng-model="mining.course">
                 </li>
                 <li class="required">
                     <label><i><img src="/images/mandatory.png"></i><em>人员</em></label>
-                    <input type="text" ng-verify="{}" ng-model="addStaff">
+                    <input type="text" ng-verify="{}" ng-model="mining.staff">
                 </li>
                 <li class="required">
                     <label><i><img src="/images/mandatory.png"></i><em>资质</em></label>
-                    <input type="text" ng-verify="{}" ng-model="addQualification">
+                    <input type="text" ng-verify="{}" ng-model="mining.qualification">
                 </li>
                 <li>
                     <label><i><img src="/images/mandatory.png"></i><em>其他</em></label>
-                    <input type="text" ng-model="addOther">
+                    <input type="text" ng-model="mining.other">
                 </li>
                 <li>
                     <label><i><img src="/images/mandatory.png"></i><em>备注</em></label>
-                    <input type="text" ng-model="addRemark">
+                    <input type="text" ng-model="mining.remark">
                 </li>
             </ul>
         </section>

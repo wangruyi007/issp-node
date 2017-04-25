@@ -4,15 +4,7 @@ app.controller('researchAddCtrl', function($scope, researchSer,$state,toastr){
     //年计划添加
     $scope.ResearchAddFun = function(){
         var vm = $scope;
-        var data = {
-            type : vm.addType,
-            course : vm.addCourse,
-            business : vm.addBusiness,
-            competitors : vm.addCompetitors,
-            evaluate : vm.addEvaluate,
-            remark : vm.addRemark
-        };
-        researchSer.researchAdd(data).then(function(response){
+        researchSer.researchAdd(vm.research).then(function(response){
 
             if(response.data.code == 0){
                 $state.go('root.developProgress.market.marketResearch.list');

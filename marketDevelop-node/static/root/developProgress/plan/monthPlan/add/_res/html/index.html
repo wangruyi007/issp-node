@@ -4,14 +4,14 @@
             <ul>
                 <li class="required">
                     <label><i><img src="/images/mandatory.png"></i><em>年计划</em></label>
-                    <select class="sele" ng-model="choiceGetYears.year_id" ng-verify="{}">
+                    <select class="sele" ng-model="addMonth.yearID" ng-verify="{}">
                         <option value="">请选择</option>
                         <option ng-repeat="choiceGetYear in choiceGetYears" value="{{choiceGetYear.id}}" >{{choiceGetYear.showValue}}</option>
                     </select>
                 </li>
                 <li class="required">
                     <label><i><img src="/images/mandatory.png"></i><em>月份</em></label>
-                    <select class="sele" ng-model="addMonth" ng-init="addMonth='JAN'">
+                    <select class="sele" ng-model="addMonth.month" ng-init="addMonth.month='JAN'">
                         <option value="JAN">一月</option>
                         <option value="FEB">二月</option>
                         <option value="MAR">三月</option>
@@ -28,19 +28,19 @@
                 </li>
                 <li class="required">
                     <label><i><img src="/images/mandatory.png"></i><em>各科目年度任务量</em></label>
-                    <input type="number" ng-verify="{}" ng-model="addQuota">
+                    <input type="number" ng-verify="{}" ng-model="addMonth.quota">
                 </li>
                 <li class="required">
                     <label><i><img src="/images/mandatory.png"></i><em>年度占比</em></label>
-                    <input type="number" ng-verify="{}" ng-model="addAccounted">
+                    <input type="number" ng-verify="{}" ng-model="addMonth.accounted">
                 </li>
                 <li class="required">
                     <label><i><img src="/images/mandatory.png"></i><em>业务方向科目中占比</em></label>
-                    <input type="number" ng-verify="{}" ng-model="addCourseAccounted">
+                    <input type="number" ng-verify="{}" ng-model="addMonth.courseAccounted">
                 </li>
                 <li class="required">
                     <label><i><img src="/images/mandatory.png"></i><em>计划最小任务量</em></label>
-                    <input type="number" ng-verify="{}" ng-model="addLeastQuota">
+                    <input type="number" ng-verify="{}" ng-model="addMonth.leastQuota">
                 </li>
             </ul>
         </section>

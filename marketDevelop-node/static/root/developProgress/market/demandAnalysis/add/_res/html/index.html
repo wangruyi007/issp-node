@@ -4,7 +4,7 @@
             <ul>
                 <li class="required">
                     <label><i><img src="/images/mandatory.png"></i><em>业务类型</em></label>
-                    <select class="sele" ng-model="addType" ng-init="addType='0'">
+                    <select class="sele" ng-model="demand.type" ng-init="demand.type='0'">
                         <option value="0">1</option>
                         <option value="1">2</option>
                         <option value="2">3</option>
@@ -12,7 +12,7 @@
                 </li>
                 <li class="required">
                     <label><i><img src="/images/mandatory.png"></i><em>业务方向科目</em></label>
-                    <select class="sele" ng-model="addCourse" ng-init="addCourse='0'">
+                    <select class="sele" ng-model="demand.course" ng-init="demand.course='0'">
                         <option value="0">1</option>
                         <option value="1">2</option>
                         <option value="2">3</option>
@@ -20,15 +20,15 @@
                 </li>
                 <li class="required">
                     <label><i><img src="/images/mandatory.png"></i><em>目标人群</em></label>
-                    <input type="text" ng-verify="{}" ng-model="addTarget">
+                    <input type="text" ng-verify="{}" ng-model="demand.target">
                 </li>
                 <li class="required">
                     <label><i><img src="/images/mandatory.png"></i><em>目标定位</em></label>
-                    <input type="text" ng-verify="{}" ng-model="addOrientation">
+                    <input type="text" ng-verify="{}" ng-model="demand.orientation">
                 </li>
                 <li>
                     <label><i><img src="/images/mandatory.png"></i><em>备注</em></label>
-                    <input type="text" ng-model="addRemark">
+                    <input type="text" ng-model="demand.remark">
                 </li>
             </ul>
         </section>

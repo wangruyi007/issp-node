@@ -4,7 +4,7 @@
             <ul>
                 <li class="required">
                     <label><i><img src="/images/mandatory.png"></i><em>序号</em></label>
-                    <input type="text" ng-verify="{}" ng-model="addSerialNumber">
+                    <input type="text" ng-verify="{}" ng-model="day.serialNumber">
                 </li>
                 <li class="required">
                     <label><i><img src="/images/mandatory.png"></i><em>时间</em></label>
@@ -13,14 +13,14 @@
                 </li>
                 <li class="required">
                     <label><i><img src="/images/mandatory.png"></i><em>业务状态</em></label>
-                    <select class="sele" ng-model="addBusiness" ng-init="addBusiness='true'">
+                    <select class="sele" ng-model="day.business" ng-init="day.business='true'">
                         <option value=true>立项前</option>
                         <option value=false>立项后</option>
                     </select>
                 </li>
                 <li class="required">
                     <label><i><img src="/images/mandatory.png"></i><em>业务类型</em></label>
-                    <select class="sele" ng-model="addType" ng-init="addType='0'">
+                    <select class="sele" ng-model="day.type" ng-init="day.type='0'">
                         <option value="0">1</option>
                         <option value="1">2</option>
                         <option value="2">3</option>
@@ -28,7 +28,7 @@
                 </li>
                 <li class="required">
                     <label><i><img src="/images/mandatory.png"></i><em>业务方向科目</em></label>
-                    <select class="sele" ng-model="addSource" ng-init="addSource='0'">
+                    <select class="sele" ng-model="day.source" ng-init="day.source='0'">
                         <option value="0">1</option>
                         <option value="1">2</option>
                         <option value="2">3</option>
@@ -36,47 +36,47 @@
                 </li>
                 <li class="required">
                     <label><i><img src="/images/mandatory.png"></i><em>公司名称</em></label>
-                    <input type="text" ng-verify="{}" ng-model="addName">
+                    <input type="text" ng-verify="{}" ng-model="day.name">
                 </li>
                 <li class="required">
                     <label><i><img src="/images/mandatory.png"></i><em>计划工作内容</em></label>
-                    <input type="text" ng-verify="{}" ng-model="addContent">
+                    <input type="text" ng-verify="{}" ng-model="day.content">
                 </li>
                 <li class="required">
                     <label><i><img src="/images/mandatory.png"></i><em>所属阶段</em></label>
-                    <input type="text" ng-verify="{}" ng-model="addPhase">
+                    <input type="text" ng-verify="{}" ng-model="day.phase">
                 </li>
                 <li class="required">
                     <label><i><img src="/images/mandatory.png"></i><em>任务量</em></label>
-                    <input type="number" ng-verify="{}" ng-model="addQuota">
+                    <input type="number" ng-verify="{}" ng-model="day.quota">
                 </li>
                 <li class="required">
                     <label><i><img src="/images/mandatory.png"></i><em>任务人</em></label>
-                    <input type="text" ng-verify="{}" ng-model="addOwn">
+                    <input type="text" ng-verify="{}" ng-model="day.own">
                 </li>
                 <li class="required">
                     <label><i><img src="/images/mandatory.png"></i><em>洽谈方式</em></label>
-                    <input type="text" ng-verify="{}" ng-model="addNegotiation">
+                    <input type="text" ng-verify="{}" ng-model="day.negotiation">
                 </li>
                 <li class="required">
                     <label><i><img src="/images/mandatory.png"></i><em>商务预算费</em></label>
-                    <input type="number" ng-verify="{}" ng-model="addBudget">
+                    <input type="number" ng-verify="{}" ng-model="day.budget">
                 </li>
                 <li class="required">
                     <label><i><img src="/images/mandatory.png"></i><em>客户姓名</em></label>
-                    <input type="text" ng-verify="{}" ng-model="addCustomer">
+                    <input type="text" ng-verify="{}" ng-model="day.customer">
                 </li>
                 <li class="required">
                     <label><i><img src="/images/mandatory.png"></i><em>客户电话</em></label>
-                    <input type="text" ng-model="addPhone" ng-verify="{}">
+                    <input type="text" ng-verify="{}" ng-model="day.phone">
                 </li>
                 <li class="required">
                     <label><i><img src="/images/mandatory.png"></i><em>商务内容</em></label>
-                    <input type="text" ng-verify="{}" ng-model="addBusinessContent">
+                    <input type="text" ng-verify="{}" ng-model="day.businessContent">
                 </li>
                 <li class="required">
                     <label><i><img src="/images/mandatory.png"></i><em>配合人</em></label>
-                    <input type="text" ng-model="addCoordinate" ng-verify="{}">
+                    <input type="text" ng-verify="{}" ng-model="day.coordinate">
                 </li>
             </ul>
         </section>

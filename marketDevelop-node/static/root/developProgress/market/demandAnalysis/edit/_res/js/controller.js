@@ -17,16 +17,7 @@ app.controller('demandAnalysisEditCtrl', function($scope, demandAnalysisSer,$sta
     $scope.demandEditFun = function(){
 
         var vm = $scope;
-        var data = {
-            id:vm.editDemand.id,
-            type : vm.editDemand.type,
-            course : vm.editDemand.course,
-            target : vm.editDemand.target,
-            orientation : vm.editDemand.orientation,
-            remark : vm.editDemand.remark
-        };
-        console.log(data);
-        demandAnalysisSer.editDemand(data).then(function(response){
+        demandAnalysisSer.editDemand(vm.editDemand).then(function(response){
             if(response.data.code == 0){
                 $state.go('root.developProgress.market.demandAnalysis.list');
                 toastr.success( "编辑成功", '温馨提示');

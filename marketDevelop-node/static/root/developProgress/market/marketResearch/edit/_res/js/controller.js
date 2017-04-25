@@ -17,17 +17,7 @@ app.controller('researchEditCtrl', function($scope, researchSer,$stateParams,$st
     $scope.ResearchEditFun = function(){
 
         var vm = $scope;
-        var data = {
-            id:vm.editResearch.id,
-            type : vm.editResearch.type,
-            course : vm.editResearch.course,
-            business : vm.editResearch.business,
-            competitors : vm.editResearch.competitors,
-            evaluate : vm.editResearch.evaluate,
-            remark : vm.editResearch.remark
-        };
-        researchSer.researchEdit(data).then(function(response){
-            console.log(response);
+        researchSer.researchEdit(vm.editResearch).then(function(response){
             if(response.data.code == 0){
                 $state.go('root.developProgress.market.marketResearch.list');
                 toastr.success( "编辑成功", '温馨提示');

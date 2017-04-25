@@ -4,17 +4,7 @@ app.controller('yearPlanAddCtrl', function($scope, yearPlanSer,$state,toastr){
     //年计划添加
     $scope.yearPlanAddFun = function(){
         var vm = $scope;
-        var data = {
-            year : vm.addYear,
-            type : vm.addType,
-            workloadWeight : vm.addWorkloadWeight,
-            course : vm.addCourse,
-            development : vm.addDevelopment,
-            businessAccounted : vm.addBusinessAccounted,
-            courseAccounted : vm.addCourseAccounted,
-            quota : vm.addQuota
-        };
-        yearPlanSer.addYearPlan(data).then(function(response){
+        yearPlanSer.addYearPlan(vm.addYear).then(function(response){
             if(response.data.code == 0){
                 $state.go('root.developProgress.plan.yearPlan.list');
                 toastr.success("年计划已成功添加", '温馨提示');

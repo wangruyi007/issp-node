@@ -17,14 +17,7 @@ app.controller('directionEditCtrl', function($scope, directionSer,$stateParams,$
     $scope.CourseEditFun = function(){
 
         var vm = $scope;
-        var data = {
-            id:vm.editCourse.id,
-            type_id : vm.editCourse.type_id,
-            typeName : vm.editCourse.typeName,
-            course : vm.editCourse.course,
-            description : vm.editCourse.description
-        };
-        directionSer.courseEdit(data).then(function(response){
+        directionSer.courseEdit(vm.editCourse).then(function(response){
             if(response.data.code == 0){
                 $state.go('root.developProgress.market.marketMeasured.list');
                 toastr.success( "编辑成功", '温馨提示');
