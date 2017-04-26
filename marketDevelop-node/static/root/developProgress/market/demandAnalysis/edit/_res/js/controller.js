@@ -15,7 +15,6 @@ app.controller('demandAnalysisEditCtrl', function($scope, demandAnalysisSer,$sta
 
     //编辑点击提交
     $scope.demandEditFun = function(){
-
         var vm = $scope;
         demandAnalysisSer.editDemand(vm.editDemand).then(function(response){
             if(response.data.code == 0){

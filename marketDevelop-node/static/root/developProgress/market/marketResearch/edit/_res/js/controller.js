@@ -15,7 +15,6 @@ app.controller('researchEditCtrl', function($scope, researchSer,$stateParams,$st
 
     //编辑点击提交
     $scope.ResearchEditFun = function(){
-
         var vm = $scope;
         researchSer.researchEdit(vm.editResearch).then(function(response){
             if(response.data.code == 0){

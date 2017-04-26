@@ -120,20 +120,11 @@ module.exports = function(){
         return request(options);
     };
     //获取ID
-        this.findCourseId = function(argvs){
+        this.findIdCourse = function(argvs){
         var options = {
             method : 'GET',
             timeout : 3000,
-            uri : config()['market']['rurl'] + '/businesscourse/v1/findById/' + argvs.typeId
-        };
-        return request(options);
-    };
-    //获取业务类型ID
-    this.courseTypeId = function(argvs){
-        var options = {
-            method : 'GET',
-            timeout : 3000,
-            uri : config()['market']['rurl'] + '/businesstype/v1/findById/' + argvs.courseId
+            uri : config()['market']['rurl'] + '/businesscourse/v1/findById/' + argvs.courseId
         };
         return request(options);
     };
@@ -174,11 +165,11 @@ module.exports = function(){
         return request(options);
     };
     // 获取业务类型的数据
-    this.CourseFindType = function(argvs){
+    this.CourseFindType = function(){
         var options = {
             method : 'GET',
             timeout : 3000,
-            uri : config()['market']['rurl'] + '/businesstype/v1/maps?_includes=' + encodeURIComponent(argvs.join(',')),
+            uri : config()['market']['rurl'] + '/businesstype/v1/findThaw',
         };
         return request(options);
     };

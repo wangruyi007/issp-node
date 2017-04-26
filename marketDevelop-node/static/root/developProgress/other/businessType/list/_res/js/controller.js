@@ -63,7 +63,6 @@ app.controller('typeListCtrl',function($scope,businessTypeSer,toastr){
     };
 
     businessTypeSer.countBusinessType().then(function(response){
-        console.log(response);
         if(response.data.code==0){
             $scope.custom.itemsCount = response.data.data;
         }else{

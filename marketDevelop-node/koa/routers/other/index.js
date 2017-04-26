@@ -141,19 +141,7 @@ module.exports = function(){
     }).get('/market/businesscourse/findById', function*(){//ID查询业务方向科目
         var $self = this;
         var findById = $self.request.query;
-        yield (server().findCourseId(findById)
-            .then((parsedBody) =>{
-                var responseText = JSON.parse(parsedBody);
-                $self.body = responseText;
-            }).catch((error) =>{
-                $self.set('Content-Type','application/json;charset=utf-8');
-                $self.body=error.error;
-                console.error(error.error);
-            }));
-    }).get('/market/businesscourse/findTypeId', function*(){//ID查询业务方向科目
-        var $self = this;
-        var findById = $self.request.query;
-        yield (server().courseTypeId(findById)
+        yield (server().findIdCourse(findById)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
                 $self.body = responseText;
@@ -185,10 +173,9 @@ module.exports = function(){
                 $self.body=error.error;
                 console.error(error.error);
             }));
-    }).get('/businesstype/maps', function*(){//获取业务类型列表数据
+    }).get('/businesstype/findThaw', function*(){//获取业务类型列表数据
         var $self = this;
-        var deleteData = $self.request.query;
-        yield (server().CourseFindType(deleteData)
+        yield (server().CourseFindType()
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
                 $self.body = responseText;
