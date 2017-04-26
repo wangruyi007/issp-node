@@ -15,7 +15,6 @@ app.controller('marketMiningEditCtrl', function($scope, marketMiningSer,$statePa
 
     //编辑点击提交
     $scope.MiningEditFun = function(){
-
         var vm = $scope;
         marketMiningSer.channelEdit(vm.editchannel).then(function(response){
             if(response.data.code == 0){

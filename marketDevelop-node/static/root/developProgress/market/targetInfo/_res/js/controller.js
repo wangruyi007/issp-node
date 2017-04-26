@@ -10,7 +10,6 @@ app.controller('targetInfoCtrl',function ($scope,$state) {
 
 }).controller('targetInfoMenuCtrl',function($scope,$rootScope,$location,$state){
     var urlName = $state.current.url.split('/')[1].split('[')[0];
-    console.log(urlName);
     $scope.menuClass = urlName + "Menu";
     //监听到父Ctrl后改变事件
     $scope.$on("getId", function(event, msg){
