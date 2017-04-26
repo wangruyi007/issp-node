@@ -18,7 +18,6 @@ app.controller('marketMiningEditCtrl', function($scope, marketMiningSer,$statePa
 
         var vm = $scope;
         marketMiningSer.channelEdit(vm.editchannel).then(function(response){
-            console.log(response);
             if(response.data.code == 0){
                 $state.go('root.developProgress.market.marketMining.list');
                 toastr.success( "编辑成功", '温馨提示');

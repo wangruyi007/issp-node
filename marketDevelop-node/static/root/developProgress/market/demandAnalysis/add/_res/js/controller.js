@@ -5,7 +5,6 @@ app.controller('demandAnalysisAddCtrl', function($scope, demandAnalysisSer,$stat
     $scope.analysisAddFun = function(){
         var vm = $scope;
         demandAnalysisSer.addDemand(vm.demand).then(function(response){
-                console.log(response);
             if(response.data.code == 0){
                 $state.go('root.developProgress.market.demandAnalysis.list');
                 toastr.success("已成功添加", '温馨提示');

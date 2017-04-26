@@ -6,7 +6,6 @@ app.controller('researchListCtrl',function($scope,researchSer,toastr){
         }
         researchSer.listResearch(listData).then(function(response){
             if(response.data.code==0){
-
                 $scope.rsearchLists = response.data.data
             }else{
                 toastr.error( "请求超时，请联系管理员", '温馨提示');
@@ -42,7 +41,6 @@ app.controller('researchListCtrl',function($scope,researchSer,toastr){
     };
 
     researchSer.countResearch().then(function(response){
-        console.log(response);
         if(response.data.code==0){
             $scope.custom.itemsCount = response.data.data;
         }else{

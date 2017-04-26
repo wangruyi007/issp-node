@@ -6,7 +6,6 @@ app.controller('measuredListCtrl',function($scope,measuredSer,toastr){
         }
         measuredSer.listMeasured(listData).then(function(response){
             if(response.data.code==0){
-
                 $scope.measuredLists = response.data.data
             }else{
                 toastr.error( "请求超时，请联系管理员", '温馨提示');
@@ -51,7 +50,6 @@ app.controller('measuredListCtrl',function($scope,measuredSer,toastr){
     };
 
     measuredSer.countMeasured().then(function(response){
-        console.log(response);
         if(response.data.code==0){
             $scope.custom.itemsCount = response.data.data;
         }else{

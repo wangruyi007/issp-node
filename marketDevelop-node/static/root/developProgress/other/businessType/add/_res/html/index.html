@@ -4,11 +4,7 @@
             <ul>
                 <li class="required">
                     <label><i><img src="/images/mandatory.png"></i><em>业务类型</em></label>
-                    <select class="sele" ng-verify="{}" ng-model="typeAdd.type" ng-init="typeAdd.type='0'">
-                        <option value="0">1</option>
-                        <option value="1">2</option>
-                        <option value="2">3</option>
-                    </select>
+                    <input type="text" ng-verify="{}" ng-model="typeAdd.type">
                 </li>
                 <li>
                     <label><em>描述</em></label>

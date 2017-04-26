@@ -12,14 +12,12 @@ app.controller('directionEditCtrl', function($scope, directionSer,$stateParams,$
 
     });
 
-
     //编辑点击提交
     $scope.CourseEditFun = function(){
-
         var vm = $scope;
         directionSer.courseEdit(vm.editCourse).then(function(response){
             if(response.data.code == 0){
-                $state.go('root.developProgress.market.marketMeasured.list');
+                $state.go('root.developProgress.other.directionSubjects.list');
                 toastr.success( "编辑成功", '温馨提示');
             }else if(response.data.code == 403){
                 toastr.error( "请登录用户", '温馨提示');

@@ -42,7 +42,6 @@ app.controller('marketMiningListCtrl',function($scope,marketMiningSer,toastr){
     };
 
     marketMiningSer.countChannel().then(function(response){
-        console.log(response);
         if(response.data.code==0){
             $scope.custom.itemsCount = response.data.data;
         }else{

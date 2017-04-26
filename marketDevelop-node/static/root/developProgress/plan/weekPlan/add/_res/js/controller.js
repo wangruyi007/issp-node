@@ -2,7 +2,6 @@ var app = angular.module('weekPlanAdd', ['toastr']);
 app.controller('weekPlanAddCtrl', function($scope, weekPlanSer,$state,toastr){
 
     weekPlanSer.getWeekChoice().then(function(response){
-
         if(response.data.code == 0){
             $scope.weekGetmonth = response.data.data
         } else if(response.data.code == 403){

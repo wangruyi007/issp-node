@@ -12,7 +12,7 @@ app.factory('directionSer',function ($http) {
         thawCourse:thawCourse
 
     };
-        function listCourse(data) {
+    function listCourse(data) {
         return $http.get('/market/businesscourse/maps',{
             params: data
 
@@ -46,12 +46,8 @@ app.factory('directionSer',function ($http) {
         })
     }
     //获取业务类型数据
-    function courseGetType(data){
-
-        return $http.get('/businesstype/maps',{
-            params: data
-
-        })
+    function courseGetType(){
+        return $http.get('/businesstype/findThaw')
     }
     //冻结
     function congealCourse(data){

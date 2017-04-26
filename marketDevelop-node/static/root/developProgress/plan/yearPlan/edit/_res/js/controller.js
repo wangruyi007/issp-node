@@ -15,7 +15,6 @@ app.controller('yearPlanEditCtrl', function($scope, yearPlanSer,$stateParams,$st
 
     // //客户编辑
     $scope.yearPlanEditFun = function(){
-
         var vm = $scope;
         yearPlanSer.editYearPlan(vm.editYear).then(function(response){
             if(response.data.code == 0){

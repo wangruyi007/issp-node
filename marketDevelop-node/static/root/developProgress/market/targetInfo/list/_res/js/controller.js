@@ -5,7 +5,6 @@ app.controller('targetInfoListCtrl',function($scope,targetInfoSer,toastr){
             page:page
         }
         targetInfoSer.targetInfoList(listData).then(function(response){
-
             if(response.data.code==0){
                 $scope.targetLists = response.data.data
             }else{
@@ -42,7 +41,6 @@ app.controller('targetInfoListCtrl',function($scope,targetInfoSer,toastr){
     };
 
     targetInfoSer.countTarget().then(function(response){
-        console.log(response);
         if(response.data.code==0){
             $scope.custom.itemsCount = response.data.data;
         }else{
