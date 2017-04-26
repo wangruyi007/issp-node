@@ -1,7 +1,6 @@
 var app = angular.module('directionAdd', ['toastr']);
 app.controller('directionAddCtrl', function($scope, directionSer,$stateParams,$state,toastr){
-
-    // var typeId={'_includes':['id','type']};
+		//获取业务类型id
     directionSer.courseGetType().then(function(response){
         console.log(response);
         if(response.data.code==0){
@@ -10,11 +9,10 @@ app.controller('directionAddCtrl', function($scope, directionSer,$stateParams,$s
             toastr.error("请登录用户", '温馨提示');
         }
     });
-    //添加
+    //点击添加
     $scope.courseAddFun = function(){
         var vm = $scope;
-        // vm.course.typeId = vm.courseGetType.typeId;
-        // vm.course.typeName = vm.courseGetType.typeName;
+
         directionSer.coursedAdd(vm.course).then(function(response){
             console.log(response)
             if(response.data.code == 0){
