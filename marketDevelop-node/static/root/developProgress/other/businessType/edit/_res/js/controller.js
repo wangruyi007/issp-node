@@ -17,7 +17,6 @@ app.controller('typeEditCtrl', function($scope, businessTypeSer,$stateParams,$st
     $scope.typeEditFun = function(){
         var vm = $scope;
         businessTypeSer.businessTypeEdit(vm.editType).then(function(response){
-            console.log(response);
             if(response.data.code == 0){
                 $state.go('root.developProgress.other.businessType.list');
                 toastr.success( "编辑成功", '温馨提示');
