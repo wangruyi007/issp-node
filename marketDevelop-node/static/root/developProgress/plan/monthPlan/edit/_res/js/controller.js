@@ -5,7 +5,6 @@ app.controller('monthPlanEditCtrl', function($scope, monthPlanSer,$stateParams,$
     //年份
     monthPlanSer.getMonth(monthData).then(function(response){
         if(response.data.code=='0'){
-            console.log(response)
             $scope.editMonth = response.data.data;
         }else if (response.data.code==403){
             toastr.error( "请登录用户", '温馨提示');
