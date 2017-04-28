@@ -1016,18 +1016,11 @@ body {
   position: fixed;
   top:160px;
   z-index: 999;
-  width: 400px;
+  width: 450px;
   line-height: 80px;
-  /*box-shadow: 0 0 5px #066388 inset;*/
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-/*  -webkit-box-pack: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;*/
   background: #fff;
   padding: 0 30px;
 }
