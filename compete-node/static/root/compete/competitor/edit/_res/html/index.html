@@ -1,0 +1,78 @@
+<div class="content-input edit" verify-scope="tipStyle: 1">  <!--表单验证插件-->
+    <div class="input-list">
+        <section>
+            <ul>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>项目名称</em></label>
+                    <input type="text"  ng-verify="{}" ng-model="data.project">
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>地区</em></label>
+                    <input type="text"  ng-verify="{}" ng-model="data.area">
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>竞争对手名称</em></label>
+                    <input type="text"  ng-verify="{}" ng-model="data.competitor">
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>业务类型</em></label>
+                    <select class="sele" ng-model="editInfo.cooperate2" >
+                        <option value="COMMUNICATE">通信类</option>
+                        <option value="SOFTWARE">软件类</option>
+                        <option value="MARKETINGPLAN">营销策划类</option>
+                        <option value="INTELLIGENTIZE">智能化类</option>
+                        <option value=",ELECTRONICCOMMERCE">电子商务类</option>
+                        <option value="REALTY">房地产类</option>
+                        <option value="FINANCIAL">理财类</option>
+                        <option value="FOOD">食品类</option>
+                    </select>
+                    <input type="text"  class="inputDom" ng-verify="{}" ng-value="editInfo.cooperate2 | coverEdit">
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>基本资料描述</em></label>
+                    <input type="text"  ng-model="data.basicInfoDesc"  ng-verify="{}">
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>电话</em></label>
+                     <input type="text"  ng-model="data.phoneNum"  ng-verify="{}">
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>地址</em></label>
+                    <input type="text"  ng-model="data.address"  ng-verify="{}">
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>组织结构</em></label>
+                    <input type="text"  ng-model="data.organization"  ng-verify="{}">
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>级别定义方式</em></label>
+                    <input type="text"  ng-model="data.leveldefinition"  ng-verify="{}">
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>其他备注</em></label>
+                     <input type="text"  ng-model="data.remark"  ng-verify="{}">
+                </li>
+                <!--<li>
+                    <label><em>创建时间</em></label>
+                    <input type="text" onClick="laydate({istime: true, format: 'YYYY-MM-DD hh:mm:ss'})" class="add_image addMarketReceptTime" ng-value="editInfo.createTime" >
+                </li>
+                <li>
+                    <label><em>修改时间</em></label>
+                    <input type="text" onClick="laydate({istime: true, format: 'YYYY-MM-DD hh:mm:ss'})" class="add_image addMarketReceptTime" ng-value="editInfo.modifyTime">
+                </li>-->
+               </ul>
+        </section>
+    </div>
+    <p class="dataBottom">
+        <span class="imPrompt"><i><img src="/images/prompt.png"></i>带有<i><img src="/images/mandatory.png"></i>的为必填项</span>
+        <button ng-verify="{control:'myform'}" ng-click="competitorEditFun()">提交</button>
+    </p>
+</div>
+
+<script type="text/javascript">
+    !function(){
+        laydate.skin('dahong');//切换皮肤，请查看skins下面皮肤库
+    }();
+
+
+</script>
