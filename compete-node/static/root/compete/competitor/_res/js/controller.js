@@ -6,7 +6,6 @@ var app = angular.module('competitor', [{
 app.controller('competitorCtrl',function ($scope,$state) {
     if ($state.current.url == '/competitor') {//默认加载列表
         $state.go('root.compete.competitor.list');
-        console.log("需要加载列表咯")
     }
 }).controller('competitorMenuCtrl',function($scope,$state,$rootScope,$location){
     var urlName = $state.current.url.split('/')[1].split('[')[0];
@@ -37,7 +36,6 @@ app.controller('competitorCtrl',function ($scope,$state) {
     };*/
     //编辑
     $scope.edit = function(){
-        console.log("可以点击");
         if($scope.idList){
             $state.go('root.compete.competitor.edit[12]',{id:$scope.idList});
             $scope.menuClass = 'editMenu'

@@ -15,7 +15,6 @@ app.controller('companyEditCtrl', function($scope, competitorSer,$state,toastr,$
         var vm = $scope;
         var data = vm.data
         competitorSer.putcompetitorEdit(data).then(function(response){
-            console.log(response)
             if(response.data.code == 0){
                 $state.go('root.compete.competitor.list');
                 toastr.success('温馨提示',"此次编辑成功");

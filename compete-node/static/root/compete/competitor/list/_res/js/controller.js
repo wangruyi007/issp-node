@@ -33,7 +33,6 @@ app.controller('competitorListCtrl',function($scope,competitorSer,toastr) {
         competitorSer.listAbilityCompanyCap(listData).then(function(response){
             if(response.data.code==0){
                 $scope.competitorLists = response.data
-                console.log($scope.competitorLists.data[0])
             }else{
                 toastr.error( "请求超时，请联系管理员", '温馨提示');
             }
