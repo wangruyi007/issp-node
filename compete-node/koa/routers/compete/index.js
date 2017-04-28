@@ -48,21 +48,23 @@ module.exports = function(){
                 }));
         //删除
         }).post('/compete/deleteCompanyCompete/delete', function*(){
-        var delData = this.request.body;
-        var $self = this;
-        yield (server().companyAbilityDelete(delData)
-            .then((parsedBody) =>{
-                var responseText = JSON.parse(parsedBody);
-                $self.body = responseText;
-            }).catch((error) =>{
-                if(error.error && error.error.code && error.error.code == 'ETIMEDOUT'){
-                    $self.body = {'msg' : '请求错误！', errno : 3};
-                    $self.status = 408;
-                }
+            var delData = this.request.body;
+            delData.userToken = this.cookies.get('token');
+            var $self = this;
+            yield (server().companyAbilityDelete(delData)
+                .then((parsedBody) =>{
+                    var responseText = JSON.parse(parsedBody);
+                    $self.body = responseText;
+                }).catch((error) =>{
+                    if(error.error && error.error.code && error.error.code == 'ETIMEDOUT'){
+                        $self.body = {'msg' : '请求错误！', errno : 3};
+                        $self.status = 408;
+                    }
             }));
         //编辑id
     }).post('/compete/getOneById', function*(){
         var EditId = this.request.body;
+        EditId.userToken = this.cookies.get('token');
         var $self = this;
         yield (server().companyEditById(EditId)
             .then((parsedBody) =>{
@@ -76,6 +78,7 @@ module.exports = function(){
             }));
     }).post('/compete/organize', function*(){//竞争对手结构信息
         var searchName = this.request.body;
+        searchName.userToken = this.cookies.get('token');
         var $self = this;
         yield (server().organizeAdd(searchName)
             .then((parsedBody) =>{
@@ -104,6 +107,7 @@ module.exports = function(){
             }));
     }).post('/compete/searchCompanyCompete', function*(){
         var searchName = this.request.body;
+        searchName.userToken = this.cookies.get('token');
         var $self = this;
         yield (server().companySeachByname(searchName)
             .then((parsedBody) =>{
@@ -142,6 +146,7 @@ module.exports = function(){
             }));
     }).post('/compete/congealEmail/congeal', function*(){//冻结
         var congealData = this.request.body;
+        congealData.userToken = this.cookies.get('token');
         var $self = this;
         yield (server().EmailCongeal(congealData)
             .then((parsedBody) =>{
@@ -155,6 +160,7 @@ module.exports = function(){
             }));
     }).post('/compete/thawEmail/thaw', function*(){//解冻
         var thawData = this.request.body;
+        thawData.userToken = this.cookies.get('token');
         var $self = this;
         yield (server().competitorBreakfreeze(thawData)
             .then((parsedBody) =>{
@@ -168,6 +174,7 @@ module.exports = function(){
             }));
     }).post('/compete/deleteEmail/delete', function*(){ //删除
         var delData = this.request.body;
+        delData.userToken = this.cookies.get('token');
         var $self = this;
         yield (server().emailDelete(delData)
             .then((parsedBody) =>{
@@ -181,7 +188,7 @@ module.exports = function(){
             }));
     }).post('/compete/addEmail/add', function*(){ //添加邮件
         var addData = this.request.body;
-        addData.userToken = '1254545676145641'
+        addData.userToken = this.cookies.get('token');
         var $self = this;
         yield (server().emailAdd(addData)
             .then((parsedBody) =>{
@@ -222,6 +229,7 @@ module.exports = function(){
             }));
     }).post('/compete/getFourById', function*(){
         var editId = this.request.body;
+        editId.userToken = this.cookies.get('token');
         var $self = this;
         yield (server().fourEditById(editId)
             .then((parsedBody) =>{
