@@ -4,7 +4,6 @@
 var app = angular.module('selfcapList', ['ng-pagination','toastr']);
 app.controller('selfcapListCtrl',function($scope,selfcapSer,toastr) {
         $scope.teamInfo = {};
- //获得数据
    //选择
     $scope.selectList = function(event){
         angular.forEach($scope.selfcapLists.data,function(obj){
@@ -57,5 +56,4 @@ app.controller('selfcapListCtrl',function($scope,selfcapSer,toastr) {
             }
         })
     });
-    //添加
 });

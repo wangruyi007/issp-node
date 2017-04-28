@@ -1,0 +1,98 @@
+<div class="content-input add" verify-scope="tipStyle: 1">  <!--表单验证插件-->
+    <div class="input-list">
+        <section>
+            <ul>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>合同外部项目名称</em></label>
+                    <select class="sele" ng-model="editInfo.outerName2" ng-change="changeSelect()" ng-init="editInfo.outerName2">
+                        <option></option>
+                    </select>
+                    <input type="text"  class="inputDom" ng-verify="{}" ng-model="editInfo.outerName">
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>内部项目名称</em></label>
+                    <select class="sele"  ng-model="editInfo.innerName2" ng-change="changeSelect2()">
+                        <option></option>
+                    </select>
+                    <input type="text"  class="inputDom" ng-verify="{}" ng-model="editInfo.innerName">
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>销售合同号</em></label>
+                    <select class="sele" ng-model="editInfo.saleNum2" ng-change="changeSelect3()">
+                        <option></option>
+                    </select>
+                    <input type="text"  class="inputDom" ng-verify="{}" ng-model="editInfo.saleNum">
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>派工单编号</em></label>
+                    <select class="sele" ng-model="editInfo.dispatchNum2" ng-change="changeSelect4()">
+                        <option></option>
+                    </select>
+                    <input type="text"  class="inputDom" ng-verify="{}" ng-model="editInfo.dispatchNum">
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>地区</em></label>
+                    <input type="text" ng-verify="{}" ng-model="editInfo.area">
+                </li>
+                <li>
+                    <label><em>初验申请报告</em></label>
+                    <input type="text" ng-model="editInfo.checkApplyReport">
+                </li>
+                <li>
+                    <label><em>初验时间</em></label>
+                    <input type="text"  onClick="laydate({istime: true, format: 'YYYY-MM-DD hh:mm:ss'})" class="add_image addMarketReceptTime">
+                </li>
+                <li>
+                    <label><em>初验内容</em></label>
+                    <input type="text" ng-model="editInfo.startCheckContent">
+                </li>
+                <li>
+                    <label><em>初验方案</em></label>
+                    <input type="text" ng-model="editInfo.startCheckDecision">
+                </li>
+                <li>
+                    <label><em>现场工作联络单</em></label>
+                    <input type="text" ng-model="editInfo.workOrder">
+                </li>
+                <li>
+                    <label><em>客户资料移交清单</em></label>
+                    <input type="text" ng-model="editInfo.customerTransferList">
+                </li>
+                <li>
+                    <label><em>工程备忘录</em></label>
+                    <input type="text" ng-model="editInfo.enginMemorandum">
+                </li>
+                <li>
+                    <label><em>设备安装报告</em></label>
+                    <input type="text" ng-model="editInfo.deviceInstallReport">
+                </li>
+                <li>
+                    <label><em>系统初验证书</em></label>
+                    <input type="text" ng-model="editInfo.systemCheckBook">
+                </li>
+                <li>
+                    <label><em>工程遗留问题清单</em></label>
+                    <input type="text" ng-model="editInfo.enginLeaveList">
+                </li>
+                <li>
+                    <label><em>技术遗留问题清单</em></label>
+                    <input type="text" ng-model="editInfo.technicalLeaveList">
+                </li>
+                <li>
+                    <label><em>工程竣工验收报告</em></label>
+                    <input type="text" ng-model="editInfo.projectCompleteReport">
+                </li>
+            </ul>
+        </section>
+    </div>
+    <p class="dataBottom">
+        <span class="imPrompt"><i><img src="/images/prompt.png"></i>带有<i><img src="/images/mandatory.png"></i>的为必填项</span>
+        <button ng-verify="{control:'myform'}" ng-click="acceptanceProjectEditFun()">提交</button>
+    </p>
+</div>
+
+<script type="text/javascript">
+    !function(){
+        laydate.skin('dahong');//切换皮肤，请查看skins下面皮肤库
+    }();
+</script>

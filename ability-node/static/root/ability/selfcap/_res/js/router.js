@@ -43,5 +43,13 @@ app.config(function($provide, $stateProvider){
                 controller:'selfcapListCtrl2'
             }
         }
+    }).state("root.ability.selfcap.social[12]",{
+        url:"/social[12]?id=",
+        views:{
+            "content@root.ability.selfcap":{
+                templateUrl : "root/ability/selfcap/social/_res/html/index.html",
+                controller:'socialPAddCtrl'
+            }
+        }
     })
 });

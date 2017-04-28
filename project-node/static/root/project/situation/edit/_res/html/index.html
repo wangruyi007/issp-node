@@ -1,0 +1,133 @@
+<div class="content-input add" verify-scope="tipStyle: 1">  <!--表单验证插件-->
+    <div class="input-list">
+        <section>
+            <ul>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>合同外部项目名称</em></label>
+                    <select class="sele" ng-model="editInfo.outerName2" ng-change="changeSelect()" ng-init="editInfo.outerName2">
+                        <option></option>
+                    </select>
+                    <input type="text"  class="inputDom" ng-verify="{}" ng-model="editInfo.outerName">
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>内部项目名称</em></label>
+                    <select class="sele"  ng-model="editInfo.innerName2" ng-change="changeSelect2()">
+                        <option></option>
+                    </select>
+                    <input type="text"  class="inputDom" ng-verify="{}" ng-model="editInfo.innerName">
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>销售合同号</em></label>
+                    <select class="sele"  ng-model="editInfo.saleNum2" ng-change="changeSelect3()">
+                        <option></option>
+                    </select>
+                    <input type="text"  class="inputDom" ng-verify="{}" ng-model="editInfo.saleNum">
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>派工单编号</em></label>
+                    <select class="sele"  ng-model="editInfo.depatchNum2" ng-change="changeSelect4()">
+                        <option></option>
+                    </select>
+                    <input type="text"  class="inputDom" ng-verify="{}" ng-model="editInfo.depatchNum">
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>工程地点</em></label>
+                    <input type="text" ng-model="editInfo.enginPlace">
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>完工情况</em></label>
+                    <select class="sele" ng-model="editInfo.completeCondition">
+                        <option>是</option>
+                        <option>否</option>
+                    </select>
+                </li>
+                <li>
+                    <label><em>合同签订情况</em></label>
+                    <input type="text" ng-model="editInfo.signCondition">
+                </li>
+                <li>
+                    <label><em>开工日期</em></label>
+                    <input type="text" onClick="laydate({istime: true, format: 'YYYY-MM-DD hh:mm:ss'})" class="add_image addMarketReceptTime">
+                </li>
+                <li>
+                    <label><em>计划完工日期</em></label>
+                    <input type="text" onClick="laydate({istime: true, format: 'YYYY-MM-DD hh:mm:ss'})" class="add_image addMarketReceptTime">
+                </li>
+                <li>
+                    <label><em>客户名称</em></label>
+                    <input type="text" ng-model="editInfo.customerName">
+                </li>
+                <li>
+                    <label><em>客户负责人</em></label>
+                    <input type="text" ng-model="editInfo.customerCharger">
+                </li>
+                <li>
+                    <label><em>客户联系电话</em></label>
+                    <input type="text" ng-model="editInfo.customerTel">
+                </li>
+                <li>
+                    <label><em>施工单位</em></label>
+                    <input type="text" ng-model="editInfo.constructionUnit">
+                </li>
+                <li>
+                    <label><em>工程督导</em></label>
+                    <input type="text" ng-model="editInfo.enginSupervision">
+                </li>
+                <li>
+                    <label><em>项目经理</em></label>
+                    <input type="text" ng-model="editInfo.projectManager">
+                </li>
+                <li>
+                    <label><em>内容</em></label>
+                    <input type="text" ng-model="editInfo.contents">
+                </li>
+                <li>
+                    <label><em>完工时间</em></label>
+                    <input type="text" onClick="laydate({istime: true, format: 'YYYY-MM-DD hh:mm:ss'})" class="add_image addMarketReceptTime">
+                </li>
+                <li>
+                    <label><em>完工报告</em></label>
+                    <input type="text" ng-model="editInfo.completeReport">
+                </li>
+                <li>
+                    <label><em>合同跟进</em></label>
+                    <input type="text" ng-model="editInfo.contractFollow">
+                </li>
+                <li>
+                    <label><em>备注</em></label>
+                    <input type="text" ng-model="editInfo.remark">
+                </li>
+                <li>
+                    <label><em>创建时间</em></label>
+                    <input type="text" onClick="laydate({istime: true, format: 'YYYY-MM-DD hh:mm:ss'})" class="add_image addMarketReceptTime" >
+                </li>
+                <li>
+                    <label><em>修改时间</em></label>
+                    <input type="text" onClick="laydate({istime: true, format: 'YYYY-MM-DD hh:mm:ss'})" class="add_image addMarketReceptTime" >
+                </li>
+                <li style="display: none">
+                    <label><em>商务合同外部项目名称id</em></label>
+                    <input type="text" ng-model="editInfo.outerNameId">
+                </li>
+                <li style="display: none">
+                    <label><em>市场信息记录内部项目名称id</em></label>
+                    <input type="text" ng-model="editInfo.innerNameId">
+                </li>
+                <li style="display: none">
+                    <label><em>商务项目合同基本信息对应销售合同号id</em></label>
+                    <input type="text" ng-model="editInfo.saleNumId">
+                </li>
+            </ul>
+        </section>
+    </div>
+    <p class="dataBottom">
+        <span class="imPrompt"><i><img src="/images/prompt.png"></i>带有<i><img src="/images/mandatory.png"></i>的为必填项</span>
+        <button ng-verify="{control:'myform'}" ng-click="projectEditFun()">提交</button>
+    </p>
+</div>
+
+<script type="text/javascript">
+    !function(){
+        laydate.skin('dahong');//切换皮肤，请查看skins下面皮肤库
+    }();
+</script>

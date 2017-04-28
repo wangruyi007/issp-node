@@ -1,0 +1,73 @@
+<div class="content-input add" verify-scope="tipStyle: 1">  <!--表单验证插件-->
+    <div class="input-list">
+        <section>
+            <ul>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>合同外部项目名称</em></label>
+                    <select class="sele" ng-model="add.outerName" ng-init="add.outerName">
+                        <option></option>
+                    </select>
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>内部项目名称</em></label>
+                    <select class="sele" ng-model="add.innerName"  ng-init="add.innerName">
+                        <option></option>
+                    </select>
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>销售合同号</em></label>
+                    <select class="sele" ng-model="add.saleNum"  ng-init="add.saleNum">
+                        <option></option>
+                    </select>
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>立项情况</em></label>
+                    <select class="sele" ng-model="add.signProjectCondition"  ng-init="add.signProjectCondition">
+                        <option></option>
+                    </select>
+                </li>
+                <li>
+                    <label><em>工作内容</em></label>
+                    <input type="text"  ng-model="add.workContent">
+                </li>
+                <li>
+                    <label><em>规划模块审核意见</em></label>
+                    <input type="text"  ng-model="add.planModuleAudit">
+                </li>
+                <li>
+                    <label><em>预算模块审核意见</em></label>
+                    <input type="text"  ng-model="add.budgetModuleAudit">
+                </li>
+                <li>
+                    <label><em>商务决策层审核意见</em></label>
+                    <input type="text"  ng-model="add.businessModuleAudit">
+                </li>
+                <li>
+                    <label><em>总经办审核意见</em></label>
+                    <input type="text"  ng-model="add.manageModuleAudit">
+                </li>
+                <li>
+                    <label><em>是否实施</em></label>
+                    <select class="sele" ng-model="add.carryCondition" ng-init="add.carryCondition='是'">
+                        <option>是</option>
+                        <option>否</option>
+                    </select>
+                </li>
+                <li>
+                    <label><em>派工单进度</em></label>
+                    <input type="text"  ng-model="add.dispatchProcing">
+                </li>
+            </ul>
+        </section>
+    </div>
+    <p class="dataBottom">
+        <span class="imPrompt"><i><img src="/images/prompt.png"></i>带有<i><img src="/images/mandatory.png"></i>的为必填项</span>
+        <button ng-verify="{control:'myform'}" ng-click="auditAddFun()">提交</button>
+    </p>
+</div>
+
+<script type="text/javascript">
+    !function(){
+        laydate.skin('dahong');//切换皮肤，请查看skins下面皮肤库
+    }();
+</script>

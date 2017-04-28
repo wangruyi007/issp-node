@@ -19,8 +19,9 @@ app.controller('selfcapCtrl',function ($scope,$state) {
     $scope.$on("listId", function(event, id){
         $scope.idList = id;
     });
-    $scope.$on("onSearch", function(event, name){
-        $scope.onSearch = name;
+    //监听到父Ctrl后改变事件
+    $scope.$on("socialListId", function(event, subId){
+        $scope.idSocialList = subId;
     });
     //关于删除
     $scope.delete = function(){
@@ -60,6 +61,33 @@ app.controller('selfcapCtrl',function ($scope,$state) {
             $state.go('root.ability.selfcap.perlist[12]',{id:$scope.idList});
             $scope.menuClass = 'perlistMenu'
        }
+    };
+    //个人社交添加
+    $scope.social = function(){
+        if($scope.idList){
+            $state.go('root.ability.selfcap.social[12]',{id:$scope.idList});
+            $scope.menuClass = 'socialMenu'
+        }
+    };
+    //个人社交列表
+    $scope.socialList = function(){
+        if($scope.idList){
+            $state.go('root.ability.selfcap.socialList',{id:$scope.idList});
+            $scope.menuClass = 'socialListMenu'
+        }
+    };
+    //个人社交删除
+    $scope.socialDelete = function(){
+        if($scope.idSocialList){
+            $state.go('root.ability.selfcap.socialList.socialDelete[12]',{subId:$scope.idSocialList});
+        }
+    };
+    //个人社交编辑
+    $scope.socialEdit = function(){
+        if($scope.idSocialList){
+            $state.go('root.ability.selfcap.socialList.socialEdit[12]',{subId:$scope.idSocialList});
+            $scope.menuClass = 'socialEditMenu'
+        }
     };
 });
 //自定义过滤器
