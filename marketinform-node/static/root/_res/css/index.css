@@ -1042,7 +1042,7 @@ body {
 }
 .com-search4 select{
   border: 1px solid #1aafea;
-  width: 30%;
+  width: 48%;
   height: 36px;
   background: url(/images/down_b.png) no-repeat right 10px center;
   padding-left: 15px;
@@ -1051,7 +1051,7 @@ body {
   margin-left: 14px;
 }
 .com-search3 .com-search4 input{
-  width: 30%;
+  width: 48%;
   padding-left: 15px;
   padding-right: 15px;
   height: 36px;
