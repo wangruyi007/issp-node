@@ -30,15 +30,6 @@ app.controller('emailListCtrl',function($scope,emailSer,toastr) {
         }
     });
 
-
-    $scope.$on('congealId',function(event,conid){
-        angular.forEach($scope.emailLists,function(obj){
-            if(obj.id == conid){
-                obj.status = 'CONGEAL';
-                obj._selectList = false;
-            }
-        })
-    });
     $scope.thaw = function(event){
         var data = {
             id :event.id
@@ -79,5 +70,13 @@ app.controller('emailListCtrl',function($scope,emailSer,toastr) {
             }
         })
     });
-    //添加
+    //冻结
+    $scope.$on('congealId',function(event,conid){
+        angular.forEach($scope.emailLists.data,function(obj){
+            if(obj.id == conid){
+                obj.status = 'CONGEAL';
+                obj._selectList = false;
+            }
+        })
+    });
 });

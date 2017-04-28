@@ -1,0 +1,134 @@
+<div class="content-input edit" verify-scope="tipStyle: 1">  <!--表单验证插件-->
+    <div class="input-list">
+        <section>
+            <ul>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>合同外部项目名称</em></label>
+                    <select class="sele"  ng-model="editInfo.outerName2" ng-change="changeSelect()" ng-init="editInfo.outerName2">
+                        <option></option>
+                    </select>
+                    <input type="text"  class="inputDom" ng-verify="{}" ng-model="editInfo.outerName">
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>内部项目名称</em></label>
+                    <select class="sele" ng-model="editInfo.innerName2" ng-change="changeSelect2()" ng-init="editInfo.innerName2">
+                        <option></option>
+                    </select>
+                    <input type="text"  class="inputDom" ng-verify="{}" ng-model="editInfo.innerName">
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>立项情况</em></label>
+                    <select class="sele"  ng-model="editInfo.signProject2" ng-change="changeSelect3()" ng-init="editInfo.signProject2">
+                        <option></option>
+                    </select>
+                    <input type="text"  class="inputDom" ng-verify="{}" ng-model="editInfo.signProject">
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>派工单编号</em></label>
+                    <select class="sele" ng-model="editInfo.depatchNum2" ng-change="changeSelect4()" ng-init="editInfo.depatchNum2">
+                        <option></option>
+                    </select>
+                    <input type="text"  class="inputDom" ng-verify="{}" ng-model="editInfo.depatchNum">
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>地区</em></label>
+                    <input type="text"  ng-verify="{}" ng-model="editInfo.area">
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>业务类型</em></label>
+                    <select class="sele"  ng-model="editInfo.businessType2" ng-change="changeSelect5()" ng-init="editInfo.businessType2">
+                        <option></option>
+                    </select>
+                    <input type="text" class="inputDom" ng-verify="{}" ng-model="editInfo.businessType">
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>业务方向科目</em></label>
+                    <select class="sele" ng-model="editInfo.businessSubject2" ng-change="changeSelect6()" ng-init="editInfo.businessSubject2">
+                        <option></option>
+                    </select>
+                    <input type="text" class="inputDom"   ng-verify="{}" ng-model="editInfo.businessSubject">
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>是否初验</em></label>
+                    <select class="sele" ng-verify="{}" ng-model="editInfo.startTestCondition" ng-init="editInfo.startTestCondition">
+                        <option>已初验</option>
+                        <option>未初验</option>
+                    </select>
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>是否终验</em></label>
+                    <select class="sele" ng-verify="{}" ng-model="editInfo.finalTestCondition" ng-init="editInfo.finalTestCondition">
+                        <option>已终验</option>
+                        <option>未终验</option>
+                    </select>
+                </li>
+                <li>
+                    <label><em>合同签订情况</em></label>
+                    <input type="text" ng-verify="{}" ng-model="editInfo.signCondition">
+                </li>
+                <li>
+                    <label><em>所属项目组</em></label>
+                    <input type="text" ng-model="editInfo.projectGroup">
+                </li>
+                <li>
+                    <label><em>项目规模</em></label>
+                    <input type="text" ng-model="editInfo.projectSize">
+                </li>
+                <li>
+                    <label><em>BBU规模</em></label>
+                    <input type="text" ng-model="editInfo.bbuSize">
+                </li>
+                <li>
+                    <label><em>RRU规模</em></label>
+                    <input type="text" ng-model="editInfo.rruSize">
+                </li>
+                <li>
+                    <label><em>已开通站点数</em></label>
+                    <input type="text" ng-model="editInfo.openStationPoints">
+                </li>
+                <li>
+                    <label><em>已开通BBU数</em></label>
+                    <input type="text" ng-model="editInfo.openBbuPoints">
+                </li>
+                <li>
+                    <label><em>已开通RRU数</em></label>
+                    <input type="text" ng-model="editInfo.openRruPoints">
+                </li>
+                <li>
+                    <label><em>未开通站点</em></label>
+                    <input type="text" ng-model="editInfo.noOpenPoints">
+                </li>
+                <li>
+                    <label><em>未开通BBU数</em></label>
+                    <input type="text" ng-model="editInfo.noOpenBbuPoints">
+                </li>
+                <li>
+                    <label><em>未开通RRU数</em></label>
+                    <input type="text" ng-model="editInfo.noOpenRruPoints">
+                </li>
+                <li>
+                    <label><em>完工数</em></label>
+                    <input type="text" ng-model="editInfo.completeNum">
+                </li>
+                <li>
+                    <label><em>未完工数</em></label>
+                    <input type="text" ng-model="editInfo.noCompleteNum">
+                </li>
+                <li>
+                    <label><em>备注</em></label>
+                    <input type="text" ng-model="editInfo.remark">
+                </li>
+            </ul>
+        </section>
+    </div>
+    <p class="dataBottom">
+        <span class="imPrompt"><i><img src="/images/prompt.png"></i>带有<i><img src="/images/mandatory.png"></i>的为必填项</span>
+        <button ng-verify="{control:'myform'}" ng-click="implementationEditFun()">提交</button>
+    </p>
+</div>
+
+<script type="text/javascript">
+    !function(){
+        laydate.skin('dahong');//切换皮肤，请查看skins下面皮肤库
+    }();
+</script>

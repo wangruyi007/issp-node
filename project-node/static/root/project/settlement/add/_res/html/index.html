@@ -1,0 +1,275 @@
+<div class="content-input add" verify-scope="tipStyle: 1">  <!--表单验证插件-->
+    <div class="input-list">
+        <section>
+            <ul>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>地区</em></label>
+                    <input type="text" ng-verify="{}" ng-model="add.area">
+                </li>
+                  <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>业务类型</em></label>
+                      <select class="sele" ng-model="add.businessType2" ng-change="changeSelect()" ng-init="add.businessType2">
+                          <option></option>
+                      </select>
+                      <input type="text"  class="inputDom" ng-verify="{}" ng-model="add.businessType">
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>业务方向科目</em></label>
+                    <select class="sele" ng-model="add.businessSubject2" ng-change="changeSelect2()" ng-init="add.businessSubject2" >
+                        <option></option>
+                    </select>
+                    <input type="text"  class="inputDom" ng-verify="{}" ng-model="add.businessSubject">
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>运营商名称</em></label>
+                    <input type="text"  ng-verify="{}" ng-model="add.operatorName">
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>外包单位</em></label>
+                    <input type="text" ng-verify="{}" ng-model="add.outsourcingUnit">
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>合同外部项目名称</em></label>
+                    <select class="sele" ng-model="add.outerName2" ng-change="changeSelect3()" ng-init="add.outerName2">
+                        <option></option>
+                    </select>
+                    <input type="text"  class="inputDom" ng-verify="{}" ng-model="add.outerName">
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>内部项目名称</em></label>
+                    <select class="sele" ng-model="add.innerName2" ng-change="changeSelect4()" ng-init="add.innerName2">
+                        <option></option>
+                    </select>
+                    <input type="text"  class="inputDom" ng-verify="{}" ng-model="add.innerName">
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>派工单编号</em></label>
+                    <select class="sele" ng-model="add.dispatchNum2" ng-change="changeSelect5()" ng-init="add.dispatchNum2">
+                        <option></option>
+                    </select>
+                    <input type="text"  class="inputDom" ng-verify="{}" ng-model="add.dispatchNum">
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>销售合同号	</em></label>
+                    <select class="sele" ng-model="add.saleNum2" ng-change="changeSelect6()"  ng-init="add.saleNum2">
+                        <option></option>
+                    </select>
+                    <input type="text"  class="inputDom" ng-verify="{}" ng-model="add.saleNum">
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>是否初验</em></label>
+                    <select class="sele" ng-model="add.startCheckCondition" ng-init="add.startCheckCondition='已初验'">
+                        <option>已初验</option>
+                        <option>未初验</option>
+                    </select>
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>是否终验</em></label>
+                    <select class="sele" ng-model="add.finalCheckCondition" ng-init="add.finalCheckCondition='已终验'" >
+                        <option>已终验</option>
+                        <option>未终验</option>
+                    </select>
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>是否已制作申请结算资料</em></label>
+                    <select class="sele" ng-model="add.settleFileCondition" ng-init="add.settleFileCondition='是'" >
+                        <option>是</option>
+                        <option>否</option>
+                    </select>
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>是否影响结算</em></label>
+                    <select class="sele" ng-model="add.settleFileCondition" ng-init="add.settleCondition='是'" >
+                        <option>是</option>
+                        <option>否</option>
+                    </select>
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>合同金额</em></label>
+                    <input type="number"  ng-verify="{}" ng-model="add.contractMoney">
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>合同规模数</em></label>
+                    <input type="number"  ng-verify="{}" ng-model="add.contractSizeNum">
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>派工金额</em></label>
+                    <input type="number"  ng-verify="{}" ng-model="add.dispatchMoney">
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>单价</em></label>
+                    <input type="number" ng-verify="{}" ng-model="add.price">
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>管理费</em></label>
+                    <input type="number"  ng-verify="{}" ng-model="add.manageFee">
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>违约金</em></label>
+                    <input type="number" ng-verify="{}" ng-model="add.betraFee">
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>结算金额</em></label>
+                    <input type="number" ng-verify="{}" ng-model="add.settleMoney">
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>剩余结算数量</em></label>
+                    <input type="number"  ng-verify="{}" ng-model="add.restSettleNum">
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>剩余结算金额</em></label>
+                    <input type="number" ng-verify="{}" ng-model="add.restSettleMoney">
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>到账金额</em></label>
+                    <input type="number" ng-verify="{}" ng-model="add.receiveMoney">
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>结算进度A</em></label>
+                    <select class="sele" ng-model="add.settleProcingA" ng-init="add.settleProcingA='A1：站点准备'">
+                        <option>A1：站点准备</option>
+                        <option>A2:资料制作</option>
+                        <option>A3:工程经理签字(工程量确认单、质量总评表、违约金确认单)</option>
+                        <option>A4:资料员签字</option>
+                        <option>A5:群主签字(工程量确认单、违约金确认)</option>
+                        <option>结算进度A完成</option>
+                    </select>
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>结算进度B</em></label>
+                    <select class="sele" ng-model="add.settleProcingB" ng-init="add.settleProcingB='B1:ERP系统上的工作量确认'">
+                        <option>B1:ERP系统上的工作量确认</option>
+                        <option>B2:项目经理确认审批</option>
+                        <option>B3:ERP系统预接收申请</option>
+                        <option>B4:外包经理审批</option>
+                        <option>B5:办事处副总审批</option>
+                        <option>结算进度B完成</option>
+                    </select>
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>结算进度C</em></label>
+                    <select class="sele" ng-model="add.settleProcingC" ng-init="add.settleProcingC='C1:开发票'" >
+                        <option>C1:开发票</option>
+                        <option>C2:ERP系统开发票</option>
+                        <option>C3:电子版发票审批</option>
+                        <option>C4:实物发票邮寄</option>
+                        <option>C5:填写发票查询快递</option>
+                        <option>C6:实物版发票审核完成</option>
+                        <option>C7:款项显示支付时间/</option>
+                        <option>结算进度C完成</option>
+                    </select>
+                </li>
+                <li>
+                    <label><em>厂家名称</em></label>
+                    <input type="text" ng-model="add.manufacturerName">
+                </li>
+                <li>
+                    <label><em>合同编号</em></label>
+                    <input type="text" ng-model="add.contractNum">
+                </li>
+                <li>
+                    <label><em>派工情况</em></label>
+                    <input type="text" ng-model="add.dispatchCondition">
+                </li>
+                <li>
+                    <label><em>BBU规模</em></label>
+                    <input type="text" ng-model="add.bbuSize">
+                </li>
+                <li>
+                    <label><em>RRU规模</em></label>
+                    <input type="text" ng-model="add.rruSize">
+                </li>
+                <li>
+                    <label><em>已开通站点数</em></label>
+                    <input type="text" ng-model="add.openStationPointNum">
+                </li>
+                <li>
+                    <label><em>已开通BBU数</em></label>
+                    <input type="text" ng-model="add.openBbuPointNum">
+                </li>
+                <li>
+                    <label><em>已开通RRU数</em></label>
+                    <input type="text" ng-model="add.openRruPointNum">
+                </li>
+                <li>
+                    <label><em>未开通BBU数</em></label>
+                    <input type="text" ng-model="add.noOpenBbuPointNum">
+                </li>
+                <li>
+                    <label><em>未开通RRU数</em></label>
+                    <input type="text" ng-model="add.noOpenRruPointNum">
+                </li>
+                <li>
+                    <label><em>开通比例</em></label>
+                    <input type="text" ng-model="add.openRate">
+                </li>
+                <li>
+                    <label><em>未开通站点数</em></label>
+                    <input type="text" ng-model="add.noOpenStationPointNum">
+                </li>
+                <li>
+                    <label><em>设备型号</em></label>
+                    <input type="text" ng-model="add.deviceType">
+                </li>
+                <li>
+                    <label><em>完工数</em></label>
+                    <input type="text" ng-model="add.completeNum">
+                </li>
+                <li>
+                    <label><em>未完工数</em></label>
+                    <input type="text" ng-model="add.noCompleteNum">
+                </li>
+                <li>
+                    <label><em>结算计划</em></label>
+                    <input type="text" ng-model="add.settlePlan">
+                </li>
+                <li>
+                    <label><em>归属</em></label>
+                    <input type="text" ng-model="add.beLongs">
+                </li>
+                <li>
+                    <label><em>签字审批时间</em></label>
+                    <input type="text" onClick="laydate({istime: true, format: 'YYYY-MM-DD hh:mm:ss'})" class="add_image addMarketReceptTime">
+                </li>
+                <li>
+                    <label><em>ERP结算审批时间</em></label>
+                    <input type="text" onClick="laydate({istime: true, format: 'YYYY-MM-DD hh:mm:ss'})" class="add_image addMarketReceptTime">
+                </li>
+                <li>
+                    <label><em>发票审核时间</em></label>
+                    <input type="text" onClick="laydate({istime: true, format: 'YYYY-MM-DD hh:mm:ss'})" class="add_image addMarketReceptTime">
+                </li>
+                <li>
+                    <label><em>预计支付时间</em></label>
+                    <input type="text" onClick="laydate({istime: true, format: 'YYYY-MM-DD hh:mm:ss'})" class="add_image addMarketReceptTime">
+                </li>
+                <li>
+                    <label><em>违约扣款事项</em></label>
+                    <input type="text" ng-model="add.betraFeeList">
+                </li>
+                <li>
+                    <label><em>到账时间</em></label>
+                    <input type="text" onClick="laydate({istime: true, format: 'YYYY-MM-DD hh:mm:ss'})" class="add_image addMarketReceptTime">
+                </li>
+                <li>
+                    <label><em>分批结算</em></label>
+                    <input type="text" ng-model="add.batchSettle">
+                </li>
+                <li>
+                    <label><em>备注</em></label>
+                    <input type="text" ng-model="add.remark">
+                </li>
+            </ul>
+        </section>
+    </div>
+    <p class="dataBottom">
+        <span class="imPrompt"><i><img src="/images/prompt.png"></i>带有<i><img src="/images/mandatory.png"></i>的为必填项</span>
+        <button ng-verify="{control:'myform'}" ng-click="settlementAddFun()">提交</button>
+    </p>
+</div>
+
+<script type="text/javascript">
+    !function(){
+        laydate.skin('dahong');//切换皮肤，请查看skins下面皮肤库
+    }();
+</script>

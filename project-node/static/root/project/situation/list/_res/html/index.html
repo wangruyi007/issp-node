@@ -1,0 +1,100 @@
+<div class="content-tab list">
+    <div class="com-search mod">
+      <span class="com-search2">
+            <label>工程地点 :</label>
+            <input type="text"  ng-model="teamInfo.enginPlace">
+       </span>
+        <span class="com-search2">
+            <label>完工情况 :</label>
+            <select ng-model="teamInfo.completeCondition"  ng-change="resetFilter(teamInfo.completeCondition)">
+                <option>是</option>
+                <option>否</option>
+            </select>
+       </span>
+    </div>
+    <ul class="table com-table">
+        <li class="list-head">
+            <span></span>
+            <span class="data-id">id</span>
+            <span>合同外部项目名称</span>
+            <span>内部项目名称</span>
+            <span>合同签订情况</span>
+            <span>销售合同号</span>
+            <span>派工单编号</span>
+            <span>开工日期</span>
+            <span>计划完工日期</span>
+            <span></span>
+        </li>
+        <li class="list-all">
+            <section ng-repeat="list in situationLists.data|filter:teamInfo" style="display: {{list._delete?'none':'block'}};">
+                <div  class="list-text {{list._selectList?'selectList':''}}" ng-click="selectList(list)">
+                    <p>{{$index+1}}</p>
+                    <p class="data-id"></p>
+                    <p>{{list.outerName}}</p>
+                    <p>{{list.innerName}}</p>
+                    <p>{{list.signCondition}}</p>
+                    <p>{{list.saleNum}}</p>
+                    <p>{{list.depatchNum}}</p>
+                    <p>{{list.startWorkTime}}</p>
+                    <p>{{list.planCompleteTime}}</p>
+                    <p>
+                        <a href="javascript:void(0)" class="more"  ng-click="moreList(list)">更多详细</a>
+                    </p>
+                </div>
+                <div class="can">
+                    <ul class="can-see" style="display: {{list._moreList?'block':'none'}};">
+                        <li>
+                            <p class="see-parent">
+                                <span>客户名称</span>
+                                <span>客户负责人</span>
+                                <span>客户联系电话</span>
+                                <span>施工单位</span>
+                                <span>工程督导</span>
+                                <span>工程地点</span>
+                                <span>项目经理</span>
+                                <span>内容</span>
+                            </p>
+                            <p class="see-children">
+                                <span>{{list.customerName}}</span>
+                                <span>{{list.customerCharger}}</span>
+                                <span>{{list.customerTel}}</span>
+                                <span>{{list.constructionUnit}}</span>
+                                <span>{{list.enginSupervision}}</span>
+                                <span>{{list.enginPlace}}</span>
+                                <span>{{list.projectManager}}</span>
+                                <span>{{list.contents}}</span>
+                            </p>
+                        </li>
+                        <li>
+                            <p class="see-parent">
+                                <span>完工时间</span>
+                                <span>完工情况</span>
+                                <span>完工报告</span>
+                                <span>合同跟进</span>
+                                <span>备注</span>
+                            </p>
+                            <p class="see-children">
+                                <span>{{list.completeTime}}</span>
+                                <span>{{list.completeCondition}}</span>
+                                <span>{{list.completeReport}}</span>
+                                <span>{{list.contractFollow}}</span>
+                                <span>{{list.remark}}</span>
+                            </p>
+                        </li>
+                    </ul>
+                    <div class="module">
+                        <div class="see-module">
+                            <p class="see-type">体现类型</p>
+                            <p class="see-description"></p>
+                            <button class="btn">关闭</button>
+                        </div>
+                </div>
+                </div>
+            </section>
+        </li>
+     </ul>
+    <footer class="footer">
+        <pagination count="abili.itemsCount" take="abili.take" activate="abili.activatePage"></pagination>
+    </footer>
+</div>
+<div ui-view="modal"></div>

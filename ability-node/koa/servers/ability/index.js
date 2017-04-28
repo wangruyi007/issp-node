@@ -356,5 +356,66 @@ module.exports = function(){
         };
         return request(options);
     };
+
+    //添加个人社交
+    this.socialSelfAdd = function(argvs){
+        var options = {
+            method : 'POST',
+            timeout : 3000,
+            uri : config()['ability']['rurl'] + '/selfsocial/v1/add'+'?userToken='+argvs.userToken,
+            form:argvs,
+            headers : {
+                // token : token
+            }
+        };
+        return request(options);
+    };
+    this.socialSelfList= function(argvs){
+        var options = {
+            method : 'GET',
+            timeout : 3000,
+            uri : config()['ability']['rurl'] + '/selfsocial/v1/listSelf?limit=10&page='+argvs.page+'&selfCapabilityId='+argvs.id,
+        };
+        return request(options);
+    };
+
+    //分页
+    this.socialCount = function(){
+        var options = {
+            method : 'GET',
+            timeout : 3000,
+            uri : config()['ability']['rurl'] + '/selfsocial/v1/count',
+        };
+        return request(options);
+    };
+
+    //删除
+    this.socialSelfDelete = function(argvs){
+        var options = {
+            method : 'DELETE',
+            timeout : 3000,
+            uri : config()['ability']['rurl'] + '/selfsocial/v1/delete/'+argvs.id+'?userToken='+argvs.userToken,
+        };
+        return request(options);
+    };
+
+    this.socialSelfEdit = function(argvs){
+        var options = {
+            method : 'PUT',
+            timeout : 3000,
+            uri : config()['ability']['rurl'] + '/selfsocial/v1/edit/'+argvs.id+'?userToken='+argvs.userToken,
+            form : argvs,
+        };
+        return request(options);
+    };
+    //编辑id
+    this.socialEditById = function(argvs){
+        var options = {
+            method : 'GET',
+            timeout : 3000,
+            uri : config()['ability']['rurl'] + '/selfsocial/v1/getOne/'+argvs.id,
+        };
+        return request(options);
+    };
     return this;
 };

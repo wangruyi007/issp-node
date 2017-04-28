@@ -12,10 +12,16 @@
     <li ng-click="delete()" ng-class="{'current':menuClass=='deleteMenu'}">
         <a href="javascript:void(0)"  class="same-three">删除<span>Delete</span></a>
     </li>
-    <li ng-click="pedit()" ng-class="{'current':menuClass=='peditMenu'}">
-        <a href="javascript:void(0)" class="same-three" >编辑个人社交资源<span>Export</span></a>
+    <li ng-click="socialList()" ng-class="{'current':menuClass=='socialListMenu'}" ui-sref="root.ability.selfcap.socialList">
+        <a href="javascript:void(0)"  class="same-three">个人社交<span>socialList</span></a>
     </li>
-    <li ng-click="perlist()" ng-class="{'current':menuClass=='perlistMenu'}">
-        <a href="javascript:void(0)" class="same-two">查看个人社交资源<span>See</span></a>
+    <li ng-click="social()" ng-class="{'current':menuClass=='socialMenu'}">
+        <a href="javascript:void(0)"  class="same-three">添加个人社交<span>socialAdd</span></a>
+    </li>
+    <li ng-click="socialDelete()" ng-class="{'current':menuClass=='socialDeleteMenu'}">
+        <a href="javascript:void(0)"  class="same-three">个人社交删除<span>socialDelete</span></a>
+    </li>
+    <li ng-click="socialEdit()" ng-class="{'current':menuClass=='socialEditMenu'}">
+        <a href="javascript:void(0)"  class="same-three">编辑个人社交<span>socialEdit</span></a>
     </li>
 </ul>
