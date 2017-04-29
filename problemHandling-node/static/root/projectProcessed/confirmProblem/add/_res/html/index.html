@@ -1,0 +1,107 @@
+<div class="content-input add" verify-scope="tipStyle: 1">
+    <div class="input-list">
+        <section>
+            <ul>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>内部项目名称</em></label>
+                    <input type="text" ng-verify="{}" ng-model="results.internalProjectName">
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>工程类型</em></label>
+                    <select class="sele" ng-model="results.projectType1" ng-change="changeSelect()" ng-init="results.projectType1='承包'">
+                        <option value="承包">承包</option>
+                        <option value="外包">外包</option>
+                        <option value="租赁">租赁</option>
+                    </select>
+                    <input type="text"  class="inputDom" ng-verify="{}" ng-model="results.projectType" ng-init="results.projectType='承包'">
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>问题对象</em></label>
+                    <select class="sele" ng-model="results.problemObject1"  ng-change="changeSelect2()"  ng-init="results.problemObject1='运行商'">
+                        <option value="运行商">运行商</option>
+                        <option value="厂家">厂家</option>
+                        <option value="集成商">集成商</option>
+                        <option value="政府机关">政府机关</option>
+                        <option value="内部员工">内部员工</option>
+                    </select>
+                    <input type="text"  class="inputDom" ng-verify="{}" ng-model="results.problemObject" ng-init="results.problemObject='运行商'">
+                </li>
+                <li class="required">
+                    <label><em>年份</em></label>
+                    <input type="text" ng-model="results.year">
+                </li>
+                <li class="required">
+                    <label><em>合同外部项目名称</em></label>
+                    <input type="text" ng-model="results.externalContractProjectName">
+                </li>
+                <li class="required">
+                    <label><em>问题受理时间</em></label>
+                    <input type="text" onClick="laydate({istime: true, format: 'YYYY-MM-DD hh:mm:ss'})" class="add_image addTime" ng-model="results.problemAcceptTime">
+                </li>
+                <li class="required">
+                    <label><em>问题具体情况</em></label>
+                    <input type="text" ng-model="results.problemSpecificSituation">
+                </li>
+                <li class="required">
+                    <label><em>问题责任人员</em></label>
+                    <input type="text" ng-model="results.problemResponsible">
+                </li>
+                <li class="required">
+                    <label><em>问题处理人员</em></label>
+                    <input type="text" ng-model="results.problemHandler">
+                </li>
+                <li class="required">
+                    <label><em>问题相关部门</em></label>
+                    <select class="sele" ng-model="results.problemRelevantDepartment" ng-init="results.problemRelevantDepartment='FINANCIALDEPARTMENTACCOUNT'">
+                        <option value="FINANCIALDEPARTMENTACCOUNT">财务部门-账务</option>
+                        <option value="FINANCIALDEPARTMENTMONEY">财务部门-资金</option>
+                        <option value="COMPREHENSIVERESOURCESWELFARE">综合资源部-福利</option>
+                        <option value="COMPREHENSIVERESOURCESLITERACY">综合资源部-素养</option>
+                        <option value="COMPREHENSIVERESOURCESPLAN">综合资源部-规划</option>
+                        <option value="IMPLEMENTATIONSYSTEMPROJECTGROUP">一线实施体系-项目组</option>
+                        <option value="IMPLEMENTATIONSYSTEMDEVELOPDEPARTMENT">一线实施体系-研发部</option>
+                        <option value="BUSINESSDEVELOPCUSTOMER">商务发展部-客户管理</option>
+                        <option value="BUSINESSDEVELOPBUSINESS">商务发展部-业务管理</option>
+                        <option value="BUSINESSDEVELOPPROGRESS">商务发展部-进度管理</option>
+                    </select>
+                </li>
+                <li class="required">
+                    <label><em>问题发生时间</em></label>
+                    <input type="text" onClick="laydate({istime: true, format: 'YYYY-MM-DD hh:mm:ss'})" class="add_image occurrence" ng-model="results.problemOccurrenceTime">
+                </li>
+                <li class="required">
+                    <label><em>问题发生地点</em></label>
+                    <input type="text" ng-model="results.problemOccurrencePlace">
+                </li>
+                <li class="required">
+                    <label><em>问题解决时间</em></label>
+                    <input type="text" onClick="laydate({istime: true, format: 'YYYY-MM-DD hh:mm:ss'})" class="add_image solution" ng-model="results.problemSolveTime">
+                </li>
+                <li class="required">
+                    <label><em>问题处理结果</em></label>
+                    <select class="sele" ng-model="results.problemProcessingResult" ng-init="results.problemProcessingResult='UNFINISHED'">
+                        <!--<option value="COMPLETE">完成</option>-->
+                        <option value="UNFINISHED">未完成</option>
+                    </select>
+                </li>
+                <li class="required">
+                    <label><em>问题总结</em></label>
+                    <input type="text" ng-model="results.problemConclusion">
+                </li>
+            </ul>
+        </section>
+    </div>
+    <p class="dataBottom">
+        <span class="imPrompt"><i><img src="/images/prompt.png"></i>带有<i><img src="/images/mandatory.png"></i>的为必填项</span>
+        <button ng-verify="{control:'myform'}" ng-click="resultAddFun()">提交</button>
+    </p>
+</div>
+
+<script type="text/javascript">
+
+    !function(){
+        laydate.skin('dahong');//切换皮肤，请查看skins下面皮肤库
+    }();
+
+
+</script>

@@ -1,0 +1,30 @@
+<div class="content-tab list">
+    <ul class="table table-top">
+        <li class="list-head">
+            <span></span>
+            <span>合同外部项目名称</span>
+            <span>内部项目名称</span>
+            <span>地区</span>
+            <span>描述</span>
+        </li>
+        <li class="list-all" ng-repeat="lists in processingLists">
+            <section>
+                <div class="list-text">
+                    <p>{{$index+1}}</p>
+                    <p>{{lists.externalContractProjectName}}</p>
+                    <p>{{lists.internalProjectName}}</p>
+                    <p>{{lists.area}}</p>
+                    <p>{{lists.remark}}</p>
+                </div>
+            </section>
+        </li>
+    </ul>
+    <footer class="footer">
+        <pagination count="custom.itemsCount" take="custom.take" activate="custom.activatePage"></pagination>
+    </footer>
+</div>
+
+
+
+
+
