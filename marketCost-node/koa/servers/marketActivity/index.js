@@ -54,7 +54,7 @@ module.exports = function(){
         return request(options);
     };
     //获取编辑id
-     this. marketserveEditById = function(argvs){
+     this.marketserveEditById = function(argvs){
         var options = {
             method : 'GET',
             timeout : 3000,
@@ -171,7 +171,7 @@ module.exports = function(){
         };
         return request(options);
     };
-//市场招待汇总 编辑id
+    //市场招待汇总 编辑id
     this.getSummaryId = function(argvs){
         var options = {
             method : 'GET',
@@ -181,7 +181,7 @@ module.exports = function(){
         };
         return request(options);
     }; 
-   //编辑
+   //市场招待汇总 编辑
     this.PutSummarylEdit = function(argvs){
         var options = {
             method : 'PUT',
