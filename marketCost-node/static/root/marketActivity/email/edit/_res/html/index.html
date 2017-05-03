@@ -1,0 +1,65 @@
+<div class="content-input" verify-scope="tipStyle: 1">
+    <section class="interval">
+        <ul class="inter-left">
+            <li class="required">
+                <label><i><img src="/images/mandatory.png"></i><em>项目组</em></label>
+                <select class="sele" ng-model="data.projectGroups" ng-init="type='3'">
+                    <option value="">请选择</option>
+                    <option value="展示汇总">展示汇总</option>
+                    <option value="展示汇总">展示汇总</option>
+                    <option value="能力汇总">合作对象能力汇总</option>
+                </select>
+            </li>
+            <li class="required f-l">
+                <label><i><img src="/images/mandatory.png"></i><em>发送间隔</em></label>
+                <input type="number" ng-model="data.sendInterval" ng-verify="{}">
+                <select class="sele" ng-model="data.cycle" ng-init="data.cycle='MINUTE'">
+                    <option value="MINUTE">分钟</option>
+                    <option value="HOURS">小时</option>
+                    <option value="DAY">天</option>
+                    <option value="WEEK">周</option>
+                    <option value="MONTH">月</option>
+                    <option value="QUARTER">季</option>
+                    <option value="YEAR">年</option>
+                    <option value="NOT">无</option>
+                </select>
+            </li>
+            <li class="required f-l">
+                <label><i><img src="/images/mandatory.png"></i><em>汇总间隔</em></label>
+                <input type="number" ng-model="data.detailInterval" ng-verify="{}">
+                <select class="sele" ng-model="data.detailCycle" ng-init="data.detailCycle='MINUTE'">
+                    <option value="MINUTE">分钟</option>
+                    <option value="HOUR">小时</option>
+                    <option value="DAY">天</option>
+                    <option value="WEEK">周</option>
+                    <option value="MONTH">月</option>
+                    <option value="QUARTER">季</option>
+                    <option value="YEAR">年</option>
+                    <option value="NOT">无</option>
+                </select>
+            </li>
+        </ul>
+        <ul class="inter-right">
+            <li class="required">
+                <label><i><img src="/images/mandatory.png"></i><em>类型</em></label>
+                <select class="sele" ng-model="data.type" ng-verify="{}">
+                    <option value="">请选择</option>
+                    <option value="true">true</option>
+                    <option value="falae">falae</option>
+                </select>
+            </li>
+            <li>
+                <label><em>备注</em></label>
+                <input type="text" class="remark" ng-model="data.note">
+            </li>
+             <li class="required">
+                <label><i><img src="/images/mandatory.png"></i><em>发送对象</em></label>
+                <input type="text" ng-model="data.emails" ng-verify="{}">
+            </li>
+        </ul>
+    </section>
+    <p class="dataBottom">
+        <span class="imPrompt"><i><img src="/images/prompt.png"></i>带有<i><img src="/images/mandatory.png"></i>的为必填项</span>
+        <button ng-verify="{control:'myform'}" ng-click="emailEditFun()">提交</button>
+    </p>
+</div>
