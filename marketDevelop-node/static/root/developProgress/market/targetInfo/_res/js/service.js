@@ -20,7 +20,6 @@ app.factory('targetInfoSer',function ($http) {
     }
     //编辑
     function editTargetInfo(data){
-        console.log(data);
         return $http.post('/market/targetinformation/update',data)
     }
     //id查询
@@ -35,7 +34,6 @@ app.factory('targetInfoSer',function ($http) {
     }
     //删除
     function deleteTargetInfo(data){
-
         return $http.get('/market/targetinformation/delete',{
             params: data
 
