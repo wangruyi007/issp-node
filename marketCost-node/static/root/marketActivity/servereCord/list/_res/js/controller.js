@@ -50,9 +50,9 @@ app.controller('servereCordListCtrl',function($scope,servereCordSer,toastr) {
             toastr.error( "请求超时，请联系管理员", '温馨提示');
         }
     });
-    //删除
+    //获取删除后的id，隐藏
     $scope.$on('deletedId',function(event,delid){
-        angular.forEach($scope.marketserveLists,function(obj){
+        angular.forEach($scope.servereCordLists.data,function(obj){
             if(obj.id == delid){
                 obj._delete = true
             }

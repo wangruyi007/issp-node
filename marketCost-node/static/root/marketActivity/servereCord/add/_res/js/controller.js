@@ -20,7 +20,7 @@ app.controller('serverecordAddCtrl', function($scope, servereCordSer,$state,toas
         });
     };
     //控制数字不能小于1
-    $scope.changeNun =function(){
+    $scope.changeNum =function(){
         if($scope.data.predictAttendNo < 1){
             $scope.data.predictAttendNo = 1;
         }

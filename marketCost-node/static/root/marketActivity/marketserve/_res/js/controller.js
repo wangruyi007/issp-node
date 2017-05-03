@@ -65,38 +65,4 @@ app.controller('marketserveCtrl',function ($scope,$state) {
         }
     }
 });
-//自定义过滤器
-app.filter('cover', function(){
-    return function(val){
-        var result;
-        switch(val){
-            case "WOMAN":
-                result = "女";
-                break;
-            case "MAN":
-                result = "男";
-                break;
-            case "DELETE":
-                result = "删除";
-                break;
-            case "NOACTIVE":
-                result = "未激活";
-                break;
-            case "UNREVIEW":
-                result = "未审核";
-                break;
-            case "INDEPENDENT":
-                result = "独立完成";
-                break;
-            case "COOPER":
-                result = "合作完成";
-                break;
-            case "STAGEPARTICIPATION":
-                result = "阶段参与";
-                break;
-        }
-        return result;
-    }
-
-})
 
