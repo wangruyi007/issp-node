@@ -35,7 +35,6 @@ app.factory('demandAnalysisSer',function ($http) {
     }
     //删除
     function deleteDemand(data){
-
         return $http.get('/market/demandanalysis/delete',{
             params: data
 

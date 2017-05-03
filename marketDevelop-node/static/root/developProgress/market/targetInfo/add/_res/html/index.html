@@ -4,7 +4,7 @@
             <ul>
                 <li class="required">
                     <label><i><img src="/images/mandatory.png"></i><em>地区</em></label>
-                    <select class="sele" ng-verify="{}" ng-model="target.area" ng-init="target.area='0'">
+                    <select class="sele" ng-verify="{}" ng-model="targetInfo.area" ng-init="targetInfo.area='0'">
                         <option value="0">广州</option>
                         <option value="1">江门</option>
                         <option value="2">佛山</option>
@@ -13,7 +13,7 @@
                 </li>
                 <li class="required">
                     <label><i><img src="/images/mandatory.png"></i><em>业务类型</em></label>
-                    <select class="sele" ng-verify="{}" ng-model="target.type" ng-init="target.type='0'">
+                    <select class="sele" ng-verify="{}" ng-model="targetInfo.type" ng-init="targetInfo.type='0'">
                         <option value="0">1</option>
                         <option value="1">2</option>
                         <option value="2">3</option>
@@ -21,7 +21,7 @@
                 </li>
                 <li class="required">
                     <label><i><img src="/images/mandatory.png"></i><em>业务方向科目</em></label>
-                    <select class="sele" ng-verify="{}" ng-model="target.course" ng-init="target.course='0'">
+                    <select class="sele" ng-verify="{}" ng-model="targetInfo.course" ng-init="targetInfo.course='0'">
                         <option value="0">1</option>
                         <option value="1">2</option>
                         <option value="2">3</option>
@@ -29,7 +29,7 @@
                 </li>
                 <li class="required">
                     <label><i><img src="/images/mandatory.png"></i><em>客户基本信息</em></label>
-                    <select class="sele" ng-verify="{}" ng-model="target.customer_id" ng-init="target.customer_id='0'">
+                    <select class="sele" ng-verify="{}" ng-model="targetInfo.customerId" ng-init="targetInfo.customerId='0'">
                         <option value="0">1</option>
                         <option value="1">2</option>
                         <option value="2">3</option>
@@ -38,7 +38,7 @@
                 </li>
                 <li>
                     <label><i><img src="/images/mandatory.png"></i><em>备注</em></label>
-                    <input type="text" ng-model="target.remark">
+                    <input type="text" ng-model="targetInfo.remark">
                 </li>
             </ul>
         </section>
