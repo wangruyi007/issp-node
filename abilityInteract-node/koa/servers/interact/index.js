@@ -175,7 +175,7 @@ module.exports = function(){
         var options = {
             method : 'POST',
             timeout : 3000,
-            uri : config()['rurl'] + '/talkdetail/v1/add',
+            uri : config()['rurl'] + `/talkdetail/v1/add?userToken=${argvs.userToken}`,
             form:argvs,
             headers : {
                 // token : token
@@ -188,7 +188,7 @@ module.exports = function(){
         var options = {
             method : 'PUT',
             timeout : 3000,
-            uri : config()['rurl'] + '/talkdetail/v1/edit',
+            uri : config()['rurl'] + `/talkdetail/v1/edit?userToken=${argvs.userToken}`,
             form:argvs
         };
         return request(options);
@@ -207,7 +207,7 @@ module.exports = function(){
         var options = {
             method : 'DELETE',
             timeout : 3000,
-            uri : config()['rurl'] + `/talkdetail/v1/delete/${argvs.id}`
+            uri : config()['rurl'] + `/talkdetail/v1/delete/${argvs.id}?userToken=${argvs.userToken}`
         };
         return request(options);
     };
@@ -237,11 +237,8 @@ module.exports = function(){
         var options = {
             method : 'POST',
             timeout : 3000,
-            uri : config()['rurl'] + '/collectemail/v1/add',
-            form:argvs,
-            headers : {
-                // token : token
-            }
+            uri : config()['rurl'] + `/collectemail/v1/add?userToken=${argvs.userToken}`,
+            form:argvs
         };
         return request(options);
     };
@@ -260,7 +257,7 @@ module.exports = function(){
         var options = {
             method : 'GET',
             timeout : 3000,
-            uri : config()['rurl'] + '/collectemail/v1/getOne/' + argvs.id
+            uri : config()['rurl'] + `/collectemail/v1/getOne/${argvs.id}`
         };
         return request(options);
     };
@@ -269,7 +266,7 @@ module.exports = function(){
         var options = {
             method : 'DELETE',
             timeout : 3000,
-            uri : config()['rurl'] + '/collectemail/v1/delete/' + argvs.id
+            uri : config()['rurl'] + `/collectemail/v1/delete/${argvs.id}?userToken=${argvs.userToken}`
         };
         return request(options);
     };
@@ -287,7 +284,7 @@ module.exports = function(){
         var options = {
             method : 'PUT',
             timeout : 3000,
-            uri : config()['rurl'] + '/collectemail/v1/congeal/' + argvs.id
+            uri : config()['rurl'] + `/collectemail/v1/congeal/${argvs.id}`
         };
         return request(options);
     };
@@ -296,7 +293,7 @@ module.exports = function(){
         var options = {
             method : 'PUT',
             timeout : 3000,
-            uri : config()['rurl'] + '/collectemail/v1/thaw/' + argvs.id
+            uri : config()['rurl'] + `/collectemail/v1/thaw/${argvs.id}`
         };
         return request(options);
     };
@@ -305,7 +302,7 @@ module.exports = function(){
         var options = {
             method : 'GET',
             timeout : 3000,
-            uri : config()['rurl'] + '/collectemail/v1/collect?areas='+encodeURIComponent(argvs),
+            uri : config()['rurl'] + `/collectemail/v1/collect?areas=${encodeURIComponent(argvs)}`,
             form:argvs,
         };
         return request(options);

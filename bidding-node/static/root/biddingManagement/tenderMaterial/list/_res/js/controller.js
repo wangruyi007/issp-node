@@ -1,6 +1,6 @@
 var app = angular.module('MaterialList', ['ng-pagination','toastr']);
 app.controller('MaterialListCtrl',function($scope,MaterialSer,toastr){
-
+    $scope.$emit('changeId', null);
     function activatePage(page) {
         var listData = {
             page:page

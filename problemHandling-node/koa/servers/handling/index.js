@@ -44,10 +44,7 @@ module.exports = function(){
         var options = {
             method : 'DELETE',
             timeout : 3000,
-            uri : config()['rurl'] + `/problemaccept/v1/delete/${argvs.id}?userToken=${argvs.userToken}`,
-            // headers : {
-            //      userToken : argvs.userToken  ///!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-            // }
+            uri : config()['rurl'] + `/problemaccept/v1/delete/${argvs.id}?userToken=${argvs.userToken}`
         };
         return request(options);
     };
@@ -74,10 +71,7 @@ module.exports = function(){
         var options = {
             method : 'GET',
             timeout : 3000,
-            uri : config()['rurl'] + `/problemhandlingresult/v1/list?limit=10&page=${argvs.page}`,
-            headers : {
-                // token : token
-            }
+            uri : config()['rurl'] + `/problemhandlingresult/v1/list?limit=10&page=${argvs.page}`
         };
         return request(options);
     };
@@ -86,11 +80,8 @@ module.exports = function(){
         var options = {
             method : 'POST',
             timeout : 3000,
-            uri : config()['rurl'] + '/problemhandlingresult/v1/add',
-            form:argvs,
-            headers : {
-                // token : token
-            }
+            uri : config()['rurl'] + `/problemhandlingresult/v1/add?userToken=${argvs.userToken}`,
+            form:argvs
         };
         return request(options);
     };
@@ -152,7 +143,7 @@ module.exports = function(){
         var options = {
             method : 'POST',
             timeout : 3000,
-            uri : config()['rurl'] + '/involvedprocessingtask/v1/add',
+            uri : config()['rurl'] + `/involvedprocessingtask/v1/add?userToken=${argvs.userToken}`,
             form:argvs,
             headers : {
                 // token : token

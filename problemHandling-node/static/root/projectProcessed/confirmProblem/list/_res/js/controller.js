@@ -1,5 +1,6 @@
 var app = angular.module('confirmList', ['ng-pagination','toastr']);
 app.controller('confirmListCtrl',function($scope,confirmSer,toastr){
+    $scope.$emit('changeId', null);
     $scope.teamInfo = {};
     function activatePage(page) {
         var listData = {

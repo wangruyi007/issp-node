@@ -1,5 +1,6 @@
 var app = angular.module('interactList', ['ng-pagination','toastr']);
 app.controller('interactListCtrl',function($scope,contactSer,toastr){
+    $scope.$emit('changeId', null);
     $scope.teamInfo = {};
     function activatePage(page) {
         var listData = {

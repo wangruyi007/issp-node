@@ -1,5 +1,6 @@
 var app = angular.module('taskList', ['ng-pagination','toastr']);
 app.controller('taskListCtrl',function($scope,taskSer,toastr){
+    $scope.$emit('changeId', null);
     $scope.teamInfo = {};
     function activatePage(page) {
         var listData = {

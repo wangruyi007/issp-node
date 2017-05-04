@@ -1,6 +1,6 @@
 var app = angular.module('openingList', ['ng-pagination','toastr']);
 app.controller('openingListCtrl',function($scope,openingSer,toastr){
-
+    $scope.$emit('changeId', null);
     function activatePage(page) {
         var listData = {
             page:page

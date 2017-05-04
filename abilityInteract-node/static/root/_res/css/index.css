@@ -2073,8 +2073,8 @@ body {
   margin-left: 37px;
 }
 /*可手填的下拉框*/
-.right-section .top-content .content .content-wrap .content-input .input-list section ul li .inputDom{
-  width: 46%;
+.inputDom{
+  width: 47%;
   position: absolute;
   margin-left: 59px;
   border: 0!important;
