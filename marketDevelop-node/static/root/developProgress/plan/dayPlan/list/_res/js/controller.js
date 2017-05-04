@@ -1,5 +1,6 @@
 var app = angular.module('dayPlanList', ['ng-pagination','toastr']);
 app.controller('dayPlanListCtrl',function($scope,dayPlanSer,toastr){
+    $scope.$emit('changeId', null);
     // 点击更多详细
     $scope.moreList = function(event){
         angular.forEach($scope.dayPlanLists,function(obj){

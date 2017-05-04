@@ -1,5 +1,6 @@
 var app = angular.module('subjectsList', ['ng-pagination','toastr']);
 app.controller('subjectsListCtrl',function($scope,directionSer,toastr){
+    $scope.$emit('changeId', null);;
     function activatePage(page) {
         var listData = {
             page:page

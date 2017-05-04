@@ -1,5 +1,6 @@
 var app = angular.module('yearPlanList', ['ng-pagination','toastr']);
 app.controller('yearPlanListCtrl',function($scope,yearPlanSer,toastr){
+    $scope.$emit('changeId', null);
     function activatePage(page) {
         var listData = {
             page:page

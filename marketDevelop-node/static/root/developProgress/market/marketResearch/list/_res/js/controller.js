@@ -1,5 +1,6 @@
 var app = angular.module('researchList', ['ng-pagination','toastr']);
 app.controller('researchListCtrl',function($scope,researchSer,toastr){
+    $scope.$emit('changeId', null);
     function activatePage(page) {
         var listData = {
             page:page

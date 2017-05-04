@@ -8,7 +8,7 @@ module.exports = function(){
         var options = {
             method : 'GET',
             timeout : 3000,
-            uri : config()['market']['rurl'] + '/demandanalysis/v1/maps?limit=10&page='+argvs.page,
+            uri : config()['market']['rurl'] + `/demandanalysis/v1/maps?limit=10&page=${argvs.page}`,
             headers : {
                 // token : token
             }
@@ -20,7 +20,7 @@ module.exports = function(){
         var options = {
             method : 'POST',
             timeout : 3000,
-            uri : config()['market']['rurl'] + '/demandanalysis/v1/save',
+            uri : config()['market']['rurl'] + `/demandanalysis/v1/save?userToken=${argvs.userToken}`,
             form:argvs,
             headers : {
                 // token : token
@@ -33,7 +33,7 @@ module.exports = function(){
         var options = {
             method : 'PUT',
             timeout : 3000,
-            uri : config()['market']['rurl'] + '/demandanalysis/v1/udpate/' + argvs.id,
+            uri : config()['market']['rurl'] + `/demandanalysis/v1/udpate/${argvs.id}?userToken=${argvs.userToken}`,
             form:argvs
         };
         return request(options);
@@ -43,7 +43,7 @@ module.exports = function(){
         var options = {
             method : 'GET',
             timeout : 3000,
-            uri : config()['market']['rurl'] + '/demandanalysis/v1/findById/' + argvs.demandId
+            uri : config()['market']['rurl'] + `/demandanalysis/v1/findById/${argvs.demandId}`
         };
         return request(options);
     };
@@ -52,7 +52,7 @@ module.exports = function(){
         var options = {
             method : 'DELETE',
             timeout : 3000,
-            uri : config()['market']['rurl'] + '/demandanalysis/v1/delete/' + argvs.id
+            uri : config()['market']['rurl'] + `/demandanalysis/v1/delete/${argvs.id}?userToken=${argvs.userToken}`
         };
         return request(options);
     };
@@ -70,7 +70,7 @@ module.exports = function(){
         var options = {
             method : 'GET',
             timeout : 3000,
-            uri : config()['market']['rurl'] + '/targetinformation/v1/maps?limit=10&page='+argvs.page,
+            uri : config()['market']['rurl'] + `/targetinformation/v1/maps?limit=10&page=${argvs.page}`,
             headers : {
                 // token : token
             }
@@ -82,7 +82,7 @@ module.exports = function(){
         var options = {
             method : 'POST',
             timeout : 3000,
-            uri : config()['market']['rurl'] + '/targetinformation/v1/save',
+            uri : config()['market']['rurl'] + `/targetinformation/v1/save?userToken=${argvs.userToken}`,
             form:argvs,
             headers : {
                 // token : token
@@ -95,7 +95,7 @@ module.exports = function(){
         var options = {
             method : 'PUT',
             timeout : 3000,
-            uri : config()['market']['rurl'] + '/targetinformation/v1/update/' + argvs.id,
+            uri : config()['market']['rurl'] + `/targetinformation/v1/update/${argvs.id}?userToken=${argvs.userToken}`,
             form:argvs
         };
         return request(options);
@@ -105,7 +105,7 @@ module.exports = function(){
         var options = {
             method : 'GET',
             timeout : 3000,
-            uri : config()['market']['rurl'] + '/targetinformation/v1/findById/' + argvs.targetId
+            uri : config()['market']['rurl'] + `/targetinformation/v1/findById/${argvs.targetId}`
         };
         return request(options);
     };
@@ -114,7 +114,7 @@ module.exports = function(){
         var options = {
             method : 'DELETE',
             timeout : 3000,
-            uri : config()['market']['rurl'] + '/targetinformation/v1/delete/' + argvs.id
+            uri : config()['market']['rurl'] + `/targetinformation/v1/delete/${argvs.id}`
         };
         return request(options);
     };
@@ -133,7 +133,7 @@ module.exports = function(){
         var options = {
             method : 'GET',
             timeout : 3000,
-            uri : config()['market']['rurl'] + '/marketchannel/v1/maps?limit=10&page='+argvs.page,
+            uri : config()['market']['rurl'] + `/marketchannel/v1/maps?limit=10&page=${argvs.page}`,
             headers : {
                 // token : token
             }
@@ -145,7 +145,7 @@ module.exports = function(){
         var options = {
             method : 'POST',
             timeout : 3000,
-            uri : config()['market']['rurl'] + '/marketchannel/v1/save',
+            uri : config()['market']['rurl'] + `/marketchannel/v1/save?userToken=${argvs.userToken}`,
             form:argvs,
             headers : {
                 // token : token
@@ -158,7 +158,7 @@ module.exports = function(){
         var options = {
             method : 'PUT',
             timeout : 3000,
-            uri : config()['market']['rurl'] + '/marketchannel/v1/update/' + argvs.id,
+            uri : config()['market']['rurl'] + `/marketchannel/v1/update/${argvs.id}$?userToken=${argvs.userToken}`,
             form:argvs
         };
         return request(options);
@@ -168,7 +168,7 @@ module.exports = function(){
         var options = {
             method : 'GET',
             timeout : 3000,
-            uri : config()['market']['rurl'] + '/marketchannel/v1/findById/' + argvs.channelId
+            uri : config()['market']['rurl'] + `/marketchannel/v1/findById/${argvs.channelId}`
         };
         return request(options);
     };
@@ -177,7 +177,7 @@ module.exports = function(){
         var options = {
             method : 'DELETE',
             timeout : 3000,
-            uri : config()['market']['rurl'] + '/marketchannel/v1/delete/' + argvs.id
+            uri : config()['market']['rurl'] + `/marketchannel/v1/delete/${argvs.id}?userToken=${argvs.userToken}`
         };
         return request(options);
     };
@@ -195,7 +195,7 @@ module.exports = function(){
         var options = {
             method : 'GET',
             timeout : 3000,
-            uri : config()['market']['rurl'] + '/marketresearch/v1/maps?limit=10&page='+argvs.page,
+            uri : config()['market']['rurl'] + `/marketresearch/v1/maps?limit=10&page=${argvs.page}`,
             headers : {
                 // token : token
             }
@@ -207,7 +207,7 @@ module.exports = function(){
         var options = {
             method : 'POST',
             timeout : 3000,
-            uri : config()['market']['rurl'] + '/marketresearch/v1/save',
+            uri : config()['market']['rurl'] + `/marketresearch/v1/save?userToken=${argvs.userToken}`,
             form:argvs,
             headers : {
                 // token : token
@@ -220,7 +220,7 @@ module.exports = function(){
         var options = {
             method : 'PUT',
             timeout : 3000,
-            uri : config()['market']['rurl'] + '/marketresearch/v1/update/' + argvs.id,
+            uri : config()['market']['rurl'] + `/marketresearch/v1/update/${argvs.id}?userToken=${argvs.userToken}`,
             form:argvs
         };
         return request(options);
@@ -230,7 +230,7 @@ module.exports = function(){
         var options = {
             method : 'GET',
             timeout : 3000,
-            uri : config()['market']['rurl'] + '/marketresearch/v1/findById/' + argvs.channelId
+            uri : config()['market']['rurl'] + `/marketresearch/v1/findById/${argvs.channelId}`
         };
         return request(options);
     };
@@ -239,7 +239,7 @@ module.exports = function(){
         var options = {
             method : 'DELETE',
             timeout : 3000,
-            uri : config()['market']['rurl'] + '/marketresearch/v1/delete/' + argvs.id
+            uri : config()['market']['rurl'] + `/marketresearch/v1/delete/${argvs.id}?userToken=${argvs.userToken}`
         };
         return request(options);
     };
@@ -257,7 +257,7 @@ module.exports = function(){
         var options = {
             method : 'GET',
             timeout : 3000,
-            uri : config()['market']['rurl'] + '/marketmeasure/v1/maps?limit=10&page='+argvs.page,
+            uri : config()['market']['rurl'] + `/marketmeasure/v1/maps?limit=10&page=${argvs.page}`,
             headers : {
                 // token : token
             }
@@ -269,7 +269,7 @@ module.exports = function(){
         var options = {
             method : 'POST',
             timeout : 3000,
-            uri : config()['market']['rurl'] + '/marketmeasure/v1/save',
+            uri : config()['market']['rurl'] + `/marketmeasure/v1/save?userToken=${argvs.userToken}`,
             form:argvs,
             headers : {
                 // token : token
@@ -282,7 +282,7 @@ module.exports = function(){
         var options = {
             method : 'PUT',
             timeout : 3000,
-            uri : config()['market']['rurl'] + '/marketmeasure/v1/update/' + argvs.id,
+            uri : config()['market']['rurl'] + `/marketmeasure/v1/update/${argvs.id}?userToken=${argvs.userToken}`,
             form:argvs
         };
         return request(options);
@@ -292,7 +292,7 @@ module.exports = function(){
         var options = {
             method : 'GET',
             timeout : 3000,
-            uri : config()['market']['rurl'] + '/marketmeasure/v1/findById/' + argvs.measuredId
+            uri : config()['market']['rurl'] + `/marketmeasure/v1/findById/${argvs.measuredId}`
         };
         return request(options);
     };
@@ -301,7 +301,7 @@ module.exports = function(){
         var options = {
             method : 'DELETE',
             timeout : 3000,
-            uri : config()['market']['rurl'] + '/marketmeasure/v1/delete/' + argvs.id
+            uri : config()['market']['rurl'] + `/marketmeasure/v1/delete/${argvs.id}?userToken=${argvs.userToken}`
         };
         return request(options);
     };

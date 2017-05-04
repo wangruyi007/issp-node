@@ -1,5 +1,6 @@
 var app = angular.module('weekPlanList', ['ng-pagination','toastr']);
 app.controller('weekPlanListCtrl',function($scope,weekPlanSer,toastr){
+    $scope.$emit('changeId', null);
     function activatePage(page) {
         var listData = {
             page:page
