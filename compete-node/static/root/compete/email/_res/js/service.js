@@ -19,8 +19,8 @@ app.factory('emailSer',function ($http) {
     }
     //分页
     function countEmail(){
-        return $http.get('/countEmail/count')
-    }
+        return $http.get('/compete/countEmail/count')
+    };
     //冻结
     function congealEmail(data){
         return $http.post('/compete/congealEmail/congeal',data)

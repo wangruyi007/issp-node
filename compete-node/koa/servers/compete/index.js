@@ -95,7 +95,7 @@ module.exports = function(){
         var options = {
             method : 'GET',
             timeout : 3000,
-            uri : config()['rurl'] + '/collect/v1/count',
+            uri : config()['rurl'] + '/collect/v1/count'
         };
         return request(options);
     };
