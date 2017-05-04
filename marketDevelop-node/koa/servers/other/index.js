@@ -9,7 +9,7 @@ module.exports = function(){
         var options = {
             method : 'GET',
             timeout : 3000,
-            uri : config()['market']['rurl'] + '/businesstype/v1/maps?limit=10&page='+argvs.page,
+            uri : config()['market']['rurl'] + `/businesstype/v1/maps?limit=10&page=${argvs.page}`,
             headers : {
                 // token : token
             }
@@ -21,7 +21,7 @@ module.exports = function(){
         var options = {
             method : 'POST',
             timeout : 3000,
-            uri : config()['market']['rurl'] + '/businesstype/v1/save',
+            uri : config()['market']['rurl'] + `/businesstype/v1/save?userToken=${argvs.userToken}`,
             form:argvs,
             headers : {
                 // token : token
@@ -34,7 +34,7 @@ module.exports = function(){
         var options = {
             method : 'PUT',
             timeout : 3000,
-            uri : config()['market']['rurl'] + '/businesstype/v1/update/' + argvs.id,
+            uri : config()['market']['rurl'] + `/businesstype/v1/update/${argvs.id}`,
             form:argvs
         };
         return request(options);
@@ -44,7 +44,7 @@ module.exports = function(){
         var options = {
             method : 'GET',
             timeout : 3000,
-            uri : config()['market']['rurl'] + '/businesstype/v1/findById/' + argvs.typeId
+            uri : config()['market']['rurl'] + `/businesstype/v1/findById/${argvs.typeId}`
         };
         return request(options);
     };
@@ -53,7 +53,7 @@ module.exports = function(){
         var options = {
             method : 'DELETE',
             timeout : 3000,
-            uri : config()['market']['rurl'] + '/businesstype/v1/delete/' + argvs.id
+            uri : config()['market']['rurl'] + `/businesstype/v1/delete/${argvs.id}?userToken=${argvs.userToken}`
         };
         return request(options);
     };
@@ -62,7 +62,7 @@ module.exports = function(){
         var options = {
             method : 'PATCH',
             timeout : 3000,
-            uri : config()['market']['rurl'] + '/businesstype/v1/congeal/' + argvs.id
+            uri : config()['market']['rurl'] + `/businesstype/v1/congeal/${argvs.id}`
         };
         return request(options);
     };
@@ -71,7 +71,7 @@ module.exports = function(){
         var options = {
             method : 'PATCH',
             timeout : 3000,
-            uri : config()['market']['rurl'] + '/businesstype/v1/thaw/' + argvs.id
+            uri : config()['market']['rurl'] + `/businesstype/v1/thaw/${argvs.id}`
         };
         return request(options);
     };
@@ -89,7 +89,7 @@ module.exports = function(){
         var options = {
             method : 'GET',
             timeout : 3000,
-            uri : config()['market']['rurl'] + '/businesscourse/v1/maps?limit=10&page='+argvs.page,
+            uri : config()['market']['rurl'] + `/businesscourse/v1/maps?limit=10&page=${argvs.page}`,
             headers : {
                 // token : token
             }
@@ -101,11 +101,8 @@ module.exports = function(){
         var options = {
             method : 'POST',
             timeout : 3000,
-            uri : config()['market']['rurl'] + '/businesscourse/v1/save',
-            form:argvs,
-            headers : {
-                // token : token
-            }
+            uri : config()['market']['rurl'] + `/businesscourse/v1/save?userToken=${argvs.userToken}`,
+            form:argvs
         };
         return request(options);
     };
@@ -114,7 +111,7 @@ module.exports = function(){
         var options = {
             method : 'PUT',
             timeout : 3000,
-            uri : config()['market']['rurl'] + '/businesscourse/v1/update/' + argvs.id,
+            uri : config()['market']['rurl'] + `/businesscourse/v1/update/${argvs.id}?userToken=${argvs.userToken}`,
             form:argvs
         };
         return request(options);
@@ -124,7 +121,7 @@ module.exports = function(){
         var options = {
             method : 'GET',
             timeout : 3000,
-            uri : config()['market']['rurl'] + '/businesscourse/v1/findById/' + argvs.courseId
+            uri : config()['market']['rurl'] + `/businesscourse/v1/findById/${argvs.courseId}`
         };
         return request(options);
     };
@@ -133,7 +130,7 @@ module.exports = function(){
         var options = {
             method : 'DELETE',
             timeout : 3000,
-            uri : config()['market']['rurl'] + '/businesscourse/v1/delete/' + argvs.id
+            uri : config()['market']['rurl'] + `/businesscourse/v1/delete/${argvs.id}?userToken=${argvs.userToken}`
         };
         return request(options);
     };
@@ -142,7 +139,7 @@ module.exports = function(){
         var options = {
             method : 'PATCH',
             timeout : 3000,
-            uri : config()['market']['rurl'] + '/businesscourse/v1/congeal/' + argvs.id
+            uri : config()['market']['rurl'] + `/businesscourse/v1/congeal/${argvs.id}`
         };
         return request(options);
     };
@@ -151,7 +148,7 @@ module.exports = function(){
         var options = {
             method : 'PATCH',
             timeout : 3000,
-            uri : config()['market']['rurl'] + '/businesscourse/v1/thaw/' + argvs.id
+            uri : config()['market']['rurl'] + `/businesscourse/v1/thaw/${argvs.id}`
         };
         return request(options);
     };

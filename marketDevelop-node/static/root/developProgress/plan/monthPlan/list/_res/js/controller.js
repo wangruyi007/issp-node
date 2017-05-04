@@ -1,6 +1,6 @@
 var app = angular.module('monthPlanList', ['ng-pagination','toastr']);
 app.controller('monthPlanListCtrl',function($scope,monthPlanSer,toastr){
-
+    $scope.$emit('changeId', null);
     function activatePage(page) {
         var listData = {
             page:page

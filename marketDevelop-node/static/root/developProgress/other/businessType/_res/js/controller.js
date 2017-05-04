@@ -22,7 +22,6 @@ app.controller('typeCtrl',function ($scope,$state) {
     });
 
     $scope.delete = function(){
-        console.log($scope.idListd);
         if($scope.idListd){
             $state.go('root.developProgress.other.businessType.list.delete[12]',{id:$scope.idListd});
         }

@@ -1,5 +1,6 @@
 var app = angular.module('marketMiningList', ['ng-pagination','toastr']);
 app.controller('marketMiningListCtrl',function($scope,marketMiningSer,toastr){
+    $scope.$emit('changeId', null);
     function activatePage(page) {
         var listData = {
             page:page

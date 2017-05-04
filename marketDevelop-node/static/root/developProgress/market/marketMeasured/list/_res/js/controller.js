@@ -1,5 +1,6 @@
 var app = angular.module('measuredList', ['ng-pagination','toastr']);
 app.controller('measuredListCtrl',function($scope,measuredSer,toastr){
+    $scope.$emit('changeId', null);
     function activatePage(page) {
         var listData = {
             page:page

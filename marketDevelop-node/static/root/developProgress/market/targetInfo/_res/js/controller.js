@@ -22,7 +22,6 @@ app.controller('targetInfoCtrl',function ($scope,$state) {
     });
 
     $scope.delete = function(){
-        console.log($scope.idListd);
         if($scope.idListd){
             $state.go('root.developProgress.market.targetInfo.list.delete[12]',{id:$scope.idListd});
         }

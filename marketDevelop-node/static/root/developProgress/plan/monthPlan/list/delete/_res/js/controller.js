@@ -13,7 +13,8 @@ app.controller('monthPlanDeleteCtrl',function($scope,monthPlanSer,toastr,$stateP
                 $state.go('root.developProgress.plan.monthPlan.list');
                 $scope.deledId = $stateParams.id;
                 //向父Ctrl传递事件
-                $scope.$emit('deletedId', $scope.deledId)
+                $scope.$emit('deletedId', $scope.deledId);
+                $scope.$emit('changeId', null);
             }else if(response.data.code==403){
                 toastr.error( "请登录用户", '温馨提示');
             }

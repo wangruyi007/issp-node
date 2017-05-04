@@ -1,5 +1,6 @@
 var app = angular.module('businessTypeList', ['ng-pagination','toastr']);
 app.controller('typeListCtrl',function($scope,businessTypeSer,toastr){
+    $scope.$emit('changeId', null);
     function activatePage(page) {
         var listData = {
             page:page

@@ -22,6 +22,7 @@ module.exports = function(){
     }).post('/plan/yearplan/save', function*(){//保存年计划数据
         var $self = this;
         var addData = $self.request.body;
+        addData.userToken = $self.cookies.get('token');
         yield (server().yearplanAdd(addData)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -34,6 +35,7 @@ module.exports = function(){
     }).post('/plan/yearplan/update', function*(){//修改年计划数据
         var $self = this;
         var editData = $self.request.body;
+        editData.userToken = $self.cookies.get('token');
         yield (server().yearplanEdit(editData)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -58,6 +60,7 @@ module.exports = function(){
     }).get('/plan/yearplan/delete', function*(){//删除年计划数据
         var $self = this;
         var deleteData = $self.request.query;
+        deleteData.userToken = $self.cookies.get('token');
         yield (server().yearplanDelete(deleteData)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -81,7 +84,6 @@ module.exports = function(){
     }).get('/plan/monthplan/maps', function*(){//月计划列表
         var $self = this;
         var page = $self.request.query;
-        console.log(page);
         yield (server().monthplanList(page)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -94,6 +96,7 @@ module.exports = function(){
     }).post('/plan/monthplan/save', function*(){//保存月计划数据
         var $self = this;
         var addData = $self.request.body;
+        addData.userToken = $self.cookies.get('token');
         yield (server().monthplanAdd(addData)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -106,6 +109,7 @@ module.exports = function(){
     }).post('/plan/monthplan/update', function*(){//修改月计划数据
         var $self = this;
         var editData = $self.request.body;
+        editData.userToken = $self.cookies.get('token');
         yield (server().monthplanEdit(editData)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -152,19 +156,20 @@ module.exports = function(){
             }));
     }).get('/plan/monthplan/getTotal', function*(){//获取月计划总条数
         var $self = this;
-            yield (server().getMonthTotal()
-            .then((parsedBody) =>{
-                var responseText = JSON.parse(parsedBody);
-                $self.body = responseText;
-            }).catch((error) =>{
-                $self.set('Content-Type','application/json;charset=utf-8');
-                $self.body=error.error;
-                console.error(error.error);
-            }));
+        yield (server().getMonthTotal()
+        .then((parsedBody) =>{
+            var responseText = JSON.parse(parsedBody);
+            $self.body = responseText;
+        }).catch((error) =>{
+            $self.set('Content-Type','application/json;charset=utf-8');
+            $self.body=error.error;
+            console.error(error.error);
+        }));
     }).get('/plan/monthplan/delete/', function*(){//删除月计划
         var $self = this;
         var deleteData = $self.request.query;
-            yield (server().monthplanDelete(deleteData)
+        deleteData.userToken = $self.cookies.get('token');
+        yield (server().monthplanDelete(deleteData)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
                 $self.body = responseText;
@@ -188,6 +193,7 @@ module.exports = function(){
     }).post('/plan/weekplan/save', function*(){//保存周计划数据
         var $self = this;
         var addData = $self.request.body;
+        addData.userToken = $self.cookies.get('token');
         yield (server().weekplanAdd(addData)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -200,6 +206,7 @@ module.exports = function(){
     }).post('/plan/weekplan/update', function*(){//修改周计划数据
         var $self = this;
         var editData = $self.request.body;
+        editData.userToken = $self.cookies.get('token');
         yield (server().weekplanEdit(editData)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -223,8 +230,6 @@ module.exports = function(){
             }));
     }).get('/plan/monthplan/getChoice', function*(){//获取月计划选择对象
         var $self = this;
-        // var responseText = JSON.parse("{\"code\": 0, \"data\": [ {\"id\": \"5045a15d-8494-43a1-b92f-b313f8ab589e\", \"showValue\": \"2017年 业务类型:1 科目:1\"}]}");
-        // $self.body = responseText;
         yield (server().weekGetChoice()
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -260,6 +265,7 @@ module.exports = function(){
     }).get('/plan/weekplan/delete', function*(){//删除年计划数据
         var $self = this;
         var deleteData = $self.request.query;
+        deleteData.userToken = $self.cookies.get('token');
         yield (server().weekplanDelete(deleteData)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -284,6 +290,7 @@ module.exports = function(){
     }).post('/plan/dayplan/save', function*(){//保存周计划数据
         var $self = this;
         var addData = $self.request.body;
+        addData.userToken = $self.cookies.get('token');
         yield (server().dayplanAdd(addData)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -296,6 +303,7 @@ module.exports = function(){
     }).post('/plan/dayplan/update', function*(){//编辑天计划数据
         var $self = this;
         var editData = $self.request.body;
+        editData.userToken = $self.cookies.get('token');
         yield (server().dayplanEdit(editData)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -331,6 +339,7 @@ module.exports = function(){
     }).get('/plan/dayplan/delete', function*(){//删除年计划数据
         var $self = this;
         var deleteData = $self.request.query;
+        deleteData.userToken = $self.cookies.get('token');
         yield (server().dayplanDelete(deleteData)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);

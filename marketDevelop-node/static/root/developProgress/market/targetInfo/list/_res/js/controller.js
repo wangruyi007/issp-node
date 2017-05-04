@@ -1,5 +1,6 @@
 var app = angular.module('targetInfoList', ['ng-pagination','toastr']);
 app.controller('targetInfoListCtrl',function($scope,targetInfoSer,toastr){
+    $scope.$emit('changeId', null);
     function activatePage(page) {
         var listData = {
             page:page

@@ -22,6 +22,7 @@ module.exports = function(){
     }).post('/market/businesstype/save', function*(){//业务类型添加
         var $self = this;
         var addData = $self.request.body;
+        addData.userToken = $self.cookies.get('token');
         yield (server().TypeAdd(addData)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -34,6 +35,7 @@ module.exports = function(){
     }).post('/market/businesstype/update', function*(){//修改业务类型
         var $self = this;
         var editData = $self.request.body;
+        editData.userToken = $self.cookies.get('token');
         yield (server().TypeEdit(editData)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -58,6 +60,7 @@ module.exports = function(){
     }).get('/market/businesstype/delete', function*(){//删除业务类型
         var $self = this;
         var deleteData = $self.request.query;
+        deleteData.userToken = $self.cookies.get('token');
         yield (server().TypeDelete(deleteData)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -117,6 +120,7 @@ module.exports = function(){
     }).post('/market/businesscourse/save', function*(){//业务方向科目添加
         var $self = this;
         var addData = $self.request.body;
+        addData.userToken = $self.cookies.get('token');
         yield (server().CourseAdd(addData)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -129,6 +133,7 @@ module.exports = function(){
     }).post('/market/businesscourse/update', function*(){//修改业务方向科目
         var $self = this;
         var editData = $self.request.body;
+        editData.userToken = $self.cookies.get('token');
         yield (server().CourseEdit(editData)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -153,6 +158,7 @@ module.exports = function(){
     }).get('/market/businesscourse/delete', function*(){//删除业务方向科目
         var $self = this;
         var deleteData = $self.request.query;
+        deleteData.userToken = $self.cookies.get('token');
         yield (server().CourseDelete(deleteData)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
