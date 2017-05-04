@@ -1,5 +1,6 @@
 var app = angular.module('problemList', ['ng-pagination','toastr']);
 app.controller('problemListCtrl',function($scope,problemSer,toastr){
+    $scope.$emit('changeId', null);
     $scope.teamInfo = {};
     function activatePage(page) {
         var listData = {

@@ -1,6 +1,6 @@
 var app = angular.module('discussList', ['ng-pagination','toastr']);
 app.controller('discussListCtrl',function($scope,discussSer,toastr){
-
+    $scope.$emit('changeId', null);
     function activatePage(page) {
         var listData = {
             page:page

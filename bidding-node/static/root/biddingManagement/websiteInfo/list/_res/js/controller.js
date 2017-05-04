@@ -1,6 +1,6 @@
 var app = angular.module('websiteList', ['ng-pagination','toastr']);
 app.controller('websiteListCtrl',function($scope,websiteSer,toastr){
-
+    $scope.$emit('changeId', null);
     function activatePage(page) {
         var listData = {
             page:page

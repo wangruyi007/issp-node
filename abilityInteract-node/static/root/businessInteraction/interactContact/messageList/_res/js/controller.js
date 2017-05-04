@@ -1,5 +1,6 @@
 var app = angular.module('messageList', ['ng-pagination','toastr']);
 app.controller('messageListCtrl',function($scope,$stateParams,contactSer,toastr){
+    $scope.$emit('changeId', null);
     function activatePage(page) {
         var listData = {
             page:page,

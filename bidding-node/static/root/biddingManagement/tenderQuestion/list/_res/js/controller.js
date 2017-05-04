@@ -1,6 +1,6 @@
 var app = angular.module('questionList', ['ng-pagination','toastr']);
 app.controller('questionListCtrl',function($scope,questionSer,toastr){
-
+    $scope.$emit('changeId', null);
     function activatePage(page) {
         var listData = {
             page:page

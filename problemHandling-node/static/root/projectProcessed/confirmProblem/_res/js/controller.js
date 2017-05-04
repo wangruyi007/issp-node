@@ -76,6 +76,9 @@ app.filter('cover', function(){
             case "BUSINESSDEVELOPPROGRESS":
                 result = "商务发展部-进度管理";
                 break;
+            case "COMPLETE":
+                result = "完成";
+                break;
             case "UNFINISHED":
                 result = "未完成";
                 break;

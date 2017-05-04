@@ -22,6 +22,7 @@ module.exports = function(){
     }).post('/interactionrelation/add', function*(){//互动联系信息添加
         var $self = this;
         var addData = $self.request.body;
+        addData.userToken = $self.cookies.get('token');
         yield (server().contactAdd(addData)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -34,6 +35,7 @@ module.exports = function(){
     }).post('/interactionrelation/edit', function*(){//互动联系信息编辑
         var $self = this;
         var editData = $self.request.body;
+        editData.userToken = $self.cookies.get('token');
         yield (server().contactEdit(editData)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -58,6 +60,7 @@ module.exports = function(){
     }).get('/interactionrelation/delete', function*(){//删除互动联系信息
         var $self = this;
         var deleteData = $self.request.query;
+        deleteData.userToken = $self.cookies.get('token');
         yield (server().contactDelete(deleteData)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -93,6 +96,7 @@ module.exports = function(){
     }).post('/leavingmessage/add', function*(){//添加留言
         var $self = this;
         var addData = $self.request.body;
+        addData.userToken = $self.cookies.get('token');
         yield (server().MessageAdd(addData)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -128,6 +132,7 @@ module.exports = function(){
     }).post('/demand/add', function*(){//互动平台需求描述添加
         var $self = this;
         var addData = $self.request.body;
+        addData.userToken = $self.cookies.get('token');
         yield (server().demandAdd(addData)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -140,6 +145,7 @@ module.exports = function(){
     }).post('/demand/edit', function*(){//互动平台需求描述编辑
         var $self = this;
         var editData = $self.request.body;
+        editData.userToken = $self.cookies.get('token');
         yield (server().demandEdit(editData)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -164,6 +170,7 @@ module.exports = function(){
     }).get('/demand/delete', function*(){//删除互动平台需求描述
         var $self = this;
         var deleteData = $self.request.query;
+        deleteData.userToken = $self.cookies.get('token');
         yield (server().demandDelete(deleteData)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -199,6 +206,7 @@ module.exports = function(){
     }).post('/talkdetail/add', function*(){//洽谈详情添加
         var $self = this;
         var addData = $self.request.body;
+        addData.userToken = $self.cookies.get('token');
         yield (server().TalkAdd(addData)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -211,6 +219,7 @@ module.exports = function(){
     }).post('/talkdetail/edit', function*(){//洽谈详情编辑
         var $self = this;
         var editData = $self.request.body;
+        editData.userToken = $self.cookies.get('token');
         yield (server().TalkEdit(editData)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -235,6 +244,7 @@ module.exports = function(){
     }).get('/talkdetail/delete', function*(){//删除洽谈详情
         var $self = this;
         var deleteData = $self.request.query;
+        deleteData.userToken = $self.cookies.get('token');
         yield (server().TalkDelete(deleteData)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -270,6 +280,7 @@ module.exports = function(){
     }).post('/collectemail/add', function*(){//邮件汇总添加
         var $self = this;
         var addData = $self.request.body;
+        addData.userToken = $self.cookies.get('token');
         yield (server().MailAdd(addData)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -282,6 +293,7 @@ module.exports = function(){
     }).post('/collectemail/edit', function*(){//邮件汇总编辑
         var $self = this;
         var editData = $self.request.body;
+        editData.userToken = $self.cookies.get('token');
         yield (server().MailEdit(editData)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -306,6 +318,7 @@ module.exports = function(){
     }).get('/collectemail/delete', function*(){//删除邮件汇总数据
         var $self = this;
         var deleteData = $self.request.query;
+        deleteData.userToken = $self.cookies.get('token');
         yield (server().mailDelete(deleteData)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);

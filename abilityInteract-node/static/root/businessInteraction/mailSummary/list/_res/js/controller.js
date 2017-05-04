@@ -1,6 +1,6 @@
 var app = angular.module('mailSummaryList', ['ng-pagination','toastr']);
 app.controller('mailSummaryListCtrl',function($scope,emailSer,toastr){
-
+    $scope.$emit('changeId', null);
     function activatePage(page) {
         var listData = {
             page:page

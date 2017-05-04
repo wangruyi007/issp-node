@@ -1,5 +1,6 @@
 var app = angular.module('descriptList', ['ng-pagination','toastr']);
 app.controller('descriptListCtrl',function($scope,descriptSer,toastr){
+    $scope.$emit('changeId', null);
     $scope.teamInfo = {};
     function activatePage(page) {
         var listData = {

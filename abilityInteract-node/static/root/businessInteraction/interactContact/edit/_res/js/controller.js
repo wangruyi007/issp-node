@@ -14,7 +14,7 @@ app.controller('contactEditCtrl', function($scope, contactSer,$stateParams,$stat
 
 
     //编辑点击提交
-    $scope.conactEditFun = function(){
+    $scope.contactEditFun = function(){
         var vm = $scope;
         contactSer.editInteract(vm.editConact).then(function(response){
             if(response.data.code == 0){
