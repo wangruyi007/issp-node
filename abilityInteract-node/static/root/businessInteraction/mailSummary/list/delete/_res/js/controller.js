@@ -5,7 +5,7 @@ app.controller('deleteCtrl',function($scope,emailSer,toastr,$stateParams,$state)
 
         var data = {
             id :$stateParams.id
-        }
+        };
 
         emailSer.deleteEmail(data).then(function(response){
             if(response.data.code==0){
