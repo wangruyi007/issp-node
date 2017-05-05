@@ -1,0 +1,53 @@
+<div class="content-input add" verify-scope="tipStyle: 1">
+    <div class="input-list">
+        <section>
+            <ul>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>编号</em></label>
+                    <input type="text" ng-model="serialNumber" ng-verify="{}">
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>项目组/部门</em></label>
+                    <select class="sele" ng-model="departmentId" ng-verify="{}">
+                        <option value="">请选择</option>
+                        <option ng-repeat="department in departments" value="{{department.id}}">{{department.department}}</option>
+                    </select>
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>层级</em></label>
+                    <select class="sele" ng-model="arrangementId" ng-verify="{}">
+                        <option value="">请选择</option>
+                        <option ng-repeat="arrangement in arrangements" value="{{arrangement.id}}">{{arrangement.arrangement}}</option>
+                    </select>
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>资源池</em></label>
+                    <input type="text"  ng-model="pool" ng-verify="{}">
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>模块</em></label>
+                    <select class="sele" ng-model="moduleId" ng-verify="{}">
+                        <option value="">请选择</option>
+                        <option ng-repeat="module in modules" value="{{module.id}}" >{{module.module}}</option>
+                    </select>
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>岗位名称</em></label>
+                    <input type="text"   ng-verify="{}" ng-model="position">
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>人员编制数</em></label>
+                    <input type="number"  ng-model="staff" ng-verify="{}">
+                </li>
+                <li>
+                    <label><em>当前人数</em></label>
+                    <input type="number"  ng-model="current">
+                </li>
+            </ul>
+        </section>
+    </div>
+    <p class="dataBottom">
+        <span class="imPrompt"><i><img src="/images/prompt.png"></i>带有<i><img src="/images/mandatory.png"></i>的为必填项</span>
+        <button ng-verify="{control:'myform'}" ng-click="postsAddFun()">提交</button>
+    </p>
+</div>

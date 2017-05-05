@@ -1,0 +1,29 @@
+<div class="content-tab list">
+    <ul class="table">
+        <li class="list-head">
+            <span></span>
+            <span>编号</span>
+            <span>阶级</span>
+            <span>描述</span>
+        </li>
+        <li class="list-all" ng-repeat="list in postlevelLists" style="display: {{list._delete?'none':'block'}};">
+            <section  class="{{list.status=='CONGEAL'?'congeal':''}}" >
+                <div class="list-text {{list._selectList?'selectList':''}}" ng-click="selectList(list)">
+                    <p>{{$index+1}}</p>
+                    <p class="addcusNum">{{list.serialNumber}}</p>
+                    <p>{{list.arrangement}}</p>
+                    <p>{{list.description}}</p>
+                </div>
+            </section>
+        </li>
+    </ul>
+    <footer class="footer">
+        <pagination count="pagination.itemsCount" take="pagination.take" activate="pagination.activatePage"></pagination>
+    </footer>
+</div>
+<div ui-view="modal"></div>
+
+
+
+
+

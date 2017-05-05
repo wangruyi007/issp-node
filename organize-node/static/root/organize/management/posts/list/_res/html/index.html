@@ -1,0 +1,74 @@
+
+
+<div class="content-tab list">
+    <ul class="table">
+        <li class="list-head">
+            <span></span>
+            <span>编号</span>
+            <span>体系所属地区</span>
+            <span>项目组/部门</span>
+            <span>层级</span>
+            <span>资源地</span>
+            <span>模块</span>
+            <span>岗位名称</span>
+            <span></span>
+        </li>
+        <li class="list-all" style="display: {{list._delete?'none':'block'}};" ng-repeat="list in postsLists">
+            <section  class="{{list.status=='CONGEAL'?'congeal':''}}" >
+                <div class="list-text {{list._selectList?'selectList':''}}" ng-click="selectList(list)">
+                    <p>{{$index+1}}</p>
+                    <p>{{list.serialNumber}}</p>
+                    <p>{{list.area}}</p>
+                    <p>{{list.departmentName}}</p>
+                    <p>{{list.arrangementName}}</p>
+                    <p>{{list.pool}}</p>
+                    <p>{{list.moduleName}}</p>
+                    <p>{{list.position}}</p>
+                    <p>
+                        <a href="javascript:void(0)" class="more"  ng-click="moreList(list)">更多详细</a>
+                    </p>
+                </div>
+                <div class="can">
+                    <ul class="can-see" style="display: {{list._moreList?'block':'none'}};">
+                        <li>
+                            <p class="see-parent">
+                                <span>人员编制数</span>
+                                <span>当前人数</span>
+                            </p>
+                            <p class="see-children">
+                                <span>{{list.staff}}</span>
+                                <span>{{list.current}}</span>
+                            </p>
+                        </li>
+
+                    </ul>
+                    <div class="module">
+                        <div class="see-module">
+                            <p class="see-type">体现类型</p>
+                            <p class="see-description"></p>
+                            <button class="btn">关闭</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="thaw-modal">
+                    <button ng-click="thaw(list)">解冻</button>
+                </div>
+            </section>
+        </li>
+    </ul>
+    <footer class="footer">
+        <pagination count="pagination.itemsCount" take="pagination.take" activate="pagination.activatePage"></pagination>
+    </footer>
+</div>
+<div ui-view="modal"></div>
+
+
+
+
+
+
+
+
+
+
+
