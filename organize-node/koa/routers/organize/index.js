@@ -559,10 +559,93 @@ module.exports = function(){
                 $self.body=error.error;
                 console.error(error.error);
             }));
-    }).get('/motype/maps', function*(){
+    }).get('/motype/maps', function*(){ //模块类型列表
         var $self = this;
-        var thawId=this.request.query;
-        yield (server().motypeList(thawId)
+        var page=this.request.query;
+        yield (server().motypeList(page)
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
+    }).get('/motype/getTotal', function*(){ //模块类型列表总条数
+        var $self = this;
+        yield (server().motypeCount()
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
+    }).post('/motype/add', function*(){ //模块类型添加
+        var $self = this;
+        var addData = this.request.body;
+        yield (server().motypeAdd(addData)
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
+    }).get('/motype/findById', function*(){ //根据ID获取模块类型
+        var $self = this;
+        var getId = this.request.query;
+        yield (server().motypeGet(getId)
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
+    }).post('/motype/edit', function*(){ //根据ID获取模块类型
+        var $self = this;
+        var editData = this.request.body;
+        yield (server().motypeEdit(editData)
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
+    }).get('/motype/delete', function*(){ //根据ID获取模块类型
+        var $self = this;
+        var delId = this.request.query;
+        yield (server().motypeDelete(delId)
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
+    }).get('/motype/congeal', function*(){ //根据ID获取模块类型
+        var $self = this;
+        var conId = this.request.query;
+        yield (server().motypeCongeal(conId)
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
+    }).get('/motype/thaw', function*(){ //根据ID获取模块类型
+        var $self = this;
+        var thawId = this.request.query;
+        yield (server().motypeThaw(thawId)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
                 $self.body = responseText;

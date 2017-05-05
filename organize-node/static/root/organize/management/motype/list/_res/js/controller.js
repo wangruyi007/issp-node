@@ -35,13 +35,13 @@ app.controller('motypeListCtrl',function($scope,toastr,motypeSer){
             }
         });
     }
-    // motypeSer.countmotype().then(function(response){
-    //     if(response.data.code==0){
-    //         $scope.pagination.itemsCount = response.data.data;
-    //     }else{
-    //         toastr.error( "请求超时，请联系管理员", '温馨提示');
-    //     }
-    // });
+    motypeSer.countMotype().then(function(response){
+        if(response.data.code==0){
+            $scope.pagination.itemsCount = response.data.data;
+        }else{
+            toastr.error( "请求超时，请联系管理员", '温馨提示');
+        }
+    });
     $scope.$on('deletedId',function(event,delid){
         angular.forEach($scope.motypeLists,function(obj){
             if(obj.id == delid){
@@ -62,10 +62,10 @@ app.controller('motypeListCtrl',function($scope,toastr,motypeSer){
         var data = {
             id :event.id
         };
-        motypeSer.thawmotype(data).then(function(response){
+        motypeSer.thawMotype(data).then(function(response){
             if(response.data.code==0){
                 event.status = "THAW";
-                toastr.success( event.serialNumber+"解冻成功", '温馨提示');
+                toastr.success( event.module+"解冻成功", '温馨提示');
             }else if(response.data.code==403){
                 toastr.error( "请登录用户", '温馨提示');
             }

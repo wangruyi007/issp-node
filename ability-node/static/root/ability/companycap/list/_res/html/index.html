@@ -23,13 +23,13 @@
                 <div  class="list-text {{list._selectList?'selectList':''}}" ng-click="selectList(list)">
                     <p>{{$index+1}}</p>
                     <p class="data-id"></p>
-                    <p>{{list.company}}</p>
-                    <p>{{list.professionAuthen}}</p>
-                    <p>{{list.manageAuthen}}</p>
-                    <p>{{list.companyCertificate}}</p>
-                    <p>{{list.companyDevelop}}</p>
-                    <p>{{list.projectDevelop}}</p>
-                    <p>{{list.area}}</p>
+                    <p>{{::list.company}}</p>
+                    <p>{{::list.professionAuthen}}</p>
+                    <p>{{::list.manageAuthen}}</p>
+                    <p>{{::list.companyCertificate}}</p>
+                    <p>{{::list.companyDevelop}}</p>
+                    <p>{{::list.projectDevelop}}</p>
+                    <p>{{::list.area}}</p>
                     <p>
                         <a href="javascript:void(0)" class="more"  ng-click="moreList(list)">更多详细</a>
                     </p>
