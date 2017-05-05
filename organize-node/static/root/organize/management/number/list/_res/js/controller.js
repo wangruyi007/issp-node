@@ -7,7 +7,7 @@ app.controller('numberListCtrl',function($scope,toastr,numberSer){
                 obj._selectList = false
         });
         event._selectList = true;
-         ;
+
         //向父Ctrl传递事件
         $scope.$emit('changeId', event.id);
     };

@@ -408,6 +408,7 @@ module.exports = function(){
         };
         return request(options);
     };
+
     this.motypeList = function(argvs){
         var options = {
             method : 'GET',
@@ -424,11 +425,38 @@ module.exports = function(){
         };
         return request(options);
     };
-    this.motypeAdd = function(argvs){
+    this.motypeAdd = function(argvs) {
+        var options = {
+            method: 'POST',
+            timeout: 3000,
+            uri: config()['rurl'] + '/moduletype/v1/save',
+        };
+        return request(options);
+    };
+    /**操作类型列表**/
+    this.operateList = function(argvs){
+        var options = {
+            method : 'GET',
+            timeout : 3000,
+            uri : config()['rurl'] + `/operate/v1/maps?limit=10&page=${argvs.page}`
+        };
+        return request(options);
+    };
+    //操作类型总条数
+    this.operateCount = function(){
+        var options = {
+            method : 'GET',
+            timeout : 3000,
+            uri : config()['rurl'] + '/operate/v1/getTotal'
+        };
+        return request(options);
+    };
+    //操作类型添加
+    this.operateAdd = function(argvs){
         var options = {
             method : 'POST',
             timeout : 3000,
-            uri : config()['rurl'] + '/moduletype/v1/save',
+            uri : config()['rurl'] + '/operate/v1/save',
             form:argvs
         };
         return request(options);
@@ -443,13 +471,32 @@ module.exports = function(){
     };
     this.motypeEdit = function(argvs){
         var options = {
+            method: 'PUT',
+            timeout: 3000,
+            uri: config()['rurl'] + `/moduletype/v1/update/${argvs.id}`
+        };
+        return request(options);
+    };
+    //获取操作类型Id
+    this.operateGetId = function(argvs){
+        var options = {
+            method : 'GET',
+            timeout : 3000,
+            uri : config()['rurl'] + `/operate/v1/findById/${argvs.id}`
+        };
+        return request(options);
+    };
+    //操作类型编辑
+    this.operateEdit = function(argvs){
+        var options = {
             method : 'PUT',
             timeout : 3000,
-            uri : config()['rurl'] + `/moduletype/v1/update/${argvs.id}`,
+            uri : config()['rurl'] + `/operate/v1/update/${argvs.id}`,
             form:argvs
         };
         return request(options);
     };
+
     this.motypeDelete = function(argvs){
         var options = {
             method : 'DELETE',
@@ -466,11 +513,260 @@ module.exports = function(){
         };
         return request(options);
     };
-    this.motypeThaw = function(argvs){
+    this.motypeThaw = function(argvs) {
+        var options = {
+            method: 'PATCH',
+            timeout: 3000,
+            uri: config()['rurl'] + `/moduletype/v1/thaw/${argvs.id}`,
+        }
+        return request(options);
+    }
+    //操作类型删除
+    this.operateDelete = function(argvs){
+        var options = {
+            method : 'DELETE',
+            timeout : 3000,
+            uri : config()['rurl'] + `/operate/v1/delete/${argvs.id}`
+        };
+        return request(options);
+    };
+    //操作类型冻结
+    this.operateCongeal = function(argvs){
         var options = {
             method : 'PATCH',
             timeout : 3000,
-            uri : config()['rurl'] + `/moduletype/v1/thaw/${argvs.id}`,
+            uri : config()['rurl'] + `/operate/v1/close/${argvs.id}`
+        };
+        return request(options);
+    };
+    //操作类型解冻
+    this.operateThaw = function(argvs){
+        var options = {
+            method : 'PATCH',
+            timeout : 3000,
+            uri : config()['rurl'] + `/operate/v1/open/${argvs.id}`
+        };
+        return request(options);
+    };
+    /**角度列表**/
+    this.angleList = function(argvs){
+        var options = {
+            method : 'GET',
+            timeout : 3000,
+            uri : config()['rurl'] + `/angle/v1/maps?limit=10&page=${argvs.page}`
+        };
+        return request(options);
+    };
+    //角度总条数
+    this.angleCount = function(){
+        var options = {
+            method : 'GET',
+            timeout : 3000,
+            uri : config()['rurl'] + '/angle/v1/getTotal'
+        };
+        return request(options);
+    };
+    //角度添加
+    this.angleAdd = function(argvs){
+        var options = {
+            method : 'POST',
+            timeout : 3000,
+            uri : config()['rurl'] + '/angle/v1/save',
+            form:argvs
+        };
+        return request(options);
+    };
+    //获取角度Id
+    this.angleGetId = function(argvs){
+        var options = {
+            method : 'GET',
+            timeout : 3000,
+            uri : config()['rurl'] + `/angle/v1/findById/${argvs.id}`
+        };
+        return request(options);
+    };
+    //角度编辑
+    this.angleEdit = function(argvs){
+        var options = {
+            method : 'PUT',
+            timeout : 3000,
+            uri : config()['rurl'] + `/angle/v1/update/${argvs.id}`,
+            form:argvs
+        };
+        return request(options);
+    };
+    //角度删除
+    this.angleDelete = function(argvs){
+        var options = {
+            method : 'DELETE',
+            timeout : 3000,
+            uri : config()['rurl'] + `/angle/v1/delete/${argvs.id}`
+        };
+        return request(options);
+    };
+    //角度冻结
+    this.angleCongeal = function(argvs){
+        var options = {
+            method : 'PATCH',
+            timeout : 3000,
+            uri : config()['rurl'] + `/angle/v1/close/${argvs.id}`
+        };
+        return request(options);
+    };
+    //角度解冻
+    this.angleThaw = function(argvs){
+        var options = {
+            method : 'PATCH',
+            timeout : 3000,
+            uri : config()['rurl'] + `/angle/v1/open/${argvs.id}`
+        };
+        return request(options);
+    };
+    /**维度列表**/
+    this.dimenList = function(argvs){
+        var options = {
+            method : 'GET',
+            timeout : 3000,
+            uri : config()['rurl'] + `/dimension/v1/maps?limit=10&page=${argvs.page}`
+        };
+        return request(options);
+    };
+    //维度总条数
+    this.dimenCount = function(){
+        var options = {
+            method : 'GET',
+            timeout : 3000,
+            uri : config()['rurl'] + '/dimension/v1/getTotal'
+        };
+        return request(options);
+    };
+    //维度添加
+    this.dimenAdd = function(argvs){
+        var options = {
+            method : 'POST',
+            timeout : 3000,
+            uri : config()['rurl'] + '/dimension/v1/save',
+            form:argvs
+        };
+        return request(options);
+    };
+    //获取维度Id
+    this.dimenGetId = function(argvs){
+        var options = {
+            method : 'GET',
+            timeout : 3000,
+            uri : config()['rurl'] + `/dimension/v1/findById/${argvs.id}`
+        };
+        return request(options);
+    };
+    //维度编辑
+    this.dimenEdit = function(argvs){
+        var options = {
+            method : 'PUT',
+            timeout : 3000,
+            uri : config()['rurl'] + `/dimension/v1/update/${argvs.id}`,
+            form:argvs
+        };
+        return request(options);
+    };
+    //维度删除
+    this.dimenDelete = function(argvs){
+        var options = {
+            method : 'DELETE',
+            timeout : 3000,
+            uri : config()['rurl'] + `/dimension/v1/delete/${argvs.id}`
+        };
+        return request(options);
+    };
+    //维度冻结
+    this.dimenCongeal = function(argvs){
+        var options = {
+            method : 'PATCH',
+            timeout : 3000,
+            uri : config()['rurl'] + `/dimension/v1/close/${argvs.id}`
+        };
+        return request(options);
+    };
+    //维度解冻
+    this.dimenThaw = function(argvs){
+        var options = {
+            method : 'PATCH',
+            timeout : 3000,
+            uri : config()['rurl'] + `/dimension/v1/open/${argvs.id}`
+        };
+        return request(options);
+    };
+    /**分类列表**/
+    this.classifyList = function(argvs){
+        var options = {
+            method : 'GET',
+            timeout : 3000,
+            uri : config()['rurl'] + `/instructionClassify/v1/maps?limit=10&page=${argvs.page}`
+        };
+        return request(options);
+    };
+    //分类总条数
+    this.classifyCount = function(){
+        var options = {
+            method : 'GET',
+            timeout : 3000,
+            uri : config()['rurl'] + '/instructionClassify/v1/getTotal'
+        };
+        return request(options);
+    };
+    //分类添加
+    this.classifyAdd = function(argvs){
+        var options = {
+            method : 'POST',
+            timeout : 3000,
+            uri : config()['rurl'] + '/instructionClassify/v1/save',
+            form:argvs
+        };
+        return request(options);
+    };
+    //获取分类Id
+    this.classifyGetId = function(argvs){
+        var options = {
+            method : 'GET',
+            timeout : 3000,
+            uri : config()['rurl'] + `/instructionClassify/v1/findById/${argvs.id}`
+        };
+        return request(options);
+    };
+    //分类编辑
+    this.classifyEdit = function(argvs){
+        var options = {
+            method : 'PUT',
+            timeout : 3000,
+            uri : config()['rurl'] + `/instructionClassify/v1/update/${argvs.id}`,
+            form:argvs
+        };
+        return request(options);
+    };
+    //分类删除
+    this.classifyDelete = function(argvs){
+        var options = {
+            method : 'DELETE',
+            timeout : 3000,
+            uri : config()['rurl'] + `/instructionClassify/v1/delete/${argvs.id}`
+        };
+        return request(options);
+    };
+    //分类冻结
+    this.classifyCongeal = function(argvs){
+        var options = {
+            method : 'PATCH',
+            timeout : 3000,
+            uri : config()['rurl'] + `/instructionClassify/v1/close/${argvs.id}`
+        };
+        return request(options);
+    };
+    //分类解冻
+    this.classifyThaw = function(argvs){
+        var options = {
+            method : 'PATCH',
+            timeout : 3000,
+            uri : config()['rurl'] + `/instructionClassify/v1/open/${argvs.id}`
         };
         return request(options);
     };
