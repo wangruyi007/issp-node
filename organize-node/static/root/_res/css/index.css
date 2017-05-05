@@ -575,7 +575,9 @@ body {
 .right-section .top-content .content .content-wrap .content-tab .table .list-all .list-text.selectList{
   background:#00c6ff;
 }
-
+.right-section .top-content .content .content-wrap .content-tab .table .list-all .list-text.selectList p{
+  color: #fff;
+}
 .right-section .top-content .content .content-wrap .content-tab .table .list-all .list-text p, .right-section .top-content .content .content-wrap .summary .table .list-all .list-text p, .right-section .top-content .content .content-wrap .total .table .list-all .list-text p, .right-section .top-content .content .content-wrap .sign-summary .table .list-all .list-text p {
   -webkit-box-flex: 1;
   -ms-flex: 1;

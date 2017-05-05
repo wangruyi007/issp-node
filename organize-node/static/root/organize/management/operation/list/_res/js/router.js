@@ -9,11 +9,19 @@ app.config(function($provide, $stateProvider){
             }
         }
     }).state("root.organize.management.operation.list.delete[12]",{
-        url:"/delete[12]",
+        url:"/delete[12]?id=",
         views:{
             "modal@root.organize.management.operation.list":{
                 templateUrl : "root/organize/management/operation/list/delete/_res/html/index.html",
                 controller:'operationDeleteCtrl'
+            }
+        }
+    }).state("root.organize.management.operation.list.congeal[12]",{
+        url:"/congeal[12]?id=",
+        views:{
+            "modal@root.organize.management.operation.list":{
+                templateUrl : "root/organize/management/operation/list/congeal/_res/html/index.html",
+                controller:'operationCongealCtrl'
             }
         }
     })
