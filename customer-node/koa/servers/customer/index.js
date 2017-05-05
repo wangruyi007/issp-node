@@ -147,10 +147,11 @@ module.exports = function(){
     };
     //单个客户等级信息
     this.getCustomerLevelinfo = function(argvs){
+
         var options = {
             method : 'GET',
             timeout : 3000,
-            uri : config()['customer']['rurl'] + '/customerlevel/v1/getCustomerLevel?name=' + argvs.name,
+            uri : config()['customer']['rurl'] + '/customerlevel/v1/getCustomerLevel?name=' + encodeURIComponent(argvs.name),
         };
         return request(options);
     };

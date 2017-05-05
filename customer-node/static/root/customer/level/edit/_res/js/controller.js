@@ -3,7 +3,9 @@ app.controller('levelEditCtrl', function($scope, levelSer, $state, toastr, $stat
 
     var nameLevel = {name : $stateParams.nameLevel};
 
+
     levelSer.getCustomerLevel(nameLevel).then(function(response){
+
         $scope.levelInfo = response.data.data
     })
     $scope.editLevel = function(){

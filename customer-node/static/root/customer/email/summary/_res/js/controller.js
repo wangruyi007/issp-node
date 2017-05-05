@@ -9,8 +9,6 @@ app.controller('emailSummaryCtrl',function($scope,emailSer,toastr){
     emailSer.getWorks().then(function(response){
         if(response.data.code == 0){
             $scope.workOptions = response.data.data;
-
-
         } else if(response.data.code == 403){
             toastr.error("请登录用户", '温馨提示');
         }
@@ -18,15 +16,14 @@ app.controller('emailSummaryCtrl',function($scope,emailSer,toastr){
 
     $scope.getSummary ={onSelectionChanged(){
         emailSer.getSummarys($scope.words).then(function(response){
+            console.info(response);
             if(response.data.code == 0){
                 $scope.summaryLists = response.data.data;
-
                 angular.forEach($scope.summaryLists,function(item,index){
                     if(item.work=="合计"){
                         $scope.tabTit = item;
                     }
                 });
-
             }
         })
     }}

@@ -75,7 +75,7 @@ app.controller('basicinfoListCtrl',function($scope,basicinfoSer,toastr){
             obj._delete = true
         }
        })
-    })
+    });
 
     $scope.$on('congealId',function(event,conid){
         angular.forEach($scope.basicinfoLists.data,function(obj){
@@ -84,7 +84,7 @@ app.controller('basicinfoListCtrl',function($scope,basicinfoSer,toastr){
                 obj._selectList = false;
             }
         })
-    })
+    });
 })
 ;
 

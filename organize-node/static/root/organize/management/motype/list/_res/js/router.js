@@ -9,7 +9,7 @@ app.config(function($provide, $stateProvider){
             }
         }
     }).state("root.organize.management.motype.list.delete[12]",{
-        url:"/delete[12]",
+        url:"/delete[12]?id=",
         views:{
             "modal@root.organize.management.motype.list":{
                 templateUrl : "root/organize/management/motype/list/delete/_res/html/index.html",
@@ -17,7 +17,7 @@ app.config(function($provide, $stateProvider){
             }
         }
     }).state("root.organize.management.motype.list.congeal[12]",{
-        url:"/congeal[12]",
+        url:"/congeal[12]?id=",
         views:{
             "modal@root.organize.management.motype.list":{
                 templateUrl : "root/organize/management/motype/list/congeal/_res/html/index.html",
