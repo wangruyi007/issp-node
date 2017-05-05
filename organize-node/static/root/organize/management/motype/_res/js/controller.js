@@ -9,8 +9,6 @@ app.controller('motypeCtrl',function($scope,$state){
         $state.go('root.organize.management.motype.list')
     };
 
-
-
 }).controller('motypeMenuCtrl',function($scope,$state,$rootScope,$location){
     var urlName = $state.current.url.split('/')[1].split('[')[0];
     $scope.menuClass=urlName+"Menu";

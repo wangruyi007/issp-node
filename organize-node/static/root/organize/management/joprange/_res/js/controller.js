@@ -1,4 +1,8 @@
-var app = angular.module('joprange', []);
+var app = angular.module('joprange', [{
+    files:[
+        "root/organize/management/joprange/_res/js/service.js"
+    ]
+}]);
 app.controller('joprangeCtrl',function($scope,$state){
 
     if ($state.current.url == '/moduletype') {//默认加载列表
@@ -15,6 +19,27 @@ app.controller('joprangeCtrl',function($scope,$state){
             $scope.menuClass = 'listMenu';
         }
     });
+    $scope.$on("passId",function(event,id){
+        $scope.getId = id;
+    });
+    $scope.edit = function(){
+        if($scope.getId){
+            $state.go('root.organize.management.joprange.edit[12]',{id:$scope.getId});
+            $scope.menuClass='editMenu';
+        }
+    };
+    $scope.delete = function(){
+        if($scope.getId){
+            $state.go('root.organize.management.joprange.list.delete[12]',{id:$scope.getId});
+            $scope.menuClass='deleteMenu';
+        }
+    };
+    $scope.congeal = function(){
+        if($scope.getId){
+            $state.go('root.organize.management.joprange.list.congeal[12]',{id:$scope.getId});
+            $scope.menuClass='congealMenu';
+        }
+    };
 
     $scope.list = function(){
         $scope.menuClass = 'listMenu'
