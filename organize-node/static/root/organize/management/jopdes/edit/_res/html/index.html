@@ -1,0 +1,116 @@
+<div class="content-input add" verify-scope="tipStyle: 1">
+    <div class="input-list">
+        <section>
+            <ul>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>所属部门</em></label>
+                    <select class="sele" ng-model="addCustomerType" ng-init="addCustomerType='VIP'">
+                        <option value="VIP">VIP</option>
+                        <option value="OLD">老客户</option>
+                        <option value="COOPERATOR">合作伙伴</option>
+                        <option value="ORDINARY">普通客户</option>
+                    </select>
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>所属体系</em></label>
+                    <select class="sele" ng-model="addCustomerType" ng-init="addCustomerType='VIP'">
+                        <option value="VIP">VIP</option>
+                        <option value="OLD">老客户</option>
+                        <option value="COOPERATOR">合作伙伴</option>
+                        <option value="ORDINARY">普通客户</option>
+                    </select>
+                </li>
+
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>岗位</em></label>
+                    <select class="sele" ng-model="addCustomerType" ng-init="addCustomerType='VIP'">
+                        <option value="VIP">VIP</option>
+                        <option value="OLD">老客户</option>
+                        <option value="COOPERATOR">合作伙伴</option>
+                        <option value="ORDINARY">普通客户</option>
+                    </select>
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>角度</em></label>
+                    <select class="sele" ng-model="addCustomerType" ng-init="addCustomerType='VIP'">
+                        <option value="VIP">VIP</option>
+                        <option value="OLD">老客户</option>
+                        <option value="COOPERATOR">合作伙伴</option>
+                        <option value="ORDINARY">普通客户</option>
+                    </select>
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>维度</em></label>
+                    <select class="sele" ng-model="addCustomerType" ng-init="addCustomerType='VIP'">
+                        <option value="VIP">VIP</option>
+                        <option value="OLD">老客户</option>
+                        <option value="COOPERATOR">合作伙伴</option>
+                        <option value="ORDINARY">普通客户</option>
+                    </select>
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>分类</em></label>
+                    <select class="sele" ng-model="addCustomerType" ng-init="addCustomerType='VIP'">
+                        <option value="VIP">VIP</option>
+                        <option value="OLD">老客户</option>
+                        <option value="COOPERATOR">合作伙伴</option>
+                        <option value="ORDINARY">普通客户</option>
+                    </select>
+                </li>
+
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>体现类别</em></label>
+                    <div class="select">
+                        <p class="select-text" >
+                            <span ng-repeat="word in words">{{word}}, </span>
+                        </p>
+                        <div class="mymultiselect" events="getSummary" ng-dropdown-multiselect="" options="workOptions" selected-model="words" extra-settings="stringSettings"></div>
+                    </div>
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>操作类型</em></label>
+                    <div class="select">
+                        <p class="select-text" >
+                            <span ng-repeat="word in words">{{word}}, </span>
+                        </p>
+                        <div class="mymultiselect" events="getSummary" ng-dropdown-multiselect="" options="workOptions" selected-model="words" extra-settings="stringSettings"></div>
+                    </div>
+                </li>
+
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>工作描述</em></label>
+                    <input type="text"   ng-verify="{}" ng-model="addCustomerName">
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>对应功能</em></label>
+                    <div class="select">
+                        <p class="select-text" >
+                            <span ng-repeat="word in words">{{word}}, </span>
+                        </p>
+                        <div class="mymultiselect" events="getSummary" ng-dropdown-multiselect="" options="workOptions" selected-model="words" extra-settings="stringSettings"></div>
+                    </div>
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>工作时间/频率</em></label>
+                    <input type="text"   ng-verify="{}" ng-model="addCustomerName">
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>工作时间开始节点</em></label>
+                    <input type="text"   ng-verify="{}" ng-model="addCustomerName">
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>工作时间结束节点</em></label>
+                    <input type="text"   ng-verify="{}" ng-model="addCustomerName">
+                </li>
+                <li>
+                    <label><em>输出结果</em></label>
+                    <input type="text" ng-model="addCustomerName">
+                </li>
+            </ul>
+        </section>
+    </div>
+    <p class="dataBottom">
+        <span class="imPrompt"><i><img src="/images/prompt.png"></i>带有<i><img src="/images/mandatory.png"></i>的为必填项</span>
+        <button ng-verify="{control:'myform'}" ng-click="basicinfoAddFun()">提交</button>
+    </p>
+</div>
