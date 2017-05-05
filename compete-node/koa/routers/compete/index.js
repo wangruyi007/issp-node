@@ -119,31 +119,30 @@ module.exports = function(){
                     $self.status = 408;
                 }
             }));//竞争对手信息结束
-    }).get('/compete/listAbilityEmail/listEmail', function*(){//汇总和邮件发送
-        var $self = this;
-        var page = this.request.query;
+    }).get('/compete/listAbilityEmail/listEmail', function*(){
+       var $self = this;
+       var page = this.request.query;
         yield (server().collectemaillist(page)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
                 $self.body = responseText;
             }).catch((error) =>{
-                if(error.error && error.error.code && error.error.code == 'ETIMEDOUT'){
-                    $self.body = {'msg' : '请求错误！', errno : 3};
-                    $self.status = 408;
-                }
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
             }));
-    }).get('/countEmail/count', function*(){
+    }).get('/compete/countEmail/count', function*(){
         var $self = this;
         yield (server().emailCountInfo()
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
                 $self.body = responseText;
             }).catch((error) =>{
-                if(error.error && error.error.code && error.error.code == 'ETIMEDOUT'){
-                    $self.body = {'msg' : '请求错误！', errno : 3};
-                    $self.status = 408;
-                }
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
             }));
+        //添加竞争对手
     }).post('/compete/congealEmail/congeal', function*(){//冻结
         var congealData = this.request.body;
         congealData.userToken = this.cookies.get('token');
