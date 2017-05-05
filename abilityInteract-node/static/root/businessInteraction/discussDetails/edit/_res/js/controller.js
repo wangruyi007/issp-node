@@ -16,6 +16,7 @@ app.controller('discussEditCtrl', function($scope, discussSer,$stateParams,$stat
     //编辑点击提交
     $scope.discussEditFun = function(){
         var vm = $scope;
+        vm.editDiscuss.cooperTime = angular.element('.addTime').val();
         discussSer.editDiscuss(vm.editDiscuss).then(function(response){
             if(response.data.code == 0){
                 $state.go('root.businessInteraction.discussDetails.list');

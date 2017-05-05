@@ -11,6 +11,10 @@
                     <input type="text" ng-verify="{}" ng-model="editDiscuss.cooperCompany">
                 </li>
                 <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>地区</em></label>
+                    <input type="text" ng-verify="{}" ng-model="editDiscuss.area">
+                </li>
+                <li class="required">
                     <label ><i><img src="/images/mandatory.png"></i><em>合作方式</em></label>
                     <select class="sele" ng-model="editDiscuss.cooperWay">
                         <option value="直接合作">直接合作</option>
@@ -20,10 +24,6 @@
                 <li>
                     <label><em>合作时间</em></label>
                     <input type="text" onClick="laydate({istime: true, format: 'YYYY-MM-DD'})" class="add_image addTime" ng-model="editDiscuss.cooperTime">
-                </li>
-                <li class="required">
-                    <label><i><img src="/images/mandatory.png"></i><em>地区</em></label>
-                    <input type="text" ng-verify="{}" ng-model="editDiscuss.area">
                 </li>
                 <li>
                     <label><em>业务方向</em></label>
