@@ -16,7 +16,8 @@ app.controller('businessCtrl', function ($scope,$state) {
 
 }).controller('navCtrl',function($scope,$state,$location){
 
-    $scope.navCla=$location.path().split('/')[3]
+    var active =$location.path().split('/')[3];
+    $scope.navCla=active?active:'basicinfo';
     $scope.navClass= function(name){
        $scope.navCla=name
     }

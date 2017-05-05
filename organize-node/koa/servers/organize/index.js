@@ -351,19 +351,11 @@ module.exports = function(){
         };
         return request(options);
     };
-    this.motypeList = function(argvs){
-        var options = {
-            method : 'GET',
-            timeout : 3000,
-            uri : config()['rurl'] + `/moduletype/v1/maps?limit=10&page=${argvs.page}`,
-        };
-        return request(options);
-    };
     this.getAngle = function(){
         var options = {
             method : 'GET',
             timeout : 3000,
-            uri : config()['rurl'] + '/angle/v1/maps',
+            uri : config()['rurl'] + '/angle/v1/findStatus',
         };
         return request(options);
     };
@@ -371,7 +363,7 @@ module.exports = function(){
         var options = {
             method : 'GET',
             timeout : 3000,
-            uri : config()['rurl'] + '/dimension/v1/maps',
+            uri : config()['rurl'] + '/dimension/v1/findStatus',
         };
         return request(options);
     };
@@ -379,7 +371,7 @@ module.exports = function(){
         var options = {
             method : 'GET',
             timeout : 3000,
-            uri : config()['rurl'] + '/instructionClassify/v1/maps',
+            uri : config()['rurl'] + '/instructionClassify/v1/findStatus',
         };
         return request(options);
     };
@@ -387,7 +379,7 @@ module.exports = function(){
         var options = {
             method : 'GET',
             timeout : 3000,
-            uri : config()['rurl'] + '/reflect/v1/maps',
+            uri : config()['rurl'] + '/reflect/v1/findStatus',
         };
         return request(options);
     };
@@ -395,7 +387,7 @@ module.exports = function(){
         var options = {
             method : 'GET',
             timeout : 3000,
-            uri : config()['rurl'] + '/operate/v1/maps',
+            uri : config()['rurl'] + '/operate/v1/findStatus',
         };
         return request(options);
     };
@@ -413,6 +405,72 @@ module.exports = function(){
             timeout : 3000,
             uri : config()['rurl'] + '/positionInstruction/v1/save',
             form:argvs
+        };
+        return request(options);
+    };
+    this.motypeList = function(argvs){
+        var options = {
+            method : 'GET',
+            timeout : 3000,
+            uri : config()['rurl'] + `/moduletype/v1/maps?limit=10&page=${argvs.page}`,
+        };
+        return request(options);
+    };
+    this.motypeCount = function(){
+        var options = {
+            method : 'GET',
+            timeout : 3000,
+            uri : config()['rurl'] + '/moduletype/v1/getTotal',
+        };
+        return request(options);
+    };
+    this.motypeAdd = function(argvs){
+        var options = {
+            method : 'POST',
+            timeout : 3000,
+            uri : config()['rurl'] + '/moduletype/v1/save',
+            form:argvs
+        };
+        return request(options);
+    };
+    this.motypeGet = function(argvs){
+        var options = {
+            method : 'GET',
+            timeout : 3000,
+            uri : config()['rurl'] + `/moduletype/v1/findById/${argvs.id}`,
+        };
+        return request(options);
+    };
+    this.motypeEdit = function(argvs){
+        var options = {
+            method : 'PUT',
+            timeout : 3000,
+            uri : config()['rurl'] + `/moduletype/v1/update/${argvs.id}`,
+            form:argvs
+        };
+        return request(options);
+    };
+    this.motypeDelete = function(argvs){
+        var options = {
+            method : 'DELETE',
+            timeout : 3000,
+            uri : config()['rurl'] + `/moduletype/v1/delete/${argvs.id}`,
+        };
+        return request(options);
+    };
+    this.motypeCongeal = function(argvs){
+        var options = {
+            method : 'PATCH',
+            timeout : 3000,
+            uri : config()['rurl'] + `/moduletype/v1/congeal/${argvs.id}`,
+        };
+        return request(options);
+    };
+    this.motypeThaw = function(argvs){
+        var options = {
+            method : 'PATCH',
+            timeout : 3000,
+            uri : config()['rurl'] + `/moduletype/v1/thaw/${argvs.id}`,
         };
         return request(options);
     };

@@ -4,17 +4,17 @@
             <ul>
                 <li class="required">
                     <label><i><img src="/images/mandatory.png"></i><em>模块</em></label>
-                    <input type="text"   ng-verify="{}" ng-model="addCustomerName">
+                    <input type="text"   ng-verify="{}" ng-model="motypeData.module">
                 </li>
                 <li >
                     <label><em>描述</em></label>
-                    <input type="text"ng-model="addCustomerName">
+                    <input type="text"ng-model="motypeData.description">
                 </li>
             </ul>
         </section>
     </div>
     <p class="dataBottom">
         <span class="imPrompt"><i><img src="/images/prompt.png"></i>带有<i><img src="/images/mandatory.png"></i>的为必填项</span>
-        <button ng-verify="{control:'myform'}" ng-click="basicinfoAddFun()">提交</button>
+        <button ng-verify="{control:'myform'}" ng-click="motypeEditFun()">提交</button>
     </p>
 </div>

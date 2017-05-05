@@ -20,7 +20,7 @@ app.config(function($provide, $stateProvider){
             }
         }
     }).state("root.organize.management.motype.edit[12]", {
-        url : "/edit[12]",
+        url : "/edit[12]?id=",
         views : {
             "content@root.organize.management.motype" : {
                 templateUrl : "root/organize/management/motype/edit/_res/html/index.html",

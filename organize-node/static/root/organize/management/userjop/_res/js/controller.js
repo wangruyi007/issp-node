@@ -1,4 +1,8 @@
-var app = angular.module('userjop', []);
+var app = angular.module('userjop', [{
+    files:[
+        "root/organize/management/userjop/_res/js/service.js"
+    ]
+}]);
 app.controller('userjopCtrl',function($scope,$state){
 
     if ($state.current.url == '/moduletype') {//默认加载列表

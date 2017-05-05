@@ -119,9 +119,9 @@ module.exports = function(){
                     $self.status = 408;
                 }
             }));//竞争对手信息结束
-    }).get('/compete/listAbilityEmail/listEmail', function*(){
-       var $self = this;
-       var page = this.request.query;
+    }).get('/compete/listAbilityEmail/listEmail', function*(){//汇总和邮件发送
+        var $self = this;
+        var page = this.request.query;
         yield (server().collectemaillist(page)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
