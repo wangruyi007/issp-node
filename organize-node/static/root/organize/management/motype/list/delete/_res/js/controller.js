@@ -5,7 +5,7 @@ app.controller('motypeDeleteCtrl',function($scope,toastr,$stateParams,$state,mot
 
         var data = {
             id :$stateParams.id
-        }
+        };
 
         motypeSer.deleteMotype(data).then(function(response){
             if(response.data.code==0){

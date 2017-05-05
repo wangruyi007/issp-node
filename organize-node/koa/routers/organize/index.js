@@ -654,6 +654,7 @@ module.exports = function(){
                 $self.body=error.error;
                 console.error(error.error);
             }));
+
     }).get('/operate/maps', function*(){ //操作类型列表
         var $self = this;
         var page = $self.request.query;
@@ -666,6 +667,20 @@ module.exports = function(){
                 $self.body=error.error;
                 console.error(error.error);
             }));
+    }).get('/userjop/maps', function*(){ //获取用户职位列表
+        var $self = this;
+        var page = this.request.query;
+        yield (server().userjopMaps(page)
+
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
+
     }).get('/operate/getTotal', function*(){ //获取操作类型总条数
         var $self = this;
         yield (server().operateCount()
@@ -677,6 +692,19 @@ module.exports = function(){
                 $self.body=error.error;
                 console.error(error.error);
             }));
+    }).get('/userjop/getTotal', function*(){ //获取用户职位列表
+        var $self = this;
+        yield (server().userjopCount()
+
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
+
     }).post('/operate/save', function*(){ //操作类型添加
         var $self = this;
         var addData = $self.request.body;
@@ -689,6 +717,20 @@ module.exports = function(){
                 $self.body=error.error;
                 console.error(error.error);
             }));
+    }).get('/joprange/maps', function*(){ //获取项目工作部门范围
+        var $self = this;
+        var page = this.request.query;
+        yield (server().joprangeMaps(page)
+
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
+
     }).get('/operate/findById', function*(){ //根据ID获取操作类型数据
         var $self = this;
         var findId = $self.request.query;
@@ -701,6 +743,19 @@ module.exports = function(){
                 $self.body=error.error;
                 console.error(error.error);
             }));
+    }).get('/joprange/getTotal', function*(){ //获取项目工作部门范围总条数
+        var $self = this;
+        yield (server().joprangeCounts()
+
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
+
     }).post('/operate/update', function*(){ //操作类型编辑
         var $self = this;
         var editData=$self.request.body;
@@ -713,6 +768,20 @@ module.exports = function(){
                 $self.body=error.error;
                 console.error(error.error);
             }));
+    }).post('/joprange/add', function*(){ //添加项目工作部门范围
+        var $self = this;
+        var addData = this.request.body;
+        yield (server().joprangeAdd(addData)
+
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
+
     }).get('/operate/delete', function*(){ //操作类型删除
         var $self = this;
         var delId=$self.request.query;
@@ -725,6 +794,20 @@ module.exports = function(){
                 $self.body=error.error;
                 console.error(error.error);
             }));
+    }).get('/joprange/delete', function*(){ //删除项目工作部门范围
+        var $self = this;
+        var delId = this.request.query;
+        yield (server().joprangeDelete(delId)
+
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
+
     }).get('/operate/close', function*(){ //操作类型冻结
         var $self = this;
         var congealId=$self.request.query;
@@ -1026,6 +1109,19 @@ module.exports = function(){
         var $self = this;
         var thawId=$self.request.query;
         yield (server().classifyThaw(thawId)
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
+    }).get('/joprange/congeal', function*(){ //东街项目工作部门范围
+        var $self = this;
+        var conId = this.request.query;
+        yield (server().joprangeCongeal(conId)
+
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
                 $self.body = responseText;

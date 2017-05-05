@@ -8,7 +8,12 @@
                 </li>
                 <li >
                     <label><em>职位</em></label>
-                    <input type="text"ng-model="addCustomerName">
+                    <div class="select">
+                        <p class="select-text" >
+                            <span ng-repeat="func in funcs">{{func}}, </span>
+                        </p>
+                        <div class="mymultiselect"  ng-dropdown-multiselect="" options="workOptions" selected-model="funcs" extra-settings="stringSettings"></div>
+                    </div>
                 </li>
             </ul>
         </section>

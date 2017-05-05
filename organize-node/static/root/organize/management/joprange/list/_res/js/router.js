@@ -9,7 +9,7 @@ app.config(function($provide, $stateProvider){
             }
         }
     }).state("root.organize.management.joprange.list.delete[12]",{
-        url:"/delete[12]",
+        url:"/delete[12]?id=",
         views:{
             "modal@root.organize.management.joprange.list":{
                 templateUrl : "root/organize/management/joprange/list/delete/_res/html/index.html",
@@ -17,7 +17,7 @@ app.config(function($provide, $stateProvider){
             }
         }
     }).state("root.organize.management.joprange.list.congeal[12]",{
-        url:"/congeal[12]",
+        url:"/congeal[12]?id=",
         views:{
             "modal@root.organize.management.joprange.list":{
                 templateUrl : "root/organize/management/joprange/list/congeal/_res/html/index.html",

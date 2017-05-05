@@ -4,25 +4,23 @@
             <ul>
                 <li class="required">
                     <label><i><img src="/images/mandatory.png"></i><em>方向</em></label>
-                    <select class="sele" ng-model="addCustomerType" ng-init="addCustomerType='VIP'">
-                        <option value="VIP">VIP</option>
-                        <option value="OLD">老客户</option>
-                        <option value="COOPERATOR">合作伙伴</option>
-                        <option value="ORDINARY">普通客户</option>
+                    <select class="sele" ng-model="direction">
+                        <option value="上">上</option>
+                        <option value="下">下</option>
+                        <option value="左">左</option>
+                        <option value="右">右</option>
                     </select>
                 </li>
                 <li class="required">
                     <label><i><img src="/images/mandatory.png"></i><em>科目</em></label>
-                    <select class="sele" ng-model="addCustomerType" ng-init="addCustomerType='VIP'">
-                        <option value="VIP">VIP</option>
-                        <option value="OLD">老客户</option>
-                        <option value="COOPERATOR">合作伙伴</option>
-                        <option value="ORDINARY">普通客户</option>
+                    <select class="sele" ng-model="project">
+                        <option value="文科">文科</option>
+                        <option value="理科">理科</option>
                     </select>
                 </li>
                 <li class="required">
                     <label><i><img src="/images/mandatory.png"></i><em>专业分类</em></label>
-                    <select class="sele" ng-model="addCustomerType" ng-init="addCustomerType='VIP'">
+                    <select class="sele" ng-model="classify" >
                         <option value="VIP">VIP</option>
                         <option value="OLD">老客户</option>
                         <option value="COOPERATOR">合作伙伴</option>
@@ -31,17 +29,17 @@
                 </li>
                 <li class="required">
                     <label><i><img src="/images/mandatory.png"></i><em>工作范围</em></label>
-                    <input type="text"ng-model="addCustomerName">
+                    <input type="text"ng-model="workRange">
                 </li>
-                <li >
-                    <label><em>工作界面</em></label>
-                    <input type="text"ng-model="addCustomerName">
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>工作界面</em></label>
+                    <input type="text"ng-model="node">
                 </li>
             </ul>
         </section>
     </div>
     <p class="dataBottom">
         <span class="imPrompt"><i><img src="/images/prompt.png"></i>带有<i><img src="/images/mandatory.png"></i>的为必填项</span>
-        <button ng-verify="{control:'myform'}" ng-click="basicinfoAddFun()">提交</button>
+        <button ng-verify="{control:'myform'}" ng-click="joprangeAddFun()">提交</button>
     </p>
 </div>

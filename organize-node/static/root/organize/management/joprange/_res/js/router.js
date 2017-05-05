@@ -20,7 +20,7 @@ app.config(function($provide, $stateProvider){
             }
         }
     }).state("root.organize.management.joprange.edit[12]", {
-        url : "/edit[12]",
+        url : "/edit[12]?id=",
         views : {
             "content@root.organize.management.joprange" : {
                 templateUrl : "root/organize/management/joprange/edit/_res/html/index.html",

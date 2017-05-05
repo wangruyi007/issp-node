@@ -770,5 +770,62 @@ module.exports = function(){
         };
         return request(options);
     };
+    this.userjopMaps = function(argvs){
+        var options = {
+            method : 'GET',
+            timeout : 3000,
+            uri : config()['rurl'] + `/positiondetailuser/v1/maps?limit=10&page=${argvs.page}`,
+        };
+        return request(options);
+    };
+    this.userjopCount = function(){
+        var options = {
+            method : 'GET',
+            timeout : 3000,
+            uri : config()['rurl'] + '/positiondetailuser/v1/getTotal',
+        };
+        return request(options);
+    };
+    this.joprangeMaps = function(argvs){
+        var options = {
+            method : 'GET',
+            timeout : 3000,
+            uri : config()['rurl'] + `/workRange/v1/maps?limit=10&page=${argvs.page}`,
+        };
+        return request(options);
+    };
+    this.joprangeCounts = function(){
+        var options = {
+            method : 'GET',
+            timeout : 3000,
+            uri : config()['rurl'] + '/workRange/v1/getTotal',
+        };
+        return request(options);
+    };
+    this.joprangeAdd = function(argvs){
+        var options = {
+            method : 'POST',
+            timeout : 3000,
+            uri : config()['rurl'] + '/workRange/v1/save',
+            form:argvs
+        };
+        return request(options);
+    };
+    this.joprangeDelete = function(argvs){
+        var options = {
+            method : 'DELETE',
+            timeout : 3000,
+            uri : config()['rurl'] + `/workRange/v1/delete/${argvs.id}`,
+        };
+        return request(options);
+    };
+    this.joprangeCongeal = function(argvs){
+        var options = {
+            method : 'DELETE',
+            timeout : 3000,
+            uri : config()['rurl'] + `/workRange/v1/delete/${argvs.id}`,
+        };
+        return request(options);
+    };
     return this;
 };
