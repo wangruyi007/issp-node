@@ -27,5 +27,13 @@ app.config(function($provide, $stateProvider){
                 controller:'openingEditCtrl'
             }
         }
+    }).state("root.biddingManagement.openingInfo.summary[12]",{
+        url:"/summary[12]",
+        views:{
+            "content@root.biddingManagement.openingInfo":{
+                templateUrl : "root/biddingManagement/openingInfo/summary/_res/html/index.html",
+                controller:'summaryCtrl'
+            }
+        }
     })
 });

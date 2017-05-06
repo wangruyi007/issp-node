@@ -229,10 +229,21 @@ module.exports = function(){
                 $self.body=error.error;
                 console.error(error.error);
             }));
-    }).get('/collect/summary', function*(){ //汇总项目执行中的问题受理及处理结果
+    }).get('/problemhandlingresult/collect', function*(){ //汇总项目执行中的问题受理及处理结果
         var $self = this;
-        var page = $self.request.query;
-        yield (server().summaryList(page)
+        var summaryData = $self.request.query.areas;
+        yield (server().collectList(summaryData)
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
+    }).get('/problemhandlingresult/area', function*(){//获取所有地区
+        var $self = this;
+        yield (server().getAllArea()
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
                 $self.body = responseText;

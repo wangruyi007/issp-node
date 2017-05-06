@@ -6,7 +6,9 @@ app.factory('openingSer',function ($http) {
         editBidOpening:editBidOpening,
         findBidOpeningId:findBidOpeningId,
         countBidOpening:countBidOpening,
-        deleteBidOpening:deleteBidOpening
+        deleteBidOpening:deleteBidOpening,
+        summaryOpen:summaryOpen,
+        getCity:getCity
     };
     function bidOpeningList(data) {
         return $http.get('/bidopeninginfo/list',{
@@ -37,5 +39,13 @@ app.factory('openingSer',function ($http) {
         return $http.get('/bidopeninginfo/delete',{
             params: data
         })
+    }
+    //汇总
+    function summaryOpen(data) {
+        return $http.get('/bidopeninginfo/collect?cities='+data)
+    }
+    //获取所有地区
+    function getCity(){
+        return $http.get('/bidopeninginfo/cities')
     }
 });

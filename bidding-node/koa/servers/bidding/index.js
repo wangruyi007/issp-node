@@ -135,6 +135,25 @@ module.exports = function(){
         };
         return request(options);
     };
+    //汇总
+    this.collectList = function(argvs){
+        var options = {
+            method : 'GET',
+            timeout : 3000,
+            uri : config()['rurl'] + `/biddinginfo/v1/collect?cities=${encodeURIComponent(argvs)}`,
+            form:argvs
+        };
+        return request(options);
+    };
+    //获取所有地市
+    this.getAllArea = function(){
+        var options = {
+            method : 'GET',
+            timeout : 3000,
+            uri : config()['rurl'] + '/biddinginfo/v1/cities'
+        };
+        return request(options);
+    };
     //投标答疑问题列表
     this.questionsList = function(argvs){
         var options = {
@@ -324,6 +343,25 @@ module.exports = function(){
             method : 'GET',
             timeout : 3000,
             uri : config()['rurl'] + `/bidopeninginfo/v1/info/${argvs.id}`
+        };
+        return request(options);
+    };
+    //汇总
+    this.collectInfo = function(argvs){
+        var options = {
+            method : 'GET',
+            timeout : 3000,
+            uri : config()['rurl'] + '/bidopeninginfo/v1/collect?cities='+encodeURIComponent(argvs.cities)
+
+        };
+        return request(options);
+    };
+    //获取所有地市
+    this.getAllCities = function(){
+        var options = {
+            method : 'GET',
+            timeout : 3000,
+            uri : config()['rurl'] + '/biddinginfo/v1/cities'
         };
         return request(options);
     };

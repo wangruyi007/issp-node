@@ -25,14 +25,17 @@ app.controller('confirmCtrl',function ($scope,$state) {
         if($scope.idListd){
             $state.go('root.projectProcessed.confirmProblem.list.delete[12]',{id:$scope.idListd});
         }
-    }
+    };
 
     $scope.edit = function(){
         if($scope.idListd){
             $state.go('root.projectProcessed.confirmProblem.edit[12]',{id:$scope.idListd});
             $scope.menuClass = 'editMenu'
         }
-    }
+    };
+    $scope.summary = function(){
+        $scope.menuClass = 'summaryMenu'
+    };
     $scope.list = function(){
         $scope.menuClass = 'listMenu'
     };
