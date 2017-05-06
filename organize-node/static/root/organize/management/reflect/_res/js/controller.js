@@ -34,15 +34,14 @@ app.controller('reflectCtrl',function($scope){
             $scope.menuClass='editMenu';
         }
     };
-<<<<<<< Updated upstream
+
     $scope.congeal = function(){
         if($scope.getId){
             $state.go('root.organize.management.reflect.list.congeal[12]',{id:$scope.getId});
             $scope.menuClass='congealMenu';
         }
     };
-=======
->>>>>>> Stashed changes
+
 });
 
 //自定义过滤器

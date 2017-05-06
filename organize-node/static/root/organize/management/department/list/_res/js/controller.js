@@ -56,9 +56,8 @@ app.controller('departmentListCtrl',function($scope,toastr,departSer){
     $scope.thaw = function(event){
         var data = {
             id :event.id
-        }
+        };
         departSer.thawDepartment(data).then(function(response){
-            console.info(response);
             if(response.data.code==0){
                 event.status = "THAW";
                 toastr.success( event.serialNumber+"解冻成功", '温馨提示');

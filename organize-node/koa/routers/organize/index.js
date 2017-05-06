@@ -872,7 +872,7 @@ module.exports = function(){
     }).get('/countJopDetail/getTotal', function*(){ //岗位工作明细
         var $self = this;
         var getId = this.request.query;
-        yield (server(). (getId)
+        yield (server().getJopDetailCountId(getId)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
                 $self.body = responseText;
