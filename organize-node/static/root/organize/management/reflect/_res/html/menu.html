@@ -8,10 +8,16 @@
     <li  ng-click="edit()" ng-class="{'current':menuClass=='editMenu'}" >
         <a href="javascript:void(0)"  class="same-one" >编辑<span>Edit</span></a>
     </li>
-    <li >
-        <a href="javascript:void(0)" class="same-three" >关闭使用<span>Close</span></a>
+    <li  ng-click="delete()" ng-class="{'current':menuClass=='deleteMenu'}" >
+        <a href="javascript:void(0)"  class="same-two" >删除<span>Delete</span></a>
+<<<<<<< Updated upstream
+=======
     </li>
     <li >
-        <a href="javascript:void(0)" class="same-three" >开始使用<span>Restart</span></a>
+        <a href="javascript:void(0)" class="same-three" >关闭使用<span>Close</span></a>
+>>>>>>> Stashed changes
+    </li>
+    <li ng-click="congeal()" ng-class="{'current':menuClass=='congealMenu'}">
+        <a href="javascript:void(0)" class="same-three" >冻结<span>Congeal</span></a>
     </li>
 </ul>

@@ -1,38 +1,38 @@
-var app = angular.module('settlement', []);
+var app = angular.module('information', []);
 app.config(function($provide, $stateProvider){
-    $stateProvider.state("root.project.settlement", {
-        url : "/settlement",
+    $stateProvider.state("root.marketinform.information", {
+        url : "/information",
         views : {
-            "content@root.project" : {
-                templateUrl : "root/project/settlement/_res/html/index.html",
-                controller:"settlementCtrl"
-            },"menu@root.project" : {
-                templateUrl : "root/project/settlement/_res/html/menu.html",
-                controller:"settlementMenuCtrl"
+            "content@root.marketinform" : {
+                templateUrl : "root/marketinform/information/_res/html/index.html",
+                controller:"informationCtrl"
+            },"menu@root.marketinform" : {
+                templateUrl : "root/marketinform/information/_res/html/menu.html",
+                controller:"informationMenuCtrl"
             }
         }
-    }).state("root.project.settlement.add[12]",{
+    }).state("root.marketinform.information.add[12]",{
         url:"/add[12]",
         views:{
-            "content@root.project.settlement":{
-                templateUrl : "root/project/settlement/add/_res/html/index.html",
-                controller:'settlementAddCtrl'
+            "content@root.marketinform.information":{
+                templateUrl : "root/marketinform/information/add/_res/html/index.html",
+                controller:'informationAddCtrl'
             }
         }
-    }).state("root.project.settlement.edit[12]",{
+    }).state("root.marketinform.information.edit[12]",{
         url:"/edit[12]?id=",
         views:{
-            "content@root.project.settlement":{
-                templateUrl : "root/project/settlement/edit/_res/html/index.html",
-                controller:'settlementEditCtrl'
+            "content@root.marketinform.information":{
+                templateUrl : "root/marketinform/information/edit/_res/html/index.html",
+                controller:'informationEditCtrl'
             }
         }
-    }).state("root.project.settlement.summary[12]",{
+    }).state("root.marketinform.information.summary[12]",{
         url:"/summary[12]",
         views:{
-            "content@root.project.settlement":{
-                templateUrl : "root/project/settlement/summary/_res/html/index.html",
-                controller:'settlementSummaryCtrl'
+            "content@root.marketinform.information":{
+                templateUrl : "root/marketinform/information/summary/_res/html/index.html",
+                controller:'informationSummaryCtrl'
             }
         }
     })

@@ -655,6 +655,418 @@ module.exports = function(){
                 console.error(error.error);
             }));
 
+    }).get('/listReflect/maps', function*(){ //体现类别列表
+        var $self = this;
+        var page = $self.request.query;
+        yield (server().reflectList(page)
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
+    }).get('/countReflect/getTotal', function*(){ //体现类别
+        var $self = this;
+        var getId = this.request.query;
+        yield (server().getReflectCountId(getId)
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
+    }).get('/congealReflect/congeal', function*(){ //体系冻结
+        var $self = this;
+        var congealId = $self.request.query;
+        yield (server().reflectCongeal(congealId)
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
+    }).get('/thawReflect/thaw', function*(){ //体系解冻
+        var $self = this;
+        var thawId = $self.request.query;
+        yield (server().reflectThaw(thawId)
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
+    })
+        .post('/addReflect/save', function*(){   //体现类别添加
+            var $self = this;
+            var addData = this.request.body;
+            yield (server().reflectAdd(addData)
+                .then((parsedBody) =>{
+                    var responseText = JSON.parse(parsedBody);
+                    $self.body = responseText;
+                }).catch((error) =>{
+                    $self.set('Content-Type','application/json;charset=utf-8');
+                    $self.body=error.error;
+                    console.error(error.error);
+                }));
+        }).get('/deleteReflect/delete', function*(){ //删除体现类别
+        var $self = this;
+        var delId=this.request.query;
+        yield (server().reflectDelete(delId)
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
+    }).get('/getReflect/findById', function*(){ //体现类别编辑
+        var $self = this;
+        var findById=this.request.query;
+        yield (server().reflectGetById(findById)
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
+    }).post('/editReflect/edit', function*(){ //体现类别编辑
+        var $self = this;
+        var editData=this.request.body;
+        yield (server().reflectEdit(editData)
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
+    }).get('/listJopDes/maps', function*(){ //岗位说明列表
+        var $self = this;
+        var page = $self.request.query;
+        yield (server().jopDesList(page)
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
+    }).get('/countJopDes/getTotal', function*(){ //岗位说明
+        var $self = this;
+        var getId = this.request.query;
+        yield (server().getJopDesCountId(getId)
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
+    }).get('/getDepartmentId/id', function*(){ //岗位说明id
+        var $self = this;
+        /*var getId = this.request.query;*/
+        yield (server().departmentGetById()
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
+    }).post('/addJopDes/save', function*(){   //岗位说明添加
+        var $self = this;
+        var addData = this.request.body;
+        yield (server().jopDesAdd(addData)
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
+    }).get('/getPositionId/id', function*(){ //id
+        var $self = this;
+        yield (server().positionGetById()
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
+    }).get('/getArrangementId/id', function*(){ //id
+        var $self = this;
+        yield (server().arrangementGetById()
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
+    }).get('/getHierarchyId/id', function*(){ //id
+        var $self = this;
+        yield (server().hierarchyGetById()
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
+    }).get('/getJopDesById/findById', function*(){ //编辑
+        var $self = this;
+        var findById=this.request.query;
+        yield (server().jopDesGetById(findById)
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
+    }).post('/editJopDes/edit', function*(){ //编辑
+        var $self = this;
+        var editData=this.request.body;
+        yield (server().jopDesEdit(editData)
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
+    }).get('/listJopDetail/maps', function*(){ //岗位工作明细列表
+        var $self = this;
+        var page = $self.request.query;
+        yield (server().jopDetailList(page)
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
+    }).get('/countJopDetail/getTotal', function*(){ //岗位工作明细
+        var $self = this;
+        var getId = this.request.query;
+        yield (server(). (getId)
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
+    }).get('/listReflect/maps', function*(){ //体现类别列表
+        var $self = this;
+        var page = $self.request.query;
+        yield (server().reflectList(page)
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
+    }).get('/countReflect/getTotal', function*(){ //体现类别
+        var $self = this;
+        var getId = this.request.query;
+        yield (server().getReflectCountId(getId)
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
+    }).post('/addReflect/save', function*(){   //体现类别添加
+        var $self = this;
+        var addData = this.request.body;
+        yield (server().reflectAdd(addData)
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
+    }).get('/deleteReflect/delete', function*(){ //删除体现类别
+        var $self = this;
+        var delId=this.request.query;
+        yield (server().reflectDelete(delId)
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
+    }).get('/getReflect/findById', function*(){ //体现类别编辑
+        var $self = this;
+        var findById=this.request.query;
+        yield (server().reflectGetById(findById)
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
+    }).post('/editReflect/edit', function*(){ //体现类别编辑
+        var $self = this;
+        var editData=this.request.body;
+        yield (server().reflectEdit(editData)
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
+    }).get('/listJopDes/maps', function*(){ //岗位说明列表
+        var $self = this;
+        var page = $self.request.query;
+        yield (server().jopDesList(page)
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
+    }).get('/countJopDes/getTotal', function*(){ //岗位说明
+        var $self = this;
+        var getId = this.request.query;
+        yield (server().getJopDesCountId(getId)
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
+    }).get('/getDepartmentId/id', function*(){ //岗位说明id
+        var $self = this;
+        /*var getId = this.request.query;*/
+        yield (server().departmentGetById()
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
+    }).post('/addJopDes/save', function*(){   //岗位说明添加
+        var $self = this;
+        var addData = this.request.body;
+        yield (server().jopDesAdd(addData)
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
+    }).get('/getPositionId/id', function*(){ //id
+        var $self = this;
+        yield (server().positionGetById()
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
+    }).get('/getArrangementId/id', function*(){ //id
+        var $self = this;
+        yield (server().arrangementGetById()
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
+    }).get('/getHierarchyId/id', function*(){ //id
+        var $self = this;
+        yield (server().hierarchyGetById()
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
+    }).get('/getAngleId/id', function*(){ //id
+        var $self = this;
+        yield (server().angleGetById()
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
+    }).get('/getDimensionId/id', function*(){ //id
+        var $self = this;
+        yield (server().dimensionById()
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
+    }).get('/getInstructionClassifyId/id', function*(){ //id
+        var $self = this;
+        yield (server().dimensionById()
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
     }).get('/operate/maps', function*(){ //操作类型列表
         var $self = this;
         var page = $self.request.query;

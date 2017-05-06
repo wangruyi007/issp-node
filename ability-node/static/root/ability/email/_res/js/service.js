@@ -64,6 +64,12 @@ app.factory('emailSer',function ($http) {
     function getCompanyNames() {
         return $http.get('/ability/getCompanyNames')
     }
+/*    function ectSummaryCompany(data) {
+        return $http.get('/ability/ectSummaryCompany',{
+            params:data
+        })
+    }*/
+
     //汇总个人
     function ectSummaryPerson(data) {
         return $http.post('/ability/ectSummaryPerson',data)

@@ -1,12 +1,13 @@
-var app = angular.module('jopdes', []);
+var app = angular.module('jopdes',[{
+    files:[
+        "root/organize/management/jopdes/_res/js/service.js"
+    ]
+}]);
 app.controller('jopdesCtrl',function($scope,$state){
 
     if ($state.current.url == '/jopdes') {//默认加载列表
         $state.go('root.organize.management.jopdes.list')
     };
-
-
-
 }).controller('jopdesMenuCtrl',function($scope,$state,$rootScope,$location){
     var urlName = $state.current.url.split('/')[1].split('[')[0];
     $scope.menuClass=urlName+"Menu";
