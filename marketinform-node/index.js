@@ -60,7 +60,7 @@ router.get(/^\/module\/_config(?:\/.|$)/, function *(next) {
 
 //============路由===========
 app.use(require(path.join(__dirname,routersPath,'/common/index.js'))().routes());//登录路由
-app.use(require(path.join(__dirname,routersPath,'/project/index.js'))().routes());//商业能力展示
+app.use(require(path.join(__dirname,routersPath,'/marketinform/index.js'))().routes());//市场信息管理
 app.use(router.routes());
 
 

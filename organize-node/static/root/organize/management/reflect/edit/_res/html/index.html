@@ -1,20 +1,34 @@
-<div class="content-input add" verify-scope="tipStyle: 1">
+<div class="content-input edit" verify-scope="tipStyle: 1">
     <div class="input-list">
         <section>
             <ul>
-                <li class="required">
-                    <label><i><img src="/images/mandatory.png"></i><em>名称</em></label>
-                    <input type="text"ng-model="addCustomerName">
+                <li>
+                    <label><em>名称</em></label>
+                    <input type="text"ng-model="reflectData.name">
                 </li>
-                <li >
+                <li>
                     <label><em>描述</em></label>
-                    <input type="text"ng-model="addCustomerName">
+                    <input type="text"ng-model="reflectData.description">
+                </li>
+                <li>
+                    <label><em>创建时间</em></label>
+                    <input type="text"ng-model="reflectData.createTime">
+                </li>
+                <li>
+                    <label><em>状态</em></label>
+                    <select class="sele" ng-model="reflectData.status" ng-init="reflectData.status='THAW'">
+                        <option value="THAW">解冻</option>
+                        <option value="CONGEAL">冻结</option>
+                        <option value="DELETE">删除</option>
+                        <option value="NOACTIVE">未激活</option>
+                        <option value="UNREVIEW">未审核 </option>
+                    </select>
                 </li>
             </ul>
         </section>
     </div>
     <p class="dataBottom">
         <span class="imPrompt"><i><img src="/images/prompt.png"></i>带有<i><img src="/images/mandatory.png"></i>的为必填项</span>
-        <button ng-verify="{control:'myform'}" ng-click="basicinfoAddFun()">提交</button>
+        <button ng-verify="{control:'myform'}" ng-click="reflectEditFun()">提交</button>
     </p>
 </div>

@@ -20,7 +20,7 @@ app.config(function($provide, $stateProvider){
             }
         }
     }).state("root.organize.management.reflect.edit[12]", {
-        url : "/edit[12]",
+        url : "/edit[12]?id=",
         views : {
             "content@root.organize.management.reflect" : {
                 templateUrl : "root/organize/management/reflect/edit/_res/html/index.html",

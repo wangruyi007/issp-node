@@ -3,27 +3,27 @@
         <li class="list-head">
             <span></span>
             <span class="data-id">id</span>
+            <span>审核人</span>
+            <span>审核意见</span>
+            <span>市场信息编号</span>
+            <span>信息收集日期</span>
+            <span>行业</span>
+            <span>技术类别</span>
             <span>地区</span>
-            <span>业务类型</span>
-            <span>业务方向科目</span>
-            <span>运营商名称</span>
-            <span>厂家名称</span>
-            <span>外包单位</span>
-            <span>合同外部项目名称</span>
             <span></span>
         </li>
         <li class="list-all">
-            <section ng-repeat="list in settlementLists.data" style="display: {{list._delete?'none':'block'}};">
+            <section ng-repeat="list in informationLists.data" style="display: {{list._delete?'none':'block'}};">
                 <div  class="list-text {{list._selectList?'selectList':''}}" ng-click="selectList(list)">
                     <p>{{$index+1}}</p>
                     <p class="data-id"></p>
+                    <p>{{list.auditor}}</p>
+                    <p>{{list.auditOpinion}}</p>
+                    <p>{{list.marketInfoId}}</p>
+                    <p>{{list.infoCollectionDate}}</p>
+                    <p>{{list.workProfession}}</p>
+                    <p>{{list.technologyCategory}}</p>
                     <p>{{list.area}}</p>
-                    <p>{{list.businessType}}</p>
-                    <p>{{list.businessSubject}}</p>
-                    <p>{{list.operatorName}}</p>
-                    <p>{{list.manufacturerName}}</p>
-                    <p>{{list.outsourcingUnit}}</p>
-                    <p>{{list.outerName}}</p>
                     <p>
                         <a href="javascript:void(0)" class="more"  ng-click="moreList(list)">更多详细</a>
                     </p>
@@ -32,123 +32,57 @@
                     <ul class="can-see" style="display: {{list._moreList?'block':'none'}};">
                         <li>
                             <p class="see-parent">
-                                <span>内部项目名称</span>
-                                <span>合同编号</span>
-                                <span>派工单编号</span>
-                                <span>销售合同号</span>
-                                <span>合同金额</span>
-                                <span>派工情况</span>
-                                <span>派工金额</span>
-                                <span>单价</span>
+                                <span>项目名称</span>
+                                <span>规模</span>
+                                <span>发起时间</span>
+                                <span>重要时间点</span>
+                                <span>结束时间</span>
+                                <span>信息来源</span>
+                                <span>市场信息收集人</span>
+                                <span>是否为有效信息</span>
                             </p>
                             <p class="see-children">
-                                <span>{{list.innerName}}</span>
-                                <span>{{list.contractNum}}</span>
-                                <span>{{list.dispatchNum}}</span>
-                                <span>{{list.saleNum}}</span>
-                                <span>{{list.contractMoney}}</span>
-                                <span>{{list.dispatchCondition}}</span>
-                                <span>{{list.dispatchMoney}}</span>
-                                <span>{{list.price}}</span>
+                                <span>{{list.projectName}}</span>
+                                <span>{{list.scale}}</span>
+                                <span>{{list.startTime}}</span>
+                                <span>{{list.importantPoint}}</span>
+                                <span>{{list.endTime}}</span>
+                                <span>{{list.infoSource}}</span>
+                                <span>{{list.marketInfoCollecting}}</span>
+                                <span>{{list.effective}}</span>
                             </p>
                         </li>
                         <li>
                             <p class="see-parent">
-                                <span>BBU规模</span>
-                                <span>RRU规模</span>
-                                <span>已开通站点数</span>
-                                <span>已开通BBU数</span>
-                                <span>已开通RRU数</span>
-                                <span>未开通站点数</span>
-                                <span>未开通BBU数</span>
-                                <span>未开通RRU数</span>
+                                <span>项目性质</span>
+                                <span>市场分析人员</span>
+                                <span>配置要求</span>
+                                <span>技术要求</span>
+                                <span>资质要求</span>
+                                <span>客户信息编号</span>
+                                <span>客户姓名</span>
+                                <span>组织机构名称</span>
                            </p>
                             <p class="see-children">
-                                <span>{{list.bbuSize}}</span>
-                                <span>{{list.rruSize}}</span>
-                                <span>{{list.openStationPointNum}}</span>
-                                <span>{{list.openBbuPointNum}}</span>
-                                <span>{{list.openRruPointNum}}</span>
-                                <span>{{list.noOpenStationPointNum}}</span>
-                                <span>{{list.noOpenBbuPointNum}}</span>
-                                <span>{{list.noOpenRruPointNum}}</span>
+                                <span>{{list.projectNature}}</span>
+                                <span>{{list.marketAnalysts}}</span>
+                                <span>{{list.configurationRequirement}}</span>
+                                <span>{{list.technicalRequirement}}</span>
+                                <span>{{list.qualificationRequirement}}</span>
+                                <span>{{list.customerNum}}</span>
+                                <span>{{list.customerName}}</span>
+                                <span>{{list.origanizion}}</span>
                             </p>
                         </li>
                         <li>
                             <p class="see-parent">
-                                <span>开通比例</span>
-                                <span>设备型号</span>
-                                <span>完工数</span>
-                                <span>未完工数</span>
-                                <span>是否初验</span>
-                                <span>是否终验</span>
-                                <span>是否可制作申请结算资料</span>
-                                <span>是否影响结算</span>
-                            </p>
-                            <p class="see-children">
-                                <span>{{list.openRate}}</span>
-                                <span>{{list.deviceType}}</span>
-                                <span>{{list.completeNum}}</span>
-                                <span>{{list.noCompleteNum}}</span>
-                                <span>{{list.startCheckCondition}}</span>
-                                <span>{{list.finalCheckCondition}}</span>
-                                <span>{{list.settleFileCondition}}</span>
-                                <span>{{list.settleCondition}}</span>
-                            </p>
-                        </li>
-                        <li>
-                            <p class="see-parent">
-                                <span>结算计划</span>
-                                <span>归属</span>
-                                <span>签字审批时间</span>
-                                <span>ERP结算审批时间</span>
-                                <span>发票审核时间</span>
-                                <span>预计支付时间</span>
-                                <span>管理费</span>
-                                <span>违约金</span>
-                            </p>
-                            <p class="see-children">
-                                <span>{{list.settlePlan}}</span>
-                                <span>{{list.beLongs}}</span>
-                                <span>{{list.signAuditTime}}</span>
-                                <span>{{list.eRPAuditTime}}</span>
-                                <span>{{list.billAuditTime}}</span>
-                                <span>{{list.budgetAuditTime}}</span>
-                                <span>{{list.manageFee}}</span>
-                                <span>{{list.betraFee}}</span>
-                            </p>
-                        </li>
-                        <li>
-                            <p class="see-parent">
-                                <span>违约扣款事项</span>
-                                <span>结算进度：A</span>
-                                <span>结算进度：B</span>
-                                <span>结算进度：C</span>
-                                <span>结算金额</span>
-                                <span>剩余结算数量</span>
-                                <span>剩余结算金额</span>
-                                <span>到账时间</span>
-                            </p>
-                            <p class="see-children">
-                                <span>{{list.betraFeeList}}</span>
-                                <span>{{list.settleProcingA}}</span>
-                                <span>{{list.settleProcingB}}</span>
-                                <span>{{list.settleProcingC}}</span>
-                                <span>{{list.settleMoney}}</span>
-                                <span>{{list.restSettleNum}}</span>
-                                <span>{{list.restSettleMoney}}</span>
-                                <span>{{list.receiveMoneyTime}}</span>
-                            </p>
-                        </li>
-                        <li>
-                            <p class="see-parent">
-                                <span>到账金额</span>
-                                <span>分批结算</span>
+                                <span>竞争对手名称</span>
+                                <span>客户/竞争对手信息填写人</span>
                                 <span>备注</span>
                             </p>
                             <p class="see-children">
-                                <span>{{list.receiveMoney}}</span>
-                                <span>{{list.batchSettle}}</span>
+                                <span>{{list.competitorsName}}</span>
+                                <span>{{list.fillPerson}}</span>
                                 <span>{{list.remark}}</span>
                             </p>
                         </li>

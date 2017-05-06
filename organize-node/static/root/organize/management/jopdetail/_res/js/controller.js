@@ -1,12 +1,13 @@
-var app = angular.module('jopdetail', []);
+var app = angular.module('jopdetail', [{
+    files:[
+        "root/organize/management/jopdetail/_res/js/service.js"
+    ]
+}]);
 app.controller('jopdetailCtrl',function($scope,$state){
 
     if ($state.current.url == '/jopdetail') {//默认加载列表
         $state.go('root.organize.management.jopdetail.list')
     };
-
-
-
 }).controller('jopdetailMenuCtrl',function($scope,$state,$rootScope,$location){
     var urlName = $state.current.url.split('/')[1].split('[')[0];
     $scope.menuClass=urlName+"Menu";

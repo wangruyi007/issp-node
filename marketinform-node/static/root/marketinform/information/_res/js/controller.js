@@ -48,8 +48,32 @@ app.filter('cover', function(){
     return function(val){
         var result;
         switch(val){
-            case "WOMAN":
-                result = "女";
+            case "ALEVEL":
+                result = "规模枚举";
+                break;
+            case "BLEVEL":
+                result = "B级:31-60人";
+                break;
+            case "CLEVEL":
+                result = "C级:61-90人";
+                break;
+            case "DLEVEL":
+                result = "D级:91-120人";
+                break;
+            case "ELEVEL":
+                result = "E级:121-150人";
+                break;
+            case "FLEVEL":
+                result = "F级:151-180人";
+                break;
+            case "GLEVEL":
+                result = "G级:181-210人";
+                break;
+            case "0":
+                result = "否";
+                break;
+            case "1":
+                result = "是";
                 break;
         }
         return result;

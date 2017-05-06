@@ -1,5 +1,3 @@
-
-
 <div class="content-tab list">
     <ul class="table">
         <li class="list-head">
@@ -13,18 +11,19 @@
             <span>所属人员池</span>
             <span></span>
         </li>
-        <li class="list-all"  style="display: {{list._delete?'none':'block'}};">
-            <section  class="{{list.status=='CONGEAL'?'congeal':''}}" >
+        <li class="list-all" ng-repeat="list in jopdesLists" style="display: {{list._delete?'none':'block'}};">
+            <section>
                 <div class="list-text {{list._selectList?'selectList':''}}" ng-click="selectList(list)">
                     <p>{{$index+1}}</p>
                     <p class="data-id"></p>
-                    <p class="addcusNum">{{list.customerNum}}</p>
-                    <p>{{list.customerName}}</p>
-                    <p>{{list.area}}</p>
-                    <p>{{list.customerSex}}</p>
-                    <p>{{list.customerType}}</p>
-                    <p>{{list.customerStatus}}</p>
-                    <p>{{list.relation==null?'0':list.relation}}%</p>
+                    <p class="addcusNum">{{list.serialNumber}}</p>
+                    <p>{{list.positionNumber}}</p>
+                    <p>{{list.positionName}}</p>
+                    <p>{{list.arrangement}}</p>
+                    <p>{{list.hierarchy}}</p>
+                    <p>{{list.department}}</p>
+                    <p>{{list.pool}}</p>
+                 <!--   <p>{{list.relation==null?'0':list.relation}}%</p>-->
                     <p>
                         <a href="javascript:void(0)" class="more"  ng-click="moreList(list)">更多详细</a>
                     </p>
@@ -43,14 +42,14 @@
                                 <span>工作描述</span>
                             </p>
                             <p class="see-children">
-                                <span>{{list.customerLevelVO.name}}</span>
-                                <span>{{list.origin}}</span>
-                                <span>{{list.introducer}}</span>
-                                <span>{{list.cusEmail}}</span>
-                                <span>{{list.tel}}</span>
-                                <span>{{list.phone}}</span>
-                                <span>{{list.weChart}}</span>
-                                <span>{{list.qq}}</span>
+                                <span>{{list.staff}}</span>
+                                <span>{{list.parent}}</span>
+                                <span>{{list.children}}</span>
+                                <span>{{list.angleName}}</span>
+                                <span>{{list.dimensionName}}</span>
+                                <span>{{list.classifyName}}</span>
+                                <span>{{list.reflectNames}}</span>
+                                <span>{{list.description}}</span>
                             </p>
                         </li>
                         <li>
@@ -61,10 +60,10 @@
                                 <span>输出结果</span>
                             </p>
                             <p class="see-children">
-                                <span>{{list.workProfession}}</span>
-                                <span>{{list.origanizion}}</span>
-                                <span>{{list.origanizationSize}}</span>
-                                <span>{{list.workPosition}}</span>
+                                <span>{{list.function}}</span>
+                                <span>{{list.frequency}}</span>
+                                <span>{{list.timeNode}}</span>
+                                <span>{{list.outcome}}</span>
                             </p>
                         </li>
                     </ul>
@@ -76,14 +75,11 @@
                         </div>
                     </div>
                 </div>
-                <div class="thaw-modal">
-                    <button ng-click="thaw(list)">解冻</button>
-                </div>
             </section>
         </li>
     </ul>
     <footer class="footer">
-        <pagination count="custom.itemsCount" take="custom.take" activate="custom.activatePage"></pagination>
+        <pagination count="pagination.itemsCount" take="pagination.take" activate="pagination.activatePage"></pagination>
     </footer>
 </div>
 <div ui-view="modal"></div>
