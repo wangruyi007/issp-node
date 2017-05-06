@@ -8,11 +8,10 @@
             <span>状态</span>
         </li>
         <li class="list-all" ng-repeat="list in reflectLists" style="display: {{list._delete?'none':'block'}};">
-<<<<<<< Updated upstream
+
             <section class="{{list.status=='CONGEAL'?'congeal':''}}">
-=======
-            <section>
->>>>>>> Stashed changes
+
+
                 <div class="list-text {{list._selectList?'selectList':''}}" ng-click="selectList(list)">
                     <p>{{$index+1}}</p>
                     <p>{{list.name}}</p>
@@ -20,12 +19,11 @@
                     <p>{{list.createTime}}</p>
                     <p>{{list.status|cover}}</p>
                 </div>
-<<<<<<< Updated upstream
+
                 <div class="thaw-modal">
                     <button ng-click="thaw(list)">解冻</button>
                 </div>
-=======
->>>>>>> Stashed changes
+
             </section>
         </li>
     </ul>

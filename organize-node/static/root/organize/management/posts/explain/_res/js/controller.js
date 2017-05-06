@@ -7,7 +7,6 @@ app.controller('postsExplainCtrl', function($scope, $state, toastr, postsSer, $s
     //编号、岗位ID
     var getId = {id : $stateParams.id};
     postsSer.getPostId(getId).then(function(response){
-        console.info(response);
         if(response.data.code == 0){
             $scope.postsData = response.data.data;
         }
@@ -57,10 +56,16 @@ app.controller('postsExplainCtrl', function($scope, $state, toastr, postsSer, $s
             description : vm.description,
             outcome : vm.outcome,
             frequency : angular.element('.frequency').val(),
-            timeNode : angular.element('.timeNode').val()
+            timeNode : angular.element('.timeNode').val(),
+            function:$scope.funcs
         };
         postsSer.explainAdd(data).then(function(response){
-
+            if(response.data.code == 0){
+                $state.go('root.organize.management.posts.list');
+                toastr.success( "已成功添加", '温馨提示');
+            }else if(response.data.code==403){
+                toastr.error( "请登录用户", '温馨提示');
+            }
         });
     }
 

@@ -31,7 +31,7 @@ app.controller('postsAddCtrl', function($scope,$state,toastr,postsSer){
             moduleId:vm.moduleId,
             position:vm.position,
             staff:vm.staff,
-            current:vm.current,
+            current:vm.current
         };
         postsSer.addPosts(data).then(function(response){
             if(response.data.code == 0){

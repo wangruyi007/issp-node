@@ -430,6 +430,7 @@ module.exports = function () {
             method: 'POST',
             timeout: 3000,
             uri: config()['rurl'] + '/moduletype/v1/save',
+            form:argvs
         };
         return request(options);
     };
@@ -473,7 +474,8 @@ module.exports = function () {
         var options = {
             method: 'PUT',
             timeout: 3000,
-            uri: config()['rurl'] + `/moduletype/v1/update/${argvs.id}`
+            uri: config()['rurl'] + `/moduletype/v1/update/${argvs.id}`,
+            form:argvs
         };
         return request(options);
     };
@@ -915,7 +917,76 @@ module.exports = function () {
         var options = {
             method : 'GET',
             timeout : 3000,
+
             uri : config()['rurl'] + "/positionWorkDetail/v1/getTotal",
+
+        };
+        return request(options);
+    };
+    this.getReflectCountId = function(){
+        var options = {
+            method : 'GET',
+            timeout : 3000,
+            uri : config()['rurl'] + "/reflect/v1/getTotal",
+        };
+        return request(options);
+    };
+    this.reflectList = function(argvs){
+        var options = {
+            method : 'GET',
+            timeout : 3000,
+            uri : config()['rurl'] + `/reflect/v1/maps?limit=10&page=${argvs.page}`,
+        };
+        return request(options);
+    };
+    this.reflectAdd = function(argvs){
+        var options = {
+            method : 'POST',
+            timeout : 3000,
+            uri : config()['rurl'] + '/reflect/v1/save',
+            form:argvs
+        };
+        return request(options);
+    };
+    this.reflectGetById = function(argvs){
+        var options = {
+            method : 'GET',
+            timeout : 3000,
+            uri : config()['rurl'] + `/reflect/v1/findById/${argvs.id}`,
+        };
+        return request(options);
+    };
+    this.reflectEdit = function(argvs){
+        var options = {
+            method : 'PUT',
+            timeout : 3000,
+            uri : config()['rurl'] + `/reflect/v1/update/${argvs.id}`,
+
+            form:argvs
+        };
+        return request(options);
+    };
+    this.reflectCongeal = function(argvs){
+        var options = {
+            method : 'PATCH',
+            timeout : 3000,
+            uri : config()['rurl'] + `/reflect/v1/close/${argvs.id}`,
+        };
+        return request(options);
+    };
+    this.reflectThaw = function(argvs){
+        var options = {
+            method : 'PATCH',
+            timeout : 3000,
+            uri : config()['rurl'] + `/reflect/v1/open/${argvs.id}`,
+        };
+        return request(options);
+    };
+    this.reflectDelete = function(argvs){
+        var options = {
+            method : 'DELETE',
+            timeout : 3000,
+            uri : config()['rurl'] + `/reflect/v1/delete/${argvs.id}`,
         };
         return request(options);
     };

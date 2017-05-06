@@ -27,7 +27,6 @@ app.controller('reflectListCtrl',function($scope,toastr,reflectSer){
                 toastr.error( "请求超时，请联系管理员", '温馨提示');
             }
         });
-<<<<<<< Updated upstream
     }
     reflectSer.countReflect().then(function(response){
         if(response.data.code==0){
@@ -68,8 +67,7 @@ app.controller('reflectListCtrl',function($scope,toastr,reflectSer){
     }
 
 
-=======
-    }
+
     reflectSer.countReflect().then(function(response){
         if(response.data.code==0){
             $scope.pagination.itemsCount = response.data.data;
@@ -77,14 +75,8 @@ app.controller('reflectListCtrl',function($scope,toastr,reflectSer){
             toastr.error( "请求超时，请联系管理员", '温馨提示');
         }
     });
-    $scope.$on('deletedId',function(event,delid){
-        angular.forEach($scope.reflectLists,function(obj){
-            if(obj.id == delid){
-                obj._delete = delid
-            }
-        })
-    });
->>>>>>> Stashed changes
+
+
 });
 
 

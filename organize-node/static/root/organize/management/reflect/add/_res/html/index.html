@@ -2,28 +2,15 @@
     <div class="input-list">
         <section>
             <ul>
-                <li>
-                    <label><em>名称</em></label>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>名称</em></label>
                     <input type="text"ng-model="add.name">
                 </li>
-                <li>
-                    <label><em>描述</em></label>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>描述</em></label>
                     <input type="text"ng-model="add.description">
                 </li>
-                <li>
-                    <label><em>创建时间</em></label>
-                    <input type="text"ng-model="add.createTime">
-                </li>
-                <li>
-                    <label><em>状态</em></label>
-                    <select class="sele" ng-model="add.status" ng-init="add.status='THAW'">
-                        <option value="THAW">解冻</option>
-                        <option value="CONGEAL">冻结</option>
-                        <option value="DELETE">删除</option>
-                        <option value="NOACTIVE">未激活</option>
-                        <option value="UNREVIEW">未审核 </option>
-                    </select>
-                </li>
+
             </ul>
         </section>
     </div>

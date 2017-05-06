@@ -13,6 +13,7 @@
                 <li class="required">
                     <label><i><img src="/images/mandatory.png"></i><em>上层</em></label>
                     <select class="sele" ng-model="postlevelData.parentId" >
+
                         <option ng-repeat="parent in parents" value="{{parent.id}}">{{parent.arrangement}}</option>
                     </select>
                 </li>
