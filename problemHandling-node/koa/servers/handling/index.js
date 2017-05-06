@@ -190,14 +190,21 @@ module.exports = function(){
         return request(options);
     };
     //汇总项目执行中的问题受理及处理结果
-    this.summaryList = function(argvs){
+    this.collectList = function(argvs){
         var options = {
             method : 'GET',
             timeout : 3000,
-            uri : config()['rurl'] + `/collect/v1/collect?limit=10&page=${argvs.page}`,
-            headers : {
-                // token : token
-            }
+            uri : config()['rurl'] + `/problemhandlingresult/v1/collect?area=${encodeURIComponent(argvs)}`,
+            form:argvs
+        };
+        return request(options);
+    };
+    //获取所有地区
+    this.getAllArea = function(){
+        var options = {
+            method : 'GET',
+            timeout : 3000,
+            uri : config()['rurl'] + '/problemhandlingresult/v1/area'
         };
         return request(options);
     };

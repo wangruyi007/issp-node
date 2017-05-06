@@ -36,7 +36,8 @@
                 </li>
                 <li class="required">
                     <label><em>通知方式</em></label>
-                    <select class="sele" ng-model="accepted.noticeWay"ng-init="accepted.noticeWay='WRITTEN'">
+                    <select class="sele" ng-model="accepted.noticeWay"ng-init="accepted.noticeWay='SYSTEM'">
+                        <option value="SYSTEM">系统</option>
                         <option value="WRITTEN">书面</option>
                         <option value="MAIL">邮件</option>
                         <option value="ORAL">口头</option>
@@ -48,7 +49,8 @@
                 </li>
                 <li class="required">
                     <label><em>问题类型</em></label>
-                    <select class="sele" ng-model="accepted.problemTypes" ng-init="accepted.problemTypes='PROGRESSCLASS'">
+                    <select class="sele" ng-model="accepted.problemTypes" ng-init="accepted.problemTypes='PERSONNERCLASS'">
+                        <option value="PERSONNERCLASS">人员类</option>
                         <option value="PROGRESSCLASS">进度类</option>
                         <option value="DELIVERCLASS">交付类</option>
                         <option value="DEVICECLASS">设备类</option>
@@ -60,22 +62,25 @@
                 </li>
                 <li class="required">
                     <label><em>问题紧急程度</em></label>
-                    <select class="sele" ng-model="accepted.problemEmergencyDegree" ng-init="accepted.problemEmergencyDegree='INTERMEDIATE'">
+                    <select class="sele" ng-model="accepted.problemEmergencyDegree" ng-init="accepted.problemEmergencyDegree='PRIMARY'">
+                        <option value="PRIMARY">初级</option>
                         <option value="INTERMEDIATE">中级</option>
                         <option value="EMERGENCY">紧急</option>
                     </select>
                 </li>
                 <li class="required">
                     <label><em>问题处理时间</em></label>
-                    <select class="sele" ng-model="accepted.problemProcessingTime" ng-init="accepted.problemProcessingTime='FOURTOTWENTYFOURHOURS';accepted.projectType_default='4-24小时之类'">
-                        <option value="FOURTOTWENTYFOURHOURS">4-24小时之类</option>
+                    <select class="sele" ng-model="accepted.problemProcessingTime" ng-init="accepted.problemProcessingTime='FOURHOURS'">
+                        <option value="FOURHOURS">4小时之内</option>
+                        <option value="FOURTOTWENTYFOURHOURS">4-24小时之内</option>
                         <option value="TWENTYFOURHOURS">24小时以上</option>
 
                     </select>
                 </li>
                 <li class="required">
                     <label><em>受影响部门</em></label>
-                    <select class="sele" ng-model="accepted.affectedDepartment" ng-init="accepted.affectedDepartment='TWOTOTHREEDEPARTMENT'">
+                    <select class="sele" ng-model="accepted.affectedDepartment" ng-init="accepted.affectedDepartment='ONEDEPARTMENT'">
+                        <option value="ONEDEPARTMENT">影响1个部门</option>
                         <option value="TWOTOTHREEDEPARTMENT">影响2-3个部门</option>
                         <option value="THREEDEPARTMENT">影响3个部门以上</option>
                     </select>

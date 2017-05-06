@@ -39,6 +39,9 @@ app.controller('informationCtrl',function ($scope,$state) {
     $scope.add = function(){
         $scope.menuClass = 'addMenu'
     };
+    $scope.summary = function(){
+        $scope.menuClass = 'summaryMenu'
+    };
 });
 
 //自定义过滤

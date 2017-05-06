@@ -6,7 +6,9 @@ app.factory('infoSer',function ($http) {
         editInfo:editInfo,
         findInfoId:findInfoId,
         countInfo:countInfo,
-        deleteInfo:deleteInfo
+        deleteInfo:deleteInfo,
+        summaryInfo:summaryInfo,
+        getCity:getCity
     };
     function infoList(data) {
         return $http.get('/biddinginfo/list',{
@@ -39,5 +41,13 @@ app.factory('infoSer',function ($http) {
             params: data
 
         })
+    }
+    //汇总
+    function summaryInfo(data) {
+        return $http.get('/biddinginfo/collect?cities='+data.join(','))
+    }
+    //获取所有地区
+    function getCity(){
+        return $http.get('/biddinginfo/cities')
     }
 });

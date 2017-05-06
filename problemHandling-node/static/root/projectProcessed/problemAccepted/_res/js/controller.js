@@ -46,6 +46,9 @@ app.filter('cover', function(){
     return function (val) {
         var result;
         switch(val){
+            case "SYSTEM":
+                result = "系统";
+                break;
             case "WRITTEN":
                 result = "书面";
                 break;
@@ -54,6 +57,9 @@ app.filter('cover', function(){
                 break;
             case "ORAL":
                 result = "口头";
+                break;
+            case "PERSONNERCLASS":
+                result = "人员类";
                 break;
             case "PROGRESSCLASS":
                 result = "进度类";
@@ -64,17 +70,26 @@ app.filter('cover', function(){
             case "DEVICECLASS":
                 result = "设备类";
                 break;
+            case "PRIMARY":
+                result = "初级";
+                break;
             case "INTERMEDIATE":
                 result = "中级";
                 break;
             case "EMERGENCY":
                 result = "紧急";
                 break;
+            case "FOURHOURS":
+                result = "4小时之内";
+                break;
             case "FOURTOTWENTYFOURHOURS":
-                result = "4-24小时之类";
+                result = "4-24小时之内";
                 break;
             case "TWENTYFOURHOURS":
                 result = "24小时以上";
+                break;
+            case "ONEDEPARTMENT":
+                result = "影响1个部门";
                 break;
             case "TWOTOTHREEDEPARTMENT":
                 result = "影响2-3个部门";

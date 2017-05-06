@@ -16,26 +16,26 @@
     <ul class="table table-top">
         <li class="list-head">
             <span></span>
+            <span>地区</span>
             <span>年份</span>
             <span>合同外部项目名称</span>
             <span>内部项目名称</span>
             <span>工程类型</span>
             <span>问题受理时间</span>
             <span>问题具体情况</span>
-            <span>问题对象</span>
             <span></span>
         </li>
         <li class="list-all" ng-repeat="lists in confirmLists|filter:teamInfo" style="display: {{lists._delete?'none':'block'}};">
             <section>
                 <div class="list-text {{lists._selectList?'selectList':''}}" ng-click="selectList(lists)">
                     <p>{{$index+1}}</p>
+                    <p>{{lists.area}}</p>
                     <p>{{lists.year}}</p>
                     <p>{{lists.externalContractProjectName}}</p>
                     <p>{{lists.internalProjectName}}</p>
                     <p>{{lists.projectType}}</p>
                     <p>{{lists.problemAcceptTime}}</p>
                     <p>{{lists.problemSpecificSituation}}</p>
-                    <p>{{lists.problemObject}}</p>
                     <p>
                         <a href="javascript:void(0)" class="more" ng-click="moreList(lists)">更多详细</a>
                     </p>
@@ -44,6 +44,7 @@
                     <ul class="can-see" style="display: {{lists._moreList?'block':'none'}};">
                         <li>
                             <p class="see-parent">
+                                <span>问题对象</span>
                                 <span>问题责任人员</span>
                                 <span>问题处理人员</span>
                                 <span>问题相关部门</span>
@@ -53,6 +54,7 @@
                                 <span>问题处理结果</span>
                             </p>
                             <p class="see-children">
+                                <span>{{lists.problemObject}}</span>
                                 <span>{{lists.problemResponsible}}</span>
                                 <span>{{lists.problemHandler}}</span>
                                 <span>{{lists.problemRelevantDepartment|cover}}</span>

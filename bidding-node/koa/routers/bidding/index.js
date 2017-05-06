@@ -155,6 +155,29 @@ module.exports = function(){
                 $self.body=error.error;
                 console.error(error.error);
             }));
+    }).get('/biddinginfo/collect', function*(){ //汇总招标信息
+        var $self = this;
+        var summaryData = $self.request.query.cities;
+        yield (server().collectList(summaryData)
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
+    }).get('/biddinginfo/cities', function*(){//获取招标信息所有地市
+        var $self = this;
+        yield (server().getAllArea()
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
     }).get('/biddinganswerquestions/list', function*(){ //投标答疑问题列表
         var $self = this;
         var page = $self.request.query;
@@ -369,6 +392,30 @@ module.exports = function(){
         var $self = this;
         var findIdData = $self.request.query;
         yield (server().getOpeningInfoId(findIdData)
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
+    }).get('/bidopeninginfo/collect', function*(){ //汇总开标信息
+        var $self = this;
+        var summaryData = $self.request.query;
+
+        yield (server().collectInfo(summaryData)
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
+    }).get('/bidopeninginfo/cities', function*(){//获取开标信息所有地市
+        var $self = this;
+        yield (server().getAllCities()
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
                 $self.body = responseText;

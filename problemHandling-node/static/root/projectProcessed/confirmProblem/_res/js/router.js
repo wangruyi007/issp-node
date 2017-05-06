@@ -27,5 +27,13 @@ app.config(function($provide, $stateProvider){
                 controller:'confirmEditCtrl'
             }
         }
+    }).state("root.projectProcessed.confirmProblem.summary[12]",{
+        url:"/summary[12]",
+        views:{
+            "content@root.projectProcessed.confirmProblem":{
+                templateUrl : "root/projectProcessed/confirmProblem/summary/_res/html/index.html",
+                controller:'summaryCtrl'
+            }
+        }
     })
 });

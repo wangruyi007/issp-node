@@ -6,7 +6,9 @@ app.factory('confirmSer',function ($http) {
         editResult:editResult,
         findResultId:findResultId,
         countResult:countResult,
-        deleteResult:deleteResult
+        deleteResult:deleteResult,
+        summaryList:summaryList,
+        getArea:getArea
     };
     function resultList(data) {
         return $http.get('/problemhandlingresult/list',{
@@ -40,5 +42,13 @@ app.factory('confirmSer',function ($http) {
             params: data
 
         })
+    }
+    //汇总
+    function summaryList(data) {
+        return $http.get('/problemhandlingresult/collect?areas='+data.join(','))
+    }
+    //获取所有地区
+    function getArea(){
+        return $http.get('/problemhandlingresult/area')
     }
 });

@@ -1,0 +1,21 @@
+<div class="collect">
+    <div class="sum-select">
+        <label><i><img src="/images/mandatory.png"></i><em>地市</em></label>
+        <div class="select">
+            <p class="select-text" >
+                <span ng-repeat="city in cities">{{city}}, </span>
+            </p>
+            <div class="mymultiselect" events="getSummary" ng-dropdown-multiselect="" options="workOptions" selected-model="cities" extra-settings="stringSettings"></div>
+        </div>
+    </div>
+    <ul class="sum-list">
+        <li class="sum-thead">
+            <span>地市</span>
+            <span>竞争公司</span>
+        </li>
+        <li class="sum-tbody" ng-repeat="Lists in summaryLists">
+            <span>{{Lists.cities}}</span>
+            <span>{{Lists.competitive}}</span>
+        </li>
+    </ul>
+</div>
