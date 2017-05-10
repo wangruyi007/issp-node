@@ -279,7 +279,7 @@ module.exports = function () {
         var options = {
             method: 'GET',
             timeout: 3000,
-            uri: config()['rurl'] + '/departmentDetail/v1/maps?_includes=id&_includes=department',
+            uri: config()['rurl'] + '/departmentDetail/v1/maps?_includes=id,department',
         };
         return request(options);
 
@@ -288,7 +288,7 @@ module.exports = function () {
         var options = {
             method: 'GET',
             timeout: 3000,
-            uri: config()['rurl'] + '/arrangement/v1/findStatus?_includes=arrangement&_includes=id',
+            uri: config()['rurl'] + '/arrangement/v1/findStatus?_includes=arrangement,id',
 
         };
         return request(options);
@@ -395,7 +395,7 @@ module.exports = function () {
         var options = {
             method: 'GET',
             timeout: 3000,
-            uri: config()['rurl'] + `/positionDetail/v1/findById/${argvs.id}?_includes=serialNumber&_includes=id`,
+            uri: config()['rurl'] + `/positionDetail/v1/findById/${argvs.id}?_includes=serialNumber,id`,
         };
         return request(options);
     };
@@ -405,6 +405,14 @@ module.exports = function () {
             timeout: 3000,
             uri: config()['rurl'] + '/positionInstruction/v1/save',
             form: argvs
+        };
+        return request(options);
+    };
+    this.getPostsDetail = function (argvs) {
+        var options = {
+            method: 'GET',
+            timeout: 3000,
+            uri: config()['rurl'] + `/positionInstruction/v1/findByPosition/${argvs.id}`,
         };
         return request(options);
     };
@@ -520,9 +528,9 @@ module.exports = function () {
             method: 'PATCH',
             timeout: 3000,
             uri: config()['rurl'] + `/moduletype/v1/thaw/${argvs.id}`,
-        }
+        };
         return request(options);
-    }
+    };
     //操作类型删除
     this.operateDelete = function (argvs) {
         var options = {
@@ -788,6 +796,56 @@ module.exports = function () {
         };
         return request(options);
     };
+    this.getUser = function () {
+        var options = {
+            method: 'GET',
+            timeout: 3000,
+            uri: config()['rurl'] + '/positiondetailuser/v1/findUserList',
+        };
+        return request(options);
+    };
+    this.getPosition = function (argvs) {
+        var options = {
+            method: 'GET',
+            timeout: 3000,
+            uri: config()['rurl'] + '/positionDetail/v1/findStatus?_includes=id,position',
+        };
+        return request(options);
+    };
+    this.userjopAdd = function (argvs) {
+        var options = {
+            method: 'POST',
+            timeout: 3000,
+            uri: config()['rurl'] + '/positiondetailuser/v1/save',
+            form:argvs
+        };
+        return request(options);
+    };
+    this.userjopGet = function (argvs) {
+        var options = {
+            method: 'GET',
+            timeout: 3000,
+            uri: config()['rurl'] + `/positiondetailuser/v1/findById/${argvs.id}`,
+        };
+        return request(options);
+    };
+    this.userjopEdit = function (argvs) {
+        var options = {
+            method: 'PUT',
+            timeout: 3000,
+            uri: config()['rurl'] + `/positiondetailuser/v1/update/${argvs.id}`,
+            form:argvs
+        };
+        return request(options);
+    };
+    this.userjopDelete = function (argvs) {
+        var options = {
+            method: 'DELETE',
+            timeout: 3000,
+            uri: config()['rurl'] + `/positiondetailuser/v1/delete/${argvs.id}`,
+        };
+        return request(options);
+    };
     this.joprangeMaps = function (argvs) {
         var options = {
             method: 'GET',
@@ -823,9 +881,58 @@ module.exports = function () {
     };
     this.joprangeCongeal = function (argvs) {
         var options = {
-            method: 'DELETE',
+            method: 'PATCH',
             timeout: 3000,
-            uri: config()['rurl'] + `/workRange/v1/delete/${argvs.id}`,
+            uri: config()['rurl'] + `/workRange/v1/close/${argvs.id}`,
+        };
+        return request(options);
+    };
+    this.joprangeThaw = function (argvs) {
+        var options = {
+            method: 'PATCH',
+            timeout: 3000,
+            uri: config()['rurl'] + `/workRange/v1/open/${argvs.id}`,
+        };
+        return request(options);
+    };
+    this.getDirection = function () {
+        var options = {
+            method: 'GET',
+            timeout: 3000,
+            uri: config()['rurl'] + '/workRange/v1/findDirection',
+        };
+        return request(options);
+    };
+    this.getProject = function () {
+        var options = {
+            method: 'GET',
+            timeout: 3000,
+            uri: config()['rurl'] + '/workRange/v1/findProject',
+        };
+        return request(options);
+    };
+    this.findClassify = function () {
+        var options = {
+            method: 'GET',
+            timeout: 3000,
+            uri: config()['rurl'] + '/workRange/v1/findClassify',
+        };
+        return request(options);
+    };
+    this.joprangeGet = function (argvs) {
+        var options = {
+            method: 'GET',
+            timeout: 3000,
+            uri: config()['rurl'] + `/workRange/v1/findById/${argvs.id}`,
+        };
+        return request(options);
+    };
+    this.joprangeEdit = function (argvs) {
+        var options = {
+            method: 'PUT',
+            timeout: 3000,
+            uri: config()['rurl'] + `/workRange/v1/update/${argvs.id}`,
+            form:argvs
         };
         return request(options);
     };
@@ -850,7 +957,7 @@ module.exports = function () {
         var options = {
             method: 'GET',
             timeout: 3000,
-            uri: config()['rurl'] + `/departmentDetail/v1/maps?_includes=department&_includes=id`,
+            uri: config()['rurl'] + `/departmentDetail/v1/maps?_includes=department,id`,
         };
         return request(options);
     };
@@ -868,7 +975,7 @@ module.exports = function () {
         var options = {
             method: 'GET',
             timeout: 3000,
-            uri: config()['rurl'] + `/arrangement/v1/maps?_includes=arrangement&_includes=id`,
+            uri: config()['rurl'] + `/arrangement/v1/maps?_includes=arrangement,id`,
         };
         return request(options);
     };
@@ -876,7 +983,7 @@ module.exports = function () {
         var options = {
             method: 'GET',
             timeout: 3000,
-            uri: config()['rurl'] + `/hierarchy/v1/maps?_includes=hierarchy&_includes=id`,
+            uri: config()['rurl'] + '/hierarchy/v1/maps?_includes=hierarchy,id',
         };
         return request(options);
     };
@@ -884,7 +991,7 @@ module.exports = function () {
         var options = {
             method: 'GET',
             timeout: 3000,
-            uri: config()['rurl'] + `/positionDetail/v1/findStatus?_includes=position&_includes=id&_includes=serialNumber&_includes=positionName&_includes=pool&_includes=staff`,
+            uri: config()['rurl'] + "/positionDetail/v1/findStatus?_includes=position,id,serialNumber,positionName,pool,staff,hierarchyName,arrangementName,departmentName",
         };
         return request(options);
     };
@@ -901,9 +1008,17 @@ module.exports = function () {
             method: 'PUT',
             timeout: 3000,
             uri: config()['rurl'] + `/positionInstruction/v1/update/${argvs.id}`,
-        }
+        };
         return request(options);
-    }
+    };
+    this.jopDesDelete = function(argvs) {
+        var options = {
+            method: 'DELETE',
+            timeout: 3000,
+            uri: config()['rurl'] + `/positionInstruction/v1/delete/${argvs.id}`,
+        };
+        return request(options);
+    };
     /*******岗位工作明细******/
     this.jopDetailList = function(argvs){
         var options = {
@@ -920,6 +1035,48 @@ module.exports = function () {
 
             uri : config()['rurl'] + "/positionWorkDetail/v1/getTotal",
 
+        };
+        return request(options);
+    };
+    this.getPosiInst = function(){
+        var options = {
+            method : 'GET',
+            timeout : 3000,
+            uri : config()['rurl'] + "/positionInstruction/v1/maps?_includes=id,positionName",
+        };
+        return request(options);
+    };
+    this.jopdetailAdd = function(argvs){
+        var options = {
+            method : 'POST',
+            timeout : 3000,
+            uri : config()['rurl'] + "/positionWorkDetail/v1/save",
+            form:argvs
+        };
+        return request(options);
+    };
+    this.jopdetailGet = function(argvs){
+        var options = {
+            method : 'GET',
+            timeout : 3000,
+            uri : config()['rurl'] + `/positionWorkDetail/v1/findById/${argvs.id}`,
+        };
+        return request(options);
+    };
+    this.jopdetailEdit = function(argvs){
+        var options = {
+            method : 'PUT',
+            timeout : 3000,
+            uri : config()['rurl'] + `/positionWorkDetail/v1/update/${argvs.id}`,
+            form:argvs
+        };
+        return request(options);
+    };
+    this.jopdetailDelete = function(argvs){
+        var options = {
+            method : 'DELETE',
+            timeout : 3000,
+            uri : config()['rurl'] + `/positionWorkDetail/v1/delete/${argvs.id}`,
         };
         return request(options);
     };

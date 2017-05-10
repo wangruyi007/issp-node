@@ -7,7 +7,6 @@ app.controller('joprangeDeleteCtrl',function($scope,toastr,$stateParams,$state,j
             id :$stateParams.id
         };
         joprangeSer.deleteJoprange(data).then(function(response){
-            console.info(response);
             if(response.data.code==0){
                 toastr.info( "信息已删除", '温馨提示');
                 $state.go('root.organize.management.joprange.list');

@@ -19,7 +19,8 @@ app.factory('postsSer',function ($http) {
         getReflect:getReflect,
         getOperate:getOperate,
         getPostId:getPostId,
-        explainAdd:explainAdd
+        explainAdd:explainAdd,
+        getPostsDetail:getPostsDetail
     };
     function listPosts(data) {
         return $http.get('/posts/maps',{params: data})
@@ -78,4 +79,8 @@ app.factory('postsSer',function ($http) {
     function explainAdd(data) {
         return $http.post('/posts/explainAdd',data)
     }
+    function getPostsDetail(data) {
+        return $http.get('/posts/getPostsDetail',{params: data})
+    }
+
 });

@@ -1,39 +1,38 @@
 var app = angular.module('jopdesAdd', ['toastr','angularjs-dropdown-multiselect']);
 app.controller('jopdesAddCtrl', function($scope,$state,toastr,jopdesSer,$stateParams){
-    $scope.words = [];
-    $scope.stringSettings = {template : '{{option}}', smartButtonTextConverter(skip, option) { return option; }};
-    $scope.workOptions=['123','321']
-
-
-
-
-
-    //所属部门
-    /*var getId = {id : $stateParams.id};*/
-    jopdesSer.getDepartmentId().then(function(response){
-        if(response.data.code == 0){
-            $scope.departmentData = response.data.data;
+    //操作类型
+    $scope.operates = [];
+    $scope.operatesettings = {displayProp: 'name'};
+    jopdesSer.getOperate().then(function(response){
+        if(response.data.code==0){
+            $scope.operateOptions= [];
+            angular.forEach(response.data.data,function(obj){
+                $scope.operateOptions.push(obj)
+            });
         }
-
     });
+
+    //体现类型
+    $scope.reflects = [];
+    $scope.reflectsettings = {displayProp: 'name'};
+    jopdesSer.getReflect().then(function(response){
+        console.info(response);
+        if(response.data.code==0){
+            $scope.reflectOptions= [];
+            angular.forEach(response.data.data,function(obj){
+                $scope.reflectOptions.push(obj)
+            });
+        }
+    });
+
+
     //岗位详细id
     jopdesSer.getPositionId().then(function(response){
         if(response.data.code == 0){
             $scope.positionData = response.data.data;
         }
     });
-    //岗位层级
-    jopdesSer.getArrangementId().then(function(response){
-        if(response.data.code == 0){
-            $scope.arrData = response.data.data;
-        }
-    });
-    //体系
-    jopdesSer.getHierarchyId().then(function(response){
-        if(response.data.code == 0){
-            $scope.hierData = response.data.data;
-        }
-    });
+
     //角度
 
     jopdesSer.getAngle().then(function(response){
@@ -47,33 +46,36 @@ app.controller('jopdesAddCtrl', function($scope,$state,toastr,jopdesSer,$statePa
             $scope.dimensions = response.data.data
         }
     });
+
+
     //分类
     jopdesSer.getClassify().then(function(response){
         if(response.data.code == 0){
             $scope.classifys = response.data.data
         }
-        jopdesSer.getAngle().then(function(response){
+
+    });
+
+    //添加
+    $scope.jopdesAddFun = function(){
+        var vm = $scope;
+        vm.add.operateIds=[];
+        vm.add.reflectIds=[];
+        angular.forEach($scope.operates,function(item){
+            vm.add.operateIds.push(item.id)
+        });
+        angular.forEach($scope.reflects,function(item){
+            vm.add.reflectIds.push(item.id)
+        });
+        jopdesSer.addJopDes(vm.add).then(function(response){
             if(response.data.code == 0){
-                $scope.angData = response.data.data;
+                $state.go('root.organize.management.jopdes.list');
+                toastr.success( vm.add.serialNumber+"已成功添加", '温馨提示');
+            }else if(response.data.code==403){
+                toastr.error( "请登录用户", '温馨提示');
             }
         });
-        //维度
-        jopdesSer.getDimension().then(function(response){
-            if(response.data.code == 0){
-                $scope.aDimensData = response.data.data;
-
-            }
-        });
-        //添加
-        $scope.jopdesAddFun = function(){
-            var vm = $scope;
-            console.info(vm.add);
-            jopdesSer.addJopDes(vm.add).then(function(response){
-
-            });
-        }
-
-    })
+    }
 });
 
 

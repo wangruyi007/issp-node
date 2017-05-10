@@ -4,17 +4,25 @@
             <ul>
                 <li class="required">
                     <label><i><img src="/images/mandatory.png"></i><em>姓名</em></label>
-                    <input type="text"   ng-verify="{}" ng-model="addCustomerName">
+                    <select class="sele" ng-model="editData.userId" ng-verify="{}">
+                        <option value="">请选择</option>
+                        <option ng-repeat="user in userList" value="{{user.id}}">{{user.username}}</option>
+                    </select>
                 </li>
                 <li >
                     <label><em>职位</em></label>
-                    <input type="text"ng-model="addCustomerName">
+                    <div class="select">
+                        <p class="select-text" >
+                            <span ng-repeat="position in positions">{{position.position}}, </span>
+                        </p>
+                        <div class="mymultiselect" ng-dropdown-multiselect="" options="workOptions" selected-model="positions" extra-settings="stringSettings"></div>
+                    </div>
                 </li>
             </ul>
         </section>
     </div>
     <p class="dataBottom">
         <span class="imPrompt"><i><img src="/images/prompt.png"></i>带有<i><img src="/images/mandatory.png"></i>的为必填项</span>
-        <button ng-verify="{control:'myform'}" ng-click="basicinfoAddFun()">提交</button>
+        <button ng-verify="{control:'myform'}" ng-click="userjopEditFun()">提交</button>
     </p>
 </div>

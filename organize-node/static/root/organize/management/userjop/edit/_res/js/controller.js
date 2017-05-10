@@ -1,58 +1,46 @@
-var app = angular.module('userjopEdit', ['toastr']);
-app.controller('userjopEditCtrl', function($scope,$state,toastr){
+var app = angular.module('userjopEdit', ['toastr','angularjs-dropdown-multiselect']);
+app.controller('userjopEditCtrl', function($scope,$state,$stateParams,toastr,userjopSer){
+    //获取用户
+    userjopSer.getUser().then(function(response){
+        if(response.data.code==0){
+            $scope.userList = response.data.data;
+        }
+    });
+    userjopSer.getPosition().then(function(response){
+        if(response.data.code==0){
+            $scope.workOptions= response.data.data;
+        }
+    });
 
-    // basicinfoSer.cusNumber().then(function(response){
-    //     if(response.data.code == 0){
-    //         $scope.cusNumber = response.data.data
-    //     }
-    // });
-    // basicinfoSer.customerLevelName().then(function(response){
-    //     if(response.data.code == 0){
-    //         $scope.levels = response.data.data
-    //     }
-    // });
-    //
-    // //客户添加
-    // $scope.basicinfoAddFun = function(){
-    //     var vm = $scope;
-    //     var data = {
-    //         customerNum : vm.cusNumber.customerNum,
-    //         customerName : vm.addCustomerName,
-    //         area : vm.addArea,
-    //         customerType : vm.addCustomerType,
-    //         customerSex : vm.addCustomerSex,
-    //         customerStatus : vm.addCustomerStatus,
-    //         relation:vm.addRelation,
-    //         origin : vm.addOrigin,
-    //         customerLevelName : vm.addCusLevel,
-    //         cusEmail : vm.addCusEmail,
-    //         introducer : vm.addIntroducer,
-    //         phone : vm.addPhone,
-    //         tel : vm.addTel,
-    //         qq : vm.addqq,
-    //         weChart : vm.addWeChart,
-    //         origanizion : vm.addOriganizion,
-    //         workProfession : vm.addWorkProfession,
-    //         workLevel : vm.addWorkLevel,
-    //         origanizationSize : vm.addOriganizationSize,
-    //         lifeArea : vm.addLifeArea,
-    //         workPosition : vm.addWorkPosition,
-    //         oldWorkPlace : vm.addOldWorkPlace,
-    //         workRight : vm.addWorkRight,
-    //         grouthArea:vm.addGrouthArea,
-    //         marketReceptTime:angular.element('.addMarketReceptTime').val()
-    //     };
-    //     basicinfoSer.addCustomerbaseinfo(data).then(function(response){
-    //
-    //         if(response.data.code == 0){
-    //             $state.go('root.customer.basicinfo.list');
-    //             toastr.success( "客户信息已成功添加", '温馨提示');
-    //         }else if(response.data.code==403){
-    //             toastr.error( "请登录用户", '温馨提示');
-    //         }
-    //     });
-    //
-    // };
+    $scope.positions = [];
+    $scope.stringSettings = {displayProp: 'position'};
+    var id={id:$stateParams.id};
+    userjopSer.getUserjop(id).then(function(response){
+        if(response.data.code==0){
+            $scope.editData=response.data.data;
+        }
+    });
+
+    $scope.userjopEditFun=function(){
+        var posiId = [];
+        angular.forEach($scope.positions,function(item){
+            posiId.push(item.id)
+        });
+        var data={
+            id:$scope.editData.id,
+            userId:$scope.editData.userId,
+            positionIds:posiId
+        };
+        userjopSer.editUserjop(data).then(function(response){
+            if(response.data.code == 0){
+                $state.go('root.organize.management.userjop.list');
+                toastr.success( $scope.editData.username+"已成功添加", '温馨提示');
+            }else if(response.data.code==403){
+                toastr.error( "请登录用户", '温馨提示');
+            }
+        });
+    }
+
 });
 
 

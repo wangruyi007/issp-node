@@ -1,8 +1,6 @@
 var app = angular.module('postsExplain', ['toastr', 'angularjs-dropdown-multiselect']);
 app.controller('postsExplainCtrl', function($scope, $state, toastr, postsSer, $stateParams){
-    $scope.funcs = [];
-    $scope.stringSettings = {template : '{{option}}', smartButtonTextConverter(skip, option) { return option; }};
-    $scope.workOptions = ["11", "22"];
+
 
     //编号、岗位ID
     var getId = {id : $stateParams.id};
@@ -51,14 +49,15 @@ app.controller('postsExplainCtrl', function($scope, $state, toastr, postsSer, $s
             angleId : vm.angleId,
             dimensionId : vm.dimensionId,
             classifyId : vm.classifyId,
-            reflectId : vm.reflectId,
-            operateId : vm.operateId,
+            reflectIds : vm.reflectId,
+            operateIds : vm.operateId,
             description : vm.description,
             outcome : vm.outcome,
             frequency : angular.element('.frequency').val(),
             timeNode : angular.element('.timeNode').val(),
             function:$scope.funcs
         };
+        console.info(data);
         postsSer.explainAdd(data).then(function(response){
             if(response.data.code == 0){
                 $state.go('root.organize.management.posts.list');

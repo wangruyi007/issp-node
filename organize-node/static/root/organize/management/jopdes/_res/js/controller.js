@@ -16,6 +16,30 @@ app.controller('jopdesCtrl',function($scope,$state){
             $scope.menuClass = 'listMenu';
         }
     });
+    $scope.$on("passId",function(event,id){
+        $scope.getId = id;
+    });
+    $scope.$on("passPositionId",function(event,id){
+        $scope.getPositionId = id;
+    });
+    $scope.edit = function(){
+        if($scope.getId){
+            $state.go('root.organize.management.jopdes.edit[12]',{id:$scope.getId});
+            $scope.menuClass='editMenu';
+        }
+    };
+    $scope.delete = function(){
+        if($scope.getId){
+            $state.go('root.organize.management.jopdes.list.delete[12]',{id:$scope.getId});
+            $scope.menuClass='deleteMenu';
+        }
+    };
+    $scope.view = function(){
+        if($scope.getPositionId){
+            $state.go('root.organize.management.jopdes.view[12]', {id : $scope.getPositionId});
+            $scope.menuClass = 'viewMenu';
+        }
+    };
 
     $scope.list = function(){
         $scope.menuClass = 'listMenu'

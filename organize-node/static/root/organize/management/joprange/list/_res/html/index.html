@@ -7,6 +7,7 @@
             <span>方向</span>
             <span>科目</span>
             <span>专业分类</span>
+            <span>专业范围</span>
             <span>工作界面</span>
         </li>
         <li class="list-all" style="display: {{list._delete?'none':'block'}};" ng-repeat="list in joprangeLists">
@@ -16,10 +17,11 @@
                     <p>{{list.direction}}</p>
                     <p>{{list.project}}</p>
                     <p>{{list.classify}}</p>
+                    <p>{{list.workRange}}</p>
                     <p>{{list.node}}</p>
                 </div>
                 <div class="thaw-modal">
-                    <button ng-click="thaw(list)">解冻</button>
+                    <button ng-click="thaw(list)">开启</button>
                 </div>
             </section>
         </li>

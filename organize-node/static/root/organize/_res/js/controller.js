@@ -16,8 +16,8 @@ app.controller('organizeCtrl', function ($scope,$state) {
 
 }).controller('navCtrl',function($scope,$state,$location){
 
-    var active =$location.path().split('/')[3];
-    $scope.navCla=active?active:'basicinfo';
+    var active =$location.path().split('/')[4];
+    $scope.navCla=active?active:'views';
     $scope.navClass= function(name){
        $scope.navCla=name
     }

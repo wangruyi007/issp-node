@@ -7,9 +7,16 @@ app.controller('jopdetailListCtrl',function($scope,toastr,jopdetailSer){
             obj._selectList = false
         });
         event._selectList = true;
-        ;
         //向父Ctrl传递事件
         $scope.$emit('changeId', event.id);
+    };
+    $scope.moreList = function(event){
+        angular.forEach($scope.jopdetailLists,function(obj){
+            if(event.id!==obj.id){
+                obj._moreList = false
+            }
+        });
+        event._moreList = !event._moreList;
     };
     //分页
     $scope.pagination = {

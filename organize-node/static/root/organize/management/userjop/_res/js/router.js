@@ -20,7 +20,7 @@ app.config(function($provide, $stateProvider){
             }
         }
     }).state("root.organize.management.userjop.edit[12]", {
-        url : "/edit[12]",
+        url : "/edit[12]?id=",
         views : {
             "content@root.organize.management.userjop" : {
                 templateUrl : "root/organize/management/userjop/edit/_res/html/index.html",

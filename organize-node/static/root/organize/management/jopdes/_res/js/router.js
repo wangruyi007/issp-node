@@ -20,7 +20,7 @@ app.config(function($provide, $stateProvider){
             }
         }
     }).state("root.organize.management.jopdes.edit[12]", {
-        url : "/edit[12]",
+        url : "/edit[12]?id=",
         views : {
             "content@root.organize.management.jopdes" : {
                 templateUrl : "root/organize/management/jopdes/edit/_res/html/index.html",
@@ -28,7 +28,7 @@ app.config(function($provide, $stateProvider){
             }
         }
     }).state("root.organize.management.jopdes.view[12]", {
-        url : "/view[12]",
+        url : "/view[12]?id=",
         views : {
             "content@root.organize.management.jopdes" : {
                 templateUrl : "root/organize/management/jopdes/view/_res/html/index.html",
