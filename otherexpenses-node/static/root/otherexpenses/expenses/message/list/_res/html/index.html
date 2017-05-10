@@ -1,0 +1,40 @@
+<div class="content-tab list">
+    <ul class="table com-table">
+        <li class="list-head">
+            <span></span>
+            <span class="data-id">id</span>
+            <span>地区</span>
+            <span>项目组</span>
+            <span>类别</span>
+            <span>项目名称</span>
+            <span>年份</span>
+            <span>月份</span>
+            <span>目标其他费用</span>
+            <span>实际其他费用</span>
+            <span>比例</span>
+            <span>差额</span>
+        </li>
+        <li class="list-all">
+            <section ng-repeat="list in marketserveLists.data" style="display: {{list._delete?'none':'block'}};">
+                <div  class="list-text {{list._selectList?'selectList':''}}" ng-click="selectList(list)">
+                    <p>{{$index+1}}</p>
+                    <p class="data-id"></p>
+                    <p>{{::list.area}}</p>
+                    <p>{{::list.project}}</p>
+                    <p>{{::list.type}}</p>
+                    <p>{{::list.name}}</p>
+                    <p>{{::list.year}}</p>
+                    <p>{{::list.month}}</p>
+                    <p>{{::list.target}}</p>
+                    <p>{{::list.actual}}</p>
+                    <p>{{::list.ratio}}</p>
+                    <p>{{::list.balance}}</p>
+                </div>
+            </section>
+        </li>
+     </ul>
+    <footer class="footer">
+        <pagination count="abili.itemsCount" take="abili.take" activate="abili.activatePage"></pagination>
+    </footer>
+</div>
+<div ui-view="modal"></div>
