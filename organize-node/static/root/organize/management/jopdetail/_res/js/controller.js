@@ -39,5 +39,21 @@ app.controller('jopdetailCtrl',function($scope,$state){
         $scope.menuClass = 'addMenu'
     };
 });
+//自定义过滤器
+app.filter('cover', function(){
+    return function(val){
+        var result;
+        switch(val){
+            case true:
+                result = "是";
+                break;
+            case false:
+                result = "否";
+                break;
 
+        }
+        return result;
+    }
+
+});
 

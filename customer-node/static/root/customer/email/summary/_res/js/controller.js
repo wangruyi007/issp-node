@@ -16,7 +16,6 @@ app.controller('emailSummaryCtrl',function($scope,emailSer,toastr){
 
     $scope.getSummary ={onSelectionChanged(){
         emailSer.getSummarys($scope.words).then(function(response){
-            console.info(response);
             if(response.data.code == 0){
                 $scope.summaryLists = response.data.data;
                 angular.forEach($scope.summaryLists,function(item,index){
