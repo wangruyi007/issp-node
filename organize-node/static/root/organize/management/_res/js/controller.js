@@ -7,8 +7,8 @@ app.controller('managementCtrl',function ($scope,$state) {
 
     $scope.$on("changeId",function(event,id){
         $scope.$broadcast("passId",id)
-    })
+    });
     $scope.$on("changePositionId",function(event,id){
         $scope.$broadcast("passPositionId",id)
     })
-})
+});

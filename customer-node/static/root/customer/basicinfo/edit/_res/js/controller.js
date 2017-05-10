@@ -46,7 +46,7 @@ app.controller('basicinfoEditCtrl', function($scope, basicinfoSer,$stateParams,$
         };
         basicinfoSer.editCustomerbaseinfo(data).then(function(response){
             if(response.data.code == 0){
-                $state.go('root.customer.basicinfo.list[12]')
+                $state.go('root.customer.basicinfo.list[12]');
                 toastr.success( vm.editInfo.customerName+"编辑成功", '温馨提示');
             }else if(response.data.code == 403){
                 toastr.error( "请登录用户", '温馨提示');
