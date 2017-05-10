@@ -4,69 +4,63 @@
             <ul>
                 <li class="required">
                     <label><i><img src="/images/mandatory.png"></i><em>岗位</em></label>
-                    <select class="sele" ng-model="addCustomerType" ng-init="addCustomerType='VIP'">
-                        <option value="VIP">VIP</option>
-                        <option value="OLD">老客户</option>
-                        <option value="COOPERATOR">合作伙伴</option>
-                        <option value="ORDINARY">普通客户</option>
+                    <select class="sele" ng-model="add.instructionId">
+                        <option value="">请选择</option>
+                        <option ng-repeat="position in positions" value="{{position.id}}">{{position.positionName}}</option>
                     </select>
                 </li>
                 <li class="required">
-                    <label><i><img src="/images/mandatory.png"></i><em>工作说明</em></label>
-                    <select class="sele" ng-model="addCustomerType" ng-init="addCustomerType='VIP'">
-                        <option value="VIP">VIP</option>
-                        <option value="OLD">老客户</option>
-                        <option value="COOPERATOR">合作伙伴</option>
-                        <option value="ORDINARY">普通客户</option>
+                    <label><i><img src="/images/mandatory.png"></i><em>是否有模板</em></label>
+                    <select class="sele" ng-model="add.hasMould" ng-init="add.hasMould='true'">
+                        <option value="true">是</option>
+                        <option value="false">否</option>
                     </select>
                 </li>
 
                 <li class="required">
                     <label><i><img src="/images/mandatory.png"></i><em>汇报时间</em></label>
-                    <input type="text"   ng-verify="{}" ng-model="addCustomerName">
+                    <input type="text"   onClick="laydate({istime: true, format: 'YYYY-MM-DD'})" class="time">
                 </li>
                 <li class="required">
                     <label><i><img src="/images/mandatory.png"></i><em>汇报形式</em></label>
-                    <input type="text"   ng-verify="{}" ng-model="addCustomerName">
+                    <input type="text"   ng-verify="{}" ng-model="add.reportWay">
                 </li>
                 <li class="required">
                     <label><i><img src="/images/mandatory.png"></i><em>汇报内容描述</em></label>
-                    <input type="text"   ng-verify="{}" ng-model="addCustomerName">
+                    <input type="text"   ng-verify="{}"  ng-model="add.reportContent">
                 </li>
                 <li class="required">
                     <label><i><img src="/images/mandatory.png"></i><em>公示内容</em></label>
-                    <input type="text"   ng-verify="{}" ng-model="addCustomerName">
+                    <input type="text"   ng-verify="{}"  ng-model="add.publicity">
                 </li>
 
                 <li class="required">
                     <label><i><img src="/images/mandatory.png"></i><em>包含的附件</em></label>
-                    <input type="text"   ng-verify="{}" ng-model="addCustomerName">
+                    <input type="text"   ng-verify="{}"  ng-model="add.contain">
                 </li>
-                <li class="required">
-                    <label><i><img src="/images/mandatory.png"></i><em>是否有模板</em></label>
-                    <select class="sele" ng-model="addCustomerType" ng-init="addCustomerType='VIP'">
-                        <option value="VIP">VIP</option>
-                        <option value="OLD">老客户</option>
-                    </select>
-                </li>
+
 
                 <li class="required">
                     <label><i><img src="/images/mandatory.png"></i><em>经验总结</em></label>
-                    <input type="text"   ng-verify="{}" ng-model="addCustomerName">
+                    <input type="text"   ng-verify="{}"  ng-model="add.summarize">
                 </li>
                 <li class="required">
                     <label><i><img src="/images/mandatory.png"></i><em>联系方式</em></label>
-                    <input type="text"   ng-verify="{}" ng-model="addCustomerName">
+                    <input type="text"   ng-verify="{}"  ng-model="add.contact">
                 </li>
                 <li>
-                    <label><em>储存位置</em></label>
-                    <input type="text" ng-model="addCustomerName">
+                    <label><em>模板储存位置</em></label>
+                    <input type="text" ng-model="add.mouldStorage">
+                </li>
+                <li>
+                    <label><em>工作文件储存位置</em></label>
+                    <input type="text" ng-model="add.paperStorage">
                 </li>
             </ul>
         </section>
     </div>
     <p class="dataBottom">
         <span class="imPrompt"><i><img src="/images/prompt.png"></i>带有<i><img src="/images/mandatory.png"></i>的为必填项</span>
-        <button ng-verify="{control:'myform'}" ng-click="basicinfoAddFun()">提交</button>
+        <button ng-verify="{control:'myform'}" ng-click="jopdetailAddFun()">提交</button>
     </p>
 </div>

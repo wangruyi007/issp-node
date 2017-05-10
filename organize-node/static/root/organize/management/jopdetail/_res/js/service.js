@@ -3,15 +3,12 @@ app.factory('jopdetailSer',function ($http) {
     return {
         listJopDetail : listJopDetail,
         countJopDetail:countJopDetail,
+        getPosiInst:getPosiInst,
+        addJopDetail:addJopDetail,
+        getJopdetail:getJopdetail,
+        editJopdetail:editJopdetail,
+        deleteJopdetail:deleteJopdetail
 
-
-
-        addSystem:addSystem,
-        getSystem:getSystem,
-        editSystem:editSystem,
-        deleteSystem:deleteSystem,
-        congealSystem:congealSystem,
-        thawSystem:thawSystem
     };
     function listJopDetail(data) {
         return $http.get('/listJopDetail/maps',{params: data})
@@ -19,27 +16,22 @@ app.factory('jopdetailSer',function ($http) {
     function countJopDetail() {
         return $http.get('/countJopDetail/getTotal')
     }
+    function getPosiInst() {
+        return $http.get('/jopdetail/getPosiInst')
+    }
 
+    function addJopDetail(data) {
+        return $http.post('/jopdetail/add',data)
+    }
+    function getJopdetail(data) {
+        return $http.get('/jopdetail/findById',{params: data})
+    }
+    function editJopdetail(data) {
+        return $http.post('/jopdetail/edit',data)
+    }
+    function deleteJopdetail(data) {
+        return $http.get('/jopdetail/delete',{params: data})
+    }
 
-
-
-    function addSystem(data) {
-        return $http.post('/hierarchy/save',data)
-    }
-    function getSystem(data) {
-        return $http.get('/hierarchy/findById',{params: data})
-    }
-    function editSystem(data) {
-        return $http.post('/hierarchy/edit',data)
-    }
-    function deleteSystem(data) {
-        return $http.get('/hierarchy/delete',{params: data})
-    }
-    function congealSystem(data) {
-        return $http.get('/hierarchy/congeal',{params: data})
-    }
-    function thawSystem(data) {
-        return $http.get('/hierarchy/thaw',{params: data})
-    }
 
 });

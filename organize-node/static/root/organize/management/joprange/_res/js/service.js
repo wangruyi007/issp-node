@@ -12,7 +12,10 @@ app.factory('joprangeSer',function ($http) {
         getArrangement:getArrangement,
         getModule:getModule,
         congealJoprange:congealJoprange,
-        thawJoprange:thawJoprange
+        thawJoprange:thawJoprange,
+        getDirection:getDirection,
+        getProject:getProject,
+        findClassify:findClassify
     };
     function listJoprange(data) {
         return $http.get('/joprange/maps',{params: data})
@@ -49,5 +52,14 @@ app.factory('joprangeSer',function ($http) {
     }
     function thawJoprange(data) {
         return $http.get('/joprange/thaw',{params: data})
+    }
+    function getDirection() {
+        return $http.get('/joprange/getDirection')
+    }
+    function getProject() {
+        return $http.get('/joprange/getProject')
+    }
+    function findClassify() {
+        return $http.get('/joprange/findClassify')
     }
 });

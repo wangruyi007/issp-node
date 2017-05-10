@@ -1,58 +1,30 @@
 var app = angular.module('jopdetailEdit', ['toastr','angularjs-dropdown-multiselect']);
-app.controller('jopdetailEditCtrl', function($scope,$state,toastr){
+app.controller('jopdetailEditCtrl', function($scope,$state,$stateParams,toastr,jopdetailSer){
 
-    // basicinfoSer.cusNumber().then(function(response){
-    //     if(response.data.code == 0){
-    //         $scope.cusNumber = response.data.data
-    //     }
-    // });
-    // basicinfoSer.customerLevelName().then(function(response){
-    //     if(response.data.code == 0){
-    //         $scope.levels = response.data.data
-    //     }
-    // });
-    //
-    // //客户添加
-    // $scope.basicinfoAddFun = function(){
-    //     var vm = $scope;
-    //     var data = {
-    //         customerNum : vm.cusNumber.customerNum,
-    //         customerName : vm.addCustomerName,
-    //         area : vm.addArea,
-    //         customerType : vm.addCustomerType,
-    //         customerSex : vm.addCustomerSex,
-    //         customerStatus : vm.addCustomerStatus,
-    //         relation:vm.addRelation,
-    //         origin : vm.addOrigin,
-    //         customerLevelName : vm.addCusLevel,
-    //         cusEmail : vm.addCusEmail,
-    //         introducer : vm.addIntroducer,
-    //         phone : vm.addPhone,
-    //         tel : vm.addTel,
-    //         qq : vm.addqq,
-    //         weChart : vm.addWeChart,
-    //         origanizion : vm.addOriganizion,
-    //         workProfession : vm.addWorkProfession,
-    //         workLevel : vm.addWorkLevel,
-    //         origanizationSize : vm.addOriganizationSize,
-    //         lifeArea : vm.addLifeArea,
-    //         workPosition : vm.addWorkPosition,
-    //         oldWorkPlace : vm.addOldWorkPlace,
-    //         workRight : vm.addWorkRight,
-    //         grouthArea:vm.addGrouthArea,
-    //         marketReceptTime:angular.element('.addMarketReceptTime').val()
-    //     };
-    //     basicinfoSer.addCustomerbaseinfo(data).then(function(response){
-    //
-    //         if(response.data.code == 0){
-    //             $state.go('root.customer.basicinfo.list');
-    //             toastr.success( "客户信息已成功添加", '温馨提示');
-    //         }else if(response.data.code==403){
-    //             toastr.error( "请登录用户", '温馨提示');
-    //         }
-    //     });
-    //
-    // };
+    jopdetailSer.getPosiInst().then(function(response){
+        if(response.data.code==0){
+            $scope.positions= response.data.data;
+        }
+    });
+
+    var id = {id:$stateParams.id};
+    //根据ID获取信息
+    jopdetailSer.getJopdetail(id).then(function(response){
+        if(response.data.code == 0){
+            $scope.edit = response.data.data
+        }
+    });
+
+    $scope.jopdetailEditFun = function(){
+        jopdetailSer.editJopdetail($scope.edit).then(function(response){
+            if(response.data.code==0){
+                    $state.go('root.organize.management.jopdetail.list');
+                    toastr.success(response.data.data.serialNumber+"已成功编辑", '温馨提示');
+            }else if(response.data.code==403){
+                toastr.error( "请登录用户", '温馨提示');
+            }
+        });
+    }
 });
 
 

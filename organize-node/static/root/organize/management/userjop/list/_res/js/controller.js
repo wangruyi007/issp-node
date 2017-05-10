@@ -49,28 +49,8 @@ app.controller('userjopListCtrl',function($scope,toastr,userjopSer){
             }
         })
     });
-    $scope.$on('congealId',function(event,conid){
-        angular.forEach($scope.userjopLists,function(obj){
-            if(obj.id == conid){
-                obj.status = 'CONGEAL';
-                obj._selectList = false;
-            }
-        })
-    });
-    //解冻
-    $scope.thaw = function(event){
-        var data = {
-            id :event.id
-        };
-        userjopSer.thawUserjop(data).then(function(response){
-            if(response.data.code==0){
-                event.status = "THAW";
-                toastr.success( event.module+"解冻成功", '温馨提示');
-            }else if(response.data.code==403){
-                toastr.error( "请登录用户", '温馨提示');
-            }
-        })
-    }
+
+
 })
 ;
 

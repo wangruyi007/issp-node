@@ -513,7 +513,7 @@ module.exports = function(){
                 $self.body=error.error;
                 console.error(error.error);
             }));
-    }).get('/posts/getReflect', function*(){ //获取维度
+    }).get('/posts/getReflect', function*(){ //获取
         var $self = this;
         yield (server().getReflect()
             .then((parsedBody) =>{
@@ -551,6 +551,18 @@ module.exports = function(){
         var $self = this;
         var addExpainData = this.request.body;
         yield (server().explainAdd(addExpainData)
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
+    }).get('/posts/getPostsDetail', function*(){
+        var $self = this;
+        var id = this.request.query;
+        yield (server().getPostsDetail(id)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
                 $self.body = responseText;
@@ -776,30 +788,6 @@ module.exports = function(){
                 $self.body=error.error;
                 console.error(error.error);
             }));
-    }).get('/getDepartmentId/id', function*(){ //岗位说明id
-        var $self = this;
-        /*var getId = this.request.query;*/
-        yield (server().departmentGetById()
-            .then((parsedBody) =>{
-                var responseText = JSON.parse(parsedBody);
-                $self.body = responseText;
-            }).catch((error) =>{
-                $self.set('Content-Type','application/json;charset=utf-8');
-                $self.body=error.error;
-                console.error(error.error);
-            }));
-    }).post('/addJopDes/save', function*(){   //岗位说明添加
-        var $self = this;
-        var addData = this.request.body;
-        yield (server().jopDesAdd(addData)
-            .then((parsedBody) =>{
-                var responseText = JSON.parse(parsedBody);
-                $self.body = responseText;
-            }).catch((error) =>{
-                $self.set('Content-Type','application/json;charset=utf-8');
-                $self.body=error.error;
-                console.error(error.error);
-            }));
     }).get('/getPositionId/id', function*(){ //id
         var $self = this;
         yield (server().positionGetById()
@@ -811,29 +799,7 @@ module.exports = function(){
                 $self.body=error.error;
                 console.error(error.error);
             }));
-    }).get('/getArrangementId/id', function*(){ //id
-        var $self = this;
-        yield (server().arrangementGetById()
-            .then((parsedBody) =>{
-                var responseText = JSON.parse(parsedBody);
-                $self.body = responseText;
-            }).catch((error) =>{
-                $self.set('Content-Type','application/json;charset=utf-8');
-                $self.body=error.error;
-                console.error(error.error);
-            }));
-    }).get('/getHierarchyId/id', function*(){ //id
-        var $self = this;
-        yield (server().hierarchyGetById()
-            .then((parsedBody) =>{
-                var responseText = JSON.parse(parsedBody);
-                $self.body = responseText;
-            }).catch((error) =>{
-                $self.set('Content-Type','application/json;charset=utf-8');
-                $self.body=error.error;
-                console.error(error.error);
-            }));
-    }).get('/getJopDesById/findById', function*(){ //编辑
+    }).get('/getJopDesById/findById', function*(){ //根据ID获取说明书
         var $self = this;
         var findById=this.request.query;
         yield (server().jopDesGetById(findById)
@@ -849,6 +815,18 @@ module.exports = function(){
         var $self = this;
         var editData=this.request.body;
         yield (server().jopDesEdit(editData)
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
+    }).get('/jopDes/delete', function*(){ //删除
+        var $self = this;
+        var delId=this.request.query;
+        yield (server().jopDesDelete(delId)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
                 $self.body = responseText;
@@ -873,6 +851,65 @@ module.exports = function(){
         var $self = this;
         var getId = this.request.query;
         yield (server().getJopDetailCountId(getId)
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
+    }).get('/jopdetail/getPosiInst', function*(){ //获取岗位说明书
+        var $self = this;
+        yield (server().getPosiInst()
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
+    }).post('/jopdetail/add', function*(){ //获取岗位说明书
+        var $self = this;
+        var addData = $self.request.body;
+        yield (server().jopdetailAdd(addData)
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
+    }).get('/jopdetail/findById', function*(){ //根据获取岗位说明书
+        var $self = this;
+        var id = $self.request.query;
+        yield (server().jopdetailGet(id)
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
+    }).post('/jopdetail/edit', function*(){ //编辑岗位说明书
+        var $self = this;
+        var editData = $self.request.body;
+        yield (server().jopdetailEdit(editData)
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
+    }).get('/jopdetail/delete', function*(){ //删除岗位说明书
+        var $self = this;
+        var delId = $self.request.query;
+        yield (server().jopdetailDelete(delId)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
                 $self.body = responseText;
@@ -1001,39 +1038,6 @@ module.exports = function(){
                 $self.body=error.error;
                 console.error(error.error);
             }));
-    }).get('/getPositionId/id', function*(){ //id
-        var $self = this;
-        yield (server().positionGetById()
-            .then((parsedBody) =>{
-                var responseText = JSON.parse(parsedBody);
-                $self.body = responseText;
-            }).catch((error) =>{
-                $self.set('Content-Type','application/json;charset=utf-8');
-                $self.body=error.error;
-                console.error(error.error);
-            }));
-    }).get('/getArrangementId/id', function*(){ //id
-        var $self = this;
-        yield (server().arrangementGetById()
-            .then((parsedBody) =>{
-                var responseText = JSON.parse(parsedBody);
-                $self.body = responseText;
-            }).catch((error) =>{
-                $self.set('Content-Type','application/json;charset=utf-8');
-                $self.body=error.error;
-                console.error(error.error);
-            }));
-    }).get('/getHierarchyId/id', function*(){ //id
-        var $self = this;
-        yield (server().hierarchyGetById()
-            .then((parsedBody) =>{
-                var responseText = JSON.parse(parsedBody);
-                $self.body = responseText;
-            }).catch((error) =>{
-                $self.set('Content-Type','application/json;charset=utf-8');
-                $self.body=error.error;
-                console.error(error.error);
-            }));
     }).get('/getAngleId/id', function*(){ //id
         var $self = this;
         yield (server().angleGetById()
@@ -1108,6 +1112,83 @@ module.exports = function(){
         var $self = this;
         yield (server().userjopCount()
 
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
+
+    }).get('/userjop/getUser', function*(){ //获取用户职位列表
+        var $self = this;
+        yield (server().getUser()
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
+
+    }).get('/userjop/getPosition', function*(){ //获取职位
+        var $self = this;
+        var includes = this.request.query;
+        yield (server().getPosition(includes)
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
+
+    }).post('/userjop/add', function*(){ //添加职位
+        var $self = this;
+        var addData=$self.request.body;
+        yield (server().userjopAdd(addData)
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
+
+    }).post('/userjop/edit', function*(){ //编辑职位
+        var $self = this;
+        var editData=$self.request.body;
+        yield (server().userjopEdit(editData)
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
+
+    }).get('/userjop/findById', function*(){ //根据ID获取职位
+        var $self = this;
+        var id=$self.request.query;
+        yield (server().userjopGet(id)
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
+
+    }).get('/userjop/delete', function*(){ //根据ID获取职位
+        var $self = this;
+        var id=$self.request.query;
+        yield (server().userjopDelete(id)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
                 $self.body = responseText;
@@ -1211,6 +1292,68 @@ module.exports = function(){
         var delId = this.request.query;
         yield (server().joprangeDelete(delId)
 
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
+
+    }).get('/joprange/getDirection', function*(){ //项目工作部门范围获取方向
+        var $self = this;
+        yield (server().getDirection()
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
+
+    }).get('/joprange/getProject', function*(){ //项目工作部门范围获取科目
+        var $self = this;
+        yield (server().getProject()
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
+
+    }).get('/joprange/findClassify', function*(){ //项目工作部门范围获取分类
+        var $self = this;
+        yield (server().findClassify()
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
+
+    }).get('/joprange/findById', function*(){ //根据ID项目工作部门范围
+        var $self = this;
+        var id = $self.request.query;
+        yield (server().joprangeGet(id)
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
+
+    }).post('/joprange/edit', function*(){ //编辑项目工作部门范围
+        var $self = this;
+        var editData = $self.request.body;
+        yield (server().joprangeEdit(editData)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
                 $self.body = responseText;
@@ -1533,6 +1676,19 @@ module.exports = function(){
         var $self = this;
         var conId = this.request.query;
         yield (server().joprangeCongeal(conId)
+
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
+    }).get('/joprange/thaw', function*(){ //解冻项目工作部门范围
+        var $self = this;
+        var thawId = this.request.query;
+        yield (server().joprangeThaw(thawId)
 
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);

@@ -9,10 +9,8 @@ app.factory('userjopSer',function ($http) {
         deleteUserjop:deleteUserjop,
         parentId:parentId,
         getDepartList:getDepartList,
-        getArrangement:getArrangement,
-        getModule:getModule,
-        congealUserjop:congealUserjop,
-        thawUserjop:thawUserjop
+        getUser:getUser,
+        getPosition:getPosition
     };
     function listUserjop(data) {
         return $http.get('/userjop/maps',{params: data})
@@ -38,16 +36,11 @@ app.factory('userjopSer',function ($http) {
     function getDepartList(data) {
         return $http.get('/userjop/getDepartList',{params: data})
     }
-    function getArrangement() {
-        return $http.get('/userjop/getArrangement')
+
+    function getUser() {
+        return $http.get('/userjop/getUser')
     }
-    function getModule() {
-        return $http.get('/userjop/getModule')
-    }
-    function congealUserjop(data) {
-        return $http.get('/userjop/congeal',{params: data})
-    }
-    function thawUserjop(data) {
-        return $http.get('/userjop/thaw',{params: data})
+    function getPosition() {
+        return $http.get('/userjop/getPosition')
     }
 });

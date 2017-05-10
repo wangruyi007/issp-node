@@ -1,6 +1,23 @@
 var app = angular.module('joprangeAdd', ['toastr']);
 app.controller('joprangeAddCtrl', function($scope,$state,toastr,joprangeSer){
 
+    joprangeSer.getDirection().then(function(response){
+       if(response.data.code==0){
+           $scope.directionList = response.data.data;
+       }
+    });
+    joprangeSer.getProject().then(function(response){
+       if(response.data.code==0){
+           $scope.projectList = response.data.data;
+       }
+    });
+    joprangeSer.findClassify().then(function(response){
+       if(response.data.code==0){
+           $scope.classifyList = response.data.data;
+       }
+    });
+
+
     $scope.joprangeAddFun=function(){
         var data={
             direction:$scope.direction,

@@ -12,7 +12,7 @@ app.controller('systemEditCtrl', function($scope,$state,$stateParams,toastr,syst
         $scope.ststemData.id=$stateParams.id;
         var data = $scope.ststemData;
         systemSer.editSystem(data).then(function(response){
-            console.info(response);
+           
             if(response.data.code == 0){
                 $state.go('root.organize.management.system.list');
                 toastr.success( $scope.ststemData.serialNumber+"已成功编辑", '温馨提示');

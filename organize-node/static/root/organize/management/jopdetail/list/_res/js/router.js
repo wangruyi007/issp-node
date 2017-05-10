@@ -9,19 +9,11 @@ app.config(function($provide, $stateProvider){
             }
         }
     }).state("root.organize.management.jopdetail.list.delete[12]",{
-        url:"/delete[12]",
+        url:"/delete[12]?id=",
         views:{
             "modal@root.organize.management.jopdetail.list":{
                 templateUrl : "root/organize/management/jopdetail/list/delete/_res/html/index.html",
                 controller:'jopdetailDeleteCtrl'
-            }
-        }
-    }).state("root.organize.management.jopdetail.list.congeal[12]",{
-        url:"/congeal[12]",
-        views:{
-            "modal@root.organize.management.jopdetail.list":{
-                templateUrl : "root/organize/management/jopdetail/list/congeal/_res/html/index.html",
-                controller:'jopdetailCongealCtrl'
             }
         }
     })

@@ -10,6 +10,17 @@ app.controller('jopdesListCtrl',function($scope,toastr,jopdesSer){
         ;
         //向父Ctrl传递事件
         $scope.$emit('changeId', event.id);
+        $scope.$emit('changePositionId', event.positionId);
+    };
+
+
+    $scope.moreList = function(event){
+        angular.forEach($scope.jopdesLists,function(obj){
+            if(event.id!==obj.id){
+                obj._moreList = false
+            }
+        });
+        event._moreList = !event._moreList;
     };
     //分页
     $scope.pagination = {
@@ -22,7 +33,6 @@ app.controller('jopdesListCtrl',function($scope,toastr,jopdesSer){
             page:page
         };
         jopdesSer.listJopDes(pages).then(function(response){
-            console.log(response)
             if(response.data.code==0){
                 $scope.jopdesLists = response.data.data;
             }else{

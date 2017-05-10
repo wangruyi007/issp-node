@@ -8,16 +8,13 @@
             <span>工号</span>
             <span>职位</span>
         </li>
-        <li class="list-all" style="display: {{list._delete?'none':'block'}};" ng-repeat="list in motypeLists">
-            <section  class="{{list.status=='CONGEAL'?'congeal':''}}" >
+        <li class="list-all" style="display: {{list._delete?'none':'block'}};" ng-repeat="list in userjopLists">
+            <section  class="{{list.status=='CONGEAL'?'congeal':''}}">
                 <div class="list-text {{list._selectList?'selectList':''}}" ng-click="selectList(list)">
                     <p>{{$index+1}}</p>
                     <p>{{list.username}}</p>
                     <p>{{list.employeesNumber}}</p>
                     <p>{{list.position}}</p>
-                </div>
-                <div class="thaw-modal">
-                    <button ng-click="thaw(list)">解冻</button>
                 </div>
             </section>
         </li>

@@ -3,16 +3,17 @@ app.factory('jopdesSer',function ($http) {
     return {
         listJopDes : listJopDes,
         countJopDes:countJopDes,
-        getDepartmentId:getDepartmentId,
         addJopDes:addJopDes,
         getPositionId:getPositionId,
-        getArrangementId:getArrangementId,
-        getHierarchyId:getHierarchyId,
         getAngle:getAngle,
         getDimension:getDimension,
         getClassify:getClassify,
         getDepartList:getDepartList,
         getJopDesById:getJopDesById,
+        getOperate:getOperate,
+        getReflect:getReflect,
+        deleteJopdes:deleteJopdes,
+        getPostsDetail:getPostsDetail
     };
     function listJopDes(data) {
         return $http.get('/listJopDes/maps',{params: data})
@@ -23,17 +24,12 @@ app.factory('jopdesSer',function ($http) {
     function addJopDes(data) {
         return $http.post('/addJopDes/save',data)
     }
-    function getDepartmentId() {
-        return $http.get('/getDepartmentId/id')
+    function deleteJopdes(data) {
+        return $http.get('/jopDes/delete',{params: data})
     }
+
     function getPositionId() {
         return $http.get('/getPositionId/id')
-    }
-    function getArrangementId() {
-        return $http.get('/getArrangementId/id')
-    }
-    function getHierarchyId() {
-        return $http.get('/getHierarchyId/id')
     }
     function getAngle() {
         return $http.get('/posts/getAngle')
@@ -53,30 +49,17 @@ app.factory('jopdesSer',function ($http) {
     function getJopDesById(data) {
         return $http.get('/getJopDesById/findById',{params: data})
     }
-
-
-
-
-
-
-    function countSystem() {
-        return $http.get('/hierarchy/getTotal')
+    function getOperate() {
+        return $http.get('/posts/getOperate')
+    }
+    function getReflect() {
+        return $http.get('/posts/getReflect')
+    }
+    function getPostsDetail(data) {
+        return $http.get('/posts/getPostsDetail',{params: data})
     }
 
-    function getSystem(data) {
-        return $http.get('/hierarchy/findById',{params: data})
-    }
-    function editSystem(data) {
-        return $http.post('/hierarchy/edit',data)
-    }
-    function deleteSystem(data) {
-        return $http.get('/hierarchy/delete',{params: data})
-    }
-    function congealSystem(data) {
-        return $http.get('/hierarchy/congeal',{params: data})
-    }
-    function thawSystem(data) {
-        return $http.get('/hierarchy/thaw',{params: data})
-    }
+
+
 
 });

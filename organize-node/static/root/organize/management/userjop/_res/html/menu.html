@@ -8,10 +8,7 @@
     <li  ng-click="edit()" ng-class="{'current':menuClass=='editMenu'}" >
         <a href="javascript:void(0)"  class="same-one" >编辑<span>Edit</span></a>
     </li>
-    <li >
-        <a href="javascript:void(0)" class="same-two" ng-click="delete()">删除<span>Delete</span></a>
-    </li>
-    <li >
-        <a href="javascript:void(0)" class="same-three" ng-click="congeal()">冻结<span>Congeal</span></a>
+    <li ng-click="delete()" ng-class="{'current':menuClass=='deleteMenu'}">
+        <a href="javascript:void(0)" class="same-two" >删除<span>Delete</span></a>
     </li>
 </ul>

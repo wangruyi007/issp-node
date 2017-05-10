@@ -19,6 +19,27 @@ app.controller('userjopCtrl',function($scope,$state){
             $scope.menuClass = 'listMenu';
         }
     });
+    $scope.$on("passId",function(event,id){
+        $scope.getId = id;
+    });
+    $scope.edit = function(){
+        if($scope.getId){
+            $state.go('root.organize.management.userjop.edit[12]',{id:$scope.getId});
+            $scope.menuClass='editMenu';
+        }
+    };
+    $scope.delete = function(){
+        if($scope.getId){
+            $state.go('root.organize.management.userjop.list.delete[12]',{id:$scope.getId});
+            $scope.menuClass='deleteMenu';
+        }
+    };
+    $scope.congeal = function(){
+        if($scope.getId){
+            $state.go('root.organize.management.userjop.list.congeal[12]',{id:$scope.getId});
+            $scope.menuClass='congealMenu';
+        }
+    };
 
     $scope.list = function(){
         $scope.menuClass = 'listMenu'

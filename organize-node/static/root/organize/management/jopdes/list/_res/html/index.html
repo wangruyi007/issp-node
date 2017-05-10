@@ -15,7 +15,6 @@
             <section>
                 <div class="list-text {{list._selectList?'selectList':''}}" ng-click="selectList(list)">
                     <p>{{$index+1}}</p>
-                    <p class="data-id"></p>
                     <p class="addcusNum">{{list.serialNumber}}</p>
                     <p>{{list.positionNumber}}</p>
                     <p>{{list.positionName}}</p>
@@ -23,7 +22,6 @@
                     <p>{{list.hierarchy}}</p>
                     <p>{{list.department}}</p>
                     <p>{{list.pool}}</p>
-                 <!--   <p>{{list.relation==null?'0':list.relation}}%</p>-->
                     <p>
                         <a href="javascript:void(0)" class="more"  ng-click="moreList(list)">更多详细</a>
                     </p>
@@ -34,12 +32,12 @@
                             <p class="see-parent">
                                 <span>编制</span>
                                 <span>直接上级</span>
+                                <span>直接下级</span>
                                 <span>角度</span>
                                 <span>维度</span>
                                 <span>分类</span>
                                 <span>体现类别</span>
                                 <span>操作类型</span>
-                                <span>工作描述</span>
                             </p>
                             <p class="see-children">
                                 <span>{{list.staff}}</span>
@@ -49,17 +47,20 @@
                                 <span>{{list.dimensionName}}</span>
                                 <span>{{list.classifyName}}</span>
                                 <span>{{list.reflectNames}}</span>
-                                <span>{{list.description}}</span>
+                                <span>{{list.operateNames}}</span>
+
                             </p>
                         </li>
                         <li>
                             <p class="see-parent">
+                                <span>工作描述</span>
                                 <span>对应功能</span>
                                 <span>工作时间/频率</span>
                                 <span>工作时间节点</span>
                                 <span>输出结果</span>
                             </p>
                             <p class="see-children">
+                                <span>{{list.description}}</span>
                                 <span>{{list.function}}</span>
                                 <span>{{list.frequency}}</span>
                                 <span>{{list.timeNode}}</span>

@@ -2,7 +2,7 @@ var app = angular.module('postsEdit', ['toastr']);
 app.controller('postsEditCtrl', function($scope,$state,toastr,postsSer,$stateParams){
 
     //部门
-    postsSer.getDepartList(['id','department']).then(function(response){
+    postsSer.getDepartList().then(function(response){
 
         if(response.data.code==0){
             $scope.departments = response.data.data

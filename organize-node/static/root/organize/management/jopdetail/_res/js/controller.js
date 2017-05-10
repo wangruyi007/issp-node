@@ -16,6 +16,21 @@ app.controller('jopdetailCtrl',function($scope,$state){
             $scope.menuClass = 'listMenu';
         }
     });
+    $scope.$on("passId",function(event,id){
+        $scope.getId = id;
+    });
+    $scope.edit = function(){
+        if($scope.getId){
+            $state.go('root.organize.management.jopdetail.edit[12]',{id:$scope.getId});
+            $scope.menuClass='editMenu';
+        }
+    };
+    $scope.delete = function(){
+        if($scope.getId){
+            $state.go('root.organize.management.jopdetail.list.delete[12]',{id:$scope.getId});
+            $scope.menuClass='deleteMenu';
+        }
+    };
 
     $scope.list = function(){
         $scope.menuClass = 'listMenu'

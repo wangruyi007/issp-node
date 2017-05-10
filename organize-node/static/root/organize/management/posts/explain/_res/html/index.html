@@ -45,12 +45,7 @@
                 </li>
                 <li>
                     <label><em>对应功能</em></label>
-                    <div class="select">
-                        <p class="select-text" >
-                            <span ng-repeat="func in funcs">{{func}}, </span>
-                        </p>
-                        <div class="mymultiselect"  ng-dropdown-multiselect="" options="workOptions" selected-model="funcs" extra-settings="stringSettings"></div>
-                    </div>
+                    <input type="text"  ng-model="function" >
                 </li>
                 <li>
                     <label><em>工作时间/频率</em></label>

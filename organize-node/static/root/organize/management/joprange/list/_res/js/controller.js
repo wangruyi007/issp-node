@@ -65,7 +65,7 @@ app.controller('joprangeListCtrl',function($scope,toastr,joprangeSer){
         joprangeSer.thawJoprange(data).then(function(response){
             if(response.data.code==0){
                 event.status = "THAW";
-                toastr.success( event.module+"解冻成功", '温馨提示');
+                toastr.success( "解冻成功", '温馨提示');
             }else if(response.data.code==403){
                 toastr.error( "请登录用户", '温馨提示');
             }
