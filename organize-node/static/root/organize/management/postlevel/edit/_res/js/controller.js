@@ -11,7 +11,7 @@ app.controller('postlevelEditCtrl', function($scope,$state,toastr,$stateParams,p
     });
 
     postlevelSer.getPostlevel(getIdList).then(function(response){
-        console.info(response);
+        
         if(response.data.code==0){
             $scope.postlevelData=response.data.data;
         }

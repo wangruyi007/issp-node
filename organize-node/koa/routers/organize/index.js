@@ -1029,7 +1029,6 @@ module.exports = function(){
     }).post('/addJopDes/save', function*(){   //岗位说明添加
         var $self = this;
         var addData = this.request.body;
-        console.info(addData);
         yield (server().jopDesAdd(addData)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -1137,7 +1136,6 @@ module.exports = function(){
     }).get('/userjop/getPosition', function*(){ //获取职位
         var $self = this;
         var includes = this.request.query;
-        console.info(includes);
         yield (server().getPosition(includes)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);

@@ -57,7 +57,7 @@ app.controller('postsExplainCtrl', function($scope, $state, toastr, postsSer, $s
             timeNode : angular.element('.timeNode').val(),
             function:$scope.funcs
         };
-        console.info(data);
+       
         postsSer.explainAdd(data).then(function(response){
             if(response.data.code == 0){
                 $state.go('root.organize.management.posts.list');

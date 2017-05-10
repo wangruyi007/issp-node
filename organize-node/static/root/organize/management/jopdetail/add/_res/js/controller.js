@@ -8,7 +8,7 @@ app.controller('jopdetailAddCtrl', function($scope,$state,toastr,jopdetailSer){
     });
     $scope.jopdetailAddFun = function(){
         $scope.add.reportTime = angular.element('.time').val();
-        console.info($scope.add);
+       
         jopdetailSer.addJopDetail($scope.add).then(function(response){
             if(response.data.code == 0){
                 $state.go('root.organize.management.jopdetail.list');

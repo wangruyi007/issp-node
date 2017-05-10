@@ -58,7 +58,7 @@ app.controller('postlevelListCtrl',function($scope,toastr,postlevelSer){
             id :event.id
         };
         postlevelSer.thawPostlevel(data).then(function(response){
-            console.info(response);
+           
             if(response.data.code==0){
                 event.status = "THAW";
                 toastr.success( event.serialNumber+"解冻成功", '温馨提示');

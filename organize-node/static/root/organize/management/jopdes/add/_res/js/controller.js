@@ -16,7 +16,7 @@ app.controller('jopdesAddCtrl', function($scope,$state,toastr,jopdesSer,$statePa
     $scope.reflects = [];
     $scope.reflectsettings = {displayProp: 'name'};
     jopdesSer.getReflect().then(function(response){
-        console.info(response);
+       
         if(response.data.code==0){
             $scope.reflectOptions= [];
             angular.forEach(response.data.data,function(obj){
