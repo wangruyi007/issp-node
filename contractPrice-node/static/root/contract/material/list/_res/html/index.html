@@ -1,25 +1,23 @@
 <div class="content-tab list">
+
     <ul class="table">
         <li class="list-head">
             <span></span>
-            <span>客户名称</span>
+            <span>用户名称</span>
             <span>项目</span>
             <span>地区</span>
-            <span>适用日期</span>
-            <span>附件</span>
-            <span>使用状态</span>
+            <span>适用年度开始日期</span>
+            <span>适用年度结束日期</span>
         </li>
-        <li class="list-all" ng-repeat="list in basicinfoLists.data" style="display: {{list._delete?'none':'block'}};">
+        <li class="list-all" ng-repeat="list in materialLists" style="display: {{list._delete?'none':'block'}};">
             <section  class="{{list.status=='CONGEAL'?'congeal':''}}" >
                 <div class="list-text {{list._selectList?'selectList':''}}" ng-click="selectList(list)">
                     <p>{{$index+1}}</p>
-                    <p class="data-id"></p>
-                    <p class="addcusNum">{{list.customerNum}}</p>
                     <p>{{list.customerName}}</p>
+                    <p>{{list.project}}</p>
                     <p>{{list.area}}</p>
-                    <p>{{list.customerSex|cover}}</p>
-                    <p>{{list.customerType|cover}}</p>
-                    <p>{{list.customerStatus|cover}}</p>
+                    <p>{{list.suitableDateStart}}</p>
+                    <p>{{list.suitableDateEnd}}</p>
                 </div>
                 <div class="thaw-modal">
                     <button ng-click="thaw(list)">解冻</button>
@@ -28,7 +26,7 @@
         </li>
     </ul>
     <footer class="footer">
-        <pagination count="custom.itemsCount" take="custom.take" activate="custom.activatePage"></pagination>
+        <pagination count="pagination.itemsCount" take="pagination.take" activate="pagination.activatePage"></pagination>
     </footer>
 </div>
 <div ui-view="modal"></div>
