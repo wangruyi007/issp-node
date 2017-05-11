@@ -11,10 +11,10 @@
             <section  class="{{list.status=='CONGEAL'?'congeal':''}}" >
                 <div class="list-text {{list._selectList?'selectList':''}}" ng-click="selectList(list)">
                     <p>{{$index+1}}</p>
-                    <p class="addcusNum">{{list.serialNumber}}</p>
-                    <p>{{list.hierarchy}}</p>
-                    <p>{{list.description}}</p>
-                    <p>{{list.status|cover}}</p>
+                    <p>{{::list.serialNumber}}</p>
+                    <p>{{::list.hierarchy}}</p>
+                    <p>{{::list.description}}</p>
+                    <p>{{::list.status|cover}}</p>
                 </div>
                 <div class="thaw-modal">
                     <button ng-click="thaw(list)">解冻</button>

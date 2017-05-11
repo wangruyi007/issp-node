@@ -14,10 +14,10 @@
 
                 <div class="list-text {{list._selectList?'selectList':''}}" ng-click="selectList(list)">
                     <p>{{$index+1}}</p>
-                    <p>{{list.name}}</p>
-                    <p>{{list.description}}</p>
-                    <p>{{list.createTime}}</p>
-                    <p>{{list.status|cover}}</p>
+                    <p>{{::list.name}}</p>
+                    <p>{{::list.description}}</p>
+                    <p>{{::list.createTime}}</p>
+                    <p>{{::list.status|cover}}</p>
                 </div>
 
                 <div class="thaw-modal">
