@@ -10,8 +10,12 @@ app.controller('subpackageAddCtrl', function($scope, subpackageSer,$state,toastr
         var data = $scope.data;
         subpackageSer.addMarketserveapply(data).then(function(response){
             if(response.data.code == 0){
-                $state.go('root.business.outsource.subpackage.list');
-                toastr.success( "已成功添加", '温馨提示');
+                if(response.data.msg){
+                    toastr.success( response.data.msg, '温馨提示');
+                }else{
+                    $state.go('root.business.outsource.subpackage.list');
+                    toastr.success('添加成功', '温馨提示');
+                }
             }else if(response.data.code==403){
                 toastr.error( "请登录用户", '温馨提示');
             }

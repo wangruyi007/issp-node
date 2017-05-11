@@ -1,0 +1,64 @@
+<div class="content-tab list">
+    <div class="com-search mod">
+       <span class="com-search2">
+            <label>开始时间:</label>
+            <input type="text" onClick="laydate({istime: true, format: 'YYYY-MM-DD hh:mm:ss'})" class="startTime">
+       </span>
+       <span class="com-search2">
+            <label>结束时间 :</label>
+            <input type="text" onClick="laydate({istime: true, format: 'YYYY-MM-DD hh:mm:ss'})" class="endTime">
+       </span>
+       <span class="com-search2">
+            <label>地区:</label>
+            <input type="text" ng-model="area">
+       </span>
+       <p>
+            <button class="collect" ng-click="collectFun()">汇总</button>
+        </p>
+    </div>
+    <div class="com-search mod" style="top:220px">
+        <span class="com-search2" >
+            <label>项目组:</label>
+            <input type="text" ng-model="project">
+       </span>
+       <span class="com-search2">
+            <label>类别:</label>
+            <input type="text" ng-model="type">
+       </span>
+       <span class="com-search2">
+            <label>项目名称:</label>
+            <input type="text" ng-model="name">
+       </span>
+    </div>
+    <div class="com-search mod" style="top:300px">
+        
+    </div>
+    <ul class="table area-table">
+        <li class="list-head">
+            <span></span>
+            <span class="data-id">id</span>
+            <span>项目类型</span>
+            <span>年份</span>
+            <span>月份</span>
+            <span>目标其他费用</span>
+            <span>实际其他费用</span>
+            <span>比例</span>
+            <span>差额</span>
+        </li>
+        <li class="list-all">
+            <section ng-repeat="list in data" style="display: {{list._delete?'none':'block'}};">
+                <div  class="list-text {{list._selectList?'selectList':''}}" ng-click="selectList(list)">
+                    <p>{{$index+1}}</p>
+                    <p class="data-id"></p>
+                    <p>{{::list.type}}</p>
+                    <p>{{::list.year}}</p>
+                    <p>{{::list.month}}</p>
+                    <p>{{::list.target}}</p>
+                    <p>{{::list.actual}}</p>
+                    <p>{{::list.ratio}}</p>
+                    <p>{{::list.balance}}</p>
+                </div>
+            </section>
+        </li>
+     </ul>
+</div>
