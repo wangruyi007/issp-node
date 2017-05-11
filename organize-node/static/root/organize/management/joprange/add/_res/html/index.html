@@ -4,24 +4,24 @@
             <ul>
                 <li class="required">
                     <label><i><img src="/images/mandatory.png"></i><em>方向</em></label>
-                    <select class="sele" ng-model="direction" ng-verify="{}">
-                        <option value="">请选择</option>
+                    <select class="sele" ng-model="direction" >
                         <option ng-repeat="direlist in directionList" value="{{direlist.direction}}">{{direlist.direction}}</option>
                     </select>
+                    <input type="text"  class="inputDom" ng-verify="{}" ng-model="direction">
                 </li>
                 <li class="required">
                     <label><i><img src="/images/mandatory.png"></i><em>科目</em></label>
-                    <select class="sele" ng-model="project" ng-verify="{}">
-                        <option value="">请选择</option>
+                    <select class="sele" ng-model="project" >
                         <option ng-repeat="prolist in projectList" value="{{prolist.project}}">{{prolist.project}}</option>
                     </select>
+                    <input type="text"  class="inputDom" ng-verify="{}" ng-model="project">
                 </li>
                 <li class="required">
                     <label><i><img src="/images/mandatory.png"></i><em>专业分类</em></label>
-                    <select class="sele" ng-model="classify" ng-verify="{}">
-                        <option value="">请选择</option>
+                    <select class="sele" ng-model="classify">
                         <option ng-repeat="classlist in classifyList" value="{{classlist.classify}}">{{classlist.classify}}</option>
                     </select>
+                    <input type="text"  class="inputDom" ng-verify="{}" ng-model="classify">
                 </li>
                 <li class="required">
                     <label><i><img src="/images/mandatory.png"></i><em>工作范围</em></label>

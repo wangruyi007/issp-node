@@ -13,14 +13,14 @@
         <li class="list-all" ng-repeat="list in departmentLists" style="display: {{list._delete?'none':'block'}};">
             <section  class="{{list.status=='CONGEAL'?'congeal':''}}" >
                 <div class="list-text {{list._selectList?'selectList':''}}" ng-click="selectList(list)">
-                    <p>{{$index+1}}</p>
-                    <p>{{list.serialNumber}}</p>
-                    <p>{{list.hierarchyName}}</p>
-                    <p>{{list.department}}</p>
-                    <p>{{list.area}}</p>
-                    <p>{{list.classify}}</p>
-                    <p>{{list.description}}</p>
-                    <p>{{list.status|cover}}</p>
+                    <p>{{::$index+1}}</p>
+                    <p>{{::list.showNumber}}</p>
+                    <p>{{::list.hierarchyName}}</p>
+                    <p>{{::list.department}}</p>
+                    <p>{{::list.area}}</p>
+                    <p>{{::list.classify}}</p>
+                    <p>{{::list.description}}</p>
+                    <p>{{::list.status|cover}}</p>
                 </div>
                 <div class="thaw-modal">
                     <button ng-click="thaw(list)">解冻</button>

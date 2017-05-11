@@ -17,13 +17,13 @@
             <section  class="{{list.status=='CONGEAL'?'congeal':''}}" >
                 <div class="list-text {{list._selectList?'selectList':''}}" ng-click="selectList(list)">
                     <p>{{$index+1}}</p>
-                    <p>{{list.serialNumber}}</p>
-                    <p>{{list.area}}</p>
-                    <p>{{list.departmentName}}</p>
-                    <p>{{list.arrangementName}}</p>
-                    <p>{{list.pool}}</p>
-                    <p>{{list.moduleName}}</p>
-                    <p>{{list.position}}</p>
+                    <p>{{::list.showNumber}}</p>
+                    <p>{{::list.area}}</p>
+                    <p>{{::list.departmentName}}</p>
+                    <p>{{::list.arrangementName}}</p>
+                    <p>{{::list.pool}}</p>
+                    <p>{{::list.moduleName}}</p>
+                    <p>{{::list.position}}</p>
                     <p>
                         <a href="javascript:void(0)" class="more"  ng-click="moreList(list)">更多详细</a>
                     </p>
@@ -36,8 +36,8 @@
                                 <span>当前人数</span>
                             </p>
                             <p class="see-children">
-                                <span>{{list.staff}}</span>
-                                <span>{{list.current}}</span>
+                                <span>{{::list.staff}}</span>
+                                <span>{{::list.current}}</span>
                             </p>
                         </li>
 
