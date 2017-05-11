@@ -190,7 +190,5 @@ module.exports = function(){
         };
         return request(options);
     };
-
-
     return this;
 };
