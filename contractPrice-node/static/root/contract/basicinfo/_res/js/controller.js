@@ -32,6 +32,7 @@ app.controller('basicinfoCtrl',function ($scope,$state) {
     $scope.delete = function(){
         if($scope.getId){
             $state.go('root.contract.basicinfo.list.delete[12]',{id:$scope.getId});
+            $scope.menuClass='deleteMenu';
         }
     };
     $scope.list = function(){

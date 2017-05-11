@@ -1,62 +1,24 @@
-var app = angular.module('basicinfoEdit', ['toastr']);
-app.controller('basicinfoEditCtrl', function($scope, basicinfoSer,$stateParams,$state,toastr){
-    var cusNumData ={customerNum: $stateParams.cusNum};
+var app = angular.module('materialEdit', ['toastr']);
+app.controller('materialEditCtrl', function($scope,$state,$stateParams,toastr,materialSer){
 
-    //重要性级别
-    basicinfoSer.customerLevelName().then(function(response){
-        $scope.customerLevels = response.data;
-    });
-    basicinfoSer.getCustomers(cusNumData).then(function(response){
+    var getId = {id:$stateParams.id};
+    materialSer.getMaterial(getId).then(function(response){
         if(response.data.code==0){
-            $scope.editInfo = response.data.data
+            $scope.edit=response.data.data
         }
     });
-
-    //
-    // //客户编辑
-    $scope.basicinfoEditFun = function(){
-        var vm = $scope;
-        var data = {
-            id:vm.editInfo.id,
-            customerNum : vm.editInfo.customerNum,
-            customerName : vm.editInfo.customerName,
-            area : vm.editInfo.area,
-            customerType : vm.editInfo.customerType,
-            customerSex : vm.editInfo.customerSex,
-            customerStatus : vm.editInfo.customerStatus,
-            relation:vm.editInfo.relation,
-            origin : vm.editInfo.origin,
-            customerLevelName : vm.editInfo.customerLevelVO.name,
-            cusEmail : vm.editInfo.cusEmail,
-            introducer : vm.editInfo.introducer,
-            phone : vm.editInfo.phone,
-            tel : vm.editInfo.tel,
-            qq : vm.editInfo.qq,
-            weChart : vm.editInfo.weChart,
-            origanizion : vm.editInfo.origanizion,
-            workProfession : vm.editInfo.workProfession,
-            workLevel : vm.editInfo.workLevel,
-            origanizationSize : vm.editInfo.origanizationSize,
-            lifeArea : vm.editInfo.lifeArea,
-            workPosition : vm.editInfo.workPosition,
-            oldWorkPlace : vm.editInfo.oldWorkPlace,
-            workRight : vm.editInfo.workRight,
-            grouthArea:vm.editInfo.grouthArea,
-            marketReceptTime:vm.editInfo.marketReceptTime
-        };
-        basicinfoSer.editCustomerbaseinfo(data).then(function(response){
+    $scope.materialEditFun = function(){
+        $scope.edit.suitableDateStart=angular.element('.starttime').val();
+        $scope.edit.suitableDateEnd=angular.element('.endtime').val();
+        materialSer.editMaterial($scope.edit).then(function(response){
             if(response.data.code == 0){
-                $state.go('root.customer.basicinfo.list[12]')
-                toastr.success( vm.editInfo.customerName+"编辑成功", '温馨提示');
-            }else if(response.data.code == 403){
+                $state.go('root.contract.material.list');
+                toastr.success( $scope.edit.area+"已成功添加", '温馨提示');
+            }else if(response.data.code==403){
                 toastr.error( "请登录用户", '温馨提示');
             }
         });
-
     };
-
-
-
 });
 
 

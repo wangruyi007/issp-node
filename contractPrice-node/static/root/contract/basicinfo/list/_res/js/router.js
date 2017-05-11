@@ -8,5 +8,13 @@ app.config(function($provide, $stateProvider){
                 controller:'basicinfoListCtrl'
             }
         }
+    }).state("root.contract.basicinfo.list.delete[12]",{
+        url:"/delete[12]?id=",
+        views:{
+            "modal@root.contract.basicinfo.list":{
+                templateUrl : "root/contract/basicinfo/list/delete/_res/html/index.html",
+                controller:'basicinfoDeleteCtrl'
+            }
+        }
     })
 });
