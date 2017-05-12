@@ -33,6 +33,7 @@ module.exports = function(){
     }).post('/addBasicinfo', function*(){
         var $self = this;
         var addData = $self.request.body;
+        addData.token = $self.cookies.get('usertoken');
         yield (server().addBasicinfo(addData)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -57,6 +58,7 @@ module.exports = function(){
     }).post('/editBasicinfo', function*(){
         var $self = this;
         var editData = $self.request.body;
+        editData.token = $self.cookies.get('usertoken');
         yield (server().editBasicinfo(editData)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -69,6 +71,7 @@ module.exports = function(){
     }).get('/deleteBasicinfo', function*(){
         var $self = this;
         var delId = $self.request.query;
+        delId.token = $self.cookies.get('usertoken');
         yield (server().deleteBasicinfo(delId)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -104,6 +107,7 @@ module.exports = function(){
     }).post('/addMaterial', function*(){
         var $self = this;
         var addData = $self.request.body;
+        addData.token = $self.cookies.get('usertoken');
         yield (server().addMaterial(addData)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -128,6 +132,7 @@ module.exports = function(){
     }).post('/editMaterial', function*(){
         var $self = this;
         var editData = $self.request.body;
+        editData.token = $self.cookies.get('usertoken');
         yield (server().editMaterial(editData)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -140,6 +145,7 @@ module.exports = function(){
     }).get('/deleteMaterial', function*(){
         var $self = this;
         var delId = $self.request.query;
+        delId.token = $self.cookies.get('usertoken');
         yield (server().deleteMaterial(delId)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -152,6 +158,7 @@ module.exports = function(){
     }).get('/congealMaterial', function*(){
         var $self = this;
         var conId = $self.request.query;
+        conId.token = $self.cookies.get('usertoken');
         yield (server().congealMaterial(conId)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -164,6 +171,7 @@ module.exports = function(){
     }).get('/thawMaterial', function*(){
         var $self = this;
         var thawId = $self.request.query;
+        thawId.token = $self.cookies.get('usertoken');
         yield (server().thawMaterial(thawId)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -176,6 +184,7 @@ module.exports = function(){
     }).post('/collectMaterial', function*(){
         var $self = this;
         var collectData = $self.request.body;
+        collectData.token = $self.cookies.get('usertoken');
         yield (server().collectMaterial(collectData)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -211,6 +220,7 @@ module.exports = function(){
     }).post('/addStandard', function*(){
         var $self = this;
         var addData = $self.request.body;
+        addData.token = $self.cookies.get('usertoken');
         yield (server().addStandard(addData)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -235,6 +245,7 @@ module.exports = function(){
     }).post('/editStandard', function*(){
         var $self = this;
         var getId = $self.request.body;
+        getId.token = $self.cookies.get('usertoken');
         yield (server().editStandard(getId)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -247,6 +258,7 @@ module.exports = function(){
     }).get('/deleteStandard', function*(){
         var $self = this;
         var getId = $self.request.query;
+        getId.token = $self.cookies.get('usertoken');
         yield (server().deleteStandard(getId)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -259,7 +271,21 @@ module.exports = function(){
     }).post('/collectStandard', function*(){
         var $self = this;
         var collect = $self.request.body;
+        collect.token = $self.cookies.get('usertoken');
         yield (server().collectStandard(collect)
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
+    }).get('/user/logout', function*(){
+        var $self = this;
+        var logout = $self.request.body;
+        logout.token = $self.cookies.get('usertoken');
+        yield (server().logout(logout)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
                 $self.body = responseText;

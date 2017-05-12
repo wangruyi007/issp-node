@@ -25,7 +25,10 @@ module.exports = function(){
             method : 'POST',
             timeout : 3000,
             uri : config()['rurl'] + '/contractprojectinfo/v1/add',
-            form:argvs
+            form:argvs,
+            headers:{
+                userToken:argvs.token
+            },
         };
         return request(options);
     };
@@ -42,6 +45,9 @@ module.exports = function(){
             method : 'PUT',
             timeout : 3000,
             uri : config()['rurl'] + '/contractprojectinfo/v1/edit',
+            headers:{
+                userToken:argvs.token
+            },
             form:argvs
         };
         return request(options);
@@ -51,6 +57,9 @@ module.exports = function(){
             method : 'DELETE',
             timeout : 3000,
             uri : config()['rurl'] + `/contractprojectinfo/v1/delete/${argvs.id}`,
+            headers:{
+                userToken:argvs.token
+            },
         };
         return request(options);
     };
@@ -75,6 +84,9 @@ module.exports = function(){
             method : 'POST',
             timeout : 3000,
             uri : config()['rurl'] + '/contractquotedata/v1/add',
+            headers:{
+                userToken:argvs.token
+            },
             form:argvs
         };
         return request(options);
@@ -92,6 +104,9 @@ module.exports = function(){
             method : 'PUT',
             timeout : 3000,
             uri : config()['rurl'] + '/contractquotedata/v1/edit',
+            headers:{
+                userToken:argvs.token
+            },
             form:argvs
         };
         return request(options);
@@ -101,6 +116,9 @@ module.exports = function(){
             method : 'DELETE',
             timeout : 3000,
             uri : config()['rurl'] + `/contractquotedata/v1/delete/${argvs.id}`,
+            headers:{
+                userToken:argvs.token
+            },
         };
         return request(options);
     };
@@ -109,6 +127,9 @@ module.exports = function(){
             method : 'POST',
             timeout : 3000,
             uri : config()['rurl'] + `/contractquotedata/v1/congeal/${argvs.id}`,
+            headers:{
+                userToken:argvs.token
+            },
         };
         return request(options);
     };
@@ -117,6 +138,9 @@ module.exports = function(){
             method : 'POST',
             timeout : 3000,
             uri : config()['rurl'] + `/contractquotedata/v1/thaw/${argvs.id}`,
+            headers:{
+                userToken:argvs.token
+            },
         };
         return request(options);
     };
@@ -125,6 +149,9 @@ module.exports = function(){
             method : 'GET',
             timeout : 3000,
             uri : config()['rurl'] + `/contractquotedata/v1/collects?area=${encodeURIComponent(argvs.area)}&customerName=${encodeURIComponent(argvs.customerName)}&startDate=${argvs.startDate}&endDate=${argvs.endDate}`,
+            headers:{
+                userToken:argvs.token
+            },
         };
         return request(options);
     };
@@ -149,6 +176,9 @@ module.exports = function(){
             method : 'POST',
             timeout : 3000,
             uri : config()['rurl'] + '/contractnodestandard/v1/add',
+            headers:{
+                userToken:argvs.token
+            },
             form:argvs
         };
         return request(options);
@@ -166,6 +196,9 @@ module.exports = function(){
             method : 'PUT',
             timeout : 3000,
             uri : config()['rurl'] + '/contractnodestandard/v1/edit',
+            headers:{
+                userToken:argvs.token
+            },
             form:argvs
         };
         return request(options);
@@ -175,11 +208,22 @@ module.exports = function(){
             method : 'DELETE',
             timeout : 3000,
             uri : config()['rurl'] + `/contractnodestandard/v1/delete/${argvs.id}`,
+            headers:{
+                userToken:argvs.token
+            },
             form:argvs
         };
         return request(options);
     };
     this.collectStandard = function(argvs){
+        var options = {
+            method : 'GET',
+            timeout : 3000,
+            uri : config()['rurl'] + `/contractnodestandard/v1/delete/${argvs.id}`,
+        };
+        return request(options);
+    };
+    this.logout = function(argvs){
         var options = {
             method : 'GET',
             timeout : 3000,

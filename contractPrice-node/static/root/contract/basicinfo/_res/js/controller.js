@@ -6,7 +6,7 @@ var app = angular.module('basicinfo', [{
 app.controller('basicinfoCtrl',function ($scope,$state) {
 
     if ($state.current.url == '/basicinfo') {//默认加载列表
-        $state.go('root.contract.basicinfo.list')
+        // $state.go('root.contract.basicinfo.list')
     };
 
 }).controller('basicinfoMenuCtrl',function($scope,$state,$rootScope,$location){
