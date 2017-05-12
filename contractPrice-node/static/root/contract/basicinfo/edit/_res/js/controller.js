@@ -7,7 +7,6 @@ app.controller('basicinfoEditCtrl', function($scope,$state,$stateParams,toastr,b
             $scope.edit=response.data.data
         }
     });
-
     $scope.basicEditFun = function(){
         $scope.edit.startTime=angular.element('.starttime').val();
         $scope.edit.endTime=angular.element('.endtime').val();

@@ -7,18 +7,21 @@
                     <select class="sele" ng-model="joprangeData.direction" >
                         <option ng-repeat="direlist in directionList" value="{{direlist.direction}}">{{direlist.direction}}</option>
                     </select>
+                    <input type="text"  class="inputDom" ng-verify="{}" ng-model="joprangeData.direction">
                 </li>
                 <li class="required">
                     <label><i><img src="/images/mandatory.png"></i><em>科目</em></label>
                     <select class="sele" ng-model="joprangeData.project">
                         <option ng-repeat="prolist in projectList" value="{{prolist.project}}">{{prolist.project}}</option>
                     </select>
+                    <input type="text"  class="inputDom" ng-verify="{}" ng-model="joprangeData.project">
                 </li>
                 <li class="required">
                     <label><i><img src="/images/mandatory.png"></i><em>专业分类</em></label>
                     <select class="sele" ng-model="joprangeData.classify" >
                         <option ng-repeat="classlist in classifyList" value="{{classlist.classify}}">{{classlist.classify}}</option>
                     </select>
+                    <input type="text"  class="inputDom" ng-verify="{}" ng-model="joprangeData.classify">
                 </li>
                 <li class="required">
                     <label><i><img src="/images/mandatory.png"></i><em>工作范围</em></label>

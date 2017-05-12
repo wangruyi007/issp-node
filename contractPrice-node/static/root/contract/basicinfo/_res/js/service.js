@@ -5,7 +5,8 @@ app.factory('basicinfoSer',function ($http) {
         countBasicinfo:countBasicinfo,
         addBasicinfo:addBasicinfo,
         getBasicinfo:getBasicinfo,
-        editBasicinfo:editBasicinfo
+        editBasicinfo:editBasicinfo,
+        deleteBasicinfo:deleteBasicinfo
     };
     function listBasicinfo(data) {
         return $http.get('/listBasicinfo',{params:data})
@@ -21,6 +22,9 @@ app.factory('basicinfoSer',function ($http) {
     }
     function editBasicinfo(data) {
         return $http.post('/editBasicinfo',data)
+    }
+    function deleteBasicinfo(data) {
+        return $http.get('/deleteBasicinfo',{params:data})
     }
 
 });

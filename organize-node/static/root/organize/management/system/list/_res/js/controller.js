@@ -58,7 +58,6 @@ app.controller('systemListCtrl',function($scope,toastr,systemSer){
             id :event.id
         }
         systemSer.thawSystem(data).then(function(response){
-          
             if(response.data.code==0){
                 event.status = "THAW";
                 toastr.success( event.serialNumber+"解冻成功", '温馨提示');

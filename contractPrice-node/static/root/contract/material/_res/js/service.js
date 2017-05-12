@@ -1,53 +1,42 @@
 var app = angular.module('materialServer',[]);
 app.factory('materialSer',function ($http) {
     return {
-        listCustomerBaseInfo : listCustomerBaseInfo,
-        cusNumber:cusNumber,
-        customerLevelName:customerLevelName,
-        addCustomerbaseinfo:addCustomerbaseinfo,
-        getCustomers:getCustomers,
-        editCustomerbaseinfo:editCustomerbaseinfo,
-        congealCustomerbaseinfo:congealCustomerbaseinfo,
-        thawCustomerbaseinfo:thawCustomerbaseinfo,
-        countBaseInfo:countBaseInfo,
-        deleteCustomerbaseinfo:deleteCustomerbaseinfo
+        listMaterial : listMaterial,
+        countMaterial:countMaterial,
+        addMaterial:addMaterial,
+        getMaterial:getMaterial,
+        editMaterial:editMaterial,
+        deleteMaterial:deleteMaterial,
+        congealMaterial:congealMaterial,
+        thawMaterial:thawMaterial,
+        collectMaterial:collectMaterial
     };
-    function listCustomerBaseInfo(data) {
-        return $http.post('/customer/customerbaseinfo/listCustomerBaseInfo',data)
+    function listMaterial(data) {
+        return $http.get('/listMaterial',{params:data})
     }
-    //获取客户编号
-    function cusNumber(){
-        return $http.get('/customer/customerbaseinfo/generateNumber')
+    function countMaterial() {
+        return $http.get('/countMaterial')
     }
-    function customerLevelName(){
-        return $http.get('/customer/customerlevel/listCustomerLevel')
+    function addMaterial(data) {
+        return $http.post('/addMaterial',data)
     }
-    //添加客户信息
-    function addCustomerbaseinfo(data){
-        return $http.post('/customer/customerbaseinfo/add',data)
+    function getMaterial(data) {
+        return $http.get('/getMaterial',{params:data})
     }
-    //获取单个客户信息
-    function getCustomers(data){
-        return $http.post('/customer/customerbaseinfo/getCustomer',data)
+    function editMaterial(data) {
+        return $http.post('/editMaterial',data)
     }
-    //编辑客户信息
-    function editCustomerbaseinfo(data){
-        return $http.post('/customer/customerbaseinfo/edit',data)
+    function deleteMaterial(data) {
+        return $http.get('/deleteMaterial',{params:data})
     }
-    //冻结客户信息
-    function congealCustomerbaseinfo(data){
-        return $http.post('/customer/customerbaseinfo/congeal',data)
+    function congealMaterial(data) {
+        return $http.get('/congealMaterial',{params:data})
     }
-    //解冻
-    function thawCustomerbaseinfo(data){
-        return $http.post('/customer/customerbaseinfo/thaw',data)
+    function thawMaterial(data) {
+        return $http.get('/thawMaterial',{params:data})
     }
-    //分页总条数
-    function countBaseInfo(){
-        return $http.get('/customerbaseinfo/count')
+    function collectMaterial(data) {
+        return $http.post('/collectMaterial',data)
     }
-    //删除
-    function deleteCustomerbaseinfo(data){
-        return $http.post('/customer/customerbaseinfo/delete',data)
-    }
+
 });

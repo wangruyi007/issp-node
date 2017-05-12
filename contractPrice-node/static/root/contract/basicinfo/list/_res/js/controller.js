@@ -47,7 +47,7 @@ app.controller('basicinfoListCtrl',function($scope,basicinfoSer,toastr){
         }
     });
     $scope.$on('deletedId',function(event,delid){
-        angular.forEach($scope.systemLists,function(obj){
+        angular.forEach($scope.basicinfoLists,function(obj){
             if(obj.id == delid){
                 obj._delete = delid
             }

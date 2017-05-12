@@ -14,11 +14,11 @@
             <section  class="{{list.status=='CONGEAL'?'congeal':''}}" >
                 <div class="list-text {{list._selectList?'selectList':''}}" ng-click="selectList(list)">
                     <p>{{$index+1}}</p>
-                    <p>{{list.direction}}</p>
-                    <p>{{list.project}}</p>
-                    <p>{{list.classify}}</p>
-                    <p>{{list.workRange}}</p>
-                    <p>{{list.node}}</p>
+                    <p>{{::list.direction}}</p>
+                    <p>{{::list.project}}</p>
+                    <p>{{::list.classify}}</p>
+                    <p>{{::list.workRange}}</p>
+                    <p>{{::list.node}}</p>
                 </div>
                 <div class="thaw-modal">
                     <button ng-click="thaw(list)">开启</button>

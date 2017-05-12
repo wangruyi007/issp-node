@@ -15,13 +15,13 @@
             <section  class="{{list.status=='CONGEAL'?'congeal':''}}" >
                 <div class="list-text {{list._selectList?'selectList':''}}" ng-click="selectList(list)">
                     <p>{{$index+1}}</p>
-                    <p>{{list.instructionId}}</p>
-                    <p>{{list.serialNumber}}</p>
-                    <p>{{list.angle}}</p>
-                    <p>{{list.dimension}}</p>
-                    <p>{{list.classify}}</p>
-                    <p>{{list.function}}</p>
-                    <p>{{list.frequency}}</p>
+                    <p>{{::list.instructionId}}</p>
+                    <p>{{::list.serialNumber}}</p>
+                    <p>{{::list.angle}}</p>
+                    <p>{{::list.dimension}}</p>
+                    <p>{{::list.classify}}</p>
+                    <p>{{::list.function}}</p>
+                    <p>{{::list.frequency}}</p>
                     <p>
                         <a href="javascript:void(0)" class="more"  ng-click="moreList(list)">更多详细</a>
                     </p>
@@ -40,14 +40,14 @@
                                 <span>工作文件存储位置</span>
                             </p>
                             <p class="see-children">
-                                <span>{{list.reportTime}}</span>
-                                <span>{{list.reportWay}}</span>
-                                <span>{{list.reportContent}}</span>
-                                <span>{{list.publicity}}</span>
-                                <span>{{list.contain}}</span>
-                                <span>{{list.hasMould|cover}}</span>
-                                <span>{{list.mouldStorage}}</span>
-                                <span>{{list.paperStorage}}</span>
+                                <span>{{::list.reportTime}}</span>
+                                <span>{{::list.reportWay}}</span>
+                                <span>{{::list.reportContent}}</span>
+                                <span>{{::list.publicity}}</span>
+                                <span>{{::list.contain}}</span>
+                                <span>{{::list.hasMould|cover}}</span>
+                                <span>{{::list.mouldStorage}}</span>
+                                <span>{{::list.paperStorage}}</span>
                             </p>
                         </li>
                         <li>
@@ -56,8 +56,8 @@
                                 <span>公示对象&联系方式</span>
                             </p>
                             <p class="see-children">
-                                <span>{{list.summarize}}</span>
-                                <span>{{list.contact}}</span>
+                                <span>{{::list.summarize}}</span>
+                                <span>{{::list.contact}}</span>
                             </p>
                         </li>
                     </ul>

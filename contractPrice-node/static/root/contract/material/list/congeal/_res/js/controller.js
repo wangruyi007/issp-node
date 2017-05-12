@@ -1,18 +1,18 @@
-var app = angular.module('basicinfoCongeal', ['toastr']);
-app.controller('basicinfoCongealCtrl',function($scope,basicinfoSer,toastr,$stateParams,$state){
-    //删除
-    $scope.congealYes = function(){
+var app = angular.module('materialCongeal', ['toastr']);
+app.controller('materialCongealCtrl',function($scope,toastr,$stateParams,$state,materialSer){
+
+    $scope.conYes = function(){
 
         var data = {
             id :$stateParams.id
         }
-        basicinfoSer.congealCustomerbaseinfo(data).then(function(response){
+
+        materialSer.congealMaterial(data).then(function(response){
             if(response.data.code==0){
                 toastr.info( "信息已冻结", '温馨提示');
-                $state.go('root.customer.basicinfo.list');
-                $scope.conId = $stateParams.id;
+                $state.go('root.contract.material.list');
                 //向父Ctrl传递事件
-                $scope.$emit('congealId', $scope.conId)
+                $scope.$emit('congealId', $stateParams.id);
             }else if(response.data.code==403){
                 toastr.error( "请登录用户", '温馨提示');
             }

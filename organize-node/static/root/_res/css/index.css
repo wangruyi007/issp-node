@@ -136,7 +136,6 @@ body {
 }
 
 .left-section .nav {
-  max-height: 600px;
   margin-top: 25px;
   color: #999;
   overflow: auto;
@@ -792,6 +791,11 @@ body {
 .right-section .top-content .content .content-wrap .content-input .input-list section ul li.hidden {
   display: none;
 }
+.right-section .top-content .content .content-wrap .content-input .input-list section ul li.input-select select{
+  position:absolute;
+  width:20%;
+  right:15%;
+}
 
 .right-section .top-content .content .content-wrap .content-input .input-list section ul li.required {
   position: relative;
@@ -853,6 +857,8 @@ body {
   border-radius: 5px;
   margin-left: 14px;
 }
+
+
 
 .right-section .top-content .content .content-wrap .content-input .input-list section ul li input.date-icon {
   background: url("/images/date.png") no-repeat right 10px center;
@@ -958,6 +964,8 @@ body {
  .select .select-input {
   width: 100%;
 }
+ 
+
 
  .select .arrow-down {
   position: absolute;
@@ -1866,7 +1874,7 @@ body {
   background-color: #758c94;
   position: fixed;
   bottom: 0;
-  left: 198px;
+  left: 200px;
   right: 0;
 }
 .pagination{
@@ -2080,5 +2088,16 @@ body {
   bottom: 0;
   z-index: 9;
   background: rgba(255, 255, 255, 0.3);
+}
+.right-section .top-content .content .content-wrap .content-input .input-list section ul li .inputDom{
+  width: 46%;
+  position: absolute;
+  margin-left: 59px;
+  border: 0!important;
+  height: 30px;
+  padding-left: 10px !important;
+}
+.right-section .top-content .content .content-wrap .content-input .input-list section ul li .inputDom:hover{
+  box-shadow: 0 0 3px white !important;
 }
 

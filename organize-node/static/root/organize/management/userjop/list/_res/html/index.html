@@ -12,9 +12,9 @@
             <section  class="{{list.status=='CONGEAL'?'congeal':''}}">
                 <div class="list-text {{list._selectList?'selectList':''}}" ng-click="selectList(list)">
                     <p>{{$index+1}}</p>
-                    <p>{{list.username}}</p>
-                    <p>{{list.employeesNumber}}</p>
-                    <p>{{list.position}}</p>
+                    <p>{{::list.username}}</p>
+                    <p>{{::list.employeesNumber}}</p>
+                    <p>{{::list.position}}</p>
                 </div>
             </section>
         </li>
