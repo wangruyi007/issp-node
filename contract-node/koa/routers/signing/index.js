@@ -281,7 +281,7 @@ module.exports = function(){
     }).post('/contractcategory/add', function*(){//项目派工单添加
         var $self = this;
         var addData = $self.request.body;
-        addData.userToken = $self.cookies.get('token');
+        addData.userToken = $self.cookies.get('usertoken');
         yield (server().categoryAdd(addData)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -502,6 +502,22 @@ module.exports = function(){
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
                 $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
+    }).get('/user/logout', function*(){//退出用户
+        var $self = this;
+        var token = {token:$self.cookies.get('usertoken')};
+        yield (server().logout(token)
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                if(responseText.code==0){
+                    $self.cookies.set('usertoken','');
+                    $self.body = responseText;
+                }
+
             }).catch((error) =>{
                 $self.set('Content-Type','application/json;charset=utf-8');
                 $self.body=error.error;

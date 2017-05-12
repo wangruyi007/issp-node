@@ -20,9 +20,14 @@
                 </div>
                 <div class="search">
                     <a href="javascript:void(0)" class="search-btn"></a>
-                    <select class="selected" >
-                        <option value="">{{username}}</option>
-                    </select>
+                    <div class="selected">
+                        <a href="javascript:void(0)">{{username}}</a>
+                        <a href="javascript:void(0)" ng-click="logout()">退出</a>
+                    </div>
+                    <!--<select class="selected" >-->
+                        <!--<option value="">{{username}}</option>-->
+                        <!--<option value="">退出</option>-->
+                    <!--</select>-->
                     <span class="arrow"></span>
                 </div>
             </div>
