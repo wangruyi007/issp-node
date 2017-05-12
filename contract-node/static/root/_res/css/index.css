@@ -304,9 +304,10 @@ body {
   background: url("/images/searchbg.png") no-repeat;
   color: #fff;
   padding-left: 18px;
+  
 }
 
-.right-section .top-content .top-fixed .top .search .selected option {
+.right-section .top-content .top-fixed .top .search .selected a {
   color: #666;
 }
 

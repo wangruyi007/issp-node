@@ -1,5 +1,6 @@
-var app = angular.module('contractTypeAdd', ['toastr']);
-app.controller('contractTypeAddCtrl', function($scope, contractSer,$state,toastr){
+var app = angular.module('contractTypeAdd', ['toastr','ipCookie']);
+app.controller('contractTypeAddCtrl', function($scope, contractSer,$state,toastr,$location,ipCookie){
+
 
     //添加
     $scope.contractAddFun = function(){
@@ -10,7 +11,13 @@ app.controller('contractTypeAddCtrl', function($scope, contractSer,$state,toastr
                 $state.go('root.businessContract.contractType.list');
                 toastr.success("已成功添加", '温馨提示');
             }else if(response.data.code==403){
-                toastr.error( "请登录用户", '温馨提示');
+
+                toastr.error( "请登录用户,3秒后跳至登陆页面", '温馨提示');
+                var absurl = $location.absUrl();
+                ipCookie('absurl', absurl,{ expires:3,expirationUnit: 'minutes' });
+                setTimeout(function(){
+                    window.location.href='http://localhost/login'
+                },3000)
             }
         });
 

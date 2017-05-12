@@ -220,7 +220,10 @@ module.exports = function(){
         var options = {
             method : 'POST',
             timeout : 3000,
-            uri : config()['rurl'] + `/contractcategory/v1/add?userToken=${argvs.userToken}`,
+            uri : config()['rurl'] + '/contractcategory/v1/add',
+            headers : {
+                userToken : argvs.userToken
+            },
             form:argvs
         };
         return request(options);
@@ -396,6 +399,17 @@ module.exports = function(){
             method : 'GET',
             timeout : 3000,
             uri : config()['rurl'] + '/dispatchsheet/v1/listArea'
+        };
+        return request(options);
+    };
+
+    //用户退出
+    this.logout = function(argvs){
+        var options = {
+            method : 'POST',
+            timeout : 3000,
+            uri : config()['user'] + `/v1/sign-out/${argvs.token}`,
+            form:argvs
         };
         return request(options);
     };
