@@ -58,7 +58,7 @@ module.exports = function(){
                 if(responseText.code == 0){
                     var token = responseText.data;
                     $self.body = responseText;
-                    $self.cookies.set('usertoken', token, {maxAge : 1000 * 60 * 60 * 24 * 7});
+                    $self.cookies.set('token', token, {maxAge : 1000 * 60 * 60 * 24 * 7});
                 }
 
     }).catch((error) =>{
