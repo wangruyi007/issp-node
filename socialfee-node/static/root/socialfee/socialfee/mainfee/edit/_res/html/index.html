@@ -1,0 +1,128 @@
+<div class="content-input edit" verify-scope="tipStyle: 1">  <!--表单验证插件-->
+    <div class="input-list">
+        <section>
+            <ul>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>缴费所属时期年</em></label>
+                    <select class="sele" ng-model="data.payTimeYear">
+                        <option ng-repeat="year in years" value="{{year}}">{{ year }}</option>
+                    </select>
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>缴费所属时期月</em></label>
+                    <select class="sele" ng-model="data.payTimeMonth">
+                        <option ng-repeat="month in monthes" value="{{month}}">{{ month }}</option>
+                    </select>
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>纳税人名称</em></label>
+                    <input type="text"  ng-verify="{}" ng-model="data.payFeer">
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>单位社保号</em></label>
+                    <input type="text" ng-verify="{}" ng-model="data.workSocalNum">
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>姓名</em></label>
+                    <input type="text"  ng-verify="{}" ng-model="data.empName">
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>身份证号码</em></label>
+                    <input type="text" ng-verify="{}"  ng-model="data.cardNum">
+                </li>
+                <li  class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>证件号</em></label>
+                    <input type="text" ng-verify="{}" ng-model="data.identityNum">
+                </li>
+                <li  class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>个人社保号</em></label>
+                    <input type="text" ng-verify="{}" ng-model="data.empSocalNum">
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>基本养老保险计费工资</em></label>
+                    <input type="number" ng-verify="{}" ng-model="data.baseSalary" ng-init="data.baseSalary=0.00">
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>基本养老保险单位</em></label>
+                    <input type="number" ng-verify="{}" ng-model="data.baseWork" ng-init="data.baseWork=0.00">
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>基本养老保险个人</em></label>
+                    <input type="number" ng-verify="{}" ng-model="data.baseEmp" ng-init="data.baseEmp=0.00">
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>工伤保险计费工资</em></label>
+                    <input type="number" ng-verify="{}" ng-model="data.injurySalary" ng-init="data.injurySalary=0.00">
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>工伤保险单位</em></label>
+                    <input type="number" ng-verify="{}" ng-model="data.injuryWork" ng-init="data.injuryWork=0.00">
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>工伤保险个人</em></label>
+                    <input type="number" ng-verify="{}" ng-model="data.injuryEmp" ng-init="data.injuryEmp=0.00">
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>失业保险计费工资</em></label>
+                    <input type="number" ng-verify="{}" ng-model="data.unemploySalary" ng-init="data.unemploySalary=0.00">
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>失业保险单位</em></label>
+                    <input type="number" ng-verify="{}" ng-model="data.unemployWork" ng-init="data.unemployWork=0.00">
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>失业保险个人</em></label>
+                    <input type="number" ng-verify="{}" ng-model="data.unemployEmp" ng-init="data.unemployEmp=0.00">
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>社会医疗保险计费工资</em></label>
+                    <input type="number" ng-verify="{}" ng-model="data.socialMediSalary" ng-init="data.socialMediSalary=0.00">
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>社会医疗保险单位</em></label>
+                    <input type="number" ng-verify="{}" ng-model="data.socialMediWork" ng-init="data.socialMediWork=0.00">
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>社会医疗保险个人</em></label>
+                    <input type="number" ng-verify="{}" ng-model="data.socialMediEmp" ng-init="data.socialMediEmp=0.00">
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>重大疾病医疗补助计费工资</em></label>
+                    <input type="number" ng-verify="{}" ng-model="data.illSalary" ng-init="data.illSalary=0.00">
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>重大疾病医疗补助单位</em></label>
+                    <input type="number" ng-verify="{}" ng-model="data.illWork" ng-init="data.illWork=0.00">
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>重大疾病医疗补助个人</em></label>
+                    <input type="number" ng-verify="{}" ng-model="data.illEmp" ng-init="data.illEmp=0.00">
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>生育保险计费工资</em></label>
+                    <input type="number" ng-verify="{}" ng-model="data.pregnantSalary" ng-init="data.pregnantSalary=0.00">
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>生育保险单位</em></label>
+                    <input type="number" ng-verify="{}" ng-model="data.pregnantWork" ng-init="data.pregnantWork=0.00">
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>生育保险个人</em></label>
+                    <input type="number" ng-verify="{}" ng-model="data.pregnantEmp" ng-init="data.pregnantEmp=0.00">
+                </li>
+            </ul>
+        </section>
+    </div>
+    <p class="dataBottom">
+        <span class="imPrompt"><i><img src="/images/prompt.png"></i>带有<i><img src="/images/mandatory.png"></i>的为必填项</span>
+        <button ng-verify="{control:'myform'}" ng-click="EditFun()">提交</button>
+    </p>
+</div>
+
+<script type="text/javascript">
+    !function(){
+        laydate.skin('dahong');//切换皮肤，请查看skins下面皮肤库
+    }();
+
+
+</script>
