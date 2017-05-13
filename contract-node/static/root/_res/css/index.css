@@ -303,12 +303,34 @@ body {
   height: 37px;
   background: url("/images/searchbg.png") no-repeat;
   color: #fff;
-  padding-left: 18px;
-  
+  position:relative;
+  text-align:center;
+  margin-right:120px;}
+.right-section .top-content .top-fixed .top .search .selected:hover .usermenu{
+  display:flex;
 }
-
-.right-section .top-content .top-fixed .top .search .selected a {
-  color: #666;
+.right-section .top-content .top-fixed .top .search .selected a{
+  color:#fff;
+}
+.right-section .top-content .top-fixed .top .search .selected .username{
+  line-height:37px;
+}
+.right-section .top-content .top-fixed .top .search .selected .usermenu{
+  display:none;
+  flex-direction:column;
+  position:absolute;
+  left:1px;
+  width:134px;
+  border:1px solid #ccc;
+  background:#fff;
+}
+.right-section .top-content .top-fixed .top .search .selected .usermenu a{
+  line-height:30px;
+  color:#00c6ff;
+}
+.right-section .top-content .top-fixed .top .search .selected .usermenu a:hover{
+  background:#00c6ff;
+  color:#fff;
 }
 
 .right-section .top-content .top-fixed .top .search .arrow {

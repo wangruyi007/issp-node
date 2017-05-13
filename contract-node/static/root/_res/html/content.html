@@ -21,14 +21,12 @@
                 <div class="search">
                     <a href="javascript:void(0)" class="search-btn"></a>
                     <div class="selected">
-                        <a href="javascript:void(0)">{{username}}</a>
-                        <a href="javascript:void(0)" ng-click="logout()">退出</a>
+                        <p class="username"><a href="javascript:void(0)">{{username}}</a></p>
+                        <p class="usermenu">
+                            <a href="javascript:void(0)" ng-hide="logined" ng-click="login()">登录</a>
+                            <a href="javascript:void(0)" ng-show="logined" ng-click="logout()">退出</a>
+                        </p>
                     </div>
-                    <!--<select class="selected" >-->
-                        <!--<option value="">{{username}}</option>-->
-                        <!--<option value="">退出</option>-->
-                    <!--</select>-->
-                    <span class="arrow"></span>
                 </div>
             </div>
 
