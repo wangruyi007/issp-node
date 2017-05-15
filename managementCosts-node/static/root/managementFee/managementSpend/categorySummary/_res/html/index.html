@@ -1,0 +1,44 @@
+<div class="collect">
+    <div class="collect-select">
+        <span>开始日期：<input type="text" onClick="laydate({istime: true, format: 'YYYY-MM-DD'})" class="inputter start"  ></span>
+        <span>结束日期：<input type="text" onClick="laydate({istime: true, format: 'YYYY-MM-DD'})" class="inputter end"  ></span>
+        <span>
+            类别：
+            <select class="sele"  ng-model="type">
+                <option value="">请选择</option>
+                <option value="项目上">项目上</option>
+                <option value="项目外">项目外</option>
+            </select>
+            <input type="text"  class="inputArea" ng-model="type">
+        </span>
+        <button ng-click="collect()">汇总</button>
+    </div>
+    <ul class="sum-list">
+        <li class="sum-thead">
+            <span>类别</span>
+            <span ng-show="showed">日期</span>
+            <span ng-hide="showed">年份</span>
+            <span ng-hide="showed">月份</span>
+            <span ng-hide="showed">地区</span>
+            <span ng-hide="showed">项目组</span>
+            <span ng-hide="showed">项目名称</span>
+            <span>目标管理费</span>
+            <span>实际管理费</span>
+            <span>比例</span>
+            <span>差额</span>
+        </li>
+        <li class="sum-tbody" ng-repeat="Lists in summaryLists">
+            <span>{{::Lists.type}}</span>
+            <span ng-show="showed">{{::Lists.year}}</span>
+            <span ng-hide="showed">{{::Lists.year}}</span>
+            <span ng-hide="showed">{{::Lists.month}}</span>
+            <span ng-hide="showed">{{::Lists.area}}</span>
+            <span ng-hide="showed">{{::Lists.projectGroup}}</span>
+            <span ng-hide="showed">{{::Lists.project}}</span>
+            <span>{{::Lists.targetFee}}</span>
+            <span>{{::Lists.actualFee}}</span>
+            <span>{{::Lists.rate}}</span>
+            <span>{{::Lists.balance}}</span>
+        </li>
+    </ul>
+</div>
