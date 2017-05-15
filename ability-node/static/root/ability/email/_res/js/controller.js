@@ -49,10 +49,10 @@ app.controller('emailCtrl',function ($scope,$state) {
         $scope.menuClass = 'summaryMenu'
     };
     $scope.person = function(){
-        $scope.menuClass = 'summaryPersonMenu'
+        $scope.menuClass = 'personMenu'
     };
     $scope.cooperationone = function(){
-        $scope.menuClass = 'summarycooperationMenu'
+        $scope.menuClass = 'cooperationoneMenu'
     };
 });
 //自定义过滤器

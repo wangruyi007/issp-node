@@ -15,11 +15,9 @@
             <span>个人经手项目数量</span>
             <span>个人社交资源数量</span>
         </li>
-        <li class="sum-tbody" ng-repeat="summaryList in summarypersons">
-            <span></span>
-            <span>{{summaryList.name}}</span>
-            <span>{{summaryList.counts}}</span>
-            <span></span>
+        <li class="sum-tbody" ng-repeat="summaryList in summaryLists">
+            <span>{{summaryList.remark}}</span>
+            <span ng-repeat="summarycount in summaryList.collectDataList">{{summarycount.counts}}</span>
         </li>
     </ul>
 </div>

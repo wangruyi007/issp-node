@@ -73,7 +73,7 @@ app.controller('selfcapCtrl',function ($scope,$state) {
     $scope.socialList = function(){
         if($scope.idList){
             $state.go('root.ability.selfcap.socialList',{id:$scope.idList});
-            $scope.menuClass = 'socialListMenu'
+            $scope.menuClass = 'socialList?id=Menu'
         }
     };
     //个人社交删除

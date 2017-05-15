@@ -3,7 +3,6 @@
         <label><i><img src="/images/mandatory.png"></i><em>公司名称</em></label>
         <div class="select">
         <p class="select-text" >
-       <!-- <span ng-repeat="word in words">{{word}}, </span>-->
         <span ng-repeat="word in words">{{word}}, </span>
        </p>
         <div class="mymultiselect" events="getSummary" ng-dropdown-multiselect="" options="workOptions" selected-model="words" extra-settings="stringSettings"></div>
@@ -23,5 +22,6 @@
             <span>{{summaryList.remark}}</span>
             <span ng-repeat="summarycount in summaryList.collectDataList">{{summarycount.counts}}</span>
         </li>
+
     </ul>
 </div>

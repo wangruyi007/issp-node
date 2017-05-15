@@ -16,7 +16,7 @@ app.controller('emailPersonCtrl', function($scope, emailSer,toastr){
     $scope.getSummary ={onSelectionChanged(){
         emailSer.ectSummaryPerson($scope.words).then(function(response){
             if(response.data.code == 0){
-                $scope.summarypersons = response.data.data[0].collectDataList;
+                $scope.summaryLists = response.data.data;
             }
         })
     }}
