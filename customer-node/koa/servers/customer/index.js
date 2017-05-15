@@ -9,9 +9,7 @@ module.exports = function(){
             method : 'GET',
             timeout : 3000,
             uri : config()['customer']['rurl'] + '/customerbaseinfo/v1/listCustomerBaseInfo?limit=10&page=' + argvs.page,
-            headers : {
-                // token : token
-            }
+
         };
         return request(options);
     };
@@ -20,9 +18,7 @@ module.exports = function(){
             method : 'GET',
             timeout : 3000,
             uri : config()['customer']['rurl'] + '/customerbaseinfo/v1/count',
-            headers : {
-                // token : token
-            }
+
         };
         return request(options);
     };
@@ -31,9 +27,7 @@ module.exports = function(){
             method : 'GET',
             timeout : 3000,
             uri : config()['customer']['rurl'] + '/customerlevel/v1/listCustomerLevel',
-            headers : {
-                // token : token
-            }
+
         };
         return request(options);
     };
@@ -42,9 +36,7 @@ module.exports = function(){
             method : 'GET',
             timeout : 3000,
             uri : config()['customer']['rurl'] + '/customerbaseinfo/v1/generateNumber',
-            headers : {
-                // token : token
-            }
+
         };
         return request(options);
     };
@@ -55,7 +47,7 @@ module.exports = function(){
             uri : config()['customer']['rurl'] + '/customerbaseinfo/v1/add',
             form : argvs,
             headers : {
-                // token : token
+                token : argvs.token
             }
         };
         return request(options);
@@ -67,7 +59,7 @@ module.exports = function(){
             uri : config()['customer']['rurl'] + '/customerbaseinfo/v1/edit',
             form : argvs,
             headers : {
-                // token : token
+                token : argvs.token
             }
         };
         return request(options);
@@ -77,6 +69,9 @@ module.exports = function(){
             method : 'DELETE',
             timeout : 3000,
             uri : config()['customer']['rurl'] + '/customerbaseinfo/v1/delete/' + argvs.id + '?userToken=' + argvs.userToken,
+            headers : {
+                token : argvs.token
+            }
         };
         return request(options);
     };
@@ -85,6 +80,9 @@ module.exports = function(){
             method : 'PUT',
             timeout : 3000,
             uri : config()['customer']['rurl'] + '/customerbaseinfo/v1/congeal/' + argvs.id + '?userToken=' + argvs.userToken,
+            headers : {
+                token : argvs.token
+            }
         };
         return request(options);
     };
@@ -93,6 +91,9 @@ module.exports = function(){
             method : 'PUT',
             timeout : 3000,
             uri : config()['customer']['rurl'] + '/customerbaseinfo/v1/thaw/' + argvs.id + '?userToken=' + argvs.userToken,
+            headers : {
+                token : argvs.token
+            }
         };
         return request(options);
     };
@@ -102,9 +103,7 @@ module.exports = function(){
             method : 'GET',
             timeout : 3000,
             uri : config()['customer']['rurl'] + '/customerbaseinfo/v1/getCustomer?customerNum=' + argvs.customerNum,
-            headers : {
-                // token : token
-            }
+
         };
         return request(options);
     };
@@ -115,9 +114,7 @@ module.exports = function(){
             method : 'GET',
             timeout : 3000,
             uri : config()['customer']['rurl'] + '/customerlevel/v1/listCustomerLevel',
-            headers : {
-                // token : token
-            }
+
         };
         return request(options);
     };
@@ -130,7 +127,7 @@ module.exports = function(){
             uri : config()['customer']['rurl'] + '/customerlevel/v1/add',
             form : argvs,
             headers : {
-                // token : token
+                token : argvs.token
             }
         };
         return request(options);
@@ -141,6 +138,9 @@ module.exports = function(){
             method : 'DELETE',
             timeout : 3000,
             uri : config()['customer']['rurl'] + '/customerlevel/v1/delete/' + argvs.id + '?userToken=' + argvs.userToken,
+            headers : {
+                token : argvs.token
+            }
 
         };
         return request(options);
@@ -163,6 +163,9 @@ module.exports = function(){
             timeout : 3000,
             uri : config()['customer']['rurl'] + '/customerlevel/v1/edit',
             form : argvs,
+            headers : {
+                token : argvs.token
+            }
         };
         return request(options);
     };
@@ -172,6 +175,9 @@ module.exports = function(){
             method : 'GET',
             timeout : 3000,
             uri : config()['customer']['rurl'] + '/customerdetail/v1/listCustomerDetail?limit=10&page=' + argvs.page,
+            headers : {
+                token : argvs.token
+            }
         };
         return request(options);
     };
@@ -200,6 +206,9 @@ module.exports = function(){
             timeout : 3000,
             uri : config()['customer']['rurl'] + '/customerdetail/v1/add',
             form : argvs,
+            headers : {
+                token : argvs.token
+            }
         };
         return request(options);
     };
@@ -210,6 +219,9 @@ module.exports = function(){
             timeout : 3000,
             uri : config()['customer']['rurl'] + '/customerdetail/v1/getInfoByCustomerNum?customerNum=' + argvs.customerNum,
             form : argvs,
+            headers : {
+                token : argvs.token
+            }
         };
         return request(options);
     };
@@ -220,6 +232,9 @@ module.exports = function(){
             timeout : 3000,
             uri : config()['customer']['rurl'] + '/customerdetail/v1/edit',
             form : argvs,
+            headers : {
+                token : argvs.token
+            }
         };
         return request(options);
 
@@ -231,6 +246,9 @@ module.exports = function(){
             method : 'DELETE',
             timeout : 3000,
             uri : config()['customer']['rurl'] + '/customerdetail/v1/delete/' + argvs.id + '?userToken=' + argvs.userToken,
+            headers : {
+                token : argvs.token
+            }
         };
         return request(options);
 
@@ -259,7 +277,10 @@ module.exports = function(){
             method : 'GET',
             timeout : 3000,
             uri : config()['customer']['rurl'] + '/customerbaseinfo/v1/getWorks',
-            form:argvs
+            form:argvs,
+            headers : {
+                token : argvs.token
+            }
         };
         return request(options);
     };
@@ -270,6 +291,9 @@ module.exports = function(){
             timeout : 3000,
             uri : config()['customer']['rurl'] + '/cusemail/v1/add',
             form:argvs,
+            headers : {
+                token : argvs.token
+            }
         };
         return request(options);
     };
@@ -278,7 +302,10 @@ module.exports = function(){
         var options = {
             method : 'DELETE',
             timeout : 3000,
-            uri : config()['customer']['rurl'] + '/cusemail/v1/delete/'+argvs.id + '?userToken=' + argvs.userToken,
+            uri : config()['customer']['rurl'] + '/cusemail/v1/delete/'+argvs.id,
+            headers : {
+                token : argvs.token
+            }
         };
         return request(options);
     };
@@ -287,7 +314,10 @@ module.exports = function(){
         var options = {
             method : 'PUT',
             timeout : 3000,
-            uri : config()['customer']['rurl'] + '/cusemail/v1/congeal/'+argvs.id + '?userToken=' + argvs.userToken,
+            uri : config()['customer']['rurl'] + '/cusemail/v1/congeal/'+argvs.id,
+            headers : {
+                token : argvs.token
+            }
         };
         return request(options);
     };
@@ -296,7 +326,10 @@ module.exports = function(){
         var options = {
             method : 'PUT',
             timeout : 3000,
-            uri : config()['customer']['rurl'] + '/cusemail/v1/thaw/'+argvs.id + '?userToken=' + argvs.userToken,
+            uri : config()['customer']['rurl'] + '/cusemail/v1/thaw/'+argvs.id ,
+            headers : {
+                token : argvs.token
+            }
         };
         return request(options);
     };

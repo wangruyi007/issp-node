@@ -1,4 +1,4 @@
-var app = angular.module('materialCongeal', ['toastr']);
+var app = angular.module('materialCongeal', ['toastr','ipCookie']);
 app.controller('materialCongealCtrl',function($scope,toastr,$stateParams,$state,materialSer){
 
     $scope.conYes = function(){

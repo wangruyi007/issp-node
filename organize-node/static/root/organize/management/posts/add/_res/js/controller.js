@@ -1,5 +1,5 @@
-var app = angular.module('postsAdd', ['toastr']);
-app.controller('postsAddCtrl', function($scope,$state,toastr,postsSer){
+var app = angular.module('postsAdd', ['toastr','ipCookie']);
+app.controller('postsAddCtrl', function($scope,$state,toastr,postsSer,ipCookie){
     //部门
 
     postsSer.getDepartList(['id','department']).then(function(response){
@@ -37,8 +37,13 @@ app.controller('postsAddCtrl', function($scope,$state,toastr,postsSer){
             if(response.data.code == 0){
                 $state.go('root.organize.management.posts.list');
                 toastr.success( vm.serialNumber+"已成功添加", '温馨提示');
-            }else if(response.data.code==403){
-                toastr.error( "请登录用户", '温馨提示');
+            }else if(response.data.code==403||response.data.code==401){
+                toastr.error( "请登录用户,2秒后跳至登陆页面", '温馨提示');
+                var absurl = $location.absUrl();
+                ipCookie('absurl', absurl,{ expires:3,expirationUnit: 'minutes' });
+                setTimeout(function(){
+                    window.location.href='http://localhost/login'
+                },2000)
             }
 
         })

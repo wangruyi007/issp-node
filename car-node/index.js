@@ -60,7 +60,7 @@ router.get(/^\/module\/_config(?:\/.|$)/, function *(next) {
 
 //============路由===========
 
-app.use(require(path.join(__dirname,routersPath,'/contract/index.js'))().routes());//合同单价
+app.use(require(path.join(__dirname,routersPath,'/car/index.js'))().routes());//出车管理
 app.use(router.routes());
 
 

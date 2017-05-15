@@ -1,4 +1,4 @@
-var app = angular.module('materialDelete', ['toastr']);
+var app = angular.module('materialDelete', ['toastr','ipCookie']);
 app.controller('materialDeleteCtrl',function($scope,toastr,$stateParams,$state,materialSer){
     //删除
     $scope.delYes = function(){

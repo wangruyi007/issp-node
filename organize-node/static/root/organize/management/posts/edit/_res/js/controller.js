@@ -1,5 +1,5 @@
-var app = angular.module('postsEdit', ['toastr']);
-app.controller('postsEditCtrl', function($scope,$state,toastr,postsSer,$stateParams){
+var app = angular.module('postsEdit', ['toastr','ipCookie']);
+app.controller('postsEditCtrl', function($scope,$state,toastr,postsSer,$stateParams,ipCookie,$location){
 
     //部门
     postsSer.getDepartList().then(function(response){
@@ -37,8 +37,13 @@ app.controller('postsEditCtrl', function($scope,$state,toastr,postsSer,$statePar
                     $state.go('root.organize.management.posts.list');
                     toastr.success( $scope.postsData.serialNumber+"已成功编辑", '温馨提示');
                 }
-            }else if(response.data.code==403){
-                toastr.error( "请登录用户", '温馨提示');
+            }else if(response.data.code==403||response.data.code==401){
+                toastr.error( "请登录用户,2秒后跳至登陆页面", '温馨提示');
+                var absurl = $location.absUrl();
+                ipCookie('absurl', absurl,{ expires:3,expirationUnit: 'minutes' });
+                setTimeout(function(){
+                    window.location.href='http://localhost/login'
+                },2000)
             }
         });
     }
