@@ -910,6 +910,8 @@ module.exports = function(){
         var $self = this;
         var delId = $self.request.query;
         yield (server().jopdetailDelete(delId)
+        var getId = this.request.query;
+        yield (server().getJopDetailCountId(getId)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
                 $self.body = responseText;

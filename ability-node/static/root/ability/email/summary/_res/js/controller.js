@@ -16,7 +16,6 @@ app.controller('emailSummaryCtrl', function($scope, emailSer,toastr){
     $scope.getSummary ={onSelectionChanged(){
         emailSer.ectSummaryCompany($scope.words).then(function(response){
             if(response.data.code == 0){
-                  //$scope.summaryLists = response.data.data[0].collectDataList;
                   $scope.summaryLists = response.data.data;
             }
         })

@@ -46,19 +46,19 @@ app.controller('basicinfoCtrl',function ($scope,$state) {
     $scope.qualification = function(){
         if($scope.idListd){
             $state.go('root.supplier.basicinfo.qualification',{id:$scope.idListd});
-            $scope.menuClass = 'qualificationMenu'
+            $scope.menuClass = 'qualification?id=Menu'
         }
     };
     $scope.contact = function(){
         if($scope.idListd){
             $state.go('root.supplier.basicinfo.contact',{id:$scope.idListd});
-            $scope.menuClass = 'contactMenu'
+            $scope.menuClass = 'contact?id=Menu'
         }
     };
     $scope.cooperation = function(){
         if($scope.idListd){
             $state.go('root.supplier.basicinfo.cooperation',{id:$scope.idListd});
-            $scope.menuClass = 'cooperationMenu'
+            $scope.menuClass = 'cooperation?id=Menu'
         }
     };
     $scope.list = function(){
