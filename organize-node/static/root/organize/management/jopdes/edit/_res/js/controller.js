@@ -1,5 +1,5 @@
-var app = angular.module('jopdesEdit', ['toastr','angularjs-dropdown-multiselect']);
-app.controller('jopdesEditCtrl', function($scope,$state,toastr,jopdesSer,$stateParams){
+var app = angular.module('jopdesEdit', ['toastr','angularjs-dropdown-multiselect','ipCookie']);
+app.controller('jopdesEditCtrl', function($scope,$state,toastr,jopdesSer,$stateParams,ipCookie,$location){
     //操作类型
     $scope.operates = [];
     $scope.operatesettings = {displayProp: 'name'};
@@ -73,8 +73,13 @@ app.controller('jopdesEditCtrl', function($scope,$state,toastr,jopdesSer,$stateP
                     $state.go('root.organize.management.jopdes.list');
                     toastr.success("已成功编辑", '温馨提示');
                 }
-            }else if(response.data.code==403){
-                toastr.error( "请登录用户", '温馨提示');
+            }else if(response.data.code==403||response.data.code==401){
+                toastr.error( "请登录用户,2秒后跳至登陆页面", '温馨提示');
+                var absurl = $location.absUrl();
+                ipCookie('absurl', absurl,{ expires:3,expirationUnit: 'minutes' });
+                setTimeout(function(){
+                    window.location.href='http://localhost/login'
+                },2000)
             }
         });
     }

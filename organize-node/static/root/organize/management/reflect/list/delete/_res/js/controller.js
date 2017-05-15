@@ -1,5 +1,5 @@
-var app = angular.module('reflectDelete', ['toastr']);
-app.controller('reflectDeleteCtrl',function($scope,toastr,$stateParams,$state,reflectSer){
+var app = angular.module('reflectDelete', ['toastr','ipCookie']);
+app.controller('reflectDeleteCtrl',function($scope,toastr,$stateParams,$state,reflectSer,ipCookie,$location){
     //删除
     $scope.delYes = function(){
         var data = {
@@ -14,8 +14,13 @@ app.controller('reflectDeleteCtrl',function($scope,toastr,$stateParams,$state,re
                 //向父Ctrl传递事件
                 $scope.$emit('deletedId', $scope.deledId)
                 $scope.$emit('changeId', null)
-            }else if(response.data.code==403){
-                toastr.error( "请登录用户", '温馨提示');
+            }else if(response.data.code==403||response.data.code==401){
+                toastr.error( "请登录用户,2秒后跳至登陆页面", '温馨提示');
+                var absurl = $location.absUrl();
+                ipCookie('absurl', absurl,{ expires:3,expirationUnit: 'minutes' });
+                setTimeout(function(){
+                    window.location.href='http://localhost/login'
+                },2000)
             }
         })
     }

@@ -2126,5 +2126,33 @@ body {
   background: rgba(255, 255, 255, 0.3);
 }
 
+.listsearch{
+  display:flex;
+  margin:10px 20px 0 20px;
+  flex-wrap:wrap;
+}
+.listsearch li{
+  height:40px;
+  line-height:40px;
+  margin:0 10px;
+}
+.listsearch li input{
+  border:1px solid #00c6ff;
+  height:30px;
+  border-radius:5px;
+  text-indent:10px;
+  width:155px;
+}
+.listsearch li button{
+  width:60px;
+  height:30px;
+  background:#00c6ff;
+  color:#fff;
+  border-radius:5px;
+  margin-left:20px;
+}
+.listsearch li button:disabled{
+  
+  background:#ccc;
 
-
+}

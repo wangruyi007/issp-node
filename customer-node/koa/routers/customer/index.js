@@ -58,7 +58,8 @@ module.exports = function(){
             }));
     }).post('/customer/customerbaseinfo/add', function*(){//添加客户基本信息
         var addData = this.request.body;
-        addData.userToken = this.cookies.get('token');
+        addData.token = this.cookies.get('token');
+
         var $self = this;
         yield (server().cusBaseinfoAdd(addData)
             .then((parsedBody) =>{
@@ -72,6 +73,7 @@ module.exports = function(){
             }));
     }).post('/customer/customerbaseinfo/delete', function*(){//删除客户基本信息
         var delData = this.request.body;
+        delData.token = this.cookies.get('token');
         var $self = this;
         yield (server().cusBaseinfoDel(delData)
             .then((parsedBody) =>{
@@ -84,6 +86,7 @@ module.exports = function(){
             }));
     }).post('/customer/customerbaseinfo/congeal', function*(){//冻结客户基本信息
         var congealData = this.request.body;
+        congealData.token = this.cookies.get('token');
         var $self = this;
         yield (server().cusBaseinfoCongeal(congealData)
             .then((parsedBody) =>{
@@ -96,6 +99,7 @@ module.exports = function(){
             }));
     }).post('/customer/customerbaseinfo/thaw', function*(){//冻结客户基本信息
         var thawData = this.request.body;
+        thawData.token = this.cookies.get('token')
         var $self = this;
         yield (server().cusBaseinfoThaw(thawData)
             .then((parsedBody) =>{
@@ -121,7 +125,7 @@ module.exports = function(){
     }).post('/customer/customerbaseinfo/edit', function*(){//编辑客户信息
 
         var editData = this.request.body;
-        editData.userToken = this.cookies.get('token');
+        editData.token = this.cookies.get('token');
         var $self = this;
         yield (server().cusBaseinfoEdit(editData)
             .then((parsedBody) =>{
@@ -146,7 +150,7 @@ module.exports = function(){
     }).post('/customer/customerlevel/add', function*(){ //添加客户列表
         var addData = this.request.body;
         var $self = this;
-        addData.userToken = this.cookies.get('token');
+        addData.token = this.cookies.get('token');
         yield (server().customerlevelAdd(addData)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -158,6 +162,7 @@ module.exports = function(){
             }));
     }).post('/customerlevel/delete', function*(){
         var deleteData = this.request.body;
+        deleteData.token = this.cookies.get('token')
         var $self = this;
         yield (server().customerlevelDelete(deleteData)
             .then((parsedBody) =>{
@@ -183,7 +188,7 @@ module.exports = function(){
             }));
     }).post('/customer/customerlevel/edit', function*(){
         var editData = this.request.body;
-        editData.userToken = this.cookies.get('token');
+        editData.token = this.cookies.get('token');
         var $self = this;
         yield (server().customerlevelEdit(editData)
             .then((parsedBody) =>{
@@ -231,7 +236,7 @@ module.exports = function(){
     }).post('/customerbaseinfo/getCusNum', function*(){//添加客户详情
         var $self = this;
         var addData = this.request.body;
-        addData.userToken = this.cookies.get('token');
+        addData.token = this.cookies.get('token');
         yield (server().addCusDetail(addData)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -256,7 +261,7 @@ module.exports = function(){
     }).post('/customerdetail/editDetail', function*(){//编辑客户详情信息
         var $self = this;
         var editData = $self.request.body;
-        editData.userToken = this.cookies.get('token');
+        editData.token = this.cookies.get('token');
         yield (server().editDetail(editData)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -269,7 +274,7 @@ module.exports = function(){
     }).post('/customerdetail/detail', function*(){//删除客户详情信息
         var $self = this;
         var deteleData = $self.request.body;
-        deteleData.userToken = $self.cookies.get('token');
+        deteleData.token = $self.cookies.get('token');
         yield (server().deteleDetail(deteleData)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -315,7 +320,7 @@ module.exports = function(){
             }));
     }).post('/cusemail/add', function*(){ //添加邮件
         var addData = this.request.body;
-        addData.userToken = this.cookies.get('token');
+        addData.token = this.cookies.get('token');
         var $self = this;
         yield (server().cusemailAdd(addData)
             .then((parsedBody) =>{
@@ -328,7 +333,7 @@ module.exports = function(){
             }));
     }).post('/cusemail/delete', function*(){ //删除邮件
         var delData = this.request.body;
-        delData.userToken = this.cookies.get('token');
+        delData.token = this.cookies.get('token');
         var $self = this;
         yield (server().cusemailDel(delData)
             .then((parsedBody) =>{
@@ -341,7 +346,7 @@ module.exports = function(){
             }));
     }).post('/cusemail/congeal', function*(){ //删除邮件
         var congealData = this.request.body;
-        congealData.userToken = this.cookies.get('token');
+        congealData.token = this.cookies.get('token');
         var $self = this;
         yield (server().cusemailCongeal(congealData)
             .then((parsedBody) =>{
@@ -354,7 +359,7 @@ module.exports = function(){
             }));
     }).post('/cusemail/thaw', function*(){ //冻结邮件
         var thawData = this.request.body;
-        thawData.userToken = this.cookies.get('token');
+        thawData.token = this.cookies.get('token');
         var $self = this;
         yield (server().cusemailThaw(thawData)
             .then((parsedBody) =>{
@@ -367,6 +372,7 @@ module.exports = function(){
             }));
     }).post('/cusemail/getCusEmailById', function*(){ //冻结邮件
         var cusEmailId = this.request.body;
+        cusEmailId.token = this.cookies.get('token')
         var $self = this;
         yield (server().getCusEmailId(cusEmailId)
             .then((parsedBody) =>{
@@ -379,7 +385,7 @@ module.exports = function(){
             }));
     }).post('/cusemail/edit', function*(){ //编辑邮件
         var editEmail = this.request.body;
-        editEmail.userToken = this.cookies.get('token');
+        editEmail.token = this.cookies.get('token');
         var $self = this;
         yield (server().editEmail(editEmail)
             .then((parsedBody) =>{

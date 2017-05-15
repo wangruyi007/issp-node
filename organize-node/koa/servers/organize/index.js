@@ -18,7 +18,6 @@ module.exports = function () {
             method: 'GET',
             timeout: 3000,
             uri: config()['rurl'] + "/designNumberInfo/v1/getTotal",
-
         };
         return request(options);
     };
@@ -27,6 +26,9 @@ module.exports = function () {
             method: 'POST',
             timeout: 3000,
             uri: config()['rurl'] + "/designNumberInfo/v1/save",
+            headers:{
+                userToken:argvs.token
+            },
             form: argvs
         };
         return request(options);
@@ -36,6 +38,9 @@ module.exports = function () {
             method: 'PUT',
             timeout: 3000,
             uri: config()['rurl'] + `/designNumberInfo/v1/update/${argvs.id}`,
+            headers:{
+                userToken:argvs.token
+            },
             form: argvs
         };
         return request(options);
@@ -53,6 +58,9 @@ module.exports = function () {
             method: 'DELETE',
             timeout: 3000,
             uri: config()['rurl'] + `/designNumberInfo/v1/delete/${argvs.id}`,
+            headers:{
+                userToken:argvs.token
+            }
         };
         return request(options);
     };
@@ -80,6 +88,9 @@ module.exports = function () {
             method: 'POST',
             timeout: 3000,
             uri: config()['rurl'] + '/hierarchy/v1/save',
+            headers:{
+                userToken:argvs.token
+            },
             form: argvs
         };
         return request(options);
@@ -97,6 +108,9 @@ module.exports = function () {
             method: 'PUT',
             timeout: 3000,
             uri: config()['rurl'] + `/hierarchy/v1/update/${argvs.id}`,
+            headers:{
+                userToken:argvs.token
+            },
             form: argvs
         };
         return request(options);
@@ -106,6 +120,9 @@ module.exports = function () {
             method: 'DELETE',
             timeout: 3000,
             uri: config()['rurl'] + `/hierarchy/v1/delete/${argvs.id}`,
+            headers:{
+                userToken:argvs.token
+            },
         };
         return request(options);
     };
@@ -114,6 +131,9 @@ module.exports = function () {
             method: 'PATCH',
             timeout: 3000,
             uri: config()['rurl'] + `/hierarchy/v1/congeal/${argvs.id}`,
+            headers:{
+                userToken:argvs.token
+            },
         };
         return request(options);
     };
@@ -122,6 +142,9 @@ module.exports = function () {
             method: 'PATCH',
             timeout: 3000,
             uri: config()['rurl'] + `/hierarchy/v1/thaw/${argvs.id}`,
+            headers:{
+                userToken:argvs.token
+            },
         };
         return request(options);
     };
@@ -158,6 +181,9 @@ module.exports = function () {
             method: 'POST',
             timeout: 3000,
             uri: config()['rurl'] + '/departmentDetail/v1/save',
+            headers:{
+                userToken:argvs.token
+            },
             form: argvs
         };
         return request(options);
@@ -175,6 +201,9 @@ module.exports = function () {
             method: 'PUT',
             timeout: 3000,
             uri: config()['rurl'] + `/departmentDetail/v1/update/${argvs.id}`,
+            headers:{
+                userToken:argvs.token
+            },
             form: argvs
         };
         return request(options);
@@ -184,6 +213,9 @@ module.exports = function () {
             method: 'DELETE',
             timeout: 3000,
             uri: config()['rurl'] + `/departmentDetail/v1/delete/${argvs.id}`,
+            headers:{
+                userToken:argvs.token
+            },
         };
         return request(options);
     };
@@ -192,6 +224,9 @@ module.exports = function () {
             method: 'PATCH',
             timeout: 3000,
             uri: config()['rurl'] + `/departmentDetail/v1/congeal/${argvs.id}`,
+            headers:{
+                userToken:argvs.token
+            },
         };
         return request(options);
     };
@@ -200,6 +235,9 @@ module.exports = function () {
             method: 'PATCH',
             timeout: 3000,
             uri: config()['rurl'] + `/departmentDetail/v1/thaw/${argvs.id}`,
+            headers:{
+                userToken:argvs.token
+            },
         };
         return request(options);
     };
@@ -236,6 +274,9 @@ module.exports = function () {
             method: 'POST',
             timeout: 3000,
             uri: config()['rurl'] + '/arrangement/v1/save',
+            headers:{
+                userToken:argvs.token
+            },
             form: argvs
         };
         return request(options);
@@ -253,6 +294,9 @@ module.exports = function () {
             method: 'DELETE',
             timeout: 3000,
             uri: config()['rurl'] + `/arrangement/v1/delete/${argvs.id}`,
+            headers:{
+                userToken:argvs.token
+            },
         };
         return request(options);
     };
@@ -306,6 +350,9 @@ module.exports = function () {
             method: 'POST',
             timeout: 3000,
             uri: config()['rurl'] + '/positionDetail/v1/save',
+            headers:{
+                userToken:argvs.token
+            },
             form: argvs
         };
         return request(options);
@@ -323,6 +370,9 @@ module.exports = function () {
             method: 'PUT',
             timeout: 3000,
             uri: config()['rurl'] + `/positionDetail/v1/update/${argvs.id}`,
+            headers:{
+                userToken:argvs.token
+            },
             form: argvs
         };
         return request(options);
@@ -332,6 +382,9 @@ module.exports = function () {
             method: 'DELETE',
             timeout: 3000,
             uri: config()['rurl'] + `/positionDetail/v1/delete/${argvs.id}`,
+            headers:{
+                userToken:argvs.token
+            },
         };
         return request(options);
     };
@@ -340,6 +393,9 @@ module.exports = function () {
             method: 'PATCH',
             timeout: 3000,
             uri: config()['rurl'] + `/positionDetail/v1/congeal/${argvs.id}`,
+            headers:{
+                userToken:argvs.token
+            },
         };
         return request(options);
     };
@@ -348,6 +404,9 @@ module.exports = function () {
             method: 'PATCH',
             timeout: 3000,
             uri: config()['rurl'] + `/positionDetail/v1/thaw/${argvs.id}`,
+            headers:{
+                userToken:argvs.token
+            },
         };
         return request(options);
     };
@@ -404,6 +463,9 @@ module.exports = function () {
             method: 'POST',
             timeout: 3000,
             uri: config()['rurl'] + '/positionInstruction/v1/save',
+            headers:{
+                userToken:argvs.token
+            },
             form: argvs
         };
         return request(options);
@@ -413,6 +475,9 @@ module.exports = function () {
             method: 'GET',
             timeout: 3000,
             uri: config()['rurl'] + `/positionInstruction/v1/findByPosition/${argvs.id}`,
+            headers:{
+                userToken:argvs.token
+            },
         };
         return request(options);
     };
@@ -438,6 +503,9 @@ module.exports = function () {
             method: 'POST',
             timeout: 3000,
             uri: config()['rurl'] + '/moduletype/v1/save',
+            headers:{
+                userToken:argvs.token
+            },
             form:argvs
         };
         return request(options);
@@ -466,6 +534,9 @@ module.exports = function () {
             method: 'POST',
             timeout: 3000,
             uri: config()['rurl'] + '/operate/v1/save',
+            headers:{
+                userToken:argvs.token
+            },
             form: argvs
         };
         return request(options);
@@ -483,6 +554,9 @@ module.exports = function () {
             method: 'PUT',
             timeout: 3000,
             uri: config()['rurl'] + `/moduletype/v1/update/${argvs.id}`,
+            headers:{
+                userToken:argvs.token
+            },
             form:argvs
         };
         return request(options);
@@ -502,6 +576,9 @@ module.exports = function () {
             method: 'PUT',
             timeout: 3000,
             uri: config()['rurl'] + `/operate/v1/update/${argvs.id}`,
+            headers:{
+                userToken:argvs.token
+            },
             form: argvs
         };
         return request(options);
@@ -512,6 +589,9 @@ module.exports = function () {
             method: 'DELETE',
             timeout: 3000,
             uri: config()['rurl'] + `/moduletype/v1/delete/${argvs.id}`,
+            headers:{
+                userToken:argvs.token
+            },
         };
         return request(options);
     };
@@ -520,6 +600,9 @@ module.exports = function () {
             method: 'PATCH',
             timeout: 3000,
             uri: config()['rurl'] + `/moduletype/v1/congeal/${argvs.id}`,
+            headers:{
+                userToken:argvs.token
+            },
         };
         return request(options);
     };
@@ -528,6 +611,9 @@ module.exports = function () {
             method: 'PATCH',
             timeout: 3000,
             uri: config()['rurl'] + `/moduletype/v1/thaw/${argvs.id}`,
+            headers:{
+                userToken:argvs.token
+            },
         };
         return request(options);
     };
@@ -536,7 +622,10 @@ module.exports = function () {
         var options = {
             method: 'DELETE',
             timeout: 3000,
-            uri: config()['rurl'] + `/operate/v1/delete/${argvs.id}`
+            uri: config()['rurl'] + `/operate/v1/delete/${argvs.id}`,
+            headers:{
+                userToken:argvs.token
+            },
         };
         return request(options);
     };
@@ -545,7 +634,10 @@ module.exports = function () {
         var options = {
             method: 'PATCH',
             timeout: 3000,
-            uri: config()['rurl'] + `/operate/v1/close/${argvs.id}`
+            uri: config()['rurl'] + `/operate/v1/close/${argvs.id}`,
+            headers:{
+                userToken:argvs.token
+            },
         };
         return request(options);
     };
@@ -554,7 +646,10 @@ module.exports = function () {
         var options = {
             method: 'PATCH',
             timeout: 3000,
-            uri: config()['rurl'] + `/operate/v1/open/${argvs.id}`
+            uri: config()['rurl'] + `/operate/v1/open/${argvs.id}`,
+            headers:{
+                userToken:argvs.token
+            },
         };
         return request(options);
     };
@@ -582,6 +677,9 @@ module.exports = function () {
             method: 'POST',
             timeout: 3000,
             uri: config()['rurl'] + '/angle/v1/save',
+            headers:{
+                userToken:argvs.token
+            },
             form: argvs
         };
         return request(options);
@@ -610,7 +708,10 @@ module.exports = function () {
         var options = {
             method: 'DELETE',
             timeout: 3000,
-            uri: config()['rurl'] + `/angle/v1/delete/${argvs.id}`
+            uri: config()['rurl'] + `/angle/v1/delete/${argvs.id}`,
+            headers:{
+                userToken:argvs.token
+            },
         };
         return request(options);
     };
@@ -619,7 +720,10 @@ module.exports = function () {
         var options = {
             method: 'PATCH',
             timeout: 3000,
-            uri: config()['rurl'] + `/angle/v1/close/${argvs.id}`
+            uri: config()['rurl'] + `/angle/v1/close/${argvs.id}`,
+            headers:{
+                userToken:argvs.token
+            },
         };
         return request(options);
     };
@@ -628,7 +732,10 @@ module.exports = function () {
         var options = {
             method: 'PATCH',
             timeout: 3000,
-            uri: config()['rurl'] + `/angle/v1/open/${argvs.id}`
+            uri: config()['rurl'] + `/angle/v1/open/${argvs.id}`,
+            headers:{
+                userToken:argvs.token
+            },
         };
         return request(options);
     };
@@ -656,6 +763,9 @@ module.exports = function () {
             method: 'POST',
             timeout: 3000,
             uri: config()['rurl'] + '/dimension/v1/save',
+            headers:{
+                userToken:argvs.token
+            },
             form: argvs
         };
         return request(options);
@@ -675,6 +785,9 @@ module.exports = function () {
             method: 'PUT',
             timeout: 3000,
             uri: config()['rurl'] + `/dimension/v1/update/${argvs.id}`,
+            headers:{
+                userToken:argvs.token
+            },
             form: argvs
         };
         return request(options);
@@ -684,7 +797,10 @@ module.exports = function () {
         var options = {
             method: 'DELETE',
             timeout: 3000,
-            uri: config()['rurl'] + `/dimension/v1/delete/${argvs.id}`
+            uri: config()['rurl'] + `/dimension/v1/delete/${argvs.id}`,
+            headers:{
+                userToken:argvs.token
+            },
         };
         return request(options);
     };
@@ -693,7 +809,10 @@ module.exports = function () {
         var options = {
             method: 'PATCH',
             timeout: 3000,
-            uri: config()['rurl'] + `/dimension/v1/close/${argvs.id}`
+            uri: config()['rurl'] + `/dimension/v1/close/${argvs.id}`,
+            headers:{
+                userToken:argvs.token
+            },
         };
         return request(options);
     };
@@ -702,7 +821,10 @@ module.exports = function () {
         var options = {
             method: 'PATCH',
             timeout: 3000,
-            uri: config()['rurl'] + `/dimension/v1/open/${argvs.id}`
+            uri: config()['rurl'] + `/dimension/v1/open/${argvs.id}`,
+            headers:{
+                userToken:argvs.token
+            },
         };
         return request(options);
     };
@@ -730,6 +852,9 @@ module.exports = function () {
             method: 'POST',
             timeout: 3000,
             uri: config()['rurl'] + '/instructionClassify/v1/save',
+            headers:{
+                userToken:argvs.token
+            },
             form: argvs
         };
         return request(options);
@@ -749,6 +874,9 @@ module.exports = function () {
             method: 'PUT',
             timeout: 3000,
             uri: config()['rurl'] + `/instructionClassify/v1/update/${argvs.id}`,
+            headers:{
+                userToken:argvs.token
+            },
             form: argvs
         };
         return request(options);
@@ -758,7 +886,10 @@ module.exports = function () {
         var options = {
             method: 'DELETE',
             timeout: 3000,
-            uri: config()['rurl'] + `/instructionClassify/v1/delete/${argvs.id}`
+            uri: config()['rurl'] + `/instructionClassify/v1/delete/${argvs.id}`,
+            headers:{
+                userToken:argvs.token
+            },
         };
         return request(options);
     };
@@ -767,7 +898,10 @@ module.exports = function () {
         var options = {
             method: 'PATCH',
             timeout: 3000,
-            uri: config()['rurl'] + `/instructionClassify/v1/close/${argvs.id}`
+            uri: config()['rurl'] + `/instructionClassify/v1/close/${argvs.id}`,
+            headers:{
+                userToken:argvs.token
+            },
         };
         return request(options);
     };
@@ -776,7 +910,10 @@ module.exports = function () {
         var options = {
             method: 'PATCH',
             timeout: 3000,
-            uri: config()['rurl'] + `/instructionClassify/v1/open/${argvs.id}`
+            uri: config()['rurl'] + `/instructionClassify/v1/open/${argvs.id}`,
+            headers:{
+                userToken:argvs.token
+            },
         };
         return request(options);
     };
@@ -817,6 +954,9 @@ module.exports = function () {
             method: 'POST',
             timeout: 3000,
             uri: config()['rurl'] + '/positiondetailuser/v1/save',
+            headers:{
+                userToken:argvs.token
+            },
             form:argvs
         };
         return request(options);
@@ -834,6 +974,9 @@ module.exports = function () {
             method: 'PUT',
             timeout: 3000,
             uri: config()['rurl'] + `/positiondetailuser/v1/update/${argvs.id}`,
+            headers:{
+                userToken:argvs.token
+            },
             form:argvs
         };
         return request(options);
@@ -843,6 +986,9 @@ module.exports = function () {
             method: 'DELETE',
             timeout: 3000,
             uri: config()['rurl'] + `/positiondetailuser/v1/delete/${argvs.id}`,
+            headers:{
+                userToken:argvs.token
+            },
         };
         return request(options);
     };
@@ -867,6 +1013,9 @@ module.exports = function () {
             method: 'POST',
             timeout: 3000,
             uri: config()['rurl'] + '/workRange/v1/save',
+            headers:{
+                userToken:argvs.token
+            },
             form: argvs
         };
         return request(options);
@@ -876,6 +1025,9 @@ module.exports = function () {
             method: 'DELETE',
             timeout: 3000,
             uri: config()['rurl'] + `/workRange/v1/delete/${argvs.id}`,
+            headers:{
+                userToken:argvs.token
+            },
         };
         return request(options);
     };
@@ -884,6 +1036,9 @@ module.exports = function () {
             method: 'PATCH',
             timeout: 3000,
             uri: config()['rurl'] + `/workRange/v1/close/${argvs.id}`,
+            headers:{
+                userToken:argvs.token
+            },
         };
         return request(options);
     };
@@ -892,6 +1047,9 @@ module.exports = function () {
             method: 'PATCH',
             timeout: 3000,
             uri: config()['rurl'] + `/workRange/v1/open/${argvs.id}`,
+            headers:{
+                userToken:argvs.token
+            },
         };
         return request(options);
     };
@@ -932,6 +1090,9 @@ module.exports = function () {
             method: 'PUT',
             timeout: 3000,
             uri: config()['rurl'] + `/workRange/v1/update/${argvs.id}`,
+            headers:{
+                userToken:argvs.token
+            },
             form:argvs
         };
         return request(options);
@@ -966,6 +1127,9 @@ module.exports = function () {
             method: 'POST',
             timeout: 3000,
             uri: config()['rurl'] + '/positionInstruction/v1/save',
+            headers:{
+                userToken:argvs.token
+            },
             form: argvs
         };
         return request(options);
@@ -1008,6 +1172,10 @@ module.exports = function () {
             method: 'PUT',
             timeout: 3000,
             uri: config()['rurl'] + `/positionInstruction/v1/update/${argvs.id}`,
+            headers:{
+                userToken:argvs.token
+            },
+            form:argvs
         };
         return request(options);
     };
@@ -1016,6 +1184,9 @@ module.exports = function () {
             method: 'DELETE',
             timeout: 3000,
             uri: config()['rurl'] + `/positionInstruction/v1/delete/${argvs.id}`,
+            headers:{
+                userToken:argvs.token
+            },
         };
         return request(options);
     };
@@ -1051,6 +1222,9 @@ module.exports = function () {
             method : 'POST',
             timeout : 3000,
             uri : config()['rurl'] + "/positionWorkDetail/v1/save",
+            headers:{
+                userToken:argvs.token
+            },
             form:argvs
         };
         return request(options);
@@ -1068,6 +1242,9 @@ module.exports = function () {
             method : 'PUT',
             timeout : 3000,
             uri : config()['rurl'] + `/positionWorkDetail/v1/update/${argvs.id}`,
+            headers:{
+                userToken:argvs.token
+            },
             form:argvs
         };
         return request(options);
@@ -1077,6 +1254,9 @@ module.exports = function () {
             method : 'DELETE',
             timeout : 3000,
             uri : config()['rurl'] + `/positionWorkDetail/v1/delete/${argvs.id}`,
+            headers:{
+                userToken:argvs.token
+            },
         };
         return request(options);
     };
@@ -1101,6 +1281,9 @@ module.exports = function () {
             method : 'POST',
             timeout : 3000,
             uri : config()['rurl'] + '/reflect/v1/save',
+            headers:{
+                userToken:argvs.token
+            },
             form:argvs
         };
         return request(options);
@@ -1118,7 +1301,9 @@ module.exports = function () {
             method : 'PUT',
             timeout : 3000,
             uri : config()['rurl'] + `/reflect/v1/update/${argvs.id}`,
-
+            headers:{
+                userToken:argvs.token
+            },
             form:argvs
         };
         return request(options);
@@ -1128,6 +1313,9 @@ module.exports = function () {
             method : 'PATCH',
             timeout : 3000,
             uri : config()['rurl'] + `/reflect/v1/close/${argvs.id}`,
+            headers:{
+                userToken:argvs.token
+            },
         };
         return request(options);
     };
@@ -1136,6 +1324,9 @@ module.exports = function () {
             method : 'PATCH',
             timeout : 3000,
             uri : config()['rurl'] + `/reflect/v1/open/${argvs.id}`,
+            headers:{
+                userToken:argvs.token
+            },
         };
         return request(options);
     };
@@ -1144,6 +1335,9 @@ module.exports = function () {
             method : 'DELETE',
             timeout : 3000,
             uri : config()['rurl'] + `/reflect/v1/delete/${argvs.id}`,
+            headers:{
+                userToken:argvs.token
+            },
         };
         return request(options);
     };

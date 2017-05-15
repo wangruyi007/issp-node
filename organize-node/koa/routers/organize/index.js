@@ -34,6 +34,7 @@ module.exports = function(){
     }).post('/designNumberInfo/add', function*(){  //添加编号设计
         var $self = this;
         var data = this.request.body;
+        data.token = $self.cookies.get('token');
         yield (server().numberAdd(data)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -58,6 +59,7 @@ module.exports = function(){
     }).post('/designNumberInfo/edit', function*(){  //添加编号设计
         var $self = this;
         var data = this.request.body;
+        data.token = $self.cookies.get('token');
         yield (server().numberEdit(data)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -70,6 +72,7 @@ module.exports = function(){
     }).get('/designNumberInfo/delete', function*(){ //删除获取编号设计
         var $self = this;
         var deleteId = this.request.query;
+        deleteId.token = $self.cookies.get('token');
         yield (server().numberDelete(deleteId)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -105,6 +108,7 @@ module.exports = function(){
     }).post('/hierarchy/save', function*(){ //添加体系
         var $self = this;
         var addData=this.request.body;
+        addData.token = $self.cookies.get('token');
         yield (server().systemAdd(addData)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -129,6 +133,7 @@ module.exports = function(){
     }).post('/hierarchy/edit', function*(){ //编辑体系
         var $self = this;
         var editData=this.request.body;
+        editData.token = $self.cookies.get('token');
         yield (server().systemEdit(editData)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -141,6 +146,7 @@ module.exports = function(){
     }).get('/hierarchy/delete', function*(){ //删除体系
         var $self = this;
         var deleteId = $self.request.query;
+        deleteId.token = $self.cookies.get('token');
         yield (server().systemDelete(deleteId)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -153,6 +159,7 @@ module.exports = function(){
     }).get('/hierarchy/congeal', function*(){ //删除体系
         var $self = this;
         var congealId = $self.request.query;
+        congealId.token = $self.cookies.get('token');
         yield (server().systemCongeal(congealId)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -165,6 +172,7 @@ module.exports = function(){
     }).get('/hierarchy/thaw', function*(){ //解冻体系
         var $self = this;
         var thawId = $self.request.query;
+        thawId.token = $self.cookies.get('token');
         yield (server().systemThaw(thawId)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -212,6 +220,7 @@ module.exports = function(){
     }).post('/department/save', function*(){ //添加部门
         var $self = this;
         var addData = this.request.body;
+        addData.token = $self.cookies.get('token');
         yield (server().departmentAdd(addData)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -236,6 +245,7 @@ module.exports = function(){
     }).post('/department/edit', function*(){ //编辑部门信息
         var $self = this;
         var editData = this.request.body;
+        editData.token = $self.cookies.get('token');
         yield (server().departmentEdit(editData)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -248,6 +258,7 @@ module.exports = function(){
     }).get('/department/delete', function*(){ //删除部门信息
         var $self = this;
         var delId = this.request.query;
+        delId.token = $self.cookies.get('token');
         yield (server().departmentDelete(delId)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -260,6 +271,7 @@ module.exports = function(){
     }).get('/department/congeal', function*(){ //冻结部门信息
         var $self = this;
         var congealId = this.request.query;
+        congealId.token = $self.cookies.get('token');
         yield (server().departmentCongeal(congealId)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -272,6 +284,7 @@ module.exports = function(){
     }).get('/department/thaw', function*(){ //解冻部门信息
         var $self = this;
         var thawId = this.request.query;
+        thawId.token = $self.cookies.get('token');
         yield (server().departmentThaw(thawId)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -318,6 +331,7 @@ module.exports = function(){
     }).post('/postlevel/add', function*(){ //添加
         var $self = this;
         var addData = this.request.body;
+        addData.token = $self.cookies.get('token');
         yield (server().postlevelAdd(addData)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -342,6 +356,7 @@ module.exports = function(){
     }).get('/postlevel/delete', function*(){
         var $self = this;
         var delId = this.request.query;
+        delId.token = $self.cookies.get('token');
         yield (server().postlevelDel(delId)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -411,6 +426,7 @@ module.exports = function(){
     }).post('/posts/add', function*(){ //添加
         var $self = this;
         var addData=this.request.body;
+        addData.token = $self.cookies.get('token');
         yield (server().postsAdd(addData)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -435,6 +451,7 @@ module.exports = function(){
     }).post('/posts/edit', function*(){ //根据ID获取岗位信息
         var $self = this;
         var editData=this.request.body;
+        editData.token = $self.cookies.get('token');
         yield (server().postsEdit(editData)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -447,6 +464,7 @@ module.exports = function(){
     }).get('/posts/delete', function*(){ //删除岗位信息
         var $self = this;
         var delId=this.request.query;
+        delId.token = $self.cookies.get('token');
         yield (server().postsDelete(delId)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -459,6 +477,7 @@ module.exports = function(){
     }).get('/posts/congeal', function*(){ //冻结岗位信息
         var $self = this;
         var conId=this.request.query;
+        conId.token = $self.cookies.get('token');
         yield (server().postsCongeal(conId)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -471,6 +490,7 @@ module.exports = function(){
     }).get('/posts/thaw', function*(){ //冻结岗位信息
         var $self = this;
         var thawId=this.request.query;
+        thawId.token = $self.cookies.get('token');
         yield (server().postsThaw(thawId)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -550,6 +570,7 @@ module.exports = function(){
     }).post('/posts/explainAdd', function*(){
         var $self = this;
         var addExpainData = this.request.body;
+        addExpainData.token = $self.cookies.get('token');
         yield (server().explainAdd(addExpainData)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -597,6 +618,7 @@ module.exports = function(){
     }).post('/motype/add', function*(){ //模块类型添加
         var $self = this;
         var addData = this.request.body;
+        addData.token = $self.cookies.get('token');
         yield (server().motypeAdd(addData)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -621,6 +643,7 @@ module.exports = function(){
     }).post('/motype/edit', function*(){ //根据ID获取模块类型
         var $self = this;
         var editData = this.request.body;
+        editData.token = $self.cookies.get('token');
         yield (server().motypeEdit(editData)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -694,6 +717,7 @@ module.exports = function(){
     }).get('/congealReflect/congeal', function*(){ //体系冻结
         var $self = this;
         var congealId = $self.request.query;
+        congealId.token = $self.cookies.get('token');
         yield (server().reflectCongeal(congealId)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -706,6 +730,7 @@ module.exports = function(){
     }).get('/thawReflect/thaw', function*(){ //体系解冻
         var $self = this;
         var thawId = $self.request.query;
+        thawId.token = $self.cookies.get('token');
         yield (server().reflectThaw(thawId)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -719,6 +744,7 @@ module.exports = function(){
         .post('/addReflect/save', function*(){   //体现类别添加
             var $self = this;
             var addData = this.request.body;
+            addData.token = $self.cookies.get('token');
             yield (server().reflectAdd(addData)
                 .then((parsedBody) =>{
                     var responseText = JSON.parse(parsedBody);
@@ -731,6 +757,7 @@ module.exports = function(){
         }).get('/deleteReflect/delete', function*(){ //删除体现类别
         var $self = this;
         var delId=this.request.query;
+        delId.token = $self.cookies.get('token');
         yield (server().reflectDelete(delId)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -755,6 +782,7 @@ module.exports = function(){
     }).post('/editReflect/edit', function*(){ //体现类别编辑
         var $self = this;
         var editData=this.request.body;
+        editData.token = $self.cookies.get('token');
         yield (server().reflectEdit(editData)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -814,6 +842,7 @@ module.exports = function(){
     }).post('/editJopDes/edit', function*(){ //编辑
         var $self = this;
         var editData=this.request.body;
+        editData.token = $self.cookies.get('token');
         yield (server().jopDesEdit(editData)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -826,6 +855,7 @@ module.exports = function(){
     }).get('/jopDes/delete', function*(){ //删除
         var $self = this;
         var delId=this.request.query;
+        delId.token = $self.cookies.get('token');
         yield (server().jopDesDelete(delId)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -873,6 +903,7 @@ module.exports = function(){
     }).post('/jopdetail/add', function*(){ //获取岗位说明书
         var $self = this;
         var addData = $self.request.body;
+        addData.token = $self.cookies.get('token');
         yield (server().jopdetailAdd(addData)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -897,6 +928,7 @@ module.exports = function(){
     }).post('/jopdetail/edit', function*(){ //编辑岗位说明书
         var $self = this;
         var editData = $self.request.body;
+        editData.token = $self.cookies.get('token');
         yield (server().jopdetailEdit(editData)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -909,6 +941,7 @@ module.exports = function(){
     }).get('/jopdetail/delete', function*(){ //删除岗位说明书
         var $self = this;
         var delId = $self.request.query;
+        delId.token = $self.cookies.get('token');
         yield (server().jopdetailDelete(delId)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -945,6 +978,7 @@ module.exports = function(){
     }).post('/addReflect/save', function*(){   //体现类别添加
         var $self = this;
         var addData = this.request.body;
+        addData.token = $self.cookies.get('token');
         yield (server().reflectAdd(addData)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -957,6 +991,7 @@ module.exports = function(){
     }).get('/deleteReflect/delete', function*(){ //删除体现类别
         var $self = this;
         var delId=this.request.query;
+        delId.token = $self.cookies.get('token');
         yield (server().reflectDelete(delId)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -981,6 +1016,7 @@ module.exports = function(){
     }).post('/editReflect/edit', function*(){ //体现类别编辑
         var $self = this;
         var editData=this.request.body;
+        editData.token = $self.cookies.get('token');
         yield (server().reflectEdit(editData)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -1016,7 +1052,6 @@ module.exports = function(){
             }));
     }).get('/getDepartmentId/id', function*(){ //岗位说明id
         var $self = this;
-        /*var getId = this.request.query;*/
         yield (server().departmentGetById()
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -1029,6 +1064,7 @@ module.exports = function(){
     }).post('/addJopDes/save', function*(){   //岗位说明添加
         var $self = this;
         var addData = this.request.body;
+        addData.token = $self.cookies.get('token');
         yield (server().jopDesAdd(addData)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -1111,7 +1147,6 @@ module.exports = function(){
     }).get('/userjop/getTotal', function*(){ //获取用户职位列表
         var $self = this;
         yield (server().userjopCount()
-
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
                 $self.body = responseText;
@@ -1149,6 +1184,7 @@ module.exports = function(){
     }).post('/userjop/add', function*(){ //添加职位
         var $self = this;
         var addData=$self.request.body;
+        addData.token = $self.cookies.get('token');
         yield (server().userjopAdd(addData)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -1162,6 +1198,7 @@ module.exports = function(){
     }).post('/userjop/edit', function*(){ //编辑职位
         var $self = this;
         var editData=$self.request.body;
+        editData.token = $self.cookies.get('token');
         yield (server().userjopEdit(editData)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -1201,6 +1238,7 @@ module.exports = function(){
     }).post('/operate/save', function*(){ //操作类型添加
         var $self = this;
         var addData = $self.request.body;
+        addData.token = $self.cookies.get('token');
         yield (server().operateAdd(addData)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -1252,6 +1290,7 @@ module.exports = function(){
     }).post('/operate/update', function*(){ //操作类型编辑
         var $self = this;
         var editData=$self.request.body;
+        editData.token = $self.cookies.get('token');
         yield (server().operateEdit(editData)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -1264,6 +1303,7 @@ module.exports = function(){
     }).post('/joprange/add', function*(){ //添加项目工作部门范围
         var $self = this;
         var addData = this.request.body;
+        addData.token = $self.cookies.get('token');
         yield (server().joprangeAdd(addData)
 
             .then((parsedBody) =>{
@@ -1278,6 +1318,7 @@ module.exports = function(){
     }).get('/operate/delete', function*(){ //操作类型删除
         var $self = this;
         var delId=$self.request.query;
+        delId.token = $self.cookies.get('token');
         yield (server().operateDelete(delId)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -1290,6 +1331,7 @@ module.exports = function(){
     }).get('/joprange/delete', function*(){ //删除项目工作部门范围
         var $self = this;
         var delId = this.request.query;
+        delId.token = $self.cookies.get('token');
         yield (server().joprangeDelete(delId)
 
             .then((parsedBody) =>{
@@ -1353,6 +1395,7 @@ module.exports = function(){
     }).post('/joprange/edit', function*(){ //编辑项目工作部门范围
         var $self = this;
         var editData = $self.request.body;
+        editData.token = $self.cookies.get('token');
         yield (server().joprangeEdit(editData)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -1366,6 +1409,7 @@ module.exports = function(){
     }).get('/operate/close', function*(){ //操作类型冻结
         var $self = this;
         var congealId=$self.request.query;
+        congealId.token = $self.cookies.get('token');
         yield (server().operateCongeal(congealId)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -1378,6 +1422,7 @@ module.exports = function(){
     }).get('/operate/open', function*(){ //操作类型解冻
         var $self = this;
         var thawId=$self.request.query;
+        thawId.token = $self.cookies.get('token');
         yield (server().operateThaw(thawId)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -1413,6 +1458,7 @@ module.exports = function(){
     }).post('/angle/save', function*(){ //角度添加
         var $self = this;
         var addData = $self.request.body;
+        addData.token = $self.cookies.get('token');
         yield (server().angleAdd(addData)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -1437,6 +1483,7 @@ module.exports = function(){
     }).post('/angle/update', function*(){ //角度编辑
         var $self = this;
         var editData=$self.request.body;
+        editData.token = $self.cookies.get('token');
         yield (server().angleEdit(editData)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -1449,6 +1496,7 @@ module.exports = function(){
     }).get('/angle/delete', function*(){ //角度删除
         var $self = this;
         var delId=$self.request.query;
+        delId.token = $self.cookies.get('token');
         yield (server().angleDelete(delId)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -1461,6 +1509,7 @@ module.exports = function(){
     }).get('/angle/close', function*(){ //角度冻结
         var $self = this;
         var congealId=$self.request.query;
+        congealId.token = $self.cookies.get('token');
         yield (server().angleCongeal(congealId)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -1473,6 +1522,7 @@ module.exports = function(){
     }).get('/angle/open', function*(){ //角度解冻
         var $self = this;
         var thawId=$self.request.query;
+        thawId.token = $self.cookies.get('token');
         yield (server().angleThaw(thawId)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -1508,6 +1558,7 @@ module.exports = function(){
     }).post('/dimension/save', function*(){ //维度添加
         var $self = this;
         var addData = $self.request.body;
+        addData.token = $self.cookies.get('token');
         yield (server().dimenAdd(addData)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -1532,6 +1583,7 @@ module.exports = function(){
     }).post('/dimension/update', function*(){ //维度编辑
         var $self = this;
         var editData=$self.request.body;
+        editData.token = $self.cookies.get('token');
         yield (server().dimenEdit(editData)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -1544,6 +1596,7 @@ module.exports = function(){
     }).get('/dimension/delete', function*(){ //维度删除
         var $self = this;
         var delId=$self.request.query;
+        delId.token = $self.cookies.get('token');
         yield (server().dimenDelete(delId)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -1556,6 +1609,7 @@ module.exports = function(){
     }).get('/dimension/close', function*(){ //维度冻结
         var $self = this;
         var congealId=$self.request.query;
+        congealId.token = $self.cookies.get('token');
         yield (server().dimenCongeal(congealId)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -1568,6 +1622,7 @@ module.exports = function(){
     }).get('/dimension/open', function*(){ //维度解冻
         var $self = this;
         var thawId=$self.request.query;
+        thawId.token = $self.cookies.get('token');
         yield (server().dimenThaw(thawId)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -1603,6 +1658,7 @@ module.exports = function(){
     }).post('/instructionClassify/save', function*(){ //分类添加
         var $self = this;
         var addData = $self.request.body;
+        addData.token = $self.cookies.get('token');
         yield (server().classifyAdd(addData)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -1627,6 +1683,7 @@ module.exports = function(){
     }).post('/instructionClassify/update', function*(){ //分类编辑
         var $self = this;
         var editData=$self.request.body;
+        editData.token = $self.cookies.get('token');
         yield (server().classifyEdit(editData)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -1639,6 +1696,7 @@ module.exports = function(){
     }).get('/instructionClassify/delete', function*(){ //分类删除
         var $self = this;
         var delId=$self.request.query;
+        delId.token = $self.cookies.get('token');
         yield (server().classifyDelete(delId)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -1651,6 +1709,7 @@ module.exports = function(){
     }).get('/instructionClassify/close', function*(){ //分类冻结
         var $self = this;
         var congealId=$self.request.query;
+        congealId.token = $self.cookies.get('token');
         yield (server().classifyCongeal(congealId)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -1663,6 +1722,7 @@ module.exports = function(){
     }).get('/instructionClassify/open', function*(){ //分类解冻
         var $self = this;
         var thawId=$self.request.query;
+        thawId.token = $self.cookies.get('token');
         yield (server().classifyThaw(thawId)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -1675,8 +1735,8 @@ module.exports = function(){
     }).get('/joprange/congeal', function*(){ //东街项目工作部门范围
         var $self = this;
         var conId = this.request.query;
+        conId.token = $self.cookies.get('token');
         yield (server().joprangeCongeal(conId)
-
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
                 $self.body = responseText;
@@ -1688,8 +1748,8 @@ module.exports = function(){
     }).get('/joprange/thaw', function*(){ //解冻项目工作部门范围
         var $self = this;
         var thawId = this.request.query;
+        thawId.token = $self.cookies.get('token');
         yield (server().joprangeThaw(thawId)
-
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
                 $self.body = responseText;
