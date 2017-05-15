@@ -1,0 +1,104 @@
+<div class="content-tab list">
+    <ul class="table area-table">
+        <li class="list-head">
+            <span></span>
+            <span class="data-id">id</span>
+            <span>缴费所属时期</span>
+            <span>纳税人名称</span>
+            <span>单位社保号</span>
+            <span>姓名</span>
+            <span>身份证号码</span>
+            <span>证件号</span>
+            <span>个人社保号</span>
+            <span></span>
+        </li>
+        <li class="list-all">
+            <section style="display: {{list._delete?'none':'block'}};">
+                <div  class="list-text {{list._selectList?'selectList':''}}" ng-click="selectList(list)">
+                    <p>{{$index+1}}</p>
+                    <p class="data-id"></p>
+                    <p>{{::list.payTime}}</p>
+                    <p>{{::list.payFeer}}</p>
+                    <p>{{::list.workSocalNum}}</p>
+                    <p>{{::list.empName}}</p>
+                    <p>{{::list.cardNum}}</p>
+                    <p>{{::list.identityNum}}</p>
+                    <p>{{::list.empSocalNum}}</p>
+                    <p>
+                        <a href="javascript:void(0)" class="more"  ng-click="moreList(list)">更多详细</a>
+                    </p>
+                </div>
+                <div class="can">
+                    <ul class="can-see" style="display: {{list._moreList?'block':'none'}};">
+                        <li>
+                            <p class="see-parent">
+                                <span>基本养老保险计费工资</span>
+                                <span>基本养老保险单位</span>
+                                <span>基本养老保险个人</span>
+                                <span>工伤保险计费工资</span>
+                                <span>工伤保险单位</span>
+                                <span>工伤保险个人</span>
+                                <span>失业保险计费工资</span>
+                            </p>
+                            <p class="see-children">
+                                <span>{{::list.baseSalary}}</span>
+                                <span>{{::list.baseWork}}</span>
+                                <span>{{::list.baseEmp}}</span>
+                                <span>{{::list.injurySalary}}</span>
+                                <span>{{::list.injuryWork}}</span>
+                                <span>{{::list.injuryEmp}}</span>
+                                <span>{{list.unemploySalary}}</span>
+                            </p>
+                        </li>
+                        <li>
+                            <p class="see-parent">
+                                <span>失业保险单位</span>
+                                <span>失业保险个人</span>
+                                <span>社会医疗保险计费工资</span>
+                                <span>社会医疗保险单位</span>
+                                <span>社会医疗保险个人</span>
+                                 <span>重大疾病医疗补助计费工资</span>
+                            </p>
+                            <p class="see-children">
+                                <span>{{::list.unemployWork}}</span>
+                                <span>{{::list.unemployEmp}}</span>
+                                <span>{{::list.socialMediSalary}}</span>
+                                <span>{{::list.socialMediWork}}</span>
+                                <span>{{list.socialMediEmp}}</span>
+                                <span>{{list.illSalary}}</span>
+                            </p>
+                        </li>
+                        <li>
+                            <p class="see-parent">
+                                <span>重大疾病医疗补助单位</span>
+                                <span>重大疾病医疗补助个人</span>
+                                <span>生育保险计费工资</span>
+                                <span>生育保险单位</span>
+                                <span>生育保险个人</span>
+                            </p>
+                            <p class="see-children">
+                                <span>{{list.illWork}}</span>
+                                <span>{{list.illEmp}}</span>
+                                <span>{{::list.pregnantSalary}}</span>
+                                <span>{{list.pregnantWork}}</span>
+                                <span>{{list.pregnantEmp}}</span>
+                            </p>
+                        </li>
+                        <li>
+                            <p class="see-parent">
+                                <span>单位合计</span>
+                                <span>个人合计</span>
+                                <span>应缴金额</span>
+                            </p>
+                            <p class="see-children">
+                                <span>{{list.workMoney}}</span>
+                                <span>{{list.empMoney}}</span>
+                                <span>{{list.totalMoney}}</span>
+                            </p>
+                        </li>
+                    </ul>
+                </div>
+            </section>
+        </li>
+     </ul>
+</div>
