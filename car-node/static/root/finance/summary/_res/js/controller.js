@@ -6,7 +6,7 @@ var app = angular.module('summary', [{
 app.controller('summaryCtrl',function ($scope,$state) {
 
     if ($state.current.url == '/summary') {//默认加载列表
-        $state.go('root.finance.summary.list')
+        $state.go('root.finance.summary.week[12]')
     };
 
 }).controller('summaryMenuCtrl',function($scope,$state,$rootScope,$location){
@@ -18,29 +18,24 @@ app.controller('summaryCtrl',function ($scope,$state) {
             $scope.menuClass = 'listMenu';
         }
     });
-    $scope.$on("passId",function(event,id){
-        $scope.getId = id;
-    });
-    //编辑
-    $scope.edit = function(){
-        if($scope.getId){
-            $state.go('root.finance.summary.edit[12]',{id:$scope.getId});
-            $scope.menuClass='editMenu';
-        }
-    };
-    //删除
-    $scope.delete = function(){
-        if($scope.getId){
-            $state.go('root.finance.summary.list.delete[12]',{id:$scope.getId});
-            $scope.menuClass='deleteMenu';
-        }
-    };
-    $scope.list = function(){
-        $scope.menuClass = 'listMenu'
-    };
-    $scope.add = function(){
-        $scope.menuClass = 'addMenu'
-    };
 });
 
+//自定义过滤器
+app.filter('cover', function(){
+    return function(val){
+        var result;
+        switch(val){
+            case "MAIN":
+                result = "主营业务成本";
+                break;
+            case "MARKET":
+                result = "市场费";
+                break;
+            case "TRAINING":
+                result = "培训费";
+                break;
+        }
+        return result;
+    }
+})
 
