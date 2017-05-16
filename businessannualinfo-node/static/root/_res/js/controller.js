@@ -3,7 +3,7 @@ var app = angular.module('app', ['ngVerify','ipCookie',
 ]);
 app.controller('rootCtrl', function ($scope,$rootScope,$state,$location,ipCookie,rootSer) {
     if ($state.current.url == '/root') {//默认加载列表
-        $state.go('root.businessContract');
+        $state.go('root.compete');
     }
     $scope.username = ipCookie('username');
     if($scope.username==undefined){

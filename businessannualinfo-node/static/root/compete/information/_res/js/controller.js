@@ -51,17 +51,11 @@ app.filter('cover', function(){
     return function(val){
         var result;
         switch(val){
-            case "NAME":
-                result = "公司名字";
+            case true:
+                result = "公示";
                 break;
-            case "DATE":
-                result = "时间";
-                break;
-            case "DELETE":
-                result = "删除";
-                break;
-            case "MONEY":
-                result = "资产";
+            case false:
+                result = "不公示";
                 break;
         }
         return result;
