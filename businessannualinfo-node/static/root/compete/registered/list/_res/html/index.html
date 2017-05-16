@@ -1,0 +1,73 @@
+<div class="content-tab list" style="margin-top: -70px;">
+    <!-- <div class="com-search mod">
+      <span class="com-search2">
+            <label>公司名字 :</label>
+            <input type="text"  ng-model="teamInfo.project">
+       </span>
+        <a href="javascript:void(0)" ng-click="companySearchFun()">搜索</a>
+    </div> -->
+    <ul class="table com-table">
+        <li class="list-head">
+            <span></span>
+        
+            <span>注册公司名称</span>
+            <span>注册号/统一社会信用代码</span>
+            <span>经营期限</span>
+            <span>注册类型</span>
+            <span>注册资本</span>
+            <span>经营范围</span>
+            <span>法人</span>
+            <span>股东</span>
+            <span>股权比例</span>
+            <span>地址</span>
+            <span>相关资料（名称）</span>
+            <span>备注</span>
+            <span></span>
+        </li>
+        <li class="list-all">
+            <section ng-repeat="list in registeredLists" style="display: {{list._delete?'none':'block'}};">
+                <div  class="list-text {{list._selectList?'selectList':''}}" ng-click="selectList(list)">
+                    <p>{{$index+1}}</p>
+                    <p>{{::list.registerCompanyName}}</p>
+                    <p>{{::list.registerNum}}</p>
+                    <p>{{::list.operationPeriod}}</p>
+                    <p>{{::list.registerType}}</p>
+                    <p>{{::list.registerCapital}}</p>
+                    <p>{{::list.operationScope}}</p>
+                    <p>{{::list.legalPerson}}</p>
+                    <p>{{::list.shareholders}}</p>
+                    <p>{{::list.equityRatio}}</p>
+                    <p>{{::list.address}}</p>
+                    <p>{{::list.cursorAdapter}}</p>
+                    <p>{{::list.remark}}</p>
+                    <p>
+                        <a href="javascript:void(0)" class="more"  ng-click="moreList(list)">更多详细</a>
+                    </p>
+                </div>
+                <div class="can">
+                    <ul class="can-see" style="display: {{list._moreList?'block':'none'}};">
+                        <li>
+                            <p class="see-parent">
+                                <span>id编号</span>
+                            </p>
+                            <p class="see-children">
+                                <span>{{list.id}}</span>
+                            </p>
+                        </li>
+                    </ul>
+                    <div class="module">
+                        <div class="see-module">
+                            <p class="see-type">体现类型</p>
+                            <p class="see-description"></p>
+                            <button class="btn">关闭</button>
+                        </div>
+                </div>
+                </div>
+            </section>
+        </li>
+     </ul>
+    <footer class="footer">
+        <pagination count="abili.itemsCount" take="abili.take" activate="abili.activatePage"></pagination>
+    </footer>
+</div>
+<div ui-view="modal"></div>
