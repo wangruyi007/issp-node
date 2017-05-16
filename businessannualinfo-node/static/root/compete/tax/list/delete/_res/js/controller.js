@@ -1,5 +1,5 @@
-var app = angular.module('taxDelete', ['toastr']);
-app.controller('taxDeleteCtrl',function($scope,taxSer,toastr,$stateParams,$state){
+var app = angular.module('taxDelete', ['toastr','ipCookie']);
+app.controller('taxDeleteCtrl',function($scope,taxSer,toastr,$stateParams,$state,ipCookie,$location){
     //删除
     $scope.delYes = function(){
         var data = {
@@ -13,8 +13,14 @@ app.controller('taxDeleteCtrl',function($scope,taxSer,toastr,$stateParams,$state
                 //向父Ctrl传递事件
                 $scope.$emit('deletedId', $scope.deledId)
                 $scope.$emit('changeId', null);
-            }else if(response.data.code==403){
-                toastr.error( "请登录用户", '温馨提示');
+            }else if(response.data.code==403||response.data.code==401){
+
+                toastr.error( "请登录用户,2秒后跳至登陆页面", '温馨提示');
+                var absurl = $location.absUrl();
+                ipCookie('absurl', absurl,{ expires:3,expirationUnit: 'minutes' });
+                setTimeout(function(){
+                    window.location.href='http://localhost/login'
+                },2000)
             }
         })
     }

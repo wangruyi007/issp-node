@@ -48,7 +48,6 @@ module.exports = function(){
     };
     //一个工商年检信息
     this.annualOneId = function(argvs){
-        console.log(argvs)
         var options = {
             method : 'GET',
             timeout : 3000,
@@ -95,7 +94,6 @@ module.exports = function(){
             method : 'GET',
             timeout : 3000,
             uri : config()['rurl'] + `/businesstaxchange/v1/change/${argvs.id}`,
-
         };
         return request(options);
     };
@@ -225,7 +223,6 @@ module.exports = function(){
     };
     //删除工商注册信息
     this.DeleteLogin = function(argvs){
-        console.log(argvs)
         var options = {
             method : 'DELETE',
             timeout : 3000,
@@ -244,7 +241,6 @@ module.exports = function(){
             uri : config()['rurl'] + '/businessregister/v1/add',
             form : argvs,
         };
-        console.log(argvs)
         return request(options);
     };
     //工商注册信息列表总条数

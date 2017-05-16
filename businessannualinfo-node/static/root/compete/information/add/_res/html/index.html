@@ -9,7 +9,6 @@
                 <li class="required f-l">
                     <label><i><img src="/images/mandatory.png"></i><em>报告年份</em></label>
                     <input type="text"  ng-verify="{}" ng-model="data.reportYear">
-                    <!-- <input type="text" onClick="laydate({istime: true, format: 'YYYY'})" class="time"> -->
                 </li>
                 <li class="required">  
                 <!-- angular.element('.time').val() 调用time-->
@@ -18,10 +17,9 @@
                 </li>
                 <li class="required">
                     <label><i><img src="/images/mandatory.png"></i><em>状态（是否公示）</em></label>
-                    <!-- <input type="text"  ng-verify="{}" ng-model="data.status"> -->
-                    <select class="sele state" ng-model="data.status" ng-init="customerSendUnit='MINUTE'">
-                        <option value="true">公示</option>
-                        <option value="false">不公示</option>
+                    <select class="sele state" ng-model="data.status" ng-init="data.status='true'">
+                        <option value=true>公示</option>
+                        <option value=false>不公示</option>
                     </select>
                 </li>
                 <li class="required">
