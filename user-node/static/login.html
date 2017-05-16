@@ -82,7 +82,6 @@
                 type:"post",
                 data:user,
                 success:function(response){
-                    console.info(response);
                     if(response.code==0){
                         $.cookie("username",user.account,{ expires: 7 });
                         var link = $.cookie('absurl');
@@ -91,11 +90,9 @@
                         }else {
                             window.location.href='/index'
                         }
-
                     }
                 }
             })
-
         }
     </script>
 </body>
