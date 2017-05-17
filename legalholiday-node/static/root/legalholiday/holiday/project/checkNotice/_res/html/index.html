@@ -1,0 +1,24 @@
+<div class="content-tab list">
+    <ul class="table com-table">
+        <li class="list-head">
+            <span></span>
+            <span class="data-id">id</span>
+            <span>注意事项名</span>
+            <span>描述</span>
+        </li>
+        <li class="list-all">
+            <section ng-repeat="list in checkNoticeLists.data" style="display: {{list._delete?'none':'block'}};">
+                <div  class="list-text {{list._selectList?'selectList':''}}" ng-click="selectList(list)">
+                    <p>{{$index+1}}</p>
+                    <p class="data-id"></p>
+                    <p>{{::list.name}}</p>
+                    <p>{{::list.describeDetail}}</p>
+                </div>
+            </section>
+        </li>
+     </ul>
+    <footer class="footer">
+        <pagination count="project.itemsCount" take="project.take" activate="project.activatePage"></pagination>
+    </footer>
+</div>
+<div ui-view="modal"></div>

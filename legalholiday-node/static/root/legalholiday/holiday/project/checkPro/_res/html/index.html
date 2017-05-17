@@ -1,0 +1,54 @@
+<div class="content-tab list">
+    <ul class="table com-table">
+        <li class="list-head">
+            <span></span>
+            <span class="data-id">id</span>
+            <span>地区</span>
+            <span>项目组</span>
+            <span>加班原因</span> 
+            <span>加班名单</span>
+            <span>加班时间</span>
+            <span>加班总人数</span>
+            <span>加班报酬方式</span>
+            <span>安全检查员名单</span>
+            <span></span>
+        </li>
+        <li class="list-all">
+            <section ng-repeat="list in checkProList.data" style="display: {{list._delete?'none':'block'}};">
+                <div  class="list-text {{list._selectList?'selectList':''}}" ng-click="selectList(list)">
+                    <p>{{$index+1}}</p>
+                    <p class="data-id"></p>
+                    <p>{{::list.area}}</p>
+                    <p>{{::list.projectGroup}}</p>
+                    <p>{{::list.overTimeReasion}}</p>
+                    <p>{{::list.overTimeEmper}}</p>
+                    <p>{{::list.overTimeTime}}</p>
+                    <p>{{::list.overTimeEmperNum}}</p>
+                    <p>{{::list.overTimeSalary}}</p>
+                    <p>{{::list.saferName}}</p>
+                    <p>
+                        <a href="javascript:void(0)" class="more"  ng-click="moreList(list)">更多详细</a>
+                    </p>
+                </div>
+                <div class="can">
+                    <ul class="can-see" style="display: {{list._moreList?'block':'none'}};">
+                        <li>
+                            <p class="see-parent">
+                                <span>安全检查员总人数</span>
+                                <span>应急方案</span>
+                            </p>
+                            <p class="see-children">
+                                <span>{{::list.saferNum}}</span>
+                                <span>{{::list.emergencyPlan}}</span>
+                            </p>
+                        </li>
+                    </ul>
+                </div>
+            </section>
+        </li>
+     </ul>
+    <footer class="footer">
+        <pagination count="project.itemsCount" take="project.take" activate="project.activatePage"></pagination>
+    </footer>
+</div>
+<div ui-view="modal"></div>
