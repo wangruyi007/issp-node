@@ -20,7 +20,7 @@ router.get('/', function *(next) {//根路由
 });
 
 //============路由===========
-app.use(require(path.join(__dirname,routersPath,'index.js'))().routes());//列表路由
+app.use(require(path.join(__dirname,routersPath,'type.js'))().routes());//勾选
 app.use(router.routes());
 
 //============静态文件资源===========

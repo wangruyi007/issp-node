@@ -11,8 +11,8 @@ module.exports = function(){
     var router = new Router();
 
     //获取列表页面
-    router.get('/type', function *(){
-        yield (sendfile(this, path.resolve('static/type.html')));
+    router.get('/index', function *(){
+        yield (sendfile(this, path.resolve('static/index.html')));
         if(!this.status){
             this.throw(404);
         }
