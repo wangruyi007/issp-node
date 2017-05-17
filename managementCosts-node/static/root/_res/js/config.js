@@ -9,8 +9,8 @@ app.config(function ($ocLazyLoadProvider) {
         ]
     });
 });
-Object.prototype.url = function () {
-    var obj = this;
+function urlEncodeData() {
+    var obj = arguments[0];
     var contacat = false;
     if (arguments[0]) {
         contacat = true;
@@ -18,10 +18,10 @@ Object.prototype.url = function () {
     var str = '';
     var count = 0;
     for (var name in obj) {
-        if (obj[name]&&( typeof obj[name]) != 'function') {
+        if (obj[name] && ( typeof obj[name]) != 'function') {
             str += (((contacat && count == 0) ? '?' : '&') + name + '=' + obj[name]);
         }
         count++;
     }
-    return str;
+
 }
