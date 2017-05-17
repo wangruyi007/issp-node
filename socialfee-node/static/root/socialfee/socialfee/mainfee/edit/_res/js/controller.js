@@ -1,8 +1,6 @@
-/**
- * Created by ike on 2017/4/18.
- */
+
 var app = angular.module('mainfeeEdit', ['toastr','ipCookie']);
-app.controller('mainfeeEditCtrl', function($scope, mainfeeSer,$state,toastr,$stateParams,ipCookie){
+app.controller('mainfeeEditCtrl', function($scope, mainfeeSer,$state,toastr,$stateParams,ipCookie,$location){
     var companyId = {id : $stateParams.id};
     //获取id对应的数据
     mainfeeSer.getOneById1(companyId).then(function(response){
