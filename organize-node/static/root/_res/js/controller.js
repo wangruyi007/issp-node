@@ -36,7 +36,6 @@ app.directive('resize', function ($window) {
         };
         scope.$watch(scope.getWindowDimensions, function (newValue, oldValue) {
             scope.windowHeight = newValue.h;
-            console.info(scope.windowHeight);
             scope.style = function () {
                 return {
                     'height': (newValue.h - 240) + 'px',

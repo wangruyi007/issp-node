@@ -8,5 +8,13 @@ app.config(function($provide, $stateProvider){
                 controller:"listCtrl"
             }
         }
+    }).state("root.progress.summary.list.delete[12]", {
+        url : "/delete[12]?id=",
+        views : {
+            "modal@root.progress.summary.list" : {
+                templateUrl : "root/progress/summary/list/delete/_res/html/index.html",
+                controller:"deleteCtrl"
+            }
+        }
     })
 });

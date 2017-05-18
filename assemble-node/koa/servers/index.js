@@ -10,34 +10,16 @@ module.exports = function(){
         var options = {
             method : 'GET',
             timeout : 3000,
-            uri : config()['type'] + '/module/v1/list',
+            uri : config()['rurl'] + '/module/v1/list',
         };
         return request(options);
     };
     this.listname = function(data){
+        console.info(data.name);
         var options = {
             method : 'GET',
             timeout : 3000,
-            uri : config()['type'] + '/module/v1/list/'+encodeURIComponent(data.name),
-        };
-        return request(options);
-    };
-    this.addmodule = function(data){
-        var options = {
-            method : 'POST',
-            timeout : 3000,
-            uri : config()['type'] + '/assemble/v1/add',
-            form:data
-        };
-        return request(options);
-    };
-    this.delmodule = function(data){
-        console.info(data);
-        var options = {
-            method : 'PUT',
-            timeout : 3000,
-            uri : config()['type'] + '/assemble/v1/delete',
-            form:data
+            uri : config()['rurl'] + '/assemble/v1/list/'+encodeURIComponent(data.name),
         };
         return request(options);
     };
@@ -45,7 +27,7 @@ module.exports = function(){
         var options = {
             method : 'PUT',
             timeout : 3000,
-            uri : config()['type'] + '/module/v1/check',
+            uri : config()['rurl'] + '/module/v1/check',
             form:data
         };
         return request(options);
