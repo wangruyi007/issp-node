@@ -1,0 +1,66 @@
+<div class="content-tab list">
+    <ul class="table">
+        <li class="list-head">
+            <span></span>
+            <span>资质名称</span>
+            <span>公司名称</span>
+            <span>认证时间</span>
+            <span>办理开始时间</span>
+            <span>计划结束时间</span>
+            <span>负责经办人</span>
+            <span>办理费用(元)</span>
+            <span></span>
+        </li>
+        <li class="list-all" ng-repeat="list in progressList">
+
+            <section>
+                <div class="list-text {{list._selectList?'selectList':''}}" ng-click="selectList(list)">
+                    <p>{{$index+1}}</p>
+                    <p>{{list.qualifications}}</p>
+                    <p>{{list.company}}</p>
+                    <p>{{list.attestation}}</p>
+                    <p>{{list.handleTime}}</p>
+                    <p>{{list.endTime}}</p>
+                    <p>{{list.director}}</p>
+                    <p>{{list.handleCost}}</p>
+                    <p>
+                        <a href="javascript:void(0)" class="more"  ng-click="moreList(list)">更多详细</a>
+                    </p>
+                </div>
+                <div class="can">
+                    <ul class="can-see" style="display: {{list._moreList?'block':'none'}};">
+                        <li>
+                            <p class="see-parent">
+                                <span>年检费用(元)</span>
+                                <span>办理状态</span>
+                                <span>证书</span>
+                                <span>办理使用材料</span>
+                                <span>付款记录登记</span>
+                                <span>填写人</span>
+                                <span>修改时间</span>
+                            </p>
+                            <p class="see-children">
+                                <span>{{list.renewal}}</span>
+                                <span>{{list.handle|cover}}</span>
+                                <span>{{list.certificate}}</span>
+                                <span>{{list.material}}</span>
+                                <span>{{list.record}}</span>
+                                <span>{{list.writer}}</span>
+                                <span>{{list.modifyTime}}</span>
+                            </p>
+                        </li>
+                    </ul>
+                </div>
+            </section>
+        </li>
+    </ul>
+    <footer class="footer">
+        <pagination count="pagination.itemsCount" take="pagination.take" activate="pagination.activatePage"></pagination>
+    </footer>
+</div>
+<div ui-view="modal"></div>
+
+
+
+
+

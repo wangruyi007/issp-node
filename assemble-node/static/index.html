@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <title>类目配置</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" href="css/index.css">
+</head>
+<body>
+    <div id="box">
+        <div class="header-top">
+            <a href="#" class="login"><img src="images/type/login.png" alt=""></a>
+            <h5>类目配置</h5>
+        </div>
+        <div class="content">
+            <div class="content-center">
+                <div class="select-left">
+                    <h5>主模块</h5>
+                    <div class="select-list">
+                        <p class="select-name">类目名称</p>
+                        <div class="name-thing">
+                        </div>
+                    </div>
+                </div>
+                <div class="select-left">
+                    <h5>关联模块</h5>
+                    <div class="select-list">
+                        <p class="select-name">类目名称</p>
+                        <div class="basic-module">
+                            <div class="item">
+                            </div>
+                            <p class="sel">
+                                <i class="gou">
+                                    <img src="images/type/gou.png" alt="" class="gou-img">
+                                </i>
+                                <select class="select-mod" id="selmod">
+
+                                </select>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="btn-right">
+                    <div class="add" onclick="addmodule()">
+                        <i class="button-add"></i>
+                        <span >添加模块</span>
+                    </div>
+                    <div class="deleted" onclick="delmodule()">
+                        <i class="button-del"></i>
+                        <span>删除</span>
+                    </div>
+                </div>
+            </div>
+            <div class="under-btn">
+                <span class="msg">保存成功</span>
+                <button type="button" class="save" onclick="save()">保存</button>
+                <button type="button" class="cancel">取消</button>
+            </div>
+        </div>
+    </div>
+    <div class="modal">
+        <div class="mod-del">
+            <div class="del-head">
+                <h3>温馨提示</h3>
+            </div>
+            <div class="del-con">
+                <p>确定要删除该数据？</p>
+                <div class="btn">
+                    <button onclick="delYes()">确定</button>
+                    <button onclick="delCancel()">取消</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/format.js"></script>
+    <script src="js/index.js"></script>
+</body>
+</html>
