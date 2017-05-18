@@ -1,8 +1,6 @@
-/**
- * Created by ike on 2017/4/18.
- */
-var app = angular.module('mainfeeEdit', ['toastr']);
-app.controller('mainfeeEditCtrl', function($scope, mainfeeSer,$state,toastr,$stateParams){
+
+var app = angular.module('mainfeeEdit', ['toastr','ipCookie']);
+app.controller('mainfeeEditCtrl', function($scope, mainfeeSer,$state,toastr,$stateParams,ipCookie,$location){
     var companyId = {id : $stateParams.id};
     //获取id对应的数据
     mainfeeSer.getOneById1(companyId).then(function(response){
@@ -17,7 +15,7 @@ app.controller('mainfeeEditCtrl', function($scope, mainfeeSer,$state,toastr,$sta
         $scope.years.push(i);
     }
     //月份
-    $scope.monthes = [01,02,03,04,05,06,07,08,09,10,11,12];
+    $scope.monthes = ['01','02','03','04','05','06','07','08','09',10,11,12];
 
     //点击提交
     $scope.EditFun =function(){
