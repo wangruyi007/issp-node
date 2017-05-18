@@ -1,0 +1,15 @@
+<div class="nav-list">
+    <h3 class="header-menu big"><i class="nav-arrow"></i>往年账务情况</h3>
+    <ul class="menu">
+        <li ng-click="navClass('proWeek')" ng-class="{'active':navCla=='proWeek'}"  ui-sref="_root.budget.proWeek.list" >
+            <a href="javascript:void(0)">项目收入周</a></li>
+        <li ng-click="navClass('month')" ng-class="{'active':navCla=='month'}"  ui-sref="_root.budget.month.list" >
+            <a href="javascript:void(0)">项目收入月</a></li>
+        <li ng-click="navClass('areaWeek')" ng-class="{'active':navCla=='areaWeek'}"  ui-sref="_root.budget.areaWeek.list" >
+            <a href="javascript:void(0)">地区收入周</a></li>
+        <li ng-click="navClass('areaMonth')" ng-class="{'active':navCla=='areaMonth'}"  ui-sref="_root.budget.areaMonth.list" >
+            <a href="javascript:void(0)">地区收入月</a></li>
+        <li ng-click="navClass('warning')" ng-class="{'active':navCla=='warning'}"  ui-sref="_root.budget.warning.list" >
+            <a href="javascript:void(0)">预警</a></li>
+     </ul>
+</div>

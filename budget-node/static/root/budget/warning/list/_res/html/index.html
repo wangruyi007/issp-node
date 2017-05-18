@@ -1,0 +1,27 @@
+<div class="content-tab list">
+    <ul class="table">
+        <li class="list-head">
+            <span>预警的值(超出该值的预警)</span>
+        </li>
+        <!-- <div ng-repeat="pros in proData|orderBy:'-workDifferences'">-->
+         <div>
+            <!-- {{proData.workDifferences}}-->
+         <li class="list-all" style="display: {{list._delete?'none':'block'}};">
+            <section ng-repeat="list in warningLists"  ng-class="{'red':list.warnValue>=maxNum&&maxNum2}">
+                <div class="list-text {{list._selectList?'selectList':''}}" ng-click="selectList(list)">
+                    <p>{{list.warnValue}}</p>
+                </div>
+            </section>
+          </li>
+         </div>
+    </ul>
+    <footer class="footer">
+        <pagination count="pagination.itemsCount" take="pagination.take" activate="pagination.activatePage"></pagination>
+    </footer>
+</div>
+<div ui-view="modal"></div>
+
+
+
+
+
