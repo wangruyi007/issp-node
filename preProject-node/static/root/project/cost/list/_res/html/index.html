@@ -1,0 +1,63 @@
+<div class="content-tab list">
+    <ul class="table">
+        <li class="list-head">
+            <span></span>
+            <span>项目组</span>
+            <span>地区</span>
+            <span>年份</span>
+            <span>月份</span>
+            <span>项目名称</span>
+            <span>预计收入</span>
+            <span>预计市场费</span>
+            <span></span>
+        </li>
+        <li class="list-all" ng-repeat="list in costLists" style="display: {{list._delete?'none':'block'}};">
+            <section>
+                <div class="list-text {{list._selectList?'selectList':''}}" ng-click="selectList(list)">
+                    <p>{{$index+1}}</p>
+                    <p>{{list.project}}</p>
+                    <p>{{list.arrival}}</p>
+                    <p>{{list.year}}</p>
+                    <p>{{list.month}}</p>
+                    <p>{{list.projectName}}</p>
+                    <p>{{list.expectedIncome}}</p>
+                    <p>{{list.expectedMarketCost}}</p>
+                    <p>
+                        <a href="javascript:void(0)" class="more"  ng-click="moreList(list)">更多详细</a>
+                    </p>
+                </div>
+                <div class="can">
+                    <ul class="can-see" style="display: {{list._moreList?'block':'none'}};">
+                        <li>
+                            <p class="see-parent">
+                                <span>实际市场费</span>
+                                <span>差额</span>
+                                <span>预计占比</span>
+                                <span>实际占比</span>
+                                <span>预警</span>
+                                <span>等级评定</span>
+                            </p>
+                            <p class="see-children">
+                                <span>{{list.actualMarketCost}}</span>
+                                <span>{{list.differences}}</span>
+                                <span>{{list.expectedScale}}</span>
+                                <span>{{list.actualScale}}</span>
+                                <span>{{list.warn}}</span>
+                                <span>{{list.grade}}</span>
+                            </p>
+                        </li>
+                    </ul>
+                </div>
+            </section>
+        </li>
+    </ul>
+    <footer class="footer">
+        <pagination count="pagination.itemsCount" take="pagination.take" activate="pagination.activatePage"></pagination>
+    </footer>
+</div>
+<div ui-view="modal"></div>
+
+
+
+
+
