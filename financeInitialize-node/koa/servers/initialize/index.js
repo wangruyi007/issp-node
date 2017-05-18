@@ -55,7 +55,7 @@ module.exports = function(){
         var options = {
             method : 'PUT',
             timeout : 3000,
-            uri : config()['rurl'] + `/currency/v1/edit?userToken=${argvs.userToken}`,
+            uri : config()['rurl'] + `/currency/v1/edit`,
             form:argvs,
             headers : {
                 userToken : argvs.userToken
@@ -141,7 +141,10 @@ module.exports = function(){
         var options = {
             method : 'DELETE',
             timeout : 3000,
-            uri : config()['rurl'] + `/firstsubject/v1/delete/${argvs.id}?userToken=${argvs.userToken}`,
+            uri : config()['rurl'] + `/firstsubject/v1/delete/${argvs.id}`,
+            headers: {
+                userToken : argvs.userToken
+            }
         };
         return request(options);
     };
@@ -337,6 +340,16 @@ module.exports = function(){
             headers : {
                 userToken : argvs.userToken
             }
+        };
+        return request(options);
+    };
+    //用户退出
+    this.logout = function(argvs){
+        var options = {
+            method : 'POST',
+            timeout : 3000,
+            uri : config()['user'] + `/v1/sign-out/${argvs.token}`,
+            form:argvs
         };
         return request(options);
     };
