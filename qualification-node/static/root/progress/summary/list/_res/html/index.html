@@ -11,8 +11,7 @@
             <span>办理费用(元)</span>
             <span></span>
         </li>
-        <li class="list-all" ng-repeat="list in progressList">
-
+        <li class="list-all" ng-repeat="list in progressList" style="display: {{list._delete?'none':'block'}};">
             <section>
                 <div class="list-text {{list._selectList?'selectList':''}}" ng-click="selectList(list)">
                     <p>{{$index+1}}</p>

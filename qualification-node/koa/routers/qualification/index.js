@@ -30,6 +30,57 @@ module.exports = function(){
                 $self.body=error.error;
                 console.error(error.error);
             }));
+    }).post('/addProgress', function*(){
+        var $self = this;
+        var addData = $self.request.body;
+        addData.token = $self.cookies.get('token');
+        yield (server().addProgress(addData)
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
+    }).get('/getProgress', function*(){
+        var $self = this;
+        var getId = $self.request.query;
+        yield (server().getProgress(getId)
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
+    }).post('/editProgress', function*(){
+        var $self = this;
+        var editData = $self.request.body;
+        editData.token=$self.cookies.get('token');
+        yield (server().editProgress(editData)
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
+    }).get('/deleteProgress', function*(){
+        var $self = this;
+        var delId = $self.request.query;
+        delId.token=$self.cookies.get('token');
+        yield (server().deleteProgress(delId)
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
     })
     return router;
 };
