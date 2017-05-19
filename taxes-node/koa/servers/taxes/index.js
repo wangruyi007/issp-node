@@ -33,10 +33,10 @@ module.exports = function(){
         var options = {
             method : 'POST',
             timeout : 3000,
-            uri : config()['rurl'] + `/taxmanagement/v1/add?userToken=${argvs.userToken}`,
+            uri : config()['rurl'] + `/taxmanagement/v1/add`,
             form:argvs,
             headers : {
-                // token : token
+                 userToken : argvs.userToken
             }
         };
         return request(options);
@@ -56,10 +56,10 @@ module.exports = function(){
         var options = {
             method : 'POST',
             timeout : 3000,
-            uri : config()['rurl'] + `/taxmanagement/v1/edit?userToken=${argvs.userToken}`,
+            uri : config()['rurl'] + `/taxmanagement/v1/edit`,
             form:argvs,
             headers : {
-                // token : token
+                 userToken : argvs.userToken
             }
         };
         return request(options);
@@ -69,7 +69,10 @@ module.exports = function(){
         var options = {
             method : 'DELETE',
             timeout : 3000,
-            uri : config()['rurl'] + `/taxmanagement/v1/delete/${argvs.id}?userToken=${argvs.userToken}`,
+            uri : config()['rurl'] + `/taxmanagement/v1/delete/${argvs.id}`,
+            headers: {
+                 userToken : argvs.userToken
+            }
         };
         return request(options);
     };
@@ -127,10 +130,10 @@ module.exports = function(){
         var options = {
             method : 'POST',
             timeout : 3000,
-            uri : config()['rurl'] + `/accountinfomanagement/v1/add?userToken=${argvs.userToken}`,
+            uri : config()['rurl'] + `/accountinfomanagement/v1/add`,
             form:argvs,
             headers : {
-                // token : token
+                 userToken : argvs.userToken
             }
         };
         return request(options);
@@ -150,10 +153,10 @@ module.exports = function(){
         var options = {
             method : 'POST',
             timeout : 3000,
-            uri : config()['rurl'] + `/accountinfomanagement/v1/edit?userToken=${argvs.userToken}`,
+            uri : config()['rurl'] + `/accountinfomanagement/v1/edit`,
             form:argvs,
             headers : {
-                // token : token
+                userToken : argvs.userToken
             }
         };
         return request(options);
@@ -163,24 +166,25 @@ module.exports = function(){
         var options = {
             method : 'DELETE',
             timeout : 3000,
-            uri : config()['rurl'] + `/accountinfomanagement/v1/delete/${argvs.id}?userToken=${argvs.userToken}`,
+            uri : config()['rurl'] + `/accountinfomanagement/v1/delete/${argvs.id}`,
+            headers:{
+                 userToken : argvs.userToken
+            }
         };
         return request(options);
     };
 
 
-    //地区汇总
-//    this.areaList= function(argvs){
-//         var options = {
-//             method : 'GET',
-//             timeout : 3000,
-//             uri : config()['rurl'] + `/otherexpenses/v1/collect/area?start=${argvs.start}&end=${argvs.end}&area=${encodeURIComponent(argvs.area)}&project=${encodeURIComponent(argvs.project)}&type=${encodeURIComponent(argvs.type)}&name=${encodeURIComponent(argvs.name)}`,
-//             headers : {
-//                 // token : token
-//             }
-//         };
-//         return request(options);
-//     };
+    //用户退出
+    this.logout = function(argvs){
+        var options = {
+            method : 'POST',
+            timeout : 3000,
+            uri : config()['user'] + `/v1/sign-out/${argvs.token}`,
+            form:argvs
+        };
+        return request(options);
+    };
 
     return this;
 };
