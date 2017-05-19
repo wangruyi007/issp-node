@@ -8,10 +8,7 @@ module.exports = function(){
         var options = {
             method : 'GET',
             timeout : 3000,
-            uri : config()['rurl'] + '/interactionrelation/v1/listInteractionRelation?limit=10&page='+argvs.page,
-            headers : {
-                // token : token
-            }
+            uri : config()['rurl'] + '/interactionrelation/v1/listInteractionRelation?limit=10&page='+argvs.page
         };
         return request(options);
     };
@@ -23,7 +20,7 @@ module.exports = function(){
             uri : config()['rurl'] + '/interactionrelation/v1/add',
             form:argvs,
             headers : {
-                // token : token
+                userToken : argvs.userToken
             }
         };
         return request(options);
@@ -34,7 +31,10 @@ module.exports = function(){
             method : 'PUT',
             timeout : 3000,
             uri : config()['rurl'] + '/interactionrelation/v1/edit',
-            form:argvs
+            form:argvs,
+            headers : {
+                userToken : argvs.userToken
+            }
         };
         return request(options);
     };
@@ -52,7 +52,10 @@ module.exports = function(){
         var options = {
             method : 'DELETE',
             timeout : 3000,
-            uri : config()['rurl'] + '/interactionrelation/v1/delete/' + argvs.id
+            uri : config()['rurl'] + '/interactionrelation/v1/delete/' + argvs.id,
+            headers : {
+                userToken : argvs.userToken
+            }
         };
         return request(options);
     };
@@ -82,7 +85,7 @@ module.exports = function(){
             uri : config()['rurl'] + '/leavingmessage/v1/add',
             form:argvs,
             headers : {
-                // token : token
+                userToken : argvs.userToken
             }
         };
         return request(options);
@@ -101,10 +104,7 @@ module.exports = function(){
         var options = {
             method : 'GET',
             timeout : 3000,
-            uri : config()['rurl'] + `/demand/v1/listDemand?limit=10&page${argvs.page}`,
-            headers : {
-                // token : token
-            }
+            uri : config()['rurl'] + `/demand/v1/listDemand?limit=10&page${argvs.page}`
         };
         return request(options);
     };
@@ -116,7 +116,7 @@ module.exports = function(){
             uri : config()['rurl'] + '/demand/v1/add',
             form:argvs,
             headers : {
-                // token : token
+                userToken : argvs.userToken
             }
         };
         return request(options);
@@ -127,7 +127,10 @@ module.exports = function(){
             method : 'PUT',
             timeout : 3000,
             uri : config()['rurl'] + '/demand/v1/edit',
-            form:argvs
+            form:argvs,
+            headers : {
+                userToken : argvs.userToken
+            }
         };
         return request(options);
     };
@@ -145,7 +148,10 @@ module.exports = function(){
         var options = {
             method : 'DELETE',
             timeout : 3000,
-            uri : config()['rurl'] + `/demand/v1/delete/${argvs.id}`
+            uri : config()['rurl'] + `/demand/v1/delete/${argvs.id}`,
+            headers : {
+                userToken : argvs.userToken
+            }
         };
         return request(options);
     };
@@ -163,10 +169,7 @@ module.exports = function(){
         var options = {
             method : 'GET',
             timeout : 3000,
-            uri : config()['rurl'] + `/talkdetail/v1/listTalkDetail?limit=10&page=${argvs.page}`,
-            headers : {
-                // token : token
-            }
+            uri : config()['rurl'] + `/talkdetail/v1/listTalkDetail?limit=10&page=${argvs.page}`
         };
         return request(options);
     };
@@ -175,10 +178,10 @@ module.exports = function(){
         var options = {
             method : 'POST',
             timeout : 3000,
-            uri : config()['rurl'] + `/talkdetail/v1/add?userToken=${argvs.userToken}`,
+            uri : config()['rurl'] + `/talkdetail/v1/add`,
             form:argvs,
             headers : {
-                // token : token
+                userToken : argvs.userToken
             }
         };
         return request(options);
@@ -188,8 +191,11 @@ module.exports = function(){
         var options = {
             method : 'PUT',
             timeout : 3000,
-            uri : config()['rurl'] + `/talkdetail/v1/edit?userToken=${argvs.userToken}`,
-            form:argvs
+            uri : config()['rurl'] + `/talkdetail/v1/edit`,
+            form:argvs,
+            headers : {
+                userToken : argvs.userToken
+            }
         };
         return request(options);
     };
@@ -207,7 +213,10 @@ module.exports = function(){
         var options = {
             method : 'DELETE',
             timeout : 3000,
-            uri : config()['rurl'] + `/talkdetail/v1/delete/${argvs.id}?userToken=${argvs.userToken}`
+            uri : config()['rurl'] + `/talkdetail/v1/delete/${argvs.id}`,
+            headers : {
+                userToken : argvs.userToken
+            }
         };
         return request(options);
     };
@@ -225,10 +234,7 @@ module.exports = function(){
         var options = {
             method : 'GET',
             timeout : 3000,
-            uri : config()['rurl'] + `/collectemail/v1/listCollectEmail?limit=10&page=${argvs.page}`,
-            headers : {
-                // token : token
-            }
+            uri : config()['rurl'] + `/collectemail/v1/listCollectEmail?limit=10&page=${argvs.page}`
         };
         return request(options);
     };
@@ -237,8 +243,11 @@ module.exports = function(){
         var options = {
             method : 'POST',
             timeout : 3000,
-            uri : config()['rurl'] + `/collectemail/v1/add?userToken=${argvs.userToken}`,
-            form:argvs
+            uri : config()['rurl'] + '/collectemail/v1/add',
+            form:argvs,
+            headers : {
+                userToken : argvs.userToken
+            }
         };
         return request(options);
     };
@@ -248,7 +257,10 @@ module.exports = function(){
             method : 'PUT',
             timeout : 3000,
             uri : config()['rurl'] + '/collectemail/v1/edit',
-            form:argvs
+            form:argvs,
+            headers : {
+                userToken : argvs.userToken
+            }
         };
         return request(options);
     };
@@ -266,7 +278,10 @@ module.exports = function(){
         var options = {
             method : 'DELETE',
             timeout : 3000,
-            uri : config()['rurl'] + `/collectemail/v1/delete/${argvs.id}?userToken=${argvs.userToken}`
+            uri : config()['rurl'] + `/collectemail/v1/delete/${argvs.id}`,
+            headers : {
+                userToken : argvs.userToken
+            }
         };
         return request(options);
     };
@@ -284,7 +299,10 @@ module.exports = function(){
         var options = {
             method : 'PUT',
             timeout : 3000,
-            uri : config()['rurl'] + `/collectemail/v1/congeal/${argvs.id}`
+            uri : config()['rurl'] + `/collectemail/v1/congeal/${argvs.id}`,
+            headers : {
+                userToken : argvs.userToken
+            }
         };
         return request(options);
     };
@@ -293,7 +311,10 @@ module.exports = function(){
         var options = {
             method : 'PUT',
             timeout : 3000,
-            uri : config()['rurl'] + `/collectemail/v1/thaw/${argvs.id}`
+            uri : config()['rurl'] + `/collectemail/v1/thaw/${argvs.id}`,
+            headers : {
+                userToken : argvs.userToken
+            }
         };
         return request(options);
     };
@@ -303,8 +324,11 @@ module.exports = function(){
             method : 'GET',
             timeout : 3000,
             uri : config()['rurl'] + `/collectemail/v1/collect?areas=${encodeURIComponent(argvs)}`,
-            form:argvs,
+            headers : {
+                userToken : argvs.userToken
+            }
         };
+
         return request(options);
     };
     //获取所有地区
@@ -313,6 +337,16 @@ module.exports = function(){
             method : 'GET',
             timeout : 3000,
             uri : config()['rurl'] + '/collectemail/v1/listArea'
+        };
+        return request(options);
+    };
+    //退出
+    this.logout = function(argvs){
+        var options = {
+            method : 'POST',
+            timeout : 3000,
+            uri : config()['user'] + `/v1/sign-out/${argvs.token}`,
+            form:argvs
         };
         return request(options);
     };

@@ -11,9 +11,6 @@ module.exports = function(){
             method : 'GET',
             timeout : 3000,
             uri : config()['rurl'] + `/managefee/v1/list?limit=10&page=${argvs.page}`,
-            headers : {
-                // token : token
-            }
         };
         return request(options);
     };
@@ -87,7 +84,10 @@ module.exports = function(){
         var options = {
             method : 'GET',
             timeout : 3000,
-            uri : config()['rurl'] + '/managefee/v1/ctArea'+urlEncode(argvs,true)
+            uri : config()['rurl'] + '/managefee/v1/ctArea'+urlEncode(argvs,true),
+            headers:{
+                userToken:argvs.userToken
+            }
         };
 
         return request(options);
@@ -106,7 +106,10 @@ module.exports = function(){
         var options = {
             method : 'GET',
             timeout : 3000,
-            uri : config()['rurl'] + '/managefee/v1/ctGroup'+urlEncode(argvs,true)
+            uri : config()['rurl'] + '/managefee/v1/ctGroup'+urlEncode(argvs,true),
+            headers:{
+                userToken:argvs.userToken
+            }
         };
 
         return request(options);
@@ -125,7 +128,10 @@ module.exports = function(){
         var options = {
             method : 'GET',
             timeout : 3000,
-            uri : config()['rurl'] + '/managefee/v1/ctType'+urlEncode(argvs,true)
+            uri : config()['rurl'] + '/managefee/v1/ctType'+urlEncode(argvs,true),
+            headers:{
+                userToken:argvs.userToken
+            }
         };
 
         return request(options);
@@ -135,7 +141,10 @@ module.exports = function(){
         var options = {
             method : 'GET',
             timeout : 3000,
-            uri : config()['rurl'] + '/managefee/v1/ctProject'+urlEncode(argvs,true)
+            uri : config()['rurl'] + '/managefee/v1/ctProject'+urlEncode(argvs,true),
+            headers:{
+                userToken:argvs.userToken
+            }
         };
 
         return request(options);
@@ -231,7 +240,10 @@ module.exports = function(){
         var options = {
             method : 'GET',
             timeout : 3000,
-            uri : config()['rurl'] + '/outfee/v1/ctArea'+urlEncode(argvs,true)
+            uri : config()['rurl'] + '/outfee/v1/ctArea'+urlEncode(argvs,true),
+            headers:{
+                userToken:argvs.userToken
+            }
         };
 
         return request(options);
@@ -250,7 +262,10 @@ module.exports = function(){
         var options = {
             method : 'GET',
             timeout : 3000,
-            uri : config()['rurl'] + '/outfee/v1/ctGroup'+urlEncode(argvs,true)
+            uri : config()['rurl'] + '/outfee/v1/ctGroup'+urlEncode(argvs,true),
+            headers:{
+                userToken:argvs.userToken
+            }
         };
 
         return request(options);
@@ -269,7 +284,10 @@ module.exports = function(){
         var options = {
             method : 'GET',
             timeout : 3000,
-            uri : config()['rurl'] + '/outfee/v1/ctType'+urlEncode(argvs,true)
+            uri : config()['rurl'] + '/outfee/v1/ctType'+urlEncode(argvs,true),
+            headers:{
+                userToken:argvs.userToken
+            }
         };
 
         return request(options);
@@ -279,7 +297,10 @@ module.exports = function(){
         var options = {
             method : 'GET',
             timeout : 3000,
-            uri : config()['rurl'] + '/outfee/v1/ctProject'+urlEncode(argvs,true)
+            uri : config()['rurl'] + '/outfee/v1/ctProject'+urlEncode(argvs,true),
+            headers:{
+                userToken:argvs.userToken
+            }
         };
 
         return request(options);
@@ -290,6 +311,16 @@ module.exports = function(){
             method : 'GET',
             timeout : 3000,
             uri : config()['rurl'] + '/outfee/v1/listProject'
+        };
+        return request(options);
+    };
+    //退出
+    this.logout = function(argvs){
+        var options = {
+            method : 'POST',
+            timeout : 3000,
+            uri : config()['user'] + `/v1/sign-out/${argvs.token}`,
+            form:argvs
         };
         return request(options);
     };
