@@ -32,10 +32,10 @@ module.exports = function(){
         var options = {
             method : 'POST',
             timeout : 3000,
-            uri : config()['rurl'] + `/otherexpenses/v1/save?userToken=${argvs.userToken}`,
+            uri : config()['rurl'] + `/otherexpenses/v1/save`,
             form:argvs,
             headers : {
-                // token : token
+               userToken : argvs.userToken
             }
         };
         return request(options);
@@ -55,10 +55,10 @@ module.exports = function(){
         var options = {
             method : 'PUT',
             timeout : 3000,
-            uri : config()['rurl'] + `/otherexpenses/v1/update/${argvs.id}?userToken=${argvs.userToken}`,
+            uri : config()['rurl'] + `/otherexpenses/v1/update/${argvs.id}`,
             form:argvs,
             headers : {
-                // token : token
+                userToken : argvs.userToken
             }
         };
         return request(options);
@@ -68,7 +68,10 @@ module.exports = function(){
         var options = {
             method : 'DELETE',
             timeout : 3000,
-            uri : config()['rurl'] + `/otherexpenses/v1/delete/${argvs.id}?userToken=${argvs.userToken}`,
+            uri : config()['rurl'] + `/otherexpenses/v1/delete/${argvs.id}`,
+            headers:{
+                userToken : argvs.userToken
+            }
         };
         return request(options);
     };
@@ -117,6 +120,16 @@ module.exports = function(){
             headers : {
                 // token : token
             }
+        };
+        return request(options);
+    };
+    //用户退出
+    this.logout = function(argvs){
+        var options = {
+            method : 'POST',
+            timeout : 3000,
+            uri : config()['user'] + `/v1/sign-out/${argvs.token}`,
+            form:argvs
         };
         return request(options);
     };

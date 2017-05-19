@@ -240,6 +240,22 @@ module.exports = function(){
                     $self.status = 408;
                 }
             }));
+    }).get('/user/logout', function*(){//退出用户
+        var $self = this;
+        var token = {token:$self.cookies.get('token')};
+        yield (server().logout(token)
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                if(responseText.code==0){
+                    $self.cookies.set('token','');
+                    $self.body = responseText;
+                }
+
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
     })
     return router;
 };

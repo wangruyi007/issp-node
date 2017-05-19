@@ -32,10 +32,10 @@ module.exports = function(){
         var options = {
             method : 'POST',
             timeout : 3000,
-            uri : config()['rurl'] + `/currency/v1/add?userToken=${argvs.userToken}`,
+            uri : config()['rurl'] + `/currency/v1/add`,
             form:argvs,
             headers : {
-                // token : token
+                userToken : argvs.userToken
             }
         };
         return request(options);
@@ -55,10 +55,10 @@ module.exports = function(){
         var options = {
             method : 'PUT',
             timeout : 3000,
-            uri : config()['rurl'] + `/currency/v1/edit?userToken=${argvs.userToken}`,
+            uri : config()['rurl'] + `/currency/v1/edit`,
             form:argvs,
             headers : {
-                // token : token
+                userToken : argvs.userToken
             }
         };
         return request(options);
@@ -68,7 +68,10 @@ module.exports = function(){
         var options = {
             method : 'DELETE',
             timeout : 3000,
-            uri : config()['rurl'] + `/currency/v1/delete/${argvs.id}?userToken=${argvs.userToken}`,
+            uri : config()['rurl'] + `/currency/v1/delete/${argvs.id}`,
+            headers: {
+                userToken : argvs.userToken
+            }
         };
         return request(options);
     };
@@ -102,10 +105,10 @@ module.exports = function(){
         var options = {
             method : 'POST',
             timeout : 3000,
-            uri : config()['rurl'] + `/firstsubject/v1/add?userToken=${argvs.userToken}`,
+            uri : config()['rurl'] + `/firstsubject/v1/add`,
             form:argvs,
             headers : {
-                // token : token
+                userToken : argvs.userToken
             }
         };
         return request(options);
@@ -125,10 +128,10 @@ module.exports = function(){
         var options = {
             method : 'PUT',
             timeout : 3000,
-            uri : config()['rurl'] + `/firstsubject/v1/edit?userToken=${argvs.userToken}`,
+            uri : config()['rurl'] + `/firstsubject/v1/edit`,
             form:argvs,
             headers : {
-                // token : token
+                userToken : argvs.userToken
             }
         };
         return request(options);
@@ -138,7 +141,10 @@ module.exports = function(){
         var options = {
             method : 'DELETE',
             timeout : 3000,
-            uri : config()['rurl'] + `/firstsubject/v1/delete/${argvs.id}?userToken=${argvs.userToken}`,
+            uri : config()['rurl'] + `/firstsubject/v1/delete/${argvs.id}`,
+            headers: {
+                userToken : argvs.userToken
+            }
         };
         return request(options);
     };
@@ -173,10 +179,10 @@ module.exports = function(){
         var options = {
             method : 'POST',
             timeout : 3000,
-            uri : config()['rurl'] + `/category/v1/add?userToken=${argvs.userToken}`,
+            uri : config()['rurl'] + `/category/v1/add`,
             form:argvs,
             headers : {
-                // token : token
+                userToken : argvs.userToken
             }
         };
         return request(options);
@@ -188,7 +194,7 @@ module.exports = function(){
             timeout : 3000,
             uri : config()['rurl'] + `/category/v1/listFirstName?categoryName=${argvs.categoryName}`,
             headers : {
-                // token : token
+                userToken : argvs.userToken
             }
         };
         return request(options);
@@ -208,10 +214,10 @@ module.exports = function(){
         var options = {
             method : 'PUT',
             timeout : 3000,
-            uri : config()['rurl'] + `/category/v1/edit?userToken=${argvs.userToken}`,
+            uri : config()['rurl'] + `/category/v1/edit`,
             form:argvs,
             headers : {
-                // token : token
+                userToken : argvs.userToken
             }
         };
         return request(options);
@@ -221,7 +227,10 @@ module.exports = function(){
         var options = {
             method : 'DELETE',
             timeout : 3000,
-            uri : config()['rurl'] + `/category/v1/delete/${argvs.id}?userToken=${argvs.userToken}`,
+            uri : config()['rurl'] + `/category/v1/delete/${argvs.id}`,
+            headers: {
+                userToken : argvs.userToken
+            }
         };
         return request(options);
     };
@@ -255,10 +264,10 @@ module.exports = function(){
         var options = {
             method : 'POST',
             timeout : 3000,
-            uri : config()['rurl'] + `/account/v1/add?userToken=${argvs.userToken}`,
+            uri : config()['rurl'] + `/account/v1/add`,
             form:argvs,
             headers : {
-                // token : token
+                userToken : argvs.userToken
             }
         };
         return request(options);
@@ -270,7 +279,7 @@ module.exports = function(){
             timeout : 3000,
             uri : config()['rurl'] + `/account/v1/listSecondCategory?firstSubject=${encodeURIComponent(argvs.firstSubject)}`,
             headers : {
-                // token : token
+               userToken : argvs.userToken
             }
         };
         return request(options);
@@ -302,10 +311,10 @@ module.exports = function(){
         var options = {
             method : 'PUT',
             timeout : 3000,
-            uri : config()['rurl'] + `/account/v1/edit?userToken=${argvs.userToken}`,
+            uri : config()['rurl'] + `/account/v1/edit`,
             form:argvs,
             headers : {
-                // token : token
+                userToken : argvs.userToken
             }
         };
         return request(options);
@@ -315,7 +324,10 @@ module.exports = function(){
         var options = {
             method : 'DELETE',
             timeout : 3000,
-            uri : config()['rurl'] + `/account/v1/delete/${argvs.id}?userToken=${argvs.userToken}`,
+            uri : config()['rurl'] + `/account/v1/delete/${argvs.id}`,
+            headers: {
+                userToken : argvs.userToken
+            }
         };
         return request(options);
     };
@@ -326,8 +338,18 @@ module.exports = function(){
             timeout : 3000,
             uri : config()['rurl'] + `/firstsubject/v1/listAllFirst`,
             headers : {
-                // token : token
+                userToken : argvs.userToken
             }
+        };
+        return request(options);
+    };
+    //用户退出
+    this.logout = function(argvs){
+        var options = {
+            method : 'POST',
+            timeout : 3000,
+            uri : config()['user'] + `/v1/sign-out/${argvs.token}`,
+            form:argvs
         };
         return request(options);
     };

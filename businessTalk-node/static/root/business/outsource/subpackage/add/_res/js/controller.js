@@ -1,8 +1,8 @@
 /**
  * Created by ike on 2017/4/17.
  */
-var app = angular.module('subpackageAdd', ['toastr']);
-app.controller('subpackageAddCtrl', function($scope, subpackageSer,$state,toastr){
+var app = angular.module('subpackageAdd', ['toastr','ipCookie']);
+app.controller('subpackageAddCtrl', function($scope, subpackageSer,$state,toastr,ipCookie,$location){
     //添加
     $scope.companyAddFun = function(){
         $scope.data.communicateDate = angular.element('.Time').val();//洽谈时间
@@ -16,8 +16,13 @@ app.controller('subpackageAddCtrl', function($scope, subpackageSer,$state,toastr
                     $state.go('root.business.outsource.subpackage.list');
                     toastr.success('添加成功', '温馨提示');
                 }
-            }else if(response.data.code==403){
-                toastr.error( "请登录用户", '温馨提示');
+            }else if(response.data.code==403 || response.data.code==401){
+                toastr.error( "请登录用户,3秒后跳至登陆页面", '温馨提示');
+                var absurl = $location.absUrl();
+                ipCookie('absurl', absurl,{ expires:3,expirationUnit: 'minutes' });
+                setTimeout(function(){
+                    window.location.href='http://localhost/login'
+                },3000)
             }
         });
     };

@@ -8,7 +8,7 @@ module.exports = function(){
         var options = {
             method : 'POST',
             timeout : 3000,
-            uri : config()['rurl'] + `/contract/v1/list?limit=10&page=${argvs.page}&userToken=${argvs.userToken}`,
+            uri : config()['rurl'] + `/contract/v1/list?limit=10&page=${argvs.page}`,
             form:argvs,
             headers : {
                 // token : token
@@ -33,10 +33,10 @@ module.exports = function(){
         var options = {
             method : 'POST',
             timeout : 3000,
-            uri : config()['rurl'] + `/contract/v1/add?userToken=${argvs.userToken}`,
+            uri : config()['rurl'] + `/contract/v1/add`,
             form:argvs,
             headers : {
-                // token : token
+               userToken : argvs.userToken
             }
         };
         return request(options);
@@ -56,10 +56,10 @@ module.exports = function(){
         var options = {
             method : 'PUT',
             timeout : 3000,
-            uri : config()['rurl'] + `/contract/v1/edit?userToken=${argvs.userToken}`,
+            uri : config()['rurl'] + `/contract/v1/edit`,
             form:argvs,
             headers : {
-                // token : token
+                userToken : argvs.userToken
             }
         };
         return request(options);
@@ -69,7 +69,10 @@ module.exports = function(){
         var options = {
             method : 'DELETE',
             timeout : 3000,
-            uri : config()['rurl'] + `/contract/v1/delete/${argvs.id}?userToken=${argvs.userToken}`,
+            uri : config()['rurl'] + `/contract/v1/delete/${argvs.id}`,
+            headers: {
+                userToken : argvs.userToken
+            }
         };
         return request(options);
     };
@@ -78,10 +81,10 @@ module.exports = function(){
         var options = {
             method : 'POST',
             timeout : 3000,
-            uri : config()['rurl'] + `/contract/v1/collect?userToken=${argvs.userToken}`,
+            uri : config()['rurl'] + `/contract/v1/collect`,
             form:argvs,
             headers : {
-                // token : token
+                userToken : argvs.userToken
             }
         };
         return request(options);
@@ -118,10 +121,10 @@ module.exports = function(){
         var options = {
             method : 'POST',
             timeout : 3000,
-            uri : config()['rurl'] + `/outsource/v1/add?userToken=${argvs.userToken}`,
+            uri : config()['rurl'] + `/outsource/v1/add`,
             form:argvs,
             headers : {
-                // token : token
+               userToken : argvs.userToken
             }
         };
         return request(options);
@@ -141,10 +144,10 @@ module.exports = function(){
         var options = {
             method : 'PUT',
             timeout : 3000,
-            uri : config()['rurl'] + `/outsource/v1/edit?userToken=${argvs.userToken}`,
+            uri : config()['rurl'] + `/outsource/v1/edit`,
             form:argvs,
             headers : {
-                // token : token
+                userToken : argvs.userToken
             }
         };
         return request(options);
@@ -154,7 +157,10 @@ module.exports = function(){
         var options = {
             method : 'DELETE',
             timeout : 3000,
-            uri : config()['rurl'] + `/outsource/v1/delete/${argvs.id}?userToken=${argvs.userToken}`,
+            uri : config()['rurl'] + `/outsource/v1/delete/${argvs.id}`,
+            headers:{
+                userToken : argvs.userToken
+            }
         };
         return request(options);
     };
@@ -163,15 +169,24 @@ module.exports = function(){
         var options = {
             method : 'POST',
             timeout : 3000,
-            uri : config()['rurl'] + `/outsource/v1/collect?userToken=${argvs.userToken}`,
+            uri : config()['rurl'] + `/outsource/v1/collect`,
             form:argvs,
             headers : {
-                // token : token
+               userToken : argvs.userToken
             }
         };
         return request(options);
     };
-
+    //用户退出
+    this.logout = function(argvs){
+        var options = {
+            method : 'POST',
+            timeout : 3000,
+            uri : config()['user'] + `/v1/sign-out/${argvs.token}`,
+            form:argvs
+        };
+        return request(options);
+    };
 
     return this;
 };
