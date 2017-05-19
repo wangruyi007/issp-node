@@ -3,12 +3,10 @@ app.factory('summarySer',function ($http) {
     return {
         listProgress : listProgress,
         countProgress : countProgress,
-        listArea:listArea,
-        areaAna:areaAna,
-        listProject:listProject,
-        proAnalysis:proAnalysis,
-        listDriver:listDriver,
-        driAnalysis:driAnalysis
+        addProgress:addProgress,
+        getProgress:getProgress,
+        editProgress:editProgress,
+        deleteProgress:deleteProgress
     };
     function listProgress(data) {
         return $http.get('/listProgress',{params:data})
@@ -16,22 +14,16 @@ app.factory('summarySer',function ($http) {
     function countProgress() {
         return $http.get('/countProgress')
     }
-    function listArea(data) {
-        return $http.get('/listArea',{params:data})
+    function addProgress(data) {
+        return $http.post('/addProgress',data)
     }
-    function areaAna(data) {
-        return $http.get('/areaAna',{params:data})
+    function getProgress(data) {
+        return $http.get('/getProgress',{params:data})
     }
-    function listProject(data) {
-        return $http.get('/listProject',{params:data})
+    function editProgress(data) {
+        return $http.post('/editProgress',data)
     }
-    function proAnalysis(data) {
-        return $http.get('/proAnalysis',{params:data})
-    }
-    function listDriver(data) {
-        return $http.get('/listDriver',{params:data})
-    }
-    function driAnalysis(data) {
-        return $http.get('/driAnalysis',{params:data})
+    function deleteProgress(data) {
+        return $http.get('/deleteProgress',{params:data})
     }
 });

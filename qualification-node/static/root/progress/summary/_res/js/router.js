@@ -19,5 +19,13 @@ app.config(function($provide, $stateProvider){
                 controller:'addCtrl'
             }
         }
+    }).state("root.progress.summary.edit[12]",{
+        url:"/edit[12]?id=",
+        views:{
+            "content@root.progress.summary":{
+                templateUrl : "root/progress/summary/edit/_res/html/index.html",
+                controller:'editCtrl'
+            }
+        }
     })
 });

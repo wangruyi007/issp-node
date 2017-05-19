@@ -100,6 +100,9 @@ button{
     font-size: 12px;
     color: #252525;
     padding-left: 5px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
 }
 .content-center .select-left .select-list .name-thing p.current{
     background-color: #00c0ff;
@@ -121,24 +124,23 @@ button{
     height: 25px;
     color: #252525;
 }
-.content-center .select-left .select-list .basic-module p.current{
-    color: #00c0ff;
-}
-.content-center .select-left .select-list .basic-module p.current .aright{
-    color: #00c0ff;
-    position: relative;
 
-}
-.content-center .select-left .select-list .basic-module p.current .aright .gou-img{
-    position: absolute;
-    top: 18%;
-    left: 12%;
-    display: block;
-}
-.content-center .select-left .select-list .basic-module p span{
 
+.name-thing p i img{
+    vertical-align:7px;
+    text-align:center;
+    width:12px;
+    display:none;
 }
-.content-center .select-left .select-list .basic-module p .gou{
+.name-thing p span{
+    width:90%;
+}
+.name-thing p i.select img{
+    display:inline-block;
+}
+
+
+ .gou{
     display: inline-block;
     height: 12px;
     width: 12px;
@@ -146,9 +148,6 @@ button{
     background-color: #fff;
     vertical-align: -3px;
     margin-right: 5px;
-}
-.content-center .select-left .select-list .basic-module p .gou .gou-img{
-    display: none;
 }
 .content-center .btn-right{
     float: right;

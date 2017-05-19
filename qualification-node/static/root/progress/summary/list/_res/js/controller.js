@@ -3,16 +3,15 @@ app.controller('listCtrl',function($scope,summarySer,toastr){
     $scope.$emit('changeId', null);
 
     $scope.selectList = function(event){
-        angular.forEach($scope.basicinfoLists,function(obj){
+        angular.forEach($scope.progressList,function(obj){
             obj._selectList = false
         });
         event._selectList = true;
-        ;
         //向父Ctrl传递事件
         $scope.$emit('changeId', event.id);
     };
     $scope.moreList = function(event){
-        angular.forEach($scope.listWeeks,function(obj){
+        angular.forEach($scope.progressList,function(obj){
             if(event.id!==obj.id){
                 obj._moreList = false
             }
@@ -45,14 +44,13 @@ app.controller('listCtrl',function($scope,summarySer,toastr){
         }
     });
     $scope.$on('deletedId',function(event,delid){
-        angular.forEach($scope.basicinfoLists,function(obj){
+        angular.forEach($scope.progressList,function(obj){
             if(obj.id == delid){
                 obj._delete = delid
             }
         })
     });
 
-})
-;
+});
 
 

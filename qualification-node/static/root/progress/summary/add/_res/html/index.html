@@ -12,15 +12,15 @@
                 </li>
                 <li class="required">
                     <label><i><img src="/images/mandatory.png"></i><em>认证时间</em></label>
-                    <input type="text"  ng-verify="{}" ng-model="add.attestation" onClick="laydate({istime: true, format: 'YYYY-MM-DD'})">
+                    <input type="text" class="rztime" onClick="laydate({istime: true, format: 'YYYY-MM-DD'})">
                 </li>
                 <li class="required">
                     <label><i><img src="/images/mandatory.png"></i><em>办理开始时间</em></label>
-                    <input type="text"  ng-model="add.handleTime" onClick="laydate({istime: true, format: 'YYYY-MM-DD'})">
+                    <input type="text" class="starttime" ng-model="add.handleTime" onClick="laydate({istime: true, format: 'YYYY-MM-DD'})">
                 </li>
                 <li class="required">
                     <label><i><img src="/images/mandatory.png"></i><em>计划结束时间</em></label>
-                    <input type="text"   ng-verify="{}" ng-model="add.endTime" onClick="laydate({istime: true, format: 'YYYY-MM-DD'})">
+                    <input type="text" class="endtime" onClick="laydate({istime: true, format: 'YYYY-MM-DD'})">
                 </li>
                 <li class="required">
                     <label><i><img src="/images/mandatory.png"></i><em>负责经办人</em></label>
@@ -28,38 +28,37 @@
                 </li>
                 <li class="required">
                     <label><i><img src="/images/mandatory.png"></i><em>办理费用(元)</em></label>
-                    <input type="text" ng-model="add.handleCost" ng-verify="{max:2,min:0}">
+                    <input type="number" ng-model="add.handleCost">
                 </li>
                 <li class="required">
                     <label><i><img src="/images/mandatory.png"></i><em>年检费用(元)</em></label>
-                    <input type="text"  ng-model="add.renewal" ng-verify="{}">
+                    <input type="number"  ng-model="add.renewal" ng-verify="{}">
                 </li>
                 <li class="required">
                     <label><i><img src="/images/mandatory.png"></i><em>办理状态</em></label>
-                    <input type="number"   ng-verify="{}" ng-model="add.handle">
+                    <select class="sele" ng-model="add.handle" ng-init="add.handle='NONE'">
+                        <option value="NONE">未办理</option>
+                        <option value="SUCCESS">办理成功</option>
+                        <option value="FAIL">办理失败</option>
+                    </select>
                 </li>
                 <li class="required">
                     <label><i><img src="/images/mandatory.png"></i><em>证书</em></label>
-                    <input type="number"  ng-verify="{}" ng-model="add.certificate">
+                    <input type="text"  ng-verify="{}" ng-model="add.certificate">
                 </li>
                 <li>
                     <label><em>办理使用材料</em></label>
-                    <input type="text"  ng-verify="{}" ng-model="add.material">
+                    <input type="text" ng-model="add.material">
                 </li>
                 <li>
                     <label><em>付款记录登记</em></label>
                     <input type="text"  ng-model="add.record">
                 </li>
-                <li>
-                    <label><em>填写人</em></label>
-                    <input type="text"   ng-verify="{}" ng-model="add.writer">
-                </li>
-
             </ul>
         </section>
     </div>
     <p class="dataBottom">
         <span class="imPrompt"><i><img src="/images/prompt.png"></i>带有<i><img src="/images/mandatory.png"></i>的为必填项</span>
-        <button ng-verify="{control:'myform'}" ng-click="basicAddFun()">提交</button>
+        <button ng-verify="{control:'myform'}" ng-click="addFun()">提交</button>
     </p>
 </div>

@@ -83,7 +83,7 @@ module.exports = function(){
             timeout : 3000,
             uri : config()['rurl'] + `/taxmanagement/v1/view?company=${encodeURIComponent(argvs.company)}&month=${argvs.month}&taxType=${encodeURIComponent(argvs.taxType)}`,
             headers : {
-                // token : token
+                userToken : argvs.userToken
             }
         };
         return request(options);
@@ -95,7 +95,7 @@ module.exports = function(){
             timeout : 3000,
             uri : config()['rurl'] + `/socialfee/v1/collect?startTime=${encodeURIComponent(argvs.startTime)}&endTime=${encodeURIComponent(argvs.endTime)}&payFeer=${encodeURIComponent(argvs.payFeer)}&empName=${encodeURIComponent(argvs.empName)}`,
             headers : {
-                // token : token
+                userToken : argvs.userToken
             }
         };
         return request(options);

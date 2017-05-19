@@ -1,0 +1,53 @@
+<div class="content-input add" verify-scope="tipStyle: 1">
+    <div class="input-list">
+        <section>
+            <ul>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>地区</em></label>
+                    <input type="text"  ng-model="edit.arrival" ng-verify="{}">
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>年份</em></label>
+                    <input type="number" ng-verify="{}" ng-model="edit.year">
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>月份</em></label>
+                    <select class="sele"  ng-verify="{}" ng-model="edit.month" ng-options='x.id as x.name for x  in [{id:1,name:"1"},{id:2,name:"2"},{id:3,name:"3"},{id:4,name:"4"},{id:5,name:"5"},
+                   {id:6,name:"6"},{id:7,name:"7"},{id:8,name:"8"},{id:9,name:"9"},{id:10,name:"10"},{id:11,name:"11"},{id:12,name:"12"} ]'>
+                        <option value="">请选择</option>
+                    </select>
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>周数</em></label>
+                    <select class="sele"  ng-verify="{}" ng-model="edit.week" ng-options='x.id as x.name for x  in [{id:1,name:"1"},{id:2,name:"2"},{id:3,name:"3"},{id:4,name:"4"},{id:5,name:"5"}]'>
+                        <option value="">请选择</option>
+                    </select>
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>目标任务量</em></label>
+                    <input type="number" ng-verify="{}" ng-model="edit.targetWork">
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>实际完工量</em></label>
+                    <input type="number"  ng-model="edit.actualWork" ng-verify="{}">
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>参考单价</em></label>
+                    <input type="number"  ng-model="edit.price" ng-verify="{}">
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>目标收入</em></label>
+                    <input type="number"  ng-model="edit.targetIncome" ng-verify="{}">
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>计划收入</em></label>
+                    <input type="number"  ng-model="edit.planIncome" ng-verify="{}">
+                </li>
+            </ul>
+        </section>
+    </div>
+    <p class="dataBottom">
+        <span class="imPrompt"><i><img src="/images/prompt.png"></i>带有<i><img src="/images/mandatory.png"></i>的为必填项</span>
+        <button ng-verify="{control:'myform'}" ng-click="areaEditFun()">提交</button>
+    </p>
+</div>
