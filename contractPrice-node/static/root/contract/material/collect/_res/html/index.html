@@ -1,0 +1,25 @@
+<div class="collect ">
+    <div class="collect-select">
+        <span>地区：<input type="text" ng-model="area"></span>
+        <span>用户名称：<input type="text" ng-model="customerName"></span>
+        <span>开始日期：<input type="text" onClick="laydate({istime: true, format: 'YYYY-MM-DD'})" class="starttime"></span>
+        <span>结束日期：<input type="text" onClick="laydate({istime: true, format: 'YYYY-MM-DD'})" class="endtime"></span>
+        <button ng-click="collect()">汇总</button>
+    </div>
+    <ul class="sum-list">
+        <li class="sum-thead">
+            <span>客户名称</span>
+            <span>项目</span>
+            <span>地区</span>
+            <span>适用年度开始时间</span>
+            <span>适用年度结束时间</span>
+        </li>
+        <li class="sum-tbody" ng-repeat="summaryList in summaryLists" ng-model="tabTit">
+            <span>{{summaryList.customerName}}</span>
+            <span>{{summaryList.project}}</span>
+            <span>{{summaryList.area}}</span>
+            <span>{{summaryList.suitableDateStart}}</span>
+            <span>{{summaryList.suitableDateEnd}}</span>
+        </li>
+    </ul>
+</div>

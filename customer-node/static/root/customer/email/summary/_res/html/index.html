@@ -1,0 +1,28 @@
+<div class="collect ">
+    <div class="sum-select">
+        <label><i><img src="/images/mandatory.png"></i><em>地区</em></label>
+        <div class="select">
+            <p class="select-text" >
+                <span ng-repeat="word in words">{{word}}, </span>
+            </p>
+            <div class="mymultiselect" events="getSummary" ng-dropdown-multiselect="" options="workOptions" selected-model="words" extra-settings="stringSettings"></div>
+        </div>
+    </div>
+    <ul class="sum-list">
+        <li class="sum-thead">
+            <span>行业</span>
+            <span ng-repeat="areaMapTit in tabTit.areaMap">{{areaMapTit.remark}}</span>
+            <span ng-repeat="cusStatusMapTit in tabTit.cusStatusMap" >{{cusStatusMapTit.remark}}</span>
+            <span ng-repeat="cusTypeMapTit in tabTit.cusTypeMap">{{cusTypeMapTit.remark}}</span>
+            <span ng-repeat="levelMapTit in tabTit.levelMap">{{levelMapTit.remark}}</span>
+        </li>
+        <li class="sum-tbody" ng-repeat="summaryList in summaryLists" ng-model="tabTit">
+            <span>{{summaryList.work}}</span>
+            <!--<span ng-repeat="areaMapList in summaryList.areaMap" ng-init="aa=(areaMapList.remark==tabTit.areaMap[$index].remark?aa=areaMapList.count:aa=0)">{{aa}}</span>-->
+            <span ng-repeat="areaMapList in summaryList.areaMap">{{areaMapList.count}}</span>
+            <span ng-repeat="cusStatusMapList in summaryList.cusStatusMap" >{{cusStatusMapList.count}}</span>
+            <span ng-repeat="cusTypeMapList in summaryList.cusTypeMap">{{cusTypeMapList.count}}</span>
+            <span ng-repeat="levelMapList in summaryList.levelMap">{{levelMapList.count}}</span>
+        </li>
+    </ul>
+</div>
