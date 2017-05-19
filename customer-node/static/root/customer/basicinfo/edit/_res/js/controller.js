@@ -1,5 +1,5 @@
-var app = angular.module('basicinfoEdit', ['toastr']);
-app.controller('basicinfoEditCtrl', function($scope, basicinfoSer,$stateParams,$state,toastr){
+var app = angular.module('basicinfoEdit', ['toastr','ipCookie']);
+app.controller('basicinfoEditCtrl', function($scope, basicinfoSer,$stateParams,$state,toastr,ipCookie,$location){
     var cusNumData ={customerNum: $stateParams.cusNum};
 
     //重要性级别
@@ -48,8 +48,13 @@ app.controller('basicinfoEditCtrl', function($scope, basicinfoSer,$stateParams,$
             if(response.data.code == 0){
                 $state.go('root.customer.basicinfo.list[12]');
                 toastr.success( vm.editInfo.customerName+"编辑成功", '温馨提示');
-            }else if(response.data.code == 403){
-                toastr.error( "请登录用户", '温馨提示');
+            }else if(response.data.code==403||response.data.code==401){
+                toastr.error( "请登录用户,2秒后跳至登陆页面", '温馨提示');
+                var absurl = $location.absUrl();
+                ipCookie('absurl', absurl,{ expires:3,expirationUnit: 'minutes' });
+                setTimeout(function(){
+                    window.location.href='http://localhost/login'
+                },2000)
             }
         });
 

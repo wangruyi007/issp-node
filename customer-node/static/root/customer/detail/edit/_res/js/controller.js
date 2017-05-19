@@ -1,5 +1,5 @@
-var app = angular.module('detailEdit', ['toastr']);
-app.controller('detailEditCtrl', function($scope, $state,detailSer, toastr, $stateParams){
+var app = angular.module('detailEdit', ['toastr','ipCookie']);
+app.controller('detailEditCtrl', function($scope, $state,detailSer, toastr, $stateParams,ipCookie,$location){
 
     var cusNum = {customerNum : $stateParams.cusNum};
 
@@ -31,8 +31,13 @@ app.controller('detailEditCtrl', function($scope, $state,detailSer, toastr, $sta
             if(response.data.code == 0){
                 $state.go('root.customer.detail.list');
                 toastr.success("已编辑成功", '温馨提示');
-            } else if(response.data.code == 403){
-                toastr.error("请登录用户", '温馨提示');
+            }else if(response.data.code==403||response.data.code==401){
+                toastr.error( "请登录用户,2秒后跳至登陆页面", '温馨提示');
+                var absurl = $location.absUrl();
+                ipCookie('absurl', absurl,{ expires:3,expirationUnit: 'minutes' });
+                setTimeout(function(){
+                    window.location.href='http://localhost/login'
+                },2000)
             }
         })
     };

@@ -296,6 +296,14 @@ body {
   margin-right: 18px;
 }
 
+.right-section .top-content .top-fixed .top .search .selected {
+  width: 137px;
+  height: 37px;
+  background: url("/images/searchbg.png") no-repeat;
+  color: #fff;
+  position:relative;
+  text-align:center;
+  margin-right:120px;}
 .right-section .top-content .top-fixed .top .search .selected:hover .usermenu{
   display:flex;
 }

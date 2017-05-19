@@ -1,5 +1,5 @@
 var app = angular.module('driver', ['ng-pagination','toastr','ipCookie']);
-app.controller('driverCtrl',function($scope,summarySer,toastr,ipCookie){
+app.controller('driverCtrl',function($scope,summarySer,toastr,ipCookie,$location){
     $scope.showtype = true;
     $scope.moreList = function(event){
         angular.forEach($scope.listdriver,function(obj){

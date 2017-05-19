@@ -1,5 +1,5 @@
 var app = angular.module('month', ['ng-pagination','toastr','ipCookie']);
-app.controller('monthCtrl',function($scope,summarySer,toastr,ipCookie){
+app.controller('monthCtrl',function($scope,summarySer,toastr,ipCookie,$location){
 
     $scope.moreList = function(event){
         angular.forEach($scope.listmonth,function(obj){
