@@ -1,5 +1,5 @@
 var app = angular.module('week', ['ng-pagination','toastr','ipCookie']);
-app.controller('weekCtrl',function($scope,summarySer,toastr,ipCookie){
+app.controller('weekCtrl',function($scope,summarySer,toastr,ipCookie,$location){
 
 
     $scope.moreList = function(event){
