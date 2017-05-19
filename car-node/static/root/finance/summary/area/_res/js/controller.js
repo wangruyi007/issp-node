@@ -1,5 +1,5 @@
 var app = angular.module('area', ['ng-pagination','toastr','ipCookie']);
-app.controller('areaCtrl',function($scope,summarySer,toastr,ipCookie){
+app.controller('areaCtrl',function($scope,summarySer,toastr,ipCookie,$location){
     $scope.areatype=true;
     $scope.moreList = function(event){
         angular.forEach($scope.listarea,function(obj){

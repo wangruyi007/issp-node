@@ -32,10 +32,10 @@ module.exports = function(){
         var options = {
             method : 'POST',
             timeout : 3000,
-            uri : config()['rurl'] + '/marketserveapply/v1/add'+'?userToken='+argvs.userToken,
+            uri : config()['rurl'] + '/marketserveapply/v1/add',
             form:argvs,
             headers : {
-                // token : token
+               userToken : argvs.userToken
             }
         };
         return request(options);
@@ -45,10 +45,10 @@ module.exports = function(){
         var options = {
             method : 'POST',
             timeout : 3000,
-            uri : config()['rurl'] + '/marketserveapply/v1/addcustomerinfo'+'?userToken='+argvs.userToken,
+            uri : config()['rurl'] + '/marketserveapply/v1/addcustomerinfo',
             form:argvs,
             headers : {
-                // token : token
+                userToken : argvs.userToken
             }
         };
         return request(options);
@@ -68,10 +68,10 @@ module.exports = function(){
         var options = {
             method : 'PUT',
             timeout : 3000,
-            uri : config()['rurl'] + '/marketserveapply/v1/edit'+'?userToken='+argvs.userToken,
+            uri : config()['rurl'] + '/marketserveapply/v1/edit',
             form:argvs,
             headers : {
-                // token : token
+               userToken : argvs.userToken
             }
         };
         return request(options);
@@ -81,7 +81,10 @@ module.exports = function(){
         var options = {
             method : 'DELETE',
             timeout : 3000,
-            uri : config()['rurl'] + '/marketserveapply/v1/delete/'+argvs.id+'?userToken='+argvs.userToken,
+            uri : config()['rurl'] + '/marketserveapply/v1/delete/'+argvs.id,
+            headers:{
+                userToken : argvs.userToken
+            }
         };
         return request(options);
     };
@@ -90,10 +93,10 @@ module.exports = function(){
         var options = {
             method : 'PUT',
             timeout : 3000,
-            uri : config()['rurl'] + '/marketserveapply/v1/fundModuleOpinion'+'?userToken='+argvs.userToken,
+            uri : config()['rurl'] + '/marketserveapply/v1/fundModuleOpinion',
             form:argvs,
             headers : {
-                // token : token
+               userToken : argvs.userToken
             }
         };
         return request(options);
@@ -103,10 +106,10 @@ module.exports = function(){
         var options = {
             method : 'PUT',
             timeout : 3000,
-            uri : config()['rurl'] + '/marketserveapply/v1/executiveOpinion'+'?userToken='+argvs.userToken,
+            uri : config()['rurl'] + '/marketserveapply/v1/executiveOpinion',
             form:argvs,
             headers : {
-                // token : token
+                userToken : argvs.userToken
             }
         };
         return request(options);
@@ -137,8 +140,11 @@ module.exports = function(){
         var options = {
             method : 'PATCH',
             timeout : 3000,
-            uri : config()['rurl'] + '/marketservesummary/v1/congeal?userToken='+argvs.userToken,
+            uri : config()['rurl'] + '/marketservesummary/v1/congeal',
             form:argvs,
+            headers:{
+                userToken : argvs.userToken
+            }
         };
         return request(options);
     };
@@ -147,8 +153,11 @@ module.exports = function(){
         var options = {
             method : 'PATCH',
             timeout : 3000,
-            uri : config()['rurl'] + '/marketservesummary/v1/thaw?userToken='+argvs.userToken,
+            uri : config()['rurl'] + '/marketservesummary/v1/thaw',
             form:argvs,
+            headers:{
+                userToken : argvs.userToken
+            }
         };
         return request(options);
     };
@@ -157,7 +166,10 @@ module.exports = function(){
         var options = {
             method : 'DELETE',
             timeout : 3000,
-            uri : config()['rurl'] + '/marketservesummary/v1/delete/'+argvs.id+'?userToken='+argvs.userToken,
+            uri : config()['rurl'] + '/marketservesummary/v1/delete/'+argvs.id,
+            headers:{
+                userToken : argvs.userToken
+            }
         };
         return request(options);
     };
@@ -166,8 +178,11 @@ module.exports = function(){
         var options = {
             method : 'POST',
             timeout : 3000,
-            uri : config()['rurl'] + '/marketservesummary/v1/add?userToken='+argvs.userToken,
+            uri : config()['rurl'] + '/marketservesummary/v1/add',
             form:argvs,
+            headers:{
+                userToken : argvs.userToken
+            }
         };
         return request(options);
     };
@@ -186,8 +201,11 @@ module.exports = function(){
         var options = {
             method : 'PUT',
             timeout : 3000,
-            uri : config()['rurl'] + '/marketservesummary/v1/edit?userToken='+argvs.userToken,
+            uri : config()['rurl'] + '/marketservesummary/v1/edit',
             form:argvs,
+            headers:{
+                userToken : argvs.userToken
+            }
         };
         return request(options);
     };
@@ -222,10 +240,10 @@ module.exports = function(){
         var options = {
             method : 'POST',
             timeout : 3000,
-            uri : config()['rurl'] + '/marketserverecord/v1/add'+'?userToken='+argvs.userToken,
+            uri : config()['rurl'] + '/marketserverecord/v1/add',
             form:argvs,
             headers : {
-                // token : token
+               userToken : argvs.userToken
             }
         };
         return request(options);
@@ -245,10 +263,10 @@ module.exports = function(){
         var options = {
             method : 'PUT',
             timeout : 3000,
-            uri : config()['rurl'] + '/marketserverecord/v1/edit'+'?userToken='+argvs.userToken,
+            uri : config()['rurl'] + '/marketserverecord/v1/edit',
             form:argvs,
             headers : {
-                // token : token
+               userToken : argvs.userToken
             }
         };
         return request(options);
@@ -258,10 +276,10 @@ module.exports = function(){
         var options = {
             method : 'PUT',
             timeout : 3000,
-            uri : config()['rurl'] + '/marketserverecord/v1/fundmodule'+'?userToken='+argvs.userToken,
+            uri : config()['rurl'] + '/marketserverecord/v1/fundmodule',
             form:argvs,
             headers : {
-                // token : token
+                userToken : argvs.userToken
             }
         };
         return request(options);
@@ -271,10 +289,10 @@ module.exports = function(){
         var options = {
             method : 'POST',
             timeout : 3000,
-            uri : config()['rurl'] + '/marketserverecord/v1/add?userToken='+argvs.userToken,
+            uri : config()['rurl'] + '/marketserverecord/v1/add',
             form:argvs,
             headers : {
-                // token : token
+                userToken : argvs.userToken
             }
         };
         return request(options);
@@ -283,10 +301,10 @@ module.exports = function(){
         var options = {
             method : 'POST',
             timeout : 3000,
-            uri : config()['rurl'] + '/customerinfo/v1/add'+'?userToken='+argvs.userToken,
+            uri : config()['rurl'] + '/customerinfo/v1/add',
             form:argvs,
             headers : {
-                // token : token
+                userToken : argvs.userToken
             }
         };
         return request(options);
@@ -308,10 +326,10 @@ module.exports = function(){
         var options = {
             method : 'PUT',
             timeout : 3000,
-            uri : config()['rurl'] + '/marketserverecord/v1/edit'+'?userToken='+argvs.userToken,
+            uri : config()['rurl'] + '/marketserverecord/v1/edit',
             form:argvs,
             headers : {
-                // token : token
+                userToken : argvs.userToken
             }
         };
         return request(options); 
@@ -321,10 +339,10 @@ module.exports = function(){
         var options = {
             method : 'PUT',
             timeout : 3000,
-            uri : config()['rurl'] + '/marketserverecord/v1/fundmodule'+'?userToken='+argvs.userToken,
+            uri : config()['rurl'] + '/marketserverecord/v1/fundmodule',
             form:argvs,
             headers : {
-                // token : token
+                userToken : argvs.userToken
             }
         };
         return request(options);
@@ -334,10 +352,10 @@ module.exports = function(){
         var options = {
             method : 'PUT',
             timeout : 3000,
-            uri : config()['rurl'] + '/marketserverecord/v1/executive'+'?userToken='+argvs.userToken,
+            uri : config()['rurl'] + '/marketserverecord/v1/executive',
             form:argvs,
             headers : {
-                // token : token
+               userToken : argvs.userToken
             }
         };
         return request(options);
@@ -347,11 +365,23 @@ module.exports = function(){
         var options = {
             method : 'DELETE',
             timeout : 3000,
-            uri : config()['rurl'] + '/marketserverecord/v1/delete/'+argvs.id+'?userToken='+argvs.userToken,
+            uri : config()['rurl'] + '/marketserverecord/v1/delete/'+argvs.id,
+            headers:{
+                userToken : argvs.userToken
+            }
         };
         return request(options);
     };
-
+    //用户退出
+    this.logout = function(argvs){
+        var options = {
+            method : 'POST',
+            timeout : 3000,
+            uri : config()['user'] + `/v1/sign-out/${argvs.token}`,
+            form:argvs
+        };
+        return request(options);
+    };
 
     return this;
 };

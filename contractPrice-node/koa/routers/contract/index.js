@@ -283,9 +283,8 @@ module.exports = function(){
             }));
     }).get('/user/logout', function*(){
         var $self = this;
-        var logout = $self.request.body;
-        logout.token = $self.cookies.get('token');
-        yield (server().logout(logout)
+        var token = {token:$self.cookies.get('token')};
+        yield (server().logout(token)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
                 $self.body = responseText;

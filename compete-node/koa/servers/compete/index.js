@@ -32,10 +32,10 @@ module.exports = function(){
         var options = {
             method : 'POST',
             timeout : 3000,
-            uri : config()['rurl'] + '/competitor/v1/add'+'?userToken='+argvs.userToken,
+            uri : config()['rurl'] + '/competitor/v1/add',
             form:argvs,
             headers : {
-                // token : token
+                userToken : argvs.userToken
             }
         };
         return request(options);
@@ -45,7 +45,10 @@ module.exports = function(){
         var options = {
             method : 'DELETE',
             timeout : 3000,
-            uri : config()['rurl'] + '/competitor/v1/delete/'+argvs.id+'?userToken='+argvs.userToken,
+            uri : config()['rurl'] + '/competitor/v1/delete/'+argvs.id,
+            headers:{
+                userToken : argvs.userToken
+            }
         };
         return request(options);
     };
@@ -54,8 +57,11 @@ module.exports = function(){
         var options = {
             method : 'PUT',
             timeout : 3000,
-            uri : config()['rurl'] + '/competitor/v1/edit'+'?userToken='+argvs.userToken,
-            form : argvs,
+            uri : config()['rurl'] + '/competitor/v1/edit',
+            headers:{
+                userToken : argvs.userToken
+            },
+            form:argvs,
         };
         return request(options);
     };
@@ -74,8 +80,11 @@ module.exports = function(){
         var options = {
             method : 'PUT',
             timeout : 3000,
-            uri : config()['rurl'] + '/competitor/v1/edit'+'?userToken='+argvs.userToken,
+            uri : config()['rurl'] + '/competitor/v1/edit',
             form : argvs,
+            headers:{
+                userToken : argvs.userToken
+            }
         };
         return request(options);
     };
@@ -104,7 +113,10 @@ module.exports = function(){
         var options = {
             method : 'PATCH',
             timeout : 3000,
-            uri : config()['rurl'] + '/collect/v1/freeze/' + argvs.id + '?userToken=' + argvs.userToken,
+            uri : config()['rurl'] + '/collect/v1/freeze/' + argvs.id,
+            headers:{
+                userToken : argvs.userToken
+            }
         };
         return request(options);
     };
@@ -113,7 +125,10 @@ module.exports = function(){
         var options = {
             method : 'PATCH',
             timeout : 3000,
-            uri : config()['rurl'] + '/collect/v1/breakfreeze/' + argvs.id + '?userToken=' + argvs.userToken,
+            uri : config()['rurl'] + '/collect/v1/breakfreeze/' + argvs.id,
+            headers:{
+                userToken : argvs.userToken
+            }
         };
         return request(options);
     };
@@ -122,7 +137,10 @@ module.exports = function(){
         var options = {
             method : 'DELETE',
             timeout : 3000,
-            uri : config()['rurl'] + '/collect/v1/delete/'+argvs.id+'?userToken='+argvs.userToken,
+            uri : config()['rurl'] + '/collect/v1/delete/'+argvs.id,
+            headers:{
+                userToken : argvs.userToken
+            }
         };
         return request(options);
     };
@@ -131,8 +149,11 @@ module.exports = function(){
         var options = {
             method : 'POST',
             timeout : 3000,
-            uri : config()['rurl'] + '/collect/v1/add?userToken='+argvs.userToken,
+            uri : config()['rurl'] + '/collect/v1/add',
             form:argvs,
+            headers:{
+                userToken : argvs.userToken
+            }
         };
         return request(options);
     };
@@ -150,8 +171,11 @@ module.exports = function(){
         var options = {
             method : 'PUT',
             timeout : 3000,
-            uri : config()['rurl'] + '/collect/v1/edit'+'?userToken='+argvs.userToken,
+            uri : config()['rurl'] + '/collect/v1/edit',
             form : argvs,
+            headers:{
+                userToken : argvs.userToken
+            }
         };
         return request(options);
     };
@@ -161,6 +185,15 @@ module.exports = function(){
             timeout : 3000,
             uri : config()['rurl'] + '/collect/v1/find/'+argvs.id,
             form : argvs,
+        };
+        return request(options);
+    };
+    this.logout = function(argvs){
+        var options = {
+            method : 'POST',
+            timeout : 3000,
+            uri : config()['user'] + `/v1/sign-out/${argvs.token}`,
+            form:argvs
         };
         return request(options);
     };

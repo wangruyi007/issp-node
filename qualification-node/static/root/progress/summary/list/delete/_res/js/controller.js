@@ -25,6 +25,4 @@ app.controller('deleteCtrl',function($scope,toastr,$stateParams,$state,ipCookie,
             }
         })
     }
-
-
 });

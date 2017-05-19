@@ -215,15 +215,8 @@ module.exports = function(){
         };
         return request(options);
     };
+
     this.collectStandard = function(argvs){
-        var options = {
-            method : 'GET',
-            timeout : 3000,
-            uri : config()['rurl'] + `/contractnodestandard/v1/delete/${argvs.id}`,
-        };
-        return request(options);
-    };
-    this.logout = function(argvs){
         var options = {
             method : 'GET',
             timeout : 3000,
@@ -234,5 +227,15 @@ module.exports = function(){
         };
         return request(options);
     };
+    this.logout = function(argvs){
+        var options = {
+            method : 'POST',
+            timeout : 3000,
+            uri : config()['user'] + `/v1/sign-out/${argvs.token}`,
+            form:argvs
+        };
+        return request(options);
+    };
+
     return this;
 };

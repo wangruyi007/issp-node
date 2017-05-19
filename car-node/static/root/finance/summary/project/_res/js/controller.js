@@ -1,5 +1,5 @@
 var app = angular.module('project', ['ng-pagination','toastr','ipCookie']);
-app.controller('projectCtrl',function($scope,summarySer,toastr,ipCookie){
+app.controller('projectCtrl',function($scope,summarySer,toastr,ipCookie,$location){
     $scope.showtype = true;
     $scope.moreList = function(event){
         angular.forEach($scope.listproject,function(obj){
