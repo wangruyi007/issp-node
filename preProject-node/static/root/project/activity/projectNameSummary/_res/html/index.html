@@ -1,0 +1,33 @@
+<div class="collect ">
+    <div class="collect-select">
+        <div class="select3">
+            <label>开始日期：</label><input type="text" onClick="laydate({istime: true, format: 'YYYY-MM-DD'})" ng-model="startTime" class="startTime">
+        </div>
+        <div class="select3">
+            <label>开始日期：</label><input type="text" onClick="laydate({istime: true, format: 'YYYY-MM-DD'})" ng-model="endTime" class="endTime">
+        </div>
+        <button ng-click="collect()">汇总</button>
+    </div>
+    <ul class="sum-list">
+        <li class="sum-thead">
+            <span>一级科目</span>
+            <span>二级科目</span>
+            <span>三级科目</span>
+            <span>地区</span>
+            <span>项目组</span>
+            <span>项目名称</span>
+            <span>日期</span>
+            <span>金额</span>
+        </li>
+        <li class="sum-tbody {{summaryList._selectList?'selectList':''}}" ng-click="selectList(summaryList)" ng-repeat="summaryList in summaryLists">
+            <span>{{summaryList.firstSubject}}</span>
+            <span>{{summaryList.secondSubject}}</span>
+            <span>{{summaryList.thirdSubject}}</span>
+            <span>{{summaryList.area}}</span>
+            <span>{{summaryList.projectGroup}}</span>
+            <span>{{summaryList.projectName}}</span>
+            <span>{{summaryList.voucherDate}}</span>
+            <span>{{summaryList.borrowMoney}}</span>
+        </li>
+    </ul>
+</div>

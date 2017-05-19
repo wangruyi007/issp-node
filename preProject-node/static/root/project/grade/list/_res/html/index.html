@@ -1,0 +1,27 @@
+<div class="content-tab list">
+    <ul class="table">
+        <li class="list-head">
+            <span></span>
+            <span>备注</span>
+            <span>等级</span>
+        </li>
+        <li class="list-all" ng-repeat="list in gradeLists" style="display: {{list._delete?'none':'block'}};">
+            <section>
+                <div class="list-text {{list._selectList?'selectList':''}}" ng-click="selectList(list)">
+                    <p>{{$index+1}}</p>
+                    <p>{{list.note}}</p>
+                    <p>{{list.grade}}</p>
+                </div>
+            </section>
+        </li>
+    </ul>
+    <footer class="footer">
+        <pagination count="pagination.itemsCount" take="pagination.take" activate="pagination.activatePage"></pagination>
+    </footer>
+</div>
+<div ui-view="modal"></div>
+
+
+
+
+
