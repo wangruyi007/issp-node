@@ -1,0 +1,71 @@
+<div class="content-tab list">
+    <ul class="table">
+        <li class="list-head">
+            <span></span>
+            <span>需求方公司</span>
+            <span>合作对象公司名称</span>
+            <span>合作方式</span>
+            <span>合作时间</span>
+            <span>地区</span>
+            <span>业务方向</span>
+            <span>价格</span>
+            <span></span>
+        </li>
+        <li class="list-all" ng-repeat="lists in discussLists" style="display: {{lists._delete?'none':'block'}};">
+            <section>
+                <div class="list-text {{lists._selectList?'selectList':''}}" ng-click="selectList(lists)">
+                    <p>{{$index+1}}</p>
+                    <p>{{lists.demandCompany}}</p>
+                    <p>{{lists.cooperCompany}}</p>
+                    <p>{{lists.cooperWay}}</p>
+                    <p>{{lists.cooperTime}}</p>
+                    <p>{{lists.area}}</p>
+                    <p>{{lists.businessTarget}}</p>
+                    <p>{{lists.price}}</p>
+                    <p>
+                        <a href="javascript:void(0)" class="more" ng-click="moreList(lists)">更多详细</a>
+                    </p>
+                </div>
+                <div class="can">
+                    <ul class="can-see" style="display: {{lists._moreList?'block':'none'}};">
+                        <li>
+                            <p class="see-parent">
+                                <span>工程名称</span>
+                                <span>规模</span>
+                                <span>人工</span>
+                                <span>服务费用</span>
+                                <span>中介费用</span>
+                                <span>是否达成合作</span>
+                                <span>备注</span>
+                            </p>
+                            <p class="see-children">
+                                <span>{{lists.projectName}}</span>
+                                <span>{{lists.size}}</span>
+                                <span>{{lists.artificial}}</span>
+                                <span>{{lists.serviceFee}}</span>
+                                <span>{{lists.middleFee}}</span>
+                                <span>{{lists.cooperCondition}}</span>
+                                <span>{{lists.remark}}</span>
+                            </p>
+                        </li>
+                    </ul>
+                    <div class="module">
+                        <div class="see-module">
+                            <p class="see-type">体现类型</p>
+                            <p class="see-description"></p>
+                            <button class="btn">关闭</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </li>
+    </ul>
+    <footer class="footer">
+        <pagination count="custom.itemsCount" take="custom.take" activate="custom.activatePage"></pagination>
+    </footer>
+</div>
+<div ui-view="modal"></div>
+
+
+
+

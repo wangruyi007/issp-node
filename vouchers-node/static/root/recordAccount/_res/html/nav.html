@@ -1,0 +1,23 @@
+<div class="nav-list">
+    <h3 class="header-menu big"><i class="nav-arrow"></i>记账凭证</h3>
+    <ul class="menu">
+        <li ng-click="navClass('voucherGeneration')" ng-class="{'active':navCla=='voucherGeneration'}"  ui-sref="_root.recordAccount.voucherGeneration.list">
+            <a href="javascript:void(0)">记账凭证生成设置</a>
+        </li>
+        <li ng-click="navClass('voucherAudit')" ng-class="{'active':navCla=='voucherAudit'}" ui-sref="_root.recordAccount.voucherAudit.list">
+            <a href="javascript:void(0)">记账凭证审核</a>
+        </li>
+        <li ng-click="navClass('auditCredentials')" ng-class="{'active':navCla=='auditCredentials'}" ui-sref="_root.recordAccount.auditCredentials.list">
+            <a href="javascript:void(0)">已审核凭证</a>
+        </li>
+        <li ng-click="navClass('posted')" ng-class="{'active':navCla=='posted'}" ui-sref="_root.recordAccount.posted.list">
+            <a href="javascript:void(0)">已过帐</a>
+        </li>
+        <li ng-click="navClass('billRecords')" ng-class="{'active':navCla=='billRecords'}" ui-sref="_root.recordAccount.billRecords.list">
+            <a href="javascript:void(0)">结帐记录</a>
+        </li>
+        <li ng-click="navClass('voucherRecords')" ng-class="{'active':navCla=='voucherRecords'}" ui-sref="_root.recordAccount.voucherRecords.list">
+            <a href="javascript:void(0)">记账凭证记录</a>
+        </li>
+    </ul>
+</div>

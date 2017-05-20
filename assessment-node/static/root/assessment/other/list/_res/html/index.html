@@ -1,0 +1,37 @@
+<div class="content-tab list" style="margin-top: -70px;">
+    <ul class="table table-top">
+        <li class="list-head">
+            <span></span>
+            <span>地区</span>
+            <span>项目</span>
+            <span>工期开始时间</span>
+            <span>工期结束时间</span>
+            <span>名称</span>
+            <span>成本</span>
+        </li>
+        <li class="list-all" ng-repeat="lists in otherLists" style="display: {{lists._delete?'none':'block'}};">
+            <section>
+                <div class="list-text {{lists._selectList?'selectList':''}}" ng-click="selectList(lists)">
+                    <p>{{$index+1}}</p>
+                    <p>{{lists.area}}</p>
+                    <p>{{lists.project}}</p>
+                    <p>{{lists.startTime}}</p>
+                    <p>{{lists.endTime}}</p>
+                    <p>{{lists.name}}</p>
+                    <p>{{lists.salary}}</p>
+                    <p>
+                        <a href="javascript:void(0)" class="more" ng-click="moreList(lists)">更多详细</a>
+                    </p>
+                </div>
+            </section>
+        </li>
+    </ul>
+    <footer class="footer">
+        <pagination count="abili.itemsCount" take="abili.take" activate="abili.activatePage"></pagination>
+    </footer>
+</div>
+<div ui-view="modal"></div>
+
+
+
+

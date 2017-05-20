@@ -1,0 +1,69 @@
+<div class="content-tab list">
+    <ul class="table table-top">
+        <li class="list-head">
+            <span></span>
+            <span>供应商编号</span>
+            <span>供应商地区</span>
+            <span>供应商名称</span>
+            <span>供应商类型</span>
+            <span>经营范围</span>
+            <span>主要产品和服务</span>
+            <span>业务联系人</span>
+            <span></span>
+        </li>
+        <li class="list-all" ng-repeat="lists in basicinfoLists" style="display: {{lists._delete?'none':'block'}};">
+            <section>
+                <div class="list-text {{lists._selectList?'selectList':''}}" ng-click="selectList(lists)">
+                    <p>{{$index+1}}</p>
+                    <p>{{lists.serialNumber}}</p>
+                    <p>{{lists.area}}</p>
+                    <p>{{lists.name}}</p>
+                    <p>{{lists.type}}</p>
+                    <p>{{lists.scope}}</p>
+                    <p>{{lists.product}}</p>
+                    <p>{{lists.contacts}}</p>
+                    <p>
+                        <a href="javascript:void(0)" class="more" ng-click="moreList(lists)">更多详细</a>
+                    </p>
+                </div>
+                <div class="can">
+                    <ul class="can-see" style="display: {{lists._moreList?'block':'none'}};">
+                        <li>
+                            <p class="see-parent">
+                                <span>职务</span>
+                                <span>联系电话</span>
+                                <span>邮箱</span>
+                                <span>传真</span>
+                                <span>信息完整度</span>
+                                <span>营业执照附件</span>
+                            </p>
+                            <p class="see-children">
+                                <span>{{lists.duties}}</span>
+                                <span>{{lists.telephone}}</span>
+                                <span>{{lists.email}}</span>
+                                <span>{{lists.fax}}</span>
+                                <span>{{lists.execution}}</span>
+                                <span>{{lists.enclosure}}</span>
+                            </p>
+                        </li>
+                    </ul>
+                    <div class="module">
+                        <div class="see-module">
+                            <p class="see-type">体现类型</p>
+                            <p class="see-description"></p>
+                            <button class="btn">关闭</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </li>
+    </ul>
+    <footer class="footer">
+        <pagination count="abili.itemsCount" take="abili.take" activate="abili.activatePage"></pagination>
+    </footer>
+</div>
+<div ui-view="modal"></div>
+
+
+
+
