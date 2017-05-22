@@ -3,7 +3,6 @@
  */
 var app = angular.module('selfcapList', ['ng-pagination','toastr']);
 app.controller('selfcapListCtrl',function($scope,selfcapSer,toastr) {
-        $scope.teamInfo = {};
    //选择
     $scope.selectList = function(event){
         angular.forEach($scope.selfcapLists.data,function(obj){
@@ -38,7 +37,7 @@ app.controller('selfcapListCtrl',function($scope,selfcapSer,toastr) {
     })
     function activatePage(page) {
         var listData = {
-            page: page
+            page: page,
         };
         selfcapSer.listAbilitySelfCap(listData).then(function (response) {
             if (response.data.code == 0) {
@@ -47,6 +46,32 @@ app.controller('selfcapListCtrl',function($scope,selfcapSer,toastr) {
                 toastr.error("请求超时，请联系管理员", '温馨提示');
             }
         })
+        //搜索
+        $scope.collect = function(){
+            $scope.abili = {
+                itemsCount: 12,//总条数
+                take: 10,        //每页显示
+                activatePage: activatePage, //当前页
+            };
+            selfcapSer.countSelfCap2($scope.name).then(function (response) {
+                if(response.data.code==0){
+                    $scope.abili.itemsCount = response.data.data;
+                }else{
+                    toastr.error( "请求超时，请联系管理员", '温馨提示');
+                }
+            })
+            var data = {
+                name: $scope.name,
+                page: page
+            };
+            selfcapSer.searchPersonAbility(data).then(function(response){
+                if(response.data.code == 0){
+                    $scope.selfcapLists = response.data
+                }else if(response.data.code==403){
+                    toastr.error( "请登录用户", '温馨提示');
+                }
+            });
+        };
     }
     //删除
     $scope.$on('deletedId',function(event,delid){

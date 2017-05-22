@@ -8,13 +8,14 @@ app.factory('selfcapSer',function ($http) {
         editSelfCapAbility:editSelfCapAbility,
         editEditSocial:editEditSocial,
         getTwoById:getTwoById,
-        searchCompanyAbility:searchCompanyAbility,
+        searchPersonAbility:searchPersonAbility,
         addSocialSelf:addSocialSelf,
         listSocialSelf:listSocialSelf,
         countSocial:countSocial,
         deleteSocialSelf:deleteSocialSelf,
         editSocialSelf:editSocialSelf,
         getFiveById:getFiveById,
+        countSelfCap2:countSelfCap2,
 
     };
     //列表
@@ -24,8 +25,10 @@ app.factory('selfcapSer',function ($http) {
         })
     }
     //分页
-    function countSelfCap(){
-        return $http.get('/abilitySelfCap/count')
+    function countSelfCap(data){
+        return $http.get('/abilitySelfCap/count',{
+            params:data
+        })
     }
     //删除
     function deleteAbilitySelf(data){
@@ -47,9 +50,16 @@ app.factory('selfcapSer',function ($http) {
         return $http.post('/ability/getTwoById',data)
     }
     //搜索
-    function searchCompanyAbility(data) {
-        return $http.post('/ability/searchCompanyAbility',data)
+    function searchPersonAbility(data) {
+        return $http.post('/ability/searchPersonAbility',data)
     }
+    //搜索count
+    function countSelfCap2(data){
+        return $http.get('/countSelfCap2/count',{
+            params:data
+        })
+    }
+
     //添加个人社交
     function addSocialSelf(data){
         return $http.post('/ability/addSocialSelf/add',data)

@@ -7,6 +7,8 @@ app.factory('auditSer',function ($http) {
         deleteAudit:deleteAudit,
         editAudit:editAudit,
         getAuditById:getAuditById,
+        searchAudit:searchAudit,
+        countAudit2:countAudit2,
     };
     //列表
     function listAudit(data) {
@@ -35,6 +37,17 @@ app.factory('auditSer',function ($http) {
     //id编辑
     function getAuditById(data) {
         return $http.get('/project/getAuditById',{
+            params:data
+        })
+    }
+    function searchAudit(data) {
+        return $http.get('/searchAudit',{
+            params:data
+        })
+    }
+    //搜索count
+    function countAudit2(data){
+        return $http.get('/countAudit2/count',{
             params:data
         })
     }
