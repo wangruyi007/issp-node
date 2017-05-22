@@ -33,7 +33,7 @@ module.exports = function(){
     }).post('/addBasicInfo/add', function*(){//添加
         var $self = this;
         var addData = $self.request.body;
-        addData.userToken = $self.cookies.get('token');
+        addData.token = $self.cookies.get('token');
         yield (server().basicInfoAdd(addData)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -46,7 +46,7 @@ module.exports = function(){
     }).post('/editBasicInfo/edit', function*(){//编辑
         var $self = this;
         var editData = $self.request.body;
-        editData.userToken = $self.cookies.get('token');
+        editData.token = $self.cookies.get('token');
         yield (server().basicInfoEdit(editData)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -59,7 +59,7 @@ module.exports = function(){
     }).get('/deleteBasicInfo/delete', function*(){//删除
         var $self = this;
         var deleteData = $self.request.query;
-        deleteData.userToken = $self.cookies.get('token');
+        deleteData.token = $self.cookies.get('token');
         yield (server().basicInfoDelete(deleteData)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -107,7 +107,7 @@ module.exports = function(){
     }).post('/addDemand/add', function*(){//添加
         var $self = this;
         var addData = $self.request.body;
-        addData.userToken = $self.cookies.get('token');
+        addData.token = $self.cookies.get('token');
         yield (server().demandAdd(addData)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -120,7 +120,7 @@ module.exports = function(){
     }).post('/editDemand/edit', function*(){//编辑
         var $self = this;
         var editData = $self.request.body;
-        editData.userToken = $self.cookies.get('token');
+        editData.token = $self.cookies.get('token');
         yield (server().demandEdit(editData)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -133,7 +133,7 @@ module.exports = function(){
     }).get('/deleteDemand/delete', function*(){//删除
         var $self = this;
         var deleteData = $self.request.query;
-        deleteData.userToken = $self.cookies.get('token');
+        deleteData.token = $self.cookies.get('token');
         yield (server().demandDelete(deleteData)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -157,7 +157,6 @@ module.exports = function(){
             }));
     }).get('/allProjects/demand', function*(){//查询所有项目
         var $self = this;
-       /* var findData = $self.request.query;*/
         yield (server().projectsAllDemandById()
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -193,7 +192,7 @@ module.exports = function(){
     }).post('/addLabour/add', function*(){//添加
         var $self = this;
         var addData = $self.request.body;
-        addData.userToken = $self.cookies.get('token');
+        addData.token = $self.cookies.get('token');
         yield (server().labourAdd(addData)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -206,7 +205,7 @@ module.exports = function(){
     }).post('/editLabour/edit', function*(){//编辑
         var $self = this;
         var editData = $self.request.body;
-        editData.userToken = $self.cookies.get('token');
+        editData.token = $self.cookies.get('token');
         yield (server().labourEdit(editData)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -219,7 +218,7 @@ module.exports = function(){
     }).get('/deleteLabour/delete', function*(){//删除
         var $self = this;
         var deleteData = $self.request.query;
-        deleteData.userToken = $self.cookies.get('token');
+        deleteData.token = $self.cookies.get('token');
         yield (server().labourDelete(deleteData)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -278,7 +277,7 @@ module.exports = function(){
     }).post('/addOther/add', function*(){//添加
         var $self = this;
         var addData = $self.request.body;
-        addData.userToken = $self.cookies.get('token');
+        addData.token = $self.cookies.get('token');
         yield (server().otherAdd(addData)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -291,7 +290,7 @@ module.exports = function(){
     }).post('/editOther/edit', function*(){//编辑
         var $self = this;
         var editData = $self.request.body;
-        editData.userToken = $self.cookies.get('token');
+        editData.token = $self.cookies.get('token');
         yield (server().otherEdit(editData)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -304,7 +303,7 @@ module.exports = function(){
     }).get('/deleteOther/delete', function*(){//删除
         var $self = this;
         var deleteData = $self.request.query;
-        deleteData.userToken = $self.cookies.get('token');
+        deleteData.token = $self.cookies.get('token');
         yield (server().otherDelete(deleteData)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -363,7 +362,7 @@ module.exports = function(){
     }).post('/addCost/add', function*(){//添加
         var $self = this;
         var addData = $self.request.body;
-        addData.userToken = $self.cookies.get('token');
+        addData.token = $self.cookies.get('token');
         yield (server().costAdd(addData)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -376,7 +375,7 @@ module.exports = function(){
     }).post('/editCost/edit', function*(){//编辑
         var $self = this;
         var editData = $self.request.body;
-        editData.userToken = $self.cookies.get('token');
+        editData.token = $self.cookies.get('token');
         yield (server().costEdit(editData)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -389,7 +388,7 @@ module.exports = function(){
     }).get('/deleteCost/delete', function*(){//删除
         var $self = this;
         var deleteData = $self.request.query;
-        deleteData.userToken = $self.cookies.get('token');
+        deleteData.token = $self.cookies.get('token');
         yield (server().costDelete(deleteData)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -459,7 +458,7 @@ module.exports = function(){
     }).post('/addGrow/add', function*(){//添加
         var $self = this;
         var addData = $self.request.body;
-        addData.userToken = $self.cookies.get('token');
+        addData.token = $self.cookies.get('token');
         yield (server().growAdd(addData)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -472,7 +471,7 @@ module.exports = function(){
     }).post('/editGrow/edit', function*(){//编辑
         var $self = this;
         var editData = $self.request.body;
-        editData.userToken = $self.cookies.get('token');
+        editData.token = $self.cookies.get('token');
         yield (server().growEdit(editData)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -485,7 +484,7 @@ module.exports = function(){
     }).get('/deleteGrowInfo/delete', function*(){//删除
         var $self = this;
         var deleteData = $self.request.query;
-        deleteData.userToken = $self.cookies.get('token');
+        deleteData.token = $self.cookies.get('token');
         yield (server().growDelete(deleteData)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -544,7 +543,7 @@ module.exports = function(){
     }).post('/addInformation/add', function*(){//添加
         var $self = this;
         var addData = $self.request.body;
-        addData.userToken = $self.cookies.get('token');
+        addData.token = $self.cookies.get('token');
         yield (server().informationAdd(addData)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -557,7 +556,7 @@ module.exports = function(){
     }).post('/editInformation/edit', function*(){//编辑
         var $self = this;
         var editData = $self.request.body;
-        editData.userToken = $self.cookies.get('token');
+        editData.token = $self.cookies.get('token');
         yield (server().informationEdit(editData)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -570,7 +569,7 @@ module.exports = function(){
     }).get('/deleteInformation/delete', function*(){//删除
         var $self = this;
         var deleteData = $self.request.query;
-        deleteData.userToken = $self.cookies.get('token');
+        deleteData.token = $self.cookies.get('token');
         yield (server().informationDelete(deleteData)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -629,7 +628,7 @@ module.exports = function(){
     }).post('/addHand/add', function*(){//添加
         var $self = this;
         var addData = $self.request.body;
-        addData.userToken = $self.cookies.get('token');
+        addData.token = $self.cookies.get('token');
         yield (server().handAdd(addData)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -642,7 +641,7 @@ module.exports = function(){
     }).post('/editHand/edit', function*(){//编辑
         var $self = this;
         var editData = $self.request.body;
-        editData.userToken = $self.cookies.get('token');
+        editData.token = $self.cookies.get('token');
         yield (server().handEdit(editData)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -655,7 +654,7 @@ module.exports = function(){
     }).get('/deleteHand/delete', function*(){//删除
         var $self = this;
         var deleteData = $self.request.query;
-        deleteData.userToken = $self.cookies.get('token');
+        deleteData.token = $self.cookies.get('token');
         yield (server().HandDelete(deleteData)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -691,7 +690,7 @@ module.exports = function(){
     }).post('/editQualitative/edit', function*(){//编辑
         var $self = this;
         var editData = $self.request.body;
-        editData.userToken = $self.cookies.get('token');
+        editData.token = $self.cookies.get('token');
         yield (server().qualitativeEdit(editData)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -704,7 +703,7 @@ module.exports = function(){
     }).post('/editRation/edit', function*(){//编辑
         var $self = this;
         var editData = $self.request.body;
-        editData.userToken = $self.cookies.get('token');
+        editData.token = $self.cookies.get('token');
         yield (server().rationEdit(editData)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -740,7 +739,7 @@ module.exports = function(){
     }).get('/deleteMoney/delete', function*(){//删除
         var $self = this;
         var deleteData = $self.request.query;
-        deleteData.userToken = $self.cookies.get('token');
+        deleteData.token = $self.cookies.get('token');
         yield (server().moneyDelete(deleteData)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -753,7 +752,7 @@ module.exports = function(){
     }).post('/addMoney/add', function*(){//添加
         var $self = this;
         var addData = $self.request.body;
-        addData.userToken = $self.cookies.get('token');
+        addData.token = $self.cookies.get('token');
         yield (server().moneyAdd(addData)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -766,7 +765,7 @@ module.exports = function(){
     }).post('/editMoney/edit', function*(){//编辑
         var $self = this;
         var editData = $self.request.body;
-        editData.userToken = $self.cookies.get('token');
+        editData.token = $self.cookies.get('token');
         yield (server().moneyEdit(editData)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -907,7 +906,7 @@ module.exports = function(){
     }).get('/deleteFrontLine/delete', function*(){//删除
         var $self = this;
         var deleteData = $self.request.query;
-        deleteData.userToken = $self.cookies.get('token');
+        deleteData.token = $self.cookies.get('token');
         yield (server().frontLineDelete(deleteData)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -920,7 +919,7 @@ module.exports = function(){
     }).post('/addFrontLine/add', function*(){//添加
         var $self = this;
         var addData = $self.request.body;
-        addData.userToken = $self.cookies.get('token');
+        addData.token = $self.cookies.get('token');
         yield (server().frontLineAdd(addData)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -933,7 +932,7 @@ module.exports = function(){
     }).post('/editFrontLine/edit', function*(){//编辑
         var $self = this;
         var editData = $self.request.body;
-        editData.userToken = $self.cookies.get('token');
+        editData.token = $self.cookies.get('token');
         yield (server().frontLineEdit(editData)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -994,7 +993,7 @@ module.exports = function(){
     }).get('/deleteCharge/delete', function*(){//删除
         var $self = this;
         var deleteData = $self.request.query;
-        deleteData.userToken = $self.cookies.get('token');
+        deleteData.token = $self.cookies.get('token');
         yield (server().chargeDelete(deleteData)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -1007,7 +1006,7 @@ module.exports = function(){
     }).post('/addCharge/add', function*(){//添加
         var $self = this;
         var addData = $self.request.body;
-        addData.userToken = $self.cookies.get('token');
+        addData.token = $self.cookies.get('token');
         yield (server().chargeAdd(addData)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -1020,7 +1019,7 @@ module.exports = function(){
     }).post('/editCharge/edit', function*(){//编辑
         var $self = this;
         var editData = $self.request.body;
-        editData.userToken = $self.cookies.get('token');
+        editData.token = $self.cookies.get('token');
         yield (server().chargeEdit(editData)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -1081,7 +1080,7 @@ module.exports = function(){
     }).get('/deleteProject/delete', function*(){//删除
         var $self = this;
         var deleteData = $self.request.query;
-        deleteData.userToken = $self.cookies.get('token');
+        deleteData.token = $self.cookies.get('token');
         yield (server().projectDelete(deleteData)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -1094,7 +1093,7 @@ module.exports = function(){
     }).post('/addProject/add', function*(){//添加
         var $self = this;
         var addData = $self.request.body;
-        addData.userToken = $self.cookies.get('token');
+        addData.token = $self.cookies.get('token');
         yield (server().projectAdd(addData)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -1107,7 +1106,7 @@ module.exports = function(){
     }).post('/editProject/edit', function*(){//编辑
         var $self = this;
         var editData = $self.request.body;
-        editData.userToken = $self.cookies.get('token');
+        editData.token = $self.cookies.get('token');
         yield (server().projectEdit(editData)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -1168,7 +1167,7 @@ module.exports = function(){
     }).post('/congealResult/congeal', function*(){//冻结
         var $self = this;
         var congealData = $self.request.body;
-        congealData.userToken = $self.cookies.get('token');
+        congealData.token = $self.cookies.get('token');
         yield (server().resultCongeal(congealData)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -1181,7 +1180,7 @@ module.exports = function(){
     }).post('/thawResult/thaw', function*(){//解冻
         var $self = this;
         var thawData = $self.request.body;
-        thawData.userToken = $self.cookies.get('token');
+        thawData.token = $self.cookies.get('token');
         yield (server().resultThaw(thawData)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -1194,7 +1193,7 @@ module.exports = function(){
     }).post('/addResult/add', function*(){//添加
         var $self = this;
         var addData = $self.request.body;
-        addData.userToken = $self.cookies.get('token');
+        addData.token = $self.cookies.get('token');
         yield (server().resultAdd(addData)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -1218,7 +1217,7 @@ module.exports = function(){
     }) .get('/deleteResult/delete', function*(){//删除
         var $self = this;
         var deleteData = $self.request.query;
-        deleteData.userToken = $self.cookies.get('token');
+        deleteData.token = $self.cookies.get('token');
         yield (server().resultDelete(deleteData)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -1231,7 +1230,7 @@ module.exports = function(){
     }) .post('/editResult/edit', function*(){//编辑
         var $self = this;
         var editData = $self.request.body;
-        editData.userToken = $self.cookies.get('token');
+        editData.token = $self.cookies.get('token');
         yield (server().resultEdit(editData)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -1267,8 +1266,20 @@ module.exports = function(){
     }).post('/ectSummary/summary', function*(){//汇总
         var $self = this;
         var summaryData = $self.request.body;
-        summaryData.userToken = $self.cookies.get('token');
+        summaryData.token = $self.cookies.get('token');
         yield (server().resultSummary(summaryData)
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
+    }).get('/user/logout', function*(){
+        var $self = this;
+        var token = {token:$self.cookies.get('token')};
+        yield (server().logout(token)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
                 $self.body = responseText;

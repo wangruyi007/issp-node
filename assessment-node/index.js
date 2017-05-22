@@ -59,13 +59,8 @@ router.get(/^\/module\/_config(?:\/.|$)/, function *(next) {
 });
 
 //============路由===========
-app.use(require(path.join(__dirname,routersPath,'/common/index.js'))().routes());//登录路由
-app.use(require(path.join(__dirname,routersPath,'/assessment/index.js'))().routes());//
-
-
+app.use(require(path.join(__dirname,routersPath,'/assessment/index.js'))().routes());
 app.use(router.routes());
-
-
 //============静态文件资源===========
 app.use(staticCache(path.join(__dirname, '/static'), {
     // maxAge: 365 * 24 * 60 * 60
