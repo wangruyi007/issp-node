@@ -4,29 +4,29 @@
             <ul>
                   <li class="required">
                     <label><i><img src="/images/mandatory.png"></i><em>合同外部项目名称</em></label>
-                      <select class="sele" ng-model="add.outerName2" ng-change="changeSelect()" ng-init="add.outerName2">
-                          <option></option>
+                      <select class="sele" ng-model="add.outerName">
+                          <option value="" disabled>请选择</option>
                       </select>
                       <input type="text"  class="inputDom" ng-verify="{}" ng-model="add.outerName">
                 </li>
                 <li class="required">
                     <label><i><img src="/images/mandatory.png"></i><em>内部项目名称</em></label>
-                    <select class="sele"  ng-model="add.innerName2" ng-change="changeSelect2()">
-                        <option></option>
+                    <select class="sele"  ng-model="add.innerName">
+                        <option value="" disabled>请选择</option>
                     </select>
                     <input type="text"  class="inputDom" ng-verify="{}" ng-model="add.innerName">
                 </li>
                 <li class="required">
                     <label><i><img src="/images/mandatory.png"></i><em>销售合同号</em></label>
-                    <select class="sele" ng-model="add.saleNum2" ng-change="changeSelect3()">
-                        <option></option>
+                    <select class="sele" ng-model="add.saleNum">
+                        <option value="" disabled>请选择</option>
                     </select>
                     <input type="text"  class="inputDom" ng-verify="{}" ng-model="add.saleNum">
                 </li>
                 <li class="required">
                     <label><i><img src="/images/mandatory.png"></i><em>派工单编号</em></label>
-                    <select class="sele" ng-model="add.dispatchNum2" ng-change="changeSelect4()">
-                        <option></option>
+                    <select class="sele" ng-model="add.dispatchNum">
+                        <option value="" disabled>请选择</option>
                     </select>
                     <input type="text"  class="inputDom" ng-verify="{}" ng-model="add.dispatchNum">
                 </li>
@@ -40,7 +40,7 @@
                 </li>
                 <li>
                     <label><em>初验时间</em></label>
-                    <input type="text" onClick="laydate({istime: true, format: 'YYYY-MM-DD hh:mm:ss'})" class="add_image addMarketReceptTime">
+                    <input type="text" ng-model="add.startCheckTime" onClick="laydate({istime: true, format: 'YYYY-MM-DD'})" class="add_image startCheckTime">
                 </li>
                 <li>
                     <label><em>初验内容</em></label>

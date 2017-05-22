@@ -7,6 +7,8 @@ app.factory('situationSer',function ($http) {
         addProjectSituation:addProjectSituation,
         editProjectSituation:editProjectSituation,
         getOneById:getOneById,
+        searchProject:searchProject,
+        countProjectBaseInfo2:countProjectBaseInfo2,
     };
     //列表
     function listProjectSituationCap(data) {
@@ -33,5 +35,17 @@ app.factory('situationSer',function ($http) {
     //id编辑
     function getOneById(data) {
         return $http.post('/project/getOneById',data)
+    }
+    //搜索
+    function searchProject(data) {
+        return $http.get('/searchProject',{
+            params:data
+        })
+    }
+    //搜索count
+    function countProjectBaseInfo2(data){
+        return $http.get('/countProjectBaseInfo2/count',{
+            params:data
+        })
     }
 });
