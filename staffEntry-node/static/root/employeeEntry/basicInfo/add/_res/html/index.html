@@ -1,0 +1,144 @@
+<div class="content-input add" verify-scope="tipStyle: 1">  <!--表单验证插件-->
+    <div class="input-list">
+        <section>
+            <ul>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>地区</em></label>
+                    <select class="sele" ng-model="data.area" ng-init="data.area='广州'">
+                        <option value="广州">广州</option>
+                        <option value="深圳">深圳</option>
+                        <option value="上海">上海</option>
+                        <option value="北京">北京</option>
+                        <option value="湛江">湛江</option>
+                        <option value="佛山">佛山</option>
+                        <option value="江门">江门</option>
+                    </select>
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>部门</em></label>
+                    <select class="sele" ng-model="data.department" ng-init="data.department='研发部'">
+                        <option value="研发部">研发部</option>
+                        <option value="综合资源部">综合资源部</option>
+                        <option value="运营部">运营部</option>
+                    </select>
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>项目组</em></label>
+                    <select class="sele" ng-model="data.projectGroup" ng-init="data.projectGroup='组一'">
+                        <option value="组一">组一</option>
+                        <option value="组二">组二</option>
+                        <option value="组三">组三</option>
+                        <option value="组四">组四</option>
+                    </select>
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>职位</em></label>
+                    <select class="sele" ng-model="data.position" ng-init="data.position='项目经理'">
+                        <option value="项目经理">项目经理</option>
+                        <option value="模块负责人">模块负责人</option>
+                        <option value="java开发">java开发</option>
+                        <option value="前端">前端</option>
+                        <option value="UI设计">UI设计</option>
+                        <option value="测试">测试</option>
+                        <option value="人事助理">人事助理</option>
+                    </select>
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>入职时间</em></label>
+                    <input type="text" onClick="laydate({istime: true, format: 'YYYY-MM-DD'})" class="date-icon entryTime" ng-model="data.entryTime">
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>姓名</em></label>
+                    <input type="text" ng-verify="{}" ng-model="data.name">
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>联系电话</em></label>
+                    <input type="text" ng-verify="{}" ng-model="data.employeeID">
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>专业</em></label>
+                    <input type="text" ng-verify="{}" ng-model="data.profession">
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>员工编号</em></label>
+                    <input type="text" ng-verify="{}" ng-model="data.phone">
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>薪资是否确认</em></label>
+                    <select class="sele" ng-model="data.salaryConfirm" ng-init="data.salaryConfirm='true'">
+                        <option value="true">有</option>
+                        <option value="false">无</option>
+                    </select>
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>是否有身份件复印件</em></label>
+                    <select class="sele" ng-model="data.iDFile" ng-init="data.iDFile='true'">
+                        <option value=true>有</option>
+                        <option value=false>无</option>
+                    </select>
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>是否有学历学位证书复印件</em></label>
+                    <select class="sele" ng-model="data.educationFile" ng-init="data.educationFile='true'">
+                        <option value=true>有</option>
+                        <option value=false>无</option>
+                    </select>
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>是否有照片纸质版</em></label>
+                    <select class="sele" ng-model="data.photoFile" ng-init="data.photoFile='true'">
+                        <option value=true>有</option>
+                        <option value=false>无</option>
+                    </select>
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>是否有照片电子版</em></label>
+                    <select class="sele" ng-model="data.photoEletricFile" ng-init="data.photoEletricFile='true'">
+                        <option value=true>有</option>
+                        <option value=false>无</option>
+                    </select>
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>是否有其本人银行卡、身份证、签名的复印件</em></label>
+                    <select class="sele" ng-model="data.bankAndOtherFile" ng-init="data.bankAndOtherFile='true'">
+                        <option value=true>有</option>
+                        <option value=false>无</option>
+                    </select>
+                </li>
+                <li>
+                    <label><em>邮箱账号</em></label>
+                    <input type="text" ng-model="data.email">
+                </li>
+                <li>
+                    <label><em>银行卡账号</em></label>
+                    <input type="text" ng-model="data.bankCardID">
+                </li>
+                <li>
+                    <label><em>开户行</em></label>
+                    <input type="text" ng-model="data.bankOfDeposit">
+                </li>
+                <li>
+                    <label><em>开户账户</em></label>
+                    <input type="text" ng-model="data.bankAccount">
+                </li>
+                <li>
+                    <label><em>是否已邮件发送入职通告</em></label>
+                    <select class="sele" ng-model="data.emailInfo" ng-init="data.emailInfo='true'">
+                        <option value=true>有</option>
+                        <option value=false>无</option>
+                    </select>
+                </li>
+            </ul>
+        </section>
+    </div>
+    <p class="dataBottom">
+        <span class="imPrompt"><i><img src="/images/prompt.png"></i>带有<i><img src="/images/mandatory.png"></i>的为必填项</span>
+        <button ng-verify="{control:'myform'}" ng-click="AddFun()">提交</button>
+    </p>
+</div>
+
+<script type="text/javascript">
+    !function(){
+        laydate.skin('dahong');//切换皮肤，请查看skins下面皮肤库
+    }();
+</script>

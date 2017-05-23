@@ -1,0 +1,91 @@
+<div class="content-tab list">
+    <ul class="table">
+        <li class="list-head">
+            <span></span>
+            <span>员工编号</span>
+            <span>姓名（用户名）</span>
+            <span>籍贯</span>
+            <span>办理入职时间</span>
+            <span>入职前居住地</span>
+            <span>是否对工作地有要求</span>
+            <span>试用期是多长时间</span>
+            <span></span>
+        </li>
+        <li class="list-all" ng-repeat="lists in confirmLists" style="display: {{lists._delete?'none':'block'}};">
+            <section>
+                <div class="list-text {{lists._selectList?'selectList':''}}" ng-click="selectList(lists)">
+                    <p>{{$index+1}}</p>
+                    <p>{{::lists.employeeID}}</p>
+                    <p>{{::lists.name}}</p>
+                    <p>{{::lists.nativePlace}}</p>
+                    <p>{{::lists.entryTime}}</p>
+                    <p>{{::lists.beforeResidence}}</p>
+                    <p>{{::lists.workPlaceRequest}}</p>
+                    <p>{{::lists.probationDuration}}</p>
+                    <p>
+                        <a href="javascript:void(0)" class="more" ng-click="moreList(lists)">更多详细</a>
+                    </p>
+                </div>
+                <div class="can">
+                    <ul class="can-see" style="display: {{lists._moreList?'block':'none'}};">
+                        <li>
+                            <p class="see-parent">
+                                <span>期望薪资</span>
+                                <span>试用期薪资</span>
+                                <span>转正后薪资</span>
+                                <span>是否同意征税</span>
+                                <span>是否需要公司安排住宿</span>
+                                <span>是否购买社保</span>
+                                <span>紧急联络人</span>
+                                <span>紧急联络人电话</span>
+                            </p>
+                            <p class="see-children">
+                                <span>{{::lists.expectSalary}}</span>
+                                <span>{{::lists.probationSalary}}</span>
+                                <span>{{::lists.officialSalary}}</span>
+                                <span>{{::lists.whetherTax|cover}}</span>
+                                <span>{{::lists.whetherArrangeResidence|cover}}</span>
+                                <span>{{::lists.whetherSocialSecurity|cover}}</span>
+                                <span>{{::lists.emergencyContract}}</span>
+                                <span>{{::lists.contractPhone}}</span>
+                            </p>
+                        </li>
+                        <li>
+                            <p class="see-parent">
+                                <span>从事通信工作时长</span>
+                                <span>从事非通信工作时长</span>
+                                <span>其它特殊要求</span>
+                                <span>协办人</span>
+                                <span>是否有面谈确认单原件</span>
+                                <span>是否有住宿</span>
+                                <span>确认人</span>
+                                <span>存档人</span>
+                            </p>
+                            <p class="see-children">
+                                <span>{{::lists.communicationWorkDuration}}</span>
+                                <span>{{::lists.notCommunicationWorkDuration}}</span>
+                                <span>{{::lists.otherSpecialNeeds}}</span>
+                                <span>{{::lists.assistant}}</span>
+                                <span>{{::lists.whetherVoucher|cover}}</span>
+                                <span>{{::lists.whetherAccommodation|cover}}</span>
+                                <span>{{::lists.confirmPerson}}</span>
+                                <span>{{::lists.archivePerson}}</span>
+                            </p>
+                        </li>
+                    </ul>
+                    <div class="module">
+                        <div class="see-module">
+                            <p class="see-type">体现类型</p>
+                            <p class="see-description"></p>
+                            <button class="btn">关闭</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </li>
+    </ul>
+    <footer class="footer">
+        <pagination count="abili.itemsCount" take="abili.take" activate="abili.activatePage"></pagination>
+    </footer>
+</div>
+<div ui-view="modal"></div>
