@@ -1,0 +1,50 @@
+<div class="collect">
+    <div class="collect-select" style="margin:20px 20px 20px 88px">
+        <span>  
+            开始月份:
+            <input type="number" style="border:1px solid black;" ng-model="monthsa">
+        </span>
+        <span>  
+            结束月份:
+            <input type="number" style="border:1px solid black;" ng-model="monthsb">
+        </span>
+        <button ng-click="collect()">汇总</button>
+    </div>
+    <ul class="sum-list">
+        <li class="sum-thead">
+            <span>代码</span>
+            <span>月份</span>
+            <span>一级科目</span>
+            <span>地区</span>
+            <span>项目名称</span>
+            <span>项目组/部门</span>
+            <span>期初借方余额</span>
+            <span>期初贷方余额</span>
+            <span>期初差额</span>
+            <span>本期借方发生额</span>
+            <span>本期贷方发生额</span>
+            <span>本期差额</span>
+            <span>期末借方余额</span>
+            <span>期末贷方余额</span>
+            <span>期末差额</span>
+            
+        </li>
+        <li class="sum-tbody" ng-repeat="list in courseCollectLists">     
+            <span>{{::list.code}}</span>
+            <span>{{::list.months}}</span>
+            <span>{{::list.firstSubject}}</span>
+            <span>{{::list.area}}</span>
+            <span>{{::list.projectName}}</span>
+            <span>{{::list.projectGroup}}</span>
+            <span>{{::list.beginningDebitAmount}}</span>
+            <span>{{::list.beginningCreditAmount}}</span>
+            <span>{{::list.beginMinusMoney}}</span>
+            <span>{{::list.issueDebitAmount}}</span>
+            <span>{{::list.issueCreditAmount}}</span>
+            <span>{{::list.issueMinusMoney}}</span>
+            <span>{{::list.endDebitAmount}}</span>
+            <span>{{::list.endCreditAmount}}</span>
+            <span>{{::list.endMinusMoney}}</span>
+        </li>
+    </ul>
+</div>
