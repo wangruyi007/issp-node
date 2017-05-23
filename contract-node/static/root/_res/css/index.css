@@ -303,6 +303,13 @@ body {
   height: 37px;
   background: url("/images/searchbg.png") no-repeat;
   color: #fff;
+}
+/*登录用户样式*/
+.right-section .top-content .top-fixed .top .search .selected {
+  width: 137px;
+  height: 37px;
+  background: url("/images/searchbg.png") no-repeat;
+  color: #fff;
   position:relative;
   text-align:center;
   margin-right:120px;}
@@ -312,9 +319,11 @@ body {
 .right-section .top-content .top-fixed .top .search .selected a{
   color:#fff;
 }
+
 .right-section .top-content .top-fixed .top .search .selected .username{
   line-height:37px;
 }
+
 .right-section .top-content .top-fixed .top .search .selected .usermenu{
   display:none;
   flex-direction:column;
@@ -331,6 +340,10 @@ body {
 .right-section .top-content .top-fixed .top .search .selected .usermenu a:hover{
   background:#00c6ff;
   color:#fff;
+}
+
+.right-section .top-content .top-fixed .top .search .selected option {
+  color: #666;
 }
 
 .right-section .top-content .top-fixed .top .search .arrow {

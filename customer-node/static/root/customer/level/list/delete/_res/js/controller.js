@@ -1,5 +1,5 @@
-var app = angular.module('levelDelete', ['toastr']);
-app.controller('levelDeleteCtrl',function($scope,levelSer,toastr,$stateParams,$state){
+var app = angular.module('levelDelete', ['toastr','ipCookie']);
+app.controller('levelDeleteCtrl',function($scope,levelSer,toastr,$stateParams,$state,ipCookie,$location){
     //删除
     $scope.delYes = function(){
 
@@ -14,8 +14,13 @@ app.controller('levelDeleteCtrl',function($scope,levelSer,toastr,$stateParams,$s
                 $scope.deledId = $stateParams.id;
                 $scope.$emit('deletedId', $scope.deledId)
                 $scope.$emit('changeId', null)
-            }else if(response.data.code==403){
-                toastr.error( "请登录用户", '温馨提示');
+            }else if(response.data.code==403||response.data.code==401){
+                toastr.error( "请登录用户,2秒后跳至登陆页面", '温馨提示');
+                var absurl = $location.absUrl();
+                ipCookie('absurl', absurl,{ expires:3,expirationUnit: 'minutes' });
+                setTimeout(function(){
+                    window.location.href='http://localhost/login'
+                },2000)
             }
         })
     }

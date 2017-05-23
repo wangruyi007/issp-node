@@ -2,6 +2,7 @@ var request = require('request-promise');
 var path = require('path');
 var config = require(path.resolve('plugins/read-config.js'));
 var form = require(path.resolve('plugins/form.js'));
+var urlEncode = require(path.resolve('plugins/urlEncode.js'));
 module.exports = function(){
 
     this.abilitybaseinfoList= function(argvs){
@@ -16,7 +17,7 @@ module.exports = function(){
         return request(options);
     };
     //分页
-    this.countBaseInfo = function(argvs){
+    this.countBaseInfos = function(){
         var options = {
             method : 'GET',
             timeout : 3000,
@@ -32,10 +33,10 @@ module.exports = function(){
         var options = {
             method : 'POST',
             timeout : 3000,
-            uri : config()['ability']['rurl'] + '/companycapability/v1/add'+'?userToken='+argvs.userToken,
+            uri : config()['ability']['rurl'] + '/companycapability/v1/add',
             form:argvs,
             headers : {
-                // token : token
+                userToken:argvs.token
             }
         };
         return request(options);
@@ -45,7 +46,10 @@ module.exports = function(){
         var options = {
             method : 'DELETE',
             timeout : 3000,
-            uri : config()['ability']['rurl'] + '/companycapability/v1/delete/'+argvs.id+'?userToken='+argvs.userToken,
+            uri : config()['ability']['rurl'] + '/companycapability/v1/delete/'+argvs.id,
+            headers : {
+                userToken:argvs.token
+            }
         };
         return request(options);
     };
@@ -54,8 +58,11 @@ module.exports = function(){
         var options = {
             method : 'PUT',
             timeout : 3000,
-            uri : config()['ability']['rurl'] + '/companycapability/v1/edit'+'?userToken='+argvs.userToken,
+            uri : config()['ability']['rurl'] + '/companycapability/v1/edit',
             form : argvs,
+            headers : {
+                userToken:argvs.token
+            }
         };
         return request(options);
     };
@@ -74,12 +81,30 @@ module.exports = function(){
         var options = {
             method : 'GET',
             timeout : 3000,
-            uri : config()['ability']['rurl'] + '/companycapability/v1/listCapabilityByCompanyName',
+            uri : config()['ability']['rurl'] + '/companycapability/v1/listCapabilityByCompanyName'+urlEncode(argvs,true),
             form : argvs,
         };
         return request(options);
     };
-
+    //个人搜索
+    this.personSeachByname= function(argvs){
+        var options = {
+            method : 'GET',
+            timeout : 3000,
+            uri : config()['ability']['rurl'] + '/selfcapability/v1/listSelf'+urlEncode(argvs,true),
+            form : argvs,
+        };
+        return request(options);
+    };
+    this.cooperationSeachByName= function(argvs){
+        var options = {
+            method : 'GET',
+            timeout : 3000,
+            uri : config()['ability']['rurl'] + '/coopercapability/v1/list'+urlEncode(argvs,true),
+            form : argvs,
+        };
+        return request(options);
+    };
     this.abilitySelfCapList= function(argvs){
         var options = {
             method : 'GET',
@@ -100,11 +125,41 @@ module.exports = function(){
         };
         return request(options);
     };
+    //分页2
+    this.countSelfCap2Info = function(argvs){
+        var options = {
+            method : 'GET',
+            timeout : 3000,
+            uri : config()['ability']['rurl'] + '/selfcapability/v1/count?name='+argvs.name,
+        };
+        return request(options);
+    };
+    //公司分页
+    this.countBaseInfo2Info = function(argvs){
+        var options = {
+            method : 'GET',
+            timeout : 3000,
+            uri : config()['ability']['rurl'] + '/companycapability/v1/listCompanyCapability?company='+argvs.company,
+        };
+        return request(options);
+    };
+    //合作对象
+    this.countCooperation2Info = function(argvs){
+        var options = {
+            method : 'GET',
+            timeout : 3000,
+            uri : config()['ability']['rurl'] + '/coopercapability/v1/list?companyName='+argvs.companyName,
+        };
+        return request(options);
+    };
     this.deleteAbilitySelfDelete = function(argvs){
         var options = {
             method : 'DELETE',
             timeout : 3000,
-            uri : config()['ability']['rurl'] + '/selfcapability/v1/delete/'+argvs.id+'?userToken='+argvs.userToken,
+            uri : config()['ability']['rurl'] + '/selfcapability/v1/delete/'+argvs.id,
+            headers : {
+                userToken:argvs.token
+            }
         };
         return request(options);
     };
@@ -112,10 +167,10 @@ module.exports = function(){
         var options = {
             method : 'POST',
             timeout : 3000,
-            uri : config()['ability']['rurl'] + '/selfcapability/v1/add'+'?userToken='+argvs.userToken,
+            uri : config()['ability']['rurl'] + '/selfcapability/v1/add',
             form:argvs,
             headers : {
-                // token : token
+                userToken:argvs.token
             }
         };
         return request(options);
@@ -125,8 +180,11 @@ module.exports = function(){
         var options = {
             method : 'PUT',
             timeout : 3000,
-            uri : config()['ability']['rurl'] + '/selfcapability/v1/edit'+'?userToken='+argvs.userToken,
+            uri : config()['ability']['rurl'] + '/selfcapability/v1/edit',
             form : argvs,
+            headers : {
+                userToken:argvs.token
+            }
         };
         return request(options);
     };
@@ -135,8 +193,11 @@ module.exports = function(){
         var options = {
             method : 'PUT',
             timeout : 3000,
-            uri : config()['ability']['rurl'] + '/selfcapability/v1/editSocial'+'?userToken='+argvs.userToken,
+            uri : config()['ability']['rurl'] + '/selfcapability/v1/editSocial',
             form : argvs,
+            headers : {
+                userToken:argvs.token
+            }
         };
         return request(options);
     };
@@ -175,7 +236,10 @@ module.exports = function(){
         var options = {
             method : 'DELETE',
             timeout : 3000,
-            uri : config()['ability']['rurl'] + '/coopercapability/v1/delete/'+argvs.id+'?userToken='+argvs.userToken,
+            uri : config()['ability']['rurl'] + '/coopercapability/v1/delete/'+argvs.id,
+            headers : {
+                userToken:argvs.token
+            }
         };
         return request(options);
     };
@@ -184,10 +248,10 @@ module.exports = function(){
         var options = {
             method : 'POST',
             timeout : 3000,
-            uri : config()['ability']['rurl'] + '/coopercapability/v1/add'+'?userToken='+argvs.userToken,
+            uri : config()['ability']['rurl'] + '/coopercapability/v1/add',
             form:argvs,
             headers : {
-                // token : token
+                userToken:argvs.token
             }
         };
         return request(options);
@@ -196,8 +260,11 @@ module.exports = function(){
         var options = {
             method : 'PUT',
             timeout : 3000,
-            uri : config()['ability']['rurl'] + '/coopercapability/v1/edit'+'?userToken='+argvs.userToken,
+            uri : config()['ability']['rurl'] + '/coopercapability/v1/edit',
             form : argvs,
+            headers : {
+                userToken:argvs.token
+            }
         };
         return request(options);
     };
@@ -214,8 +281,11 @@ module.exports = function(){
         var options = {
             method : 'PUT',
             timeout : 3000,
-            uri : config()['ability']['rurl'] + '/coopercapability/v1/editRelation'+'?userToken='+argvs.userToken,
+            uri : config()['ability']['rurl'] + '/coopercapability/v1/editRelation',
             form : argvs,
+            headers : {
+                userToken:argvs.token
+            }
         };
         return request(options);
     };
@@ -243,7 +313,10 @@ module.exports = function(){
         var options = {
             method : 'PUT',
             timeout : 3000,
-            uri : config()['ability']['rurl'] + '/cusemail/v1/congeal/' + argvs.id + '?userToken=' + argvs.userToken,
+            uri : config()['ability']['rurl'] + '/cusemail/v1/congeal/' + argvs.id,
+            headers : {
+                userToken:argvs.token
+            }
         };
         return request(options);
     };
@@ -251,7 +324,10 @@ module.exports = function(){
         var options = {
             method : 'PUT',
             timeout : 3000,
-            uri : config()['ability']['rurl'] + '/cusemail/v1/thaw/' + argvs.id + '?userToken=' + argvs.userToken,
+            uri : config()['ability']['rurl'] + '/cusemail/v1/thaw/' + argvs.id,
+            headers : {
+                userToken:argvs.token
+            }
         };
         return request(options);
     };
@@ -260,7 +336,10 @@ module.exports = function(){
         var options = {
             method : 'DELETE',
             timeout : 3000,
-            uri : config()['ability']['rurl'] + '/cusemail/v1/delete/'+argvs.id+'?userToken='+argvs.userToken,
+            uri : config()['ability']['rurl'] + '/cusemail/v1/delete/'+argvs.id,
+            headers : {
+                userToken:argvs.token
+            }
         };
         return request(options);
     };
@@ -269,8 +348,11 @@ module.exports = function(){
         var options = {
             method : 'POST',
             timeout : 3000,
-            uri : config()['ability']['rurl'] + '/cusemail/v1/add?userToken='+argvs.userToken,
+            uri : config()['ability']['rurl'] + '/cusemail/v1/add',
             form:argvs,
+            headers : {
+                userToken:argvs.token
+            }
         };
         return request(options);
     };
@@ -288,8 +370,11 @@ module.exports = function(){
         var options = {
             method : 'PUT',
             timeout : 3000,
-            uri : config()['ability']['rurl'] + '/cusemail/v1/edit'+'?userToken='+argvs.userToken,
+            uri : config()['ability']['rurl'] + '/cusemail/v1/edit',
             form : argvs,
+            headers : {
+                userToken:argvs.token
+            }
         };
         return request(options);
     };
@@ -362,10 +447,10 @@ module.exports = function(){
         var options = {
             method : 'POST',
             timeout : 3000,
-            uri : config()['ability']['rurl'] + '/selfsocial/v1/add'+'?userToken='+argvs.userToken,
+            uri : config()['ability']['rurl'] + '/selfsocial/v1/add',
             form:argvs,
             headers : {
-                // token : token
+                userToken:argvs.token
             }
         };
         return request(options);
@@ -394,7 +479,10 @@ module.exports = function(){
         var options = {
             method : 'DELETE',
             timeout : 3000,
-            uri : config()['ability']['rurl'] + '/selfsocial/v1/delete/'+argvs.id+'?userToken='+argvs.userToken,
+            uri : config()['ability']['rurl'] + '/selfsocial/v1/delete/'+argvs.id,
+            headers : {
+                userToken:argvs.token
+            }
         };
         return request(options);
     };
@@ -403,8 +491,11 @@ module.exports = function(){
         var options = {
             method : 'PUT',
             timeout : 3000,
-            uri : config()['ability']['rurl'] + '/selfsocial/v1/edit/'+argvs.id+'?userToken='+argvs.userToken,
+            uri : config()['ability']['rurl'] + '/selfsocial/v1/edit/'+argvs.id,
             form : argvs,
+            headers : {
+                userToken:argvs.token
+            }
         };
         return request(options);
     };
@@ -414,6 +505,15 @@ module.exports = function(){
             method : 'GET',
             timeout : 3000,
             uri : config()['ability']['rurl'] + '/selfsocial/v1/getOne/'+argvs.id,
+        };
+        return request(options);
+    };
+    this.logout = function(argvs){
+        var options = {
+            method : 'POST',
+            timeout : 3000,
+            uri : config()['user']['rurl'] + `/v1/sign-out/${argvs.token}`,
+            form:argvs
         };
         return request(options);
     };

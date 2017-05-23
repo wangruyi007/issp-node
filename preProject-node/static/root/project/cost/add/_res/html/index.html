@@ -1,0 +1,47 @@
+<div class="content-input add" verify-scope="tipStyle: 1">
+    <div class="input-list">
+        <section>
+            <ul>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>项目组</em></label>
+                    <input type="text"  ng-model="add.project" ng-verify="{}">
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>地区</em></label>
+                    <input type="text"   ng-verify="{}" ng-model="add.arrival">
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>年份</em></label>
+                    <input type="number" ng-verify="{}" ng-model="add.year">
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>月份</em></label>
+                    <input type="number" ng-verify="{}" ng-model="add.month">
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>项目名称</em></label>
+                    <input type="text" ng-verify="{}" ng-model="add.projectName">
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>预计收入</em></label>
+                    <input type="number" ng-verify="{}" ng-model="add.expectedIncome">
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>预计市场费</em></label>
+                    <input type="number"  ng-model="add.expectedMarketCost" ng-verify="{}">
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>等级评定</em></label>
+                    <select class="sele" ng-verify="{}"   ng-model="add.grade"  ng-init="add.grade='请选择'">
+                        <option disabled>请选择</option>
+                        <option ng-repeat="pros in proData" value="{{pros.grade}}">{{pros.grade}}</option>
+                    </select>
+                </li>
+            </ul>
+        </section>
+    </div>
+    <p class="dataBottom">
+        <span class="imPrompt"><i><img src="/images/prompt.png"></i>带有<i><img src="/images/mandatory.png"></i>的为必填项</span>
+        <button ng-verify="{control:'myform'}" ng-click="costAddFun()">提交</button>
+    </p>
+</div>

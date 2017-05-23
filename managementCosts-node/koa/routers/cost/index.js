@@ -95,6 +95,7 @@ module.exports = function(){
     }).post('/managefee/ctArea', function*(){//管理费地区汇总
         var $self = this;
         var summaryData = $self.request.body;
+        summaryData.userToken = $self.cookies.get('token');
         yield (server().feeAreaSummary(summaryData)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -118,6 +119,7 @@ module.exports = function(){
     }).post('/managefee/ctGroup', function*(){//管理费项目组汇总
         var $self = this;
         var summaryData = $self.request.body;
+        summaryData.userToken = $self.cookies.get('token');
         yield (server().feeGroupSummary(summaryData)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -141,6 +143,7 @@ module.exports = function(){
     }).post('/managefee/ctType', function*(){//管理费类别汇总
         var $self = this;
         var summaryData = $self.request.body;
+        summaryData.userToken = $self.cookies.get('token');
         yield (server().feeTypeSummary(summaryData)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -153,6 +156,7 @@ module.exports = function(){
     }).post('/managefee/ctProject', function*(){//根据项目汇总
         var $self = this;
         var summaryData = $self.request.body;
+        summaryData.userToken = $self.cookies.get('token');
         yield (server().feeProjectSummary(summaryData)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -261,6 +265,7 @@ module.exports = function(){
     }).post('/outfee/ctArea', function*(){//外包费地区汇总
         var $self = this;
         var summaryData = $self.request.body;
+        summaryData.userToken = $self.cookies.get('token');
         yield (server().outFeeAreaSummary(summaryData)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -284,6 +289,7 @@ module.exports = function(){
     }).post('/outfee/ctGroup', function*(){//外包费项目组汇总
         var $self = this;
         var summaryData = $self.request.body;
+        summaryData.userToken = $self.cookies.get('token');
         yield (server().outFeeGroupSummary(summaryData)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -307,6 +313,7 @@ module.exports = function(){
     }).post('/outfee/ctType', function*(){//外包费类别汇总
         var $self = this;
         var summaryData = $self.request.body;
+        summaryData.userToken = $self.cookies.get('token');
         yield (server().outFeeTypeSummary(summaryData)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -319,6 +326,7 @@ module.exports = function(){
     }).post('/outfee/ctProject', function*(){//根据项目汇总
         var $self = this;
         var summaryData = $self.request.body;
+        summaryData.userToken = $self.cookies.get('token');
         yield (server().outFeeProjectSummary(summaryData)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -334,6 +342,21 @@ module.exports = function(){
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
                 $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
+    }).get('/user/logout', function*(){ //退出
+        var $self = this;
+        var token ={token:$self.cookies.get('token')};
+        yield (server().logout(token)
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                if(responseText.code==0){
+                    $self.cookies.set('token','');
+                    $self.body = responseText;
+                }
             }).catch((error) =>{
                 $self.set('Content-Type','application/json;charset=utf-8');
                 $self.body=error.error;

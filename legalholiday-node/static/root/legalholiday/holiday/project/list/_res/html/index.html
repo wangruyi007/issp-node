@@ -1,0 +1,54 @@
+<div class="content-tab list">
+    <ul class="table com-table">
+        <li class="list-head">
+            <span></span>
+            <span class="data-id">id</span>
+            <span>节假日名称</span>
+            <span>是否有加班需求</span>
+            <span>是否有活动需求</span> 
+            <span>活动安排详情</span>
+            <span>福利模块审批意见</span>
+            <span>运营商务部审批意见</span>
+            <span>是否通过</span>
+            <span></span>
+        </li>
+        <li class="list-all">
+            <section ng-repeat="list in projectLists.data" style="display: {{list._delete?'none':'block'}};">
+                <div  class="list-text {{list._selectList?'selectList':''}}" ng-click="selectList(list)">
+                    <p>{{$index+1}}</p>
+                    <p class="data-id"></p>
+                    <p>{{::list.name}}</p>
+                    <p>{{::list.overTimeCondition}}</p>
+                    <p>{{::list.activeQuried}}</p>
+                    <p>{{::list.activeDetail}}</p>
+                    <p>{{::list.welfareAudit}}</p>
+                    <p>{{::list.operateAudit}}</p>
+                    <p>{{::list.passCondition}}</p>
+                    <p>
+                        <a href="javascript:void(0)" class="more"  ng-click="moreList(list)">更多详细</a>
+                    </p>
+                </div>
+                <div class="can">
+                    <ul class="can-see" style="display: {{list._moreList?'block':'none'}};">
+                        <li>
+                            <p class="see-parent">
+                                <span>总经办意见</span>
+                                <span>文件编号</span>
+                                <span>存储位置</span>
+                            </p>
+                            <p class="see-children">
+                                <span>{{::list.managerAdivce}}</span>
+                                <span>{{::list.fileNum}}</span>
+                                <span>{{::list.storagePosition}}</span>
+                            </p>
+                        </li>
+                    </ul>
+                </div>
+            </section>
+        </li>
+     </ul>
+    <footer class="footer">
+        <pagination count="project.itemsCount" take="project.take" activate="project.activatePage"></pagination>
+    </footer>
+</div>
+<div ui-view="modal"></div>

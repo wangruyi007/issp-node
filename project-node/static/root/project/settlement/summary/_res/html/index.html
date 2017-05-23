@@ -15,16 +15,16 @@
         </li>
         <li class="sum-tbody" ng-repeat="summaryList in settlementSummarys">
             <span>{{summaryList.startCheckCount}}</span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
+            <span>{{summaryList.noStartCheckCount}}</span>
+            <span>{{summaryList.noSettleFileCount}}</span>
+            <span>{{summaryList.settleProcingACount}}</span>
+            <span>{{summaryList.settleProcingBCount}}</span>
+            <span>{{summaryList.settleProcingCCount}}</span>
+            <span>{{summaryList.betraMoney}}</span>
+            <span>{{summaryList.manageFee}}</span>
+            <span>{{summaryList.settleMoney}}</span>
+            <span>{{summaryList.resetSettleMoney}}</span>
+            <span>{{summaryList.receiveSettleMoney}}</span>
         </li>
     </ul>
 </div>

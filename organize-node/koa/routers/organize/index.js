@@ -943,8 +943,6 @@ module.exports = function(){
         var delId = $self.request.query;
         delId.token = $self.cookies.get('token');
         yield (server().jopdetailDelete(delId)
-        var getId = this.request.query;
-        yield (server().getJopDetailCountId(getId)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
                 $self.body = responseText;
@@ -1752,6 +1750,18 @@ module.exports = function(){
         var thawId = this.request.query;
         thawId.token = $self.cookies.get('token');
         yield (server().joprangeThaw(thawId)
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
+    }).get('/user/logout', function*(){
+        var $self = this;
+        var token = {token:$self.cookies.get('token')};
+        yield (server().logout(token)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
                 $self.body = responseText;

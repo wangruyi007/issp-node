@@ -43,7 +43,7 @@
                     <em>发送对象:</em>
                     <span>(双击可以删除该条邮箱地址)</span>
                 </p>
-                <p class="dclick" ng-model="email.sendObjectList">{{::email.sendObjectList}}</p>
+                <p class="dclick" ng-dblclick="dbsend">{{email.sendObjectList}}</p>
             </li>
         </ul>
     </section>

@@ -417,6 +417,7 @@ module.exports = function(){
     }).get('/collectemail/congeal', function*(){//冻结邮件汇总数据
         var $self = this;
         var congealData = $self.request.query;
+        congealData.userToken = $self.cookies.get('token');
         yield (server().MailCongeal(congealData)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -429,6 +430,7 @@ module.exports = function(){
     }).get('/collectemail/thaw', function*(){//解冻邮件汇总数据
         var $self = this;
         var thawData = $self.request.query;
+        thawData.userToken = $self.cookies.get('token');
         yield (server().MailThaw(thawData)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -507,9 +509,9 @@ module.exports = function(){
                 $self.body=error.error;
                 console.error(error.error);
             }));
-    }).get('/user/logout', function*(){//退出用户
+    }).get('/user/logout', function*(){ //退出
         var $self = this;
-        var token = {token:$self.cookies.get('token')};
+        var token ={token:$self.cookies.get('token')};
         yield (server().logout(token)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -517,7 +519,6 @@ module.exports = function(){
                     $self.cookies.set('token','');
                     $self.body = responseText;
                 }
-
             }).catch((error) =>{
                 $self.set('Content-Type','application/json;charset=utf-8');
                 $self.body=error.error;

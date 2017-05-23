@@ -1,0 +1,52 @@
+<div class="content-tab list">
+    <ul class="table">
+        <li class="list-head">
+            <span></span>
+            <span>地区</span>
+            <span>项目</span>
+            <span>年份</span>
+            <span>月份</span>
+            <span>周数</span>
+            <span>目标任务量</span>
+            <span>实际完工量</span>
+            <span></span>
+        </li>
+        <li class="list-all" ng-repeat="list in showInfo" style="display: {{list._delete?'none':'block'}};">
+            <section>
+                <div class="list-text {{list._selectList?'selectList':''}}" ng-click="selectList(list)">
+                    <p>{{$index+1}}</p>
+                    <p>{{list.arrival}}</p>
+                    <p>{{list.project}}</p>
+                    <p>{{list.year}}</p>
+                    <p>{{list.month}}</p>
+                    <p>{{list.week}}</p>
+                    <p>{{list.targetWork}}</p>
+                    <p>{{list.actualWork}}</p>
+                    <p>
+                        <a href="javascript:void(0)" class="more"  ng-click="moreList(list)">更多详细</a>
+                    </p>
+                </div>
+                <div class="can">
+                    <ul class="can-see" style="display: {{list._moreList?'block':'none'}};">
+                        <li>
+                            <p class="see-parent">
+                                <span>工作量差异</span>
+                                <span>参考单价</span>
+                                <span>目标收入</span>
+                                <span>计划收入</span>
+                                <span>收入差异</span>
+                            </p>
+                            <p class="see-children">
+                                <span>{{list.workDifferences}}</span>
+                                <span>{{list.price}}</span>
+                                <span>{{list.targetIncome}}</span>
+                                <span>{{list.planIncome}}</span>
+                                <span>{{list.incomeDifferences}}</span>
+                            </p>
+                        </li>
+                    </ul>
+                </div>
+            </section>
+        </li>
+    </ul>
+</div>

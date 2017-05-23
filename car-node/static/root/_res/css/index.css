@@ -2143,6 +2143,13 @@ body {
   text-indent:10px;
   width:155px;
 }
+.listsearch li select{
+  border:1px solid #00c6ff;
+  height:30px;
+  border-radius:5px;
+  text-indent:10px;
+  width:155px;
+}
 .listsearch li button{
   width:60px;
   height:30px;
@@ -2152,7 +2159,5 @@ body {
   margin-left:20px;
 }
 .listsearch li button:disabled{
-  
   background:#ccc;
-
 }

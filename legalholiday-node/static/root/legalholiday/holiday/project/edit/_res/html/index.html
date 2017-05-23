@@ -1,0 +1,168 @@
+<div class="content-input boarding ">
+    <div class="boa-title">
+        <ul>
+            <li ng-class="{ 'boa-cur' : tab.current == '_basic' }" ng-click="boardBtn('_basic')"><a href="javascript:void(0)">一般信息</a></li>
+            <li ng-class="{ 'boa-cur' : tab.current == '_arrange' }" ng-click="boardBtn('_arrange')"><a href="javascript:void(0)">节假日工作安排</a></li>
+            <li ng-class="{ 'boa-cur' : tab.current == '_urgency' }" ng-click="boardBtn('_urgency')"><a href="javascript:void(0)">各地区紧急联系人</a></li>
+            <li ng-class="{ 'boa-cur' : tab.current == '_gift' }" ng-click="boardBtn('_gift')"><a href="javascript:void(0)">节假日礼品福利</a></li>
+            <li ng-class="{ 'boa-cur' : tab.current == '_notice' }" ng-click="boardBtn('_notice')"><a href="javascript:void(0)">注意事项</a></li>
+        </ul>
+    </div>
+    <div class="boa-body" verify-scope="tipStyle: 1">
+        <div ng-show="tab.current=='_basic'" >
+            <ul>
+                <li class="big">
+                    <label><em>节假日名称</em></label>
+                    <select class="sele" ng-model="data.name">
+                        <option value="">请选择节假日名称</option>
+                        <option ng-repeat="item in allFestival" value="{{ item }}">{{ item }}</option>
+                    </select>
+                </li>
+                <li class="big">
+                    <label><em>是否有活动需求</em></label> <input type="text" ng-model="data.activeQuried">
+                </li>
+                <li  class="big">
+                    <label><em>活动安排详情</em></label> <input type="text" ng-model="data.activeDetail">
+                </li>
+                <li class="big">
+                    <label><em>福利模块审批意见</em></label> <input type="text" ng-model="data.welfareAudit">
+                </li>
+                <li class="big">
+                    <label><em>运营商务部审批意见</em></label> <input type="text" ng-model="data.operateAudit">
+                </li>
+                <li class="big">
+                    <label><em>是否通过</em></label>
+                    <select class="sele" ng-model="data.passCondition">
+                        <option value="">请选择是否通过</option>
+                        <option value="是">是</option>
+                        <option value="否">否</option>
+                    </select>
+                </li>
+                <li class="big">
+                    <label><em>总经办意见</em></label> <input type="text" ng-model="data.managerAdivce">
+                </li>
+                <li class="big">
+                    <label><em>文件编号</em></label> <input type="text" ng-model="data.fileNum">
+                </li>
+                <li class="big">
+                    <label><em>存储位置</em></label> <input type="text" ng-model="data.storagePosition">
+                </li>
+            </ul>
+        </div>
+        <div ng-show="tab.current=='_arrange'">
+            <ul ng-repeat="item in arranges" class="pr">
+                <li class="big">
+                    <label><em>地区</em></label><input type="text" ng-model="item.area">
+                </li>
+                <li class="big">
+                    <label><em>项目组</em></label> <input type="text" ng-model="item.projectGroup">
+                </li>
+                <li class="big">
+                    <label><em>加班原因</em></label>
+                    <select class="sele" ng-model="data.overTimeReasion">
+                        <option value="">请选择加班原因</option>
+                        <option value="项目需求">项目需求</option>
+                        <option value="自身需求">自身需求</option>
+                        <option value="工作紧急">工作紧急</option>
+                    </select>
+                </li>
+                <li class="big">
+                    <label><em>加班名单</em></label> <input type="text" ng-model="item.overTimeEmper">
+                </li>
+                <li class="big">
+                    <label><em>加班时间</em></label> <input type="text" ng-model="item.overTimeTime">
+                </li>
+                <li class="big">
+                    <label><em>加班总人数</em></label> <input type="text" ng-model="item.overTimeEmperNum">
+                </li>
+                <li class="big">
+                    <label><em>加班报酬形式</em><br>(注:加班人员当日工资+2×当日工资)</label>
+                    <select class="sele" ng-model="item.overTimeSalary">
+                        <option value="">请选择加班报酬形式</option>
+                        <option value="调休">调休</option>
+                        <option value="加班费">加班费</option>
+                    </select>
+                </li>
+                <li class="big">
+                    <label><em>安全检查员名单</em></label> <input type="text" ng-model="item.saferName">
+                </li>
+                <li class="big">
+                    <label><em>安全检查员总人数</em></label> <input type="text" ng-model="item.saferNum">
+                </li>
+                <li class="big">
+                    <label><em>应急方案</em></label> <input type="text" ng-model="item.emergencyPlan">
+                </li>
+                <button class="addbtn" ng-click="del($index)">x</button>
+                <p ng-hide="$index==arranges.length-1" style="width: 200%;border: 1px solid skyblue;"></p>
+            </ul>
+        </div>
+        <div ng-show="tab.current=='_urgency'">
+            <ul ng-repeat="item in urgencys" class="pr">
+                <li class="big">
+                    <label><em>地区</em></label><input type="text" ng-model="item.area">
+                </li>
+                <li class="big">
+                    <label><em>项目组</em></label> <input type="text" ng-model="item.projectGroup">
+                </li>
+                <li class="big">
+                    <label><em>联系人</em></label> <input type="text" ng-model="item.ralationer">
+                </li>
+                <li class="big">
+                    <label><em>联系电话</em></label> <input type="text" ng-model="item.tel">
+                </li>
+                <button class="addbtn" ng-click="del($index)">x</button>
+                <p ng-hide="$index==urgencys.length-1" style="width: 200%;border: 1px solid skyblue;"></p>
+            </ul>
+        </div>
+        <div ng-show="tab.current=='_gift'">
+            <ul ng-repeat="item in gifts" class="pr">
+                <li class="big">
+                    <label><em>节日名称</em></label><input type="text" ng-model="item.festivalName">
+                </li>
+                <li class="big">
+                    <label><em>礼品类型</em></label> <input type="text" ng-model="item.giftType">
+                </li>
+                <li class="big">
+                    <label><em>节日礼品</em></label>
+                    <select class="sele" ng-model="item.gift" >
+                        <option value="">请选择节日礼品</option>
+                        <option value="项目需求">项目需求</option>
+                        <option value="自身需求">自身需求</option>
+                        <option value="工作紧急">工作紧急</option>
+                    </select>
+                </li>
+                <li class="big">
+                    <label><em>单价(元)</em></label> <input type="number" ng-model="item.price">
+                </li>
+                <li class="big">
+                    <label><em>数量(人)</em></label> <input type="number" ng-model="item.number">
+                </li>
+                <li class="big">
+                    <label><em>总数量(单位)</em></label> <input type="number" ng-model="item.totalNum">
+                </li>
+                <li class="big">
+                    <label><em>总金额(元)</em></label> <input type="number" ng-model="item.totalMoney">
+                </li>
+                <button class="addbtn" ng-click="del($index)">x</button>
+                <p ng-hide="$index==gifts.length-1" style="width: 200%;border: 1px solid skyblue;"></p>
+            </ul>
+        </div>
+        <div ng-show="tab.current=='_notice'">
+            <ul ng-repeat="item in notices" class="pr">
+                <li class="big">
+                    <label><em>注意事项名</em></label><input type="text" ng-model="item.name">
+                </li>
+                <li class="big">
+                    <label><em>描述</em></label> <input type="text" ng-model="item.describeDetail">
+                </li>
+                <button class="addbtn" ng-click="del($index)">x</button>
+                <p ng-hide="$index==notices.length-1" style="width: 200%;border: 1px solid skyblue;"></p>
+            </ul>
+        </div>
+        <p class="dataBottom">
+            <button ng-click="more()" ng-show="tab.current !== '_basic'">可添加更多</button>
+            <span class="imPrompt"><i><img src="/images/prompt.png"></i>带有<i><img src="/images/mandatory.png"></i>的为必填项</span>
+            <button ng-click="AddFun()" ng-verify="{control:'myform'}">提交</button>
+        </p>
+    </div>
+</div>

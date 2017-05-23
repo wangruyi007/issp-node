@@ -1,0 +1,117 @@
+<ul class="listsearch" verify-scope="tipStyle: 1">
+
+    <li>
+        <label>年份</label>
+        <input type="text" ng-model="collect.year" ng-verify="{}" placeholder="请输入汇总年份">
+    </li>
+    <li>
+        <label>月份</label>
+        <select ng-model="collect.month" ng-init="collect.month='1'">
+            <option value="1">1月</option>
+            <option value="2">2月</option>
+            <option value="3">3月</option>
+            <option value="4">4月</option>
+            <option value="5">5月</option>
+            <option value="6">6月</option>
+            <option value="7">7月</option>
+            <option value="8">8月</option>
+            <option value="9">9月</option>
+            <option value="10">10月</option>
+            <option value="11">11月</option>
+            <option value="12">12月</option>
+        </select>
+    </li>
+    <li>
+        <label>项目组</label>
+        <input type="text" ng-model="collect.group" placeholder="请输入汇总项目组">
+    </li>
+    <li>
+        <button ng-verify="{control:'myform'}" ng-click="projectSum()">汇总</button>
+        <button ng-verify="{control:'myform'}" ng-click="projectAna()">分析</button>
+    </li>
+</ul>
+<div class="content-tab list">
+    <ul ng-show="showtype" class="table">
+        <li class="list-head">
+            <span></span>
+            <span>出车日期</span>
+            <span>单号</span>
+            <span>司机名称</span>
+            <span>地区</span>
+            <span>用车人</span>
+            <span>项目</span>
+            <span>项目组</span>
+            <span></span>
+        </li>
+        <li class="list-all" ng-repeat="list in listproject">
+            <section>
+                <div class="list-text">
+                    <p>{{$index+1}}</p>
+                    <p>{{list.date}}</p>
+                    <p>{{list.number}}</p>
+                    <p>{{list.driver}}</p>
+                    <p>{{list.area}}</p>
+                    <p>{{list.carUser}}</p>
+                    <p>{{list.project}}</p>
+                    <p>{{list.projectGroup}}</p>
+                    <p>
+                        <a href="javascript:void(0)" class="more"  ng-click="moreList(list)">更多详细</a>
+                    </p>
+                </div>
+                <div class="can">
+                    <ul class="can-see" style="display: {{list._moreList?'block':'none'}};">
+                        <li>
+                            <p class="see-parent">
+                                <span>科目</span>
+                                <span>油费</span>
+                                <span>加班时长</span>
+                                <span>加班费</span>
+                                <span>餐费补贴</span>
+                                <span>停车费</span>
+                                <span>过路费</span>
+                            </p>
+                            <p class="see-children">
+                                <span>{{list.acctype|cover}}</span>
+                                <span>{{list.oilCost}}</span>
+                                <span>{{list.overWorkTime}}</span>
+                                <span>{{list.overWorkCost}}</span>
+                                <span>{{list.mealCost}}</span>
+                                <span>{{list.parkCost}}</span>
+                                <span>{{list.roadCost}}</span>
+                            </p>
+                        </li>
+                    </ul>
+                </div>
+            </section>
+        </li>
+    </ul>
+    <ul ng-hide="showtype" class="table">
+        <li class="list-head">
+            <span></span>
+            <span>地区</span>
+            <span>本月费用</span>
+            <span>上月费用</span>
+            <span>差额</span>
+            <span>增长比</span>
+            <span>百分比</span>
+        </li>
+        <li class="list-all" ng-repeat="analist in listanalysis">
+            <section>
+                <div class="list-text">
+                    <p>{{$index+1}}</p>
+                    <p>{{analist.analyzeField}}</p>
+                    <p>{{analist.currentCost}}</p>
+                    <p>{{analist.lastCost}}</p>
+                    <p>{{analist.costSubtract}}</p>
+                    <p>{{analist.growRate}}</p>
+                    <p>{{analist.percent}}</p>
+                </div>
+            </section>
+        </li>
+    </ul>
+</div>
+
+
+
+
+

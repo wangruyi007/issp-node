@@ -1,5 +1,5 @@
-var app = angular.module('detailAdd', ['toastr']);
-app.controller('detailAddCtrl', function($scope, detailSer, $state,$location,toastr){
+var app = angular.module('detailAdd', ['toastr','ipCookie']);
+app.controller('detailAddCtrl', function($scope, detailSer, $state,$location,toastr,ipCookie){
 
 
     detailSer.getCusNum().then(function(response){
@@ -57,8 +57,13 @@ app.controller('detailAddCtrl', function($scope, detailSer, $state,$location,toa
             if(response.data.code == 0){
                 $state.go('root.customer.detail.list');
                 toastr.success( "客户信息已成功添加", '温馨提示');
-            }else if(response.data.code==403){
-                toastr.error( "请登录用户", '温馨提示');
+            }else if(response.data.code==403||response.data.code==401){
+                toastr.error( "请登录用户,2秒后跳至登陆页面", '温馨提示');
+                var absurl = $location.absUrl();
+                ipCookie('absurl', absurl,{ expires:3,expirationUnit: 'minutes' });
+                setTimeout(function(){
+                    window.location.href='http://localhost/login'
+                },2000)
             }
         })
 

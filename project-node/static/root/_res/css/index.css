@@ -86,7 +86,6 @@ a {
 a:hover {
   text-decoration: none;
 }
-
 svg {
   width: 1.375rem;
   height: 1.375rem;
@@ -279,7 +278,6 @@ body {
   border-radius: 5px;
   border: 1px solid #bfbfbf;
 }
-
 .right-section .top-content .top-fixed .top .search {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -305,19 +303,37 @@ body {
   height: 37px;
   background: url("/images/searchbg.png") no-repeat;
   color: #fff;
-  padding-left: 18px;
+  position:relative;
+  text-align:center;
+  margin-right:120px;}
+
+.right-section .top-content .top-fixed .top .search .selected:hover .usermenu{
+  display:flex;
+}
+.right-section .top-content .top-fixed .top .search .selected a{
+  color:#fff;
 }
 
-.right-section .top-content .top-fixed .top .search .selected option {
-  color: #666;
+.right-section .top-content .top-fixed .top .search .selected .username{
+  line-height:37px;
 }
 
-.right-section .top-content .top-fixed .top .search .arrow {
-  width: 9px;
-  height: 7px;
-  background: url("/images/down.png") no-repeat center;
-  cursor: pointer;
-  margin-left: -20px;
+.right-section .top-content .top-fixed .top .search .selected .usermenu{
+  display:none;
+  flex-direction:column;
+  position:absolute;
+  left:1px;
+  width:134px;
+  border:1px solid #ccc;
+  background:#fff;
+}
+.right-section .top-content .top-fixed .top .search .selected .usermenu a{
+  line-height:30px;
+  color:#00c6ff;
+}
+.right-section .top-content .top-fixed .top .search .selected .usermenu a:hover{
+  background:#00c6ff;
+  color:#fff;
 }
 
 .right-section .top-content .content .menu {
@@ -1024,11 +1040,19 @@ body {
   background: #fff;
   padding: 0 30px;
 }
+.com-search3 button{
+  width: 65px;
+  height: 30px;
+  color: white;
+  background-color: #00c6ff;
+  border-radius: 5px;
+  margin-top:27px;
+}
 .com-search {
+  width: 100%;
   position: fixed;
   top:160px;
   z-index: 999;
-  width: 950px;
   line-height: 80px;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -1036,13 +1060,21 @@ body {
   background: #fff;
   padding: 0 30px;
 }
+.com-search button{
+  width: 65px;
+  height: 30px;
+  color: white;
+  background-color: #00c6ff;
+  border-radius: 5px;
+  margin-top:27px;
+}
 .com-search4{
   display: inline-block;
   width: 14%;
 }
 .com-search4 select{
   border: 1px solid #1aafea;
-  width: 30%;
+  width: 40%;
   height: 36px;
   background: url(/images/down_b.png) no-repeat right 10px center;
   padding-left: 15px;
@@ -1051,7 +1083,7 @@ body {
   margin-left: 14px;
 }
 .com-search3 .com-search4 input{
-  width: 30%;
+  width: 40%;
   padding-left: 15px;
   padding-right: 15px;
   height: 36px;
@@ -1061,25 +1093,23 @@ body {
 }
 .com-search2{
   display: inline-block;
-  width: 100%;
+  width: 20%;
 }
 .com-search2 select{
   border: 1px solid #1aafea;
-  width: 68%;
+  width: 58%;
   height: 36px;
   background: url(/images/down_b.png) no-repeat right 10px center;
   padding-left: 15px;
   padding-right: 15px;
   border-radius: 5px;
-  margin-left: 14px;
 }
 .com-search .com-search2 input{
-  width: 68%;
+  width: 58%;
   padding-left: 15px;
   padding-right: 15px;
   height: 36px;
   border-radius: 5px;
-  margin-left: 14px;
   border: 1px solid #1aafea;
 }
 .com-search a {
@@ -1179,7 +1209,9 @@ body {
 .interval .required input, .interval .required .summary .sele, .summary .interval .required .sele, .interval .required .notice .notice-all .select-left .select-object .select-sele .sele, .notice .notice-all .select-left .select-object .select-sele .interval .required .sele, .interval .required .com-search .com-search2 select, .com-search .com-search2 .interval .required select {
   border: 1px solid #1aafea;
 }
-
+.required input{
+  border: 1px solid #1aafea !important;
+}
 .interval .required .sele {
   border: 1px solid #1aafea;
 }
@@ -1237,18 +1269,17 @@ body {
 }
 /*可手填的下拉框*/
 .right-section .top-content .content .content-wrap .content-input .input-list section ul li .inputDom{
-  width: 47%;
+  width: 45%;
   position: absolute;
-  margin-left: 59px;
+  margin-left: 64px;
   border: 0!important;
   height: 30px;
-  padding-left: 10px !important;
 }
 .right-section .top-content .content .content-wrap .content-input .input-list section ul li .inputDom:hover{
   box-shadow: 0 0 3px white !important;
 }
 
-.right-section .top-content .content .content-wrap .content-input .input-list section ul li.required input {
+.right-section .top-content .content .content-wrap .content-input .input-list section ul li. required input {
   border: 1px solid #1aafea;
 }
 
@@ -1297,8 +1328,8 @@ body {
 .right-section .top-content .content .content-wrap .content-input .input-list section ul li input {
   position: relative;
   width: 50%;
-  padding-left: 15px;
-  padding-right: 15px;
+  padding-left: 19px;
+  padding-right: 19px;
   height: 36px;
   border: 1px solid #999999;
   border-radius: 5px;
@@ -1314,7 +1345,7 @@ body {
   height: 36px;
   border: 1px solid #999999;
   background: url("/images/down_b.png") no-repeat right 10px center;
-  padding-left: 15px;
+  padding-left: 20px;
   padding-right: 15px;
   border-radius: 5px;
   margin-left: 14px;

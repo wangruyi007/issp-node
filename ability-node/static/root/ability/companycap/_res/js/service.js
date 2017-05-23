@@ -8,6 +8,7 @@ app.factory('companycapSer',function ($http) {
         editCompanyAbility:editCompanyAbility,
         getOneById:getOneById,
         searchCompanyAbility:searchCompanyAbility,
+        countBaseInfo2:countBaseInfo2,
     };
     //列表
     function listAbilityCompanyCap(data) {
@@ -38,5 +39,11 @@ app.factory('companycapSer',function ($http) {
     //搜索
     function searchCompanyAbility(data) {
         return $http.post('/ability/searchCompanyAbility',data)
+    }
+    //搜索count
+    function countBaseInfo2(data){
+        return $http.get('/countBaseInfo2/count',{
+            params:data
+        })
     }
 });

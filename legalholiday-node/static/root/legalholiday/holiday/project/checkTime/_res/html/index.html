@@ -1,0 +1,38 @@
+<div class="content-tab list">
+    <ul class="table com-table">
+        <li class="list-head">
+            <span></span>
+            <span class="data-id">id</span>
+            <span>节假日名称</span>
+            <span>国家放假时长</span>
+            <span>公司放假时长</span> 
+            <span>公司放假起始时间</span>
+            <span>公司放假结束时间</span>
+            <span>调休天数</span>
+            <span>补休日期</span>
+            <span>调休日期</span>
+            <span>调休规范</span>
+        </li>
+        <li class="list-all">
+            <section ng-repeat="list in checkTimeLists.data" style="display: {{list._delete?'none':'block'}};">
+                <div  class="list-text {{list._selectList?'selectList':''}}" ng-click="selectList(list)">
+                    <p>{{$index+1}}</p>
+                    <p class="data-id"></p>
+                    <p>{{::list.name}}</p>
+                    <p>{{::list.countryTimeLong}}</p>
+                    <p>{{::list.companyTimeLong}}</p>
+                    <p>{{::list.companyStartTime}}</p>
+                    <p>{{::list.companyEndTime}}</p>
+                    <p>{{::list.offDay}}</p>
+                    <p>{{::list.takeTime}}</p>
+                    <p>{{::list.offTime}}</p>
+                    <p>{{::list.offStandard}}</p>
+                </div>
+            </section>
+        </li>
+     </ul>
+    <footer class="footer">
+        <pagination count="project.itemsCount" take="project.take" activate="project.activatePage"></pagination>
+    </footer>
+</div>
+<div ui-view="modal"></div>

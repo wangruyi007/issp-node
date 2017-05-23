@@ -1,0 +1,54 @@
+<div class="content-tab list">
+
+    <ul class="table">
+        <li class="list-head">
+            <span></span>
+            <span>一级科目</span>
+            <span>二级科目</span>
+            <span>三级科目</span>
+            <span>地区</span>
+            <span>项目组</span>
+            <span>项目名称</span>
+            <span>日期</span>
+            <span></span>
+        </li>
+        <li class="list-all" ng-repeat="list in activityLists" style="display: {{list._delete?'none':'block'}};">
+            <section>
+                <div class="list-text {{list._selectList?'selectList':''}}" ng-click="selectList(list)">
+                    <p>{{$index+1}}</p>
+                    <p>{{list.firstSubject}}</p>
+                    <p>{{list.secondSubject}}</p>
+                    <p>{{list.thirdSubject}}</p>
+                    <p>{{list.area}}</p>
+                    <p>{{list.projectGroup}}</p>
+                    <p>{{list.projectName}}</p>
+                    <p>{{list.voucherDate}}</p>
+                    <p>
+                        <a href="javascript:void(0)" class="more"  ng-click="moreList(list)">更多详细</a>
+                    </p>
+                </div>
+                <div class="can">
+                    <ul class="can-see" style="display: {{list._moreList?'block':'none'}};">
+                        <li>
+                            <p class="see-parent">
+                                <span>金额</span>
+                            </p>
+                            <p class="see-children">
+                                <span>{{list.borrowMoney}}</span>
+                            </p>
+                        </li>
+                    </ul>
+                </div>
+            </section>
+        </li>
+    </ul>
+    <footer class="footer">
+        <pagination count="pagination.itemsCount" take="pagination.take" activate="pagination.activatePage"></pagination>
+    </footer>
+</div>
+<div ui-view="modal"></div>
+
+
+
+
+
