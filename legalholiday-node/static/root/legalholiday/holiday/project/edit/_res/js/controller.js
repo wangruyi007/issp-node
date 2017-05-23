@@ -1,10 +1,7 @@
-/**
- * Created by ike on 2017/4/18.
- */
+
 var app = angular.module('projectEdit', ['toastr','ipCookie']);
 app.controller('projectEditCtrl', function($scope, projectSer,$state,toastr,$stateParams,ipCookie){
     var companyId = {id : $stateParams.id};
-    console.log(companyId.id)
     //获取值
     projectSer.getOneById1(companyId).then(function(response){
         if(response.data.code==0){
@@ -39,7 +36,7 @@ app.controller('projectEditCtrl', function($scope, projectSer,$state,toastr,$sta
             }if(response.data.code == 403){
                  toastr.error( "请登录用户,3秒后跳至登陆页面", '温馨提示');
                 var absurl = $location.absUrl();
-                ipCookie('absurl', absurl,{ expires:3,expirationUnit: 'minutes' });
+                ipCookie('absurl', absurl,{ expires:3,expirationUnit: 'minutes',domain:'issp.bjike.com' });
                 setTimeout(function(){
                     window.location.href='http://localhost/login'
                 },3000)
