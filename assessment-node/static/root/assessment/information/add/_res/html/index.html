@@ -4,16 +4,16 @@
             <ul>
                 <li class="required">
                     <label><i><img src="/images/mandatory.png"></i><em>项目</em></label>
-                    <select class="sele" ng-verify="{}"   ng-model="add.projectInfoId" ng-init="add.projectInfoId='请选择'">
-                        <option disabled>请选择</option>
-                        <option ng-repeat="pros in proData"   ng-change="changeSelect()"  value="{{pros.id}}">{{pros.project}}</option>
+                    <select class="sele" ng-verify="{}"   ng-model="add.projectInfoId">
+                        <option value="" disabled>请选择</option>
+                        <option ng-repeat="pros in proData" value="{{pros.id}}">{{pros.project}}</option>
                     </select>
                      <input type="text" class="inputDom" ng-verify="{}" ng-model="project">
                 </li>
                 <li class="required">
                     <label><i><img src="/images/mandatory.png"></i><em>渠道</em></label>
-                    <select class="sele" ng-model="add.channelType" ng-init="add.channelType='请选择'">
-                        <option value="请选择">请选择</option>
+                    <select class="sele" ng-model="add.channelType">
+                        <option value="" disabled>请选择</option>
                         <option value="EMAIL">邮箱</option>
                         <option value="WRITTEN">书面</option>
                         <option value="VERBAL">口头</option>

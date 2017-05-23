@@ -20,22 +20,22 @@
                 </li>
                 <li class="required">
                     <label><i><img src="/images/mandatory.png"></i><em>一级科目</em></label>
-                    <select class="sele" ng-model="add.firstSubject2" ng-change="changeSelect()" ng-init="add.firstSubject2='请选择'">
-                        <option disabled>请选择</option>
+                    <select class="sele" ng-model="editInfo.firstSubject">
+                        <option disabled value="">请选择</option>
                     </select>
                     <input type="text" ng-verify="{}"  class="inputDom" ng-model="editInfo.firstSubject">
                 </li>
                 <li class="required">
                     <label><i><img src="/images/mandatory.png"></i><em>二级科目</em></label>
-                    <select class="sele" ng-model="editInfo.secondSubject2" ng-change="changeSelect2()" ng-init="editInfo.secondSubject2='请选择'">
-                        <option disabled>请选择</option>
+                    <select class="sele" ng-model="editInfo.secondSubject">
+                        <option disabled value="">请选择</option>
                     </select>
                     <input type="text" ng-verify="{}"  class="inputDom" ng-model="editInfo.secondSubject">
                 </li>
                 <li class="required">
                     <label><i><img src="/images/mandatory.png"></i><em>三级科目</em></label>
-                    <select class="sele" ng-model="editInfo.thirdSubject2" ng-change="changeSelect3()" ng-init="editInfo.thirdSubject2='请选择'">
-                        <option disabled>请选择</option>
+                    <select class="sele" ng-model="editInfo.thirdSubject">
+                        <option disabled value="">请选择</option>
                     </select>
                     <input type="text" ng-verify="{}"  class="inputDom" ng-model="editInfo.thirdSubject">
                 </li>

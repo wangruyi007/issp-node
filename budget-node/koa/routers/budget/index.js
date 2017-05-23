@@ -32,7 +32,7 @@ module.exports = function(){
     }).post('/addProWeek/add', function*(){
         var $self = this;
         var addData = $self.request.body;
-        addData.userToken = $self.cookies.get('token');
+        addData.token = $self.cookies.get('token');
         yield (server().proWeekAdd(addData)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -68,7 +68,7 @@ module.exports = function(){
     }).post('/editProWeek/edit', function*(){
         var $self = this;
         var editData = $self.request.body;
-        editData.userToken = $self.cookies.get('token');
+        editData.token = $self.cookies.get('token');
         yield (server().proWeekEdit(editData)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -81,7 +81,7 @@ module.exports = function(){
     }).get('/deleteProWeek/del', function*(){
         var $self = this;
         var delId = $self.request.query;
-        delId.userToken = $self.cookies.get('token');
+        delId.token = $self.cookies.get('token');
         yield (server().proWeekDelete(delId)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -94,7 +94,7 @@ module.exports = function(){
     }).post('/collectProject/project', function*(){
         var $self = this;
         var summaryData = $self.request.body;
-        summaryData.userToken = $self.cookies.get('token');
+        summaryData.token = $self.cookies.get('token');
         yield (server().proCollectByPro(summaryData)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -153,7 +153,7 @@ module.exports = function(){
     }).post('/collectMonthProject/project', function*(){
         var $self = this;
         var summaryData = $self.request.body;
-        summaryData.userToken = $self.cookies.get('token');
+        summaryData.token = $self.cookies.get('token');
         yield (server().proCollectByMonth(summaryData)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -212,7 +212,7 @@ module.exports = function(){
     }).post('/addAreaWeek/add', function*(){
         var $self = this;
         var addData = $self.request.body;
-        addData.userToken = $self.cookies.get('token');
+        addData.token = $self.cookies.get('token');
         yield (server().areaWeekAdd(addData)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -237,7 +237,7 @@ module.exports = function(){
     }).post('/editAreaWeek/edit', function*(){
         var $self = this;
         var editData = $self.request.body;
-        editData.userToken = $self.cookies.get('token');
+        editData.token = $self.cookies.get('token');
         yield (server().areaWeekEdit(editData)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -250,7 +250,7 @@ module.exports = function(){
     }).get('/deleteAreaWeek/del', function*(){
         var $self = this;
         var delId = $self.request.query;
-        delId.userToken = $self.cookies.get('token');
+        delId.token = $self.cookies.get('token');
         yield (server().areaWeekDelete(delId)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -263,7 +263,7 @@ module.exports = function(){
     }).post('/collectArea/area', function*(){ //地区汇总
         var $self = this;
         var summaryData = $self.request.body;
-        summaryData.userToken = $self.cookies.get('token');
+        summaryData.token = $self.cookies.get('token');
         yield (server().areaCollectByWeek(summaryData)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -321,7 +321,7 @@ module.exports = function(){
     }).post('/collectByArea/area', function*(){ //地区汇总
         var $self = this;
         var summaryData = $self.request.body;
-        summaryData.userToken = $self.cookies.get('token');
+        summaryData.token = $self.cookies.get('token');
         yield (server().areaCollectByMonth(summaryData)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -391,7 +391,7 @@ module.exports = function(){
     }).post('/addWarning/add', function*(){
         var $self = this;
         var addData = $self.request.body;
-        addData.userToken = $self.cookies.get('token');
+        addData.token = $self.cookies.get('token');
         yield (server().warningAdd(addData)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -416,7 +416,7 @@ module.exports = function(){
     }).post('/editWarning/edit', function*(){
         var $self = this;
         var editData = $self.request.body;
-        editData.userToken = $self.cookies.get('token');
+        editData.token = $self.cookies.get('token');
         yield (server().warningEdit(editData)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -429,7 +429,7 @@ module.exports = function(){
     }).get('/deleteWarning/delete', function*(){
         var $self = this;
         var delId = $self.request.query;
-        delId.userToken = $self.cookies.get('token');
+        delId.token = $self.cookies.get('token');
         yield (server().warningDelete(delId)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -453,6 +453,18 @@ module.exports = function(){
     }).get('/allCostArea/id', function*(){//地区所有周
         var $self = this;
         yield (server().areaAllCostById()
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
+    }).get('/user/logout', function*(){
+        var $self = this;
+        var token = {token:$self.cookies.get('token')};
+        yield (server().logout(token)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
                 $self.body = responseText;

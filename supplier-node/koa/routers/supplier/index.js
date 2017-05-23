@@ -32,6 +32,7 @@ module.exports = function(){
     }).post('/basicInfoAdd/add', function*(){//添加
         var $self = this;
         var addData = $self.request.body;
+        addData.token = $self.cookies.get('token');
         yield (server().addBasicInfo(addData)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -44,6 +45,7 @@ module.exports = function(){
     }).post('/basicInfoEdit/edit', function*(){//编辑
         var $self = this;
         var editData = $self.request.body;
+        editData.token = $self.cookies.get('token');
         yield (server().editBasicInfoList(editData)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -66,8 +68,9 @@ module.exports = function(){
                 console.error(error.error);
             }));
     }).get('/deleteBasicInfo/delete', function*(){
-        var delData = this.request.query;
         var $self = this;
+        var delData = this.request.query;
+        delData.token = $self.cookies.get('token');
         yield (server().basicInfoDelete(delData)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -92,6 +95,7 @@ module.exports = function(){
     }).post('/rewardBasicAdd/add', function*(){//获奖情况添加
         var $self = this;
         var rewardData = $self.request.body;
+        rewardData.token = $self.cookies.get('token');
         yield (server().addewardBasic(rewardData)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -102,8 +106,9 @@ module.exports = function(){
                 console.error(error.error);
             }));
     }).get('/deleteRewardBasic/delete', function*(){
-        var delReward = this.request.query;
         var $self = this;
+        var delReward = this.request.query;
+        delReward.token = $self.cookies.get('token');
         yield (server().rewardBasicDelete(delReward)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -116,6 +121,7 @@ module.exports = function(){
     }).post('/editRewardBasic/edit', function*(){//获奖情况编辑
         var $self = this;
         var editRewardData = $self.request.body;
+        editRewardData.token = $self.cookies.get('token');
         yield (server().rewardBasicedit(editRewardData)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -152,6 +158,7 @@ module.exports = function(){
     }).post('/qualificationAdd/add', function*(){//企业资质添加
         var $self = this;
         var qualificationAdd = $self.request.body;
+        qualificationAdd.token = $self.cookies.get('token');
         yield (server().addQualificationAddBasic(qualificationAdd)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -162,8 +169,9 @@ module.exports = function(){
                 console.error(error.error);
             }));
     }).get('/deleteQualiBasic/delete', function*(){
-        var delQuali = this.request.query;
         var $self = this;
+        var delQuali = this.request.query;
+        delQuali.token = $self.cookies.get('token');
         yield (server().eQualiBasicDelete(delQuali)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -176,6 +184,7 @@ module.exports = function(){
     }).post('/editQualiBasic/edit', function*(){//获奖情况编辑
         var $self = this;
         var editQualiData = $self.request.body;
+        editQualiData.token = $self.cookies.get('token');
         yield (server().qualiBasicedit(editQualiData)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -212,6 +221,7 @@ module.exports = function(){
     }).post('/contactAdd/add', function*(){//联系添加
         var $self = this;
         var conDataAdd = $self.request.body;
+        conDataAdd.token = $self.cookies.get('token');
         yield (server().addContactBasic(conDataAdd)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -222,8 +232,9 @@ module.exports = function(){
                 console.error(error.error);
             }));
     }).get('/deleteContact/delete', function*(){
-        var delCont = this.request.query;
         var $self = this;
+        var delCont = this.request.query;
+        delCont.token = $self.cookies.get('token');
         yield (server().eContactDelete(delCont)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -236,6 +247,7 @@ module.exports = function(){
     }).post('/editContact/edit', function*(){//联系编辑
         var $self = this;
         var editContData = $self.request.body;
+        editContData.token = $self.cookies.get('token');
         yield (server().contentBasicedit(editContData)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -272,6 +284,7 @@ module.exports = function(){
     }).post('/cooperationAdd/add', function*(){//合作添加添加
         var $self = this;
         var coopDataAdd = $self.request.body;
+        coopDataAdd.token = $self.cookies.get('token');
         yield (server().addCooperationBasic(coopDataAdd)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -282,8 +295,9 @@ module.exports = function(){
                 console.error(error.error);
             }));
     }).get('/deleteCooperationBasic/delete', function*(){
-        var delCoop = this.request.query;
         var $self = this;
+        var delCoop = this.request.query;
+        delCoop.token = $self.cookies.get('token');
         yield (server().eCooperationDelete(delCoop)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -296,6 +310,7 @@ module.exports = function(){
     }).post('/editCooperation/edit', function*(){//合作编辑
         var $self = this;
         var editCoopData = $self.request.body;
+        editCoopData.token = $self.cookies.get('token');
         yield (server().cooperationBasicedit(editCoopData)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -343,6 +358,7 @@ module.exports = function(){
     }).post('/supplier/addType/add', function*(){
         var $self = this;
         var addData = $self.request.body;
+        addData.token = $self.cookies.get('token');
         yield (server().addTypeBasicInfo(addData)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -353,8 +369,9 @@ module.exports = function(){
                 console.error(error.error);
             }));
     }).get('/supplier/deleteType/delete', function*(){
-        var delData = this.request.query;
         var $self = this;
+        var delData = this.request.query;
+        delData.token = $self.cookies.get('token');
         yield (server().typeDelete(delData)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -365,8 +382,9 @@ module.exports = function(){
                 console.error(error.error);
             }));
     }).post('/supplier/congealType/congeal', function*(){//冻结
-        var congealData = this.request.body;
         var $self = this;
+        var congealData = this.request.body;
+        congealData.token = $self.cookies.get('token');
         yield (server().typeCongeal(congealData)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -377,8 +395,9 @@ module.exports = function(){
                 console.error(error.error);
             }));
     }).post('/supplier/thawType/thaw', function*(){//解冻
-        var thawData = this.request.body;
         var $self = this;
+        var thawData = this.request.body;
+        thawData.token = $self.cookies.get('token');
         yield (server().typeThaw(thawData)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -391,6 +410,7 @@ module.exports = function(){
     }).post('/supplier/editType/edit', function*(){//编辑
         var $self = this;
         var editSupp = $self.request.body;
+        editSupp.token = $self.cookies.get('token');
         yield (server().supplieTyoeEdit(editSupp)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -404,6 +424,18 @@ module.exports = function(){
         var $self = this;
         var suppEditById = $self.request.query;
         yield (server().findEditTypeEditId(suppEditById)
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
+    }).get('/user/logout', function*(){
+        var $self = this;
+        var token = {token:$self.cookies.get('token')};
+        yield (server().logout(token)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
                 $self.body = responseText;
