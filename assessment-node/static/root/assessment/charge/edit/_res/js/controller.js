@@ -1,4 +1,4 @@
-var app = angular.module('chargeEdit', ['toastr']);
+var app = angular.module('chargeEdit', ['toastr','ipCookie']);
 app.controller('chargeEditCtrl', function($scope, chargeSer,$stateParams,$state,toastr,ipCookie,$location){
     chargeSer.allChargeProjects().then(function(response){
         if(response.data.code == 0){
@@ -10,8 +10,6 @@ app.controller('chargeEditCtrl', function($scope, chargeSer,$stateParams,$state,
     chargeSer.findChargeId(chargeData).then(function(response){
         if(response.data.code=='0'){
             $scope.editInfo = response.data.data;
-        }else if (response.data.code==403){
-            toastr.error( "请登录用户", '温馨提示');
         }
     });
     //编辑点击提交

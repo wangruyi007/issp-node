@@ -1,7 +1,4 @@
-/**
- * Created by ike on 2017/4/17.
- */
-var app = angular.module('cooperationAdd', ['toastr']);
+var app = angular.module('cooperationAdd', ['toastr','ipCookie']);
 app.controller('cooperationAddCtrl', function($scope, cooperationSer,$state,toastr,ipCookie,$location){
     //添加个人能力
     $scope.cooperationAddFun = function(){

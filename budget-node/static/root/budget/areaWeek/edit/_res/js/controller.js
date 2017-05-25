@@ -1,4 +1,4 @@
-var app = angular.module('areaWeekEdit', ['toastr']);
+var app = angular.module('areaWeekEdit', ['toastr','ipCookie']);
 app.controller('areaWeekEditCtrl', function($scope,$state,$stateParams,toastr,areaWeekSer,ipCookie,$location){
     var getId = {id:$stateParams.id};
     areaWeekSer.getAreaWeek(getId).then(function(response){

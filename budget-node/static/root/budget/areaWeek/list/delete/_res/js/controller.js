@@ -1,4 +1,4 @@
-var app = angular.module('areaWeekDelete', ['toastr']);
+var app = angular.module('areaWeekDelete', ['toastr','ipCookie']);
 app.controller('areaWeekDeleteCtrl',function($scope,toastr,$stateParams,$state,areaWeekSer,ipCookie,$location){
     //删除
     $scope.delYes = function(){

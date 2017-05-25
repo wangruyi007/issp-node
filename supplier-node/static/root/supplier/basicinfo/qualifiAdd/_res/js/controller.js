@@ -1,4 +1,4 @@
-var app = angular.module('qualifiAdd', ['toastr']);
+var app = angular.module('qualifiAdd', ['toastr','ipCookie']);
 app.controller('qualifiAddCtrl', function($scope, basicinfoSer,$state,toastr,$stateParams,ipCookie,$location){
     var rewardId = {id : $stateParams.id};
     //获取值

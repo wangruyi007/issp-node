@@ -6,8 +6,6 @@ app.controller('basicInfoSummaryCtrl', function($scope, basicInfoSer,toastr){
     basicInfoSer.listSummaryArea().then(function(response){
         if(response.data.code == 0){
             $scope.workOptions = response.data.data;
-        } else if(response.data.code == 403){
-            toastr.error("请登录用户", '温馨提示');
         }
     });
     $scope.getSummary ={onSelectionChanged(){

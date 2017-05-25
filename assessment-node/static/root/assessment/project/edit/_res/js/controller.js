@@ -1,4 +1,4 @@
-var app = angular.module('projectEdit', ['toastr']);
+var app = angular.module('projectEdit', ['toastr','ipCookie']);
 app.controller('projectEditCtrl', function($scope, projectSer,$stateParams,$state,toastr,ipCookie,$location){
     projectSer.allProjectPros().then(function(response){
         if(response.data.code == 0){

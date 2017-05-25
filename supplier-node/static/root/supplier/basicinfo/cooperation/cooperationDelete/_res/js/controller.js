@@ -1,7 +1,4 @@
-/**
- * Created by ike on 2017/4/17.
- */
-var app = angular.module('cooperationDelete', ['toastr']);
+var app = angular.module('cooperationDelete', ['toastr','ipCookie']);
 app.controller('cooperationDeleteCtrl',function($scope,basicinfoSer,toastr,$stateParams,$state,ipCookie){
     //删除
     $scope.delYes = function(){

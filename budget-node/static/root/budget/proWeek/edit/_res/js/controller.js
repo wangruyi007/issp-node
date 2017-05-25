@@ -1,4 +1,4 @@
-var app = angular.module('proWeekEdit', ['toastr']);
+var app = angular.module('proWeekEdit', ['toastr','ipCookie']);
 app.controller('proWeekEditCtrl', function($scope,$state,$stateParams,toastr,proWeekSer,ipCookie,$location){
     var getId = {id:$stateParams.id};
     proWeekSer.getProWeek(getId).then(function(response){

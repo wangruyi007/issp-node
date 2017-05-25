@@ -1,4 +1,4 @@
-var app = angular.module('costAdd', ['toastr']);
+var app = angular.module('costAdd', ['toastr','ipCookie']);
 app.controller('costAddCtrl', function ($scope, costSer,$state, toastr,ipCookie,$location) {
     costSer.allCostProjects().then(function(response){
         if(response.data.code == 0){

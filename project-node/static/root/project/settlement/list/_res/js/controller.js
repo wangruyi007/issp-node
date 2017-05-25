@@ -1,6 +1,3 @@
-/**
- * Created by ike on 2017/4/13.
- */
 var app = angular.module('settlementList', ['ng-pagination','toastr']);
 app.controller('settlementListCtrl',function($scope,settlementSer,toastr) {
    //选择

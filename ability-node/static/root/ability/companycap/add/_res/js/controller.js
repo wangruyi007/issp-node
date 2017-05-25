@@ -1,9 +1,5 @@
-/**
- * Created by ike on 2017/4/17.
- */
-var app = angular.module('companyAdd', ['toastr']);
+var app = angular.module('companyAdd', ['toastr','ipCookie']);
 app.controller('companyAddCtrl', function($scope, companycapSer,$state,toastr,ipCookie,$location){
-    //添加公司能力
     $scope.companyAddFun = function(){
         var vm = $scope;
         var data = {

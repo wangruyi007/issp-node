@@ -1,4 +1,4 @@
-var app = angular.module('gradeAdd', ['toastr']);
+var app = angular.module('gradeAdd', ['toastr','ipCookie']);
 app.controller('gradeAddCtrl', function($scope,$state,toastr,gradeSer,ipCookie,$location){
     $scope.gradeAddFun = function(){
         gradeSer.addGrade($scope.add).then(function(response){

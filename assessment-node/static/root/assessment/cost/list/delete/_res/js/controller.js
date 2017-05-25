@@ -1,4 +1,4 @@
-var app = angular.module('costDelete', ['toastr']);
+var app = angular.module('costDelete', ['toastr','ipCookie']);
 app.controller('costDeleteCtrl',function($scope,costSer,toastr,$stateParams,$state,ipCookie,$location){
     //删除
     $scope.delYes = function(){

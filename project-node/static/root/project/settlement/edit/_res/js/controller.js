@@ -1,7 +1,4 @@
-/**
- * Created by ike on 2017/4/18.
- */
-var app = angular.module('settlementEdit', ['toastr']);
+var app = angular.module('settlementEdit', ['toastr','ipCookie']);
 app.controller('settlementEditCtrl', function($scope, settlementSer,$state,toastr,$stateParams,ipCookie,$location){
     var settlementId = {id : $stateParams.id};
     //获取值

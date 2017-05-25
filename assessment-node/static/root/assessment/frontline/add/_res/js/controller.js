@@ -1,4 +1,4 @@
-var app = angular.module('frontlineAdd', ['toastr']);
+var app = angular.module('frontlineAdd', ['toastr','ipCookie']);
 app.controller('frontlineAddCtrl', function ($scope, frontlineSer, $state, toastr,ipCookie,$location) {
     frontlineSer.allFrontLineProjects().then(function(response){
         if(response.data.code == 0){

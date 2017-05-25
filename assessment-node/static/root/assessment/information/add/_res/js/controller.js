@@ -1,4 +1,4 @@
-var app = angular.module('informationAdd', ['toastr']);
+var app = angular.module('informationAdd', ['toastr','ipCookie']);
 app.controller('informationAddCtrl', function ($scope, informationSer, $state, toastr,ipCookie,$location) {
     informationSer.allInformationProjects().then(function(response){
         if(response.data.code == 0){

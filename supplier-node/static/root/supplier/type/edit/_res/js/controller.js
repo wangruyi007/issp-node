@@ -1,4 +1,4 @@
-var app = angular.module('typeEdit', ['toastr']);
+var app = angular.module('typeEdit', ['toastr','ipCookie']);
 app.controller('typeEditCtrl', function($scope, typeSer,$stateParams,$state,toastr,ipCookie,$location){
     var editData ={id: $stateParams.id};
 

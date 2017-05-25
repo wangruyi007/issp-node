@@ -1,7 +1,4 @@
-/**
- * Created by ike on 2017/4/17.
- */
-var app = angular.module('auditDelete', ['toastr']);
+var app = angular.module('auditDelete', ['toastr','ipCookie']);
 app.controller('auditDeleteCtrl',function($scope,auditSer,toastr,$stateParams,$state,ipCookie,$location){
     //删除
     $scope.delYes = function(){

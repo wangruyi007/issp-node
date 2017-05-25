@@ -1,4 +1,4 @@
-var app = angular.module('costAdd', ['toastr']);
+var app = angular.module('costAdd', ['toastr','ipCookie']);
 app.controller('costAddCtrl', function($scope,$state,toastr,costSer,ipCookie,$location){
     costSer.allGrade().then(function(response){
         if(response.data.code == 0){

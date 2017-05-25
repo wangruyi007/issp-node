@@ -1,4 +1,4 @@
-var app = angular.module('gradeEdit', ['toastr']);
+var app = angular.module('gradeEdit', ['toastr','ipCookie']);
 app.controller('gradeEditCtrl', function($scope,$state,$stateParams,toastr,gradeSer,ipCookie,$location){
 
     var getId = {id:$stateParams.id};

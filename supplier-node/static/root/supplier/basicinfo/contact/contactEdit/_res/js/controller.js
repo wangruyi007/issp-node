@@ -1,7 +1,4 @@
-/**
- * Created by ike on 2017/4/20.
- */
-var app = angular.module('contactEdit', ['toastr']);
+var app = angular.module('contactEdit', ['toastr','ipCookie']);
 app.controller('contactEditCtrl', function($scope, basicinfoSer,$state,toastr,$stateParams,ipCookie,$location){
     var contId = {id : $stateParams.suId};
     //获取值

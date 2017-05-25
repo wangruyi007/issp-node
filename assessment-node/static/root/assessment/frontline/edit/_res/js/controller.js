@@ -1,4 +1,4 @@
-var app = angular.module('frontlineEdit', ['toastr']);
+var app = angular.module('frontlineEdit', ['toastr','ipCookie']);
 app.controller('frontlineEditCtrl', function($scope, frontlineSer,$stateParams,$state,toastr,ipCookie,$location){
     frontlineSer.allFrontLineProjects().then(function(response){
         if(response.data.code == 0){

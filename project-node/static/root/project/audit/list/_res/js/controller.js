@@ -1,6 +1,3 @@
-/**
- * Created by ike on 2017/4/13.
- */
 var app = angular.module('auditList', ['ng-pagination','toastr']);
 app.controller('auditListCtrl',function($scope,auditSer,toastr) {
    //选择

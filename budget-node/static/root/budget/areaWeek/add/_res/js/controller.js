@@ -1,4 +1,4 @@
-var app = angular.module('areaWeekAdd', ['toastr']);
+var app = angular.module('areaWeekAdd', ['toastr','ipCookie']);
 app.controller('areaWeekAddCtrl', function($scope,$state,toastr,areaWeekSer,ipCookie,$location){
     $scope.areaAddFun = function(){
         areaWeekSer.addAreaWeek($scope.add).then(function(response){

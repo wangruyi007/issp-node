@@ -1,4 +1,4 @@
-var app = angular.module('chargeAdd', ['toastr']);
+var app = angular.module('chargeAdd', ['toastr','ipCookie']);
 app.controller('chargeAddCtrl', function ($scope, chargeSer, $state, toastr,ipCookie,$location) {
     chargeSer.allChargeProjects().then(function(response){
         if(response.data.code == 0){
