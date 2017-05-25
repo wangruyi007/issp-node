@@ -1099,12 +1099,14 @@ module.exports = function(){
     };
     //汇总
     this.resultSummary = function(argvs){
-        console.log(argvs)
         var options = {
             method : 'GET',
             timeout : 3000,
             uri : config()['rurl'] + '/collect/v1/total?project='+encodeURIComponent(argvs.proData)+'&area='+encodeURIComponent(argvs.proArea),
-            form:argvs
+            form:argvs,
+            headers : {
+                userToken:argvs.token
+            }
         };
         return request(options);
     };
@@ -1113,7 +1115,7 @@ module.exports = function(){
         var options = {
             method : 'POST',
             timeout : 3000,
-            uri : config()['rurl'] + `/v1/sign-out/${argvs.token}`,
+            uri : config()['user'] + `/v1/sign-out/${argvs.token}`,
             form:argvs
         };
         return request(options);

@@ -1,4 +1,4 @@
-var app = angular.module('proWeekAdd', ['toastr']);
+var app = angular.module('proWeekAdd', ['toastr','ipCookie']);
 app.controller('proWeekAddCtrl', function($scope,$state,toastr,proWeekSer,ipCookie,$location){
     $scope.proAddFun = function(){
         proWeekSer.addProWeek($scope.add).then(function(response){

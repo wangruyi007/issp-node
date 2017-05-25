@@ -1,4 +1,4 @@
-var app = angular.module('proWeekDelete', ['toastr']);
+var app = angular.module('proWeekDelete', ['toastr','ipCookie']);
 app.controller('proWeekDeleteCtrl',function($scope,toastr,$stateParams,$state,proWeekSer,ipCookie,$location){
     //删除
     $scope.delYes = function(){

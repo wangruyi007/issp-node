@@ -81,7 +81,7 @@ module.exports = function(){
                 $self.body=error.error;
                 console.error(error.error);
             }));
-    }).get('/summaryBasicInfo/summary', function*(){//
+    }).get('/summaryBasicInfo/summary', function*(){
         var $self = this;
         var summaryData = $self.request.query.areas;
         yield (server().basicInfoSummary(summaryData)

@@ -1,7 +1,4 @@
-/**
- * Created by ike on 2017/4/17.
- */
-var app = angular.module('contactDelete', ['toastr']);
+var app = angular.module('contactDelete', ['toastr','ipCookie']);
 app.controller('contactDeleteCtrl',function($scope,basicinfoSer,toastr,$stateParams,$state,ipCookie,$location){
     //删除
     $scope.delYes = function(){

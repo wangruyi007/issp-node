@@ -1,4 +1,5 @@
 var app = angular.module('app', ['ui.router', 'oc.lazyLoad','angular-loading-bar','toastr']);
+
 app.controller('root', function ($rootScope, $urlRouter, $ocLazyLoad, $location) {
     $rootScope.$on('$locationChangeSuccess', function () {//url地扯改变或者刷新
         if (!$location.path()) {

@@ -1,9 +1,5 @@
-/**
- * Created by ike on 2017/4/17.
- */
-var app = angular.module('emailAdd', ['toastr']);
+var app = angular.module('emailAdd', ['toastr','ipCookie']);
 app.controller('emailAddCtrl', function($scope, emailSer,$state,toastr,ipCookie,$location){
-
     $scope.myFunc = function() {
         var type={type:$scope.type}
         emailSer.listNameType(type).then(function(response){
@@ -14,8 +10,6 @@ app.controller('emailAddCtrl', function($scope, emailSer,$state,toastr,ipCookie,
             }
         });
     };
-
-
     //添加个人能力
     $scope.emailAddFun = function(){
         var vm = $scope;

@@ -1,7 +1,4 @@
-/**
- * Created by ike on 2017/4/17.
- */
-var app = angular.module('qualiDelete', ['toastr']);
+var app = angular.module('qualiDelete', ['toastr','ipCookie']);
 app.controller('qualiDeleteCtrl',function($scope,basicinfoSer,toastr,$stateParams,$state,ipCookie,$location){
     //删除
     $scope.delYes = function(){

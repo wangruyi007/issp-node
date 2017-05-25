@@ -1,4 +1,4 @@
-var app = angular.module('labourEdit', ['toastr']);
+var app = angular.module('labourEdit', ['toastr','ipCookie']);
 app.controller('labourEditCtrl', function($scope, labourSer,$stateParams,$state,toastr,ipCookie,$location){
     labourSer.allLabourProjects().then(function(response){
         if(response.data.code == 0){

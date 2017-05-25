@@ -1,4 +1,4 @@
-var app = angular.module('otherEdit', ['toastr']);
+var app = angular.module('otherEdit', ['toastr','ipCookie']);
 app.controller('otherEditCtrl', function($scope, otherSer,$stateParams,$state,toastr,ipCookie,$location){
     otherSer.allOtherProjects().then(function(response){
         if(response.data.code == 0){

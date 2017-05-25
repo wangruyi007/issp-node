@@ -1,7 +1,4 @@
-/**
- * Created by ike on 2017/4/20.
- */
-var app = angular.module('cooperationPEdit', ['toastr']);
+var app = angular.module('cooperationPEdit', ['toastr','ipCookie']);
 app.controller('cooperationPEditCtrl', function($scope, cooperationSer,$state,toastr,$stateParams,ipCookie,$location){
     var selfcapId = {id : $stateParams.id};
     //获取值

@@ -1,7 +1,4 @@
-/**
- * Created by ike on 2017/4/17.
- */
-var app = angular.module('typeDelete', ['toastr']);
+var app = angular.module('typeDelete', ['toastr','ipCookie']);
 app.controller('typeDeleteCtrl',function($scope,typeSer,toastr,$stateParams,$state,ipCookie,$location){
     //删除
     $scope.delYes = function(){

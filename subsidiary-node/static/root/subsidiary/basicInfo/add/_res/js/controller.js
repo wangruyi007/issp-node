@@ -1,4 +1,4 @@
-var app = angular.module('basicInfoAdd', ['toastr']);
+var app = angular.module('basicInfoAdd', ['toastr','ipCookie']);
 app.controller('basicInfoAddCtrl', function ($scope, basicInfoSer, $state, toastr,ipCookie,$location) {
 
     //添加

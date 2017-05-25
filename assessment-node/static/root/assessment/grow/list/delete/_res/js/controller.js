@@ -1,4 +1,4 @@
-var app = angular.module('growDelete', ['toastr']);
+var app = angular.module('growDelete', ['toastr','ipCookie']);
 app.controller('growDeleteCtrl',function($scope,growSer,toastr,$stateParams,$state,ipCookie,$location){
     //删除
     $scope.delYes = function(){

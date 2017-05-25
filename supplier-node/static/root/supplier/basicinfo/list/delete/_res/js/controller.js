@@ -1,4 +1,4 @@
-var app = angular.module('basicinfoDelete', ['toastr']);
+var app = angular.module('basicinfoDelete', ['toastr','ipCookie']);
 app.controller('basicinfoDeleteCtrl',function($scope,basicinfoSer,toastr,$stateParams,$state,ipCookie,$location){
     //删除
     $scope.delYes = function(){

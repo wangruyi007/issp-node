@@ -1,4 +1,4 @@
-var app = angular.module('rewardAdd', ['toastr']);
+var app = angular.module('rewardAdd', ['toastr','ipCookie']);
 app.controller('rewardAddCtrl', function($scope, basicinfoSer,$state,toastr,$stateParams,ipCookie,$location){
     var rewardId = {id : $stateParams.id};
     //获取值

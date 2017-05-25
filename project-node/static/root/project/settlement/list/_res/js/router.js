@@ -1,6 +1,3 @@
-/**
- * Created by ike on 2017/4/13.
- */
 var app = angular.module('settlementList', []);
 app.config(function($provide, $stateProvider){
     $stateProvider.state("root.project.settlement.list",{

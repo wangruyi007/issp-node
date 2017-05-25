@@ -1,4 +1,4 @@
-var app = angular.module('resultCongeal', ['toastr']);
+var app = angular.module('resultCongeal', ['toastr','ipCookie']);
 app.controller('resultCongealCtrl',function($scope,resultSer,toastr,$stateParams,$state,ipCookie,$location){
     //冻结
     $scope.congealYes = function(){

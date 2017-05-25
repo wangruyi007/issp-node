@@ -1,6 +1,3 @@
-/**
- * Created by ike on 2017/4/17.
- */
 var app = angular.module('emailSummary', ['toastr','angularjs-dropdown-multiselect']);
 app.controller('emailSummaryCtrl', function($scope, emailSer,toastr){
     $scope.words = [];
@@ -9,8 +6,6 @@ app.controller('emailSummaryCtrl', function($scope, emailSer,toastr){
     emailSer.getCompanyNames().then(function(response){
         if(response.data.code == 0){
             $scope.workOptions = response.data.data;
-        } else if(response.data.code == 403){
-            toastr.error("请登录用户", '温馨提示');
         }
     });
     $scope.getSummary ={onSelectionChanged(){
