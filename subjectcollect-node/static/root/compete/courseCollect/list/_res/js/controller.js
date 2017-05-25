@@ -44,4 +44,13 @@ app.controller('courseCollectListCtrl',function($scope,courseCollectSer,toastr) 
             }
         })
     });
+	//查询更多
+	$scope.moreList = function(event){
+        angular.forEach($scope.registeredLists,function(obj){
+            if(event.id!==obj.id){
+                obj._moreList = false
+            }
+        });
+        event._moreList = !event._moreList;
+    };
 });
