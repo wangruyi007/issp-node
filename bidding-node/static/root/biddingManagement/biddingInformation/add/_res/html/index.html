@@ -1,0 +1,137 @@
+<div class="content-input add" verify-scope="tipStyle: 1">
+    <div class="input-list">
+        <section>
+            <ul>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>网站名称</em></label>
+                    <input type="text" ng-verify="{}" ng-model="information.webName">
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>网址</em></label>
+                    <input type="text" ng-verify="{}" ng-model="information.url">
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>招标编号</em></label>
+                    <input type="text" ng-verify="{}" ng-model="information.tenderNumber">
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>项目名称</em></label>
+                    <input type="text" ng-verify="{}" ng-model="information.projectName">
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>省份</em></label>
+                    <input type="text" ng-verify="{}" ng-model="information.provinces">
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>地市</em></label>
+                    <input type="text" ng-verify="{}" ng-model="information.cities">
+                </li>
+                <li class="required">
+                    <label><em>招投标类型</em></label>
+                    <select class="sele" ng-model="information.biddingType" ng-init="information.biddingType='INVITEDTENDERING'">
+                        <option value="INVITEDTENDERING">邀请招标</option>
+                        <option value="OPENTENDERING">公开招标</option>
+                    </select>
+                </li>
+                <li class="required">
+                    <label><em>业务类型</em></label>
+                    <select class="sele" ng-model="information.businessType" ng-init="information.businessType='SOFTWAREDEVELOPMENT'">
+                        <option value="SOFTWAREDEVELOPMENT">软件开发</option>
+                        <option value="INTELLIGENTSYSTEMINTEGRATION">智能系统集成</option>
+                        <option value="PLANNINGMARKETINGSOLUTIONS">策划与营销方案</option>
+                    </select>
+                </li>
+                <li class="required">
+                    <label><em>业务方向科目</em></label>
+                    <input type="text" ng-model="information.businessDirectionSubject">
+                </li>
+                <li class="required">
+                    <label><em>标书模块</em></label>
+                    <input type="text" ng-model="information.tenderModule">
+                </li>
+                <li class="required">
+                    <label><em>报名时间</em></label>
+                    <input type="text" onClick="laydate({istime: true, format: 'YYYY-MM-DD hh:mm:ss'})" class="add_image registrationTime" ng-model="information.registrationTime">
+                </li>
+                <li class="required">
+                    <label><em>投标时间</em></label>
+                    <input type="text" onClick="laydate({istime: true, format: 'YYYY-MM-DD hh:mm:ss'})" class="add_image biddingTime" ng-model="information.biddingTime">
+                </li>
+                <li class="required">
+                    <label><em>投标资格要求</em></label>
+                    <input type="text" ng-model="information.biddingQualifications">
+                </li>
+                <li class="required">
+                    <label><em>账号</em></label>
+                    <input type="text" ng-model="information.account">
+                </li>
+                <li class="required">
+                    <label><em>密码</em></label>
+                    <input type="text" ng-model="information.password">
+                </li>
+                <li class="required">
+                    <label><em>注册人</em></label>
+                    <input type="text" ng-model="information.registrant">
+                </li>
+                <li class="required">
+                    <label><em>注册信息</em></label>
+                    <input type="text" ng-model="information.registrationInfo">
+                </li>
+                <li class="required">
+                    <label><em>状态</em></label>
+                    <select class="sele" ng-model="information.status" ng-init="information.status='THAW'">
+                        <option value="THAW">解冻</option>
+                        <option value="CONGEAL">冻结</option>
+                        <option value="DELETE">删除</option>
+                        <option value="NOACTIVE">未激活</option>
+                        <option value="UNREVIEW">未审核</option>
+                    </select>
+                </li>
+                <li class="required">
+                    <label><em>购买标书时间</em></label>
+                    <input type="text" onClick="laydate({istime: true, format: 'YYYY-MM-DD hh:mm:ss'})" class="add_image buyTenderTime" ng-model="information.buyTenderTime">
+                </li>
+                <li class="required">
+                    <label><em>价格</em></label>
+                    <input type="text" ng-model="information.price">
+                </li>
+                <li class="required">
+                    <label><em>购买标书要求</em></label>
+                    <input type="text" ng-model="information.buyTenderRequirements">
+                </li>
+                <li class="required">
+                    <label><em>交保证金时间</em></label>
+                    <input type="text" onClick="laydate({istime: true, format: 'YYYY-MM-DD hh:mm:ss'})" class="add_image marginTime" ng-model="information.marginTime">
+                </li>
+                <li class="required">
+                    <label><em>交保证金方式</em></label>
+                    <select class="sele" ng-model="information.marginMethod" ng-init="information.marginMethod='现金支付'">
+                        <option value="现金支付">现金支付</option>
+                        <option value="银行汇兑">银行汇兑</option>
+                    </select>
+                </li>
+                <li class="required">
+                    <label><em>保证金退回时间</em></label>
+                    <input type="text" onClick="laydate({istime: true, format: 'YYYY-MM-DD hh:mm:ss'})" class="add_image backTimeDeposit" ng-model="information.backTimeDeposit">
+                </li>
+                <li>
+                    <label><em>备注</em></label>
+                    <input type="text" ng-model="information.remark">
+                </li>
+            </ul>
+        </section>
+    </div>
+    <p class="dataBottom">
+        <span class="imPrompt"><i><img src="/images/prompt.png"></i>带有<i><img src="/images/mandatory.png"></i>的为必填项</span>
+        <button ng-verify="{control:'myform'}" ng-click="infoAddFun()">提交</button>
+    </p>
+</div>
+
+<script type="text/javascript">
+
+    !function(){
+        laydate.skin('dahong');//切换皮肤，请查看skins下面皮肤库
+    }();
+
+
+</script>

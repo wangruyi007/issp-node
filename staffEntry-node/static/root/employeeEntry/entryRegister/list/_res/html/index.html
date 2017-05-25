@@ -1,0 +1,91 @@
+<div class="content-tab list">
+    <ul class="table com-table">
+        <li class="list-head">
+            <span></span>
+            <span class="data-id">id</span>
+            <span>员工编号</span>
+            <span>姓名</span>
+            <span>性别</span>
+            <span>出生年月日</span>
+            <span>民族</span>
+            <span>婚姻状况</span>
+            <span>政治面貌</span>
+            <span>籍贯</span>
+            <span>身高</span>
+            <span></span>
+        </li>
+        <li class="list-all" ng-repeat="list in applylendLists.data">
+            <section style="display: {{list._delete?'none':'block'}};">
+                <div  class="list-text {{list._selectList?'selectList':''}}" ng-click="selectList(list)">
+                    <p>{{$index+1}}</p>
+                    <p class="data-id"></p>
+                    <p>{{::list.empNumber}}</p>
+                    <p>{{::list.username}}</p>
+                    <p>{{::list.gender}}</p>
+                    <p>{{::list.birthday}}</p>
+                    <p>{{::list.nation}}</p>
+                    <p>{{::list.marriage}}</p>
+                    <p>{{::list.politicsStatus}}</p>
+                    <p>{{::list.nativePlace}}</p>
+                    <p>{{::list.stature}}</p>
+                    <p>
+                        <a href="javascript:void(0)" class="more"  ng-click="moreList(list)">更多详细</a>
+                    </p>
+                </div>
+                <div class="can">
+                    <ul class="can-see" style="display: {{list._moreList?'block':'none'}};">
+                        <li>
+                            <p class="see-parent">
+                                <span>专业</span>
+                                <span>学历</span>
+                                <span>毕业学校</span>
+                                <span>毕业时间</span>
+                                <span>健康状况</span>
+                                <span>QQ号</span>
+                                <span>手机号</span>
+                                <span>个人邮箱账号</span>
+                            </p>
+                            <p class="see-children">
+                                <span>{{::list.profession}}</span>
+                                <span>{{::list.education}}</span>
+                                <span>{{::list.schoolTag}}</span>
+                                <span>{{::list.graduationDate}}</span>
+                                <span>{{::list.healthStatus}}</span>
+                                <span>{{::list.qq}}</span>
+                                <span>{{::list.phone}}</span>
+                                <span>{{::list.email}}</span>
+                            </p>
+                        </li>
+                        <li>
+                            <p class="see-parent">
+                                <span>紧急情况联系人</span>
+                                <span>联系电话</span>
+                                <span>身份证号码</span>
+                                <span>户口地址</span>
+                                <span>目前住宿地址</span>
+                                <span>兴趣爱好</span>
+                            </p>
+                            <p class="see-children">
+                                <span>{{::list.emergencyContact}}</span>
+                                <span>{{::list.phoneNumber}}</span>
+                                <span>{{::list.idCard}}</span>
+                                <span>{{::list.registeredAddress}}</span>
+                                <span>{{::list.location}}</span>
+                                <span>{{::list.hobbies}}</span>
+                            </p>
+                        </li>
+                    </ul>
+                </div>
+            </section>
+        </li>
+     </ul>
+    <footer class="footer">
+        <pagination count="abili.itemsCount" take="abili.take" activate="abili.activatePage"></pagination>
+    </footer>
+</div>
+<div ui-view="modal"></div>
+<script type="text/javascript">
+    !function(){
+        laydate.skin('dahong');//切换皮肤，请查看skins下面皮肤库
+    }();
+</script>

@@ -21,7 +21,7 @@ module.exports = function(){
             }));
     }).get('/abilitycompanycap/count', function*(){
         var $self = this;
-        yield (server().countBaseInfo()
+        yield (server().countBaseInfos()
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
                 $self.body = responseText;
@@ -30,12 +30,11 @@ module.exports = function(){
                 $self.body=error.error;
                 console.error(error.error);
             }));
-        //添加公司能力
     }).post('/ability/addCompanyAbility/add', function*(){
-            var addData = this.request.body;
-            addData.userToken = this.cookies.get('token');
             var $self = this;
-            yield (server().companyAbilityAdd(addData)
+            var addData = this.request.body;
+            addData.token = this.cookies.get('token');
+                yield (server().companyAbilityAdd(addData)
                 .then((parsedBody) =>{
                     var responseText = JSON.parse(parsedBody);
                     $self.body = responseText;
@@ -46,8 +45,9 @@ module.exports = function(){
                 }));
         //删除
         }).post('/ability/deleteCompanyAbility/delete', function*(){
-        var delData = this.request.body;
         var $self = this;
+        var delData = this.request.body;
+        delData.token = this.cookies.get('token');
         yield (server().companyAbilityDelete(delData)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -60,7 +60,7 @@ module.exports = function(){
         //编辑
     }).post('/ability/editCompanyAbility/edit', function*(){
         var editData = this.request.body;
-        editData.userToken = this.cookies.get('token');
+        editData.token = this.cookies.get('token');
         var $self = this;
         yield (server().companyAbilityEdit(editData)
             .then((parsedBody) =>{
@@ -96,7 +96,32 @@ module.exports = function(){
                 $self.body=error.error;
                 console.error(error.error);
             }));
-    }).get('/ability/abilitySelfCap/listAbilitySelfCap', function*(){
+    }).post('/ability/searchPersonAbility', function*(){
+        var searchName = this.request.body;
+        var $self = this;
+        yield (server().personSeachByname(searchName)
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
+    }).get('/ability/searchCooperationAbility', function*(){
+        var searchName = this.request.query;
+        var $self = this;
+        yield (server().cooperationSeachByName(searchName)
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
+    })
+        .get('/ability/abilitySelfCap/listAbilitySelfCap', function*(){
         var $self = this;
         var page2 = this.request.query;
         yield (server().abilitySelfCapList(page2)
@@ -119,9 +144,45 @@ module.exports = function(){
                 $self.body=error.error;
                 console.error(error.error);
             }));
-        //添加公司能力
+    }).get('/countSelfCap2/count', function*(){
+        var $self = this;
+        var countData = this.request.query;
+        yield (server().countSelfCap2Info(countData)
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
+    }).get('/countBaseInfo2/count', function*(){
+        var $self = this;
+        var countData = this.request.query;
+        yield (server().countBaseInfo2Info(countData)
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
+    }).get('/countCooperation2/count', function*(){
+        var $self = this;
+        var countData = this.request.query;
+        yield (server().countCooperation2Info(countData)
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
     }).post('/ability/deleteAbilitySelf/delete', function*(){
         var delData = this.request.body;
+        delData.token = this.cookies.get('token');
         var $self = this;
         yield (server().deleteAbilitySelfDelete(delData)
             .then((parsedBody) =>{
@@ -135,7 +196,7 @@ module.exports = function(){
         //编辑
     }).post('/ability/addSelfCapAbility/add', function*(){
         var addData = this.request.body;
-        addData.userToken = this.cookies.get('token');
+        addData.token = this.cookies.get('token');
        var $self = this;
         yield (server().selfAbilityAdd(addData)
             .then((parsedBody) =>{
@@ -148,7 +209,7 @@ module.exports = function(){
             }));
     }).post('/ability/editSelfCapAbility/edit', function*(){
         var editData = this.request.body;
-        editData.userToken = this.cookies.get('token');
+        editData.token = this.cookies.get('token');
         var $self = this;
         yield (server().personAbilityEdit(editData)
             .then((parsedBody) =>{
@@ -212,6 +273,7 @@ module.exports = function(){
         //添加公司能力
     }).post('/ability/deleteCooperationSelf/delete', function*(){
         var delData = this.request.body;
+        delData.token = this.cookies.get('token');
         var $self = this;
         yield (server().CooperationSelfDelete(delData)
             .then((parsedBody) =>{
@@ -224,7 +286,7 @@ module.exports = function(){
             }));
     }).post('/ability/addCooperationAbility/add', function*(){
         var addData = this.request.body;
-        addData.userToken = this.cookies.get('token');
+        addData.token = this.cookies.get('token');
         var $self = this;
         yield (server().cooperationAbilityAdd(addData)
             .then((parsedBody) =>{
@@ -238,7 +300,7 @@ module.exports = function(){
         //删除
     }).post('/ability/editCooperationAbility/edit', function*(){
         var editData = this.request.body;
-        editData.userToken = this.cookies.get('token');
+        editData.token = this.cookies.get('token');
         var $self = this;
         yield (server().cooperationAbilityEdit(editData)
             .then((parsedBody) =>{
@@ -263,7 +325,7 @@ module.exports = function(){
             }));
     }).post('/ability/editRelation/editRel', function*(){
         var editData = this.request.body;
-        editData.userToken = this.cookies.get('token');
+        editData.token = this.cookies.get('token');
         var $self = this;
         yield (server().RelationEdit(editData)
             .then((parsedBody) =>{
@@ -299,8 +361,9 @@ module.exports = function(){
                 console.error(error.error);
             }));
     }).post('/ability/congealEmail/congeal', function*(){//冻结
-        var congealData = this.request.body;
         var $self = this;
+        var congealData = this.request.body;
+        congealData.token = this.cookies.get('token');
         yield (server().EmailCongeal(congealData)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -312,6 +375,7 @@ module.exports = function(){
             }));
     }).post('/ability/thawEmail/thaw', function*(){//解冻
         var thawData = this.request.body;
+        thawData.token = this.cookies.get('token');
         var $self = this;
         yield (server().EmailThaw(thawData)
             .then((parsedBody) =>{
@@ -324,6 +388,7 @@ module.exports = function(){
             }));
     }).post('/ability/deleteEmail/delete', function*(){ //删除
         var delData = this.request.body;
+        delData.token = this.cookies.get('token');
         var $self = this;
         yield (server().emailDelete(delData)
             .then((parsedBody) =>{
@@ -336,7 +401,7 @@ module.exports = function(){
             }));
     }).post('/ability/addEmail/add', function*(){ //添加邮件
         var addData = this.request.body;
-        addData.userToken = '1254545676145641'
+        addData.token = this.cookies.get('token');
         var $self = this;
         yield (server().emailAdd(addData)
             .then((parsedBody) =>{
@@ -361,7 +426,7 @@ module.exports = function(){
             }));
     }).post('/ability/editEmail/edit', function*(){
         var editData = this.request.body;
-        editData.userToken = this.cookies.get('token');
+        editData.token = this.cookies.get('token');
         var $self = this;
         yield (server().emailEdit(editData)
             .then((parsedBody) =>{
@@ -455,6 +520,7 @@ module.exports = function(){
             }));
     }).post('/ability/addSocialSelf/add', function*(){
         var socialData = this.request.body;
+        socialData.token = this.cookies.get('token');
         var $self = this;
         yield (server().socialSelfAdd(socialData)
             .then((parsedBody) =>{
@@ -490,6 +556,7 @@ module.exports = function(){
             }));
     }).post('/ability/deleteSocialSelf/delete', function*(){
         var delData = this.request.body;
+        delData.token = this.cookies.get('token');
         var $self = this;
         yield (server().socialSelfDelete(delData)
             .then((parsedBody) =>{
@@ -502,7 +569,7 @@ module.exports = function(){
             }));
     }).post('/ability/editSocialSelf/socialEdit', function*(){
         var editSocial = this.request.body;
-        editSocial.userToken = this.cookies.get('token');
+        editSocial.token = this.cookies.get('token');
         var $self = this;
         yield (server().socialSelfEdit(editSocial)
             .then((parsedBody) =>{
@@ -517,6 +584,18 @@ module.exports = function(){
         var $self = this;
         var EditFiveId = $self.request.query;
         yield (server().socialEditById(EditFiveId)
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
+    }).get('/user/logout', function*(){
+        var $self = this;
+        var token = {token:$self.cookies.get('token')};
+        yield (server().logout(token)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
                 $self.body = responseText;

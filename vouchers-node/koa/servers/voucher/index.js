@@ -1,0 +1,508 @@
+var request = require('request-promise');
+var path = require('path');
+var config = require(path.resolve('plugins/read-config.js'));
+var form = require(path.resolve('plugins/form.js'));
+var urlEncode = require(path.resolve('plugins/urlEncode.js'));
+module.exports = function(){
+
+    //记账凭证生成设置列表
+    this.generateList = function(argvs){
+        var options = {
+            method : 'GET',
+            timeout : 3000,
+            uri : config()['rurl'] + `/vouchergenerate/v1/listVoucher?limit=10&page=${argvs.page}`
+        };
+        return request(options);
+    };
+    //获取所有一级科目
+    this.FirstSubject = function(){
+        var options = {
+            method : 'GET',
+            timeout : 3000,
+            uri : config()['rurl'] + '/vouchergenerate/v1/listFirstSubject'
+        };
+        return request(options);
+    };
+    //获取所有二级科目
+    this.SubByFirst = function(argvs){
+        var options = {
+            method : 'GET',
+            timeout : 3000,
+            uri : config()['rurl'] + `/vouchergenerate/v1/listSubByFirst?firstSub=${encodeURIComponent(argvs.firstSel)}`
+        };
+        return request(options);
+    };
+    //获取所有三级科目
+    this.TubByFirst = function(argvs){
+        var options = {
+            method : 'GET',
+            timeout : 3000,
+            uri : config()['rurl'] + `/vouchergenerate/v1/listTubByFirst?firstSub=${encodeURIComponent(argvs.firstSel)}&secondSub=${encodeURIComponent(argvs.secondSel)}`
+        };
+        return request(options);
+    };
+    // 添加记账凭证生成设置
+    this.generateAdd = function(argvs){
+        var options = {
+            method : 'POST',
+            timeout : 3000,
+            uri : config()['rurl'] + `/vouchergenerate/v1/add`,
+            form:argvs,
+            headers:{
+                userToken:argvs.userToken
+            }
+        };
+        return request(options);
+    };
+    // 编辑记账凭证生成设置
+    this.generateEdit = function(argvs){
+        var options = {
+            method : 'PUT',
+            timeout : 3000,
+            uri : config()['rurl'] + `/vouchergenerate/v1/edit`,
+            form:argvs,
+            headers:{
+                userToken:argvs.userToken
+            }
+        };
+        return request(options);
+    };
+    //获取ID记账凭证生成设置
+    this.findGenerateId = function(argvs){
+        var options = {
+            method : 'GET',
+            timeout : 3000,
+            uri : config()['rurl'] + `/vouchergenerate/v1/getOne/${argvs.id}`
+        };
+        return request(options);
+    };
+    //获取总条数记账凭证生成设置
+    this.getGenerateTotal = function(){
+        var options = {
+            method : 'GET',
+            timeout : 3000,
+            uri : config()['rurl'] + '/vouchergenerate/v1/count'
+        };
+        return request(options);
+    };
+    //删除记账凭证生成设置
+    this.generateDelete = function(argvs){
+        var options = {
+            method : 'DELETE',
+            timeout : 3000,
+            uri : config()['rurl'] + `/vouchergenerate/v1/delete/${argvs.id}`,
+            headers:{
+                userToken:argvs.userToken
+            }
+        };
+        return request(options);
+    };
+    //记账凭证审核列表
+    this.reviewList = function(argvs){
+        var options = {
+            method : 'GET',
+            timeout : 3000,
+            uri : config()['rurl'] + `/vouchergenerate/v1/listAudit?limit=10&page=${argvs.page}`
+        };
+        return request(options);
+    };
+    //获取总条数记账凭证生成设置
+    this.getReviewTotal = function(){
+        var options = {
+            method : 'GET',
+            timeout : 3000,
+            uri : config()['rurl'] + '/vouchergenerate/v1/countAudit'
+        };
+        return request(options);
+    };
+    // 编辑拆分
+    this.splitEdit = function(argvs){
+        var options = {
+            method : 'PATCH',
+            timeout : 3000,
+            uri : config()['rurl'] + `/vouchergenerate/v1/split`,
+            form:argvs,
+            headers:{
+                userToken:argvs.userToken
+            }
+        };
+        return request(options);
+    };
+    //审核记账凭证审核
+    this.reviewSplit = function(argvs){
+        var options = {
+            method : 'PATCH',
+            timeout : 3000,
+            uri : config()['rurl'] + `/vouchergenerate/v1/audit/${argvs.id}`,
+            headers:{
+                userToken:argvs.userToken
+            }
+        };
+        return request(options);
+    };
+    //已审核列表
+    this.auditList = function(argvs){
+        var options = {
+            method : 'GET',
+            timeout : 3000,
+            uri : config()['rurl'] + `/vouchergenerate/v1/listAudited?limit=10&page=${argvs.page}`
+        };
+        return request(options);
+    };
+    //获取已审核列表总条数
+    this.getAuditTotal = function(){
+        var options = {
+            method : 'GET',
+            timeout : 3000,
+            uri : config()['rurl'] + '/vouchergenerate/v1/countAudited'
+        };
+        return request(options);
+    };
+    // 过账
+    this.auditPosting = function(argvs){
+        var options = {
+            method : 'PATCH',
+            timeout : 3000,
+            uri : config()['rurl'] + `/vouchergenerate/v1/posting`,
+            form:argvs,
+            headers:{
+                userToken:argvs.userToken
+            }
+        };
+        return request(options);
+    };
+    //反审核
+    this.AuditAnti = function(argvs){
+        var options = {
+            method : 'PATCH',
+            timeout : 3000,
+            uri : config()['rurl'] + `/vouchergenerate/v1/antiAudit/${argvs.id}`,
+            headers:{
+                userToken:argvs.userToken
+            }
+        };
+        return request(options);
+    };
+    //已审核科目汇总
+    this.auditSubSummary = function(argvs){
+        var options = {
+            method : 'GET',
+            timeout : 3000,
+            uri : config()['rurl'] + '/vouchergenerate/v1/collectSub'+urlEncode(argvs,true),
+            headers:{
+                userToken:argvs.userToken
+            }
+        };
+
+        return request(options);
+    };
+    //已审核地区汇总
+    this.auditAreaSummary = function(argvs){
+        var options = {
+            method : 'GET',
+            timeout : 3000,
+            uri : config()['rurl'] + '/vouchergenerate/v1/collectArea'+urlEncode(argvs,true),
+            headers:{
+                userToken:argvs.userToken
+            }
+        };
+
+        return request(options);
+    };
+    //已审核项目组汇总
+    this.auditGroupSummary = function(argvs){
+        var options = {
+            method : 'GET',
+            timeout : 3000,
+            uri : config()['rurl'] + '/vouchergenerate/v1/collectGroup'+urlEncode(argvs,true),
+            headers:{
+                userToken:argvs.userToken
+            }
+        };
+        return request(options);
+    };
+    //已审核项目名称汇总
+    this.auditProjectSummary = function(argvs){
+        var options = {
+            method : 'GET',
+            timeout : 3000,
+            uri : config()['rurl'] + '/vouchergenerate/v1/collectPname'+urlEncode(argvs,true),
+            headers:{
+                userToken:argvs.userToken
+            }
+        };
+
+        return request(options);
+    };
+    //获取所有地区
+    this.getAllArea = function(){
+        var options = {
+            method : 'GET',
+            timeout : 3000,
+            uri : config()['rurl'] + '/vouchergenerate/v1/listArea'
+        };
+        return request(options);
+    };
+
+    //获取所有项目组
+    this.getAllGroup = function(){
+        var options = {
+            method : 'GET',
+            timeout : 3000,
+            uri : config()['rurl'] + '/vouchergenerate/v1/listGroup'
+        };
+        return request(options);
+    };
+    //获取所有项目名称
+    this.getAllProject = function(){
+        var options = {
+            method : 'GET',
+            timeout : 3000,
+            uri : config()['rurl'] + '/vouchergenerate/v1/listProject'
+        };
+        return request(options);
+    };
+    //已过账列表
+    this.postedList = function(argvs){
+        var options = {
+            method : 'GET',
+            timeout : 3000,
+            uri : config()['rurl'] + `/vouchergenerate/v1/listChecked?limit=10&page=${argvs.page}`
+        };
+        return request(options);
+    };
+    //获取已过账列表总条数
+    this.getPostedTotal = function(){
+        var options = {
+            method : 'GET',
+            timeout : 3000,
+            uri : config()['rurl'] + '/vouchergenerate/v1/countChecked'
+        };
+        return request(options);
+    };
+    // 结账
+    this.PostedBill = function(argvs){
+        var options = {
+            method : 'PATCH',
+            timeout : 3000,
+            uri : config()['rurl'] + `/vouchergenerate/v1/checkAccount`,
+            form:argvs,
+            headers:{
+                userToken:argvs.userToken
+            }
+        };
+        return request(options);
+    };
+    //反过账
+    this.PostedAnti = function(argvs){
+        var options = {
+            method : 'PATCH',
+            timeout : 3000,
+            uri : config()['rurl'] + `/vouchergenerate/v1/antiPosting/${argvs.id}`,
+            headers:{
+                userToken:argvs.userToken
+            }
+        };
+        return request(options);
+    };
+    //已过账科目汇总
+    this.postedSubSummary = function(argvs){
+        var options = {
+            method : 'GET',
+            timeout : 3000,
+            uri : config()['rurl'] + '/vouchergenerate/v1/ctTransSub'+urlEncode(argvs,true),
+            headers:{
+                userToken:argvs.userToken
+            }
+        };
+
+        return request(options);
+    };
+    //已过账地区汇总
+    this.postedAreaSummary = function(argvs){
+        var options = {
+            method : 'GET',
+            timeout : 3000,
+            uri : config()['rurl'] + '/vouchergenerate/v1/ctTransArea'+urlEncode(argvs,true),
+            headers:{
+                userToken:argvs.userToken
+            }
+        };
+
+        return request(options);
+    };
+    //已过账项目组汇总
+    this.postedGroupSummary = function(argvs){
+        var options = {
+            method : 'GET',
+            timeout : 3000,
+            uri : config()['rurl'] + '/vouchergenerate/v1/ctTransGroup'+urlEncode(argvs,true),
+            headers:{
+                userToken:argvs.userToken
+            }
+        };
+        return request(options);
+    };
+    //已过账项目名称汇总
+    this.postedProjectSummary = function(argvs){
+        var options = {
+            method : 'GET',
+            timeout : 3000,
+            uri : config()['rurl'] + '/vouchergenerate/v1/ctTransPname'+urlEncode(argvs,true),
+            headers:{
+                userToken:argvs.userToken
+            }
+        };
+
+        return request(options);
+    };
+    //结账记录列表
+    this.billRecordsList = function(argvs){
+        var options = {
+            method : 'GET',
+            timeout : 3000,
+            uri : config()['rurl'] + `/vouchergenerate/v1/listCkRecord?limit=10&page=${argvs.page}`
+        };
+        return request(options);
+    };
+    //获取结账记录列表总条数
+    this.getBillRecordsTotal = function(){
+        var options = {
+            method : 'GET',
+            timeout : 3000,
+            uri : config()['rurl'] + '/vouchergenerate/v1/countCkRecord'
+        };
+        return request(options);
+    };
+    //已结账科目汇总
+    this.billSubSummary = function(argvs){
+        var options = {
+            method : 'GET',
+            timeout : 3000,
+            uri : config()['rurl'] + '/vouchergenerate/v1/ctCkSub'+urlEncode(argvs,true),
+            headers:{
+                userToken:argvs.userToken
+            }
+        };
+
+        return request(options);
+    };
+    //已结账地区汇总
+    this.billAreaSummary = function(argvs){
+        var options = {
+            method : 'GET',
+            timeout : 3000,
+            uri : config()['rurl'] + '/vouchergenerate/v1/ctCkArea'+urlEncode(argvs,true),
+            headers:{
+                userToken:argvs.userToken
+            }
+        };
+
+        return request(options);
+    };
+    //已结账项目组汇总
+    this.billGroupSummary = function(argvs){
+        var options = {
+            method : 'GET',
+            timeout : 3000,
+            uri : config()['rurl'] + '/vouchergenerate/v1/ctCkGroup'+urlEncode(argvs,true),
+            headers:{
+                userToken:argvs.userToken
+            }
+        };
+        return request(options);
+    };
+    //已结账项目名称汇总
+    this.billProjectSummary = function(argvs){
+        var options = {
+            method : 'GET',
+            timeout : 3000,
+            uri : config()['rurl'] + '/vouchergenerate/v1/ctCkPname'+urlEncode(argvs,true),
+            headers:{
+                userToken:argvs.userToken
+            }
+        };
+
+        return request(options);
+    };
+    //记账凭证记录列表
+    this.VRList = function(argvs){
+        var options = {
+            method : 'GET',
+            timeout : 3000,
+            uri : config()['rurl'] + `/vouchergenerate/v1/listCkRecord?limit=10&page=${argvs.page}`
+        };
+        return request(options);
+    };
+    //获取记账凭证记录列表总条数
+    this.getVRTotal = function(){
+        var options = {
+            method : 'GET',
+            timeout : 3000,
+            uri : config()['rurl'] + '/vouchergenerate/v1/countCkRecord'
+        };
+        return request(options);
+    };
+    //记账凭证记录科目汇总
+    this.VRSubSummary = function(argvs){
+        var options = {
+            method : 'GET',
+            timeout : 3000,
+            uri : config()['rurl'] + '/vouchergenerate/v1/ctReSub'+urlEncode(argvs,true),
+            headers:{
+                userToken:argvs.userToken
+            }
+        };
+
+        return request(options);
+    };
+    //记账凭证记录地区汇总
+    this.VRAreaSummary = function(argvs){
+        var options = {
+            method : 'GET',
+            timeout : 3000,
+            uri : config()['rurl'] + '/vouchergenerate/v1/ctReArea'+urlEncode(argvs,true),
+            headers:{
+                userToken:argvs.userToken
+            }
+        };
+
+        return request(options);
+    };
+    //记账凭证记录项目组汇总
+    this.VRGroupSummary = function(argvs){
+        var options = {
+            method : 'GET',
+            timeout : 3000,
+            uri : config()['rurl'] + '/vouchergenerate/v1/ctReGroup'+urlEncode(argvs,true),
+            headers:{
+                userToken:argvs.userToken
+            }
+        };
+        return request(options);
+    };
+    //记账凭证记录项目名称汇总
+    this.VRProjectSummary = function(argvs){
+        var options = {
+            method : 'GET',
+            timeout : 3000,
+            uri : config()['rurl'] + '/vouchergenerate/v1/ctRePname'+urlEncode(argvs,true),
+            headers:{
+                userToken:argvs.userToken
+            }
+        };
+
+        return request(options);
+    };
+    //退出
+    this.logout = function(argvs){
+        var options = {
+            method : 'POST',
+            timeout : 3000,
+            uri : config()['user'] + `/v1/sign-out/${argvs.token}`,
+            form:argvs
+        };
+        return request(options);
+    };
+    return this;
+}

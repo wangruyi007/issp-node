@@ -1,0 +1,150 @@
+<div class="content-input add" verify-scope="tipStyle: 1">
+   <div class="add-table">
+       <p style="text-align: center;color: red">员工入职表</p>
+        <ul class="colspan">
+            <li class="span-8">
+                <span><i><img src="/images/mandatory.png"></i>姓名</span>
+                <span><input type="text" ng-model="data.username" ng-model="data.username"></span>
+                <span><i><img src="/images/mandatory.png"></i>性别</span>
+                <span>
+                    <select ng-model="data.gender">
+                        <option value="0">男</option>
+                        <option value="1">女</option>
+                    </select>
+                </span>
+                <span><i><img src="/images/mandatory.png"></i>出生年月日</span>
+                <span><input type="text" onClick="laydate({istime: true, format: 'YYYY-MM-DD'})" ng-model="data.birthday" class="time birthday"></span>
+                <span><i><img src="/images/mandatory.png"></i>民族</span>
+                <span><input type="text" ng-model="data.nation"></span>
+            </li>
+            <li class="span-8">
+                <span><i><img src="/images/mandatory.png"></i>婚姻状况</span>
+                <span><input type="text" ng-model="data.marriage"></span>
+                <span><i><img src="/images/mandatory.png"></i>政治面貌</span>
+                <span><input type="text" ng-model="data.politicsStatus"></span>
+                <span><i><img src="/images/mandatory.png"></i>籍贯</span>
+                <span><input type="text" ng-model="data.nativePlace"></span>
+                <span><i><img src="/images/mandatory.png"></i>身高</span>
+                <span><input type="text" ng-model="data.stature"></span>
+            </li>
+            <li class="span-8">
+                <span><i><img src="/images/mandatory.png"></i>专业</span>
+                <span><input type="text" ng-model="data.profession"></span>
+                <span><i><img src="/images/mandatory.png"></i>学历</span>
+                <span><input type="text" ng-model="data.education"></span>
+                <span><i><img src="/images/mandatory.png"></i>毕业学校</span>
+                <span><input type="text" ng-model="data.schoolTag"></span>
+                <span><i><img src="/images/mandatory.png"></i>毕业时间</span>
+                <span><input type="text" onClick="laydate({istime: true, format: 'YYYY-MM-DD'})" ng-model="data.graduationDate" class="time graduationDate"></span>
+            </li>
+            <li class="span-8">
+                <span><i><img src="/images/mandatory.png"></i>健康状况</span>
+                <span><input type="text" ng-model="data.healthStatus"></span>
+                <span><i><img src="/images/mandatory.png"></i>QQ号</span>
+                <span><input type="text" ng-model="data.qq"></span>
+                <span><i><img src="/images/mandatory.png"></i>手机号</span>
+                <span><input type="text" ng-model="data.phone"></span>
+                <span><i><img src="/images/mandatory.png"></i>个人邮箱号码</span>
+                <span><input type="text" ng-model="data.email"></span>
+            </li>
+            <li class="span-8">
+                <span><i><img src="/images/mandatory.png"></i>紧急情况联系人</span>
+                <span><input type="text" ng-model="data.emergencyContact"></span>
+                <span><i><img src="/images/mandatory.png"></i>联系电话</span>
+                <span><input type="text" ng-model="data.phoneNumber"></span>
+                <span><i><img src="/images/mandatory.png"></i>身份证号码</span>
+                <span class="colspan-3"><input type="text" ng-model="data.idCard"></span>
+            </li>
+            <li class="span-13">
+                <span><i><img src="/images/mandatory.png"></i>户口地址</span>
+                <span><input type="text" ng-model="data.registeredAddress"></span>
+                <span><i><img src="/images/mandatory.png"></i>目前住宿地址</span>
+                <span><input type="text" ng-model="data.location"></span>
+            </li>
+            <li class="span-13">
+                <span><i><img src="/images/mandatory.png"></i>个人兴趣爱好</span>
+                <span><input type="text" ng-model="data.hobbies"></span>
+                <span><i><img src="/images/mandatory.png"></i>员工编号</span>
+                <span><input type="text" ng-model="data.empNumber"></span>
+            </li>
+            <li class="rowspan">
+                <span class="table-theme">家庭成员</span>
+                <ul>
+                    <li class="body-theme">
+                        <span>称谓</span>
+                        <span>姓名</span>
+                        <span>年龄</span>
+                        <span class="two">单位</span>
+                        <span>职务</span>
+                        <span>联系方式</span>
+                    </li>
+                    <li class="body-ct" ng-repeat="list in homes">
+                        <span><input type="text" ng-model="data.titles[$index]"></span>
+                        <span><input type="text" ng-model="data.names[$index]"></span>
+                        <span><input type="number" ng-model="data.ages[$index]"></span>
+                        <span class="two"><input type="text" ng-model="data.units[$index]"></span>
+                        <span><input type="text" ng-model="data.positions[$index]"></span>
+                        <span><input type="text" ng-model="data.phones[$index]"></span>
+                    </li>
+                </ul>
+            </li>
+            <li class="rowspan">
+                <span class="table-theme">学习经历</span>
+                <ul>
+                    <li class="body-theme">
+                        <span class="two">起止年月日</span>
+                        <span class="two">就读学校</span>
+                        <span class="three">毕业证书(学历)</span>
+                    </li>
+                    <li class="body-ct" ng-repeat="list in studies">
+                        <span><input type="text" onClick="laydate({istime: true, format: 'YYYY-MM-DD'})" class="time {{ list.a }}" ng-model="data.studyStartTimes[$index]"></span>
+                        <span><input type="text" onClick="laydate({istime: true, format: 'YYYY-MM-DD'})" class="time {{ list.b }}" ng-model="data.studyEndTimes[$index]"></span>
+                        <span class="two"><input type="text" ng-model="data.schools[$index]"></span>
+                        <span class="three"><input type="text" ng-model="data.certificates[$index]"></span>
+                    </li>
+                </ul>
+            </li>
+            <li class="rowspan">
+                <span class="table-theme">工作经历</span>
+                <ul>
+                    <li class="body-theme">
+                        <span class="two">起止年月日</span>
+                        <span class="two">公司名称</span>
+                        <span class="three">工作描述</span>
+                    </li>
+                    <li class="body-ct" ng-repeat="list in works">
+                        <span><input type="text" onClick="laydate({istime: true, format: 'YYYY-MM-DD'})" class="time {{ list.a }}" ng-model="data.workStartTimes[$index]"></span>
+                        <span><input type="text" onClick="laydate({istime: true, format: 'YYYY-MM-DD'})" class="time {{ list.b }}"ng-model="data.workEndTimes[$index]"></span>
+                        <span class="two"><input type="text" ng-model="data.firms[$index]"></span>
+                        <span class="three"><input type="text" ng-model="data.jobDescriptions
+[$index]"></span>
+                    </li>
+                </ul>
+            </li>
+            <li class="rowspan">
+                <span class="table-theme">证书情况</span>
+                <ul>
+                    <li class="body-theme">
+                        <span class="four">证书名称</span>
+                        <span class="three">获得证书时间</span>
+                    </li>
+                    <li class="body-ct" ng-repeat="list in certificates">
+                        <span class="four"><input type="text" ng-model="data.nameses[$index]"></span>
+                        <span class="three"><input type="text" onClick="laydate({istime: true, format: 'YYYY-MM-DD'})" class="time {{ list.a }}" ng-model="data.obtainTimes[$index]"></span>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+    <p class="dataBottom">
+        <span class="imPrompt"><i><img src="/images/prompt.png"></i>带有<i><img src="/images/mandatory.png"></i>的为必填项</span>
+        <button ng-verify="{control:'myform'}" ng-click="EditFun()">提交</button>
+    </p>
+</div>
+
+<script type="text/javascript">
+    !function () {
+        laydate.skin('dahong');//切换皮肤，请查看skins下面皮肤库
+    } ();
+
+</script>

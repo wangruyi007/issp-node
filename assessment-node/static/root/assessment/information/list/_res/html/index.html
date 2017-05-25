@@ -1,0 +1,59 @@
+<div class="content-tab list" style="margin-top: -70px;">
+    <ul class="table table-top">
+        <li class="list-head">
+            <span></span>
+            <span>地区</span>
+            <span>项目</span>
+            <span>工期开始时间</span>
+            <span>工期结束时间</span>
+            <span>渠道</span>
+            <span>客户保持率</span>
+            <span>客户满意度</span>
+            <span></span>
+        </li>
+        <li class="list-all" ng-repeat="lists in informationLists" style="display: {{lists._delete?'none':'block'}};">
+            <section>
+                <div class="list-text {{lists._selectList?'selectList':''}}" ng-click="selectList(lists)">
+                    <p>{{$index+1}}</p>
+                    <p>{{lists.area}}</p>
+                    <p>{{lists.project}}</p>
+                    <p>{{lists.startTime}}</p>
+                    <p>{{lists.endTime}}</p>
+                    <p>{{lists.channelType|cover}}</p>
+                    <p>{{lists.customerKeepRate}}</p>
+                    <p>{{lists.customerSatisfaction}}</p>
+                    <p>
+                        <a href="javascript:void(0)" class="more" ng-click="moreList(lists)">更多详细</a>
+                    </p>
+                </div>
+                <div class="can">
+                    <ul class="can-see" style="display: {{lists._moreList?'block':'none'}};">
+                        <li>
+                            <p class="see-parent">
+                                <span>客户满意度扣分事项</span>
+                            </p>
+                            <p class="see-children">
+                                <span>{{lists.deductionDetail}}</span>
+                            </p>
+                        </li>
+                    </ul>
+                    <div class="module">
+                        <div class="see-module">
+                            <p class="see-type">体现类型</p>
+                            <p class="see-description"></p>
+                            <button class="btn">关闭</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </li>
+    </ul>
+    <footer class="footer">
+        <pagination count="abili.itemsCount" take="abili.take" activate="abili.activatePage"></pagination>
+    </footer>
+</div>
+<div ui-view="modal"></div>
+
+
+
+

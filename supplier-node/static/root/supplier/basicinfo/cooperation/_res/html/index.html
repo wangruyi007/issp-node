@@ -1,0 +1,37 @@
+<div ui-view="content">
+<div class="content-tab winning">
+    <ul class="table table-top">
+        <li class="list-head">
+            <span></span>
+            <span>公司名称</span>
+            <span>产品服务内容</span>
+            <span>合作时间</span>
+            <span>合作期限</span>
+            <span class="circle-all">
+                <a href="javascript:void(0)" ng-click="cooperationEdit()">编辑</a>
+                <a href="javascript:void(0)" ng-click="cooperationDelete()">删除</a>
+            </span>
+        </li>
+        <li class="list-all" ng-repeat="lists in cooperationBasics.data" style="display: {{lists._delete?'none':'block'}};">
+            <section>
+                <div  class="list-text {{lists._selectList?'selectList':''}}" ng-click="selectList(lists)">
+                    <p>{{$index+1}}</p>
+                    <p>{{lists.name}}</p>
+                    <p>{{lists.product}}</p>
+                    <p>{{lists.cooperationTime}}</p>
+                    <p>{{lists.cooperationTerm}}</p>
+                    <p></p>
+                </div>
+            </section>
+        </li>
+    </ul>
+<!--    <footer class="footer">
+        <pagination count="abili.itemsCount" take="abili.take" activate="abili.activatePage"></pagination>
+    </footer>-->
+   </div>
+ </div>
+<div ui-view="modal"></div>
+
+
+
+

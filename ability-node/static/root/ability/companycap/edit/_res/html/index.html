@@ -8,7 +8,8 @@
                 </li>
                 <li class="required">
                     <label><i><img src="/images/mandatory.png"></i><em>专业资质认证</em></label>
-                    <select class="sele" ng-model="editInfo.professionAuthen2" ng-change="changeSelect()"  >
+                    <select class="sele" ng-model="editInfo.professionAuthen2" ng-change="changeSelect()">
+                        <option value="" disabled>请选择</option>
                         <option value="通信工程施工总承包企业资质">通信工程施工总承包企业资质</option>
                         <option value="通信息系网络系统集成企业资质">通信息系网络系统集成企业资质</option>
                         <option value="电子通信广电行业的工程设计资质">电子通信广电行业的工程设计资质</option>
@@ -18,7 +19,8 @@
                 </li>
                 <li class="required">
                     <label><i><img src="/images/mandatory.png"></i><em>管理资质认证</em></label>
-                    <select class="sele" ng-model="editInfo.manageAuthen2" ng-change="changeSelect2()" >
+                    <select class="sele" ng-model="editInfo.manageAuthen2" ng-change="changeSelect2()">
+                        <option value="" disabled>请选择</option>
                         <option>9000族质量管理体系或同类认证</option>
                         <option>27000族信息安全管理体系或同类认证</option>
                         <option>14000族环境管理体系认证证书</option>
@@ -28,7 +30,8 @@
                 </li>
                 <li class="required">
                     <label><i><img src="/images/mandatory.png"></i><em>公司合作对象</em></label>
-                    <select class="sele" ng-model="editInfo.cooperate2" ng-change="changeSelect7()" ng-init="editInfo.cooperate2">
+                    <select class="sele" ng-model="editInfo.cooperate2" ng-change="changeSelect7()">
+                        <option value="" disabled>请选择</option>
                         <option>运营商</option>
                         <option>厂商</option>
                         <option>集成商</option>
@@ -42,8 +45,8 @@
                 </li>
                 <li>
                     <label><em>公司发展规划</em></label>
-                    <select class="sele" ng-model="editInfo.companyDevelop2" ng-change="changeSelect3()" ng-change="changeSelect()" ng-init="editInfo.companyDevelop2='公司发展规划'">
-                        <option></option>
+                    <select class="sele" ng-model="editInfo.companyDevelop2" ng-change="changeSelect3()" ng-change="changeSelect()">
+                        <option value="" disabled>请选择</option>
                     </select>
                     <input type="text"  class="inputDom" ng-model="editInfo.companyDevelop">
                 </li>
@@ -53,22 +56,22 @@
                 </li>
                 <li>
                     <label><em>公司所在地区</em></label>
-                    <select class="sele" ng-model="editInfo.area2" ng-change="changeSelect4()" ng-init="editInfo.area2='公司发展地区'">
-                        <option></option>
+                    <select class="sele" ng-model="editInfo.area2" ng-change="changeSelect4()">
+                        <option value="" disabled>请选择</option>
                     </select>
                     <input type="text"  class="inputDom" ng-model="editInfo.area">
                 </li>
                 <li>
                     <label><em>公司资金</em></label>
-                    <select class="sele" ng-model="editInfo.money2" ng-change="changeSelect5()" ng-init="editInfo.money2">
-                        <option></option>
+                    <select class="sele" ng-model="editInfo.money2" ng-change="changeSelect5()">
+                        <option value="" disabled>请选择</option>
                     </select>
                     <input type="text"  class="inputDom" ng-model="editInfo.money">
                 </li>
                 <li>
                     <label><em>人员组成</em></label>
-                    <select class="sele" ng-model="editInfo.personForm2" ng-change="changeSelect6()" ng-init="editInfo.personForm2">
-                        <option>人员组成</option>
+                    <select class="sele" ng-model="editInfo.personForm2" ng-change="changeSelect6()">
+                        <option value="" disabled>请选择</option>
                     </select>
                     <input type="text"  class="inputDom" ng-model="editInfo.personForm">
                 </li>
@@ -91,6 +94,7 @@
                 <li>
                     <label><em>已完成项目</em></label>
                     <select class="sele" ng-model="editInfo.completePro" ng-init="editInfo.completePro='INDEPENDENT'">
+                        <option value="" disabled>请选择</option>
                         <option value="INDEPENDENT">独立完成</option>
                         <option value="COOPER">合作完成</option>
                         <option value="STAGEPARTICIPATION">阶段完成</option>

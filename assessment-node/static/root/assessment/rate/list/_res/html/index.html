@@ -1,0 +1,29 @@
+<div class="content-tab list" style="margin-top: -70px;">
+    <ul class="table table-top">
+        <li class="list-head">
+            <span></span>
+            <span>地区</span>
+            <span>项目</span>
+            <span>工期开始时间</span>
+            <span>工期结束时间</span>
+            <span>项目利用率</span>
+        </li>
+        <li class="list-all" ng-repeat="lists in rateLists" style="display: {{lists._delete?'none':'block'}};">
+            <section>
+                <div class="list-text {{lists._selectList?'selectList':''}}" ng-click="selectList(lists)">
+                    <p>{{$index+1}}</p>
+                    <p>{{lists.area}}</p>
+                    <p>{{lists.project}}</p>
+                    <p>{{lists.startTime}}</p>
+                    <p>{{lists.endTime}}</p>
+                    <p>{{lists.projectProfitRate}}</p>
+                </div>
+            </section>
+        </li>
+    </ul>
+</div>
+<div ui-view="modal"></div>
+
+
+
+

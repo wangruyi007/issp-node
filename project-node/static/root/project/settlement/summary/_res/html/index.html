@@ -1,6 +1,7 @@
 <div class="collect">
     <ul class="sum-list">
         <li class="sum-thead">
+            <span ng-repeat="mapTit in tabTit">{{mapTit.name}}</span>
             <span>未初验</span>
             <span>已初验</span>
             <span>未制作结算资料</span>
@@ -14,17 +15,18 @@
             <span>到账金额</span>
         </li>
         <li class="sum-tbody" ng-repeat="summaryList in settlementSummarys">
+            <span ng-repeat="listTit in tabTit">{{listTit.counts}}</span>
             <span>{{summaryList.startCheckCount}}</span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
+            <span>{{summaryList.noStartCheckCount}}</span>
+            <span>{{summaryList.noSettleFileCount}}</span>
+            <span>{{summaryList.settleProcingACount}}</span>
+            <span>{{summaryList.settleProcingBCount}}</span>
+            <span>{{summaryList.settleProcingCCount}}</span>
+            <span>{{summaryList.betraMoney}}</span>
+            <span>{{summaryList.manageFee}}</span>
+            <span>{{summaryList.settleMoney}}</span>
+            <span>{{summaryList.resetSettleMoney}}</span>
+            <span>{{summaryList.receiveSettleMoney}}</span>
         </li>
     </ul>
 </div>

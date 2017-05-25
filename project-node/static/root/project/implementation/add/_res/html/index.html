@@ -4,29 +4,33 @@
             <ul>
                   <li class="required">
                     <label><i><img src="/images/mandatory.png"></i><em>合同外部项目名称</em></label>
-                      <select class="sele"  ng-model="add.outerName2" ng-change="changeSelect()" ng-init="add.outerName2">
-                          <option></option>
+                      <select class="sele"  ng-model="add.outerName">
+                          <option value="" disabled>请选择</option>
+                          <option ng-repeat="pros in proData">{{pros.outerName}}</option>
                       </select>
                       <input type="text"  class="inputDom" ng-verify="{}" ng-model="add.outerName">
                 </li>
                 <li class="required">
                     <label><i><img src="/images/mandatory.png"></i><em>内部项目名称</em></label>
-                    <select class="sele" ng-model="add.innerName2" ng-change="changeSelect2()" ng-init="add.innerName2">
-                        <option></option>
+                    <select class="sele" ng-model="add.outerName">
+                        <option value="" disabled>请选择</option>
+                        <option ng-repeat="pros in proData">{{pros.outerName}}</option>
                     </select>
                     <input type="text"  class="inputDom" ng-verify="{}" ng-model="add.innerName">
                 </li>
                 <li class="required">
                     <label><i><img src="/images/mandatory.png"></i><em>立项情况</em></label>
-                    <select class="sele"  ng-model="add.signProject2" ng-change="changeSelect3()" ng-init="add.signProject2">
-                        <option></option>
+                    <select class="sele"  ng-model="add.signProject">
+                        <option value="" disabled>请选择</option>
+                        <option ng-repeat="pros in proData">{{pros.signProject}}</option>
                     </select>
                     <input type="text"  class="inputDom" ng-verify="{}" ng-model="add.signProject">
                 </li>
                 <li class="required">
                     <label><i><img src="/images/mandatory.png"></i><em>派工单编号</em></label>
-                    <select class="sele" ng-model="add.depatchNum2" ng-change="changeSelect4()" ng-init="add.depatchNum2">
-                        <option></option>
+                    <select class="sele" ng-model="add.depatchNum">
+                        <option value="" disabled>请选择</option>
+                        <option ng-repeat="pros in proData">{{pros.depatchNum}}</option>
                     </select>
                     <input type="text"  class="inputDom" ng-verify="{}" ng-model="add.depatchNum">
                 </li>
@@ -36,28 +40,32 @@
                 </li>
                 <li class="required">
                     <label><i><img src="/images/mandatory.png"></i><em>业务类型</em></label>
-                    <select class="sele"  ng-model="add.businessType2" ng-change="changeSelect5()" ng-init="add.businessType2">
-                        <option></option>
+                    <select class="sele"  ng-model="add.businessType">
+                        <option value="" disabled>请选择</option>
+                        <option ng-repeat="pros in proData">{{pros.businessType}}</option>
                     </select>
                     <input type="text" class="inputDom" ng-verify="{}" ng-model="add.businessType">
                 </li>
                 <li class="required">
                     <label><i><img src="/images/mandatory.png"></i><em>业务方向科目</em></label>
-                    <select class="sele" ng-model="add.businessSubject2" ng-change="changeSelect6()" ng-init="add.businessSubject2">
-                        <option></option>
+                    <select class="sele" ng-model="add.businessSubject">
+                        <option value="" disabled>请选择</option>
+                        <option ng-repeat="pros in proData">{{pros.businessSubject}}</option>
                     </select>
                     <input type="text" class="inputDom"   ng-verify="{}" ng-model="add.businessSubject">
                 </li>
                 <li class="required">
                     <label><i><img src="/images/mandatory.png"></i><em>是否初验</em></label>
-                    <select class="sele" ng-verify="{}" ng-model="add.startTestCondition" ng-init="add.startTestCondition='已初验'">
+                    <select class="sele" ng-verify="{}" ng-model="add.startTestCondition">
+                        <option value="" disabled>请选择</option>
                         <option>已初验</option>
                         <option>未初验</option>
                     </select>
                 </li>
                 <li class="required">
                     <label><i><img src="/images/mandatory.png"></i><em>是否终验</em></label>
-                    <select class="sele" ng-verify="{}" ng-model="add.finalTestCondition" ng-init="add.finalTestCondition='已终验'">
+                    <select class="sele" ng-verify="{}" ng-model="add.finalTestCondition">
+                        <option value="" disabled>请选择</option>
                         <option>已终验</option>
                         <option>未终验</option>
                     </select>

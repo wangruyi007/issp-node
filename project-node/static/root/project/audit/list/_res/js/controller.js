@@ -34,6 +34,32 @@ app.controller('auditListCtrl',function($scope,auditSer,toastr) {
                 toastr.error( "请求超时，请联系管理员", '温馨提示');
             }
         });
+        $scope.collect = function(){
+            $scope.abili = {
+                itemsCount: 12,//总条数
+                take: 10,        //每页显示
+                activatePage: activatePage, //当前页
+            };
+            auditSer.countAudit2($scope.saleNum,$scope.signProjectCondition).then(function (response) {
+                if(response.data.code==0){
+                    $scope.abili.itemsCount = response.data.data;
+                }else{
+                    toastr.error( "请求超时，请联系管理员", '温馨提示');
+                }
+            })
+            var data = {
+                saleNum: $scope.saleNum,
+                signProjectCondition: $scope.signProjectCondition,
+                page: page
+            };
+            auditSer.searchAudit(data).then(function(response){
+                if(response.data.code == 0){
+                    $scope.auditLists = response.data
+                }else if(response.data.code==403){
+                    toastr.error( "请登录用户", '温馨提示');
+                }
+            });
+        };
     }
     $scope.abili = {
         itemsCount: 14, //总条数

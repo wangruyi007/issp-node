@@ -8,15 +8,15 @@
                 </li>
                 <li class="required">
                     <label><i><img src="/images/mandatory.png"></i><em>业务类型</em></label>
-                    <select class="sele" ng-model="add.businessType2" ng-change="changeSelect()" ng-init="editInfo.businessType2">
-                        <option></option>
+                    <select class="sele" ng-model="add.businessType">
+                        <option value="" disabled>请选择</option>
                     </select>
                     <input type="text"  class="inputDom" ng-verify="{}" ng-model="editInfo.businessType">
                 </li>
                 <li class="required">
                     <label><i><img src="/images/mandatory.png"></i><em>业务方向科目</em></label>
-                    <select class="sele" ng-model="editInfo.businessSubject2" ng-change="changeSelect2()" ng-init="editInfo.businessSubject2" >
-                        <option></option>
+                    <select class="sele" ng-model="editInfo.businessSubject">
+                        <option value="" disabled>请选择</option>
                     </select>
                     <input type="text"  class="inputDom" ng-verify="{}" ng-model="editInfo.businessSubject">
                 </li>
@@ -30,56 +30,60 @@
                 </li>
                 <li class="required">
                     <label><i><img src="/images/mandatory.png"></i><em>合同外部项目名称</em></label>
-                    <select class="sele" ng-model="editInfo.outerName2" ng-change="changeSelect3()" ng-init="editInfo.outerName2">
-                        <option></option>
+                    <select class="sele" ng-model="editInfo.outerName">
+                        <option value="" disabled>请选择</option>
                     </select>
                     <input type="text"  class="inputDom" ng-verify="{}" ng-model="editInfo.outerName">
                 </li>
                 <li class="required">
                     <label><i><img src="/images/mandatory.png"></i><em>内部项目名称</em></label>
-                    <select class="sele" ng-model="editInfo.innerName2" ng-change="changeSelect4()" ng-init="editInfo.innerName2">
-                        <option></option>
+                    <select class="sele" ng-model="editInfo.innerName">
+                        <option value="" disabled>请选择</option>
                     </select>
                     <input type="text"  class="inputDom" ng-verify="{}" ng-model="editInfo.innerName">
                 </li>
                 <li class="required">
                     <label><i><img src="/images/mandatory.png"></i><em>派工单编号</em></label>
-                    <select class="sele" ng-model="editInfo.dispatchNum2" ng-change="changeSelect5()" ng-init="editInfo.dispatchNum2">
-                        <option></option>
+                    <select class="sele" ng-model="editInfo.dispatchNum">
+                        <option value="" disabled>请选择</option>
                     </select>
                     <input type="text"  class="inputDom" ng-verify="{}" ng-model="editInfo.dispatchNum">
                 </li>
                 <li class="required">
                     <label><i><img src="/images/mandatory.png"></i><em>销售合同号	</em></label>
-                    <select class="sele" ng-model="editInfo.saleNum2" ng-change="changeSelect6()"  ng-init="editInfo.saleNum2">
-                        <option></option>
+                    <select class="sele" ng-model="editInfo.saleNum">
+                        <option value="" disabled>请选择</option>
                     </select>
                     <input type="text"  class="inputDom" ng-verify="{}" ng-model="editInfo.saleNum">
                 </li>
                 <li class="required">
                     <label><i><img src="/images/mandatory.png"></i><em>是否初验</em></label>
-                    <select class="sele" ng-model="editInfo.startCheckCondition" ng-init="editInfo.startCheckCondition='已初验'">
+                    <select class="sele" ng-model="editInfo.startCheckCondition">
+                        <option value="" disabled>请选择</option>
                         <option>已初验</option>
                         <option>未初验</option>
                     </select>
                 </li>
                 <li class="required">
                     <label><i><img src="/images/mandatory.png"></i><em>是否终验</em></label>
-                    <select class="sele" ng-model="editInfo.finalCheckCondition" ng-init="editInfo.finalCheckCondition='已终验'" >
+                    <select class="sele" ng-model="editInfo.finalCheckCondition">
+                        <option value="" disabled>请选择</option>
                         <option>已终验</option>
                         <option>未终验</option>
                     </select>
                 </li>
                 <li class="required">
                     <label><i><img src="/images/mandatory.png"></i><em>是否已制作申请结算资料</em></label>
-                    <select class="sele" ng-model="editInfo.settleFileCondition" ng-init="editInfo.settleFileCondition='是'" >
+                    <select class="sele" ng-model="editInfo.settleFileCondition">
+                        <option value="" disabled>请选择</option>
                         <option>是</option>
                         <option>否</option>
                     </select>
                 </li>
                 <li class="required">
                     <label><i><img src="/images/mandatory.png"></i><em>是否影响结算</em></label>
-                    <select class="sele" ng-model="editInfo.settleFileCondition" ng-init="editInfo.settleCondition='是'" >
+                    <select class="sele" ng-model="editInfo.settleCondition">
+                        <option value="" disabled>请选择</option>
                         <option>是</option>
                         <option>否</option>
                     </select>
@@ -126,7 +130,8 @@
                 </li>
                 <li class="required">
                     <label><i><img src="/images/mandatory.png"></i><em>结算进度A</em></label>
-                    <select class="sele" ng-model="editInfo.settleProcingA" ng-init="editInfo.settleProcingA='A1：站点准备'">
+                    <select class="sele" ng-model="editInfo.settleProcingA">
+                        <option value="" disabled>请选择</option>
                         <option>A1：站点准备</option>
                         <option>A2:资料制作</option>
                         <option>A3:工程经理签字(工程量确认单、质量总评表、违约金确认单)</option>
@@ -137,7 +142,8 @@
                 </li>
                 <li class="required">
                     <label><i><img src="/images/mandatory.png"></i><em>结算进度B</em></label>
-                    <select class="sele" ng-model="editInfo.settleProcingB" ng-init="editInfo.settleProcingB='B1:ERP系统上的工作量确认'">
+                    <select class="sele" ng-model="editInfo.settleProcingB">
+                        <option value="" disabled>请选择</option>
                         <option>B1:ERP系统上的工作量确认</option>
                         <option>B2:项目经理确认审批</option>
                         <option>B3:ERP系统预接收申请</option>
@@ -148,7 +154,8 @@
                 </li>
                 <li class="required">
                     <label><i><img src="/images/mandatory.png"></i><em>结算进度C</em></label>
-                    <select class="sele" ng-model="editInfo.settleProcingC" ng-init="editInfo.settleProcingC='C1:开发票'" >
+                    <select class="sele" ng-model="editInfo.settleProcingC">
+                        <option value="" disabled>请选择</option>
                         <option>C1:开发票</option>
                         <option>C2:ERP系统开发票</option>
                         <option>C3:电子版发票审批</option>
@@ -229,19 +236,19 @@
                 </li>
                 <li>
                     <label><em>签字审批时间</em></label>
-                    <input type="text" onClick="laydate({istime: true, format: 'YYYY-MM-DD hh:mm:ss'})" class="add_image addMarketReceptTime">
+                    <input type="text" ng-model="editInfo.signAuditTime" onClick="laydate({istime: true, format: 'YYYY-MM-DD'})" class="add_image signAuditTime">
                 </li>
                 <li>
                     <label><em>ERP结算审批时间</em></label>
-                    <input type="text" onClick="laydate({istime: true, format: 'YYYY-MM-DD hh:mm:ss'})" class="add_image addMarketReceptTime">
+                    <input type="text" ng-model="editInfo.eRPAuditTime" onClick="laydate({istime: true, format: 'YYYY-MM-DD'})" class="add_image eRPAuditTime">
                 </li>
                 <li>
                     <label><em>发票审核时间</em></label>
-                    <input type="text" onClick="laydate({istime: true, format: 'YYYY-MM-DD hh:mm:ss'})" class="add_image addMarketReceptTime">
+                    <input type="text" ng-model="editInfo.billAuditTime" onClick="laydate({istime: true, format: 'YYYY-MM-DD'})" class="add_image billAuditTime">
                 </li>
                 <li>
                     <label><em>预计支付时间</em></label>
-                    <input type="text" onClick="laydate({istime: true, format: 'YYYY-MM-DD hh:mm:ss'})" class="add_image addMarketReceptTime">
+                    <input type="text" ng-model="editInfo.budgetAuditTime" onClick="laydate({istime: true, format: 'YYYY-MM-DD'})" class="add_image budgetAuditTime">
                 </li>
                 <li>
                     <label><em>违约扣款事项</em></label>
@@ -249,7 +256,7 @@
                 </li>
                 <li>
                     <label><em>到账时间</em></label>
-                    <input type="text" onClick="laydate({istime: true, format: 'YYYY-MM-DD hh:mm:ss'})" class="add_image addMarketReceptTime">
+                    <input type="text" ng-model="editInfo.receiveMoneyTime" onClick="laydate({istime: true, format: 'YYYY-MM-DD'})" class="add_image receiveMoneyTime">
                 </li>
                 <li>
                     <label><em>分批结算</em></label>

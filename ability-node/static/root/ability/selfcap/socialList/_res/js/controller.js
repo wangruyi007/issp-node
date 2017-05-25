@@ -1,9 +1,6 @@
 /**
  * Created by ike on 2017/4/20.
  */
-/**
- * Created by ike on 2017/4/18.
- */
 var app = angular.module('socialListBasic', ['toastr','ng-pagination']);
 app.controller('socialListBasicCtrl', function($scope, selfcapSer,$state,toastr,$stateParams){
 

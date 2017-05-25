@@ -4,30 +4,30 @@
             <ul>
                   <li class="required">
                     <label><i><img src="/images/mandatory.png"></i><em>合同外部项目名称</em></label>
-                      <select class="sele" ng-model="add.outerName2" ng-change="changeSelect()" ng-init="add.outerName2">
-                          <option></option>
+                      <select class="sele" ng-model="add.outerName">
+                          <option value="" disabled>请选择</option>
                      </select>
                     <input type="text"  class="inputDom" ng-verify="{}" ng-model="add.outerName">
                 </li>
                 </li>
                 <li class="required">
                     <label><i><img src="/images/mandatory.png"></i><em>内部项目名称</em></label>
-                    <select class="sele"  ng-model="add.innerName2" ng-change="changeSelect2()">
-                        <option></option>
+                    <select class="sele"  ng-model="add.innerName" >
+                        <option value="" disabled>请选择</option>
                     </select>
                     <input type="text"  class="inputDom" ng-verify="{}" ng-model="add.innerName">
                 </li>
                 <li class="required">
                     <label><i><img src="/images/mandatory.png"></i><em>销售合同号</em></label>
-                    <select class="sele" ng-model="add.saleNum2" ng-change="changeSelect3()">
-                        <option></option>
+                    <select class="sele" ng-model="add.saleNum">
+                        <option value="" disabled>请选择</option>
                     </select>
                     <input type="text"  class="inputDom" ng-verify="{}" ng-model="add.saleNum">
                 </li>
                 <li class="required">
                     <label><i><img src="/images/mandatory.png"></i><em>派工单编号</em></label>
-                    <select class="sele" ng-model="add.depatchNum2" ng-change="changeSelect4()">
-                        <option></option>
+                    <select class="sele" ng-model="add.depatchNum">
+                        <option value="" disabled>请选择</option>
                     </select>
                     <input type="text"  class="inputDom" ng-verify="{}" ng-model="add.depatchNum">
                 </li>
@@ -38,6 +38,7 @@
                 <li class="required">
                     <label><i><img src="/images/mandatory.png"></i><em>完工情况</em></label>
                     <select class="sele" ng-verify="{}" ng-model="add.completeCondition">
+                        <option value="" disabled>请选择</option>
                         <option>是</option>
                         <option>否</option>
                     </select>
@@ -48,11 +49,11 @@
                 </li>
                 <li>
                     <label><em>开工日期</em></label>
-                    <input type="text" onClick="laydate({istime: true, format: 'YYYY-MM-DD hh:mm:ss'})" class="add_image addMarketReceptTime">
+                    <input type="text" ng-model="add.startWorkTime" onClick="laydate({istime: true, format: 'YYYY-MM-DD'})" class="add_image startWorkTime">
                 </li>
                 <li>
                     <label><em>计划完工日期</em></label>
-                    <input type="text" onClick="laydate({istime: true, format: 'YYYY-MM-DD hh:mm:ss'})" class="add_image addMarketReceptTime">
+                    <input type="text" ng-model="add.planCompleteTime" onClick="laydate({istime: true, format: 'YYYY-MM-DD'})" class="add_image planCompleteTime">
                 </li>
                 <li>
                     <label><em>客户名称</em></label>
@@ -84,7 +85,7 @@
                 </li>
                 <li>
                     <label><em>完工时间</em></label>
-                    <input type="text" onClick="laydate({istime: true, format: 'YYYY-MM-DD hh:mm:ss'})" class="add_image addMarketReceptTime">
+                    <input type="text" ng-model="add.completeTime" onClick="laydate({istime: true, format: 'YYYY-MM-DD'})" class="add_image completeTime">
                 </li>
                 <li>
                     <label><em>完工报告</em></label>
