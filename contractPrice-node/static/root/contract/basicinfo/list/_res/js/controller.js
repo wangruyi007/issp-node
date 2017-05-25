@@ -7,7 +7,6 @@ app.controller('basicinfoListCtrl',function($scope,basicinfoSer,toastr){
             obj._selectList = false
         });
         event._selectList = true;
-        ;
         //向父Ctrl传递事件
         $scope.$emit('changeId', event.id);
     };
