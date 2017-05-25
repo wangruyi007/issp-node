@@ -1,4 +1,4 @@
-var app = angular.module('demandEdit', ['toastr']);
+var app = angular.module('demandEdit', ['toastr','ipCookie']);
 app.controller('demandEditCtrl', function($scope, demandSer,$stateParams,$state,toastr,ipCookie,$location){
     demandSer.allProjects().then(function(response){
         if(response.data.code == 0){

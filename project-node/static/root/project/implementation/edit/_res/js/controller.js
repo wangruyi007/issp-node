@@ -1,7 +1,4 @@
-/**
- * Created by ike on 2017/4/18.
- */
-var app = angular.module('implementationEdit', ['toastr']);
+var app = angular.module('implementationEdit', ['toastr','ipCookie']);
 app.controller('implementationEditCtrl', function($scope, implementationSer,$state,toastr,$stateParams,ipCookie,$location){
     var projectId = {id : $stateParams.id};
     //获取值

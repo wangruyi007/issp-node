@@ -1,7 +1,4 @@
-/**
- * Created by ike on 2017/4/17.
- */
-var app = angular.module('projectacceptanceDelete', ['toastr']);
+var app = angular.module('projectacceptanceDelete', ['toastr','ipCookie']);
 app.controller('projectacceptanceDeleteCtrl',function($scope,projectacceptanceSer,toastr,$stateParams,$state,ipCookie,$location){
     //删除
     $scope.delYes = function(){

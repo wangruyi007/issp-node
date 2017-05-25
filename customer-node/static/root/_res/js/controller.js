@@ -1,7 +1,7 @@
-var app = angular.module('app', ['ngVerify','ipCookie',
+var app = angular.module('app', ['ngVerify','ipCookie','toastr',
     'indexSerModule'
 ]);
-app.controller('rootCtrl', function ($scope,$rootScope,$state,ipCookie,rootSer,$location) {
+app.controller('rootCtrl', function ($scope,$rootScope,$state,ipCookie,rootSer,$location,toastr) {
     if ($state.current.url == '/root') {//默认加载列表
         $state.go('root.customer');
     }
@@ -14,8 +14,8 @@ app.controller('rootCtrl', function ($scope,$rootScope,$state,ipCookie,rootSer,$
 
     $scope.login = function(){
         var absurl = $location.absUrl();
-        ipCookie('absurl', absurl,{ expires:3,expirationUnit: 'minutes' });
-        location.href="http://localhost/login";//部署到线上时要改为登录域名
+        ipCookie('absurl', absurl,{ expires:3,expirationUnit: 'minutes',domain:'issp.bjike.com',domain:'issp.bjike.com' });
+        location.href="http://user.issp.bjike.com";//部署到线上时要改为登录域名
     };
     $scope.logout = function(){
         rootSer.logout().then(function(response){
@@ -23,6 +23,8 @@ app.controller('rootCtrl', function ($scope,$rootScope,$state,ipCookie,rootSer,$
                 ipCookie.remove("username");
                 $scope.username="登录用户";
                 $scope.logined=false;
+            }else if(response.data.code==1){
+                toastr.error( response.data.msg, '温馨提示');
             }
         })
     }

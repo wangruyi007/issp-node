@@ -1,7 +1,4 @@
-/**
- * Created by ike on 2017/4/17.
- */
-var app = angular.module('resultAdd', ['toastr']);
+var app = angular.module('resultAdd', ['toastr','ipCookie']);
 app.controller('resultAddCtrl', function($scope, resultSer,$state,toastr,ipCookie,$location){
     resultSer.listResultProjects().then(function(response){
         if(response.data.code == 0){

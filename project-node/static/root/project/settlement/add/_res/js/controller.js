@@ -1,7 +1,4 @@
-/**
- * Created by ike on 2017/4/17.
- */
-var app = angular.module('settlementAdd', ['toastr']);
+var app = angular.module('settlementAdd', ['toastr','ipCookie']);
 app.controller('settlementAddCtrl', function($scope, settlementSer,$state,toastr,ipCookie,$location){
     //添加公司能力
     $scope.settlementAddFun = function(){

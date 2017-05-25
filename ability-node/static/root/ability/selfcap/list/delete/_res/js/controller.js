@@ -1,7 +1,4 @@
-/**
- * Created by ike on 2017/4/17.
- */
-var app = angular.module('selfcapDelete', ['toastr']);
+var app = angular.module('selfcapDelete', ['toastr','ipCookie']);
 app.controller('selfcapDeleteCtrl',function($scope,selfcapSer,toastr,$stateParams,$state,ipCookie,$location){
     //删除
     $scope.delYes = function(){

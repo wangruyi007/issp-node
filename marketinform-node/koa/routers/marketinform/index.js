@@ -31,9 +31,9 @@ module.exports = function(){
                 console.error(error.error);
             }));
     }).get('/marketinform/deleteInformation/delete', function*(){  //市场信息删除
+        var $self = this;
         var delData = this.request.query;
         delData.token = this.cookies.get('token');
-        var $self = this;
         yield (server().informationDelete(delData)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -45,9 +45,9 @@ module.exports = function(){
                 }
             }));
     }).post('/marketinform/addInformation/add', function*(){  //市场信息添加
+        var $self = this;
         var addData = this.request.body;
         addData.token = this.cookies.get('token');
-        var $self = this;
         yield (server().projectMarketInformAdd(addData)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -58,9 +58,9 @@ module.exports = function(){
                 console.error(error.error);
             }));
     }).post('/marketinform/editInformation/edit', function*(){
+        var $self = this;
         var editData = this.request.body;
         editData.token = this.cookies.get('token');
-        var $self = this;
         yield (server().informationEdit(editData)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);

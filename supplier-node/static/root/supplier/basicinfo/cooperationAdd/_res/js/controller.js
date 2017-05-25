@@ -1,4 +1,4 @@
-var app = angular.module('cooperationAdd', ['toastr']);
+var app = angular.module('cooperationAdd', ['toastr','ipCookie']);
 app.controller('cooperationAddCtrl', function($scope, basicinfoSer,$state,toastr,$stateParams,ipCookie,$location){
     var contId = {id : $stateParams.id};
     //获取值
@@ -10,14 +10,6 @@ app.controller('cooperationAddCtrl', function($scope, basicinfoSer,$state,toastr
     //添加
     $scope.cooperationAddFun= function(){
         var vm = $scope;
-        /*var data = {
-            id:vm.pAddInfo.id,
-            informationId:vm.pAddInfo.informationId,
-            name:vm.pAddInfo.name2,
-            product: vm.pAddInfo.product2,
-            cooperationTime:vm.pAddInfo.cooperationTime2,
-            cooperationTerm:vm.pAddInfo.cooperationTerm2,
-        };*/
         vm.pAddInfo.cooperationTime = angular.element('.cooperationTime').val();
         vm.pAddInfo.cooperationTerm = angular.element('.cooperationTerm').val();
         basicinfoSer.cooperationAdd(vm.pAddInfo).then(function(response){

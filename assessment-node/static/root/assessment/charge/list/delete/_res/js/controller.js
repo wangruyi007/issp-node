@@ -1,4 +1,4 @@
-var app = angular.module('chargeDelete', ['toastr']);
+var app = angular.module('chargeDelete', ['toastr','ipCookie']);
 app.controller('chargeDeleteCtrl',function($scope,chargeSer,toastr,$stateParams,$state,ipCookie,$location){
     //删除
     $scope.delYes = function(){

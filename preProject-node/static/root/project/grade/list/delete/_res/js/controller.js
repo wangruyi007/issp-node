@@ -1,4 +1,4 @@
-var app = angular.module('gradeDelete', ['toastr']);
+var app = angular.module('gradeDelete', ['toastr','ipCookie']);
 app.controller('gradeDeleteCtrl',function($scope,toastr,$stateParams,$state,gradeSer,ipCookie,$location){
     //删除
     $scope.delYes = function(){

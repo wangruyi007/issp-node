@@ -1,7 +1,4 @@
-/**
- * Created by ike on 2017/4/17.
- */
-var app = angular.module('implementationListDelete', ['toastr']);
+var app = angular.module('implementationListDelete', ['toastr','ipCookie']);
 app.controller('implementationListDeleteCtrl',function($scope,implementationSer,toastr,$stateParams,$state,ipCookie,$location){
     //删除
     $scope.delYes = function(){

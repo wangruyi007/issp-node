@@ -1,10 +1,4 @@
-/**
- * Created by ike on 2017/4/20.
- */
-/**
- * Created by ike on 2017/4/18.
- */
-var app = angular.module('rewardEdit', ['toastr']);
+var app = angular.module('rewardEdit', ['toastr','ipCookie']);
 app.controller('rewardEditCtrl', function($scope, basicinfoSer,$state,toastr,$stateParams,ipCookie,$location){
     var rewardId2 = {id : $stateParams.subId};
     //获取值

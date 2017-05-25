@@ -1,4 +1,4 @@
-var app = angular.module('projectAdd', ['toastr']);
+var app = angular.module('projectAdd', ['toastr','ipCookie']);
 app.controller('projectAddCtrl', function ($scope, projectSer, $state, toastr,ipCookie,$location) {
     projectSer.allProjectPros().then(function(response){
         if(response.data.code == 0){

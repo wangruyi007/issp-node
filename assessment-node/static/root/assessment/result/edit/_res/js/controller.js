@@ -1,4 +1,4 @@
-var app = angular.module('resultEdit', ['toastr']);
+var app = angular.module('resultEdit', ['toastr','ipCookie']);
 app.controller('resultEditCtrl', function($scope, resultSer,$state,toastr,$stateParams,ipCookie,$location){
     resultSer.listResultProjects().then(function(response){
         if(response.data.code == 0){

@@ -1,4 +1,4 @@
-var app = angular.module('moneyDelete', ['toastr']);
+var app = angular.module('moneyDelete', ['toastr','ipCookie']);
 app.controller('moneyDeleteCtrl',function($scope,moneySer,toastr,$stateParams,$state,ipCookie,$location){
     //删除
     $scope.delYes = function(){

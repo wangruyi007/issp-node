@@ -1,9 +1,5 @@
-/**
- * Created by ike on 2017/4/13.
- */
 var app = angular.module('companycapList', ['ng-pagination','toastr']);
 app.controller('companycapListCtrl',function($scope,companycapSer,toastr) {
-    //搜索
    //选择
     $scope.selectList = function(event){
         angular.forEach($scope.companycapLists.data,function(obj){

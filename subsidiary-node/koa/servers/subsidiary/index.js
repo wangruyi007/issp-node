@@ -93,7 +93,7 @@ module.exports = function(){
         var options = {
             method : 'POST',
             timeout : 3000,
-            uri : config()['rurl'] + `/v1/sign-out/${argvs.token}`,
+            uri : config()['user'] + `/v1/sign-out/${argvs.token}`,
             form:argvs
         };
         return request(options);

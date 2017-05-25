@@ -1,4 +1,4 @@
-var app = angular.module('projectDelete', ['toastr']);
+var app = angular.module('projectDelete', ['toastr','ipCookie']);
 app.controller('projectDeleteCtrl',function($scope,projectSer,toastr,$stateParams,$state,ipCookie,$location){
     //删除
     $scope.delYes = function(){

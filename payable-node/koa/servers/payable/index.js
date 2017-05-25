@@ -3,7 +3,6 @@ var path = require('path');
 var config = require(path.resolve('plugins/read-config.js'));
 var form = require(path.resolve('plugins/form.js'));
 module.exports = function(){
-
     this.basicInfoList = function(argvs){
         var options = {
             method : 'GET',
@@ -82,7 +81,6 @@ module.exports = function(){
     };
     //汇总
     this.collectSummary = function(argvs){
-        console.log(argvs)
         var options = {
             method : 'GET',
             timeout : 3000,
@@ -232,7 +230,7 @@ module.exports = function(){
         var options = {
             method : 'POST',
             timeout : 3000,
-            uri : config()['rurl'] + `/v1/sign-out/${argvs.token}`,
+            uri : config()['user'] + `/v1/sign-out/${argvs.token}`,
             form:argvs
         };
         return request(options);

@@ -1,7 +1,4 @@
-/**
- * Created by ike on 2017/4/17.
- */
-var app = angular.module('situationDelete', ['toastr']);
+var app = angular.module('situationDelete', ['toastr','ipCookie']);
 app.controller('situationDeleteCtrl',function($scope,situationSer,toastr,$stateParams,$state,ipCookie,$location){
     //删除
     $scope.delYes = function(){

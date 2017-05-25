@@ -1,4 +1,4 @@
-var app = angular.module('moneyAdd', ['toastr']);
+var app = angular.module('moneyAdd', ['toastr','ipCookie']);
 app.controller('moneyAddCtrl', function ($scope, moneySer, $state, toastr,ipCookie,$location) {
     moneySer.allMoneyProjects().then(function(response){
        if(response.data.code == 0){

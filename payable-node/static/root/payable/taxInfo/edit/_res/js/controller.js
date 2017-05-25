@@ -1,15 +1,11 @@
-var app = angular.module('taxInfoEdit', ['toastr']);
+var app = angular.module('taxInfoEdit', ['toastr','ipCookie']);
 app.controller('taxInfoEditCtrl', function($scope, taxInfoSer,$stateParams,$state,toastr,ipCookie,$location){
     var taxData ={id: $stateParams.id};
     //获取ID
     taxInfoSer.findTaxInfoId(taxData).then(function(response){
-        console.log(response)
         if(response.data.code=='0'){
             $scope.editInfo = response.data.data;
-        }else if (response.data.code==403){
-            toastr.error( "请登录用户", '温馨提示');
         }
-
     });
     //编辑点击提交
     $scope.taxEditFun = function(){
