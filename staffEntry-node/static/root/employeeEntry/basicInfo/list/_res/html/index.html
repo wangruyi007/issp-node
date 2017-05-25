@@ -1,0 +1,85 @@
+<div class="content-tab list">
+    <ul class="table">
+        <li class="list-head">
+            <span></span>
+            <span>地区</span>
+            <span>部门</span>
+            <span>项目组</span>
+            <span>岗位</span>
+            <span>入职时间</span>
+            <span>姓名</span>
+            <span>员工编号</span>
+            <span></span>
+        </li>
+        <li class="list-all" ng-repeat="lists in registerLists" style="display: {{lists._delete?'none':'block'}};">
+            <section>
+                <div class="list-text {{lists._selectList?'selectList':''}}" ng-click="selectList(lists)">
+                    <p>{{$index+1}}</p>
+                    <p>{{::lists.area}}</p>
+                    <p>{{::lists.department}}</p>
+                    <p>{{::lists.projectGroup}}</p>
+                    <p>{{::lists.position}}</p>
+                    <p>{{::lists.entryTime}}</p>
+                    <p>{{::lists.name}}</p>
+                    <p>{{::lists.employeeID}}</p>
+                    <p>
+                        <a href="javascript:void(0)" class="more" ng-click="moreList(lists)">更多详细</a>
+                    </p>
+                </div>
+                <div class="can">
+                    <ul class="can-see" style="display: {{lists._moreList?'block':'none'}};">
+                        <li>
+                            <p class="see-parent">
+                                <span>邮箱账号</span>
+                                <span>联系电话</span>
+                                <span>专业</span>
+                                <span>银行卡账号</span>
+                                <span>开户行</span>
+                                <span>开户账户</span>
+                                <span>身份证复印件</span>
+                                <span>学历学位证书复印件</span>
+                            </p>
+                            <p class="see-children">
+                                <span>{{::lists.email}}</span>
+                                <span>{{::lists.phone}}</span>
+                                <span>{{::lists.profession}}</span>
+                                <span>{{::lists.bankCardID}}</span>
+                                <span>{{::lists.bankOfDeposit}}</span>
+                                <span>{{::lists.bankAccount}}</span>
+                                <span>{{::lists.iDFile|cover}}</span>
+                                <span>{{::lists.educationFile|cover}}</span>
+                            </p>
+                        </li>
+                        <li>
+                            <p class="see-parent">
+                                <span>照片纸质版</span>
+                                <span>照片电子版</span>
+                                <span>其本人银行卡、身份证、签名的复印件</span>
+                                <span>薪资是否确认</span>
+                                <span>是否已邮件发送入职通告</span>
+                            </p>
+                            <p class="see-children">
+                                <span>{{::lists.photoFile|cover}}</span>
+                                <span>{{::lists.photoEletricFile|cover}}</span>
+                                <span>{{::lists.bankAndOtherFile|cover}}</span>
+                                <span>{{::lists.salaryConfirm|cover}}</span>
+                                <span>{{::lists.emailInfo|cover}}</span>
+                            </p>
+                        </li>
+                    </ul>
+                    <div class="module">
+                        <div class="see-module">
+                            <p class="see-type">体现类型</p>
+                            <p class="see-description"></p>
+                            <button class="btn">关闭</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </li>
+    </ul>
+    <footer class="footer">
+        <pagination count="abili.itemsCount" take="abili.take" activate="abili.activatePage"></pagination>
+    </footer>
+</div>
+<div ui-view="modal"></div>
