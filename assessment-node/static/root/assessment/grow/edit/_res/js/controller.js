@@ -1,4 +1,4 @@
-var app = angular.module('growEdit', ['toastr']);
+var app = angular.module('growEdit', ['toastr','ipCookie']);
 app.controller('growEditCtrl', function($scope, growSer,$stateParams,$state,toastr,ipCookie,$location){
     growSer.allGrowProjects().then(function(response){
         if(response.data.code == 0){

@@ -1,7 +1,4 @@
-/**
- * Created by ike on 2017/4/18.
- */
-var app = angular.module('companyEdit', ['toastr']);
+var app = angular.module('companyEdit', ['toastr','ipCookie']);
 app.controller('companyEditCtrl', function($scope, companycapSer,$state,toastr,$stateParams,ipCookie,$location){
     var companyId = {id : $stateParams.id};
     //获取值

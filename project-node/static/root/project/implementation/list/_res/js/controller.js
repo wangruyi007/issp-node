@@ -1,6 +1,3 @@
-/**
- * Created by ike on 2017/4/13.
- */
 var app = angular.module('implementationList', ['ng-pagination','toastr']);
 app.controller('implementationListCtrl',function($scope,implementationSer,toastr) {
    //选择

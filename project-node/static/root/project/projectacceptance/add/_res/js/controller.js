@@ -1,7 +1,4 @@
-/**
- * Created by ike on 2017/4/17.
- */
-var app = angular.module('projectacceptanceAdd', ['toastr']);
+var app = angular.module('projectacceptanceAdd', ['toastr','ipCookie']);
 app.controller('projectacceptanceAddCtrl', function($scope, projectacceptanceSer,$state,toastr,ipCookie,$location){
     //添加公司能力
     $scope.acceptanceAddFun = function(){

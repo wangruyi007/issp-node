@@ -1,4 +1,4 @@
-var app = angular.module('basicInfoSummary', ['toastr']);
+var app = angular.module('basicInfoSummary', ['toastr','ipCookie']);
 app.controller('basicInfoSummaryCtrl', function($scope,$state,toastr,basicInfoSer,ipCookie,$location){
     //查询所有公司名
     basicInfoSer.listResultCompany().then(function(response){
@@ -43,18 +43,4 @@ app.controller('basicInfoSummaryCtrl', function($scope,$state,toastr,basicInfoSe
         }
     })
 });
-
-
-
-app.filter('cover', function(){
- return function (val) {
- var result;
- switch(val) {
- case "无":
- result = "";
- break;
- }
- return result;
- }
- });
 

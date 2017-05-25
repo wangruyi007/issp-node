@@ -1,7 +1,4 @@
-/**
- * Created by ike on 2017/5/4.
- */
-var app = angular.module('cooperationEdit', ['toastr']);
+var app = angular.module('cooperationEdit', ['toastr','ipCookie']);
 app.controller('cooperationEditCtrl', function($scope, basicinfoSer,$state,toastr,$stateParams,ipCookie,$location){
     var contId = {id : $stateParams.suId};
     //获取值

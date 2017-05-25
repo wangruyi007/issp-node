@@ -1,6 +1,3 @@
-/**
- * Created by ike on 2017/4/13.
- */
 var app = angular.module('projectacceptanceList', ['ng-pagination','toastr']);
 app.controller('projectacceptanceListCtrl',function($scope,projectacceptanceSer,toastr) {
     $scope.teamInfo = {};

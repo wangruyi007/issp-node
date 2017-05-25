@@ -59,7 +59,7 @@ router.get(/^\/module\/_config(?:\/.|$)/, function *(next) {
 });
 
 //============路由===========
-app.use(require(path.join(__dirname,routersPath,'/payable/index.js'))().routes());//
+app.use(require(path.join(__dirname,routersPath,'/payable/index.js'))().routes());
 app.use(router.routes());
 
 

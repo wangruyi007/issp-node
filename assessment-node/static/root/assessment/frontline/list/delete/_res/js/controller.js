@@ -1,4 +1,4 @@
-var app = angular.module('frontlineDelete', ['toastr']);
+var app = angular.module('frontlineDelete', ['toastr','ipCookie']);
 app.controller('frontlineDeleteCtrl',function($scope,frontlineSer,toastr,$stateParams,$state,ipCookie,$location){
     //删除
     $scope.delYes = function(){

@@ -59,8 +59,8 @@ module.exports = function(){
                     var token = responseText.data;
                     $self.body = responseText;
                     $self.cookies.set('token', token, {maxAge : 1000 * 60 * 60 * 24 * 7});
-                }
 
+                }
     }).catch((error) =>{
             $self.set('Content-Type','application/json;charset=utf-8');
         $self.body=error.error;

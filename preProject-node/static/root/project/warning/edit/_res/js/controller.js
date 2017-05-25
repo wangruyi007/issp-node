@@ -1,4 +1,4 @@
-var app = angular.module('warningEdit', ['toastr']);
+var app = angular.module('warningEdit', ['toastr','ipCookie']);
 app.controller('warningEditCtrl', function($scope,$state,$stateParams,toastr,warningSer,ipCookie,$location){
 
     var getId = {id:$stateParams.id};

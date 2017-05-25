@@ -1,4 +1,4 @@
-var app = angular.module('basicInfoTax', ['toastr']);
+var app = angular.module('basicInfoTax', ['toastr','ipCookie']);
 app.controller('basicInfoTaxCtrl', function($scope,$state,toastr,basicInfoSer,ipCookie,$location){
 //查询所有税种
     basicInfoSer.listResultTax().then(function(response){
@@ -38,15 +38,5 @@ app.controller('basicInfoTaxCtrl', function($scope,$state,toastr,basicInfoSer,ip
         }
     })
 });
-app.filter('cover', function(){
- return function (val) {
- var result;
- switch(val) {
- case "无":
- result = "";
- break;
- }
- return result;
- }
- });
+
 

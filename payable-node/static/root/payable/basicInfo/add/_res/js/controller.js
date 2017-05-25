@@ -5,7 +5,6 @@ app.controller('basicInfoAddCtrl', function ($scope, basicInfoSer, $state, toast
         var vm = $scope;
         vm.add.taxDate = angular.element('.taxDate').val();
         basicInfoSer.addBasicInfo(vm.add).then(function (response) {
-            console.log(response)
             if (response.data.code == 0) {
                 $state.go('root.payable.basicInfo.list');
                 toastr.success("已成功添加", '温馨提示');

@@ -1,4 +1,4 @@
-var app = angular.module('basicInfoEdit', ['toastr']);
+var app = angular.module('basicInfoEdit', ['toastr','ipCookie']);
 app.controller('basicInfoEditCtrl', function($scope, basicInfoSer,$stateParams,$state,toastr,ipCookie,$location){
     var basicData ={id: $stateParams.id};
 
@@ -6,10 +6,7 @@ app.controller('basicInfoEditCtrl', function($scope, basicInfoSer,$stateParams,$
     basicInfoSer.findInfoId(basicData).then(function(response){
         if(response.data.code=='0'){
             $scope.editInfo = response.data.data;
-        }else if (response.data.code==403){
-            toastr.error( "请登录用户", '温馨提示');
         }
-
     });
     //编辑点击提交
     $scope.basicInfoEditFun = function(){

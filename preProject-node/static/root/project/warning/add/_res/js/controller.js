@@ -1,4 +1,4 @@
-var app = angular.module('warningAdd', ['toastr']);
+var app = angular.module('warningAdd', ['toastr','ipCookie']);
 app.controller('warningAddCtrl', function($scope,$state,toastr,warningSer,ipCookie,$location){
     $scope.warnAddFun = function(){
         warningSer.addWarning($scope.add).then(function(response){

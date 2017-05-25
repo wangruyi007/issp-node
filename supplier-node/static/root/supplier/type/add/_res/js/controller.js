@@ -1,7 +1,4 @@
-/**
- * Created by ike on 2017/4/17.
- */
-var app = angular.module('typeAdd', ['toastr']);
+var app = angular.module('typeAdd', ['toastr','ipCookie']);
 app.controller('typeAddCtrl', function($scope, typeSer,$state,toastr,ipCookie,$location){
     $scope.typeAddFun = function(){
         var vm = $scope;

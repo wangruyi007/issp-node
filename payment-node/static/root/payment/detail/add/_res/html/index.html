@@ -1,0 +1,143 @@
+<div class="content-input add" verify-scope="tipStyle: 1">
+    <div class="input-list">
+        <section>
+            <ul>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>承包商</em></label>
+                    <select class="sele" ng-model="add.contractorId">
+                        <option value="" disabled>请选择</option>
+                        <option ng-repeat="pros in idData" value="{{pros.id}}">{{pros.name}}</option>
+                    </select>
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>地区</em></label>
+                    <select class="sele" ng-model="add.area">
+                        <option value="" disabled>请选择</option>
+                    </select>
+                    <input type="text"  ng-verify="{}" class="inputDom" ng-model="add.area">
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>项目内部名称</em></label>
+                    <select class="sele" ng-model="add.innerName">
+                        <option value="" disabled>请选择</option>
+                    </select>
+                    <input type="text"  ng-verify="{}" class="inputDom" ng-model="add.innerName">
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>派工单价</em></label>
+                    <input type="number" ng-verify="{}"  ng-model="add.taskPrice">
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>合同规模数</em></label>
+                    <input type="number" ng-verify="{}"  ng-model="add.pactNum">
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>已派工量</em></label>
+                    <input type="number" ng-verify="{}"  ng-model="add.pactSize">
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>已完工量</em></label>
+                    <input type="number" ng-verify="{}"  ng-model="add.finishNum">
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>未完工量</em></label>
+                    <input type="number" ng-verify="{}"  ng-model="add.unfinishNum">
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>已交维数量</em></label>
+                    <input type="number" ng-verify="{}"  ng-model="add.payTax">
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>未交维数量</em></label>
+                    <input type="number" ng-verify="{}"  ng-model="add.undeal">
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>违约金</em></label>
+                    <input type="number" ng-verify="{}"  ng-model="add.penalty">
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>实际结算数量</em></label>
+                    <input type="number" ng-verify="{}"  ng-model="add.realCountNum">
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>实际数量金额</em></label>
+                    <input type="number" ng-verify="{}"  ng-model="add.realCountMoney">
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>是否已支付</em></label>
+                    <select class="sele" ng-verify="{}" ng-model="add.pay">
+                        <option value="" disabled>请选择</option>
+                        <option value="true" >是</option>
+                        <option value="false" >否</option>
+                    </select>
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>是否框架内</em></label>
+                    <select class="sele"  ng-verify="{}" ng-model="add.frame">
+                        <option value="" disabled>请选择</option>
+                        <option value="true" >是</option>
+                        <option value="false" >否</option>
+                    </select>
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>是否有单次合同</em></label>
+                    <select class="sele" ng-verify="{}" ng-model="add.pact">
+                        <option value="" disabled>请选择</option>
+                        <option value="true" >是</option>
+                        <option value="false" >否</option>
+                    </select>
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>是否已走结算流程</em></label>
+                    <select class="sele" ng-verify="{}" ng-model="add.flow">
+                        <option value="" disabled>请选择</option>
+                        <option value="true" >是</option>
+                        <option value="false" >否</option>
+                    </select>
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>完工时间</em></label>
+                    <input type="text"  ng-model="add.finishTime" onClick="laydate({istime: true, format: 'YYYY-MM-DD'})" class="add_image finishTime" >
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>验收交维时间</em></label>
+                    <input type="text"  ng-model="add.checkTime" onClick="laydate({istime: true, format: 'YYYY-MM-DD'})" class="add_image checkTime" >
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>签字审批时间</em></label>
+                    <input type="text"  ng-model="add.auditTime" onClick="laydate({istime: true, format: 'YYYY-MM-DD'})" class="add_image auditTime" >
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>结算审批时间</em></label>
+                    <input type="text"  ng-model="add.countTime" onClick="laydate({istime: true, format: 'YYYY-MM-DD'})" class="add_image countTime" >
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>发票审核时间</em></label>
+                    <input type="text" ng-model="add.billTime" onClick="laydate({istime: true, format: 'YYYY-MM-DD'})" class="add_image billTime" >
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>预计支付时间</em></label>
+                    <input type="text" ng-model="add.planTime" onClick="laydate({istime: true, format: 'YYYY-MM-DD'})" class="add_image planTime" >
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>到账时间</em></label>
+                    <input type="text" ng-model="add.accountTime" onClick="laydate({istime: true, format: 'YYYY-MM-DD'})" class="add_image accountTime" >
+                </li>
+                <li>
+                    <label><em>派工单编号</em></label>
+                    <input type="text"  ng-model="add.taskNum">
+                </li>
+            </ul>
+        </section>
+    </div>
+    <p class="dataBottom">
+        <span class="imPrompt"><i><img src="/images/prompt.png"></i>带有<i><img src="/images/mandatory.png"></i>的为必填项</span>
+        <button ng-verify="{control:'myform'}" ng-click="detailAddFun()">提交</button>
+    </p>
+</div>
+
+<script type="text/javascript">
+    !function(){
+        laydate.skin('dahong');//切换皮肤，请查看skins下面皮肤库
+    }();
+</script>

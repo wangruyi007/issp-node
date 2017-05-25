@@ -1,4 +1,4 @@
-var app = angular.module('labourDelete', ['toastr']);
+var app = angular.module('labourDelete', ['toastr','ipCookie']);
 app.controller('labourDeleteCtrl',function($scope,labourSer,toastr,$stateParams,$state,ipCookie,$location){
     //删除
     $scope.delYes = function(){

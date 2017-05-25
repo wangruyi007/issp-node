@@ -1,4 +1,4 @@
-var app = angular.module('demandAdd', ['toastr']);
+var app = angular.module('demandAdd', ['toastr','ipCookie']);
 app.controller('demandAddCtrl', function ($scope, demandSer,$state, toastr,ipCookie,$location) {
     demandSer.allProjects().then(function(response){
         if(response.data.code == 0){

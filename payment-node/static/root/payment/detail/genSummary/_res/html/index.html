@@ -1,0 +1,27 @@
+<div class="collect">
+    <div class="sum-select">
+        <label><i><img src="/images/mandatory.png"></i><em>项目名称</em></label>
+        <div class="select">
+            <p class="select-text" >
+                <span ng-repeat="contractor in contractors">{{contractor}}, </span>
+            </p>
+            <div class="mymultiselect" events="getSummary" ng-dropdown-multiselect="" options="workOptions" selected-model="contractors" extra-settings="stringSettings"></div>
+        </div>
+    </div>
+    <ul class="sum-list">
+        <li class="sum-thead">
+            <span>总包单位</span>
+            <span>管理费</span>
+            <span>到账金额</span>
+            <span>税金</span>
+            <span>税后金额</span>
+        </li>
+        <li class="sum-tbody" ng-repeat="summaryList in summaryLists">
+            <span>{{summaryList.name}}</span>
+            <span>{{summaryList.managementFee}}</span>
+            <span>{{summaryList.accountMoney}}</span>
+            <span>{{summaryList.taxes}}</span>
+            <span>{{summaryList.afterTax}}</span>
+        </li>
+    </ul>
+</div>

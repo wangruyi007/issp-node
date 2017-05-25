@@ -1,6 +1,3 @@
-/**
- * Created by ike on 2017/4/17.
- */
 var app = angular.module('settlementSummary', ['toastr']);
 app.controller('settlementSummaryCtrl', function($scope, settlementSer,toastr){
     settlementSer.summarySettlement().then(function(response){

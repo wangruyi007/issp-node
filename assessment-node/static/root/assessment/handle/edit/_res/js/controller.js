@@ -1,4 +1,4 @@
-var app = angular.module('handleEdit', ['toastr']);
+var app = angular.module('handleEdit', ['toastr','ipCookie']);
 app.controller('handleEditCtrl', function($scope, handleSer,$stateParams,$state,toastr,ipCookie,$location){
     handleSer.allHandProjects().then(function(response){
         if(response.data.code == 0){

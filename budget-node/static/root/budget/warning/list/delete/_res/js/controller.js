@@ -1,4 +1,4 @@
-var app = angular.module('warningDelete', ['toastr']);
+var app = angular.module('warningDelete', ['toastr','ipCookie']);
 app.controller('warningDeleteCtrl',function($scope,toastr,$stateParams,$state,warningSer,ipCookie,$location){
     //删除
     $scope.delYes = function(){

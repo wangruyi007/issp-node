@@ -116,6 +116,9 @@ module.exports = function(){
             method : 'DELETE',
             timeout : 3000,
             uri : config()['rurl'] + `/grade/v1/delete/${argvs.id}`,
+            headers : {
+                userToken:argvs.token
+            }
         };
         return request(options);
     };
@@ -333,7 +336,7 @@ module.exports = function(){
         var options = {
             method : 'POST',
             timeout : 3000,
-            uri : config()['rurl'] + `/v1/sign-out/${argvs.token}`,
+            uri : config()['user'] + `/v1/sign-out/${argvs.token}`,
             form:argvs
         };
         return request(options);

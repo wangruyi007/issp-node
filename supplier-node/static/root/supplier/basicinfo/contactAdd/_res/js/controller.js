@@ -1,4 +1,4 @@
-var app = angular.module('contactAdd', ['toastr']);
+var app = angular.module('contactAdd', ['toastr','ipCookie']);
 app.controller('contactAddCtrl', function($scope, basicinfoSer,$state,toastr,$stateParams,ipCookie,$location){
     var contId = {id : $stateParams.id};
     //获取值
