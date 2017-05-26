@@ -1,8 +1,15 @@
 <div class="content-tab list">
-    <div class="com-search mod">
+    <div class="search-big">
+        <select class="salc" ng-change="change(x)" ng-model="x">
+            <option ng-repeat="data in datas">{{data}}</option>
+        </select>
+        <input type="text" ng-click = 'hidden=!hidden' ng-change="changeKeyValue(searchField)" ng-model="searchField" />
+        <a href="javascript:void(0)" ng-click="collect()"><img src="/images/search2.png"></a>
+    </div>
+  <!--  <div class="com-search mod">
         <span class="com-search2">
             <label>工程地点 :</label>
-            <input type="text"  ng-model="enginPlace">
+            <input type="text" ng-change="changeSelect()" ng-model="enginPlace">
        </span>
         <span class="com-search2">
             <label>完工情况 :</label>
@@ -12,7 +19,7 @@
             </select>
        </span>
         <button ng-click="collect()">查询</button>
-    </div>
+    </div>-->
     <ul class="table com-table">
         <li class="list-head">
             <span></span>
