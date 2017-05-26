@@ -1,5 +1,5 @@
-var app = angular.module('companycapList', ['ng-pagination','toastr']);
-app.controller('companycapListCtrl',function($scope,companycapSer,toastr) {
+var app = angular.module('companycapList', ['ng-pagination','toastr','ipCookie']);
+app.controller('companycapListCtrl',function($scope,companycapSer,toastr,ipCookie,$location) {
    //选择
     $scope.selectList = function(event){
         angular.forEach($scope.companycapLists.data,function(obj){
@@ -22,12 +22,17 @@ app.controller('companycapListCtrl',function($scope,companycapSer,toastr) {
     function activatePage(page) {
         var listData = {
             page:page
-        }
+        };
         companycapSer.listAbilityCompanyCap(listData).then(function(response){
             if(response.data.code==0){
                 $scope.companycapLists = response.data
-            }else{
-                toastr.error( "请求超时，请联系管理员", '温馨提示');
+            }else if (response.data.code == 403||response.data.code==401) {
+                toastr.error( "请登录用户,3秒后跳至登陆页面", '温馨提示');
+                var absurl = $location.absUrl();
+                ipCookie('absurl', absurl,{ expires:3,expirationUnit: 'minutes',domain:'issp.bjike.com' })
+                setTimeout(function(){
+                    window.location.href='http://localhost/login'
+                },3000)
             }
         });
         $scope.collect = function(){
@@ -39,8 +44,13 @@ app.controller('companycapListCtrl',function($scope,companycapSer,toastr) {
             companycapSer.countBaseInfo2($scope.company).then(function (response) {
                 if(response.data.code==0){
                     $scope.abili.itemsCount = response.data.data;
-                }else{
-                    toastr.error( "请求超时，请联系管理员", '温馨提示');
+                }else if (response.data.code == 403||response.data.code==401) {
+                    toastr.error( "请登录用户,3秒后跳至登陆页面", '温馨提示');
+                    var absurl = $location.absUrl();
+                    ipCookie('absurl', absurl,{ expires:3,expirationUnit: 'minutes',domain:'issp.bjike.com' })
+                    setTimeout(function(){
+                        window.location.href='http://localhost/login'
+                    },3000)
                 }
             })
             var data = {
@@ -50,8 +60,13 @@ app.controller('companycapListCtrl',function($scope,companycapSer,toastr) {
             companycapSer.searchCompanyAbility(data).then(function(response){
                 if(response.data.code == 0){
                     $scope.companycapLists = response.data
-                }else if(response.data.code==403){
-                    toastr.error( "请登录用户", '温馨提示');
+                }else if (response.data.code == 403||response.data.code==401) {
+                    toastr.error( "请登录用户,3秒后跳至登陆页面", '温馨提示');
+                    var absurl = $location.absUrl();
+                    ipCookie('absurl', absurl,{ expires:3,expirationUnit: 'minutes',domain:'issp.bjike.com' })
+                    setTimeout(function(){
+                        window.location.href='http://localhost/login'
+                    },3000)
                 }
             });
         };
@@ -64,8 +79,13 @@ app.controller('companycapListCtrl',function($scope,companycapSer,toastr) {
     companycapSer.countBaseInfo().then(function(response){
         if(response.data.code==0){
             $scope.abili.itemsCount = response.data.data;
-        }else{
-            toastr.error( "请求超时，请联系管理员", '温馨提示');
+        }else if (response.data.code == 403||response.data.code==401) {
+            toastr.error( "请登录用户,3秒后跳至登陆页面", '温馨提示');
+            var absurl = $location.absUrl();
+            ipCookie('absurl', absurl,{ expires:3,expirationUnit: 'minutes',domain:'issp.bjike.com' })
+            setTimeout(function(){
+                window.location.href='http://localhost/login'
+            },3000)
         }
     });
     //删除
