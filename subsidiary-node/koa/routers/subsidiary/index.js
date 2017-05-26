@@ -33,7 +33,7 @@ module.exports = function(){
     }).post('/addBasicInfo/add', function*(){//添加
         var $self = this;
         var addData = $self.request.body;
-        addData.userToken = $self.cookies.get('token');
+        addData.token = $self.cookies.get('token');
         yield (server().basicInfoAdd(addData)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -46,7 +46,7 @@ module.exports = function(){
     }).post('/editBasicInfo/edit', function*(){//编辑
         var $self = this;
         var editData = $self.request.body;
-        editData.userToken = $self.cookies.get('token');
+        editData.token = $self.cookies.get('token');
         yield (server().basicInfoEdit(editData)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -59,7 +59,7 @@ module.exports = function(){
     }).get('/deleteBasicInfo/delete', function*(){//删除
         var $self = this;
         var deleteData = $self.request.query;
-        deleteData.userToken = $self.cookies.get('token');
+        deleteData.token = $self.cookies.get('token');
         yield (server().basicInfoDelete(deleteData)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -81,7 +81,7 @@ module.exports = function(){
                 $self.body=error.error;
                 console.error(error.error);
             }));
-    }).get('/summaryBasicInfo/summary', function*(){//
+    }).get('/summaryBasicInfo/summary', function*(){
         var $self = this;
         var summaryData = $self.request.query.areas;
         yield (server().basicInfoSummary(summaryData)
@@ -96,6 +96,18 @@ module.exports = function(){
     }).get('/listSummaryArea/id', function*(){//查询所有地区
         var $self = this;
         yield (server().projectsAllAreaById()
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
+    }).get('/user/logout', function*(){
+        var $self = this;
+        var token = {token:$self.cookies.get('token')};
+        yield (server().logout(token)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
                 $self.body = responseText;

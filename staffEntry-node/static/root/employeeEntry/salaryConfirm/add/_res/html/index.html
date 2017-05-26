@@ -1,0 +1,125 @@
+<div class="content-input add" verify-scope="tipStyle: 1">  <!--表单验证插件-->
+    <div class="input-list">
+        <section>
+            <ul>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>员工编号</em></label>
+                    <input type="text" ng-verify="{}" ng-model="data.employeeID">
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>姓名(用户名)</em></label>
+                    <input type="text"  ng-verify="{}" ng-model="data.name">
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>籍贯</em></label>
+                    <input type="text"  ng-verify="{}" ng-model="data.nativePlace">
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>办理入职时间</em></label>
+                    <input type="text" onClick="laydate({istime: true, format: 'YYYY-MM-DD'})" class="date-icon entryTime" ng-model="data.entryTime">
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>入职前居住地</em></label>
+                    <input type="text"  ng-verify="{}" ng-model="data.beforeResidence">
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>是否对工作地有要求</em></label>
+                    <input type="text"  ng-verify="{}" ng-model="data.workPlaceRequest">
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>试用期是多长时间</em></label>
+                    <input type="text"  ng-verify="{}" ng-model="data.probationDuration">
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>期望薪资</em></label>
+                    <input type="text"  ng-verify="{}" ng-model="data.expectSalary">
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>试用期薪资</em></label>
+                    <input type="text"  ng-verify="{}" ng-model="data.probationSalary">
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>转正后薪资</em></label>
+                    <input type="text"  ng-verify="{}" ng-model="data.officialSalary">
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>是否同意征税</em></label>
+                    <select class="sele" ng-model="data.whetherTax" ng-init="data.whetherTax='true'">
+                        <option value="true">是</option>
+                        <option value="false">否</option>
+                    </select>
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>是否需要公司安排住宿</em></label>
+                    <select class="sele" ng-model="data.whetherArrangeResidence" ng-init="data.whetherArrangeResidence='true'">
+                        <option value=true>是</option>
+                        <option value=false>否</option>
+                    </select>
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>是否购买社保</em></label>
+                    <select class="sele" ng-model="data.whetherSocialSecurity" ng-init="data.whetherSocialSecurity='true'">
+                        <option value=true>是</option>
+                        <option value=false>否</option>
+                    </select>
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>是否有面谈确认单原件</em></label>
+                    <select class="sele" ng-model="data.whetherVoucher" ng-init="data.whetherVoucher='true'">
+                        <option value=true>是</option>
+                        <option value=false>否</option>
+                    </select>
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>是否有住宿</em></label>
+                    <select class="sele" ng-model="data.whetherAccommodation" ng-init="data.whetherAccommodation='true'">
+                        <option value=true>是</option>
+                        <option value=false>否</option>
+                    </select>
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>确认人</em></label>
+                    <input type="text" ng-verify="{}" ng-model="data.confirmPerson">
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>存档人</em></label>
+                    <input type="text" ng-verify="{}" ng-model="data.archivePerson">
+                </li>
+                <li>
+                    <label><em>紧急联络人</em></label>
+                    <input type="text" ng-model="data.emergencyContract">
+                </li>
+                <li>
+                    <label><em>紧急联络人电话</em></label>
+                    <input type="text" ng-model="data.contractPhone">
+                </li>
+                <li>
+                    <label><em>从事通信工作时长</em></label>
+                    <input type="text" ng-model="data.communicationWorkDuration">
+                </li>
+                <li>
+                    <label><em>从事非通信工作时长</em></label>
+                    <input type="text" ng-model="data.notCommunicationWorkDuration">
+                </li>
+                <li>
+                    <label><em>其他特殊要求</em></label>
+                    <input type="text" ng-model="data.otherSpecialNeeds">
+                </li>
+                <li>
+                    <label><em>协办人</em></label>
+                    <input type="text" ng-model="data.assistant">
+                </li>
+            </ul>
+        </section>
+    </div>
+    <p class="dataBottom">
+        <span class="imPrompt"><i><img src="/images/prompt.png"></i>带有<i><img src="/images/mandatory.png"></i>的为必填项</span>
+        <button ng-verify="{control:'myform'}" ng-click="AddFun()">提交</button>
+    </p>
+</div>
+
+<script type="text/javascript">
+    !function(){
+        laydate.skin('dahong');//切换皮肤，请查看skins下面皮肤库
+    }();
+</script>

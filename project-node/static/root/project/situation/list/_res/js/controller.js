@@ -1,6 +1,3 @@
-/**
- * Created by ike on 2017/4/13.
- */
 var app = angular.module('situationList', ['ng-pagination','toastr']);
 app.controller('situationListCtrl',function($scope,situationSer,toastr) {
    //选择

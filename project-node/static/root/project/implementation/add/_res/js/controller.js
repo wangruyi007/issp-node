@@ -1,7 +1,4 @@
-/**
- * Created by ike on 2017/4/17.
- */
-var app = angular.module('implementationAdd', ['toastr']);
+var app = angular.module('implementationAdd', ['toastr','ipCookie']);
 app.controller('implementationAddCtrl', function($scope, implementationSer,$state,toastr,ipCookie,$location){
         $scope.projectCarryFun = function(){
         var vm = $scope;

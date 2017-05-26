@@ -1,7 +1,4 @@
-/**
- * Created by ike on 2017/4/20.
- */
-var app = angular.module('socialPEdit', ['toastr']);
+var app = angular.module('socialPEdit', ['toastr','ipCookie']);
 app.controller('socialPEditCtrl', function($scope, selfcapSer,$state,toastr,$stateParams,ipCookie,$location){
     var selfcapId2 = {id : $stateParams.subId};
     //获取值

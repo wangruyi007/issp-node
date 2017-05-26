@@ -1,7 +1,4 @@
-/**
- * Created by ike on 2017/4/18.
- */
-var app = angular.module('emailEdit', ['toastr']);
+var app = angular.module('emailEdit', ['toastr','ipCookie']);
 app.controller('emailEditCtrl', function($scope, emailSer,$state,toastr,$stateParams,ipCookie,$location){
     var emaiId = {id : $stateParams.id};
     //获取值
@@ -13,8 +10,6 @@ app.controller('emailEditCtrl', function($scope, emailSer,$state,toastr,$statePa
                 emailSer.listNameType(type).then(function(response){
                     if(response.data.code == 0){
                         $scope.companyNames = response.data.data;
-                    }else if(response.data.code==403){
-                        toastr.error( "请登录用户", '温馨提示');
                     }
                 });
             };

@@ -3,7 +3,6 @@ var path = require('path');
 var config = require(path.resolve('plugins/read-config.js'));
 var form = require(path.resolve('plugins/form.js'));
 module.exports = function(){
-
     this.basicInfoList = function(argvs){
         var options = {
             method : 'GET',
@@ -29,7 +28,7 @@ module.exports = function(){
             uri : config()['rurl'] + `/paytax/v1/add`,
             form:argvs,
             headers : {
-                userToken : argvs.userToken
+                userToken : argvs.token
             },
         };
         return request(options);
@@ -42,7 +41,7 @@ module.exports = function(){
             uri : config()['rurl'] + `/paytax/v1/edit`,
             form:argvs,
             headers : {
-                userToken : argvs.userToken
+                userToken : argvs.token
             },
         };
         return request(options);
@@ -55,7 +54,7 @@ module.exports = function(){
             uri : config()['rurl'] + `/paytax/v1/delete/${argvs.id}`,
             form:argvs,
             headers : {
-                userToken : argvs.userToken
+                userToken : argvs.token
             },
         };
         return request(options);
@@ -73,18 +72,23 @@ module.exports = function(){
         var options = {
             method : 'POST',
             timeout : 3000,
-            uri : config()['rurl'] + `/paytax/v1/split?userToken=${argvs.userToken}`
+            uri : config()['rurl'] + `/paytax/v1/split`,
+            headers : {
+                userToken : argvs.token
+            },
         };
         return request(options);
     };
     //汇总
     this.collectSummary = function(argvs){
-        console.log(argvs)
         var options = {
             method : 'GET',
             timeout : 3000,
             uri : config()['rurl'] + "/paytax/v1/ctCompany?startTime="+(argvs.startTime==undefined?'':argvs.startTime)+"&endTime="+(argvs.endTime==undefined?'':encodeURIComponent(argvs.endTime))+
-            "&company="+(argvs.company==undefined?'':encodeURIComponent(argvs.company))
+            "&company="+(argvs.company==undefined?'':encodeURIComponent(argvs.company)),
+            headers : {
+                userToken : argvs.token
+            },
         };
         return request(options);
     };
@@ -102,7 +106,10 @@ module.exports = function(){
             method : 'GET',
             timeout : 3000,
             uri : config()['rurl'] + "/paytax/v1/ctTaxType?startTime="+(argvs.startTime==undefined?'':argvs.startTime)+"&endTime="+(argvs.endTime==undefined?'':encodeURIComponent(argvs.endTime))+
-            "&taxType="+(argvs.taxType==undefined?'':encodeURIComponent(argvs.taxType))
+            "&taxType="+(argvs.taxType==undefined?'':encodeURIComponent(argvs.taxType)),
+            headers : {
+                userToken : argvs.token
+            },
         };
         return request(options);
     };
@@ -141,7 +148,7 @@ module.exports = function(){
             uri : config()['rurl'] + `/projecttax/v1/add`,
             form:argvs,
             headers : {
-                userToken : argvs.userToken
+                userToken : argvs.token
             },
         };
         return request(options);
@@ -153,7 +160,7 @@ module.exports = function(){
             uri : config()['rurl'] + `/projecttax/v1/edit`,
             form:argvs,
             headers : {
-                userToken : argvs.userToken
+                userToken : argvs.token
             },
         };
         return request(options);
@@ -173,7 +180,7 @@ module.exports = function(){
             uri : config()['rurl'] + `/projecttax/v1/delete/${argvs.id}`,
             form:argvs,
             headers : {
-                userToken : argvs.userToken
+                userToken : argvs.token
             },
         };
         return request(options);
@@ -184,7 +191,10 @@ module.exports = function(){
             method : 'GET',
             timeout : 3000,
             uri : config()['rurl'] + "/projecttax/v1/ctProject?startTime="+(argvs.startTime==undefined?'':argvs.startTime)+"&endTime="+(argvs.endTime==undefined?'':encodeURIComponent(argvs.endTime))+
-            "&project="+(argvs.project==undefined?'':encodeURIComponent(argvs.project))
+            "&project="+(argvs.project==undefined?'':encodeURIComponent(argvs.project)),
+            headers : {
+                userToken : argvs.token
+            },
         };
         return request(options);
     };
@@ -201,7 +211,10 @@ module.exports = function(){
             method : 'GET',
             timeout : 3000,
             uri : config()['rurl'] + "/projecttax/v1/ctTaxType?startTime="+(argvs.startTime==undefined?'':argvs.startTime)+"&endTime="+(argvs.endTime==undefined?'':encodeURIComponent(argvs.endTime))+
-            "&taxType="+(argvs.taxType==undefined?'':encodeURIComponent(argvs.taxType))
+            "&taxType="+(argvs.taxType==undefined?'':encodeURIComponent(argvs.taxType)),
+            headers : {
+                userToken : argvs.token
+            },
         };
         return request(options);
     };
@@ -210,6 +223,15 @@ module.exports = function(){
             method: 'GET',
             timeout: 3000,
             uri: config()['rurl'] + '/projecttax/v1/listTaxType',
+        };
+        return request(options);
+    };
+    this.logout = function(argvs){
+        var options = {
+            method : 'POST',
+            timeout : 3000,
+            uri : config()['user'] + `/v1/sign-out/${argvs.token}`,
+            form:argvs
         };
         return request(options);
     };

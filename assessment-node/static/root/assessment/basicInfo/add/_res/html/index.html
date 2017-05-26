@@ -4,7 +4,8 @@
             <ul>
                 <li class="required">
                     <label><i><img src="/images/mandatory.png"></i><em>合作方式</em></label>
-                    <select class="sele" ng-model="add.cooperateWay" ng-init="add.cooperateWay='LONGTERM'">
+                    <select class="sele" ng-model="add.cooperateWay">
+                        <option value="" disabled>请选择</option>
                         <option value="LONGTERM">长期合作</option>
                         <option value="ITEM">事项合作</option>
                         <option value="AGENCY">中介</option>
@@ -13,15 +14,15 @@
                 </li>
                 <li class="required">
                     <label><i><img src="/images/mandatory.png"></i><em>地区</em></label>
-                    <select class="sele" ng-model="add.area2" ng-change="changeSelect()" ng-init="add.area2='请选择'">
-                        <option disabled>请选择</option>
+                    <select class="sele" ng-model="add.area">
+                        <option value="" disabled>请选择</option>
                     </select>
                     <input type="text"  class="inputDom" ng-model="add.area">
                 </li>
                 <li class="required">
                     <label><i><img src="/images/mandatory.png"></i><em>项目名称</em></label>
-                    <select class="sele" ng-model="add.project2" ng-change="changeSelect2()" ng-init="add.project2='请选择地区'">
-                        <option disabled>请选择</option>
+                    <select class="sele" ng-model="add.project">
+                        <option value="" disabled>请选择</option>
                     </select>
                     <input type="text"  class="inputDom" ng-model="add.project">
                 </li>

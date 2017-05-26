@@ -1,7 +1,4 @@
-/**
- * Created by ike on 2017/4/17.
- */
-var app = angular.module('settlementDelete', ['toastr']);
+var app = angular.module('settlementDelete', ['toastr','ipCookie']);
 app.controller('settlementDeleteCtrl',function($scope,settlementSer,toastr,$stateParams,$state,ipCookie,$location){
     //删除
     $scope.delYes = function(){

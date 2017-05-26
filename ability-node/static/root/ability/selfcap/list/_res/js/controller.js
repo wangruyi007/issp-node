@@ -1,6 +1,3 @@
-/**
- * Created by ike on 2017/4/13.
- */
 var app = angular.module('selfcapList', ['ng-pagination','toastr']);
 app.controller('selfcapListCtrl',function($scope,selfcapSer,toastr) {
    //选择

@@ -7,12 +7,8 @@ app.factory('informationSer',function ($http) {
         deleteInformation:deleteInformation,
         editInformation:editInformation,
         getInformationById:getInformationById,
-
-
-
-
-
-        summarySettlement:summarySettlement
+        summaryInformation:summaryInformation,
+        listSummaryArea:listSummaryArea
     };
     //列表
     function listInformation(data) {
@@ -46,7 +42,11 @@ app.factory('informationSer',function ($http) {
         })
     }
     //汇总
-    function summarySettlement(){
-        return $http.get('/summarySettlement/summary')
+    function summaryInformation(data){
+        return $http.get('/summaryInformation/summary?areas='+data.join(','))
+    }
+    //查询所有地区
+    function  listSummaryArea() {
+        return $http.get('/listSummaryArea/id')
     }
 });

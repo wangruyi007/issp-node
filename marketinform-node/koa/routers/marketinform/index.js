@@ -31,8 +31,9 @@ module.exports = function(){
                 console.error(error.error);
             }));
     }).get('/marketinform/deleteInformation/delete', function*(){  //市场信息删除
-        var delData = this.request.query;
         var $self = this;
+        var delData = this.request.query;
+        delData.token = this.cookies.get('token');
         yield (server().informationDelete(delData)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -44,9 +45,9 @@ module.exports = function(){
                 }
             }));
     }).post('/marketinform/addInformation/add', function*(){  //市场信息添加
-        var addData = this.request.body;
-        addData.userToken = this.cookies.get('token');
         var $self = this;
+        var addData = this.request.body;
+        addData.token = this.cookies.get('token');
         yield (server().projectMarketInformAdd(addData)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -57,9 +58,9 @@ module.exports = function(){
                 console.error(error.error);
             }));
     }).post('/marketinform/editInformation/edit', function*(){
-        var editData = this.request.body;
-        editData.userToken = this.cookies.get('token');
         var $self = this;
+        var editData = this.request.body;
+        editData.token = this.cookies.get('token');
         yield (server().informationEdit(editData)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -81,6 +82,41 @@ module.exports = function(){
                     $self.body = {'msg' : '请求错误！', errno : 3};
                     $self.status = 408;
                 }
+            }));
+    }).get('/summaryInformation/summary', function*(){
+        var $self = this;
+        var summaryData = $self.request.query.areas;
+        yield (server().informationSummary(summaryData)
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
+    }).get('/listSummaryArea/id', function*(){//查询所有地区
+        var $self = this;
+        yield (server().informationAllAreaById()
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
+    }).get('/user/logout', function*(){
+        var $self = this;
+        var token = {token:$self.cookies.get('token')};
+        yield (server().logout(token)
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
             }));
     })
     return router;

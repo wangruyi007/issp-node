@@ -4,15 +4,15 @@
             <ul>
                 <li class="required">
                     <label><i><img src="/images/mandatory.png"></i><em>影响部门</em></label>
-                    <select class="sele" ng-model="editData.affectDepartment2" ng-change="changeSelect()" ng-init="editData.affectDepartment2='请选择'">
-                        <option value="请选择" disabled>请选择</option>
+                    <select class="sele" ng-model="editData.affectDepartment">
+                        <option value="" disabled>请选择</option>
                     </select>
                     <input type="text"  class="inputDom" ng-verify="{}" ng-model="editData.affectDepartment">
                 </li>
                 <li class="required">
                     <label><i><img src="/images/mandatory.png"></i><em>规定完成时间</em></label>
-                    <select class="sele" ng-model="editData.stipulateFinishTime" ng-init="editData.stipulateFinishTime='请选择'">
-                        <option value="请选择">请选择</option>
+                    <select class="sele" ng-model="editData.stipulateFinishTime">
+                        <option value="" disabled>请选择</option>
                         <option value="LESSFOUR">4小时内</option>
                         <option value="FORTOTWENTYFOR">4-24小时</option>
                         <option value="MORETWENTYFOR">24小时以上</option>
@@ -20,8 +20,8 @@
                 </li>
                 <li class="required">
                     <label><i><img src="/images/mandatory.png"></i><em>影响部门数</em></label>
-                    <select class="sele" ng-model="editData.affectDeptAmount" ng-init="editData.affectDeptAmount='请选择'">
-                        <option value="请选择" disabled>请选择</option>
+                    <select class="sele" ng-model="editData.affectDeptAmount">
+                        <option value="" disabled>请选择</option>
                         <option value="ONE">1个部门</option>
                         <option value="TWOORTHREE">2-3个部门</option>
                         <option value="MORETHREE">3个以上部门</option>
@@ -29,8 +29,8 @@
                 </li>
                 <li class="required">
                     <label><i><img src="/images/mandatory.png"></i><em>问题受理难度</em></label>
-                    <select class="sele" ng-model="editData.problemDifficulty" ng-init="editData.problemDifficulty='请选择'">
-                        <option value="请选择" disabled>请选择</option>
+                    <select class="sele" ng-model="editData.problemDifficulty">
+                        <option value="" disabled>请选择</option>
                         <option value="PRIMARY">初级</option>
                         <option value="MIDDLE">中级</option>
                         <option value="URGENCY">紧急</option>
@@ -38,16 +38,16 @@
                 </li>
                 <li class="required">
                     <label><i><img src="/images/mandatory.png"></i><em>是否按时完成</em></label>
-                    <select class="sele" ng-model="editData.finishOnTime" ng-init="editData.finishOnTime='请选择'">
-                        <option value="请选择" disabled>请选择</option>
+                    <select class="sele" ng-model="editData.finishOnTime">
+                        <option value="" disabled>请选择</option>
                         <option value="YES">是</option>
                         <option value="NOT">否</option>
                     </select>
                 </li>
                 <li class="required">
                     <label><i><img src="/images/mandatory.png"></i><em>影响模块</em></label>
-                    <select class="sele" ng-model="editData.affectModule2" ng-change="changeSelect2()" ng-init="editData.affectModule2='请选择'">
-                        <option value="请选择" disabled>请选择</option>
+                    <select class="sele" ng-model="editData.affectModule">
+                        <option value="" disabled>请选择</option>
                     </select>
                     <input type="text"  class="inputDom" ng-verify="{}" ng-model="editData.affectModule">
                 </li>

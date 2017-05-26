@@ -59,27 +59,19 @@ router.get(/^\/module\/_config(?:\/.|$)/, function *(next) {
 });
 
 //============路由===========
-app.use(require(path.join(__dirname,routersPath,'/common/index.js'))().routes());//登录路由
-app.use(require(path.join(__dirname,routersPath,'/subsidiary/index.js'))().routes());//
-
-
+app.use(require(path.join(__dirname,routersPath,'/subsidiary/index.js'))().routes());
 app.use(router.routes());
-
 
 //============静态文件资源===========
 app.use(staticCache(path.join(__dirname, '/static'), {
     // maxAge: 365 * 24 * 60 * 60
 }));
-
-
-
 app.use(function *(next) {
     var start = new Date;
     yield next;
     var ms = new Date - start;
     console.log('%s %s - %s', this.method, this.url, ms);
 });
-
 app.listen(port, function () {
     console.log('koa server listening on port ' + port);
 });
