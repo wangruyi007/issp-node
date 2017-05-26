@@ -1,8 +1,12 @@
 {
   "default":"dev",
   "dev": {
+<<<<<<< Updated upstream
 
       "rurl": "http://192.168.0.123:51702"
 
+=======
+      "rurl": "http://192.168.0.134:51702"
+>>>>>>> Stashed changes
   }
 }
