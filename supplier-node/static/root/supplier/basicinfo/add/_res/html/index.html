@@ -4,9 +4,8 @@
             <ul>
                 <li class="required">
                     <label><i><img src="/images/mandatory.png"></i><em>供应商地区</em></label>
-                    <select class="sele" ng-model="add.area2" ng-change="changeSelect()"  ng-init="add.area2=''">
-                        <option>doeiie</option>
-                        <option>doddd</option>
+                    <select class="sele" ng-model="add.area">
+                        <option value="" disabled>请选择</option>
                      </select>
                     <input type="text"  class="inputDom" ng-verify="{}" ng-model="add.area">
                 </li>
@@ -16,10 +15,10 @@
                 </li>
                 <li class="required">
                     <label><i><img src="/images/mandatory.png"></i><em>供应商类型</em></label>
-                    <select class="sele" ng-verify="{}" ng-model="add.type" ng-init="add.type=''">
-                        <option>doeiie</option>
-                        <option>doddd</option>
+                    <select class="sele" ng-verify="{}" ng-model="add.type">
+                        <option value="" disabled>请选择</option>
                     </select>
+                    <input type="text"  class="inputDom" ng-verify="{}" ng-model="add.area">
                 </li>
                 <li class="required">
                     <label><i><img src="/images/mandatory.png"></i><em>经营范围</em></label>

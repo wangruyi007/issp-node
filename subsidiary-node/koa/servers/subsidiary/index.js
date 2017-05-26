@@ -25,10 +25,10 @@ module.exports = function(){
         var options = {
             method : 'POST',
             timeout : 3000,
-            uri : config()['rurl'] + `/accountinfo/v1/add?userToken=${argvs.userToken}`,
+            uri : config()['rurl'] + `/accountinfo/v1/add`,
             form:argvs,
             headers : {
-                // token : token
+                userToken:argvs.token
             }
         };
         return request(options);
@@ -38,8 +38,11 @@ module.exports = function(){
         var options = {
             method : 'POST',
             timeout : 3000,
-            uri : config()['rurl'] + `/accountinfo/v1/edit?userToken=${argvs.userToken}`,
-            form:argvs
+            uri : config()['rurl'] + `/accountinfo/v1/edit`,
+            form:argvs,
+            headers : {
+                userToken:argvs.token
+            }
         };
         return request(options);
     };
@@ -49,7 +52,10 @@ module.exports = function(){
         var options = {
             method : 'DELETE',
             timeout : 3000,
-            uri : config()['rurl'] + `/accountinfo/v1/delete/${argvs.id}?userToken=${argvs.userToken}`,
+            uri : config()['rurl'] + `/accountinfo/v1/delete/${argvs.id}`,
+            headers : {
+                userToken:argvs.token
+            }
         };
         return request(options);
     };
@@ -66,11 +72,9 @@ module.exports = function(){
 
     //汇总
     this.basicInfoSummary = function(argvs){
-        console.log(argvs)
         var options = {
             method : 'GET',
             timeout : 3000,
-            //uri : config()['rurl'] + '/accountinfo/v1/collect?areas='+encodeURIComponent(argvs.areas),
             uri : config()['rurl'] + `/accountinfo/v1/collect?areas=${encodeURIComponent(argvs)}`,
             form:argvs
         };
@@ -85,6 +89,14 @@ module.exports = function(){
         };
         return request(options);
     };
-    /*商务评估结果汇总*/
+    this.logout = function(argvs){
+        var options = {
+            method : 'POST',
+            timeout : 3000,
+            uri : config()['user'] + `/v1/sign-out/${argvs.token}`,
+            form:argvs
+        };
+        return request(options);
+    };
     return this;
 };

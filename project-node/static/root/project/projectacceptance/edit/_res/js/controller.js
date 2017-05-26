@@ -1,7 +1,4 @@
-/**
- * Created by ike on 2017/4/18.
- */
-var app = angular.module('projectacceptanceEdit', ['toastr']);
+var app = angular.module('projectacceptanceEdit', ['toastr','ipCookie']);
 app.controller('projectacceptanceEditCtrl', function($scope, projectacceptanceSer,$state,toastr,$stateParams,ipCookie,$location){
     var acceptanceId = {id : $stateParams.id};
     //获取值

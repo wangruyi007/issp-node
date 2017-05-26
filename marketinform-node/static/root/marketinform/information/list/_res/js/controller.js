@@ -1,6 +1,3 @@
-/**
- * Created by ike on 2017/4/13.
- */
 var app = angular.module('informationList', ['ng-pagination','toastr']);
 app.controller('informationListCtrl',function($scope,informationSer,toastr) {
    //选择

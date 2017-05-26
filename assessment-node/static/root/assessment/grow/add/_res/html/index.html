@@ -4,7 +4,8 @@
             <ul>
                 <li class="required">
                     <label><i><img src="/images/mandatory.png"></i><em>成长能力类型</em></label>
-                    <select class="sele" ng-model="add.groupUpType" ng-init="add.groupUpType='COST'">
+                    <select class="sele" ng-model="add.groupUpType">
+                        <option value="" disabled>请选择</option>
                         <option value="COST">成本</option>
                         <option value="FEE">费用</option>
                         <option value="G">利润</option>
@@ -12,8 +13,8 @@
                 </li>
                 <li class="required">
                     <label><i><img src="/images/mandatory.png"></i><em>项目</em></label>
-                    <select class="sele" ng-verify="{}"   ng-model="add.projectInfoId"  ng-init="add.projectInfoId='请选择'">
-                        <option disabled>请选择</option>
+                    <select class="sele" ng-verify="{}"   ng-model="add.projectInfoId">
+                        <option value="" disabled>请选择</option>
                         <option ng-repeat="pros in proData" value="{{pros.id}}">{{pros.project}}</option>
                     </select>
                    <!-- <input type="text"  class="inputDom" ng-model="add.projectInfoId">-->

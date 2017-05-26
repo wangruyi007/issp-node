@@ -32,6 +32,7 @@ module.exports = function(){
     }).post('/addWarning/add', function*(){
         var $self = this;
         var addData = $self.request.body;
+        addData.token = $self.cookies.get('token');
         yield (server().warningAdd(addData)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -56,6 +57,7 @@ module.exports = function(){
     }).post('/editWarning/edit', function*(){
         var $self = this;
         var editData = $self.request.body;
+        editData.token = $self.cookies.get('token');
         yield (server().warningEdit(editData)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -68,6 +70,7 @@ module.exports = function(){
     }).get('/deleteWarning/delete', function*(){
         var $self = this;
         var delId = $self.request.query;
+        delId.token = $self.cookies.get('token');
         yield (server().warningDelete(delId)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -103,6 +106,7 @@ module.exports = function(){
     }).post('/addGrade/add', function*(){
         var $self = this;
         var addData = $self.request.body;
+        addData.token = $self.cookies.get('token');
         yield (server().gradeAdd(addData)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -127,6 +131,7 @@ module.exports = function(){
     }).post('/editGrade/edit', function*(){
         var $self = this;
         var editData = $self.request.body;
+        editData.token = $self.cookies.get('token');
         yield (server().gradeEdit(editData)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -139,6 +144,7 @@ module.exports = function(){
     }).get('/deleteGrade/delete', function*(){
         var $self = this;
         var delId = $self.request.query;
+        delId.token = $self.cookies.get('token');
         yield (server().gradeDelete(delId)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -174,6 +180,7 @@ module.exports = function(){
     }).post('/addCost/add', function*(){
         var $self = this;
         var addData = $self.request.body;
+        addData.token = $self.cookies.get('token');
         yield (server().costAdd(addData)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -198,6 +205,7 @@ module.exports = function(){
     }).post('/editCost/edit', function*(){
         var $self = this;
         var editData = $self.request.body;
+        editData.token = $self.cookies.get('token');
         yield (server().costEdit(editData)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -210,6 +218,7 @@ module.exports = function(){
     }).get('/deleteCost/del', function*(){
         var $self = this;
         var delId = $self.request.query;
+        delId.token = $self.cookies.get('token');
         yield (server().costDelete(delId)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -411,6 +420,18 @@ module.exports = function(){
         var $self = this;
         var collect = $self.request.body;
         yield (server().projectNameByOrderCollect(collect)
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
+    }).get('/user/logout', function*(){
+        var $self = this;
+        var token = {token:$self.cookies.get('token')};
+        yield (server().logout(token)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
                 $self.body = responseText;

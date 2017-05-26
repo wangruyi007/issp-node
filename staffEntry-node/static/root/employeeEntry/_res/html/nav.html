@@ -1,0 +1,17 @@
+<div class="nav-list">
+    <h3 class="header-menu big"><i class="nav-arrow"></i>员工入职</h3>
+    <ul class="menu">
+        <li ng-click="navClass('userRegistration')" ng-class="{'active':navCla=='userRegistration'}"  ui-sref="_root.employeeEntry.userRegistration.list">
+            <a href="javascript:void(0)">用户注册</a>
+        </li>
+        <li ng-click="navClass('entryRegister')" ng-class="{'active':navCla=='entryRegister'}" ui-sref="_root.employeeEntry.entryRegister.list">
+            <a href="javascript:void(0)">入职登记</a>
+        </li>
+        <li ng-click="navClass('basicInfo')" ng-class="{'active':navCla=='basicInfo'}" ui-sref="_root.employeeEntry.basicInfo.list">
+            <a href="javascript:void(0)">入职基本信息</a>
+        </li>
+        <li ng-click="navClass('salaryConfirm')" ng-class="{'active':navCla=='salaryConfirm'}" ui-sref="_root.employeeEntry.salaryConfirm.list">
+            <a href="javascript:void(0)">薪资确认记录</a>
+        </li>
+    </ul>
+</div>

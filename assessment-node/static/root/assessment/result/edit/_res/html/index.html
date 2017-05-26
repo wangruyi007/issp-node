@@ -3,8 +3,8 @@
         <ul class="inter-left">
             <li class="required">
                 <label><i><img src="/images/mandatory.png"></i><em>项目</em></label>
-                <select class="sele" ng-verify="{}"   ng-model="editInfo.projectId"  ng-init="editInfo.projectId='请选择'">
-                    <option disabled>请选择</option>
+                <select class="sele" ng-verify="{}"   ng-model="editInfo.projectId">
+                    <option value="" disabled>请选择</option>
                     <option ng-repeat="pros in proData" value="{{pros.id}}">{{pros.project}}</option>
                 </select>
                 <!-- <input type="text" class="inputDom" ng-verify="{}" ng-model="add.projectInfoId">-->
@@ -12,7 +12,8 @@
             <li class="required f-l">
                 <label><i><img src="/images/mandatory.png"></i><em>发送间隔</em></label>
                 <input type="number" ng-model="editInfo.sendInterval" ng-verify="{}">
-                <select class="sele" ng-model="editInfo.sendIntervalType" ng-init="add.sendIntervalType='MINUTE'">
+                <select class="sele" ng-model="editInfo.sendIntervalType">
+                    <option value="" disabled>请选择</option>
                     <option value="MINUTE">分钟</option>
                     <option value="HOURS">小时</option>
                     <option value="DAY">天</option>
@@ -24,7 +25,8 @@
             </li>
             <li class="required ">
                 <label><i><img src="/images/mandatory.png"></i><em>汇总间隔</em></label>
-                <select class="sele" ng-model="editInfo.collectInterval" ng-init="add.collectInterval='DAY'">
+                <select class="sele" ng-model="editInfo.collectInterval">
+                    <option value="" disabled>请选择</option>
                     <option value="DAY">每天</option>
                     <option value="WEEK">每周</option>
                     <option value="MONTH">每月</option>
@@ -39,18 +41,13 @@
             <li class="required">
                 <label><i><img src="/images/mandatory.png"></i><em>地区</em></label>
                 <select class="sele" ng-verify="{}"   ng-model="editInfo.area"  ng-init="editInfo.area='请选择'">
-                    <option disabled>请选择</option>
+                    <option value="" disabled>请选择</option>
                     <option ng-repeat="areas in areaData">{{areas.area}}</option>
                 </select>
                 <!-- <input type="text" ng-verify="{}" ng-model="add.area">-->
             </li>
             <li class="required">
                 <label><i><img src="/images/mandatory.png"></i><em>选择对象</em></label>
-                <!--    <select class="sele" ng-model="add.collectInterval" ng-init="add.collectInterval='DAY'">
-                        <option value="DAY">每天</option>
-                        <option value="WEEK">每周</option>
-                        <option value="MONTH">每月</option>
-                    </select>-->
                 <input type="text"  ng-verify="{}" ng-model="editInfo.sendUser">
             </li>
             <li class="f-send">

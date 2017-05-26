@@ -33,7 +33,7 @@ module.exports = function(){
     }).post('/addBasicInfo/add', function*(){//添加
         var $self = this;
         var addData = $self.request.body;
-        addData.userToken = $self.cookies.get('token');
+        addData.token = $self.cookies.get('token');
         yield (server().basicInfoAdd(addData)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -46,7 +46,7 @@ module.exports = function(){
     }).post('/editBasicInfo/edit', function*(){//编辑
         var $self = this;
         var editData = $self.request.body;
-        editData.userToken = $self.cookies.get('token');
+        editData.token = $self.cookies.get('token');
         yield (server().basicInfoEdit(editData)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -59,7 +59,7 @@ module.exports = function(){
     }).get('/deleteBasicInfo/delete', function*(){//删除
         var $self = this;
         var deleteData = $self.request.query;
-        deleteData.userToken = $self.cookies.get('token');
+        deleteData.token = $self.cookies.get('token');
         yield (server().basicInfoDelete(deleteData)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -84,7 +84,7 @@ module.exports = function(){
     }).post('/editShareBasicInfo/share', function*(){//分摊
         var $self = this;
         var shareData = $self.request.body;
-        shareData.userToken = $self.cookies.get('token');
+        shareData.token = $self.cookies.get('token');
         yield (server().basicInfoShare(shareData)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -97,6 +97,7 @@ module.exports = function(){
     }).post('/summaryCompany/summary', function*(){
         var $self = this;
         var sumData = $self.request.body;
+        sumData.token = $self.cookies.get('token');
         yield (server().collectSummary(sumData)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -120,6 +121,7 @@ module.exports = function(){
     }).post('/summaryTax/summary', function*(){
         var $self = this;
         var taxData = $self.request.body;
+        taxData.token = $self.cookies.get('token');
         yield (server().taxSummary(taxData)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -168,7 +170,7 @@ module.exports = function(){
     }).post('/addTax/add', function*(){//添加
         var $self = this;
         var addData = $self.request.body;
-        addData.userToken = $self.cookies.get('token');
+        addData.token = $self.cookies.get('token');
         yield (server().taxAdd(addData)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -181,7 +183,7 @@ module.exports = function(){
     }).post('/editTaxInfo/edit', function*(){//编辑
         var $self = this;
         var editData = $self.request.body;
-        editData.userToken = $self.cookies.get('token');
+        editData.token = $self.cookies.get('token');
         yield (server().taxInfoEdit(editData)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -206,7 +208,7 @@ module.exports = function(){
     }).get('/deleteTaxInfo/delete', function*(){//删除
         var $self = this;
         var deleteData = $self.request.query;
-        deleteData.userToken = $self.cookies.get('token');
+        deleteData.token = $self.cookies.get('token');
         yield (server().taxInfoDelete(deleteData)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -219,6 +221,7 @@ module.exports = function(){
     }).post('/summaryProject/summary', function*(){
         var $self = this;
         var taxData = $self.request.body;
+        taxData.token = $self.cookies.get('token');
         yield (server().projectSummary(taxData)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -242,6 +245,7 @@ module.exports = function(){
     }).post('/projectTax/summary', function*(){
         var $self = this;
         var taxData = $self.request.body;
+        taxData.token = $self.cookies.get('token');
         yield (server().projectTaxSummary(taxData)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -254,6 +258,18 @@ module.exports = function(){
     }).get('/listResultProjectTax/id', function*(){//查询
         var $self = this;
         yield (server().listAllProById()
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
+    }).get('/user/logout', function*(){
+        var $self = this;
+        var token = {token:$self.cookies.get('token')};
+        yield (server().logout(token)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
                 $self.body = responseText;

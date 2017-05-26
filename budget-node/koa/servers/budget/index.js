@@ -26,7 +26,7 @@ module.exports = function(){
             uri : config()['rurl'] + '/projectweek/v1/save',
             form:argvs,
             headers : {
-                userToken : argvs.userToken
+                userToken:argvs.token
             }
         };
         return request(options);
@@ -46,7 +46,7 @@ module.exports = function(){
             uri : config()['rurl'] + '/projectweek/v1/edit',
             form:argvs,
             headers : {
-                userToken : argvs.userToken
+                userToken:argvs.token
             }
         };
         return request(options);
@@ -57,7 +57,7 @@ module.exports = function(){
             timeout : 3000,
             uri : config()['rurl'] + `/projectweek/v1/delete/${argvs.id}`,
             headers : {
-                userToken : argvs.userToken
+                userToken:argvs.token
             }
         };
         return request(options);
@@ -69,7 +69,7 @@ module.exports = function(){
             timeout : 3000,
             uri : config()['rurl'] + `/projectweek/v1/conditionsCount/${encodeURIComponent(argvs)}`,
             headers : {
-            userToken : argvs.userToken
+                userToken:argvs.token
             }
         };
         return request(options);
@@ -125,7 +125,7 @@ module.exports = function(){
             timeout : 3000,
             uri : config()['rurl'] + `/projectmonth/v1/conditionsCount/${encodeURIComponent(argvs)}`,
             headers : {
-                userToken : argvs.userToken
+                userToken:argvs.token
             }
         };
         return request(options);
@@ -171,7 +171,7 @@ module.exports = function(){
             uri : config()['rurl'] + '/arrivalweek/v1/save',
             form:argvs,
             headers : {
-                userToken : argvs.userToken
+                userToken:argvs.token
             }
         };
         return request(options);
@@ -191,7 +191,7 @@ module.exports = function(){
             uri : config()['rurl'] + '/arrivalweek/v1/edit',
             form:argvs,
             headers : {
-                userToken : argvs.userToken
+                userToken:argvs.token
             }
         };
         return request(options);
@@ -202,7 +202,7 @@ module.exports = function(){
             timeout : 3000,
             uri : config()['rurl'] + `/arrivalweek/v1/delete/${argvs.id}`,
             headers : {
-                userToken : argvs.userToken
+                userToken:argvs.token
             }
         };
         return request(options);
@@ -213,7 +213,7 @@ module.exports = function(){
             timeout : 3000,
             uri : config()['rurl'] + `/arrivalweek/v1/conditionsCount/${encodeURIComponent(argvs)}`,
             headers : {
-                userToken : argvs.userToken
+                userToken:argvs.token
             }
         };
         return request(options);
@@ -257,7 +257,7 @@ module.exports = function(){
             timeout : 3000,
             uri : config()['rurl'] + `/arrivalmonth/v1/conditionsCount/${encodeURIComponent(argvs)}`,
             headers : {
-                userToken : argvs.userToken
+                userToken:argvs.token
             }
         };
         return request(options);
@@ -309,7 +309,7 @@ module.exports = function(){
             uri : config()['rurl'] + '/warn/v1/save',
             form:argvs,
             headers : {
-                userToken : argvs.userToken
+                userToken:argvs.token
             }
         };
         return request(options);
@@ -329,7 +329,7 @@ module.exports = function(){
             uri : config()['rurl'] + '/warn/v1/edit',
             form:argvs,
             headers : {
-                userToken : argvs.userToken
+                userToken:argvs.token
             }
         };
         return request(options);
@@ -340,7 +340,7 @@ module.exports = function(){
             timeout : 3000,
             uri : config()['rurl'] + `/warn/v1/delete/${argvs.id}`,
             headers : {
-                userToken : argvs.userToken
+                userToken:argvs.token
             }
         };
         return request(options);
@@ -359,6 +359,15 @@ module.exports = function(){
             method : 'GET',
             timeout : 3000,
             uri : config()['rurl'] + '/arrivalweek/v1/list?_includes=workDifferences,incomeDifferences',
+        };
+        return request(options);
+    };
+    this.logout = function(argvs){
+        var options = {
+            method : 'POST',
+            timeout : 3000,
+            uri : config()['user'] + `/v1/sign-out/${argvs.token}`,
+            form:argvs
         };
         return request(options);
     };

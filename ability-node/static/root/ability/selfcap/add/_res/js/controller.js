@@ -1,7 +1,4 @@
-/**
- * Created by ike on 2017/4/17.
- */
-var app = angular.module('selfcapAdd', ['toastr']);
+var app = angular.module('selfcapAdd', ['toastr','ipCookie']);
 app.controller('selfcapAddCtrl', function($scope, selfcapSer,$state,toastr,ipCookie,$location){
     //添加个人能力
     $scope.personAddFun = function(){

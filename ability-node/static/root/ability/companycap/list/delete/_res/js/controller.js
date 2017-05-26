@@ -1,7 +1,4 @@
-/**
- * Created by ike on 2017/4/17.
- */
-var app = angular.module('companycapDelete', ['toastr']);
+var app = angular.module('companycapDelete', ['toastr','ipCookie']);
 app.controller('companycapDeleteCtrl',function($scope,companycapSer,toastr,$stateParams,$state,ipCookie,$location){
     //删除
     $scope.delYes = function(){

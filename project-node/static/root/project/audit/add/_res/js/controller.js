@@ -1,7 +1,4 @@
-/**
- * Created by ike on 2017/4/17.
- */
-var app = angular.module('auditAdd', ['toastr']);
+var app = angular.module('auditAdd', ['toastr','ipCookie']);
 app.controller('auditAddCtrl', function($scope, auditSer,$state,toastr,ipCookie,$location){
     //添加公司能力
     $scope.auditAddFun = function(){

@@ -4,8 +4,8 @@
             <ul>
                 <li class="required">
                     <label><i><img src="/images/mandatory.png"></i><em>项目</em></label>
-                    <select class="sele" ng-verify="{}"   ng-model="projectInfoId" ng-change="myFunc()" ng-init="projectInfoId='请选择'" >
-                        <option disabled>请选择</option>
+                    <select class="sele" ng-verify="{}"   ng-model="projectInfoId" ng-change="myFunc()">
+                        <option value="" disabled>请选择</option>
                         <option ng-repeat="pros in proData" value="{{pros.id}}">{{pros.project}}</option>
                     </select>
                 </li>

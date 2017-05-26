@@ -1269,11 +1269,12 @@ body {
 }
 /*可手填的下拉框*/
 .right-section .top-content .content .content-wrap .content-input .input-list section ul li .inputDom{
-  width: 45%;
+  width: 44%;
   position: absolute;
   margin-left: 64px;
   border: 0!important;
   height: 30px;
+  padding-left: 10px !important;
 }
 .right-section .top-content .content .content-wrap .content-input .input-list section ul li .inputDom:hover{
   box-shadow: 0 0 3px white !important;

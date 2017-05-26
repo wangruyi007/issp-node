@@ -16,7 +16,7 @@
                 </li>
                 <li class="required">
                     <label><i><img src="/images/mandatory.png"></i><em>市场收集日期</em></label>
-                    <input type="text" ng-verify="{}" ng-model="add.infoCollectionDate" onClick="laydate({istime: true, format: 'YYYY-MM-DD hh:mm:ss'})" class="add_image addMarketReceptTime">
+                    <input type="text" ng-verify="{}" ng-model="add.infoCollectionDate" onClick="laydate({istime: true, format: 'YYYY-MM-DD'})" class="add_image infoCollectionDate">
                 </li>
                 <li class="required">
                     <label><i><img src="/images/mandatory.png"></i><em>行业</em></label>
@@ -36,7 +36,8 @@
                 </li>
                 <li class="required">
                     <label><i><img src="/images/mandatory.png"></i><em>项目名称</em></label>
-                    <select class="sele" ng-model="add.scale" ng-init="add.scale='ALEVEL'" >
+                    <select class="sele" ng-model="add.scale">
+                        <option value="" disabled>请选择</option>
                         <option value="ALEVEL">规模枚举</option>
                         <option value="BLEVEL">B级:31-60人</option>
                         <option value="CLEVEL">C级:61-90</option>
@@ -48,15 +49,15 @@
                 </li>
                 <li class="required">
                     <label><i><img src="/images/mandatory.png"></i><em>发起时间</em></label>
-                    <input type="text" ng-verify="{}" ng-model="add.startTime" onClick="laydate({istime: true, format: 'YYYY-MM-DD hh:mm:ss'})" class="add_image addMarketReceptTime">
+                    <input type="text" ng-verify="{}" ng-model="add.startTime" onClick="laydate({istime: true, format: 'YYYY-MM-DD'})" class="add_image startTime">
                 </li>
                 <li class="required">
                     <label><i><img src="/images/mandatory.png"></i><em>重要时间点</em></label>
-                    <input type="text" ng-verify="{}" ng-model="add.importantPoint" onClick="laydate({istime: true, format: 'YYYY-MM-DD hh:mm:ss'})" class="add_image addMarketReceptTime">
+                    <input type="text" ng-verify="{}" ng-model="add.importantPoint" onClick="laydate({istime: true, format: 'YYYY-MM-DD'})" class="add_image importantPoint">
                 </li>
                 <li class="required">
                     <label><i><img src="/images/mandatory.png"></i><em>结束时间</em></label>
-                    <input type="text" ng-verify="{}" ng-model="add.endTime" onClick="laydate({istime: true, format: 'YYYY-MM-DD hh:mm:ss'})" class="add_image addMarketReceptTime">
+                    <input type="text" ng-verify="{}" ng-model="add.endTime" onClick="laydate({istime: true, format: 'YYYY-MM-DD'})" class="add_image endTime">
                 </li>
                 <li class="required">
                     <label><i><img src="/images/mandatory.png"></i><em>信息来源</em></label>
@@ -68,7 +69,8 @@
                 </li>
                 <li class="required">
                     <label><i><img src="/images/mandatory.png"></i><em>是否为有效信息</em></label>
-                    <select class="sele" ng-model="add.effective" ng-init="add.effective='0'" >
+                    <select class="sele" ng-model="add.effective">
+                        <option value="" disabled>请选择</option>
                         <option value="0">否</option>
                         <option value="1">是</option>
                     </select>

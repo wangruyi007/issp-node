@@ -12,19 +12,19 @@
                 </li>
                 <li class="required">
                     <label><i><img src="/images/mandatory.png"></i><em>公司名称</em></label>
-                    <input type="text" ng-model="pAddInfo.name2">
+                    <input type="text" ng-model="pAddInfo.name">
                 </li>
                 <li class="required">
                     <label><i><img src="/images/mandatory.png"></i><em>产品服务内容</em></label>
-                    <input type="text" ng-model="pAddInfo.product2">
+                    <input type="text" ng-model="pAddInfo.product">
                 </li>
                 <li>
                     <label><em>合作时间</em></label>
-                    <input type="text" ng-model="pAddInfo.cooperationTime2">
+                    <input type="text" ng-model="pAddInfo.cooperationTime" onClick="laydate({istime: true, format: 'YYYY-MM-DD'})" class="add_image cooperationTime" >
                 </li>
                 <li>
                     <label><em>合作期限</em></label>
-                    <input type="text" ng-model="pAddInfo.cooperationTerm2">
+                    <input type="text" ng-model="pAddInfo.cooperationTerm" onClick="laydate({istime: true, format: 'YYYY-MM-DD'})" class="add_image cooperationTerm" >
                 </li>
             </ul>
         </section>

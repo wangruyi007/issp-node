@@ -1,6 +1,3 @@
-/**
- * Created by ike on 2017/4/13.
- */
 var app = angular.module('situationList', []);
 app.config(function($provide, $stateProvider){
     $stateProvider.state("root.project.situation.list",{
