@@ -49,6 +49,9 @@ app.filter('cover', function(){
             case "POSITION":
                 result = "岗位";
                 break;
+            case "DEPART":
+                result = "部门";
+                break;
         }
         return result;
     }
