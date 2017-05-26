@@ -59,6 +59,9 @@ app.controller('emailCtrl',function ($scope,$state) {
     $scope.add = function(){
         $scope.menuClass = 'addMenu'
     };
+    $scope.collect = function(){
+        $scope.menuClass = 'collectMenu'
+    };
 });
 //自定义过滤器
 app.filter('cover', function(){
