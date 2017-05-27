@@ -22,6 +22,8 @@ app.controller('cooperationAddCtrl', function($scope, cooperationSer,$state,toas
                 setTimeout(function(){
                     window.location.href='http://localhost/login'
                 },3000)
+            }else if(response.data.code==1){
+                toastr.error( response.data.msg, '温馨提示');
             }
         });
 

@@ -19,6 +19,8 @@ app.controller('emailDeleteCtrl',function($scope,emailSer,toastr,$stateParams,$s
                  setTimeout(function(){
                      window.location.href='http://localhost/login'
                  },3000)
+             }else if(response.data.code==1){
+                 toastr.error( response.data.msg, '温馨提示');
              }
         })
     }
