@@ -1,6 +1,3 @@
-/**
- * Created by ike on 2017/4/18.
- */
 var app = angular.module('basicinfoEdit', ['toastr','ipCookie']);
 app.controller('EditCtrl', function($scope, basicinfoSer,$state,toastr,$stateParams,ipCookie,$location){
     var companyId = {id : $stateParams.id};
@@ -26,6 +23,8 @@ app.controller('EditCtrl', function($scope, basicinfoSer,$state,toastr,$statePar
                 setTimeout(function(){
                     window.location.href='http://localhost/login'
                 },3000)
+            }else if(response.data.code == 1){
+                toastr.error( response.data.msg, '温馨提示');
             }
         })
     }

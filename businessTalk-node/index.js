@@ -59,7 +59,6 @@ router.get(/^\/module\/_config(?:\/.|$)/, function *(next) {
 });
 
 //============路由===========
-app.use(require(path.join(__dirname,routersPath,'/common/index.js'))().routes());//登录路由
 app.use(require(path.join(__dirname,routersPath,'/business/index.js'))().routes());//项目测算
 app.use(router.routes());
 
