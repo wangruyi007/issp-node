@@ -1,11 +1,12 @@
 <div class="content-tab list">
-    <div class="com-search mod">
-      <span class="com-search2">
-            <label>公司名称 :</label>
-            <input type="text"  ng-model="teamInfo.companyName">
-       </span>
+    <div class="search-big">
+        <select class="salc">
+            <option>公司名称</option>
+        </select>
+        <input type="text" ng-model="companyName">
+        <a href="javascript:void(0)" ng-click="collect()"><img src="/images/search2.png" style="margin-top: 10px"></a>
     </div>
-    <ul class="table table-top">
+    <ul class="table">
         <li class="list-head">
             <span></span>
             <span>地区</span>
@@ -17,7 +18,7 @@
             <span>公司QQ号</span>
             <span></span>
         </li>
-        <li class="list-all" ng-repeat="lists in interactLists|filter:teamInfo" style="display: {{lists._delete?'none':'block'}};">
+        <li class="list-all" ng-repeat="lists in interactLists" style="display: {{lists._delete?'none':'block'}};">
             <section>
                 <div class="list-text {{lists._selectList?'selectList':''}}" ng-click="selectList(lists)">
                     <p>{{$index+1}}</p>

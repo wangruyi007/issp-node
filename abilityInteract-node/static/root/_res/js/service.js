@@ -4,7 +4,7 @@ app.factory('rootSer', function($http){
         logout : logout,
     };
 
-    function logout(data){
-        return $http.get('/user/logout', data);
+    function logout(){
+        return $http.get('/user/logout');
     }
 })

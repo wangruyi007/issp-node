@@ -14,6 +14,7 @@ app.controller('contactCtrl',function ($scope,$state) {
     $rootScope.$on('$locationChangeSuccess', function () {//url地扯改变或者刷新
         if($location.path().split('/').slice(-1)=='list'){
             $scope.menuClass = 'listMenu';
+            searchShow();
         }
     });
     //监听到父Ctrl后改变事件
