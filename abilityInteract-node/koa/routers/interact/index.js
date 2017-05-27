@@ -10,6 +10,7 @@ module.exports = function(){
     router.get('/interactionrelation/listInteractionRelation', function*(){ //互动联系信息列表
         var $self = this;
         var page = $self.request.query;
+        page.userToken = $self.cookies.get('token');
         yield (server().contactList(page)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -48,6 +49,7 @@ module.exports = function(){
     }).get('/interactionrelation/getOne', function*(){//ID查询
         var $self = this;
         var findById = $self.request.query;
+        findById.userToken = $self.cookies.get('token');
         yield (server().findContactId(findById)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -72,7 +74,8 @@ module.exports = function(){
             }));
     }).get('/interactionrelation/count', function*(){//获取互动联系信息总条数
         var $self = this;
-        yield (server().getContactTotal()
+        var token ={userToken:$self.cookies.get('token')};
+        yield (server().getContactTotal(token)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
                 $self.body = responseText;
@@ -84,6 +87,7 @@ module.exports = function(){
     }).get('/leavingmessage/listMessage', function*(){//查看留言列表
         var $self = this;
         var page = $self.request.query;
+        page.userToken = $self.cookies.get('token');
         yield (server().contactMessage(page)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -108,7 +112,34 @@ module.exports = function(){
             }));
     }).get('/leavingmessage/count', function*(){//获取留言列表总条数
         var $self = this;
-        yield (server().getMessageTotal()
+        var token ={userToken:$self.cookies.get('token')};
+        yield (server().getMessageTotal(token)
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
+    }).post('/interactionrelation/search', function*(){ //互动联系信息搜索
+        var $self = this;
+        var searchName = $self.request.body;
+        searchName.userToken = $self.cookies.get('token');
+        yield (server().searchContact(searchName)
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
+    }).get('/interactionrelation/count2', function*(){//互动联系信息搜索列表
+        var $self = this;
+        var countData = this.request.query;
+        countData.userToken = $self.cookies.get('token');
+        yield (server().countContact2(countData)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
                 $self.body = responseText;
@@ -120,6 +151,7 @@ module.exports = function(){
     }).get('/demand/listDemand', function*(){ //互动平台需求描述列表
         var $self = this;
         var page = $self.request.query;
+        page.userToken = $self.cookies.get('token');
         yield (server().demandList(page)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -158,6 +190,7 @@ module.exports = function(){
     }).get('/demand/getOne', function*(){//ID查询互动平台需求描述
         var $self = this;
         var findById = $self.request.query;
+        findById.userToken = $self.cookies.get('token');
         yield (server().findDemandId(findById)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -182,7 +215,8 @@ module.exports = function(){
             }));
     }).get('/demand/count', function*(){//获取互动平台需求描述总条数
         var $self = this;
-        yield (server().getDemandTotal()
+        var token ={userToken:$self.cookies.get('token')};
+        yield (server().getDemandTotal(token)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
                 $self.body = responseText;
@@ -194,6 +228,7 @@ module.exports = function(){
     }).get('/talkdetail/listTalkDetail', function*(){ //洽谈详情列表
         var $self = this;
         var page = $self.request.query;
+        page.userToken = $self.cookies.get('token');
         yield (server().TalkList(page)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -232,6 +267,7 @@ module.exports = function(){
     }).get('/talkdetail/getOne', function*(){//ID查询洽谈详情数据
         var $self = this;
         var findById = $self.request.query;
+        findById.userToken = $self.cookies.get('token');
         yield (server().findTalkId(findById)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -256,7 +292,8 @@ module.exports = function(){
             }));
     }).get('/talkdetail/count', function*(){//获取洽谈详情总条数
         var $self = this;
-        yield (server().getTalkTotal()
+        var token ={userToken:$self.cookies.get('token')};
+        yield (server().getTalkTotal(token)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
                 $self.body = responseText;
@@ -268,6 +305,7 @@ module.exports = function(){
     }).get('/collectemail/listCollectEmail', function*(){ //邮件汇总列表
         var $self = this;
         var page = $self.request.query;
+        page.userToken = $self.cookies.get('token');
         yield (server().MailList(page)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -306,6 +344,7 @@ module.exports = function(){
     }).get('/collectemail/getOne', function*(){//ID查询邮件汇总数据
         var $self = this;
         var findById = $self.request.query;
+        findById.userToken = $self.cookies.get('token');
         yield (server().findMailId(findById)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -330,7 +369,8 @@ module.exports = function(){
             }));
     }).get('/collectemail/count', function*(){//获取邮件汇总总条数
         var $self = this;
-        yield (server().getMailTotal()
+        var token ={userToken:$self.cookies.get('token')};
+        yield (server().getMailTotal(token)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
                 $self.body = responseText;
@@ -380,7 +420,8 @@ module.exports = function(){
             }));
     }).get('/collectemail/listArea', function*(){//获取所有地区
         var $self = this;
-        yield (server().getAllArea()
+        var token ={userToken:$self.cookies.get('token')};
+        yield (server().getAllArea(token)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
                 $self.body = responseText;
@@ -389,9 +430,9 @@ module.exports = function(){
                 $self.body=error.error;
                 console.error(error.error);
             }));
-    }).get('/user/logout', function*(){ //退出
+     }).get('/user/logout', function*(){ //退出
         var $self = this;
-        var token ={token:$self.cookies.get('token')};
+        var token ={userToken:$self.cookies.get('token')};
         yield (server().logout(token)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -399,6 +440,67 @@ module.exports = function(){
                     $self.cookies.set('token','');
                     $self.body = responseText;
                 }
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
+    }).get('/listSetting', function*(){
+        var $self = this;
+        var setting = this.request.query;
+        setting.token = $self.cookies.get('token');
+        yield (server().listSetting(setting)
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
+    }).get('/countSetting', function*(){
+        var $self = this;
+        yield (server().countSetting()
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
+    }).get('/getpermit', function*(){
+        var $self = this;
+        var getId = $self.request.query;
+        yield (server().getpermit(getId)
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
+    }).get('/getListpermit', function*(){
+        var $self = this;
+        var listPermit = $self.request.query;
+        yield (server().getListpermit(listPermit)
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
+    }).post('/editSetting', function*(){
+        var $self = this;
+        var editSet = $self.request.body;
+        editSet.token = $self.cookies.get("token");
+        yield (server().editSetting(editSet)
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
             }).catch((error) =>{
                 $self.set('Content-Type','application/json;charset=utf-8');
                 $self.body=error.error;
