@@ -10,20 +10,17 @@ module.exports = function(){
             timeout : 3000,
             uri : config()['rurl'] + '/marketserveapply/v1/list?limit=10&page='+argvs.page,
             headers : {
-                // token : token
+                userToken : argvs.userToken
             }
         };
         return request(options);
     };
     //获取数目
-    this.countBaseInfo = function(argvs){
+    this.countBaseInfo = function(){
         var options = {
             method : 'GET',
             timeout : 3000,
-            uri : config()['rurl'] + '/marketserveapply/v1/count',
-            headers : {
-                // token : token
-            }
+            uri : config()['rurl'] + '/marketserveapply/v1/count'
         };
         return request(options);
     };
@@ -121,7 +118,7 @@ module.exports = function(){
             timeout : 3000,
             uri : config()['rurl'] + '/marketservesummary/v1/list?limit=10&page='+argvs.page,
             headers : {
-                // token : token
+               userToken : argvs.userToken
             }
         };
         return request(options);
@@ -218,7 +215,7 @@ module.exports = function(){
             timeout : 3000,
             uri : config()['rurl'] + '/marketserverecord/v1/list?limit=10&page='+argvs.page,
             headers : {
-                // token : token
+                userToken : argvs.userToken
             }
         };
         return request(options);
@@ -378,6 +375,50 @@ module.exports = function(){
             method : 'POST',
             timeout : 3000,
             uri : config()['user'] + `/v1/sign-out/${argvs.token}`,
+            form:argvs
+        };
+        return request(options);
+    };
+    this.listSetting = function(argvs){
+        var options = {
+            method : 'GET',
+            timeout : 3000,
+            uri : config()['rurl'] + `/cuspermission/v1/list?limit=10&page=${argvs.page}`,
+        };
+        return request(options);
+    };
+    this.countSetting = function(){
+        var options = {
+            method : 'GET',
+            timeout : 3000,
+            uri : config()['rurl'] + '/cuspermission/v1/count',
+        };
+        return request(options);
+    };
+    this.getpermit = function(argvs){
+        var options = {
+            method : 'GET',
+            timeout : 3000,
+            uri : config()['rurl'] + `/cuspermission/v1/getOneById/${argvs.id}`,
+        };
+        return request(options);
+    };
+    this.getListpermit = function(argvs){
+        var options = {
+            method : 'GET',
+            timeout : 3000,
+            uri : config()['rurl'] + `/cuspermission/v1/listOperateById/${argvs.id}`,
+        };
+        return request(options);
+    };
+    this.editSetting = function(argvs){
+        var options = {
+            method : 'PUT',
+            timeout : 3000,
+            uri : config()['rurl'] + '/cuspermission/v1/edit',
+            headers:{
+                userToken:argvs.token
+            },
             form:argvs
         };
         return request(options);

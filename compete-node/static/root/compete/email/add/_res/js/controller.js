@@ -10,7 +10,7 @@ app.controller('emailAddCtrl', function($scope, emailSer,$state,toastr,$location
             if(response.data.code == 0){
                 $scope.companyNames = response.data.data;
             }else if(response.data.code==403){
-                toastr.error( "请登录用户", '温馨提示');
+                toastr.error( response.data.msg , '温馨提示');
             }
         });
     };
@@ -31,6 +31,8 @@ app.controller('emailAddCtrl', function($scope, emailSer,$state,toastr,$location
                 setTimeout(function(){
                     window.location.href='http://localhost/login'
                 },3000)
+            }else if(response.data.code == 1){
+                toastr.error( response.data.msg, '温馨提示');
             }
         });
 

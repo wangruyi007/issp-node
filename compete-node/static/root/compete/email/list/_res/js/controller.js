@@ -2,7 +2,7 @@
  * Created by ike on 2017/4/13.
  */
 var app = angular.module('emailList', ['ng-pagination','toastr','ipCookie']);
-app.controller('emailListCtrl',function($scope,emailSer,toastr,$state,$location,ipCookie) {
+app.controller('emailListCtrl',function($scope,emailSer,toastr,$state,$location,ipCookie,$location) {
     $scope.$emit('changeId', null);
     //分页
     function activatePage(page) {
@@ -12,8 +12,15 @@ app.controller('emailListCtrl',function($scope,emailSer,toastr,$state,$location,
         emailSer.listAbilityEmail(listData).then(function(response){
             if(response.data.code==0){
                 $scope.emailLists = response.data
-            }else{
-                toastr.error( "请求超时，请联系管理员", '温馨提示');
+            }else if(response.data.code == 1){
+                toastr.error( response.data.msg, '温馨提示');
+            }else if(response.data.code==403 || response.data.code==401){
+                toastr.error( "请登录用户,3秒后跳至登陆页面", '温馨提示');
+                var absurl = $location.absUrl();
+                ipCookie('absurl', absurl,{ expires:3,expirationUnit: 'minutes',domain:'issp.bjike.com' });
+                setTimeout(function(){
+                    window.location.href='http://localhost/login'
+                },3000)
             }
         });
     }
