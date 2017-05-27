@@ -14,6 +14,8 @@ app.controller('auditAddCtrl', function($scope, auditSer,$state,toastr,ipCookie,
                 setTimeout(function(){
                     window.location.href='http://localhost/login'
                 },2000)
+            }else if(response.data.code==1){
+                toastr.error( response.data.msg, '温馨提示');
             }
         });
 

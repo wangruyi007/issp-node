@@ -13,6 +13,8 @@ app.controller('emailPersonCtrl', function($scope, emailSer,toastr,ipCookie,$loc
             setTimeout(function(){
                 window.location.href='http://localhost/login'
             },3000)
+        }else if(response.data.code==1){
+            toastr.error( response.data.msg, '温馨提示');
         }
     });
     $scope.getSummary ={onSelectionChanged(){
@@ -26,6 +28,8 @@ app.controller('emailPersonCtrl', function($scope, emailSer,toastr,ipCookie,$loc
                 setTimeout(function(){
                     window.location.href='http://localhost/login'
                 },3000)
+            }else if(response.data.code==1){
+                toastr.error( response.data.msg, '温馨提示');
             }
         })
     }}

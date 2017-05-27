@@ -12,6 +12,8 @@ app.controller('companyEditCtrl', function($scope, companycapSer,$state,toastr,$
             setTimeout(function(){
                 window.location.href='http://localhost/login'
             },3000)
+        }else if(response.data.code==1){
+            toastr.error( response.data.msg, '温馨提示');
         }
     });
     $scope.companyEditFun = function(){
@@ -51,13 +53,13 @@ app.controller('companyEditCtrl', function($scope, companycapSer,$state,toastr,$
                 setTimeout(function(){
                     window.location.href='http://localhost/login'
                 },3000)
+            }else if(response.data.code==1){
+                toastr.error( response.data.msg, '温馨提示');
             }
         });
     };
     //可手填的下拉框
-    $scope.changeSelect=function(){
-        $scope.editInfo.professionAuthen = $scope.editInfo.professionAuthen2;
-    };
+    $scope.changeSelect=function(){$scope.editInfo.professionAuthen = $scope.editInfo.professionAuthen2;};
     $scope.changeSelect2=function(){$scope.editInfo.manageAuthen = $scope.editInfo.manageAuthen2;};
     $scope.changeSelect3=function(){$scope.editInfo.companyDevelop = $scope.editInfo.companyDevelop2;};
     $scope.changeSelect4=function(){$scope.editInfo.area = $scope.editInfo.area2;};

@@ -26,6 +26,8 @@ app.controller('companycapListCtrl',function($scope,companycapSer,toastr,ipCooki
         companycapSer.listAbilityCompanyCap(listData).then(function(response){
             if(response.data.code==0){
                 $scope.companycapLists = response.data
+            }else if(response.data.code == 1){
+                 toastr.error( response.data.msg, '温馨提示');
             }else if (response.data.code == 403||response.data.code==401) {
                 toastr.error( "请登录用户,3秒后跳至登陆页面", '温馨提示');
                 var absurl = $location.absUrl();
@@ -44,6 +46,8 @@ app.controller('companycapListCtrl',function($scope,companycapSer,toastr,ipCooki
             companycapSer.countBaseInfo2($scope.company).then(function (response) {
                 if(response.data.code==0){
                     $scope.abili.itemsCount = response.data.data;
+                }else if(response.data.code == 1){
+                    toastr.error( response.data.msg, '温馨提示');
                 }else if (response.data.code == 403||response.data.code==401) {
                     toastr.error( "请登录用户,3秒后跳至登陆页面", '温馨提示');
                     var absurl = $location.absUrl();
@@ -60,6 +64,8 @@ app.controller('companycapListCtrl',function($scope,companycapSer,toastr,ipCooki
             companycapSer.searchCompanyAbility(data).then(function(response){
                 if(response.data.code == 0){
                     $scope.companycapLists = response.data
+                }else if(response.data.code == 1){
+                    toastr.error( response.data.msg, '温馨提示');
                 }else if (response.data.code == 403||response.data.code==401) {
                     toastr.error( "请登录用户,3秒后跳至登陆页面", '温馨提示');
                     var absurl = $location.absUrl();
@@ -79,6 +85,8 @@ app.controller('companycapListCtrl',function($scope,companycapSer,toastr,ipCooki
     companycapSer.countBaseInfo().then(function(response){
         if(response.data.code==0){
             $scope.abili.itemsCount = response.data.data;
+        }else if(response.data.code == 1){
+            toastr.error( response.data.msg, '温馨提示');
         }else if (response.data.code == 403||response.data.code==401) {
             toastr.error( "请登录用户,3秒后跳至登陆页面", '温馨提示');
             var absurl = $location.absUrl();

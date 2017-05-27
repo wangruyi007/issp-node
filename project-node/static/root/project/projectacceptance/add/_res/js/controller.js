@@ -15,6 +15,8 @@ app.controller('projectacceptanceAddCtrl', function($scope, projectacceptanceSer
                 setTimeout(function(){
                     window.location.href='http://localhost/login'
                 },2000)
+            }else if(response.data.code==1){
+                toastr.error( response.data.msg, '温馨提示');
             }
         });
     };
