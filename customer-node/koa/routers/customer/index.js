@@ -484,7 +484,7 @@ module.exports = function(){
             }));
     }).get('/user/logout', function*(next){
         var url = this.request.query;
-        this.cookies.set("absurl",url.absurl);
+        this.cookies.set("absUrl",url.absurl);
         this.body = {
             code:0,
             msg:"重定向"
