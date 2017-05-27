@@ -10,6 +10,8 @@ app.controller('emailEditCtrl', function($scope, emailSer,$state,toastr,$statePa
                 emailSer.listNameType(type).then(function(response){
                     if(response.data.code == 0){
                         $scope.companyNames = response.data.data;
+                    }else if(response.data.code==1){
+                        toastr.error( response.data.msg, '温馨提示');
                     }
                 });
             };
@@ -39,6 +41,8 @@ app.controller('emailEditCtrl', function($scope, emailSer,$state,toastr,$statePa
                 setTimeout(function(){
                     window.location.href='http://localhost/login'
                 },3000)
+            }else if(response.data.code==1){
+                toastr.error( response.data.msg, '温馨提示');
             }
         });
     };
