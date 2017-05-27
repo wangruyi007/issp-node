@@ -5,6 +5,8 @@ app.controller('detailAddCtrl', function($scope, detailSer, $state,$location,toa
     detailSer.getCusNum().then(function(response){
         if(response.data.code==0){
             $scope.cusnums = response.data.data
+        }else{
+            toastr.error( response.data.msg, '温馨提示');
         }
     });
 
@@ -15,6 +17,8 @@ app.controller('detailAddCtrl', function($scope, detailSer, $state,$location,toa
             if(response.data.code==0){
                 $scope.customerInfo = response.data.data;
             }else if(response.data.code==1){
+                toastr.error( response.data.msg, '温馨提示');
+            }else{
                 toastr.error( response.data.msg, '温馨提示');
             }
 
@@ -69,6 +73,8 @@ app.controller('detailAddCtrl', function($scope, detailSer, $state,$location,toa
                     window.location.href='http://user.issp.bjike.com'
                 },2000)
             }else if(response.data.code==1){
+                toastr.error( response.data.msg, '温馨提示');
+            }else{
                 toastr.error( response.data.msg, '温馨提示');
             }
         })

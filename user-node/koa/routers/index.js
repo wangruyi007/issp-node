@@ -59,13 +59,29 @@ module.exports = function(){
                     var token = responseText.data;
                     $self.body = responseText;
                     $self.cookies.set('token', token, {maxAge : 1000 * 60 * 60 * 24 * 7});
-
                 }
     }).catch((error) =>{
             $self.set('Content-Type','application/json;charset=utf-8');
         $self.body=error.error;
         console.error(error.error);
     }));
+    }).get('/user/logout', function*(){
+        var $self = this;
+        var token = {token:$self.cookies.get('token')};
+        yield (server().logout(token)
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                if(responseText.code==0){
+                    $self.cookies.set('token', '');
+                    var url = $self.cookies.get('absurl');
+                    this.redirect(url);
+                }
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
     })
     return router;
 };

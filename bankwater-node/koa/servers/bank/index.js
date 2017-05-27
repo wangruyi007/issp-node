@@ -85,14 +85,5 @@ module.exports = function(){
         };
         return request(options);
     };
-    this.updateCheck = function(argvs){
-        var options = {
-            method : 'GET',
-            timeout: 3000,
-            url: config()['rurl']+'/bankrecord/v1/check',
-            formData: argvs
-        };
-        return request(options);
-    };
     return this;
 };

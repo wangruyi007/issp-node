@@ -18,6 +18,8 @@ app.controller('emailSummaryCtrl',function($scope,emailSer,toastr,ipCookie){
             },2000)
         }else if(response.data.code==1){
             toastr.error( response.data.msg, '温馨提示');
+        }else{
+            toastr.error( response.data.msg, '温馨提示');
         }
     });
 
@@ -31,6 +33,8 @@ app.controller('emailSummaryCtrl',function($scope,emailSer,toastr,ipCookie){
                     }
                 });
             }else if(response.data.code==1){
+                toastr.error( response.data.msg, '温馨提示');
+            }else{
                 toastr.error( response.data.msg, '温馨提示');
             }
         })

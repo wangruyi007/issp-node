@@ -20,5 +20,14 @@ module.exports = function(){
         };
         return request(options);
     };
+    this.logout = function(argvs){
+        var options = {
+            method : 'POST',
+            timeout : 3000,
+            uri : config()['rurl'] + `/v1/sign-out/${argvs.token}`,
+            form:argvs
+        };
+        return request(options);
+    };
     return this;
 }
