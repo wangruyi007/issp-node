@@ -1,6 +1,3 @@
-/**
- * Created by ike on 2017/4/17.
- */
 var app = angular.module('smuieAdd', ['toastr','ipCookie']);
 app.controller('smuiAddCtrl', function($scope, smuiSer,$state,toastr,ipCookie,$location){
     //添加竞争对手
@@ -18,6 +15,8 @@ app.controller('smuiAddCtrl', function($scope, smuiSer,$state,toastr,ipCookie,$l
                 setTimeout(function(){
                     window.location.href='http://localhost/login'
                 },3000)
+            }else if(response.data.code == 1){
+                toastr.error( response.data.msg, '温馨提示');
             }
         });
     };
