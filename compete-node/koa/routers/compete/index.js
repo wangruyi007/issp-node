@@ -10,6 +10,7 @@ module.exports = function(){
     router.get('/compete/competecompetitor/listCompetecompetitor', function*(){
        var $self = this;
        var page = this.request.query;
+       page.userToken = this.cookies.get('token');
         yield (server().companycapbaseinfoList(page)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -21,7 +22,9 @@ module.exports = function(){
             }));
     }).get('/competeCompetitor/count', function*(){
         var $self = this;
-        yield (server().countBaseInfo()
+        var page = this.request.query;
+        page.userToken = this.cookies.get('token');
+        yield (server().countBaseInfo(page)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
                 $self.body = responseText;
@@ -122,6 +125,7 @@ module.exports = function(){
     }).get('/compete/listAbilityEmail/listEmail', function*(){//汇总和邮件发送
         var $self = this;
         var page = this.request.query;
+        page.userToken = this.cookies.get('token');
         yield (server().collectemaillist(page)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -133,7 +137,9 @@ module.exports = function(){
             }));
     }).get('/compete/countEmail/count', function*(){
         var $self = this;
-        yield (server().emailCountInfo()
+        var page = this.request.query;
+        page.userToken = this.cookies.get('token');
+        yield (server().emailCountInfo(page)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
                 $self.body = responseText;
@@ -170,6 +176,19 @@ module.exports = function(){
                     $self.body = {'msg' : '请求错误！', errno : 3};
                     $self.status = 408;
                 }
+            }));
+    }).get('/compete/listAbilityEmail/collect', function*(){//汇总
+        var $self = this;
+        var page = this.request.query;
+        page.userToken = this.cookies.get('token');
+        yield (server().emailCollect(page)
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
             }));
     }).post('/compete/deleteEmail/delete', function*(){ //删除
         var delData = this.request.body;
@@ -251,6 +270,67 @@ module.exports = function(){
                     $self.body = responseText;
                 }
 
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
+    }).get('/listSetting', function*(){
+        var $self = this;
+        var setting = this.request.query;
+        setting.token = $self.cookies.get('token');
+        yield (server().listSetting(setting)
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
+    }).get('/countSetting', function*(){
+        var $self = this;
+        yield (server().countSetting()
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
+    }).get('/getpermit', function*(){
+        var $self = this;
+        var getId = $self.request.query;
+        yield (server().getpermit(getId)
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
+    }).get('/getListpermit', function*(){
+        var $self = this;
+        var listPermit = $self.request.query;
+        yield (server().getListpermit(listPermit)
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
+    }).post('/editSetting', function*(){
+        var $self = this;
+        var editSet = $self.request.body;
+        editSet.token = $self.cookies.get("token");
+        yield (server().editSetting(editSet)
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
             }).catch((error) =>{
                 $self.set('Content-Type','application/json;charset=utf-8');
                 $self.body=error.error;
