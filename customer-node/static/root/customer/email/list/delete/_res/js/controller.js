@@ -23,6 +23,8 @@ app.controller('emailDeleteCtrl',function($scope,emailSer,toastr,$stateParams,$s
                 },2000)
             }else if(response.data.code==1){
                 toastr.error( response.data.msg, '温馨提示');
+            }else{
+                toastr.error( response.data.msg, '温馨提示');
             }
         })
     }

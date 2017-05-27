@@ -18,7 +18,7 @@ app.controller('emailListCtrl',function($scope,emailSer,toastr,ipCookie,$locatio
             }else if(response.data.code==1){
                 toastr.error( response.data.msg, '温馨提示');
             }else{
-                toastr.error( "请求超时，请联系管理员", '温馨提示');
+                toastr.error( response.data.msg, '温馨提示');
             }
         })
     }
@@ -29,7 +29,7 @@ app.controller('emailListCtrl',function($scope,emailSer,toastr,ipCookie,$locatio
         }else if(response.data.code==1){
             toastr.error( response.data.msg, '温馨提示');
         }else{
-            toastr.error( "请求超时，请联系管理员", '温馨提示');
+            toastr.error( response.data.msg, '温馨提示');
         }
     })
 

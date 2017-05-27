@@ -49,7 +49,7 @@ app.controller('basicinfoListCtrl',function($scope,basicinfoSer,toastr,ipCookie,
 
     //分页
     $scope.custom = {
-        itemsCount: 11,//总条数
+        itemsCount: 11, //总条数
         take: 10,        //每页显示
         activatePage: activatePage
     };
@@ -65,7 +65,7 @@ app.controller('basicinfoListCtrl',function($scope,basicinfoSer,toastr,ipCookie,
             }else if(response.data.code==1){
                 toastr.error( response.data.msg, '温馨提示');
             }else{
-                toastr.error( "请求超时，请联系管理员", '温馨提示');
+                toastr.error( response.data.msg, '温馨提示');
             }
         })
     }
@@ -75,7 +75,7 @@ app.controller('basicinfoListCtrl',function($scope,basicinfoSer,toastr,ipCookie,
         }else if(response.data.code==1){
             toastr.error( response.data.msg, '温馨提示');
         }else{
-            toastr.error( "请求超时，请联系管理员", '温馨提示');
+            toastr.error( response.data.msg, '温馨提示');
         }
     })
 

@@ -9,6 +9,8 @@ app.controller('emailAddCtrl', function($scope, emailSer, $state, toastr,ipCooki
             toastr.error("请登录用户", '温馨提示');
         }else if(response.data.code==1){
             toastr.error( response.data.msg, '温馨提示');
+        }else{
+            toastr.error( response.data.msg, '温馨提示');
         }
     });
 
@@ -35,6 +37,8 @@ app.controller('emailAddCtrl', function($scope, emailSer, $state, toastr,ipCooki
                 setTimeout(function(){
                     window.location.href='http://user.issp.bjike.com'
                 },2000)
+            }else{
+                toastr.error( response.data.msg, '温馨提示');
             }
         });
 
