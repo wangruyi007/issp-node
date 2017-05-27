@@ -6,14 +6,10 @@ app.controller('bankbillImportCtrl', function($scope,$state,toastr,bankbillSer,$
         }
     });
 
-
-
-
-
     $scope.updataSel = function(){
         var fd = new FormData();
         var file = document.getElementById('updata').files[0];
-        fd.append('file', file);
+        fd.append('files', file);
         $http({
             method: 'POST',
             url: '/updateCheck',

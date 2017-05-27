@@ -21,6 +21,8 @@ app.controller('levelAddCtrl', function($scope, levelSer, $state, toastr,ipCooki
                 },2000)
             }else if(response.data.code==1){
                 toastr.error( response.data.msg, '温馨提示');
+            }else{
+                toastr.error( response.data.msg, '温馨提示');
             }
         });
 

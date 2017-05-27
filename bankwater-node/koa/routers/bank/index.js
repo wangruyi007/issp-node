@@ -112,52 +112,41 @@ module.exports = function(){
                 $self.body = error.error;
                 console.error(error.error);
             }));
-    }).post('/updateCheck', function*(){
+    }).post('/updateCheck', koaBody({multipart:true}),function *(next) {
         var $self = this;
-        var file = this.request.body.files.file;
-        var formData = {
-            file: {
-                value: fs.createReadStream(file.path),
-                options: {
-                    filename: file.name,
-                    contentType: file.mimeType
-                }
+        var file = this.request.body.files.files;
+        var files = [];
+        if(file instanceof Array){
+            for(var i =0;i<file.length;i++){
+                var f = file[i];
+                var oo = {
+                    value:fs.createReadStream(f.path),
+                    options: {
+                        filename: f.name
+                    }
+                };
+                files.push(oo);
             }
-        };
-        yield (server().updateCheck(formData)
-            .then((parsedBody) =>{
-                var responseText = JSON.parse(parsedBody);
-                console.info(responseText);
-                $self.body = responseText;
-            }).catch((error) =>{
-                $self.set('Content-Type', 'application/json;charset=utf-8');
-                $self.body = error.error;
-                console.error(error.error);
-            }));
-    })/*.post('/updateCheck', koaBody({multipart:true}),function *(next) {
-        var $self = this;
-        var file = this.request.body.files.file;
-        var formData = {
-            file: {
-                value: fs.createReadStream(file.path),
+        }else{
+            var oo = {
+                value:fs.createReadStream(file.path),
                 options: {
-                    filename: file.name,
-                    contentType: file.mimeType
+                    filename: file.name
                 }
-            }
-        };
+            };
+            files.push(oo);
+        }
         var options = {
             url: config()['rurl']+'/bankrecord/v1/check',
             method: 'POST',
-            formData: formData
-        }
-
-        yield (request(options).then(function (parsedBody) {
-            console.info(options);
-            var responseText = JSON.parse(parsedBody);
-            $self.body = responseText;
+            formData: {
+                files: files
+            }
+        };
+        yield (request(options).then(function (body) {
+            console.info(body);
+            $self.body = body;
         }));
-
-    });*/
+    });
     return router;
 };

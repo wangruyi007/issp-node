@@ -27,5 +27,13 @@ app.config(function($provide, $stateProvider){
                 controller:'emailEditCtrl'
             }
         }
+    }).state("root.compete.email.collect[12]",{
+        url:"/collect[12]",
+        views:{
+            "content@root.compete.email":{
+                templateUrl : "root/compete/email/collect/_res/html/index.html",
+                controller:'emailcollectCtrl'
+            }
+        }
     })
 });

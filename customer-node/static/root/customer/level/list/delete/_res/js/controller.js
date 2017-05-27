@@ -23,6 +23,8 @@ app.controller('levelDeleteCtrl',function($scope,levelSer,toastr,$stateParams,$s
                 },2000)
             }else if(response.data.code==1){
                 toastr.error( response.data.msg, '温馨提示');
+            }else{
+                toastr.error( response.data.msg, '温馨提示');
             }
         })
     }

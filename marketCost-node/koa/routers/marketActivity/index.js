@@ -11,6 +11,7 @@ module.exports = function () {
     router.get('/marketActivity/marketserve/list', function* () {
         var $self = this;
         var page = this.request.query;
+        page.userToken = this.cookies.get('token');
         yield (server().marketserveBaseinfoList(page)
             .then((parsedBody) => {
                 var responseText = JSON.parse(parsedBody);
@@ -136,6 +137,7 @@ module.exports = function () {
     }).get('/marketActivity/summary/list', function* () {
         var $self = this;
         var page = this.request.query;
+        page.userToken = this.cookies.get('token');
         yield (server().summarylist(page)
             .then((parsedBody) => {
                 var responseText = JSON.parse(parsedBody);
@@ -244,6 +246,7 @@ module.exports = function () {
     }).get('/marketActivity/servereCord/list', function* () {
         var $self = this;
         var page = this.request.query;
+        page.userToken = this.cookies.get('token');
         yield (server().servereCordBaseinfoList(page)
             .then((parsedBody) => {
                 var responseText = JSON.parse(parsedBody);
@@ -375,6 +378,67 @@ module.exports = function () {
                     $self.body = responseText;
                 }
 
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
+    }).get('/listSetting', function*(){
+        var $self = this;
+        var setting = this.request.query;
+        setting.token = $self.cookies.get('token');
+        yield (server().listSetting(setting)
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
+    }).get('/countSetting', function*(){
+        var $self = this;
+        yield (server().countSetting()
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
+    }).get('/getpermit', function*(){
+        var $self = this;
+        var getId = $self.request.query;
+        yield (server().getpermit(getId)
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
+    }).get('/getListpermit', function*(){
+        var $self = this;
+        var listPermit = $self.request.query;
+        yield (server().getListpermit(listPermit)
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
+    }).post('/editSetting', function*(){
+        var $self = this;
+        var editSet = $self.request.body;
+        editSet.token = $self.cookies.get("token");
+        yield (server().editSetting(editSet)
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
             }).catch((error) =>{
                 $self.set('Content-Type','application/json;charset=utf-8');
                 $self.body=error.error;

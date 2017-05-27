@@ -1,5 +1,5 @@
 var app = angular.module('situationList', ['ng-pagination','toastr']);
-app.controller('situationListCtrl',function($scope,situationSer,toastr) {
+app.controller('situationListCtrl',function($scope,situationSer,toastr,$stateParams) {
    //选择
     $scope.selectList = function(event){
         angular.forEach($scope.situationLists.data,function(obj){
@@ -42,7 +42,7 @@ app.controller('situationListCtrl',function($scope,situationSer,toastr) {
                 }else{
                     toastr.error( "请求超时，请联系管理员", '温馨提示');
                 }
-            })
+            });
             var data = {
                 enginPlace: $scope.enginPlace,
                 completeCondition: $scope.completeCondition,
@@ -77,4 +77,27 @@ app.controller('situationListCtrl',function($scope,situationSer,toastr) {
             }
         })
     });
+    $scope.datas = ["工程地点","完工情况"];
+    $scope.tempdatas = $scope.datas;
+    $scope.hidden=true;
+    $scope.searchField='';
+    $scope.change=function(x){
+        $scope.searchField=x;
+        $scope.hidden=true;
+    }
+    $scope.tempdatas = $scope.datas;
+    $scope.changeKeyValue=function(v){
+        var newDate=[];
+        angular.forEach($scope.datas ,function(data,index,array){
+            if(data.indexOf(v)>=0){
+                newDate.unshift(data);
+            }
+        });
+        $scope.datas=newDate;
+        $scope.hidden=false;
+        if($scope.datas.length==0 || ''==v){
+            $scope.datas=$scope.tempdatas;
+        }
+        console.log($scope.datas);
+    }
 });
