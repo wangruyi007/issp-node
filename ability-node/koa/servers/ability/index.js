@@ -11,19 +11,19 @@ module.exports = function(){
             timeout : 3000,
             uri : config()['ability']['rurl'] + '/companycapability/v1/listCompanyCapability?limit=10&page='+argvs.page,
             headers : {
-                // token : token
+                userToken : argvs.token
             }
         };
         return request(options);
     };
     //分页
-    this.countBaseInfos = function(){
+    this.countBaseInfos = function(argvs){
         var options = {
             method : 'GET',
             timeout : 3000,
             uri : config()['ability']['rurl'] + '/companycapability/v1/count',
             headers : {
-                // token : token
+                userToken : argvs.token
             }
         };
         return request(options);
@@ -73,6 +73,9 @@ module.exports = function(){
             timeout : 3000,
             uri : config()['ability']['rurl'] + '/companycapability/v1/getOne/'+argvs.id,
             form : argvs,
+            headers : {
+                userToken:argvs.token
+            }
         };
         return request(options);
     };
@@ -83,6 +86,9 @@ module.exports = function(){
             timeout : 3000,
             uri : config()['ability']['rurl'] + '/companycapability/v1/listCapabilityByCompanyName'+urlEncode(argvs,true),
             form : argvs,
+            headers : {
+                userToken:argvs.token
+            }
         };
         return request(options);
     };
@@ -93,6 +99,9 @@ module.exports = function(){
             timeout : 3000,
             uri : config()['ability']['rurl'] + '/selfcapability/v1/listSelf'+urlEncode(argvs,true),
             form : argvs,
+            headers : {
+                userToken:argvs.token
+            }
         };
         return request(options);
     };
@@ -102,6 +111,9 @@ module.exports = function(){
             timeout : 3000,
             uri : config()['ability']['rurl'] + '/coopercapability/v1/list'+urlEncode(argvs,true),
             form : argvs,
+            headers : {
+                userToken:argvs.token
+            }
         };
         return request(options);
     };
@@ -111,17 +123,20 @@ module.exports = function(){
             timeout : 3000,
             uri : config()['ability']['rurl'] + '/selfcapability/v1/listSelf?limit=10&page='+argvs.page,
             headers : {
-                // token : token
+                userToken:argvs.token
             }
         };
         return request(options);
     };
     //分页
-    this.countSelfCapInfo = function(){
+    this.countSelfCapInfo = function(argvs){
         var options = {
             method : 'GET',
             timeout : 3000,
             uri : config()['ability']['rurl'] + '/selfcapability/v1/count',
+            headers : {
+                userToken:argvs.token
+            }
         };
         return request(options);
     };
@@ -131,6 +146,9 @@ module.exports = function(){
             method : 'GET',
             timeout : 3000,
             uri : config()['ability']['rurl'] + '/selfcapability/v1/count?name='+argvs.name,
+            headers : {
+                userToken:argvs.token
+            }
         };
         return request(options);
     };
@@ -140,6 +158,9 @@ module.exports = function(){
             method : 'GET',
             timeout : 3000,
             uri : config()['ability']['rurl'] + '/companycapability/v1/listCompanyCapability?company='+argvs.company,
+            headers : {
+                userToken:argvs.token
+            }
         };
         return request(options);
     };
@@ -149,6 +170,9 @@ module.exports = function(){
             method : 'GET',
             timeout : 3000,
             uri : config()['ability']['rurl'] + '/coopercapability/v1/list?companyName='+argvs.companyName,
+            headers : {
+                userToken:argvs.token
+            }
         };
         return request(options);
     };
@@ -208,6 +232,9 @@ module.exports = function(){
             timeout : 3000,
             uri : config()['ability']['rurl'] + '/selfcapability/v1/getOne/'+argvs.id,
             form : argvs,
+            headers : {
+                userToken:argvs.token
+            }
         };
         return request(options);
     };
@@ -218,16 +245,22 @@ module.exports = function(){
             timeout : 3000,
             uri : config()['ability']['rurl'] + '/coopercapability/v1/list?limit=10&page='+argvs.page,
             form : argvs,
+            headers : {
+                userToken:argvs.token
+            }
         };
         return request(options);
     };
 
     //分页
-    this.CooperationInfo = function(){
+    this.CooperationInfo = function(argvs){
         var options = {
             method : 'GET',
             timeout : 3000,
             uri : config()['ability']['rurl'] + '/coopercapability/v1/count',
+            headers : {
+                userToken:argvs.token
+            }
         };
         return request(options);
     };
@@ -274,6 +307,9 @@ module.exports = function(){
             timeout : 3000,
             uri : config()['ability']['rurl'] + '/coopercapability/v1/getOne/'+argvs.id,
             form : argvs,
+            headers : {
+                userToken:argvs.token
+            }
         };
         return request(options);
     };
@@ -296,16 +332,19 @@ module.exports = function(){
             timeout : 3000,
             uri : config()['ability']['rurl'] + '/cusemail/v1/listCollectEmail?limit=10&page='+argvs.page,
             headers : {
-                // token : token
+                userToken:argvs.token
             }
         };
         return request(options);
     };
-    this.emailCountInfo = function(){
+    this.emailCountInfo = function(argvs){
         var options = {
             method : 'GET',
             timeout : 3000,
             uri : config()['ability']['rurl'] + '/cusemail/v1/count',
+            headers : {
+                userToken:argvs.token
+            }
         };
         return request(options);
     };
@@ -362,7 +401,9 @@ module.exports = function(){
             method : 'GET',
             timeout : 3000,
             uri : config()['ability']['rurl'] + '/cusemail/v1/listName?type='+argvs.type,
-
+            headers : {
+                userToken:argvs.token
+            }
         };
         return request(options);
     };
@@ -384,6 +425,9 @@ module.exports = function(){
             timeout : 3000,
             uri : config()['ability']['rurl'] + '/cusemail/v1/getOne/'+argvs.id,
             form : argvs,
+            headers : {
+                userToken:argvs.token
+            }
         };
         return request(options);
     };
@@ -391,7 +435,10 @@ module.exports = function(){
         var options = {
             method : 'GET',
             timeout : 3000,
-            uri : config()['ability']['rurl'] + '/cusemail/v1/collectCompanyCapability?companys='+encodeURIComponent(argvs.join(','))
+            uri : config()['ability']['rurl'] + '/cusemail/v1/collectCompanyCapability?companys='+encodeURIComponent(argvs.join(',')),
+            headers : {
+                userToken:argvs.token
+            }
         };
         return request(options);
     };
@@ -401,7 +448,10 @@ module.exports = function(){
             method : 'GET',
             timeout : 3000,
             uri : config()['ability']['rurl'] + '/companycapability/v1/listAllCompanyName',
-            form:argvs
+            form:argvs,
+            headers : {
+                userToken:argvs.token
+            }
         };
         return request(options);
     };
@@ -409,7 +459,10 @@ module.exports = function(){
         var options = {
             method : 'GET',
             timeout : 3000,
-            uri : config()['ability']['rurl'] + '/cusemail/v1/collectSelfCapability?names='+encodeURIComponent(argvs.join(','))
+            uri : config()['ability']['rurl'] + '/cusemail/v1/collectSelfCapability?names='+encodeURIComponent(argvs.join(',')),
+            headers : {
+                userToken:argvs.token
+            }
         };
         return request(options);
     };
@@ -419,7 +472,10 @@ module.exports = function(){
             method : 'GET',
             timeout : 3000,
             uri : config()['ability']['rurl'] + '/selfcapability/v1/listAllSelfName',
-            form:argvs
+            form:argvs,
+            headers : {
+                userToken:argvs.token
+            }
         };
         return request(options);
     };
@@ -428,7 +484,10 @@ module.exports = function(){
         var options = {
             method : 'GET',
             timeout : 3000,
-            uri : config()['ability']['rurl'] + '/cusemail/v1/collectCooperCapability?companys='+encodeURIComponent(argvs.join(','))
+            uri : config()['ability']['rurl'] + '/cusemail/v1/collectCooperCapability?companys='+encodeURIComponent(argvs.join(',')),
+            headers : {
+                userToken:argvs.token
+            }
         };
         return request(options);
     };
@@ -437,7 +496,10 @@ module.exports = function(){
             method : 'GET',
             timeout : 3000,
             uri : config()['ability']['rurl'] + '/coopercapability/v1/listCompany',
-            form:argvs
+            form:argvs,
+            headers : {
+                userToken:argvs.token
+            }
         };
         return request(options);
     };
@@ -460,16 +522,22 @@ module.exports = function(){
             method : 'GET',
             timeout : 3000,
             uri : config()['ability']['rurl'] + '/selfsocial/v1/listSelf?limit=10&page='+argvs.page+'&selfCapabilityId='+argvs.id,
+            headers : {
+                userToken:argvs.token
+            }
         };
         return request(options);
     };
 
     //分页
-    this.socialCount = function(){
+    this.socialCount = function(argvs){
         var options = {
             method : 'GET',
             timeout : 3000,
             uri : config()['ability']['rurl'] + '/selfsocial/v1/count',
+            headers : {
+                userToken:argvs.token
+            }
         };
         return request(options);
     };
@@ -505,6 +573,9 @@ module.exports = function(){
             method : 'GET',
             timeout : 3000,
             uri : config()['ability']['rurl'] + '/selfsocial/v1/getOne/'+argvs.id,
+            headers : {
+                userToken:argvs.token
+            }
         };
         return request(options);
     };
@@ -513,6 +584,50 @@ module.exports = function(){
             method : 'POST',
             timeout : 3000,
             uri : config()['user']['rurl'] + `/v1/sign-out/${argvs.token}`,
+            form:argvs
+        };
+        return request(options);
+    };
+    this.listSetting = function(argvs){
+        var options = {
+            method : 'GET',
+            timeout : 3000,
+            uri : config()['ability']['rurl'] + `/cuspermission/v1/list?limit=10&page=${argvs.page}`,
+        };
+        return request(options);
+    };
+    this.countSetting = function(){
+        var options = {
+            method : 'GET',
+            timeout : 3000,
+            uri : config()['ability']['rurl'] + '/cuspermission/v1/count',
+        };
+        return request(options);
+    };
+    this.getpermit = function(argvs){
+        var options = {
+            method : 'GET',
+            timeout : 3000,
+            uri : config()['ability']['rurl'] + `/cuspermission/v1/getOneById/${argvs.id}`,
+        };
+        return request(options);
+    };
+    this.getListpermit = function(argvs){
+        var options = {
+            method : 'GET',
+            timeout : 3000,
+            uri : config()['ability']['rurl'] + `/cuspermission/v1/listOperateById/${argvs.id}`,
+        };
+        return request(options);
+    };
+    this.editSetting = function(argvs){
+        var options = {
+            method : 'PUT',
+            timeout : 3000,
+            uri : config()['ability']['rurl'] + '/cuspermission/v1/edit',
+            headers:{
+                userToken:argvs.token
+            },
             form:argvs
         };
         return request(options);
