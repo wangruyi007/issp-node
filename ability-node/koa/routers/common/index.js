@@ -30,6 +30,6 @@ module.exports = function(){
                     $self.status = 408;
                 }
             }));
-    })
+    });
     return router;
 };

@@ -1,0 +1,71 @@
+<div class="content-input" verify-scope="tipStyle: 1">
+    <div class="input-list">
+     <section>
+            <ul>
+                <li class="required f-l">
+                    <label><i><img src="/images/mandatory.png"></i><em>代码</em></label>
+                    <input type="text"  ng-verify="{}" ng-model="data.code">
+                </li>
+
+                <li class="required f-l">
+                    <label><i><img src="/images/mandatory.png"></i><em>月份</em></label>
+                    <input type="number"  ng-verify="{}" ng-model="data.months">
+                </li>
+
+                <li class="required f-l">
+                    <label><i><img src="/images/mandatory.png"></i><em>一级科目</em></label>
+                    <input type="text"  ng-verify="{}" ng-model="data.firstSubject">
+                </li>
+
+                <li class="required f-l">
+                    <label><i><img src="/images/mandatory.png"></i><em>地区</em></label>
+                    <input type="text"  ng-verify="{}" ng-model="data.area">
+                </li>
+
+                <li class="required f-l">
+                    <label><i><img src="/images/mandatory.png"></i><em>项目名称</em></label>
+                    <input type="text"  ng-verify="{}" ng-model="data.projectName">
+                </li>
+
+                <li class="required f-l">
+                    <label><i><img src="/images/mandatory.png"></i><em>项目组/部门</em></label>
+                    <input type="text"  ng-verify="{}" ng-model="data.projectGroup">
+                </li>
+
+                <li class="required f-l">
+                    <label><i><img src="/images/mandatory.png"></i><em>期初借方余额</em></label>
+                    <input type="number"  ng-verify="{}" ng-model="data.beginningDebitAmount">
+                </li>
+
+                <li class="required f-l">
+                    <label><i><img src="/images/mandatory.png"></i><em>期初贷方余额</em></label>
+                    <input type="number"  ng-verify="{}" ng-model="data.beginningCreditAmount">
+                </li>
+
+                <li class="required f-l">
+                    <label><i><img src="/images/mandatory.png"></i><em>本期借方发生额</em></label>
+                    <input type="number"  ng-verify="{}" ng-model="data.issueDebitAmount">
+                </li>
+
+                <li class="required f-l">
+                    <label><i><img src="/images/mandatory.png"></i><em>本期贷方发生额</em></label>
+                    <input type="number"  ng-verify="{}" ng-model="data.issueCreditAmount">
+                </li>
+
+                <li class="required f-l">
+                    <label><i><img src="/images/mandatory.png"></i><em>期末借方余额</em></label>
+                    <input type="number"  ng-verify="{}" ng-model="data.endDebitAmount">
+                </li>
+
+                <li class="required f-l">
+                    <label><i><img src="/images/mandatory.png"></i><em>期末贷方余额</em></label>
+                    <input type="number"  ng-verify="{}" ng-model="data.endCreditAmount">
+                </li>
+            </ul>
+        </section>
+    </div>
+    <p class="dataBottom">
+        <span class="imPrompt"><i><img src="/images/prompt.png"></i>带有<i><img src="/images/mandatory.png"></i>的为必填项</span>
+        <button ng-verify="{control:'myform'}" ng-click="courseCollectAddFun()">提交</button>
+    </p>
+</div>
