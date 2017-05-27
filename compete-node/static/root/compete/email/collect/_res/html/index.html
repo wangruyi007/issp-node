@@ -1,0 +1,26 @@
+<div class="collect">
+    <ul class="sum-list">
+        <li class="sum-thead">
+            <span>地区</span>
+            <span>通讯类</span>
+            <span>软件类</span>
+            <span>营销策划类</span>
+            <span>智能化类</span>
+            <span>电子商务类</span>
+            <span>房地产类</span>
+            <span>理财类</span>
+            <span>食品类</span>
+        </li>
+        <li class="sum-tbody" ng-repeat="Lists in summaryLists">
+            <span>{{::Lists.area}}</span>
+            <span>{{::Lists.communicate}}</span>
+            <span>{{::Lists.software}}</span>
+            <span>{{::Lists.marketingplan}}</span>
+            <span>{{::Lists.intelligentize}}</span>
+            <span>{{::Lists.electroniccommerce}}</span>
+            <span>{{::Lists.realty}}</span>
+            <span>{{::Lists.financial}}</span>
+            <span>{{::Lists.food}}</span>
+        </li>
+    </ul>
+</div>

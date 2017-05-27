@@ -1,0 +1,133 @@
+<div class="content-input add" verify-scope="tipStyle: 1">  <!--表单验证插件-->
+    <div class="input-list">
+        <section>
+            <ul>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>审核人</em></label>
+                    <input type="text" ng-verify="{}" ng-model="editInfo.auditor">
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>审核意见</em></label>
+                    <input type="text" ng-verify="{}" ng-model="editInfo.auditOpinion">
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>市场信息编号</em></label>
+                    <input type="text" ng-verify="{}" ng-model="editInfo.marketInfoId">
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>市场收集日期</em></label>
+                    <input type="text" ng-verify="{}" ng-model="editInfo.infoCollectionDate" onClick="laydate({istime: true, format: 'YYYY-MM-DD hh:mm:ss'})" class="add_image infoCollectionDate">
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>行业</em></label>
+                    <input type="text" ng-verify="{}" ng-model="editInfo.workProfession">
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>技术类别</em></label>
+                    <input type="text" ng-verify="{}" ng-model="editInfo.technologyCategory">
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>地区</em></label>
+                    <input type="text" ng-verify="{}" ng-model="editInfo.area">
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>项目名称</em></label>
+                    <input type="text" ng-verify="{}" ng-model="editInfo.projectName">
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>项目名称</em></label>
+                    <select class="sele" ng-model="editInfo.scale" ng-init="editInfo.scale='ALEVEL'" >
+                        <option value="ALEVEL">规模枚举</option>
+                        <option value="BLEVEL">B级:31-60人</option>
+                        <option value="CLEVEL">C级:61-90</option>
+                        <option value="DLEVEL">D级:91-120人</option>
+                        <option value="ELEVEL">E级:121-150人</option>
+                        <option value="FLEVEL">F级:151-180人</option>
+                        <option value="GLEVEL">G级:181-210人</option>
+                    </select>
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>发起时间</em></label>
+                    <input type="text" ng-verify="{}" ng-model="editInfo.startTime" onClick="laydate({istime: true, format: 'YYYY-MM-DD hh:mm:ss'})" class="add_image startTime">
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>重要时间点</em></label>
+                    <input type="text" ng-verify="{}" ng-model="editInfo.importantPoint" onClick="laydate({istime: true, format: 'YYYY-MM-DD hh:mm:ss'})" class="add_image importantPoint">
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>结束时间</em></label>
+                    <input type="text" ng-verify="{}" ng-model="editInfo.endTime" onClick="laydate({istime: true, format: 'YYYY-MM-DD hh:mm:ss'})" class="add_image endTime">
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>信息来源</em></label>
+                    <input type="text" ng-verify="{}" ng-model="editInfo.infoSource">
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>市场信息收集人</em></label>
+                    <input type="text" ng-verify="{}" ng-model="editInfo.marketInfoCollecting">
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>是否为有效信息</em></label>
+                    <select class="sele" ng-model="editInfo.effective" ng-init="editInfo.effective='0'" >
+                        <option value="0">否</option>
+                        <option value="1">是</option>
+                    </select>
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>项目性质</em></label>
+                    <input type="text" ng-verify="{}" ng-model="editInfo.projectNature">
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>市场分析人员</em></label>
+                    <input type="text" ng-verify="{}" ng-model="editInfo.marketAnalysts">
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>配置要求</em></label>
+                    <input type="text" ng-verify="{}" ng-model="editInfo.configurationRequirement">
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>技术要求</em></label>
+                    <input type="text" ng-verify="{}" ng-model="editInfo.technicalRequirement">
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>资质要求</em></label>
+                    <input type="text" ng-verify="{}" ng-model="editInfo.qualificationRequirement">
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>客户信息编号</em></label>
+                    <input type="text" ng-verify="{}" ng-model="editInfo.customerNum">
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>客户名称</em></label>
+                    <input type="text" ng-verify="{}" ng-model="editInfo.customerName">
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>组织机构名称</em></label>
+                    <input type="text" ng-verify="{}" ng-model="editInfo.origanizion">
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>竞争对手名称</em></label>
+                    <input type="text" ng-verify="{}" ng-model="editInfo.competitorsName">
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>客户/竞争对手信息填写人</em></label>
+                    <input type="text" ng-verify="{}" ng-model="editInfo.fillPerson">
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>备注</em></label>
+                    <input type="text" ng-verify="{}" ng-model="editInfo.remark">
+                </li>
+            </ul>
+        </section>
+    </div>
+    <p class="dataBottom">
+        <span class="imPrompt"><i><img src="/images/prompt.png"></i>带有<i><img src="/images/mandatory.png"></i>的为必填项</span>
+        <button ng-verify="{control:'myform'}" ng-click="informationEditFun()">提交</button>
+    </p>
+</div>
+
+<script type="text/javascript">
+    !function(){
+        laydate.skin('dahong');//切换皮肤，请查看skins下面皮肤库
+    }();
+</script>

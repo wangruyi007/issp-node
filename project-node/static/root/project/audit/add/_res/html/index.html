@@ -4,27 +4,31 @@
             <ul>
                 <li class="required">
                     <label><i><img src="/images/mandatory.png"></i><em>合同外部项目名称</em></label>
-                    <select class="sele" ng-model="add.outerName" ng-init="add.outerName">
-                        <option></option>
+                    <select class="sele" ng-model="add.outerName">
+                        <option value="" disabled>请选择</option>
                     </select>
+                    <input type="text"  class="inputDom" ng-verify="{}" ng-model="add.outerName">
                 </li>
                 <li class="required">
                     <label><i><img src="/images/mandatory.png"></i><em>内部项目名称</em></label>
-                    <select class="sele" ng-model="add.innerName"  ng-init="add.innerName">
-                        <option></option>
+                    <select class="sele" ng-model="add.innerName" >
+                        <option value="" disabled>请选择</option>
                     </select>
+                    <input type="text"  class="inputDom" ng-verify="{}" ng-model="add.innerName">
                 </li>
                 <li class="required">
                     <label><i><img src="/images/mandatory.png"></i><em>销售合同号</em></label>
-                    <select class="sele" ng-model="add.saleNum"  ng-init="add.saleNum">
-                        <option></option>
+                    <select class="sele" ng-model="add.saleNum">
+                        <option value="" disabled>请选择</option>
                     </select>
+                    <input type="text"  class="inputDom" ng-verify="{}" ng-model="add.saleNum">
                 </li>
                 <li class="required">
                     <label><i><img src="/images/mandatory.png"></i><em>立项情况</em></label>
                     <select class="sele" ng-model="add.signProjectCondition"  ng-init="add.signProjectCondition">
-                        <option></option>
+                        <option value="" disabled>请选择</option>
                     </select>
+                    <input type="text"  class="inputDom" ng-verify="{}" ng-model="add.signProjectCondition">
                 </li>
                 <li>
                     <label><em>工作内容</em></label>
@@ -48,7 +52,8 @@
                 </li>
                 <li>
                     <label><em>是否实施</em></label>
-                    <select class="sele" ng-model="add.carryCondition" ng-init="add.carryCondition='是'">
+                    <select class="sele" ng-model="add.carryCondition">
+                        <option value="" disabled>请选择</option>
                         <option>是</option>
                         <option>否</option>
                     </select>

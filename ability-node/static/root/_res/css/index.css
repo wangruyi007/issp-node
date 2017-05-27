@@ -98,8 +98,69 @@ body {
   display: -ms-flexbox;
   display: flex;
 }
+/*搜索*/
+.search-all{
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+  -ms-flex-pack: end;
+  justify-content: flex-end;
+  padding-right: 20px;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  font-size: 12px;
+}
+.search-btns{
+  width: 19px;
+  height: 18px;
+  background: url("/images/search.png") no-repeat center;
+  margin-right: 18px;
+  display: none;
+}
+.search-big{
+  width: 480px;
+  height: 36px;
+  line-height: 36px;
+  border-radius: 10px;
+  background-color: white;
+  border: 1px solid #808284;
+  margin-top: 20px;
+  margin-left: 20px;
+  margin-bottom: 20px;
+  display: none;
+}
+.salc{
+  color: #252525;
+  padding-left: 28px;
+  display: inline-block;
+  width: 150px;
+  height: 25px;
+  border-right: 1px solid #bababa;
+  border-left: 0 ;
+  border-top: 0 ;
+  border-bottom: 0 ;
+  background: url("/images/search1.png") no-repeat right 15px center;
+  appearance:none;
+  -moz-appearance:none;
+  -webkit-appearance:none;
+}
+.salc option{
+  box-shadow:0 0 10px rgba(0, 204, 204, .5);
+  color:#758c94;
+  text-align: center;
+}
+.search-big a{
+  float: right;
+  margin-right: 10px;
+}
+.search-big input{
+  width: 50%;
+}
+/*搜索*/
 .com-table{
-  margin-top: 97px !important;
+ /* margin-top: 97px !important;*/
 }
 .left-section {
   width: 200px;
@@ -305,21 +366,38 @@ body {
   height: 37px;
   background: url("/images/searchbg.png") no-repeat;
   color: #fff;
-  padding-left: 18px;
+  position:relative;
+  text-align:center;
+  margin-right:120px;}
+
+.right-section .top-content .top-fixed .top .search .selected:hover .usermenu{
+  display:flex;
+}
+.right-section .top-content .top-fixed .top .search .selected a{
+  color:#fff;
 }
 
-.right-section .top-content .top-fixed .top .search .selected option {
-  color: #666;
+.right-section .top-content .top-fixed .top .search .selected .username{
+  line-height:37px;
 }
 
-.right-section .top-content .top-fixed .top .search .arrow {
-  width: 9px;
-  height: 7px;
-  background: url("/images/down.png") no-repeat center;
-  cursor: pointer;
-  margin-left: -20px;
+.right-section .top-content .top-fixed .top .search .selected .usermenu{
+  display:none;
+  flex-direction:column;
+  position:absolute;
+  left:1px;
+  width:134px;
+  border:1px solid #ccc;
+  background:#fff;
 }
-
+.right-section .top-content .top-fixed .top .search .selected .usermenu a{
+  line-height:30px;
+  color:#00c6ff;
+}
+.right-section .top-content .top-fixed .top .search .selected .usermenu a:hover{
+  background:#00c6ff;
+  color:#fff;
+}
 .right-section .top-content .content .menu {
   position: fixed;
   z-index: 99;
@@ -1014,9 +1092,10 @@ body {
 /*搜索*/
 .com-search {
   position: fixed;
+  width: 100%;
   top:160px;
   z-index: 999;
-  width: 450px;
+  /*min-width: 650px;*/
   line-height: 80px;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -1026,10 +1105,10 @@ body {
 }
 .com-search2{
   display: inline-block;
-  width: 100%;
+  width: 45%;
 }
 .com-search .com-search2 input{
-  width: 70%;
+  width: 50%;
   padding-left: 15px;
   padding-right: 15px;
   height: 36px;
@@ -1190,11 +1269,18 @@ body {
   border-radius: 5px;
   margin-left: 37px;
 }
+.com-search2 button{
+  width: 65px;
+  height: 30px;
+  color: white;
+   background-color: #00c6ff;
+   border-radius: 5px;
+}
 /*可手填的下拉框*/
 .right-section .top-content .content .content-wrap .content-input .input-list section ul li .inputDom{
   width: 45%;
   position: absolute;
-  margin-left: 59px;
+  margin-left: 64px;
   border: 0!important;
   height: 30px;
   padding-left: 10px !important;
@@ -1252,7 +1338,7 @@ body {
 .right-section .top-content .content .content-wrap .content-input .input-list section ul li input {
   position: relative;
   width: 50%;
-  padding-left: 15px;
+  padding-left: 17px;
   padding-right: 15px;
   height: 36px;
   border: 1px solid #999999;
@@ -1269,7 +1355,7 @@ body {
   height: 36px;
   border: 1px solid #999999;
   background: url("/images/down_b.png") no-repeat right 10px center;
-  padding-left: 15px;
+  padding-left: 17px;
   padding-right: 15px;
   border-radius: 5px;
   margin-left: 14px;

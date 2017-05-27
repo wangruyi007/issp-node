@@ -1,32 +1,26 @@
 <div class="content-tab list">
     <div class="com-search3 mod">
-      <span class="com-search4">
+        <span class="com-search4">
             <label>合同签订情况:</label>
-            <input type="text"  ng-model="teamInfo.signCondition">
+            <input type="text"  ng-model="signCondition">
        </span>
         <span class="com-search4">
             <label>立项情况 :</label>
-            <input type="text"  ng-model="teamInfo.signProject">
+            <input type="text"  ng-model="signProject">
        </span>
         <span class="com-search4">
             <label>地区 :</label>
-             <input type="text"  ng-model="teamInfo.area">
+             <input type="text"  ng-model="area">
        </span>
         <span class="com-search4">
             <label>业务类型 :</label>
-            <input type="text"  ng-model="teamInfo.businessType">
+            <input type="text"  ng-model="businessType">
        </span>
         <span class="com-search4">
             <label>业务方向科目 :</label>
-            <input type="text"  ng-model="teamInfo.businessSubject">
+            <input type="text"  ng-model="businessSubject">
        </span>
-        <span class="com-search4">
-            <label>是否初验 :</label>
-            <select ng-model="teamInfo.startTestCondition"  ng-change="resetFilter(teamInfo.startTestCondition)">
-                <option>已初验</option>
-                <option>未初验</option>
-            </select>
-       </span>
+        <button ng-click="collect()">查询</button>
     </div>
     <ul class="table com-table">
         <li class="list-head">
@@ -42,7 +36,7 @@
             <span></span>
         </li>
         <li class="list-all">
-            <section ng-repeat="list in implementationLists.data|filter:teamInfo" style="display: {{list._delete?'none':'block'}};">
+            <section ng-repeat="list in implementationLists.data" style="display: {{list._delete?'none':'block'}};">
                 <div  class="list-text {{list._selectList?'selectList':''}}" ng-click="selectList(list)">
                     <p>{{$index+1}}</p>
                     <p class="data-id"></p>

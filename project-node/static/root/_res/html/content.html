@@ -18,15 +18,19 @@
                 <div class="top-back">
                     <a href="javascript:void(0)" class="back">返回</a>
                 </div>
+                <div class="search-all">
+                    <a href="javascript:void(0)" class="search-btns" onclick="searchToggle()"></a>
+                </div>
                 <div class="search">
-                    <a href="javascript:void(0)" class="search-btn"></a>
-                    <select class="selected" >
-                        <option value="">{{username}}</option>
-                    </select>
-                    <span class="arrow"></span>
+                    <div class="selected">
+                        <p class="username"><a href="javascript:void(0)">{{username}}</a></p>
+                        <p class="usermenu">
+                            <a href="http://localhost/login" ng-hide="logined" ng-click="login()">登录</a>
+                            <a href="javascript:void(0)" ng-show="logined" ng-click="logout()">退出</a>
+                        </p>
+                    </div>
                 </div>
             </div>
-
         </div>
         <div class="content" ui-view="content">
             首页内容

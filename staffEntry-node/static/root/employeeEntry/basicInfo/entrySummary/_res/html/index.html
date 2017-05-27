@@ -1,0 +1,31 @@
+<div class="collect">
+    <div class="collect-select">
+        <span class="time">
+            入职时间：<input type="text" onClick="laydate({istime: true, format: 'YYYY-MM-DD'})" class="inputter start" >
+            ~<input type="text" onClick="laydate({istime: true, format: 'YYYY-MM-DD'})" class="inputter end" >
+        </span>
+
+        <div class="sum-select">
+            岗位名称:
+            <div class="select">
+                <p class="select-text" >
+                    <span ng-repeat="postName in postNames">{{postName}}, </span>
+                </p>
+                <div class="mymultiselect" events="getSummary" ng-dropdown-multiselect="" options="workOptions" selected-model="postNames" extra-settings="stringSettings"></div>
+            </div>
+        </div>
+        <button ng-click="collect()">汇总</button>
+    </div>
+    <ul class="sum-list">
+        <li class="sum-thead">
+            <span>岗位名称</span>
+            <span>时间范围</span>
+            <span>入职人数</span>
+        </li>
+        <li class="sum-tbody" ng-repeat="Lists in summaryLists">
+            <span>{{::Lists.position}}</span>
+            <span>{{::Lists.entryTime}}</span>
+            <span>{{::Lists.entryCount}}</span>
+        </li>
+    </ul>
+</div>

@@ -1,0 +1,43 @@
+<div class="collect ">
+    <div class="sum-select">
+        <label><i><img src="/images/mandatory.png"></i><em>地区</em></label>
+        <div class="select">
+            <p class="select-text" >
+                <span ng-repeat="area in areas">{{area}}, </span>
+            </p>
+            <div class="mymultiselect" events="getSummary" ng-dropdown-multiselect="" options="workOptions" selected-model="areas" extra-settings="stringSettings"></div>
+        </div>
+    </div>
+    <ul class="sum-list">
+        <li class="sum-thead">
+            <span>地区</span>
+            <span>移动通信行业市场信息数量</span>
+            <span>软件开发行业市场信息数量</span>
+            <span>智能系统集成行业市场信息数量</span>
+            <span>策划与营销方案行业市场信息数量</span>
+            <span>项目级别-A级市场信息数量</span>
+            <span>项目级别-B级市场信息数量</span>
+            <span>项目级别-C级市场信息数量</span>
+            <span>项目级别-D级市场信息数量</span>
+            <span>有效信息市场数量</span>
+            <span>无效信息市场数量</span>
+            <span>新项目市场信息数量</span>
+            <span>已有项目or进行中项目市场信息数量</span>
+        </li>
+        <li class="sum-tbody" ng-repeat="summaryList in settlementSummarys">
+            <span>{{summaryList.area}}</span>
+            <span>{{summaryList.mobile}}</span>
+            <span>{{summaryList.soft}}</span>
+            <span>{{summaryList.system}}</span>
+            <span>{{summaryList.plan}}</span>
+            <span>{{summaryList.first}}</span>
+            <span>{{summaryList.second}}</span>
+            <span>{{summaryList.third}}</span>
+            <span>{{summaryList.fourth}}</span>
+            <span>{{summaryList.has}}</span>
+            <span>{{summaryList.notHas}}</span>
+            <span>{{summaryList.fresh}}</span>
+            <span>{{summaryList.old}}</span>
+        </li>
+    </ul>
+</div>

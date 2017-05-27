@@ -14,7 +14,7 @@ app.controller('rootCtrl', function ($scope,$rootScope,$state,ipCookie,rootSer,$
 
     $scope.login = function(){
         var absurl = $location.absUrl();
-        ipCookie('absurl', absurl,{ expires:3,expirationUnit: 'minutes' });
+        ipCookie('absurl', absurl,{ expires:3,expirationUnit: 'minutes',domain:'issp.bjike.com' });;
         location.href="http://localhost/login";//部署到线上时要改为登录域名
     };
     $scope.logout = function(){

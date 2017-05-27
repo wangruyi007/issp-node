@@ -1,6 +1,3 @@
-/**
- * Created by ike on 2017/4/13.
- */
 var app = angular.module('implementationList', []);
 app.config(function($provide, $stateProvider){
     $stateProvider.state("root.project.implementation.list",{

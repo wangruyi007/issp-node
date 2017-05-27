@@ -1,22 +1,31 @@
-/**
- * Created by ike on 2017/4/17.
- */
-var app = angular.module('emailPerson', ['toastr','angularjs-dropdown-multiselect']);
-app.controller('emailPersonCtrl', function($scope, emailSer,toastr){
+var app = angular.module('emailPerson', ['toastr','angularjs-dropdown-multiselect','ipCookie']);
+app.controller('emailPersonCtrl', function($scope, emailSer,toastr,ipCookie,$location){
     $scope.words = [];
     $scope.stringSettings = {template : '{{option}}', smartButtonTextConverter(skip, option) { return option; }};
     //获取公司
     emailSer.getPersonNames().then(function(response){
         if(response.data.code == 0){
             $scope.workOptions = response.data.data;
-        } else if(response.data.code == 403){
-            toastr.error("请登录用户", '温馨提示');
+        }else if (response.data.code == 403||response.data.code==401) {
+            toastr.error( "请登录用户,3秒后跳至登陆页面", '温馨提示');
+            var absurl = $location.absUrl();
+            ipCookie('absurl', absurl,{ expires:3,expirationUnit: 'minutes',domain:'issp.bjike.com' })
+            setTimeout(function(){
+                window.location.href='http://localhost/login'
+            },3000)
         }
     });
     $scope.getSummary ={onSelectionChanged(){
         emailSer.ectSummaryPerson($scope.words).then(function(response){
             if(response.data.code == 0){
                 $scope.summaryLists = response.data.data;
+            }else if (response.data.code == 403||response.data.code==401) {
+                toastr.error( "请登录用户,3秒后跳至登陆页面", '温馨提示');
+                var absurl = $location.absUrl();
+                ipCookie('absurl', absurl,{ expires:3,expirationUnit: 'minutes',domain:'issp.bjike.com' })
+                setTimeout(function(){
+                    window.location.href='http://localhost/login'
+                },3000)
             }
         })
     }}

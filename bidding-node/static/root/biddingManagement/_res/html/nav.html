@@ -1,0 +1,20 @@
+<div class="nav-list">
+    <h3 class="header-menu big"><i class="nav-arrow"></i>招投标管理</h3>
+    <ul class="menu">
+        <li ng-click="navClass('websiteInfo')" ng-class="{'active':navCla=='websiteInfo'}"  ui-sref="_root.biddingManagement.websiteInfo.list">
+            <a href="javascript:void(0)">招投标网站信息</a>
+        </li>
+        <li ng-click="navClass('biddingInformation')" ng-class="{'active':navCla== 'biddingInformation'}" ui-sref="_root.biddingManagement.biddingInformation.list">
+            <a href="javascript:void(0)">招标信息</a>
+        </li>
+        <li ng-click="navClass('tenderQuestion')" ng-class="{'active':navCla=='tenderQuestion'}" ui-sref="_root.biddingManagement.tenderQuestion.list">
+            <a href="javascript:void(0)">投标答疑问题记录</a>
+        </li>
+        <li ng-click="navClass('tenderMaterial')" ng-class="{'active':navCla=='tenderMaterial'}" ui-sref="_root.biddingManagement.tenderMaterial.list">
+            <a href="javascript:void(0)">标书资料</a>
+        </li>
+        <li ng-click="navClass('openingInfo')" ng-class="{'active':navCla=='openingInfo'}" ui-sref="_root.biddingManagement.openingInfo.list">
+            <a href="javascript:void(0)">开标信息</a>
+        </li>
+    </ul>
+</div>

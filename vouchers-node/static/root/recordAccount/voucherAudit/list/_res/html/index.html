@@ -1,0 +1,89 @@
+<div class="content-tab list">
+    <ul class="table">
+        <li class="list-head">
+            <span></span>
+            <span>凭证字号</span>
+            <span>凭证字</span>
+            <span>凭证日期</span>
+            <span>一级科目</span>
+            <span>二级科目</span>
+            <span>三级科目</span>
+            <span>摘要</span>
+            <span></span>
+        </li>
+        <li class="list-all" ng-repeat="lists in auditLists" style="display: {{lists._delete?'none':'block'}};">
+            <section>
+                <div class="list-text {{lists._selectList?'selectList':''}}" ng-click="selectList(lists)">
+                    <p>{{$index+1}}</p>
+                    <p>{{::lists.voucherNum}}</p>
+                    <p>{{::lists.voucherWord}}</p>
+                    <p>{{::lists.voucherDate}}</p>
+                    <p>{{::lists.firstSubject}}</p>
+                    <p>{{::lists.secondSubject}}</p>
+                    <p>{{::lists.thirdSubject}}</p>
+                    <p>{{::lists.sumary}}</p>
+                    <p>
+                        <a href="javascript:void(0)" class="more" ng-click="moreList(lists)">更多详细</a>
+                    </p>
+                </div>
+                <div class="can">
+                    <ul class="can-see" style="display: {{lists._moreList?'block':'none'}};">
+                        <li>
+                            <p class="see-parent">
+                                <span>借方金额</span>
+                                <span>贷方金额</span>
+                                <span>地区</span>
+                                <span>项目名称</span>
+                                <span>项目组</span>
+                                <span>制单人</span>
+                                <span>票据数量</span>
+                            </p>
+                            <p class="see-children">
+                                <span>{{::lists.borrowMoney}}</span>
+                                <span>{{::lists.loanMoney}}</span>
+                                <span>{{::lists.area}}</span>
+                                <span>{{::lists.projectName}}</span>
+                                <span>{{::lists.projectGroup}}</span>
+                                <span>{{::lists.ticketer}}</span>
+                                <span>{{::lists.ticketNum}}</span>
+                            </p>
+                        </li>
+                        <li>
+                            <p class="see-parent">
+                                <span>附件</span>
+                                <span>审核人</span>
+                                <span>审核状态</span>
+                                <span>过帐状态</span>
+                                <span>结帐状态</span>
+                                <span>借贷合计金额</span>
+                            </p>
+                            <p class="see-children">
+                                <span>{{::lists.extraFile}}</span>
+                                <span>{{::lists.auditor}}</span>
+                                <span>{{::lists.auditStatus|cover}}</span>
+                                <span>{{::lists.transferStatus|money}}</span>
+                                <span>{{::lists.checkStatus|end}}</span>
+                                <span>{{::lists.moneyTotal}}</span>
+                            </p>
+                        </li>
+                    </ul>
+                    <div class="module">
+                        <div class="see-module">
+                            <p class="see-type">体现类型</p>
+                            <p class="see-description"></p>
+                            <button class="btn">关闭</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </li>
+    </ul>
+    <footer class="footer">
+        <pagination count="custom.itemsCount" take="custom.take" activate="custom.activatePage"></pagination>
+    </footer>
+</div>
+<div ui-view="modal"></div>
+
+
+
+

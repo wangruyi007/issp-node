@@ -24,7 +24,10 @@ module.exports = function(){
             method : 'POST',
             timeout : 3000,
             uri : config()['rurl'] + '/warn/v1/save',
-            form:argvs
+            form:argvs,
+            headers : {
+                userToken:argvs.token
+            }
         };
         return request(options);
     };
@@ -41,7 +44,10 @@ module.exports = function(){
             method : 'PUT',
             timeout : 3000,
             uri : config()['rurl'] + '/warn/v1/edit',
-            form:argvs
+            form:argvs,
+            headers : {
+                userToken:argvs.token
+            }
         };
         return request(options);
     };
@@ -50,6 +56,9 @@ module.exports = function(){
             method : 'DELETE',
             timeout : 3000,
             uri : config()['rurl'] + `/warn/v1/delete/${argvs.id}`,
+            headers : {
+                userToken:argvs.token
+            }
         };
         return request(options);
     };
@@ -75,7 +84,10 @@ module.exports = function(){
             method : 'POST',
             timeout : 3000,
             uri : config()['rurl'] + '/grade/v1/save',
-            form:argvs
+            form:argvs,
+            headers : {
+                userToken:argvs.token
+            }
         };
         return request(options);
     };
@@ -92,7 +104,10 @@ module.exports = function(){
             method : 'PUT',
             timeout : 3000,
             uri : config()['rurl'] + '/grade/v1/edit',
-            form:argvs
+            form:argvs,
+            headers : {
+                userToken:argvs.token
+            }
         };
         return request(options);
     };
@@ -101,6 +116,9 @@ module.exports = function(){
             method : 'DELETE',
             timeout : 3000,
             uri : config()['rurl'] + `/grade/v1/delete/${argvs.id}`,
+            headers : {
+                userToken:argvs.token
+            }
         };
         return request(options);
     };
@@ -126,7 +144,10 @@ module.exports = function(){
             method : 'POST',
             timeout : 3000,
             uri : config()['rurl'] + '/costanalysis/v1/save',
-            form:argvs
+            form:argvs,
+            headers : {
+                userToken:argvs.token
+            }
         };
         return request(options);
     };
@@ -143,7 +164,10 @@ module.exports = function(){
             method : 'PUT',
             timeout : 3000,
             uri : config()['rurl'] + '/costanalysis/v1/edit',
-            form:argvs
+            form:argvs,
+            headers : {
+                userToken:argvs.token
+            }
         };
         return request(options);
     };
@@ -152,6 +176,9 @@ module.exports = function(){
             method : 'DELETE',
             timeout : 3000,
             uri : config()['rurl'] + `/costanalysis/v1/delete/${argvs.id}`,
+            headers : {
+                userToken:argvs.token
+            }
         };
         return request(options);
     };
@@ -302,6 +329,15 @@ module.exports = function(){
             method : 'GET',
             timeout : 3000,
             uri : config()['rurl'] + `/projectmarketfee/v1/projectNameCount/${argvs.startTime}/${argvs.endTime}`
+        };
+        return request(options);
+    };
+    this.logout = function(argvs){
+        var options = {
+            method : 'POST',
+            timeout : 3000,
+            uri : config()['user'] + `/v1/sign-out/${argvs.token}`,
+            form:argvs
         };
         return request(options);
     };

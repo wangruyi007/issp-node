@@ -1,0 +1,61 @@
+<div class="content-input add" verify-scope="tipStyle: 1">
+    <div class="input-list">
+        <section>
+            <ul>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>招标编号</em></label>
+                    <input type="text" ng-verify="{}" ng-model="opening.tenderNumber">
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>项目名称</em></label>
+                    <input type="text" ng-verify="{}" ng-model="opening.projectName">
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>竞争公司</em></label>
+                    <input type="text" ng-verify="{}" ng-model="opening.competitive">
+                </li>
+                <li class="required">
+                    <label><em>开标时间</em></label>
+                    <input type="text" onClick="laydate({istime: true, format: 'YYYY-MM-DD hh:mm:ss'})" class="add_image bidOpeningTime" ng-model="opening.bidOpeningTime">
+                </li>
+                <li class="required">
+                    <label><em>开标地点</em></label>
+                    <input type="text" ng-model="opening.bidOpeningPlace">
+                </li>
+                <li class="required">
+                    <label><em>委托人</em></label>
+                    <input type="text" ng-model="opening.principal">
+                </li>
+                <li class="required">
+                    <label><em>记录人</em></label>
+                    <input type="text" ng-model="opening.recorder">
+                </li>
+                <li class="required">
+                    <label><em>地市</em></label>
+                    <input type="text" ng-model="opening.cities">
+                </li>
+                <li class="required">
+                    <label><em>竞争公司报价</em></label>
+                    <input type="number" ng-model="opening.competitivePrice">
+                </li>
+                <li class="required">
+                    <label><em>比率(%)</em></label>
+                    <input type="number" ng-model="opening.ratio">
+                </li>
+            </ul>
+        </section>
+    </div>
+    <p class="dataBottom">
+        <span class="imPrompt"><i><img src="/images/prompt.png"></i>带有<i><img src="/images/mandatory.png"></i>的为必填项</span>
+        <button ng-verify="{control:'myform'}" ng-click="openAddFun()">提交</button>
+    </p>
+</div>
+
+<script type="text/javascript">
+
+    !function(){
+        laydate.skin('dahong');//切换皮肤，请查看skins下面皮肤库
+    }();
+
+
+</script>

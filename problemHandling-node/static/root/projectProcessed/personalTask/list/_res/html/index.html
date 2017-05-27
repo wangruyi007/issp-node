@@ -1,0 +1,42 @@
+<div class="content-tab list">
+    <div class="com-search mod">
+        <span class="com-search2">
+            <label>内部项目名称:</label>
+            <input type="text"  ng-model="teamInfo.internalProjectName">
+       </span>
+        <span class="com-search2">
+            <label>处理人员:</label>
+            <input type="text"  ng-model="teamInfo.handler">
+       </span>
+    </div>
+    <ul class="table table-top">
+        <li class="list-head">
+            <span></span>
+            <span>内部项目名称</span>
+            <span>处理人员</span>
+            <span>每日计划</span>
+            <span>临时任务</span>
+            <span>实际完成情况</span>
+        </li>
+        <li class="list-all" ng-repeat="lists in assigneeLists|filter:teamInfo" style="display: {{lists._delete?'none':'block'}};">
+            <section>
+                <div class="list-text {{lists._selectList?'selectList':''}}" ng-click="selectList(lists)">
+                    <p>{{$index+1}}</p>
+                    <p>{{lists.internalProjectName}}</p>
+                    <p>{{lists.handler}}</p>
+                    <p>{{lists.dailyPlan}}</p>
+                    <p>{{lists.temporaryTask}}</p>
+                    <p>{{lists.actualCompletion}}</p>
+                </div>
+            </section>
+        </li>
+    </ul>
+    <footer class="footer">
+        <pagination count="custom.itemsCount" take="custom.take" activate="custom.activatePage"></pagination>
+    </footer>
+</div>
+<div ui-view="modal"></div>
+
+
+
+
