@@ -45,7 +45,6 @@ module.exports = function(){
                     $self.body = responseText;
                 }).catch((error) =>{
                     $self.set('Content-Type','application/json;charset=utf-8');
-                    console.log(144234);
                     $self.body=error.error;
                     console.error(error.error);
                 }));
@@ -101,7 +100,6 @@ module.exports = function(){
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
                 $self.body = responseText;
-                console.log(123154)
             }).catch((error) =>{
                 if(error.error && error.error.code && error.error.code == 'ETIMEDOUT'){
                     $self.body = {'msg' : '请求错误！', errno : 3};
