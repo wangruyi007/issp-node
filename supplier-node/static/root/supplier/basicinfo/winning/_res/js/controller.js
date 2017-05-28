@@ -1,4 +1,3 @@
-
 var app = angular.module('winningBasic', ['toastr','ng-pagination']);
 app.controller('winningBasicCtrl', function($scope, basicinfoSer,$state,toastr,$stateParams){
     $scope.selectList = function(event){

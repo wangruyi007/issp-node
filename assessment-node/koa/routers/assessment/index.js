@@ -1276,18 +1276,13 @@ module.exports = function(){
                 $self.body=error.error;
                 console.error(error.error);
             }));
-    }).get('/user/logout', function*(){
-        var $self = this;
-        var token = {token:$self.cookies.get('token')};
-        yield (server().logout(token)
-            .then((parsedBody) =>{
-                var responseText = JSON.parse(parsedBody);
-                $self.body = responseText;
-            }).catch((error) =>{
-                $self.set('Content-Type','application/json;charset=utf-8');
-                $self.body=error.error;
-                console.error(error.error);
-            }));
+    }).get('/user/logout', function*(next){
+        var url = this.request.query;
+        this.cookies.set("absUrl",url.absurl);
+        this.body = {
+            code:0,
+            msg:"重定向"
+        };
     }).get('/listSetting', function*(){
         var $self = this;
         var setting = this.request.query;
