@@ -1,17 +1,12 @@
 <div class="content-tab list">
-    <div class="com-search mod">
-      <span class="com-search2">
-            <label>洽谈人 :</label>
-            <input type="text"  ng-model="teamInfo.communicateUser">
-       </span>
-       <span class="com-search2">
-            <label>洽谈对象 :</label>
-            <input type="text"  ng-model="teamInfo.communicateObj">
-       </span>
-       <span class="com-search2">
-            <label>项目结果 :</label>
-            <input type="text"  ng-model="teamInfo.projectResult">
-       </span>
+    <div class="search-big" style="display :{{ isView?'none':'block'}}">
+        <select class="salc" ng-model="checkedName">
+            <option ng-repeat="item in titles">{{item}}</option>
+        </select>
+        <input type="text" ng-model="communicateUser" ng-show="checkedName=='洽谈人'">
+        <input type="text" ng-model="communicateObj" ng-show="checkedName=='洽谈对象'">
+        <input type="text" ng-model="projectResult" ng-show="checkedName=='项目结果'">
+        <a href="javascript:void(0)" ng-click="collect()"><img src="/images/search2.png"></a>
     </div>
     <ul class="table com-table">
         <li class="list-head">
