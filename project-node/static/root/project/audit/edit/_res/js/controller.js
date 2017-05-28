@@ -5,6 +5,8 @@ app.controller('auditEditCtrl', function($scope, auditSer,$state,toastr,$statePa
     auditSer.getAuditById(auditId).then(function(response){
         if(response.data.code==0){
             $scope.editInfo = response.data.data;
+        }else if(response.data.code==1){
+            toastr.error( response.data.msg, '温馨提示');
         }
     });
     $scope. auditProjectEditFun = function(){
@@ -20,6 +22,8 @@ app.controller('auditEditCtrl', function($scope, auditSer,$state,toastr,$statePa
                 setTimeout(function(){
                     window.location.href='http://localhost/login'
                 },2000)
+            }else if(response.data.code==1){
+                toastr.error( response.data.msg, '温馨提示');
             }
         });
     };

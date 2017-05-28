@@ -1,6 +1,3 @@
-/**
- * Created by ike on 2017/4/17.
- */
 var app = angular.module('emailAdd', ['toastr','ipCookie']);
 app.controller('emailAddCtrl', function($scope, emailSer,$state,toastr,ipCookie,$location){
 
@@ -19,6 +16,8 @@ app.controller('emailAddCtrl', function($scope, emailSer,$state,toastr,ipCookie,
                 setTimeout(function(){
                     window.location.href='http://localhost/login'
                 },3000)
+            }else if(response.data.code == 1){
+                toastr.error( response.data.msg, '温馨提示');
             }
         });
 

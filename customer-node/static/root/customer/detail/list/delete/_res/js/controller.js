@@ -23,6 +23,8 @@ app.controller('detailDeleteCtrl',function($scope,detailSer,toastr,$stateParams,
                 },2000)
             }else if(response.data.code==1){
                 toastr.error( response.data.msg, '温馨提示');
+            }else{
+                toastr.error( response.data.msg, '温馨提示');
             }
         })
     }

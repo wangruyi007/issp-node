@@ -6,6 +6,8 @@ app.controller('settingEditCtrl', function($scope, settingSer, $state,$statePara
         if(response.data.code==0){
             $scope.edit = response.data.data;
             $scope.positions=$scope.edit.cusOperateVO
+        }else{
+            toastr.error( response.data.msg, '温馨提示');
         }
     });
 
@@ -15,6 +17,8 @@ app.controller('settingEditCtrl', function($scope, settingSer, $state,$statePara
         if(response.data.code==0){
             $scope.workOptions= response.data.data;
         }else if(response.data.code==1){
+            toastr.error( response.data.msg, '温馨提示');
+        }else{
             toastr.error( response.data.msg, '温馨提示');
         }
     });
@@ -40,6 +44,8 @@ app.controller('settingEditCtrl', function($scope, settingSer, $state,$statePara
                     window.location.href='http://user.issp.bjike.com'
                 },2000)
             }else if(response.data.code==1){
+                toastr.error( response.data.msg, '温馨提示');
+            }else{
                 toastr.error( response.data.msg, '温馨提示');
             }
         });

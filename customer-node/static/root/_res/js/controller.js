@@ -14,17 +14,16 @@ app.controller('rootCtrl', function ($scope,$rootScope,$state,ipCookie,rootSer,$
 
     $scope.login = function(){
         var absurl = $location.absUrl();
-        ipCookie('absurl', absurl,{ expires:3,expirationUnit: 'minutes',domain:'issp.bjike.com',domain:'issp.bjike.com' });
-        location.href="http://user.issp.bjike.com";//部署到线上时要改为登录域名
+        ipCookie('absurl', absurl,{ expires:3,expirationUnit: 'minutes' });
+        location.href="http://localhost/login";//部署到线上时要改为登录域名
     };
     $scope.logout = function(){
-        rootSer.logout().then(function(response){
+
+        var absurl = {absurl:$location.absUrl()};
+        rootSer.userLogout(absurl).then(function(response){
             if(response.data.code==0){
                 ipCookie.remove("username");
-                $scope.username="登录用户";
-                $scope.logined=false;
-            }else if(response.data.code==1){
-                toastr.error( response.data.msg, '温馨提示');
+                location.href="http://localhost/user/logout"
             }
         })
     }

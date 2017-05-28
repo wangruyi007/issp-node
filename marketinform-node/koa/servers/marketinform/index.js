@@ -9,15 +9,21 @@ module.exports = function(){
             method : 'GET',
             timeout : 3000,
             uri : config()['marketinform']['rurl'] + '/marketinfo/v1/list?limit=10&page='+argvs.page,
+            headers : {
+                userToken:argvs.token
+            }
         };
         return request(options);
     };
     //市场信息分页
-    this.informationCount = function(){
+    this.informationCount = function(argvs){
         var options = {
             method : 'GET',
             timeout : 3000,
             uri : config()['marketinform']['rurl'] + '/marketinfo/v1/count',
+            headers : {
+                userToken:argvs.token
+            }
         };
         return request(options);
     };
@@ -66,6 +72,9 @@ module.exports = function(){
             timeout : 3000,
             uri : config()['marketinform']['rurl'] + '/marketinfo/v1/market/'+argvs.id,
             form : argvs,
+            headers : {
+                userToken:argvs.token
+            }
         };
         return request(options);
     };
@@ -76,22 +85,63 @@ module.exports = function(){
             timeout : 3000,
             uri : config()['marketinform']['rurl'] + `/marketemail/v1/collect?areas=${encodeURIComponent(argvs)}`,
             form:argvs,
+            headers : {
+                userToken:argvs.token
+            }
         };
         return request(options);
     };
-    this.informationAllAreaById = function () {
+    this.informationAllAreaById = function (argvs) {
         var options = {
             method: 'GET',
             timeout: 3000,
             uri: config()['marketinform']['rurl'] + '/marketemail/v1/area',
+            headers : {
+                userToken:argvs.token
+            }
         };
         return request(options);
     };
-    this.logout = function(argvs){
+    this.listSetting = function(argvs){
         var options = {
-            method : 'POST',
+            method : 'GET',
             timeout : 3000,
-            uri : config()['user']['rurl'] + `/v1/sign-out/${argvs.token}`,
+            uri : config()['marketinform']['rurl'] + `/cuspermission/v1/list?limit=10&page=${argvs.page}`,
+        };
+        return request(options);
+    };
+    this.countSetting = function(){
+        var options = {
+            method : 'GET',
+            timeout : 3000,
+            uri : config()['marketinform']['rurl'] + '/cuspermission/v1/count',
+        };
+        return request(options);
+    };
+    this.getpermit = function(argvs){
+        var options = {
+            method : 'GET',
+            timeout : 3000,
+            uri : config()['marketinform']['rurl'] + `/cuspermission/v1/getOneById/${argvs.id}`,
+        };
+        return request(options);
+    };
+    this.getListpermit = function(argvs){
+        var options = {
+            method : 'GET',
+            timeout : 3000,
+            uri : config()['marketinform']['rurl'] + `/cuspermission/v1/listOperateById/${argvs.id}`,
+        };
+        return request(options);
+    };
+    this.editSetting = function(argvs){
+        var options = {
+            method : 'PUT',
+            timeout : 3000,
+            uri : config()['marketinform']['rurl'] + '/cuspermission/v1/edit',
+            headers:{
+                userToken:argvs.token
+            },
             form:argvs
         };
         return request(options);

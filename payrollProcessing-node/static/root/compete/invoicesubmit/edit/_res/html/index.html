@@ -1,0 +1,36 @@
+<div class="content-input" verify-scope="tipStyle: 1">
+    <div class="input-list">
+     <section>
+            <ul>
+                <li class="required">  
+                    <label><i><img src="/images/mandatory.png"></i><em>上交日期</em></label>
+                    <input type="text" onClick="laydate({istime: true, format: 'YYYY-MM-DD'})" class="time" ng-model="data.submitDate">
+                </li>
+
+                <li class="required f-l">
+                    <label><i><img src="/images/mandatory.png"></i><em>发票金额</em></label>
+                    <input type="number"  ng-verify="{}" ng-model="data.amount">
+                </li>
+
+                <li class="required f-l">
+                    <label><i><img src="/images/mandatory.png"></i><em>上交人</em></label>
+                    <input type="text"  ng-verify="{}" ng-model="data.name">
+                </li>
+
+                <li class="required f-l">
+                    <label><i><img src="/images/mandatory.png"></i><em>创建人</em></label>
+                    <input type="text"  ng-verify="{}" ng-model="data.createUser">
+                </li>
+
+                <li class="required f-l">
+                    <label><i><img src="/images/mandatory.png"></i><em>修改人</em></label>
+                    <input type="text"  ng-verify="{}" ng-model="data.modifyUser">
+                </li>
+            </ul>
+        </section>
+    </div>
+    <p class="dataBottom">
+        <span class="imPrompt"><i><img src="/images/prompt.png"></i>带有<i><img src="/images/mandatory.png"></i>的为必填项</span>
+        <button ng-verify="{control:'myform'}" ng-click="invoicesubmitEditFun()">提交</button>
+    </p>
+</div>

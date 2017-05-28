@@ -61,6 +61,7 @@ module.exports = function(){
         return request(options);
     };
     this.cusBaseinfoEdit = function(argvs){
+        console.info(argvs);
         var options = {
             method : 'PUT',
             timeout : 3000,
@@ -391,15 +392,6 @@ module.exports = function(){
             headers : {
                 userToken : argvs.token
             }
-        };
-        return request(options);
-    };
-    this.logout = function(argvs){
-        var options = {
-            method : 'POST',
-            timeout : 3000,
-            uri : config()['user']['rurl'] + `/v1/sign-out/${argvs.token}`,
-            form:argvs
         };
         return request(options);
     };

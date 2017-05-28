@@ -45,7 +45,6 @@ module.exports = function(){
                     $self.body = responseText;
                 }).catch((error) =>{
                     $self.set('Content-Type','application/json;charset=utf-8');
-                    console.log(144234);
                     $self.body=error.error;
                     console.error(error.error);
                 }));
@@ -101,7 +100,6 @@ module.exports = function(){
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
                 $self.body = responseText;
-                console.log(123154)
             }).catch((error) =>{
                 if(error.error && error.error.code && error.error.code == 'ETIMEDOUT'){
                     $self.body = {'msg' : '请求错误！', errno : 3};
@@ -259,22 +257,13 @@ module.exports = function(){
                     $self.status = 408;
                 }
             }));
-    }).get('/user/logout', function*(){//退出用户
-        var $self = this;
-        var token = {token:$self.cookies.get('token')};
-        yield (server().logout(token)
-            .then((parsedBody) =>{
-                var responseText = JSON.parse(parsedBody);
-                if(responseText.code==0){
-                    $self.cookies.set('token','');
-                    $self.body = responseText;
-                }
-
-            }).catch((error) =>{
-                $self.set('Content-Type','application/json;charset=utf-8');
-                $self.body=error.error;
-                console.error(error.error);
-            }));
+    }).get('/user/logout', function*(next){
+        var url = this.request.query;
+        this.cookies.set("absUrl",url.absurl);
+        this.body = {
+            code:0,
+            msg:"重定向"
+        };
     }).get('/listSetting', function*(){
         var $self = this;
         var setting = this.request.query;

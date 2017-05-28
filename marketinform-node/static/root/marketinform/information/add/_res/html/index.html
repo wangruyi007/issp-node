@@ -16,11 +16,17 @@
                 </li>
                 <li class="required">
                     <label><i><img src="/images/mandatory.png"></i><em>市场收集日期</em></label>
-                    <input type="text" ng-verify="{}" ng-model="add.infoCollectionDate" onClick="laydate({istime: true, format: 'YYYY-MM-DD'})" class="add_image infoCollectionDate">
+                    <input type="text"  ng-model="add.infoCollectionDate" onClick="laydate({istime: true, format: 'YYYY-MM-DD hh:mm:ss'})" class="add_image infoCollectionDate">
                 </li>
                 <li class="required">
                     <label><i><img src="/images/mandatory.png"></i><em>行业</em></label>
-                    <input type="text" ng-verify="{}" ng-model="add.workProfession">
+                    <select class="sele" ng-model="add.workType">
+                        <option value="" disabled>请选择</option>
+                        <option value="MOBILECOMMUNICATION">移动通信行业市场信息数量</option>
+                        <option value="SOFTWAREDEVELOPMENT">软件开发行业市场信息数量</option>
+                        <option value="INTELLIGENTSYSTEMINTEGRATION">智能系统集成行业市场信息数量</option>
+                        <option value="PLANNINGMARKETINGSOLUTIONS">策划与营销方案行业市场信息数量</option>
+                    </select>
                 </li>
                 <li class="required">
                     <label><i><img src="/images/mandatory.png"></i><em>技术类别</em></label>
@@ -49,15 +55,15 @@
                 </li>
                 <li class="required">
                     <label><i><img src="/images/mandatory.png"></i><em>发起时间</em></label>
-                    <input type="text" ng-verify="{}" ng-model="add.startTime" onClick="laydate({istime: true, format: 'YYYY-MM-DD'})" class="add_image startTime">
+                    <input type="text" ng-model="add.startTime" onClick="laydate({istime: true, format: 'YYYY-MM-DD hh:mm:ss'})" class="add_image startTime">
                 </li>
                 <li class="required">
                     <label><i><img src="/images/mandatory.png"></i><em>重要时间点</em></label>
-                    <input type="text" ng-verify="{}" ng-model="add.importantPoint" onClick="laydate({istime: true, format: 'YYYY-MM-DD'})" class="add_image importantPoint">
+                    <input type="text" ng-model="add.importantPoint" onClick="laydate({istime: true, format: 'YYYY-MM-DD hh:mm:ss'})" class="add_image importantPoint">
                 </li>
                 <li class="required">
                     <label><i><img src="/images/mandatory.png"></i><em>结束时间</em></label>
-                    <input type="text" ng-verify="{}" ng-model="add.endTime" onClick="laydate({istime: true, format: 'YYYY-MM-DD'})" class="add_image endTime">
+                    <input type="text" ng-model="add.endTime" onClick="laydate({istime: true, format: 'YYYY-MM-DD hh:mm:ss'})" class="add_image endTime">
                 </li>
                 <li class="required">
                     <label><i><img src="/images/mandatory.png"></i><em>信息来源</em></label>
@@ -71,13 +77,17 @@
                     <label><i><img src="/images/mandatory.png"></i><em>是否为有效信息</em></label>
                     <select class="sele" ng-model="add.effective">
                         <option value="" disabled>请选择</option>
-                        <option value="0">否</option>
-                        <option value="1">是</option>
+                        <option value=true>否</option>
+                        <option value=false>是</option>
                     </select>
                 </li>
                 <li class="required">
                     <label><i><img src="/images/mandatory.png"></i><em>项目性质</em></label>
-                    <input type="text" ng-verify="{}" ng-model="add.projectNature">
+                    <select class="sele" ng-model="add.projectNature">
+                    <option value="" disabled>请选择</option>
+                    <option value="NEWPROJECT">新项目市场信息数量</option>
+                    <option value="OLDPROJECT">已有项目or进行中项目市场信息数量</option>
+                    </select>
                 </li>
                 <li class="required">
                     <label><i><img src="/images/mandatory.png"></i><em>市场分析人员</em></label>

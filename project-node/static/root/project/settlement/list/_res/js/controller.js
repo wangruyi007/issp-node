@@ -1,5 +1,5 @@
-var app = angular.module('settlementList', ['ng-pagination','toastr']);
-app.controller('settlementListCtrl',function($scope,settlementSer,toastr) {
+var app = angular.module('settlementList', ['ng-pagination','toastr','ipCookie']);
+app.controller('settlementListCtrl',function($scope,settlementSer,toastr,ipCookie,$location) {
    //选择
     $scope.selectList = function(event){
         angular.forEach($scope.settlementLists.data,function(obj){
@@ -27,8 +27,15 @@ app.controller('settlementListCtrl',function($scope,settlementSer,toastr) {
         settlementSer.listSettlement(listData).then(function(response){
             if(response.data.code==0){
                 $scope.settlementLists = response.data
-            }else{
-                toastr.error( "请求超时，请联系管理员", '温馨提示');
+            }else if(response.data.code==1){
+                toastr.error( response.data.msg, '温馨提示');
+            }else if(response.data.code==403||response.data.code==401){
+                toastr.error( "请登录用户,2秒后跳至登陆页面", '温馨提示');
+                var absurl = $location.absUrl();
+                ipCookie('absurl', absurl,{ expires:3,expirationUnit: 'minutes',domain:'issp.bjike.com'});
+                setTimeout(function(){
+                    window.location.href='http://localhost/login'
+                },2000)
             }
         });
     }
@@ -40,8 +47,15 @@ app.controller('settlementListCtrl',function($scope,settlementSer,toastr) {
     settlementSer.countSettlement().then(function(response){
         if(response.data.code==0){
             $scope.abili.itemsCount = response.data.data;
-        }else{
-            toastr.error( "请求超时，请联系管理员", '温馨提示');
+        }else if(response.data.code==1){
+            toastr.error( response.data.msg, '温馨提示');
+        }else if(response.data.code==403||response.data.code==401){
+            toastr.error( "请登录用户,2秒后跳至登陆页面", '温馨提示');
+            var absurl = $location.absUrl();
+            ipCookie('absurl', absurl,{ expires:3,expirationUnit: 'minutes',domain:'issp.bjike.com'});
+            setTimeout(function(){
+                window.location.href='http://localhost/login'
+            },2000)
         }
     });
     //删除

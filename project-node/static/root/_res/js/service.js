@@ -1,9 +1,9 @@
 var app = angular.module('rootModule', []);
 app.factory('rootSer', function($http){
     return {
-        logout : logout,
+        userLogout : userLogout,
     };
-    function logout(){
-        return $http.get('/user/logout');
+    function userLogout(data){
+        return $http.get('/user/logout',{params:data});
     }
 });
