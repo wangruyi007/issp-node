@@ -73,7 +73,7 @@ module.exports = function(){
                 var responseText = JSON.parse(parsedBody);
                 if(responseText.code==0){
                     $self.cookies.set('token', '');
-                    var url = $self.cookies.get('absurl');
+                    var url = $self.cookies.get('absUrl');
                     this.redirect(url);
                 }
                 $self.body = responseText;

@@ -1,6 +1,3 @@
-/**
- * Created by ike on 2017/4/17.
- */
 var app = angular.module('packageCollect', ['toastr','ipCookie']);
 app.controller('subpackageCollectCtrl', function($scope, subpackageSer,$state,toastr,ipCookie,$location){
     $scope.data = [];
@@ -14,7 +11,9 @@ app.controller('subpackageCollectCtrl', function($scope, subpackageSer,$state,to
         subpackageSer.ssuiCollect(data).then(function(response){
             if(response.data.code == 0){
                 $scope.data = response.data.data;
-            }else if(response.data.code==403 || response.data.code==401){
+            }else if(response.data.code == 1){
+                toastr.error( response.data.msg, '温馨提示');
+            }else if(response.data.code==403  || response.data.code==401){
                 toastr.error( "请登录用户,3秒后跳至登陆页面", '温馨提示');
                 var absurl = $location.absUrl();
                 ipCookie('absurl', absurl,{ expires:3,expirationUnit: 'minutes',domain:'issp.bjike.com' });

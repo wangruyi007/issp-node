@@ -5,6 +5,8 @@ app.controller('cooperationPEditCtrl', function($scope, cooperationSer,$state,to
     cooperationSer.getThreeById(selfcapId).then(function(response){
         if(response.data.code==0){
             $scope.peditInfo = response.data.data;
+        }else if(response.data.code==1){
+            toastr.error( response.data.msg, '温馨提示');
         }
     });
     $scope.cooperationPEditFun = function(){
@@ -40,6 +42,8 @@ app.controller('cooperationPEditCtrl', function($scope, cooperationSer,$state,to
                 setTimeout(function(){
                     window.location.href='http://localhost/login'
                 },3000)
+            }else if(response.data.code==1){
+                toastr.error( response.data.msg, '温馨提示');
             }
         });
     };

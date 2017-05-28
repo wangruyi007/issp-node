@@ -11,20 +11,17 @@ module.exports = function(){
             uri : config()['rurl'] + `/contract/v1/list?limit=10&page=${argvs.page}`,
             form:argvs,
             headers : {
-                // token : token
+                userToken : argvs.userToken
             }
         };
         return request(options);
     };
     //获取条目  
-    this.contractCount = function(argvs){
+    this.contractCount = function(args){
         var options = {
             method : 'GET',
             timeout : 3000,
-            uri : config()['rurl'] + '/contract/v1/count',
-            headers : {
-                // token : token
-            }
+            uri : config()['rurl'] + '/contract/v1/count'
         };
         return request(options);
     };
@@ -99,20 +96,17 @@ module.exports = function(){
             uri : config()['rurl'] + `/outsource/v1/list?limit=10&page=${argvs.page}&userToken=${argvs.userToken}`,
             form:argvs,
             headers : {
-                // token : token
+                userToken : argvs.userToken
             }
         };
         return request(options);
     };
     //获取条目  
-    this.outsourceCount = function(argvs){
+    this.outsourceCount = function(){
         var options = {
             method : 'GET',
             timeout : 3000,
-            uri : config()['rurl'] + '/outsource/v1/count',
-            headers : {
-                // token : token
-            }
+            uri : config()['rurl'] + '/outsource/v1/count'
         };
         return request(options);
     };
@@ -177,12 +171,46 @@ module.exports = function(){
         };
         return request(options);
     };
-    //用户退出
-    this.logout = function(argvs){
+    this.listSetting = function(argvs){
         var options = {
-            method : 'POST',
+            method : 'GET',
             timeout : 3000,
-            uri : config()['user'] + `/v1/sign-out/${argvs.token}`,
+            uri : config()['rurl'] + `/cuspermission/v1/list?limit=10&page=${argvs.page}`,
+        };
+        return request(options);
+    };
+    this.countSetting = function(){
+        var options = {
+            method : 'GET',
+            timeout : 3000,
+            uri : config()['rurl'] + '/cuspermission/v1/count',
+        };
+        return request(options);
+    };
+    this.getpermit = function(argvs){
+        var options = {
+            method : 'GET',
+            timeout : 3000,
+            uri : config()['rurl'] + `/cuspermission/v1/getOneById/${argvs.id}`,
+        };
+        return request(options);
+    };
+    this.getListpermit = function(argvs){
+        var options = {
+            method : 'GET',
+            timeout : 3000,
+            uri : config()['rurl'] + `/cuspermission/v1/listOperateById/${argvs.id}`,
+        };
+        return request(options);
+    };
+    this.editSetting = function(argvs){
+        var options = {
+            method : 'PUT',
+            timeout : 3000,
+            uri : config()['rurl'] + '/cuspermission/v1/edit',
+            headers:{
+                userToken:argvs.token
+            },
             form:argvs
         };
         return request(options);

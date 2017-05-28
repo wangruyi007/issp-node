@@ -20,7 +20,13 @@
                 </li>
                 <li class="required">
                     <label><i><img src="/images/mandatory.png"></i><em>行业</em></label>
-                    <input type="text" ng-verify="{}" ng-model="editInfo.workProfession">
+                    <select class="sele" ng-model="editInfo.workType">
+                        <option value="" disabled>请选择</option>
+                        <option value="MOBILECOMMUNICATION">移动通信行业市场信息数量</option>
+                        <option value="SOFTWAREDEVELOPMENT">软件开发行业市场信息数量</option>
+                        <option value="INTELLIGENTSYSTEMINTEGRATION">智能系统集成行业市场信息数量</option>
+                        <option value="PLANNINGMARKETINGSOLUTIONS">策划与营销方案行业市场信息数量</option>
+                    </select>
                 </li>
                 <li class="required">
                     <label><i><img src="/images/mandatory.png"></i><em>技术类别</em></label>
@@ -68,14 +74,18 @@
                 </li>
                 <li class="required">
                     <label><i><img src="/images/mandatory.png"></i><em>是否为有效信息</em></label>
-                    <select class="sele" ng-model="editInfo.effective" ng-init="editInfo.effective='0'" >
-                        <option value="0">否</option>
-                        <option value="1">是</option>
+                    <select class="sele" ng-model="editInfo.effective" ng-options='x.id as x.name for x  in [{id:false,name:"否"},{id:true,name:"是"}]'>
+                        <option value=false>否</option>
+                        <option value=true>是</option>
                     </select>
                 </li>
                 <li class="required">
                     <label><i><img src="/images/mandatory.png"></i><em>项目性质</em></label>
-                    <input type="text" ng-verify="{}" ng-model="editInfo.projectNature">
+                    <select class="sele" ng-model="editInfo.projectNature">
+                        <option value="" disabled>请选择</option>
+                        <option value="NEWPROJECT">新项目市场信息数量</option>
+                        <option value="OLDPROJECT">已有项目or进行中项目市场信息数量</option>
+                    </select>
                 </li>
                 <li class="required">
                     <label><i><img src="/images/mandatory.png"></i><em>市场分析人员</em></label>

@@ -10,6 +10,7 @@ module.exports = function(){
     router.get('/marketinform/listInformation/list', function*(){
         var $self = this;
        var page = this.request.query;
+        page.token = this.cookies.get('token');
         yield (server().marketInformBaseinfoList(page)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -21,7 +22,8 @@ module.exports = function(){
             }));
     }).get('/countInformation/count', function*(){
         var $self = this;
-        yield (server().informationCount()
+        var token={token:$self.cookies.get('token')};
+        yield (server().informationCount(token)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
                 $self.body = responseText;
@@ -73,6 +75,7 @@ module.exports = function(){
     }).get('/marketinform/getInformationById', function*(){
         var EditId = this.request.query;
         var $self = this;
+        EditId.token = this.cookies.get('token');
         yield (server().informationEditById(EditId)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -86,6 +89,7 @@ module.exports = function(){
     }).get('/summaryInformation/summary', function*(){
         var $self = this;
         var summaryData = $self.request.query.areas;
+        summaryData.token = this.cookies.get('token');
         yield (server().informationSummary(summaryData)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -97,7 +101,8 @@ module.exports = function(){
             }));
     }).get('/listSummaryArea/id', function*(){//查询所有地区
         var $self = this;
-        yield (server().informationAllAreaById()
+        var token={token:$self.cookies.get('token')};
+        yield (server().informationAllAreaById(token)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
                 $self.body = responseText;
@@ -106,10 +111,11 @@ module.exports = function(){
                 $self.body=error.error;
                 console.error(error.error);
             }));
-    }).get('/user/logout', function*(){
+    }).get('/listSetting', function*(){
         var $self = this;
-        var token = {token:$self.cookies.get('token')};
-        yield (server().logout(token)
+        var setting = this.request.query;
+        setting.token = $self.cookies.get('token');
+        yield (server().listSetting(setting)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
                 $self.body = responseText;
@@ -118,6 +124,61 @@ module.exports = function(){
                 $self.body=error.error;
                 console.error(error.error);
             }));
+    }).get('/countSetting', function*(){
+        var $self = this;
+        yield (server().countSetting()
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
+    }).get('/getpermit', function*(){
+        var $self = this;
+        var getId = $self.request.query;
+        yield (server().getpermit(getId)
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
+    }).get('/getListpermit', function*(){
+        var $self = this;
+        var listPermit = $self.request.query;
+        yield (server().getListpermit(listPermit)
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
+    }).post('/editSetting', function*(){
+        var $self = this;
+        var editSet = $self.request.body;
+        editSet.token = $self.cookies.get("token");
+        yield (server().editSetting(editSet)
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
+    }).get('/user/logout', function*(next){
+        var url = this.request.query;
+        this.cookies.set("absurl",url.absurl);
+        this.body = {
+            code:0,
+            msg:"重定向"
+        };
     })
     return router;
 };

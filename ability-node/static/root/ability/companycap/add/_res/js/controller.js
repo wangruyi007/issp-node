@@ -34,9 +34,10 @@ app.controller('companyAddCtrl', function($scope, companycapSer,$state,toastr,ip
                 setTimeout(function(){
                     window.location.href='http://localhost/login'
                 },3000)
+            }else if(response.data.code==1){
+                toastr.error( response.data.msg, '温馨提示');
             }
         });
-
     };
     //可手填的下拉框
     $scope.changeSelect=function(){

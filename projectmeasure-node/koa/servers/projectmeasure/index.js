@@ -10,7 +10,7 @@ module.exports = function(){
             timeout : 3000,
             uri : config()['rurl'] + '/projectcoststatus/v1/list?limit=10&page='+argvs.page,
             headers : {
-                // token : token
+                userToken : argvs.userToken
             }
         };
         return request(options);
@@ -21,8 +21,8 @@ module.exports = function(){
             method : 'GET',
             timeout : 3000,
             uri : config()['rurl'] + '/projectcoststatus/v1/count',
-            headers : {
-                // token : token
+            headers: {
+                userToken : argvs.userToken
             }
         };
         return request(options);
@@ -84,7 +84,7 @@ module.exports = function(){
             timeout : 3000,
             uri : config()['rurl'] + '/projectbasicinfo/v1/list?limit=10&page='+argvs.page,
             headers : {
-                // token : token
+                userToken : argvs.userToken
             }
         };
         return request(options);
@@ -95,8 +95,8 @@ module.exports = function(){
             method : 'GET',
             timeout : 3000,
             uri : config()['rurl'] + '/projectbasicinfo/v1/count',
-            headers : {
-                // token : token
+            headers: {
+                userToken : argvs.userToken
             }
         };
         return request(options);
@@ -158,7 +158,7 @@ module.exports = function(){
             timeout : 3000,
             uri : config()['rurl'] + '/msui/v1/list?limit=10&page='+argvs.page,
             headers : {
-                // token : token
+                userToken : argvs.userToken
             }
         };
         return request(options);
@@ -169,8 +169,8 @@ module.exports = function(){
             method : 'GET',
             timeout : 3000,
             uri : config()['rurl'] + '/msui/v1/count',
-            headers : {
-                // token : token
+            headers: {
+                userToken : argvs.userToken
             }
         };
         return request(options);
@@ -232,7 +232,7 @@ module.exports = function(){
             timeout : 3000,
             uri : config()['rurl'] + '/ssui/v1/list?limit=10&page='+argvs.page,
             headers : {
-                // token : token
+                userToken : argvs.userToken
             }
         };
         return request(options);
@@ -243,8 +243,8 @@ module.exports = function(){
             method : 'GET',
             timeout : 3000,
             uri : config()['rurl'] + '/ssui/v1/count',
-            headers : {
-                // token : token
+            headers: {
+                userToken : argvs.userToken
             }
         };
         return request(options);
@@ -306,7 +306,7 @@ module.exports = function(){
             timeout : 3000,
             uri : config()['rurl'] + '/smui/v1/list?limit=10&page='+argvs.page,
             headers : {
-                // token : token
+                userToken : argvs.userToken
             }
         };
         return request(options);
@@ -318,7 +318,7 @@ module.exports = function(){
             timeout : 3000,
             uri : config()['rurl'] + '/smui/v1/count',
             headers : {
-                // token : token
+                userToken : argvs.userToken
             }
         };
         return request(options);
@@ -380,7 +380,7 @@ module.exports = function(){
             timeout : 3000,
             uri : config()['rurl'] + '/mmui/v1/list?limit=10&page='+argvs.page,
             headers : {
-                // token : token
+                userToken : argvs.userToken
             }
         };
         return request(options);
@@ -391,8 +391,8 @@ module.exports = function(){
             method : 'GET',
             timeout : 3000,
             uri : config()['rurl'] + '/mmui/v1/count',
-            headers : {
-                // token : token
+            headers: {
+                userToken : argvs.userToken
             }
         };
         return request(options);
@@ -453,8 +453,8 @@ module.exports = function(){
             method : 'GET',
             timeout : 3000,
             uri : config()['rurl'] + '/projectpersonneldemand/v1/list?limit=10&page='+argvs.page,
-            headers : {
-                // token : token
+            headers:{
+                userToken : argvs.userToken
             }
         };
         return request(options);
@@ -466,7 +466,7 @@ module.exports = function(){
             timeout : 3000,
             uri : config()['rurl'] + '/projectpersonneldemand/v1/count',
             headers : {
-                // token : token
+                userToken : argvs.userToken
             }
         };
         return request(options);
@@ -527,8 +527,8 @@ module.exports = function(){
             method : 'GET',
             timeout : 3000,
             uri : config()['rurl'] + '/projectmeasuresummary/v1/list?limit=10&page='+argvs.page,
-            headers : {
-                // token : token
+            headers:{
+                userToken : argvs.userToken
             }
         };
         return request(options);
@@ -540,7 +540,7 @@ module.exports = function(){
             timeout : 3000,
             uri : config()['rurl'] + '/projectmeasuresummary/v1/count',
             headers : {
-                // token : token
+                userToken : argvs.userToken
             }
         };
         return request(options);
@@ -619,17 +619,50 @@ module.exports = function(){
         };
         return request(options);
     };
-    //用户退出
-    this.logout = function(argvs){
+    this.listSetting = function(argvs){
         var options = {
-            method : 'POST',
+            method : 'GET',
             timeout : 3000,
-            uri : config()['user'] + `/v1/sign-out/${argvs.token}`,
+            uri : config()['rurl'] + `/cuspermission/v1/list?limit=10&page=${argvs.page}`,
+        };
+        return request(options);
+    };
+    this.countSetting = function(){
+        var options = {
+            method : 'GET',
+            timeout : 3000,
+            uri : config()['rurl'] + '/cuspermission/v1/count',
+        };
+        return request(options);
+    };
+    this.getpermit = function(argvs){
+        var options = {
+            method : 'GET',
+            timeout : 3000,
+            uri : config()['rurl'] + `/cuspermission/v1/getOneById/${argvs.id}`,
+        };
+        return request(options);
+    };
+    this.getListpermit = function(argvs){
+        var options = {
+            method : 'GET',
+            timeout : 3000,
+            uri : config()['rurl'] + `/cuspermission/v1/listOperateById/${argvs.id}`,
+        };
+        return request(options);
+    };
+    this.editSetting = function(argvs){
+        var options = {
+            method : 'PUT',
+            timeout : 3000,
+            uri : config()['rurl'] + '/cuspermission/v1/edit',
+            headers:{
+                userToken:argvs.token
+            },
             form:argvs
         };
         return request(options);
     };
-
 
     return this;
 };
