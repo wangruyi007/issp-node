@@ -1,17 +1,12 @@
-<div class="content-input" verify-scope="tipStyle: 1">
-    <section class="interval">
-        <ul class="inter-left">
+<div class="content-input add" verify-scope="tipStyle: 1">
+    <div class="input-list">
+    <section>
+        <ul>
             <li class="required">
                 <label><i><img src="/images/mandatory.png"></i><em>地区</em></label>
-                <!--<select class="sele" ng-model="data.area" ng-change="myFunc()"  ng-init="type='3'">
-                    <option value="3">请选择</option>
-                    <option value="0">商业能力展示汇总</option>
-                    <option value="1">个人能力展示汇总</option>
-                    <option value="2">合作对象能力汇总</option>
-                </select>-->
                 <input type="text"  ng-verify="{}" ng-model="data.area">
             </li>
-            <li class="required f-l">
+            <li class="required db">
                 <label><i><img src="/images/mandatory.png"></i><em>发送间隔</em></label>
                 <input type="number" ng-model="data.sendInterval" ng-verify="{}">
                 <select class="sele" ng-model="data.sendIntervalType" ng-init="collectSendUnit='MINUTE'">
@@ -33,8 +28,6 @@
                     <option value="ONEMONTH">月</option>
                 </select>
             </li>
-        </ul>
-        <ul class="inter-right">
             <li>
                 <label><em>备注</em></label>
                 <input type="text" class="remark" ng-model="data.remark">
@@ -46,7 +39,7 @@
                     <option value="zd">zd</option>
                     <option ng-repeat="name in companyNames">{{name}}</option>
                 </select>
-                <!--<select class="sele" ng-options="name for name in companyNames" ng-change="test()" ng-model="companyName" ng-init="companyName=companyNames[1]"></select>-->
+                <input type="text" class="inputDom" ng-model="data.sendUser" ng-verify="{}">
             </li>
             <!--<li class="f-send">
                 <p class="send-o">
@@ -57,6 +50,7 @@
             </li>-->
         </ul>
     </section>
+    </div>
     <p class="dataBottom">
         <span class="imPrompt"><i><img src="/images/prompt.png"></i>带有<i><img src="/images/mandatory.png"></i>的为必填项</span>
         <button ng-verify="{control:'myform'}" ng-click="emailAddFun()">提交</button>

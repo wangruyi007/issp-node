@@ -828,6 +828,12 @@ body {
 .right-section .top-content .content .content-wrap .content-input .input-list section ul li.required {
   position: relative;
 }
+.right-section .top-content .content .content-wrap .content-input .input-list section ul li.db input {
+    width:20%;
+}
+.right-section .top-content .content .content-wrap .content-input .input-list section ul li.db .sele {
+  width:30%;
+}
 /*搜索*/
 .com-search {
   position: fixed;
@@ -947,7 +953,7 @@ body {
 }
 
 .right-section .top-content .content .content-wrap .content-input .input-list section ul li .sele {
-  width: 56%;
+  width: 57%;
   height: 36px;
   border: 1px solid #999999;
   background: url("/images/down_b.png") no-repeat right 10px center;
