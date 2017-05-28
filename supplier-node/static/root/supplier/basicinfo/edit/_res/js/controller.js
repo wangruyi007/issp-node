@@ -6,6 +6,8 @@ app.controller('basicinfoEditCtrl', function($scope, basicinfoSer,$stateParams,$
     basicinfoSer.editBasicInfoById(editData).then(function(response){
         if(response.data.code=='0'){
             $scope.editBasicInfo = response.data.data;
+        }else if(response.data.code==1){
+            toastr.error( response.data.msg, '温馨提示');
         }
     });
     //编辑点击提交
