@@ -10,6 +10,7 @@ app.controller('mExecutiveOpinionCtr',function($scope,marketserveSer,$state,toas
     $scope.Smit = function(){
         var vm = $scope;
         var data = $scope.data;
+        data.id = EditId.id;
         marketserveSer.executiveOpinionEidt(data).then(function(response){
             if(response.data.code == 0){
                 toastr.success('温馨提示','编辑资金模块意见成功');
@@ -21,7 +22,7 @@ app.controller('mExecutiveOpinionCtr',function($scope,marketserveSer,$state,toas
                 setTimeout(function(){
                     window.location.href='http://localhost/login'
                 },3000)
-            }else if(response.data.code == 1){
+            }else{
                 toastr.error( response.data.msg, '温馨提示');
             }
         })

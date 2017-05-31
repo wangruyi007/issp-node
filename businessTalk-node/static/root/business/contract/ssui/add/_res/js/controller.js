@@ -9,7 +9,7 @@ app.controller('ssuiAddCtrl', function($scope, ssuiSer,$state,toastr,ipCookie,$l
             if(response.data.code == 0){
                 $state.go('root.business.contract.ssui.list');
                 toastr.success( "已成功添加", '温馨提示');
-            }else if(response.data.code == 1){
+            }else{
                 toastr.error( response.data.msg, '温馨提示');
             }else if(response.data.code==403  || response.data.code==401){
                 toastr.error( "请登录用户,3秒后跳至登陆页面", '温馨提示');
@@ -18,7 +18,6 @@ app.controller('ssuiAddCtrl', function($scope, ssuiSer,$state,toastr,ipCookie,$l
                 setTimeout(function(){
                     window.location.href='http://localhost/login'
                 },3000)
-            }},3000)
             }
         });
     };
