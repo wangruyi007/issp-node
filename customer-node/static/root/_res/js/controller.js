@@ -18,7 +18,6 @@ app.controller('rootCtrl', function ($scope,$rootScope,$state,ipCookie,rootSer,$
         location.href="http://localhost/login";//部署到线上时要改为登录域名
     };
     $scope.logout = function(){
-
         var absurl = {absurl:$location.absUrl()};
         rootSer.userLogout(absurl).then(function(response){
             if(response.data.code==0){
