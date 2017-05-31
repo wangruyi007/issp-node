@@ -1,5 +1,5 @@
-var app = angular.module('messageList', ['ng-pagination','toastr']);
-app.controller('messageListCtrl',function($scope,$stateParams,contactSer,toastr){
+var app = angular.module('messageList', ['ng-pagination','toastr','ipCookie']);
+app.controller('messageListCtrl',function($scope,$stateParams,contactSer,toastr,$location,ipCookie){
     $scope.$emit('changeId', null);
     function activatePage(page) {
         var listData = {
@@ -10,8 +10,15 @@ app.controller('messageListCtrl',function($scope,$stateParams,contactSer,toastr)
             if(response.data.code==0){
 
                 $scope.messageInfo = response.data.data
-            }else{
-                toastr.error( "请求超时，请联系管理员", '温馨提示');
+            }else if(response.data.code==403||response.data.code==401){
+                toastr.error( "请登录用户,2秒后跳至登陆页面", '温馨提示');
+                var absurl = $location.absUrl();
+                ipCookie('absurl', absurl,{ expires:3,expirationUnit: 'minutes',domain:'issp.bjike.com' });
+                setTimeout(function(){
+                    window.location.href='http://localhost/login'
+                },2000)
+            }else if(response.data.code==1){
+                toastr.error( response.data.msg, '温馨提示');
             }
         });
     }
@@ -26,8 +33,15 @@ app.controller('messageListCtrl',function($scope,$stateParams,contactSer,toastr)
     contactSer.countMessage().then(function(response){
         if(response.data.code==0){
             $scope.custom.itemsCount = response.data.data;
-        }else{
-            toastr.error( "请求超时，请联系管理员", '温馨提示');
+        }else if(response.data.code==403||response.data.code==401){
+            toastr.error( "请登录用户,2秒后跳至登陆页面", '温馨提示');
+            var absurl = $location.absUrl();
+            ipCookie('absurl', absurl,{ expires:3,expirationUnit: 'minutes',domain:'issp.bjike.com' });
+            setTimeout(function(){
+                window.location.href='http://localhost/login'
+            },2000)
+        }else if(response.data.code==1){
+            toastr.error( response.data.msg, '温馨提示');
         }
     })
 
