@@ -1,8 +1,9 @@
 var app = angular.module('subpackageList', ['ng-pagination','toastr']);
 app.controller('subpackageListCtrl',function($scope,subpackageSer,toastr) {
-    $scope.companySearchFun = function(){
-        $scope.teamInfo = {};
-    };
+    //监听切换搜索是否出现
+    $scope.$on('iSsearch',function(event,newIs){
+        $scope.isView = newIs;
+    });
    //选择
     $scope.selectList = function(event){
         angular.forEach($scope.marketserveLists.data,function(obj){
@@ -30,17 +31,44 @@ app.controller('subpackageListCtrl',function($scope,subpackageSer,toastr) {
         subpackageSer.listMarketserve(listData).then(function(response){
             if(response.data.code==0){
                 $scope.marketserveLists = response.data
-            }else if(response.data.code == 1){
+            }else{
                 toastr.error( response.data.msg, '温馨提示');
-            }else if(response.data.code==403  || response.data.code==401){
-                toastr.error( "请登录用户,3秒后跳至登陆页面", '温馨提示');
-                var absurl = $location.absUrl();
-                ipCookie('absurl', absurl,{ expires:3,expirationUnit: 'minutes',domain:'issp.bjike.com' });
-                setTimeout(function(){
-                    window.location.href='http://localhost/login'
-                },3000)
             }
         });
+
+        //搜索功能
+        $scope.collect = function(){
+            $scope.abili = {
+                itemsCount: 12,//总条数
+                take: 10,        //每页显示
+                activatePage: activatePage, //当前页
+            };
+            var keywords = {
+                communicateUser: $scope.communicateUser,
+                communicateObj: $scope.communicateObj,
+                projectResult: $scope.projectResult
+            };
+            subpackageSer.searchCount(keywords).then(function (response) {
+                if(response.data.code==0){
+                    $scope.abili.itemsCount = response.data.data;
+                }else{
+                    toastr.error( response.data.msg, '温馨提示');
+                }
+            });
+            var data = {
+                communicateUser: $scope.communicateUser,
+                communicateObj: $scope.communicateObj,
+                projectResult: $scope.projectResult,
+                page: page
+            };
+            subpackageSer.searchList(data).then(function(response){
+                if(response.data.code == 0){
+                    $scope.marketserveLists = response.data
+                }else{
+                    toastr.error( response.data.msg, '温馨提示');
+                }
+            });
+        };
     }
     $scope.abili = {
         itemsCount: 9, //总条数
@@ -62,4 +90,6 @@ app.controller('subpackageListCtrl',function($scope,subpackageSer,toastr) {
             }
         })
     });
+    // 搜索功能
+    $scope.titles = ['洽谈人','洽谈对象','项目结果'];
 });

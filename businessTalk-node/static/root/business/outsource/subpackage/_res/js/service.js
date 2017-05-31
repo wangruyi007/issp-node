@@ -7,7 +7,9 @@ app.factory('subpackageSer',function ($http) {
         getOneById:getOneById,
         marketserveapplyEdit:marketserveapplyEdit,
         marketserveapplyDel:marketserveapplyDel,
-        ssuiCollect:ssuiCollect
+        ssuiCollect:ssuiCollect,
+        searchCount:searchCount,
+        searchList:searchList
     };
     //列表
     function listMarketserve(data) {
@@ -36,5 +38,17 @@ app.factory('subpackageSer',function ($http) {
      //列表
     function ssuiCollect(data) {
         return $http.post('/business/outsource/collect',data)
+    }
+    //搜索
+    function searchCount(data) {
+        return $http.post('/business/contract/searchCount',{
+            params:data
+        })
+    }
+    //
+    function searchList(data) {
+        return $http.post('/business/contract/searchList',{
+            params:data
+        })
     }
 });

@@ -149,7 +149,7 @@ module.exports = function(){
         return request(options);
     };
     //添加邮件
-    this.emailAdd = function(argvs){//
+    this.emailAdd = function(argvs){
         var options = {
             method : 'POST',
             timeout : 3000,

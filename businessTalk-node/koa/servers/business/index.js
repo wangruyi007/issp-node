@@ -171,6 +171,31 @@ module.exports = function(){
         };
         return request(options);
     };
+    //搜索
+    this.searchCount= function(argvs){
+        var options = {
+            method : 'GET',
+            timeout : 3000,
+            uri : config()['rurl'] + `/contract/v1/list?${argvs.page}`,
+            form:argvs,
+            headers : {
+                userToken : argvs.userToken
+            }
+        };
+        return request(options);
+    };
+    this.searchList= function(argvs){
+        var options = {
+            method : 'GET',
+            timeout : 3000,
+            uri : config()['rurl'] + `/contract/v1/list?${argvs.page}`,
+            form:argvs,
+            headers : {
+                userToken : argvs.userToken
+            }
+        };
+        return request(options);
+    };
     this.listSetting = function(argvs){
         var options = {
             method : 'GET',
