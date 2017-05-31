@@ -11,6 +11,7 @@ module.exports = function(){
     router.get('/confirmedSecond/Second', function*(){
         var $self = this;
         var page = $self.request.query;
+        page.userToken = $self.cookies.get('token');
         yield (server().confirmedSecond(page)
             .then((parsedBody) =>{
             var responseText = JSON.parse(parsedBody);
@@ -24,6 +25,7 @@ module.exports = function(){
     }).get('/confirmedFirst/First', function*(){
         var $self = this;
         var page = $self.request.query;
+        page.userToken = $self.cookies.get('token');
         yield (server().confirmedFirst(page)
             .then((parsedBody) =>{
             var responseText = JSON.parse(parsedBody);
@@ -37,6 +39,7 @@ module.exports = function(){
     }).get('/confirmedList/List', function*(){
         var $self = this;
         var page = $self.request.query;
+        page.userToken = $self.cookies.get('token');
         yield (server().confirmedList(page)
             .then((parsedBody) =>{
             var responseText = JSON.parse(parsedBody);
@@ -51,6 +54,7 @@ module.exports = function(){
     }).get('/invoicesubmitCount/Count', function*(){
         var $self = this;
         var page = $self.request.query;
+        page.userToken = $self.cookies.get('token');
         yield (server().invoicesubmitCount(page)
             .then((parsedBody) =>{
             var responseText = JSON.parse(parsedBody);
@@ -79,6 +83,7 @@ module.exports = function(){
         var $self = this;
         var page = $self.request.query;
         page.userToken = $self.cookies.get('token');
+        page.userToken = $self.cookies.get('token');
         var $self = $self;
         yield (server().invoicesubmitDelete(page)
             .then((parsedBody) =>{
@@ -94,6 +99,7 @@ module.exports = function(){
     }).get('/invoicesubmitList/List', function*(){
         var $self = this;
         var page = $self.request.query;
+        page.userToken = $self.cookies.get('token');
         yield (server().invoicesubmitList(page)
             .then((parsedBody) =>{
             var responseText = JSON.parse(parsedBody);
@@ -121,6 +127,7 @@ module.exports = function(){
     }).get('/invoicesubmitFind/Find', function*(){
         var $self = this;
         var page = $self.request.query;
+        page.userToken = $self.cookies.get('token');
         yield (server().invoicesubmitFind(page)
             .then((parsedBody) =>{
             var responseText = JSON.parse(parsedBody);
@@ -136,6 +143,7 @@ module.exports = function(){
     }).get('/payedSecond/Second', function*(){
         var $self = this;
         var page = $self.request.query;
+        page.userToken = $self.cookies.get('token');
         yield (server().payedSecond(page)
             .then((parsedBody) =>{
             var responseText = JSON.parse(parsedBody);
@@ -149,6 +157,7 @@ module.exports = function(){
     }).get('/payedFirst/First', function*(){
         var $self = this;
         var page = $self.request.query;
+        page.userToken = $self.cookies.get('token');
         yield (server().payedFirst(page)
             .then((parsedBody) =>{
             var responseText = JSON.parse(parsedBody);
@@ -162,6 +171,7 @@ module.exports = function(){
     }).get('/payedList/List', function*(){
         var $self = this;
         var page = $self.request.query;
+        page.userToken = $self.cookies.get('token');
         yield (server().payedList(page)
             .then((parsedBody) =>{
             var responseText = JSON.parse(parsedBody);
@@ -176,6 +186,7 @@ module.exports = function(){
     }).get('/salaryconfirmDelete/Delete', function*(){
         var $self = this;
         var page = $self.request.query;
+        page.userToken = $self.cookies.get('token');
         page.userToken = $self.cookies.get('token');
         var $self = $self;
         yield (server().salaryconfirmDelete(page)
@@ -192,6 +203,7 @@ module.exports = function(){
     }).get('/countSalaryconfirm/count', function*(){
         var $self = this;
         var page = $self.request.query;
+        page.userToken = $self.cookies.get('token');
         yield (server().countSalaryconfirm(page)
             .then((parsedBody) =>{
             var responseText = JSON.parse(parsedBody);
@@ -205,6 +217,7 @@ module.exports = function(){
     }).get('/salaryconfirmAreas/Areas', function*(){
         var $self = this;
         var page = $self.request.query;
+        page.userToken = $self.cookies.get('token');
         yield (server().salaryconfirmAreas(page)
             .then((parsedBody) =>{
             var responseText = JSON.parse(parsedBody);
@@ -247,6 +260,7 @@ module.exports = function(){
     }).get('/salaryconfirmList/List', function*(){
         var $self = this;
         var page = $self.request.query;
+        page.userToken = $self.cookies.get('token');
         yield (server().salaryconfirmList(page)
             .then((parsedBody) =>{
             var responseText = JSON.parse(parsedBody);
@@ -260,6 +274,7 @@ module.exports = function(){
     }).get('/salaryconfirmFind/Find', function*(){
         var $self = this;
         var page = $self.request.query;
+        page.userToken = $self.cookies.get('token');
         yield (server().salaryconfirmFind(page)
             .then((parsedBody) =>{
             var responseText = JSON.parse(parsedBody);
@@ -273,6 +288,7 @@ module.exports = function(){
     }).get('/salaryconfirmDepartments/Departments', function*(){
         var $self = this;
         var page = $self.request.query;
+        page.userToken = $self.cookies.get('token');
         yield (server().salaryconfirmDepartments(page)
             .then((parsedBody) =>{
             var responseText = JSON.parse(parsedBody);
@@ -286,6 +302,7 @@ module.exports = function(){
     }).get('/salaryconfirPositions/Positions', function*(){
         var $self = this;
         var page = $self.request.query;
+        page.userToken = $self.cookies.get('token');
         yield (server().salaryconfirPositions(page)
             .then((parsedBody) =>{
             var responseText = JSON.parse(parsedBody);
@@ -299,6 +316,7 @@ module.exports = function(){
     }).get('/salaryconfirmUsers/Users', function*(){
         var $self = this;
         var page = $self.request.query;
+        page.userToken = $self.cookies.get('token');
         yield (server().salaryconfirmUsers(page)
             .then((parsedBody) =>{
             var responseText = JSON.parse(parsedBody);
@@ -312,6 +330,7 @@ module.exports = function(){
     }).post('/salaryconfirmImport/Import', function*(){
         var $self = this;
         var EditId = this.request.body;
+        EditId.userToken = $self.cookies.get('token');
         yield (server().salaryconfirmImport(EditId)
             .then((parsedBody) =>{
             var responseText = JSON.parse(parsedBody);
@@ -325,6 +344,7 @@ module.exports = function(){
     }).get('/salaryconfirmExport/Export', function*(){
         var $self = this;
         var page = $self.request.query;
+        page.userToken = $self.cookies.get('token');
         yield (server().salaryconfirmExport(page)
             .then((parsedBody) =>{
             var responseText = JSON.parse(parsedBody);
@@ -339,6 +359,7 @@ module.exports = function(){
     }).get('/departmentList/departmentList', function*(){
         var $self = this;
         var page = $self.request.query;
+        page.userToken = $self.cookies.get('token');
         yield (server().departmentList(page)
             .then((parsedBody) =>{
             var responseText = JSON.parse(parsedBody);
@@ -352,6 +373,7 @@ module.exports = function(){
     }).get('/departmentSummary/departmentSummary', function*(){
         var $self = this;
         var page = $self.request.query;
+        page.userToken = $self.cookies.get('token');
         yield (server().departmentSummary(page)
             .then((parsedBody) =>{
             var responseText = JSON.parse(parsedBody);
@@ -365,6 +387,7 @@ module.exports = function(){
     }).get('/areasList/areasList', function*(){
         var $self = this;
         var page = $self.request.query;
+        page.userToken = $self.cookies.get('token');
         yield (server().areasList(page)
             .then((parsedBody) =>{
             var responseText = JSON.parse(parsedBody);
@@ -378,6 +401,7 @@ module.exports = function(){
     }).get('/departmentAnalyze/departmentAnalyze', function*(){
         var $self = this;
         var page = $self.request.query;
+        page.userToken = $self.cookies.get('token');
         yield (server().departmentAnalyze(page)
             .then((parsedBody) =>{
             var responseText = JSON.parse(parsedBody);
@@ -391,6 +415,7 @@ module.exports = function(){
     }).get('/oneSummary/one', function*(){
         var $self = this;
         var page = $self.request.query;
+        page.userToken = $self.cookies.get('token');
         yield (server().oneSummary(page)
             .then((parsedBody) =>{
             var responseText = JSON.parse(parsedBody);
@@ -404,6 +429,7 @@ module.exports = function(){
     }).get('/areasAnalyze/areas', function*(){
         var $self = this;
         var page = $self.request.query;
+        page.userToken = $self.cookies.get('token');
         yield (server().areasAnalyze(page)
             .then((parsedBody) =>{
             var responseText = JSON.parse(parsedBody);
@@ -417,6 +443,7 @@ module.exports = function(){
     }).get('/oneAnalyze/oneAnalyze', function*(){
         var $self = this;
         var page = $self.request.query;
+        page.userToken = $self.cookies.get('token');
         yield (server().oneAnalyze(page)
             .then((parsedBody) =>{
             var responseText = JSON.parse(parsedBody);
@@ -430,6 +457,7 @@ module.exports = function(){
     }).get('/userList/userList', function*(){
         var $self = this;
         var page = $self.request.query;
+        page.userToken = $self.cookies.get('token');
         yield (server().userList(page)
             .then((parsedBody) =>{
             var responseText = JSON.parse(parsedBody);
@@ -443,6 +471,7 @@ module.exports = function(){
     }).get('/areasSummary/areasSummary', function*(){
         var $self = this;
         var page = $self.request.query;
+        page.userToken = $self.cookies.get('token');
         yield (server().areasSummary(page)
             .then((parsedBody) =>{
             var responseText = JSON.parse(parsedBody);
@@ -457,6 +486,7 @@ module.exports = function(){
     }).post('/waitconfirmConfirm/Confirm', function*(){
         var $self = this;
         var EditId = this.request.body;
+        EditId.userToken = $self.cookies.get('token');
         yield (server().waitconfirmConfirm(EditId)
             .then((parsedBody) =>{
             var responseText = JSON.parse(parsedBody);
@@ -470,6 +500,7 @@ module.exports = function(){
     }).get('/waitconfirmList/List', function*(){
         var $self = this;
         var page = $self.request.query;
+        page.userToken = $self.cookies.get('token');
         yield (server().waitconfirmList(page)
             .then((parsedBody) =>{
             var responseText = JSON.parse(parsedBody);
@@ -479,6 +510,13 @@ module.exports = function(){
             $self.body=error.error;
             console.error(error.error);
         }));
+    }).get('/user/logout', function*(next){
+        var url = this.request.query;
+        this.cookies.set("absUrl",url.absurl);
+        this.body = {
+            code:0,
+            msg:"重定向"
+        };
     })
 
     return router;

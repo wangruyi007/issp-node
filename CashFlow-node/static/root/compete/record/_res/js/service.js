@@ -13,7 +13,10 @@ app.factory('recordSer',function ($http) {
         //moneyAnalyze:moneyAnalyze,
         moneyArea:moneyArea,
         moneyProject:moneyProject,
-        moneyGroup:moneyGroup
+        moneyGroup:moneyGroup,
+        areas:areas,
+        projects:projects,
+        projectGroups:projectGroups
 
     };
     //列表
@@ -42,7 +45,9 @@ app.factory('recordSer',function ($http) {
     }
     //月汇总
     function moneyMonthAll(data){
-        return $http.post('/moneyMonthAll/month',data)
+        return $http.get('/moneyMonthAll/month',{
+            params:data
+        })
     }
     //条件汇总
     function moneyConditionsAll(data){
@@ -73,6 +78,24 @@ app.factory('recordSer',function ($http) {
     //根据id查询资金流水
     function moneyId(data){
         return $http.get('/moneyId/id',{
+            params:data
+        })
+    }
+    //地区列表
+    function areas(data){
+        return $http.get('/areas/area',{
+            params:data
+        })
+    }
+    //项目组列表
+    function projects(data){
+        return $http.get('/projects/project',{
+            params:data
+        })
+    }
+    //项目名称列表
+    function projectGroups(data){
+        return $http.get('/projectGroups/projectGroup',{
             params:data
         })
     }

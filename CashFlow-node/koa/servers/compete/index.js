@@ -9,7 +9,10 @@ module.exports = function(){
         var options = {
             method : 'GET',
             timeout : 3000,
-            uri : config()['rurl'] + '/fundrecord/v1/count'
+            uri : config()['rurl'] + '/fundrecord/v1/count',
+            headers : {
+                userToken : argvs.token
+            }
         };
         return request(options);
     };
@@ -44,7 +47,10 @@ module.exports = function(){
         var options = {
             method : 'GET',
             timeout : 3000,
-            uri : config()['rurl'] + `/fundrecord/v1/find/${argvs.id}`
+            uri : config()['rurl'] + `/fundrecord/v1/find/${argvs.id}`,
+            headers : {
+                userToken : argvs.token
+            }
         };
         return request(options);
     };
@@ -54,6 +60,9 @@ module.exports = function(){
             method : 'GET',
             timeout : 3000,
             uri : config()['rurl'] + '/fundrecord/v1/condition'+urlEncode(argvs,true),
+            headers : {
+                userToken : argvs.token
+            }
         };
         return request(options);
     };
@@ -64,8 +73,8 @@ module.exports = function(){
             timeout : 3000,
             uri : config()['rurl'] + '/fundrecord/v1/edit',
             form : argvs,
-            hheaders:{
-                userToken:argvs.userToken
+            headers : {
+                userToken : argvs.token
             }
         };
         return request(options);
@@ -75,7 +84,10 @@ module.exports = function(){
         var options = {
             method : 'GET',
             timeout : 3000,
-            uri : config()['rurl'] + '/fundrecord/v1/month'+urlEncode(argvs,true)
+            uri : config()['rurl'] + '/fundrecord/v1/month'+urlEncode(argvs,true),
+            headers : {
+                userToken : argvs.token
+            }
             
         };
         return request(options);
@@ -85,7 +97,10 @@ module.exports = function(){
         var options = {
             method : 'GET',
             timeout : 3000,
-            uri : config()['rurl'] + `/fundrecord/v1/list?limit=10&page=${argvs.page}`
+            uri : config()['rurl'] + `/fundrecord/v1/list?limit=10&page=${argvs.page}`,
+            headers : {
+                userToken : argvs.token
+            }
         };
         return request(options);
     };  
@@ -94,7 +109,10 @@ module.exports = function(){
         var options = {
             method : 'GET',
             timeout : 3000,
-            uri : config()['rurl'] + '/fundrecord/v1/area'+urlEncode(argvs,true)
+            uri : config()['rurl'] + '/fundrecord/v1/area'+urlEncode(argvs,true),
+            headers : {
+                userToken : argvs.token
+            }
         };
         return request(options);
     };
@@ -103,7 +121,10 @@ module.exports = function(){
         var options = {
             method : 'GET',
             timeout : 3000,
-            uri : config()['rurl'] + '/fundrecord/v1/project'+urlEncode(argvs,true)
+            uri : config()['rurl'] + '/fundrecord/v1/project'+urlEncode(argvs,true),
+            headers : {
+                userToken : argvs.token
+            }
         };
         return request(options);
     }; 
@@ -112,8 +133,48 @@ module.exports = function(){
         var options = {
             method : 'GET',
             timeout : 3000,
-            uri : config()['rurl'] + '/fundrecord/v1/group'+urlEncode(argvs,true)
+            uri : config()['rurl'] + '/fundrecord/v1/group'+urlEncode(argvs,true),
+            headers : {
+                userToken : argvs.token
+            }
         };
+        return request(options);
+    };  
+    //地区列表
+    this.areas = function(argvs){
+        var options = {
+            method : 'GET',
+            timeout : 3000,
+            uri : config()['rurl'] + '/fundrecord/v1/areas',
+            headers : {
+                userToken : argvs.token
+            }
+        };
+        return request(options);
+    };  
+    //项目组列表
+    this.projectGroups= function(argvs){
+        var options = {
+            method : 'GET',
+            timeout : 3000,
+            uri : config()['rurl'] + '/fundrecord/v1/groups',
+            headers : {
+                userToken : argvs.token
+            }
+        };console.log(argvs)
+        return request(options);
+    };  
+    //项目名称列表
+    this.projects= function(argvs){
+        var options = {
+            method : 'GET',
+            timeout : 3000,
+            uri : config()['rurl'] + '/fundrecord/v1/projects',
+            headers : {
+                userToken : argvs.token
+            }
+        };
+        
         return request(options);
     };  
     return this;

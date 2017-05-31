@@ -9,8 +9,8 @@ module.exports = function(){
     //查询总记录数
     router.get('/moneyAll/all', function*(){
         var $self = this;
-        var page = $self.request.query;
-        yield (server().moneyAll(page)
+        var token = {userToken:$self.cookies.get('token')};
+        yield (server().moneyAll(token)
             .then((parsedBody) =>{
             var responseText = JSON.parse(parsedBody);
             $self.body = responseText;
@@ -53,6 +53,7 @@ module.exports = function(){
      }).get('/moneyId/id', function*(){
          var $self = this;
          var page = $self.request.query;
+         page.userToken = $self.cookies.get('token');
          yield (server().moneyId(page)
              .then((parsedBody) =>{
              var responseText = JSON.parse(parsedBody);
@@ -66,6 +67,7 @@ module.exports = function(){
      }).post('/moneyConditionsAll/conditions', function*(){
          var $self = this;
          var EditId = this.request.body;
+         EditId.userToken = $self.cookies.get('token');
          yield (server().moneyConditionsAll(EditId)
              .then((parsedBody) =>{
              var responseText = JSON.parse(parsedBody);
@@ -90,9 +92,10 @@ module.exports = function(){
             console.error(error.error);
         }));
     //月汇总
-    }).post('/moneyMonthAll/month', function*(){
+    }).get('/moneyMonthAll/month', function*(){
         var $self = this;
-        var monthCollect = $self.request.body;
+        var monthCollect = $self.request.query;
+        monthCollect.userToken = $self.cookies.get('token');
         yield (server().moneyMonthAll(monthCollect)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -106,6 +109,7 @@ module.exports = function(){
      }).get('/moneyList/list', function*(){
        var $self = this;
        var page = $self.request.query;
+       page.userToken = $self.cookies.get('token');
         yield (server().moneyList(page)
             .then((parsedBody) =>{
             var responseText = JSON.parse(parsedBody);
@@ -119,6 +123,7 @@ module.exports = function(){
     }).post('/moneyArea/Area', function*(){
         var $self = this;
         var EditId = this.request.body;
+        EditId.userToken = $self.cookies.get('token');
         yield (server().moneyArea(EditId)
             .then((parsedBody) =>{
             var responseText = JSON.parse(parsedBody);
@@ -132,6 +137,7 @@ module.exports = function(){
     }).post('/moneyProject/Project', function*(){
         var $self = this;
         var EditId = this.request.body;
+        EditId.userToken = $self.cookies.get('token');
         yield (server().moneyProject(EditId)
             .then((parsedBody) =>{
             var responseText = JSON.parse(parsedBody);
@@ -145,7 +151,50 @@ module.exports = function(){
     }).post('/moneyGroup/Group', function*(){
         var $self = this;
         var EditId = this.request.body;
+        EditId.userToken = $self.cookies.get('token');
         yield (server().moneyGroup(EditId)
+            .then((parsedBody) =>{
+            var responseText = JSON.parse(parsedBody);
+            $self.body = responseText;
+        }).catch((error) =>{
+            $self.set('Content-Type','application/json;charset=utf-8');
+            $self.body=error.error;
+            console.error(error.error);
+        }));
+    //地区列表
+    }).get('/areas/area', function*(){
+        var $self = this;
+        var page = $self.request.query;
+       page.userToken = $self.cookies.get('token');
+        yield (server().areas(page)
+            .then((parsedBody) =>{
+            var responseText = JSON.parse(parsedBody);
+            $self.body = responseText;
+        }).catch((error) =>{
+            $self.set('Content-Type','application/json;charset=utf-8');
+            $self.body=error.error;
+            console.error(error.error);
+        }));
+    //项目组列表
+    }).get('/projects/project', function*(){
+        var $self = this;
+        var page = $self.request.query;
+       page.userToken = $self.cookies.get('token');
+        yield (server().projects(page)
+            .then((parsedBody) =>{
+            var responseText = JSON.parse(parsedBody);
+            $self.body = responseText;
+        }).catch((error) =>{
+            $self.set('Content-Type','application/json;charset=utf-8');
+            $self.body=error.error;
+            console.error(error.error);
+        }));
+    //项目名称列表
+    }).get('/projectGroups/projectGroup', function*(){
+        var $self = this;
+        var page = $self.request.query;
+       page.userToken = $self.cookies.get('token');
+        yield (server().projectGroups(page)
             .then((parsedBody) =>{
             var responseText = JSON.parse(parsedBody);
             $self.body = responseText;
@@ -157,8 +206,8 @@ module.exports = function(){
         //分页
     }).get('/countRecord', function*(){
         var $self = this;
-        var page = $self.request.query;
-        yield (server().moneyAll(page)
+        var token = {userToken:$self.cookies.get('token')};
+        yield (server().moneyAll(token)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
                 $self.body = responseText;
@@ -167,6 +216,13 @@ module.exports = function(){
                 $self.body=error.error;
                 console.error(error.error);
             }));
+    }).get('/user/logout', function*(next){
+        var url = this.request.query;
+        this.cookies.set("absUrl",url.absurl);
+        this.body = {
+            code:0,
+            msg:"重定向"
+        };
     })
     return router;
 };
