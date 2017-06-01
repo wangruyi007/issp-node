@@ -1,5 +1,26 @@
 var app = angular.module('recordEdit', ['toastr','ipCookie']);
 app.controller('recordEditCtrl', function($scope, recordSer,$state,toastr,$stateParams,ipCookie,$location,$filter){
+    // 地区
+    recordSer.areas().then(function(response){
+        if(response.data.code == 0){
+            $scope.areas = response.data.data;
+            
+        }
+    });
+    // 项目名称
+    recordSer.projects().then(function(response){
+        if(response.data.code == 0){
+            $scope.projects = response.data.data;
+            
+        }
+    });
+    // 项目组
+    recordSer.projectGroups().then(function(response){
+        if(response.data.code == 0){
+            $scope.projectGroups = response.data.data;
+            
+        }
+    });
     var recordId = {id : $stateParams.id};
     //获取值
     recordSer.moneyId(recordId).then(function(response){
@@ -29,6 +50,8 @@ app.controller('recordEditCtrl', function($scope, recordSer,$state,toastr,$state
                 setTimeout(function(){
                     window.location.href='http://localhost/login'
                 },2000)
+            }else{
+                toastr.error(response.data.msg,'温馨提示');
             }
         });
     };

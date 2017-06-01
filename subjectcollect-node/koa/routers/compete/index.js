@@ -9,8 +9,8 @@ module.exports = function(){
     //获取所有一级科目
     router.get('/subjectsOne/One', function*(){
         var $self = this;
-        var page = $self.request.query;
-        yield (server().subjectsOne(page)
+        var token = {userToken:$self.cookies.get('token')};
+        yield (server().subjectsOne(token)
             .then((parsedBody) =>{
             var responseText = JSON.parse(parsedBody);
             $self.body = responseText;
@@ -53,6 +53,7 @@ module.exports = function(){
     }).get('/projectSummary/AuditName', function*(){
         var $self = this;
         var page = $self.request.query;
+        page.userToken = $self.cookies.get('token');
         yield (server().subjectsAuditName(page)
             .then((parsedBody) =>{
             var responseText = JSON.parse(parsedBody);
@@ -66,6 +67,7 @@ module.exports = function(){
     }).get('/subjectsId/Id', function*(){
         var $self = this;
         var page = $self.request.query;
+        page.userToken = $self.cookies.get('token');
         yield (server().subjectsId(page)
             .then((parsedBody) =>{
             var responseText = JSON.parse(parsedBody);
@@ -78,8 +80,8 @@ module.exports = function(){
         //分页
     }).get('/countCourseCollect/count', function*(){
         var $self = this;
-        var page = $self.request.query;
-        yield (server().subjectsId(page)
+        var token = {userToken:$self.cookies.get('token')};
+        yield (server().subjectsId(token)
             .then((parsedBody) =>{
             var responseText = JSON.parse(parsedBody);
             $self.body = responseText;
@@ -92,6 +94,7 @@ module.exports = function(){
     }).get('/subjectsList/list', function*(){
         var $self = this;
         var page = $self.request.query;
+        page.userToken = $self.cookies.get('token');
         yield (server().subjectsList(page)
             .then((parsedBody) =>{
             var responseText = JSON.parse(parsedBody);
@@ -105,6 +108,7 @@ module.exports = function(){
     }).get('/subjectsContrast/Contrast', function*(){
         var $self = this;
         var page = $self.request.query;
+        page.userToken = $self.cookies.get('token');
         yield (server().subjectsContrast(page)
             .then((parsedBody) =>{
             var responseText = JSON.parse(parsedBody);
@@ -117,8 +121,8 @@ module.exports = function(){
         //获取所有项目名称
     }).get('/subjectsName/Name', function*(){
         var $self = this;
-        var page = $self.request.query;
-        yield (server().subjectsName(page)
+        var token = {userToken:$self.cookies.get('token')};
+        yield (server().subjectsName(token)
             .then((parsedBody) =>{
             var responseText = JSON.parse(parsedBody);
             $self.body = responseText;
@@ -131,6 +135,7 @@ module.exports = function(){
     }).get('/teamSummary/AuditAll', function*(){
         var $self = this;
         var page = $self.request.query;
+        page.userToken = $self.cookies.get('token');
         yield (server().subjectsAuditAll(page)
             .then((parsedBody) =>{
             var responseText = JSON.parse(parsedBody);
@@ -157,7 +162,8 @@ module.exports = function(){
         //获取所有三级科目
     }).get('/subjectsThree/Three', function*(){
         var $self = this;
-        var page = $self.request.query;
+        var page = this.request.query;
+        page.userToken = $self.cookies.get('token');
         yield (server().subjectsThree(page)
             .then((parsedBody) =>{
             var responseText = JSON.parse(parsedBody);
@@ -170,7 +176,8 @@ module.exports = function(){
         //获取所有二级科目
     }).get('/subjectsTwo/Two', function*(){
         var $self = this;
-        var page = $self.request.query;
+        var page = this.request.query;
+        page.userToken = $self.cookies.get('token');
         yield (server().subjectsTwo(page)
             .then((parsedBody) =>{
             var responseText = JSON.parse(parsedBody);
@@ -184,6 +191,7 @@ module.exports = function(){
     }).get('/subjectsListAll/ListAll', function*(){
         var $self = this;
         var page = $self.request.query;
+        page.userToken = $self.cookies.get('token');
         yield (server().subjectsListAll(page)
             .then((parsedBody) =>{
             var responseText = JSON.parse(parsedBody);
@@ -197,6 +205,7 @@ module.exports = function(){
     }).get('/subjectsExport/Export', function*(){
         var $self = this;
         var page = $self.request.query;
+        page.userToken = $self.cookies.get('token');
         yield (server().subjectsExport(page)
             .then((parsedBody) =>{
             var responseText = JSON.parse(parsedBody);
@@ -209,8 +218,8 @@ module.exports = function(){
         //获取所有项目组
     }).get('/subjectsAll/All', function*(){
         var $self = this;
-        var page = $self.request.query;
-        yield (server().subjectsAll(page)
+        var token = {userToken:$self.cookies.get('token')};
+        yield (server().subjectsAll(token)
             .then((parsedBody) =>{
             var responseText = JSON.parse(parsedBody);
             $self.body = responseText;
@@ -223,6 +232,7 @@ module.exports = function(){
     }).get('/subjectSummary/Check', function*(){
         var $self = this;
         var page = $self.request.query;
+        page.userToken = $self.cookies.get('token');
         yield (server().subjectsCheck(page)
             .then((parsedBody) =>{
             var responseText = JSON.parse(parsedBody);
@@ -236,6 +246,7 @@ module.exports = function(){
     }).get('/areasSummary/Area', function*(){
         var $self = this;
         var page = $self.request.query;
+        page.userToken = $self.cookies.get('token');
         yield (server().subjectsArea(page)
             .then((parsedBody) =>{
             var responseText = JSON.parse(parsedBody);
@@ -248,8 +259,8 @@ module.exports = function(){
         //获取所有地区
     }).get('/subjectsAreaAll/AreaAll', function*(){
         var $self = this;
-        var page = $self.request.query;
-        yield (server().subjectsAreaAll(page)
+        var token = {userToken:$self.cookies.get('token')};
+        yield (server().subjectsAreaAll(token)
             .then((parsedBody) =>{
             var responseText = JSON.parse(parsedBody);
             $self.body = responseText;
@@ -258,6 +269,13 @@ module.exports = function(){
             $self.body=error.error;
             console.error(error.error);
         }));
+    }).get('/user/logout', function*(next){
+        var url = this.request.query;
+        this.cookies.set("absUrl",url.absurl);
+        this.body = {
+            code:0,
+            msg:"重定向"
+        };
     })
     return router;
 };

@@ -22,6 +22,8 @@ app.controller('payedSecondCtrl',function($scope,payedSer,toastr,$stateParams,$s
                 setTimeout(function(){
                     window.location.href='http://localhost/login'
                 },2000)
+            }else{
+                toastr.error(response.data.msg,'温馨提示');
             }
         })
     }

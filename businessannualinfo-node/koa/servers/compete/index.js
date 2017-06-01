@@ -9,8 +9,12 @@ module.exports = function(){
         var options = {
             method : 'GET',
             timeout : 3000,
-            uri : config()['rurl'] + `/businessannualinfo/v1/list?limit=10&page=${argvs.page}`
+            uri : config()['rurl'] + `/businessannualinfo/v1/list?limit=10&page=${argvs.page}`,
+            headers : {
+                userToken : argvs.userToken
+            }
         };
+        console.log(argvs)
         return request(options);
     };
     //上传
@@ -20,6 +24,7 @@ module.exports = function(){
             timeout : 3000,
             uri : config()['rurl'] + '/businessannualinfo/v1/upload',
             headers : {
+                userToken : argvs.userToken
             }
         };
         return request(options);
@@ -31,6 +36,9 @@ module.exports = function(){
             timeout : 3000,
             uri : config()['rurl'] + '/businessannualinfo/v1/edit',
             form : argvs,
+            headers : {
+                userToken : argvs.userToken
+            }
         };
         return request(options);
     };
@@ -42,6 +50,7 @@ module.exports = function(){
             uri : config()['rurl'] + '/businessannualinfo/v1/count',
             form:argvs,
             headers : {
+                userToken : argvs.userToken
             }
         };
         return request(options);
@@ -51,7 +60,10 @@ module.exports = function(){
         var options = {
             method : 'GET',
             timeout : 3000,
-            uri : config()['rurl'] + `/businessannualinfo/v1/info/${argvs.id}`
+            uri : config()['rurl'] + `/businessannualinfo/v1/info/${argvs.id}`,
+            headers : {
+                userToken : argvs.userToken
+            }
         };
         return request(options);
     };
@@ -74,6 +86,9 @@ module.exports = function(){
             timeout : 3000,
             uri : config()['rurl'] + '/businessannualinfo/v1/download',
             form : argvs,
+            headers : {
+                userToken : argvs.userToken
+            }
         };
         return request(options);
     };
@@ -84,6 +99,9 @@ module.exports = function(){
             timeout : 3000,
             uri : config()['rurl'] + '/businessannualinfo/v1/add',
             form : argvs,
+            headers : {
+                userToken : argvs.userToken
+            }
         };
         return request(options);
     };
@@ -94,6 +112,9 @@ module.exports = function(){
             method : 'GET',
             timeout : 3000,
             uri : config()['rurl'] + `/businesstaxchange/v1/change/${argvs.id}`,
+            headers : {
+                userToken : argvs.userToken
+            }
         };
         return request(options);
     };
@@ -104,6 +125,9 @@ module.exports = function(){
             timeout : 3000,
             uri : config()['rurl'] + '/businesstaxchange/v1/add',
             form : argvs,
+            headers : {
+                userToken : argvs.userToken
+            }
         };
         return request(options);
     };
@@ -114,6 +138,9 @@ module.exports = function(){
             timeout : 3000,
             uri : config()['rurl'] + '/businesstaxchange/v1/edit',
             form : argvs,
+            headers : {
+                userToken : argvs.userToken
+            }
         };
         return request(options);
     };
@@ -124,6 +151,9 @@ module.exports = function(){
             timeout : 3000,
             uri : config()['rurl'] + '/businesstaxchange/v1/upload',
             form : argvs,
+            headers : {
+                userToken : argvs.userToken
+            }
         };
         return request(options);
     };
@@ -133,7 +163,9 @@ module.exports = function(){
             method : 'GET',
             timeout : 3000,
             uri : config()['rurl'] + `/businesstaxchange/v1/list?limit=10&page=${argvs.page}`,
-            form : argvs,
+            headers : {
+                userToken : argvs.userToken
+            }
         };
         return request(options);
     };
@@ -144,6 +176,9 @@ module.exports = function(){
             timeout : 3000,
             uri : config()['rurl'] + '/businesstaxchange/v1/download',
             form : argvs,
+            headers : {
+                userToken : argvs.userToken
+            }
         };
         return request(options);
     };
@@ -166,6 +201,9 @@ module.exports = function(){
             timeout : 3000,
             uri : config()['rurl'] + '/businesstaxchange/v1/count',
             form : argvs,
+            headers : {
+                userToken : argvs.userToken
+            }
         };
         return request(options);
     };
@@ -177,7 +215,7 @@ module.exports = function(){
             timeout : 3000,
             uri : config()['rurl'] + '/businessregister/v1/upload',
             headers : {
-                // token : token
+                userToken : argvs.userToken
             }
         };
         return request(options);
@@ -187,7 +225,10 @@ module.exports = function(){
         var options = {
             method : 'GET',
             timeout : 3000,
-            uri : config()['rurl'] + `/businessregister/v1/register/${argvs.id}`
+            uri : config()['rurl'] + `/businessregister/v1/register/${argvs.id}`,
+            headers : {
+                userToken : argvs.userToken
+            }
         };
         return request(options);
     };
@@ -197,7 +238,9 @@ module.exports = function(){
             method : 'GET',
             timeout : 3000,
             uri : config()['rurl'] + `/businessregister/v1/list?limit=10&page=${argvs.page}`,
-            form : argvs,
+            headers : {
+                userToken : argvs.userToken
+            }
         };
         return request(options);
     };
@@ -208,6 +251,9 @@ module.exports = function(){
             timeout : 3000,
             uri : config()['rurl'] + '/businessregister/v1/download',
             form : argvs,
+            headers : {
+                userToken : argvs.userToken
+            }
         };
         return request(options);
     };
@@ -218,6 +264,9 @@ module.exports = function(){
             timeout : 3000,
             uri : config()['rurl'] + '/businessregister/v1/edit',
             form : argvs,
+            headers : {
+                userToken : argvs.userToken
+            }
         };
         return request(options);
     };
@@ -240,6 +289,9 @@ module.exports = function(){
             timeout : 3000,
             uri : config()['rurl'] + '/businessregister/v1/add',
             form : argvs,
+            headers : {
+                userToken : argvs.userToken
+            }
         };
         return request(options);
     };
@@ -251,8 +303,53 @@ module.exports = function(){
             uri : config()['rurl'] + '/businessregister/v1/count',
             form:argvs,
             headers : {
-                // token : token
+                userToken : argvs.userToken
             }
+        };
+        return request(options);
+    };
+    //----------------------------权限修改----------------------------
+    this.listSetting = function(argvs){
+        var options = {
+            method : 'GET',
+            timeout : 3000,
+            uri : config()['rurl'] + `/cuspermission/v1/list?limit=10&page=${argvs.page}`,
+        };
+        return request(options);
+    };
+    this.countSetting = function(){
+        var options = {
+            method : 'GET',
+            timeout : 3000,
+            uri : config()['rurl'] + '/cuspermission/v1/count',
+        };
+        return request(options);
+    };
+    this.getpermit = function(argvs){
+        var options = {
+            method : 'GET',
+            timeout : 3000,
+            uri : config()['rurl'] + `/cuspermission/v1/getOneById/${argvs.id}`,
+        };
+        return request(options);
+    };
+    this.getListpermit = function(argvs){
+        var options = {
+            method : 'GET',
+            timeout : 3000,
+            uri : config()['rurl'] + `/cuspermission/v1/listOperateById/${argvs.id}`,
+        };
+        return request(options);
+    };
+    this.editSetting = function(argvs){
+        var options = {
+            method : 'PUT',
+            timeout : 3000,
+            uri : config()['rurl'] + '/cuspermission/v1/edit',
+            headers:{
+                userToken:argvs.token
+            },
+            form:argvs
         };
         return request(options);
     };

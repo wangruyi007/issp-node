@@ -9,7 +9,10 @@ module.exports = function(){
         var options = {
             method : 'GET',
             timeout : 3000,
-            uri : config()['rurl'] + '/subjectcollect/v1/listFirstSubject'
+            uri : config()['rurl'] + '/subjectcollect/v1/listFirstSubject',
+            headers : {
+                userToken : argvs.token
+            }
         };
         return request(options);
     };
@@ -19,8 +22,8 @@ module.exports = function(){
             method : 'DELETE',
             timeout : 3000,
             uri : config()['rurl'] + `/subjectcollect/v1/delete/${argvs.id}`,
-            headers:{
-                userToken:argvs.userToken
+            headers : {
+                userToken : argvs.userToken
             }
         };
 
@@ -33,8 +36,8 @@ module.exports = function(){
             timeout : 3000,
             uri : config()['rurl'] + '/subjectcollect/v1/edit',
             form : argvs,
-            headers:{
-                userToken:argvs.userToken
+            headers : {
+                userToken : argvs.userToken
             }
         };
         return request(options);
@@ -44,7 +47,10 @@ module.exports = function(){
         var options = {
             method : 'GET',
             timeout : 3000,
-            uri : config()['rurl'] + '/subjectcollect/v1/ctRePname'+urlEncode(argvs,true)
+            uri : config()['rurl'] + '/subjectcollect/v1/ctRePname'+urlEncode(argvs,true),
+            headers : {
+                userToken : argvs.userToken
+            }
         };
         return request(options);
     };
@@ -53,7 +59,10 @@ module.exports = function(){
         var options = {
             method : 'GET',
             timeout : 3000,
-            uri : config()['rurl'] + `/subjectcollect/v1/subject/${argvs.id}`
+            uri : config()['rurl'] + `/subjectcollect/v1/subject/${argvs.id}`,
+            headers : {
+                userToken : argvs.userToken
+            }
         };
         return request(options);
     };
@@ -62,7 +71,10 @@ module.exports = function(){
         var options = {
             method : 'GET',
             timeout : 3000,
-            uri : config()['rurl'] + `/subjectcollect/v1/list?limit=10&page=${argvs.page}`
+            uri : config()['rurl'] + `/subjectcollect/v1/list?limit=10&page=${argvs.page}`,
+            headers : {
+                userToken : argvs.userToken
+            }
         };
         return request(options);
     }; 
@@ -71,7 +83,10 @@ module.exports = function(){
         var options = {
             method : 'GET',
             timeout : 3000,
-            uri : config()['rurl'] + '/subjectcollect/v1/collectCompare?'+'months='+argvs.a+'&months='+ argvs.b
+            uri : config()['rurl'] + '/subjectcollect/v1/collectCompare?'+'months='+argvs.a+'&months='+ argvs.b,
+            headers : {
+                userToken : argvs.userToken
+            }
         };
         return request(options);
     };
@@ -80,7 +95,10 @@ module.exports = function(){
         var options = {
             method : 'GET',
             timeout : 3000,
-            uri : config()['rurl'] + '/subjectcollect/v1/listProject'
+            uri : config()['rurl'] + '/subjectcollect/v1/listProject',
+            headers : {
+                userToken : argvs.token
+            }
         };
         return request(options);
     };
@@ -89,7 +107,10 @@ module.exports = function(){
         var options = {
             method : 'GET',
             timeout : 3000,
-            uri : config()['rurl'] + '/subjectcollect/v1/ctReGroup'+urlEncode(argvs,true)
+            uri : config()['rurl'] + '/subjectcollect/v1/ctReGroup'+urlEncode(argvs,true),
+            headers : {
+                userToken : argvs.userToken
+            }
         };
         return request(options);
     };
@@ -100,8 +121,8 @@ module.exports = function(){
             timeout : 3000,
             uri : config()['rurl'] + '/subjectcollect/v1/add',
             form : argvs,
-            headers:{
-                userToken:argvs.userToken
+            headers : {
+                userToken : argvs.userToken
             }
         };
         return request(options);
@@ -111,7 +132,10 @@ module.exports = function(){
         var options = {
             method : 'GET',
             timeout : 3000,
-            uri : config()['rurl'] + '/subjectcollect/v1/listTubByFirst'
+            uri : config()['rurl'] + '/subjectcollect/v1/listTubByFirst'+urlEncode(argvs,true),
+            headers : {
+                userToken : argvs.userToken
+            }
         };
         return request(options);
     };
@@ -120,7 +144,10 @@ module.exports = function(){
         var options = {
             method : 'GET',
             timeout : 3000,
-            uri : config()['rurl'] + '/subjectcollect/v1/listSubByFirst'
+            uri : config()['rurl'] + '/subjectcollect/v1/listSubByFirst'+urlEncode(argvs,true),
+            headers : {
+                userToken : argvs.userToken
+            }
         };
         return request(options);
     };
@@ -129,7 +156,10 @@ module.exports = function(){
         var options = {
             method : 'GET',
             timeout : 3000,
-            uri : config()['rurl'] + '/subjectcollect/v1/count'
+            uri : config()['rurl'] + '/subjectcollect/v1/count',
+            headers : {
+                userToken : argvs.userToken
+            }
         };
         return request(options);
     };
@@ -138,7 +168,10 @@ module.exports = function(){
         var options = {
             method : 'POST',
             timeout : 3000,
-            uri : config()['rurl'] + '/subjectcollect/v1/exportExcel'
+            uri : config()['rurl'] + '/subjectcollect/v1/exportExcel',
+            headers : {
+                userToken : argvs.userToken
+            }
         };
         return request(options);
     };
@@ -147,7 +180,10 @@ module.exports = function(){
         var options = {
             method : 'GET',
             timeout : 3000,
-            uri : config()['rurl'] + '/subjectcollect/v1/listGroup'
+            uri : config()['rurl'] + '/subjectcollect/v1/listGroup',
+            headers : {
+                userToken : argvs.token
+            }
         };
         return request(options);
     };
@@ -156,7 +192,10 @@ module.exports = function(){
         var options = {
             method : 'GET',
             timeout : 3000,
-            uri : config()['rurl'] + '/subjectcollect/v1/ctReSub'+urlEncode(argvs,true)
+            uri : config()['rurl'] + '/subjectcollect/v1/ctReSub'+urlEncode(argvs,true),
+            headers : {
+                userToken : argvs.userToken
+            }
         };
         return request(options);
     };
@@ -165,7 +204,10 @@ module.exports = function(){
         var options = {
             method : 'GET',
             timeout : 3000,
-            uri : config()['rurl'] + '/subjectcollect/v1/ctReArea'+urlEncode(argvs,true)
+            uri : config()['rurl'] + '/subjectcollect/v1/ctReArea'+urlEncode(argvs,true),
+            headers : {
+                userToken : argvs.token
+            }
         };
         return request(options);
     };
@@ -174,7 +216,10 @@ module.exports = function(){
         var options = {
             method : 'GET',
             timeout : 3000,
-            uri : config()['rurl'] + '/subjectcollect/v1/listArea'
+            uri : config()['rurl'] + '/subjectcollect/v1/listArea',
+            headers : {
+                userToken : argvs.token
+            }
         };
         return request(options);
     };  
