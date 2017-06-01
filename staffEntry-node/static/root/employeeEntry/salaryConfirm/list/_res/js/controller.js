@@ -30,7 +30,7 @@ app.controller('salaryConfirmListCtrl',function($scope,salaryConfirmSer,toastr) 
             if(response.data.code==0){
                 $scope.confirmLists = response.data.data
             }else{
-                toastr.error( "请求超时，请联系管理员", '温馨提示');
+                toastr.error( response.data.msg, '温馨提示');
             }
         });
     }
@@ -43,7 +43,7 @@ app.controller('salaryConfirmListCtrl',function($scope,salaryConfirmSer,toastr) 
         if(response.data.code == 0){
             $scope.abili.itemsCount = response.data.data;
         }else{
-            toastr.error( "请求超时，请联系管理员", '温馨提示');
+            toastr.error( response.data.msg, '温馨提示');
         }
     });
     //删除

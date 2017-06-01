@@ -1,5 +1,5 @@
-var app = angular.module('marketserveList', ['ng-pagination','toastr','ipCookie']);
-app.controller('marketserveListCtrl',function($scope,marketserveSer,toastr,ipCookie,$location) {
+var app = angular.module('marketserveList', ['ng-pagination','toastr']);
+app.controller('marketserveListCtrl',function($scope,marketserveSer,toastr) {
     $scope.companySearchFun = function(){
         $scope.teamInfo = {};
     };
@@ -44,7 +44,7 @@ app.controller('marketserveListCtrl',function($scope,marketserveSer,toastr,ipCoo
         if(response.data.code == 0){
             $scope.abili.itemsCount = response.data.data;
         }else{
-            toastr.error( "请求超时，请联系管理员", '温馨提示');
+            toastr.error( response.data.msg, '温馨提示');
         }
     });
     //删除
