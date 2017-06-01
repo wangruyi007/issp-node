@@ -8,9 +8,10 @@ module.exports = function(){
     var router = new Router();
 
     //工商年检信息列表
-     router.get('/listCompeteregistered', function*(){
+     router.get('/listCompeteregistered/list', function*(){
        var $self = this;
        var page = $self.request.query;
+       page.userToken = $self.cookies.get('token');
         yield (server().listCompeteregistered(page)
             .then((parsedBody) =>{
             var responseText = JSON.parse(parsedBody);
@@ -24,6 +25,7 @@ module.exports = function(){
      }).post('/annualUpload', function*(){
          var $self = this;
          var EditId = this.request.body;
+         EditId.userToken = $self.cookies.get('token');
          yield (server().annualUpload(EditId)
              .then((parsedBody) =>{
              var responseText = JSON.parse(parsedBody);
@@ -37,6 +39,7 @@ module.exports = function(){
     }).post('/annualEdit', function*(){
         var $self = this;
         var EditId = this.request.body;
+        EditId.userToken = $self.cookies.get('token');
         yield (server().annualEdit(EditId)
             .then((parsedBody) =>{
             var responseText = JSON.parse(parsedBody);
@@ -50,6 +53,7 @@ module.exports = function(){
     }).get('/annualNews', function*(){
         var $self = this;
         var page = $self.request.query;
+        page.userToken = $self.cookies.get('token');
         yield (server().annualNews(page)
             .then((parsedBody) =>{
             var responseText = JSON.parse(parsedBody);
@@ -63,6 +67,7 @@ module.exports = function(){
     }).get('/annualOne', function*(){
         var $self = this;
         var page = $self.request.query;
+        page.userToken = $self.cookies.get('token');
         yield (server().annualOneId(page)
             .then((parsedBody) =>{
             var responseText = JSON.parse(parsedBody);
@@ -94,6 +99,7 @@ module.exports = function(){
     }).post('/annualDownload', function*(){
         var $self = this;
         var EditId = this.request.body;
+        EditId.userToken = $self.cookies.get('token');
         yield (server().annualDownload(EditId)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -106,7 +112,8 @@ module.exports = function(){
     //添加工商年检信息
     }).post('/annualadd', function*(){
         var $self = this;
-        var EditId = this.request.body;
+        var EditId = $self.request.body;
+        EditId.userToken = $self.cookies.get('token');
         yield (server().annualadd(EditId)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -120,6 +127,7 @@ module.exports = function(){
     }).get('/countinformation', function*(){
         var $self = this;
         var page = $self.request.query;
+        page.userToken = $self.cookies.get('token');
         yield (server().annualNews(page)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -134,7 +142,7 @@ module.exports = function(){
      }).get('/changeOne', function*(){
         var $self = this;
         var page = $self.request.query;
-        // EditId.userToken = this.cookies.get('token');
+        page.userToken = $self.cookies.get('token');
         
         yield (server().changeOneId(page)
             .then((parsedBody) =>{
@@ -150,6 +158,7 @@ module.exports = function(){
      }).post('/changeAdd', function*(){
         var $self = this;
         var EditId = this.request.body;
+        EditId.userToken = $self.cookies.get('token');
         yield (server().changeAdd(EditId)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -163,6 +172,7 @@ module.exports = function(){
      }).post('/changeEdit', function*(){
         var $self = this;
         var EditId = this.request.body;
+        EditId.userToken = $self.cookies.get('token');
         yield (server().changeEdit(EditId)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -176,6 +186,7 @@ module.exports = function(){
      }).post('/changeUpload', function*(){
         var $self = this;
         var EditId = this.request.body;
+        EditId.userToken = $self.cookies.get('token');
         yield (server().changeUpload(EditId)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -189,6 +200,7 @@ module.exports = function(){
      }).get('/changeList', function*(){
         var $self = this;
        var page = $self.request.query;
+       page.userToken = $self.cookies.get('token');
         yield (server().changeList(page)
             .then((parsedBody) =>{
             var responseText = JSON.parse(parsedBody);
@@ -202,6 +214,7 @@ module.exports = function(){
      }).post('/changeDowanload', function*(){
         var $self = this;
         var EditId = this.request.body;
+        EditId.userToken = $self.cookies.get('token');
         yield (server().changeDowanload(EditId)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -231,6 +244,7 @@ module.exports = function(){
      }).get('/changeAll', function*(){
         var $self = this;
         var page = $self.request.query;
+        page.userToken = $self.cookies.get('token');
         yield (server().changeAll(page)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -243,6 +257,7 @@ module.exports = function(){
     }).get('/counttax', function*(){
         var $self = this;
         var page = $self.request.query;
+        page.userToken = $self.cookies.get('token');
         yield (server().changeAll(page)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -257,6 +272,7 @@ module.exports = function(){
     }).post('/loginUpload', function*(){
         var $self = this;
         var EditId = this.request.body;
+        EditId.userToken = $self.cookies.get('token');
         yield (server().loginUpload(EditId)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -270,6 +286,7 @@ module.exports = function(){
     }).get('/loginOne', function*(){
         var $self = this;
         var findId = $self.request.query;
+        findId.userToken = $self.cookies.get('token');
         yield (server().loginOneId(findId)
             .then((parsedBody) =>{
             var responseText = JSON.parse(parsedBody);
@@ -284,6 +301,7 @@ module.exports = function(){
      }).post('/loginadd', function*(){
         var $self = this;
         var EditId = this.request.body;
+        EditId.userToken = $self.cookies.get('token');
         yield (server().loginadd(EditId)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -297,6 +315,7 @@ module.exports = function(){
      }).get('/loginList', function*(){
         var $self = this;
        var page = $self.request.query;
+       page.userToken = $self.cookies.get('token');
         yield (server().loginList(page)
             .then((parsedBody) =>{
             var responseText = JSON.parse(parsedBody);
@@ -310,6 +329,7 @@ module.exports = function(){
      }).post('/loginDownload', function*(){
         var $self = this;
         var EditId = this.request.body;
+        EditId.userToken = $self.cookies.get('token');
         yield (server().loginDownload(EditId)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -323,6 +343,7 @@ module.exports = function(){
      }).post('/loginEdit', function*(){
         var $self = this;
         var EditId = this.request.body;
+        EditId.userToken = $self.cookies.get('token');
         yield (server().loginEdit(EditId)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -351,6 +372,7 @@ module.exports = function(){
     }).get('/loginNews', function*(){
         var $self = this;
         var page = $self.request.query;
+        page.userToken = $self.cookies.get('token');
         yield (server().loginNews(page)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -363,8 +385,8 @@ module.exports = function(){
         //分页
     }).get('/competeregistered/count', function*(){
         var $self = this;
-        var page = $self.request.query;
-        yield (server().loginNews(page)
+        var token = {userToken:$self.cookies.get('token')};
+        yield (server().loginNews(token)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
                 $self.body = responseText;
@@ -373,6 +395,75 @@ module.exports = function(){
                 $self.body=error.error;
                 console.error(error.error);
             }));
-    })  
+    }).get('/user/logout', function*(next){
+        var url = this.request.query;
+        this.cookies.set("absUrl",url.absurl);
+        this.body = {
+            code:0,
+            msg:"重定向"
+        };
+        //-----------------权限设置-------------------
+    }).get('/listSetting', function*(){
+         var $self = this;
+         var setting = this.request.query;
+         setting.token = $self.cookies.get('token');
+         yield (server().listSetting(setting)
+             .then((parsedBody) =>{
+                 var responseText = JSON.parse(parsedBody);
+                 $self.body = responseText;
+             }).catch((error) =>{
+                 $self.set('Content-Type','application/json;charset=utf-8');
+                 $self.body=error.error;
+                 console.error(error.error);
+             }));
+     }).get('/countSetting', function*(){
+         var $self = this;
+         yield (server().countSetting()
+             .then((parsedBody) =>{
+                 var responseText = JSON.parse(parsedBody);
+                 $self.body = responseText;
+             }).catch((error) =>{
+                 $self.set('Content-Type','application/json;charset=utf-8');
+                 $self.body=error.error;
+                 console.error(error.error);
+             }));
+     }).get('/getpermit', function*(){
+         var $self = this;
+         var getId = $self.request.query;
+         yield (server().getpermit(getId)
+             .then((parsedBody) =>{
+                 var responseText = JSON.parse(parsedBody);
+                 $self.body = responseText;
+             }).catch((error) =>{
+                 $self.set('Content-Type','application/json;charset=utf-8');
+                 $self.body=error.error;
+                 console.error(error.error);
+             }));
+     }).get('/getListpermit', function*(){
+         var $self = this;
+         var listPermit = $self.request.query;
+         yield (server().getListpermit(listPermit)
+             .then((parsedBody) =>{
+                 var responseText = JSON.parse(parsedBody);
+                 $self.body = responseText;
+             }).catch((error) =>{
+                 $self.set('Content-Type','application/json;charset=utf-8');
+                 $self.body=error.error;
+                 console.error(error.error);
+             }));
+     }).post('/editSetting', function*(){
+         var $self = this;
+         var editSet = $self.request.body;
+         editSet.token = $self.cookies.get("token");
+         yield (server().editSetting(editSet)
+             .then((parsedBody) =>{
+                 var responseText = JSON.parse(parsedBody);
+                 $self.body = responseText;
+             }).catch((error) =>{
+                 $self.set('Content-Type','application/json;charset=utf-8');
+                 $self.body=error.error;
+                 console.error(error.error);
+             }));
+     })
     return router;
 };

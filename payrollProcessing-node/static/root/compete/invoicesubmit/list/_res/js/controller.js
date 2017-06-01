@@ -20,7 +20,7 @@ app.controller('invoicesubmitListCtrl',function($scope,invoicesubmitSer,toastr) 
             if(response.data.code==0){
                 $scope.invoicesubmitLists = response.data.data
             }else{
-                toastr.error( response.data.mag, '温馨提示');
+                toastr.error( response.data.msg, '温馨提示');
             }
         });
     }
@@ -33,8 +33,8 @@ app.controller('invoicesubmitListCtrl',function($scope,invoicesubmitSer,toastr) 
         if(response.data.code == 0){
             $scope.abili.itemsCount = response.data;
         }else{
-            toastr.error( response.data.mag, '温馨提示');
-        }
+                toastr.error( response.data.msg, '温馨提示');
+            }
     });
     // 删除
     $scope.$on('deletedId',function(event,delid){

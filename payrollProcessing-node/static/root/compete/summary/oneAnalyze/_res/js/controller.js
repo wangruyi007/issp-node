@@ -27,6 +27,8 @@ app.controller('oneAnalyzeCtrl', function($scope, summarySer,toastr,$location,ip
                 setTimeout(function(){
                     window.location.href='http://localhost/login'
                 },2000)
+            }else{
+                toastr.error(response.data.msg,'温馨提示');
             }
         })
     };

@@ -13,7 +13,9 @@ app.controller('recordAnalyzeCtrl', function($scope, recordSer,toastr){
             setTimeout(function(){
                 window.location.href='http://localhost/login'
             },2000)
-        }
+        }else{
+                toastr.error(response.data.msg,'温馨提示');
+            }
     });
     $scope.collect = function(){
         var data = $scope;
@@ -41,6 +43,8 @@ app.controller('recordAnalyzeCtrl', function($scope, recordSer,toastr){
                 setTimeout(function(){
                     window.location.href='http://localhost/login'
                 },2000)
+            }else{
+                toastr.error(response.data.msg,'温馨提示');
             }
         })
     };

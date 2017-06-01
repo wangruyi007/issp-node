@@ -20,7 +20,7 @@ app.controller('confirmedListCtrl',function($scope,confirmedSer,toastr) {
             if(response.data.code==0){
                 $scope.confirmedLists = response.data.data
             }else{
-                toastr.error( "请求超时，请联系管理员", '温馨提示');
+                toastr.error( response.data.msg, '温馨提示');
             }
         });
     }

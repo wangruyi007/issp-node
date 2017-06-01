@@ -10,7 +10,11 @@ module.exports = function(){
         var options = {
             method : 'PATCH',
             timeout : 3000,
-            uri : config()['rurl'] + `/confirmed/v1/second/${argvs.id}`
+            uri : config()['rurl'] + `/confirmed/v1/second/${argvs.id}`,
+
+            headers : {
+                userToken : argvs.userToken
+            }
         };
         return request(options);
     };
@@ -19,7 +23,11 @@ module.exports = function(){
         var options = {
             method : 'PATCH',
             timeout : 3000,
-            uri : config()['rurl'] + `/confirmed/v1/first/${argvs.id}`
+            uri : config()['rurl'] + `/confirmed/v1/first/${argvs.id}`,
+
+            headers : {
+                userToken : argvs.userToken
+            }
         };
         return request(options);
     };
@@ -28,7 +36,10 @@ module.exports = function(){
         var options = {
             method : 'GET',
             timeout : 3000,
-            uri : config()['rurl'] + `/confirmed/v1/list?limit=10&page=${argvs.page}`
+            uri : config()['rurl'] + `/confirmed/v1/list?limit=10&page=${argvs.page}`,
+            headers : {
+                userToken : argvs.userToken
+            }
         };
         return request(options);
     }; 
@@ -39,6 +50,9 @@ module.exports = function(){
             method : 'GET',
             timeout : 3000,
             uri : config()['rurl'] + '/invoicesubmit/v1/count',
+            headers : {
+                userToken : argvs.userToken
+            }
         };
         return request(options);
     };
@@ -74,6 +88,9 @@ module.exports = function(){
             method : 'GET',
             timeout : 3000,
             uri : config()['rurl'] + `/invoicesubmit/v1/list?limit=10&page=${argvs.page}`,
+            headers : {
+                userToken : argvs.userToken
+            }
         };
         return request(options);
     }; 
@@ -95,7 +112,10 @@ module.exports = function(){
         var options = {
             method : 'GET',
             timeout : 3000,
-            uri : config()['rurl'] + `/invoicesubmit/v1/find/${argvs.id}`
+            uri : config()['rurl'] + `/invoicesubmit/v1/find/${argvs.id}`,
+            headers : {
+                userToken : argvs.userToken
+            }
         };
         return request(options);
     };
@@ -105,7 +125,11 @@ module.exports = function(){
         var options = {
             method : 'PATCH',
             timeout : 3000,
-            uri : config()['rurl'] + `/payed/v1/second/${argvs.id}`
+            uri : config()['rurl'] + `/payed/v1/second/${argvs.id}`,
+
+            headers : {
+                userToken : argvs.userToken
+            }
         };
         return request(options);
     };
@@ -114,7 +138,11 @@ module.exports = function(){
         var options = {
             method : 'PATCH',
             timeout : 3000,
-            uri : config()['rurl'] + `/payed/v1/first/${argvs.id}`
+            uri : config()['rurl'] + `/payed/v1/first/${argvs.id}`,
+
+            headers : {
+                userToken : argvs.userToken
+            }
         };
         return request(options);
     };
@@ -123,7 +151,10 @@ module.exports = function(){
         var options = {
             method : 'GET',
             timeout : 3000,
-            uri : config()['rurl'] + `/payed/v1/list?limit=10&page=${argvs.page}`
+            uri : config()['rurl'] + `/payed/v1/list?limit=10&page=${argvs.page}`,
+            headers : {
+                userToken : argvs.userToken
+            }
         };
         return request(options);
     };
@@ -146,7 +177,10 @@ module.exports = function(){
         var options = {
             method : 'GET',
             timeout : 3000,
-            uri : config()['rurl'] + '/salaryconfirm/v1/count'
+            uri : config()['rurl'] + '/salaryconfirm/v1/count',
+            headers : {
+                userToken : argvs.userToken
+            }
         };
         return request(options);
     };
@@ -155,7 +189,10 @@ module.exports = function(){
         var options = {
             method : 'GET',
             timeout : 3000,
-            uri : config()['rurl'] + '/salaryconfirm/v1/areas'
+            uri : config()['rurl'] + '/salaryconfirm/v1/areas',
+            headers : {
+                userToken : argvs.userToken
+            }
         };
         return request(options);
     };
@@ -190,7 +227,10 @@ module.exports = function(){
         var options = {
             method : 'GET',
             timeout : 3000,
-            uri : config()['rurl'] + `/salaryconfirm/v1/list?limit=10&page=${argvs.page}`
+            uri : config()['rurl'] + `/salaryconfirm/v1/list?limit=10&page=${argvs.page}`,
+            headers : {
+                userToken : argvs.userToken
+            }
         };
         return request(options);
     };
@@ -199,7 +239,10 @@ module.exports = function(){
         var options = {
             method : 'GET',
             timeout : 3000,
-            uri : config()['rurl'] + `/salaryconfirm/v1/find/${argvs.id}`
+            uri : config()['rurl'] + `/salaryconfirm/v1/find/${argvs.id}`,
+            headers : {
+                userToken : argvs.userToken
+            }
         };
         return request(options);
     };
@@ -210,7 +253,10 @@ module.exports = function(){
         var options = {
             method : 'GET',
             timeout : 3000,
-            uri : config()['rurl'] + '/salaryconfirm/v1/departments'
+            uri : config()['rurl'] + '/salaryconfirm/v1/departments',
+            headers : {
+                userToken : argvs.userToken
+            }
         };
         return request(options);
     };
@@ -219,7 +265,10 @@ module.exports = function(){
         var options = {
             method : 'GET',
             timeout : 3000,
-            uri : config()['rurl'] + '/salaryconfirm/v1/positions'
+            uri : config()['rurl'] + '/salaryconfirm/v1/positions',
+            headers : {
+                userToken : argvs.userToken
+            }
         };
         return request(options);
     };
@@ -228,7 +277,10 @@ module.exports = function(){
         var options = {
             method : 'GET',
             timeout : 3000,
-            uri : config()['rurl'] + '/salaryconfirm/v1/users'
+            uri : config()['rurl'] + '/salaryconfirm/v1/users',
+            headers : {
+                userToken : argvs.userToken
+            }
         };
         return request(options);
     };
@@ -237,7 +289,10 @@ module.exports = function(){
         var options = {
             method : 'POST',
             timeout : 3000,
-            uri : config()['rurl'] + '/salaryconfirm/v1/import'
+            uri : config()['rurl'] + '/salaryconfirm/v1/import',
+            headers : {
+                userToken : argvs.userToken
+            }
         };
         return request(options);
     };
@@ -246,7 +301,10 @@ module.exports = function(){
         var options = {
             method : 'GET',
             timeout : 3000,
-            uri : config()['rurl'] + '/salaryconfirm/v1/export'
+            uri : config()['rurl'] + '/salaryconfirm/v1/export',
+            headers : {
+                userToken : argvs.userToken
+            }
         };
         return request(options);
     };
@@ -256,7 +314,10 @@ module.exports = function(){
         var options = {
             method : 'GET',
             timeout : 3000,
-            uri : config()['rurl'] + '/condition/v1/departments'
+            uri : config()['rurl'] + '/condition/v1/departments',
+            headers : {
+                userToken : argvs.userToken
+            }
         };
         return request(options);
     };
@@ -265,7 +326,10 @@ module.exports = function(){
         var options = {
             method : 'GET',
             timeout : 3000,
-            uri : config()['rurl'] + '/department/v1/collect'+urlEncode(argvs,true)
+            uri : config()['rurl'] + '/department/v1/collect'+urlEncode(argvs,true),
+            headers : {
+                userToken : argvs.userToken
+            }
         };
         return request(options);
     };
@@ -274,7 +338,10 @@ module.exports = function(){
         var options = {
             method : 'GET',
             timeout : 3000,
-            uri : config()['rurl'] + '/condition/v1/areas'
+            uri : config()['rurl'] + '/condition/v1/areas',
+            headers : {
+                userToken : argvs.userToken
+            }
         };
         return request(options);
     };
@@ -283,7 +350,10 @@ module.exports = function(){
         var options = {
             method : 'GET',
             timeout : 3000,
-            uri : config()['rurl'] + '/department/v1/analyze'+urlEncode(argvs,true)
+            uri : config()['rurl'] + '/department/v1/analyze'+urlEncode(argvs,true),
+            headers : {
+                userToken : argvs.userToken
+            }
         };
         return request(options);
     };
@@ -292,7 +362,10 @@ module.exports = function(){
         var options = {
             method : 'GET',
             timeout : 3000,
-            uri : config()['rurl'] + '/user/v1/collect'+urlEncode(argvs,true)
+            uri : config()['rurl'] + '/user/v1/collect'+urlEncode(argvs,true),
+            headers : {
+                userToken : argvs.userToken
+            }
         };
         return request(options);
     };
@@ -301,7 +374,10 @@ module.exports = function(){
         var options = {
             method : 'GET',
             timeout : 3000,
-            uri : config()['rurl'] + '/area/v1/analyze'+urlEncode(argvs,true)
+            uri : config()['rurl'] + '/area/v1/analyze'+urlEncode(argvs,true),
+            headers : {
+                userToken : argvs.userToken
+            }
         };
         return request(options);
     };
@@ -310,7 +386,10 @@ module.exports = function(){
         var options = {
             method : 'GET',
             timeout : 3000,
-            uri : config()['rurl'] + '/user/v1/analyze'+urlEncode(argvs,true)
+            uri : config()['rurl'] + '/user/v1/analyze'+urlEncode(argvs,true),
+            headers : {
+                userToken : argvs.userToken
+            }
         };
         return request(options);
     };
@@ -319,7 +398,10 @@ module.exports = function(){
         var options = {
             method : 'GET',
             timeout : 3000,
-            uri : config()['rurl'] + '/condition/v1/users'
+            uri : config()['rurl'] + '/condition/v1/users',
+            headers : {
+                userToken : argvs.userToken
+            }
         };
         return request(options);
     };
@@ -328,7 +410,10 @@ module.exports = function(){
         var options = {
             method : 'GET',
             timeout : 3000,
-            uri : config()['rurl'] + '/area/v1/collect'+urlEncode(argvs,true)
+            uri : config()['rurl'] + '/area/v1/collect'+urlEncode(argvs,true),
+            headers : {
+                userToken : argvs.userToken
+            }
         };
         return request(options);
     };
@@ -338,7 +423,11 @@ module.exports = function(){
         var options = {
             method : 'PATCH',
             timeout : 3000,
-            uri : config()['rurl'] + `/waitconfirm/v1/confirm/${argvs.id}`
+            uri : config()['rurl'] + `/waitconfirm/v1/confirm/${argvs.id}`,
+            
+            headers : {
+                userToken : argvs.userToken
+            }
         };
         console.log(argvs)
         return request(options);
@@ -348,7 +437,10 @@ module.exports = function(){
         var options = {
             method : 'GET',
             timeout : 3000,
-            uri : config()['rurl'] + `/waitconfirm/v1/list?limit=10&page=${argvs.page}`
+            uri : config()['rurl'] + `/waitconfirm/v1/list?limit=10&page=${argvs.page}`,
+            headers : {
+                userToken : argvs.userToken
+            }
         };
         return request(options);
     };

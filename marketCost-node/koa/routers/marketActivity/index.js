@@ -6,7 +6,7 @@ var config = require(path.resolve('plugins/read-config.js'));
 var fetch = require('node-fetch');//url转发
 module.exports = function () {
     var router = new Router();
-    //市场招待申请  marketActivity   marketserve
+    //市场招待申请  
     //列表
     router.get('/marketActivity/marketserve/list', function* () {
         var $self = this;
@@ -23,7 +23,8 @@ module.exports = function () {
             }));
     }).get('/marketserve/count', function* () {
         var $self = this;
-        yield (server().countBaseInfo()
+        var countData = {userToken:$self.cookies.get('token')}
+        yield (server().countBaseInfo(countData)
             .then((parsedBody) => {
                 var responseText = JSON.parse(parsedBody);
                 $self.body = responseText;
@@ -60,11 +61,12 @@ module.exports = function () {
                 $self.body = error.error;
                 console.error(error.error);
             }));
-        //编辑  
-    }).post('/marketActivity/marketserve/getOneById', function* () {
-        var EditId = this.request.body;
+        //编辑id
+    }).get('/marketActivity/marketserve/getOneById', function* () {
+        var EditId = this.request.query;
         EditId.userToken = this.cookies.get('token');
         var $self = this;
+        console.log(78977979797)
         yield (server().marketserveEditById(EditId)
             .then((parsedBody) => {
                 var responseText = JSON.parse(parsedBody);
@@ -123,6 +125,7 @@ module.exports = function () {
         var Eidt = this.request.body;
         Eidt.userToken = this.cookies.get('token');
         var $self = this;
+        console.log(131)
         yield (server().executiveEidt(Eidt)
             .then((parsedBody) => {
                 var responseText = JSON.parse(parsedBody);
@@ -165,18 +168,17 @@ module.exports = function () {
         yield (server().summaryCongeal(congealData)
             .then((parsedBody) => {
                 var responseText = JSON.parse(parsedBody);
-                console.log(parsedBody)
                 $self.body = responseText;
             }).catch((error) => {
-                if (error.error && error.error.code && error.error.code == 'ETIMEDOUT') {
-                    $self.body = { 'msg': '请求错误！', errno: 3 };
-                    $self.status = 408;
-                }
+                $self.set('Content-Type', 'application/json;charset=utf-8');
+                $self.body = error.error;
+                console.error(error.error);
             }));
     }).post('/marketActivity/thawEmail/thaw', function* () {//解冻
-        var thawData = this.request.body;
-        thawData.userToken = this.cookies.get('token');
         var $self = this;
+        var thawData = $self.request.body;
+        thawData.userToken = $self.cookies.get('token');
+        console.log(thawData)
         yield (server().summaryBreakfreeze(thawData)
             .then((parsedBody) => {
                 var responseText = JSON.parse(parsedBody);
@@ -318,7 +320,7 @@ module.exports = function () {
                 $self.body=error.error;
                 console.error(error.error);
             }));
-    }).post('/marketActivity/servereCord/OpinionEidt', function* () { //编辑
+    }).post('/marketActivity/servereCord/OpinionEidt', function* () { //资金模块意见
         var Edit = this.request.body;
         Edit.userToken = this.cookies.get('token');
         var $self = this;
@@ -345,10 +347,10 @@ module.exports = function () {
                 console.error(error.error);
             }));
     }).post('/marketActivity/servereCordApply/delete', function* () { //编辑审核层意见
-        var executiveEidt = this.request.body;
-        executiveEidt.userToken = this.cookies.get('token');
+        var delData = this.request.body;
+        delData.userToken = this.cookies.get('token');
         var $self = this;
-        yield (server().servereCordDele(executiveEidt)
+        yield (server().servereCordDele(delData)
             .then((parsedBody) => {
                 var responseText = JSON.parse(parsedBody);
                 $self.body = responseText;

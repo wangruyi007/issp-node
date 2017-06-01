@@ -7,6 +7,10 @@
                     <input type="text" onClick="laydate({istime: true, format: 'YYYY-MM-DD hh:mm:ss'})" class="add_image addPlanTime" ng-value="data.planActivityTiming">
                 </li>
                 <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>计划活动时间</em></label>
+                    <input type="text" onClick="laydate({istime: true, format: 'YYYY-MM-DD hh:mm:ss'})" class="add_image addActualTime" ng-value="data.actualActivityTiming">
+                </li>
+                <li class="required">
                     <label><i><img src="/images/mandatory.png"></i><em>地区</em></label>
                     <input type="text"  ng-verify="{}" ng-model="data.area">
                 </li>
@@ -50,6 +54,14 @@
                 <li class="required">
                     <label><i><img src="/images/mandatory.png"></i><em>预计费用(元)</em></label>
                     <input type="number"  ng-model="num" ng-verify="{}"> 
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>运营商务部资金</em></label>
+                    <input type="text"  ng-model="data.yyFundModule" ng-verify="{}"> 
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>决策层</em></label>
+                    <input type="text"  ng-model="data.decisionLevel" ng-verify="{}"> 
                 </li>
                 <li class="required">
                     <label><i><img src="/images/mandatory.png"></i><em>招待负责人</em></label>
