@@ -402,6 +402,68 @@ module.exports = function(){
             code:0,
             msg:"重定向"
         };
-    })  
+        //-----------------权限设置-------------------
+    }).get('/listSetting', function*(){
+         var $self = this;
+         var setting = this.request.query;
+         setting.token = $self.cookies.get('token');
+         yield (server().listSetting(setting)
+             .then((parsedBody) =>{
+                 var responseText = JSON.parse(parsedBody);
+                 $self.body = responseText;
+             }).catch((error) =>{
+                 $self.set('Content-Type','application/json;charset=utf-8');
+                 $self.body=error.error;
+                 console.error(error.error);
+             }));
+     }).get('/countSetting', function*(){
+         var $self = this;
+         yield (server().countSetting()
+             .then((parsedBody) =>{
+                 var responseText = JSON.parse(parsedBody);
+                 $self.body = responseText;
+             }).catch((error) =>{
+                 $self.set('Content-Type','application/json;charset=utf-8');
+                 $self.body=error.error;
+                 console.error(error.error);
+             }));
+     }).get('/getpermit', function*(){
+         var $self = this;
+         var getId = $self.request.query;
+         yield (server().getpermit(getId)
+             .then((parsedBody) =>{
+                 var responseText = JSON.parse(parsedBody);
+                 $self.body = responseText;
+             }).catch((error) =>{
+                 $self.set('Content-Type','application/json;charset=utf-8');
+                 $self.body=error.error;
+                 console.error(error.error);
+             }));
+     }).get('/getListpermit', function*(){
+         var $self = this;
+         var listPermit = $self.request.query;
+         yield (server().getListpermit(listPermit)
+             .then((parsedBody) =>{
+                 var responseText = JSON.parse(parsedBody);
+                 $self.body = responseText;
+             }).catch((error) =>{
+                 $self.set('Content-Type','application/json;charset=utf-8');
+                 $self.body=error.error;
+                 console.error(error.error);
+             }));
+     }).post('/editSetting', function*(){
+         var $self = this;
+         var editSet = $self.request.body;
+         editSet.token = $self.cookies.get("token");
+         yield (server().editSetting(editSet)
+             .then((parsedBody) =>{
+                 var responseText = JSON.parse(parsedBody);
+                 $self.body = responseText;
+             }).catch((error) =>{
+                 $self.set('Content-Type','application/json;charset=utf-8');
+                 $self.body=error.error;
+                 console.error(error.error);
+             }));
+     })
     return router;
 };
