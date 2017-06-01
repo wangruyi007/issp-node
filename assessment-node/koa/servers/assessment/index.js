@@ -1124,7 +1124,7 @@ module.exports = function(){
         var options = {
             method : 'GET',
             timeout : 3000,
-            uri : config()['customer']['rurl'] + `/cuspermission/v1/list?limit=10&page=${argvs.page}`,
+            uri : config()['rurl'] + `/cuspermission/v1/list?limit=10&page=${argvs.page}`,
         };
         return request(options);
     };
@@ -1132,7 +1132,7 @@ module.exports = function(){
         var options = {
             method : 'GET',
             timeout : 3000,
-            uri : config()['customer']['rurl'] + '/cuspermission/v1/count',
+            uri : config()['rurl'] + '/cuspermission/v1/count',
         };
         return request(options);
     };
@@ -1140,7 +1140,7 @@ module.exports = function(){
         var options = {
             method : 'GET',
             timeout : 3000,
-            uri : config()['customer']['rurl'] + `/cuspermission/v1/getOneById/${argvs.id}`,
+            uri : config()['rurl'] + `/cuspermission/v1/getOneById/${argvs.id}`,
         };
         return request(options);
     };
@@ -1148,7 +1148,7 @@ module.exports = function(){
         var options = {
             method : 'GET',
             timeout : 3000,
-            uri : config()['customer']['rurl'] + `/cuspermission/v1/listOperateById/${argvs.id}`,
+            uri : config()['rurl'] + `/cuspermission/v1/listOperateById/${argvs.id}`,
         };
         return request(options);
     };
@@ -1156,7 +1156,7 @@ module.exports = function(){
         var options = {
             method : 'PUT',
             timeout : 3000,
-            uri : config()['customer']['rurl'] + '/cuspermission/v1/edit',
+            uri : config()['rurl'] + '/cuspermission/v1/edit',
             headers:{
                 userToken:argvs.token
             },

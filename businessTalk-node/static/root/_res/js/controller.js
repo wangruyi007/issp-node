@@ -26,4 +26,15 @@ app.controller('rootCtrl', function ($scope,$rootScope,$state,ipCookie,$location
             }
         })
     }
+
+    //搜索功能
+    $scope.isClick = false;
+    $scope.searchToggle = function(){
+        $scope.isClick = !$scope.isClick;
+        //父 Ctrl 监听到事件，向下广播
+        $scope.$broadcast('iSsearch',$scope.isClick)
+    }
+     $scope.$on('isVi',function(event,msg){
+        $scope.isView = msg;
+    });
 })

@@ -29,11 +29,6 @@ app.controller('competitorCtrl',function ($scope,$state) {
             $scope.menuClass = 'deleteMenu'
         }
     };
-//关于搜索
-/*    $scope.search = function(){
-        $state.go('root.ability.companycap.list.search[12]');
-        console.log("搜索可以单击")
-    };*/
     //编辑
     $scope.edit = function(){
         if($scope.idList){

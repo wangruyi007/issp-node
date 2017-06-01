@@ -10,17 +10,20 @@ module.exports = function(){
             timeout : 3000,
             uri : config()['rurl'] + '/supplierinformation/v1/maps?limit=10&page='+argvs.page,
             headers : {
-                // token : token
+                userToken:argvs.token
             }
         };
         return request(options);
     };
     //获取总条数
-    this.getBasicInfoContact = function(){
+    this.getBasicInfoContact = function(argvs){
         var options = {
             method : 'GET',
             timeout : 3000,
-            uri : config()['rurl'] + '/supplierinformation/v1/getTotal'
+            uri : config()['rurl'] + '/supplierinformation/v1/getTotal',
+            headers : {
+                userToken:argvs.token
+            }
         };
         return request(options);
     };
@@ -56,7 +59,10 @@ module.exports = function(){
         var options = {
             method : 'GET',
             timeout : 3000,
-            uri : config()['rurl'] + '/supplierinformation/v1/findById/' + argvs.id
+            uri : config()['rurl'] + '/supplierinformation/v1/findById/' + argvs.id,
+            headers : {
+                userToken:argvs.token
+            }
         };
         return request(options);
     };
@@ -78,6 +84,9 @@ module.exports = function(){
             method : 'GET',
             timeout : 3000,
             uri : config()['rurl'] + '/rewardsituation/v1/findByInformation/'+argvs.id,
+            headers : {
+                userToken:argvs.token
+            }
         };
         return request(options);
     };
@@ -124,7 +133,21 @@ module.exports = function(){
         var options = {
             method : 'GET',
             timeout : 3000,
-            uri : config()['rurl'] + '/rewardsituation/v1/findById/' + argvs.id
+            uri : config()['rurl'] + '/rewardsituation/v1/findById/' + argvs.id,
+            headers : {
+                userToken:argvs.token
+            }
+        };
+        return request(options);
+    };
+    this.findRewardId = function(argvs){
+        var options = {
+            method : 'GET',
+            timeout : 3000,
+            uri : config()['rurl'] + '/rewardsituation/v1/findById/' + argvs.id,
+            headers : {
+                userToken:argvs.token
+            }
         };
         return request(options);
     };
@@ -135,7 +158,7 @@ module.exports = function(){
             timeout : 3000,
             uri : config()['rurl'] + '/enterprisequalification/v1/findByInformation/'+argvs.id,
             headers : {
-                // token : token
+                userToken:argvs.token
             }
         };
         return request(options);
@@ -183,7 +206,10 @@ module.exports = function(){
         var options = {
             method : 'GET',
             timeout : 3000,
-            uri : config()['rurl'] + '/enterprisequalification/v1/findById/' + argvs.id
+            uri : config()['rurl'] + '/enterprisequalification/v1/findById/' + argvs.id,
+            headers : {
+                userToken:argvs.token
+            }
         };
         return request(options);
     };
@@ -194,7 +220,7 @@ module.exports = function(){
             timeout : 3000,
             uri : config()['rurl'] + '/contactsituation/v1/findByInformation/'+argvs.id,
             headers : {
-                // token : token
+                userToken:argvs.token
             }
         };
         return request(options);
@@ -242,7 +268,10 @@ module.exports = function(){
         var options = {
             method : 'GET',
             timeout : 3000,
-            uri : config()['rurl'] + '/contactsituation/v1/findById/' + argvs.id
+            uri : config()['rurl'] + '/contactsituation/v1/findById/' + argvs.id,
+            headers : {
+                userToken:argvs.token
+            }
         };
         return request(options);
     };
@@ -253,7 +282,7 @@ module.exports = function(){
             timeout : 3000,
             uri : config()['rurl'] + '/cooperationsituation/v1/findByInformation/'+argvs.id,
             headers : {
-                // token : token
+                userToken:argvs.token
             }
         };
         return request(options);
@@ -301,7 +330,10 @@ module.exports = function(){
         var options = {
             method : 'GET',
             timeout : 3000,
-            uri : config()['rurl'] + '/cooperationsituation/v1/findById/' + argvs.id
+            uri : config()['rurl'] + '/cooperationsituation/v1/findById/' + argvs.id,
+            headers : {
+                userToken:argvs.token
+            }
         };
         return request(options);
     };
@@ -312,17 +344,20 @@ module.exports = function(){
             timeout : 3000,
             uri : config()['rurl'] + '/suppliertype/v1/maps?limit=10&page='+argvs.page,
             headers : {
-                // token : token
+                userToken:argvs.token
             }
         };
         return request(options);
     };
     //供应商总条数
-    this.getCountType = function(){
+    this.getCountType = function(argvs){
         var options = {
             method : 'GET',
             timeout : 3000,
-            uri : config()['rurl'] + '/suppliertype/v1/getTotal'
+            uri : config()['rurl'] + '/suppliertype/v1/getTotal',
+            headers : {
+                userToken:argvs.token
+            }
         };
         return request(options);
     };
@@ -394,15 +429,53 @@ module.exports = function(){
         var options = {
             method : 'GET',
             timeout : 3000,
-            uri : config()['rurl'] + '/suppliertype/v1/getById/' + argvs.id
+            uri : config()['rurl'] + '/suppliertype/v1/getById/' + argvs.id,
+            headers : {
+                userToken:argvs.token
+            }
         };
         return request(options);
     };
-    this.logout = function(argvs){
+    this.listSetting = function(argvs){
         var options = {
-            method : 'POST',
+            method : 'GET',
             timeout : 3000,
-            uri : config()['user'] + `/v1/sign-out/${argvs.token}`,
+            uri : config()['rurl'] + `/suppermission/v1/list?limit=10&page=${argvs.page}`,
+        };
+        return request(options);
+    };
+    this.countSetting = function(){
+        var options = {
+            method : 'GET',
+            timeout : 3000,
+            uri : config()['rurl'] + '/suppermission/v1/count',
+        };
+        return request(options);
+    };
+    this.getpermit = function(argvs){
+        var options = {
+            method : 'GET',
+            timeout : 3000,
+            uri : config()['rurl'] + `/suppermission/v1/getOneById/${argvs.id}`,
+        };
+        return request(options);
+    };
+    this.getListpermit = function(argvs){
+        var options = {
+            method : 'GET',
+            timeout : 3000,
+            uri : config()['rurl'] + `/suppermission/v1/listOperateById/${argvs.id}`,
+        };
+        return request(options);
+    };
+    this.editSetting = function(argvs){
+        var options = {
+            method : 'PUT',
+            timeout : 3000,
+            uri : config()['rurl'] + `/suppermission/v1/edit/${argvs.id}`,
+            headers:{
+                userToken:argvs.token
+            },
             form:argvs
         };
         return request(options);

@@ -26,7 +26,8 @@ app.controller('marketserveCtrl',function ($scope,$state) {
     $scope.delete = function(){
         if($scope.idList){
             $state.go('root.marketActivity.marketserve.list.delete[12]',{id:$scope.idList});
-            $scope.menuClass = 'deleteMenu'
+            $scope.menuClass = 'deleteMenu';
+            $scope.idList = '';
         }
     };
     //编辑
@@ -34,10 +35,12 @@ app.controller('marketserveCtrl',function ($scope,$state) {
         if($scope.idList){
             $state.go('root.marketActivity.marketserve.edit[12]',{id:$scope.idList});
             $scope.menuClass = 'editMenu'
+            $scope.idList = '';
         }
     };
     $scope.list = function(){
         $scope.menuClass = 'listMenu'
+        $scope.idList = '';
     };
     //添加市场
     $scope.add = function(){
@@ -47,21 +50,24 @@ app.controller('marketserveCtrl',function ($scope,$state) {
     $scope.addcustomer = function(){
         if($scope.idList){
             $state.go('root.marketActivity.marketserve.addcustomer[12]',{id:$scope.idList});
-            $scope.menuClass = 'addcustomerMenu'
+            $scope.menuClass = 'addcustomerMenu';
+            $scope.idList = '';
         }
     };
     //编辑 市场招待信息
     $scope.organize = function(){
         if($scope.idList){
              $state.go('root.marketActivity.marketserve.organize[12]',{id:$scope.idList});
-            $scope.menuClass = 'organizeMenu'
+            $scope.menuClass = 'organizeMenu';
+            $scope.idList = '';
         }
     }
     //编辑 决策层审核信息
     $scope.executiveOpinion = function(){
         if($scope.idList){
              $state.go('root.marketActivity.marketserve.executiveOpinion[12]',{id:$scope.idList});
-            $scope.menuClass = 'executiveOpinionMenu'
+            $scope.menuClass = 'executiveOpinionMenu';
+            $scope.idList = '';
         }
     }
 });

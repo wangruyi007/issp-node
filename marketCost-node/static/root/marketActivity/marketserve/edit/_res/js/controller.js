@@ -2,11 +2,8 @@ var app = angular.module('companyEdit', ['toastr','ipCookie']);
 app.controller('companyEditCtrl', function($scope, marketserveSer,$state,toastr,$stateParams,ipCookie,$location){
     var companyId = {id : $stateParams.id};
     //获取值
-    console.log(companyId.id)
     marketserveSer.getOneById(companyId).then(function(response){
-        console.log(response)
         if(response.data.code==0){
-            console.log(response.data.data)
             $scope.data = response.data.data;
         }
     });

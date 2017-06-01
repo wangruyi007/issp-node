@@ -104,7 +104,7 @@ module.exports = function(){
         return request(options);
     };
     //获取留言列表总条数
-    this.getMessageTotal = function(){
+    this.getMessageTotal = function(argvs){
         var options = {
             method : 'GET',
             timeout : 3000,
@@ -203,7 +203,7 @@ module.exports = function(){
         return request(options);
     };
     //获取总条数互动平台描述
-    this.getDemandTotal = function(){
+    this.getDemandTotal = function(argvs){
         var options = {
             method : 'GET',
             timeout : 3000,
@@ -277,7 +277,7 @@ module.exports = function(){
         return request(options);
     };
     //获取总条数洽谈详情
-    this.getTalkTotal = function(){
+    this.getTalkTotal = function(argvs){
         var options = {
             method : 'GET',
             timeout : 3000,
@@ -351,7 +351,7 @@ module.exports = function(){
         return request(options);
     };
     //获取总条数邮件汇总
-    this.getMailTotal = function(){
+    this.getMailTotal = function(argvs){
         var options = {
             method : 'GET',
             timeout : 3000,
@@ -400,7 +400,7 @@ module.exports = function(){
         return request(options);
     };
     //获取所有地区
-    this.getAllArea = function(){
+    this.getAllArea = function(argvs){
         var options = {
             method : 'GET',
             timeout : 3000,
@@ -411,22 +411,17 @@ module.exports = function(){
         };
         return request(options);
     };
-    //登录退出
-    this.logout = function(argvs){
-        var options = {
-            method : 'POST',
-            timeout : 3000,
-            uri : config()['user'] + `/v1/sign-out/${argvs.token}`,
-            form:argvs
-        };
-        return request(options);
-    };
+
     //权限设置
     this.listSetting = function(argvs){
         var options = {
             method : 'GET',
             timeout : 3000,
             uri : config()['rurl'] + `/cuspermission/v1/list?limit=10&page=${argvs.page}`,
+            headers : {
+                userToken : argvs.userToken
+            }
+
         };
         return request(options);
     };
@@ -460,7 +455,7 @@ module.exports = function(){
             timeout : 3000,
             uri : config()['rurl'] + '/cuspermission/v1/edit',
             headers:{
-                userToken:argvs.token
+                userToken:argvs.userToken
             },
             form:argvs
         };

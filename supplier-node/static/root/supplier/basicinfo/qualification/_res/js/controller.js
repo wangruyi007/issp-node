@@ -1,6 +1,3 @@
-/**
- * Created by ike on 2017/5/3.
- */
 var app = angular.module('qualificationBasic', ['toastr','ng-pagination']);
 app.controller('qualificationBasicCtrl', function($scope, basicinfoSer,$state,toastr,$stateParams,$rootScope,$location){
     //列表
