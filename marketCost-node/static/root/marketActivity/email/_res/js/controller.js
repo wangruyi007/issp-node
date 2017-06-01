@@ -22,6 +22,7 @@ app.controller('emailCtrl',function ($scope,$state) {
     $scope.congeal = function(){
         if($scope.idList){
             $state.go('root.marketActivity.email.list.congeal[12]',{id:$scope.idList});
+            $scope.idList = '';
         }
     };
 
@@ -29,35 +30,41 @@ app.controller('emailCtrl',function ($scope,$state) {
     $scope.delete = function(){
         if($scope.idList){
             $state.go('root.marketActivity.email.list.delete[12]',{id:$scope.idList});
-            $scope.menuClass = 'deleteMenu'
+            $scope.menuClass = 'deleteMenu';
+            $scope.idList = '';
         }
     };
     //冻结
      $scope.congeal = function(){
         if($scope.idList){
             $state.go('root.marketActivity.email.list.congeal[12]',{id:$scope.idList});
-             $scope.menuClass = 'congealMenu'
+             $scope.menuClass = 'congealMenu';
+             $scope.idList = '';
         }
     };
     //解冻
      $scope.unfreeze = function(){
         if($scope.idList){
             $state.go('root.marketActivity.email.list.unfreeze[12]',{id:$scope.idList});
-             $scope.menuClass = 'unfreezeMenu'
+             $scope.menuClass = 'unfreezeMenu';
+             $scope.idList = '';
         }
     };
     //编辑
     $scope.edit = function(){
         if($scope.idList){
             $state.go('root.marketActivity.email.edit[12]',{id:$scope.idList});
-            $scope.menuClass = 'editMenu'
+            $scope.menuClass = 'editMenu';
+            $scope.idList = '';
         }
     };
     $scope.list = function(){
-        $scope.menuClass = 'listMenu'
+        $scope.menuClass = 'listMenu';
+        $scope.idList = '';
     };
     $scope.add = function(){
-        $scope.menuClass = 'addMenu'
+        $scope.menuClass = 'addMenu';
+        $scope.idList = '';
     };
 });
 //自定义过滤器

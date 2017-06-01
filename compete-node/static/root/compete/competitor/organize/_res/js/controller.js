@@ -14,8 +14,8 @@ app.controller('competitorOrganizeCtr',function($scope,competitorSer,$state,toas
             if(response.data.code == 0){
                 toastr.success('温馨提示','添加成功');
                 $state.go('root.compete.competitor.list')
-            }else if(response.data.code == 403){
-                toastr.error( "请登录用户", '温馨提示');
+            }else{
+                toastr.error( response.data.msg , '温馨提示');
             }
         })
     }
