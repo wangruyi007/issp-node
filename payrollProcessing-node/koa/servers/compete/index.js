@@ -13,7 +13,7 @@ module.exports = function(){
             uri : config()['rurl'] + `/confirmed/v1/second/${argvs.id}`,
 
             headers : {
-                userToken : argvs.token
+                userToken : argvs.userToken
             }
         };
         return request(options);
@@ -26,7 +26,7 @@ module.exports = function(){
             uri : config()['rurl'] + `/confirmed/v1/first/${argvs.id}`,
 
             headers : {
-                userToken : argvs.token
+                userToken : argvs.userToken
             }
         };
         return request(options);
@@ -38,7 +38,7 @@ module.exports = function(){
             timeout : 3000,
             uri : config()['rurl'] + `/confirmed/v1/list?limit=10&page=${argvs.page}`,
             headers : {
-                userToken : argvs.token
+                userToken : argvs.userToken
             }
         };
         return request(options);
@@ -51,7 +51,7 @@ module.exports = function(){
             timeout : 3000,
             uri : config()['rurl'] + '/invoicesubmit/v1/count',
             headers : {
-                userToken : argvs.token
+                userToken : argvs.userToken
             }
         };
         return request(options);
@@ -89,7 +89,7 @@ module.exports = function(){
             timeout : 3000,
             uri : config()['rurl'] + `/invoicesubmit/v1/list?limit=10&page=${argvs.page}`,
             headers : {
-                userToken : argvs.token
+                userToken : argvs.userToken
             }
         };
         return request(options);
@@ -114,7 +114,7 @@ module.exports = function(){
             timeout : 3000,
             uri : config()['rurl'] + `/invoicesubmit/v1/find/${argvs.id}`,
             headers : {
-                userToken : argvs.token
+                userToken : argvs.userToken
             }
         };
         return request(options);
@@ -128,7 +128,7 @@ module.exports = function(){
             uri : config()['rurl'] + `/payed/v1/second/${argvs.id}`,
 
             headers : {
-                userToken : argvs.token
+                userToken : argvs.userToken
             }
         };
         return request(options);
@@ -141,7 +141,7 @@ module.exports = function(){
             uri : config()['rurl'] + `/payed/v1/first/${argvs.id}`,
 
             headers : {
-                userToken : argvs.token
+                userToken : argvs.userToken
             }
         };
         return request(options);
@@ -153,7 +153,7 @@ module.exports = function(){
             timeout : 3000,
             uri : config()['rurl'] + `/payed/v1/list?limit=10&page=${argvs.page}`,
             headers : {
-                userToken : argvs.token
+                userToken : argvs.userToken
             }
         };
         return request(options);
@@ -179,7 +179,7 @@ module.exports = function(){
             timeout : 3000,
             uri : config()['rurl'] + '/salaryconfirm/v1/count',
             headers : {
-                userToken : argvs.token
+                userToken : argvs.userToken
             }
         };
         return request(options);
@@ -191,7 +191,7 @@ module.exports = function(){
             timeout : 3000,
             uri : config()['rurl'] + '/salaryconfirm/v1/areas',
             headers : {
-                userToken : argvs.token
+                userToken : argvs.userToken
             }
         };
         return request(options);
@@ -229,7 +229,7 @@ module.exports = function(){
             timeout : 3000,
             uri : config()['rurl'] + `/salaryconfirm/v1/list?limit=10&page=${argvs.page}`,
             headers : {
-                userToken : argvs.token
+                userToken : argvs.userToken
             }
         };
         return request(options);
@@ -241,7 +241,7 @@ module.exports = function(){
             timeout : 3000,
             uri : config()['rurl'] + `/salaryconfirm/v1/find/${argvs.id}`,
             headers : {
-                userToken : argvs.token
+                userToken : argvs.userToken
             }
         };
         return request(options);
@@ -255,7 +255,7 @@ module.exports = function(){
             timeout : 3000,
             uri : config()['rurl'] + '/salaryconfirm/v1/departments',
             headers : {
-                userToken : argvs.token
+                userToken : argvs.userToken
             }
         };
         return request(options);
@@ -267,7 +267,7 @@ module.exports = function(){
             timeout : 3000,
             uri : config()['rurl'] + '/salaryconfirm/v1/positions',
             headers : {
-                userToken : argvs.token
+                userToken : argvs.userToken
             }
         };
         return request(options);
@@ -279,7 +279,7 @@ module.exports = function(){
             timeout : 3000,
             uri : config()['rurl'] + '/salaryconfirm/v1/users',
             headers : {
-                userToken : argvs.token
+                userToken : argvs.userToken
             }
         };
         return request(options);
@@ -291,7 +291,7 @@ module.exports = function(){
             timeout : 3000,
             uri : config()['rurl'] + '/salaryconfirm/v1/import',
             headers : {
-                userToken : argvs.token
+                userToken : argvs.userToken
             }
         };
         return request(options);
@@ -303,7 +303,7 @@ module.exports = function(){
             timeout : 3000,
             uri : config()['rurl'] + '/salaryconfirm/v1/export',
             headers : {
-                userToken : argvs.token
+                userToken : argvs.userToken
             }
         };
         return request(options);
@@ -316,7 +316,7 @@ module.exports = function(){
             timeout : 3000,
             uri : config()['rurl'] + '/condition/v1/departments',
             headers : {
-                userToken : argvs.token
+                userToken : argvs.userToken
             }
         };
         return request(options);
@@ -328,7 +328,7 @@ module.exports = function(){
             timeout : 3000,
             uri : config()['rurl'] + '/department/v1/collect'+urlEncode(argvs,true),
             headers : {
-                userToken : argvs.token
+                userToken : argvs.userToken
             }
         };
         return request(options);
@@ -340,7 +340,7 @@ module.exports = function(){
             timeout : 3000,
             uri : config()['rurl'] + '/condition/v1/areas',
             headers : {
-                userToken : argvs.token
+                userToken : argvs.userToken
             }
         };
         return request(options);
@@ -352,7 +352,7 @@ module.exports = function(){
             timeout : 3000,
             uri : config()['rurl'] + '/department/v1/analyze'+urlEncode(argvs,true),
             headers : {
-                userToken : argvs.token
+                userToken : argvs.userToken
             }
         };
         return request(options);
@@ -364,7 +364,7 @@ module.exports = function(){
             timeout : 3000,
             uri : config()['rurl'] + '/user/v1/collect'+urlEncode(argvs,true),
             headers : {
-                userToken : argvs.token
+                userToken : argvs.userToken
             }
         };
         return request(options);
@@ -376,7 +376,7 @@ module.exports = function(){
             timeout : 3000,
             uri : config()['rurl'] + '/area/v1/analyze'+urlEncode(argvs,true),
             headers : {
-                userToken : argvs.token
+                userToken : argvs.userToken
             }
         };
         return request(options);
@@ -388,7 +388,7 @@ module.exports = function(){
             timeout : 3000,
             uri : config()['rurl'] + '/user/v1/analyze'+urlEncode(argvs,true),
             headers : {
-                userToken : argvs.token
+                userToken : argvs.userToken
             }
         };
         return request(options);
@@ -400,7 +400,7 @@ module.exports = function(){
             timeout : 3000,
             uri : config()['rurl'] + '/condition/v1/users',
             headers : {
-                userToken : argvs.token
+                userToken : argvs.userToken
             }
         };
         return request(options);
@@ -412,7 +412,7 @@ module.exports = function(){
             timeout : 3000,
             uri : config()['rurl'] + '/area/v1/collect'+urlEncode(argvs,true),
             headers : {
-                userToken : argvs.token
+                userToken : argvs.userToken
             }
         };
         return request(options);
@@ -426,7 +426,7 @@ module.exports = function(){
             uri : config()['rurl'] + `/waitconfirm/v1/confirm/${argvs.id}`,
             
             headers : {
-                userToken : argvs.token
+                userToken : argvs.userToken
             }
         };
         console.log(argvs)
@@ -439,7 +439,7 @@ module.exports = function(){
             timeout : 3000,
             uri : config()['rurl'] + `/waitconfirm/v1/list?limit=10&page=${argvs.page}`,
             headers : {
-                userToken : argvs.token
+                userToken : argvs.userToken
             }
         };
         return request(options);
