@@ -31,25 +31,25 @@
     <ul class="sum-list">
         <li class="sum-thead">
             <span>一级科目</span>
-            <span ng-hide="showed">二级科目</span>
-            <span ng-hide="showed">三级科目</span>
+            <span>二级科目</span>
+            <span>三级科目</span>
             <span>借方金额</span>
             <span>贷方金额</span>
-            <span ng-hide="showed">凭证日期</span>
-            <span ng-hide="showed">地区</span>
-            <span ng-hide="showed">项目组</span>
-            <span ng-hide="showed">项目名称</span>
+            <span>凭证日期</span>
+            <span>地区</span>
+            <span>项目组</span>
+            <span>项目名称</span>
         </li>
         <li class="sum-tbody" ng-repeat="Lists in summaryLists">
             <span>{{::Lists.firstSubject}}</span>
-            <span ng-hide="showed">{{::Lists.secondSubject}}</span>
-            <span ng-hide="showed">{{::Lists.thirdSubject}}</span>
+            <span>{{::Lists.secondSubject}}</span>
+            <span>{{::Lists.thirdSubject}}</span>
             <span>{{::Lists.borrowMoney}}</span>
             <span>{{::Lists.loanMoney}}</span>
-            <span ng-hide="showed">{{::Lists.voucherDate}}</span>
-            <span ng-hide="showed">{{::Lists.area}}</span>
-            <span ng-hide="showed">{{::Lists.projectGroup}}</span>
-            <span ng-hide="showed">{{::Lists.projectName}}</span>
+            <span>{{::Lists.voucherDate}}</span>
+            <span>{{::Lists.area}}</span>
+            <span>{{::Lists.projectGroup}}</span>
+            <span>{{::Lists.projectName}}</span>
         </li>
     </ul>
 </div>
