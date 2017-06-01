@@ -9,7 +9,7 @@ app.controller('emailAddCtrl', function($scope, emailSer,$state,toastr,$location
         emailSer.addSummery(data).then(function(response){
             if(response.data.code == 0){
                 $state.go('root.marketActivity.email.list');
-                toastr.success( "竞争对手已成功添加", '温馨提示');
+                toastr.success( "成功添加", '温馨提示');
             }else if(response.data.code==403  || response.data.code==401){
                 toastr.error( "请登录用户,3秒后跳至登陆页面", '温馨提示');
                 var absurl = $location.absUrl();
@@ -17,6 +17,8 @@ app.controller('emailAddCtrl', function($scope, emailSer,$state,toastr,$location
                 setTimeout(function(){
                     window.location.href='http://localhost/login'
                 },3000)
+            }else{
+                toastr.error(response.data.msg ,'温馨提示');
             }
         });
 

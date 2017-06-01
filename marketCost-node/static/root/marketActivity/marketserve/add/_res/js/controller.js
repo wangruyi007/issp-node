@@ -17,7 +17,7 @@ app.controller('marketserveAddCtrl', function($scope, marketserveSer,$state,toas
                 setTimeout(function(){
                     window.location.href='http://localhost/login'
                 },3000)
-            }else if(response.data.code == 1){
+            }else{
                 toastr.error( response.data.msg, '温馨提示');
             }
         });
