@@ -2,11 +2,8 @@ var app = angular.module('companyEdit', ['toastr','ipCookie']);
 app.controller('companyEditCtrl', function($scope, marketserveSer,$state,toastr,$stateParams,ipCookie,$location){
     var companyId = {id : $stateParams.id};
     //获取值
-    console.log(companyId.id)
     marketserveSer.getOneById(companyId).then(function(response){
-        console.log(response)
         if(response.data.code==0){
-            console.log(response.data.data)
             $scope.data = response.data.data;
         }
     });
@@ -27,7 +24,7 @@ app.controller('companyEditCtrl', function($scope, marketserveSer,$state,toastr,
                 setTimeout(function(){
                     window.location.href='http://localhost/login'
                 },3000)
-            }else if(response.data.code == 1){
+            }else{
                 toastr.error( response.data.msg, '温馨提示');
             }
         })

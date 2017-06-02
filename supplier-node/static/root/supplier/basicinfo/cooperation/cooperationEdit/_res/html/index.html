@@ -20,11 +20,11 @@
                 </li>
                 <li>
                     <label><em>合作时间</em></label>
-                    <input type="text" ng-model="editInfo.cooperationTime">
+                    <input type="text" ng-model="editInfo.cooperationTime" onClick="laydate({istime: true, format: 'YYYY-MM-DD'})" class="add_image cooperationTime" >
                 </li>
                 <li>
                     <label><em>合作期限</em></label>
-                    <input type="text" ng-model="editInfo.cooperationTerm">
+                    <input type="text" ng-model="editInfo.cooperationTerm" onClick="laydate({istime: true, format: 'YYYY-MM-DD'})" class="add_image cooperationTerm" >
                 </li>
             </ul>
         </section>

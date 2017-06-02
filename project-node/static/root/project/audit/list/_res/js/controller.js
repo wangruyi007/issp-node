@@ -1,5 +1,5 @@
-var app = angular.module('auditList', ['ng-pagination','toastr']);
-app.controller('auditListCtrl',function($scope,auditSer,toastr) {
+var app = angular.module('auditList', ['ng-pagination','toastr','ipCookie']);
+app.controller('auditListCtrl',function($scope,auditSer,toastr,ipCookie,$location) {
    //选择
     $scope.selectList = function(event){
         angular.forEach($scope.auditLists.data,function(obj){
@@ -27,8 +27,8 @@ app.controller('auditListCtrl',function($scope,auditSer,toastr) {
         auditSer.listAudit(listData).then(function(response){
             if(response.data.code==0){
                 $scope.auditLists = response.data
-            }else{
-                toastr.error( "请求超时，请联系管理员", '温馨提示');
+            }else if(response.data.code==1){
+                toastr.error( response.data.msg, '温馨提示');
             }
         });
         $scope.collect = function(){
@@ -40,8 +40,8 @@ app.controller('auditListCtrl',function($scope,auditSer,toastr) {
             auditSer.countAudit2($scope.saleNum,$scope.signProjectCondition).then(function (response) {
                 if(response.data.code==0){
                     $scope.abili.itemsCount = response.data.data;
-                }else{
-                    toastr.error( "请求超时，请联系管理员", '温馨提示');
+                }else if(response.data.code==1){
+                    toastr.error( response.data.msg, '温馨提示');
                 }
             })
             var data = {
@@ -52,8 +52,8 @@ app.controller('auditListCtrl',function($scope,auditSer,toastr) {
             auditSer.searchAudit(data).then(function(response){
                 if(response.data.code == 0){
                     $scope.auditLists = response.data
-                }else if(response.data.code==403){
-                    toastr.error( "请登录用户", '温馨提示');
+                }else if(response.data.code==1){
+                    toastr.error( response.data.msg, '温馨提示');
                 }
             });
         };
@@ -66,8 +66,8 @@ app.controller('auditListCtrl',function($scope,auditSer,toastr) {
     auditSer.countAudit().then(function(response){
         if(response.data.code==0){
             $scope.abili.itemsCount = response.data.data;
-        }else{
-            toastr.error( "请求超时，请联系管理员", '温馨提示');
+        }else if(response.data.code==1){
+            toastr.error( response.data.msg, '温馨提示');
         }
     });
     //删除

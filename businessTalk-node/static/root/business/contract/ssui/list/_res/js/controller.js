@@ -1,11 +1,10 @@
-/**
- * Created by ike on 2017/4/13.
- */
 var app = angular.module('ssuiList', ['ng-pagination','toastr']);
 app.controller('ssuiListCtrl',function($scope,ssuiSer,toastr) {
-    $scope.companySearchFun = function(){
-        $scope.teamInfo = {};
-    };
+    //监听切换搜索是否出现
+    $scope.$on('iSsearch',function(event,newIs){
+        $scope.isView = newIs;
+    });
+    
    //选择
     $scope.selectList = function(event){
         angular.forEach($scope.marketserveLists.data,function(obj){
@@ -34,9 +33,43 @@ app.controller('ssuiListCtrl',function($scope,ssuiSer,toastr) {
             if(response.data.code==0){
                 $scope.marketserveLists = response.data
             }else{
-                toastr.error( "请求超时，请联系管理员", '温馨提示');
+                toastr.error( response.data.msg, '温馨提示');
             }
         });
+
+        //搜索功能
+        $scope.collect = function(){
+            $scope.abili = {
+                itemsCount: 12,//总条数
+                take: 10,        //每页显示
+                activatePage: activatePage, //当前页
+            };
+            var keywords = {
+                communicateUser: $scope.communicateUser,
+                communicateObj: $scope.communicateObj,
+                projectResult: $scope.projectResult
+            };
+            ssuiSer.searchCount(keywords).then(function (response) {
+                if(response.data.code==0){
+                    $scope.abili.itemsCount = response.data.data;
+                }else{
+                    toastr.error( response.data.msg, '温馨提示');
+                }
+            });
+            var data = {
+                communicateUser: $scope.communicateUser,
+                communicateObj: $scope.communicateObj,
+                projectResult: $scope.projectResult,
+                page: page
+            };
+            ssuiSer.searchList(data).then(function(response){
+                if(response.data.code == 0){
+                    $scope.marketserveLists = response.data
+                }else{
+                    toastr.error( response.data.msg, '温馨提示');
+                }
+            });
+        };
     }
     $scope.abili = {
         itemsCount: 9, //总条数
@@ -47,7 +80,7 @@ app.controller('ssuiListCtrl',function($scope,ssuiSer,toastr) {
         if(response.data.code == 0){
             $scope.abili.itemsCount = response.data.data;
         }else{
-            toastr.error( "请求超时，请联系管理员", '温馨提示');
+            toastr.error( response.data.msg, '温馨提示');
         }
     });
     //删除
@@ -58,4 +91,6 @@ app.controller('ssuiListCtrl',function($scope,ssuiSer,toastr) {
             }
         })
     });
+    // 搜索功能
+    $scope.titles = ['洽谈人','洽谈对象','项目结果'];
 });

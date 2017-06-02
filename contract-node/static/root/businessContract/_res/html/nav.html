@@ -1,0 +1,24 @@
+<div class="nav-list">
+    <h3 class="header-menu big"><i class="nav-arrow"></i>商务合同管理</h3>
+    <ul class="menu">
+        <li ng-click="navClass('signingProject')" ng-class="{'active':navCla=='signingProject'}"  ui-sref="_root.businessContract.signingProject.list">
+            <a href="javascript:void(0)">项目签订与立项</a>
+        </li>
+        <li ng-click="navClass('basicInfo')" ng-class="{'active':navCla=='basicInfo'}" ui-sref="_root.businessContract.basicInfo.list">
+            <a href="javascript:void(0)">项目合同基本信息</a>
+        </li>
+        <li ng-click="navClass('dispatchList')" ng-class="{'active':navCla=='dispatchList'}" ui-sref="_root.businessContract.dispatchList.list">
+            <a href="javascript:void(0)">派工单信息</a>
+        </li>
+        <li ng-click="navClass('contractType')" ng-class="{'active':navCla=='contractType'}" ui-sref="_root.businessContract.contractType.list">
+            <a href="javascript:void(0)">合同类型</a>
+        </li>
+        <li ng-click="navClass('mailSummary')" ng-class="{'active':navCla=='mailSummary'}" ui-sref="_root.businessContract.mailSummary.list">
+            <a href="javascript:void(0)">汇总和邮件发送</a>
+        </li>
+    </ul>
+    <h3 class="header-menu big"><i class="nav-arrow"></i>设置</h3>
+    <ul class="menu">
+        <li ng-click="navClass('setting')" ng-class="{'active':navCla=='setting'}"  ui-sref="_root.businessContract.setting.list[12]" ><a href="javascript:void(0)">设置</a></li>
+    </ul>
+</div>

@@ -1,6 +1,3 @@
-/**
- * Created by ike on 2017/4/13.
- */
 var app = angular.module('personDemandList', []);
 app.config(function($provide, $stateProvider){
     $stateProvider.state("root.projectmeasure.manage.personDemand.list",{

@@ -1,6 +1,3 @@
-/**
- * Created by ike on 2017/4/18.
- */
 var app = angular.module('ssuiEdit', ['toastr','ipCookie']);
 app.controller('ssuiEditCtrl', function($scope, ssuiSer,$state,toastr,$stateParams,ipCookie,$location){
     var companyId = {id : $stateParams.id};
@@ -27,6 +24,8 @@ app.controller('ssuiEditCtrl', function($scope, ssuiSer,$state,toastr,$statePara
                 setTimeout(function(){
                     window.location.href='http://localhost/login'
                 },3000)
+            }else if(response.data.code == 1){
+                toastr.error( response.data.msg, '温馨提示');
             }
         })
     }

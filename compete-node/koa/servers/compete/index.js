@@ -149,7 +149,7 @@ module.exports = function(){
         return request(options);
     };
     //添加邮件
-    this.emailAdd = function(argvs){//
+    this.emailAdd = function(argvs){
         var options = {
             method : 'POST',
             timeout : 3000,
@@ -205,15 +205,6 @@ module.exports = function(){
             headers:{
                 userToken : argvs.userToken
             }
-        };
-        return request(options);
-    };
-    this.logout = function(argvs){
-        var options = {
-            method : 'POST',
-            timeout : 3000,
-            uri : config()['user'] + `/v1/sign-out/${argvs.token}`,
-            form:argvs
         };
         return request(options);
     };

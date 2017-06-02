@@ -1,8 +1,5 @@
-/**
- * Created by ike on 2017/4/13.
- */
-var app = angular.module('personDemandList', ['ng-pagination','toastr']);
-app.controller('personDemandListCtrl',function($scope,marketserveSer,toastr) {
+var app = angular.module('personDemandList', ['ng-pagination','toastr','ipCookie']);
+app.controller('personDemandListCtrl',function($scope,marketserveSer,toastr,ipCookie,$location) {
     $scope.companySearchFun = function(){
         $scope.teamInfo = {};
     };
@@ -34,7 +31,7 @@ app.controller('personDemandListCtrl',function($scope,marketserveSer,toastr) {
             if(response.data.code==0){
                 $scope.marketserveLists = response.data
             }else{
-                toastr.error( "请求超时，请联系管理员", '温馨提示');
+                toastr.error( response.data.msg, '温馨提示');
             }
         });
     }

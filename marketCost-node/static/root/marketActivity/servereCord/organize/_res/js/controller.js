@@ -21,6 +21,8 @@ app.controller('servereCordOrganizeCtr',function($scope,servereCordSer,$state,to
                 setTimeout(function(){
                     window.location.href='http://localhost/login'
                 },3000)
+            }else {
+                toastr.error( response.data , '温馨提示')
             }
         })
     }

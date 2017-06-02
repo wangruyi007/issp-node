@@ -1,8 +1,5 @@
-/**
- * Created by ike on 2017/4/13.
- */
-var app = angular.module('basicinfoList', ['ng-pagination','toastr']);
-app.controller('basicinfoListCtrl',function($scope,basicinfoSer,toastr) {
+var app = angular.module('basicinfoList', ['ng-pagination','toastr','ipCookie']);
+app.controller('basicinfoListCtrl',function($scope,basicinfoSer,toastr,ipCookie,$location) {
     $scope.companySearchFun = function(){
         $scope.teamInfo = {};
     };
@@ -34,7 +31,7 @@ app.controller('basicinfoListCtrl',function($scope,basicinfoSer,toastr) {
             if(response.data.code==0){
                 $scope.marketserveLists = response.data
             }else{
-                toastr.error( "请求超时，请联系管理员", '温馨提示');
+                toastr.error( response.data.msg, '温馨提示');
             }
         });
     }
@@ -46,8 +43,8 @@ app.controller('basicinfoListCtrl',function($scope,basicinfoSer,toastr) {
     basicinfoSer.countBaseInfo1().then(function(response){
         if(response.data.code == 0){
             $scope.abili.itemsCount = response.data.data;
-        }else{
-            toastr.error( "请求超时，请联系管理员", '温馨提示');
+        }else if(response.data.code == 1){
+            toastr.error( response.data.msg , '温馨提示');
         }
     });
     //删除

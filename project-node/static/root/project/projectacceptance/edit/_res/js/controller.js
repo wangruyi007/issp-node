@@ -5,6 +5,8 @@ app.controller('projectacceptanceEditCtrl', function($scope, projectacceptanceSe
     projectacceptanceSer.getAcceptanceById(acceptanceId).then(function(response){
         if(response.data.code==0){
             $scope.editInfo = response.data.data;
+        }else if(response.data.code==1){
+            toastr.error( response.data.msg, '温馨提示');
         }
     });
     $scope.acceptanceProjectEditFun = function(){
@@ -21,6 +23,8 @@ app.controller('projectacceptanceEditCtrl', function($scope, projectacceptanceSe
                 setTimeout(function(){
                     window.location.href='http://localhost/login'
                 },2000)
+            }else if(response.data.code==1){
+                toastr.error( response.data.msg, '温馨提示');
             }
         });
     };

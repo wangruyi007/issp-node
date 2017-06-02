@@ -2,6 +2,7 @@ var request = require('request-promise');
 var path = require('path');
 var config = require(path.resolve('plugins/read-config.js'));
 var form = require(path.resolve('plugins/form.js'));
+var urlEncode = require(path.resolve('plugins/urlEncode.js'));
 module.exports = function(){
 
     this.problemList = function(argvs){
@@ -9,8 +10,8 @@ module.exports = function(){
             method : 'GET',
             timeout : 3000,
             uri : config()['rurl'] + `/problemaccept/v1/list?limit=10&page=${argvs.page}`,
-            headers : {
-                // token : token
+            headers:{
+                userToken:argvs.userToken
             }
         };
         return request(options);
@@ -20,10 +21,10 @@ module.exports = function(){
         var options = {
             method : 'POST',
             timeout : 3000,
-            uri : config()['rurl'] + `/problemaccept/v1/add?userToken=${argvs.userToken}`,
+            uri : config()['rurl'] + `/problemaccept/v1/add`,
             form:argvs,
             headers : {
-                // token : token
+                userToken : argvs.userToken
             }
         };
         return request(options);
@@ -33,8 +34,11 @@ module.exports = function(){
         var options = {
             method : 'POST',
             timeout : 3000,
-            uri : config()['rurl'] + `/problemaccept/v1/edit?userToken=${argvs.userToken}`,
-            form:argvs
+            uri : config()['rurl'] + `/problemaccept/v1/edit`,
+            form:argvs,
+            headers : {
+                userToken : argvs.userToken
+            }
         };
         return request(options);
     };
@@ -44,16 +48,22 @@ module.exports = function(){
         var options = {
             method : 'DELETE',
             timeout : 3000,
-            uri : config()['rurl'] + `/problemaccept/v1/delete/${argvs.id}?userToken=${argvs.userToken}`
+            uri : config()['rurl'] + `/problemaccept/v1/delete/${argvs.id}`,
+            headers : {
+                userToken : argvs.userToken
+            }
         };
         return request(options);
     };
     //获取总条数
-    this.getProblemTotal = function(){
+    this.getProblemTotal = function(argvs){
         var options = {
             method : 'GET',
             timeout : 3000,
-            uri : config()['rurl'] + '/problemaccept/v1/count'
+            uri : config()['rurl'] + '/problemaccept/v1/count',
+            headers:{
+                userToken:argvs.userToken
+            }
         };
         return request(options);
     };
@@ -62,7 +72,10 @@ module.exports = function(){
         var options = {
             method : 'GET',
             timeout : 3000,
-            uri : config()['rurl'] + `/problemaccept/v1/problem/${argvs.id}`
+            uri : config()['rurl'] + `/problemaccept/v1/problem/${argvs.id}`,
+            headers:{
+                userToken:argvs.userToken
+            }
         };
         return request(options);
     };
@@ -71,7 +84,10 @@ module.exports = function(){
         var options = {
             method : 'GET',
             timeout : 3000,
-            uri : config()['rurl'] + `/problemhandlingresult/v1/list?limit=10&page=${argvs.page}`
+            uri : config()['rurl'] + `/problemhandlingresult/v1/list?limit=10&page=${argvs.page}`,
+            headers:{
+                userToken:argvs.userToken
+            }
         };
         return request(options);
     };
@@ -80,8 +96,11 @@ module.exports = function(){
         var options = {
             method : 'POST',
             timeout : 3000,
-            uri : config()['rurl'] + `/problemhandlingresult/v1/add?userToken=${argvs.userToken}`,
-            form:argvs
+            uri : config()['rurl'] + `/problemhandlingresult/v1/add`,
+            form:argvs,
+            headers : {
+                userToken : argvs.userToken
+            }
         };
         return request(options);
     };
@@ -90,8 +109,11 @@ module.exports = function(){
         var options = {
             method : 'POST',
             timeout : 3000,
-            uri : config()['rurl'] + `/problemhandlingresult/v1/edit?userToken=${argvs.userToken}`,
-            form:argvs
+            uri : config()['rurl'] + `/problemhandlingresult/v1/edit`,
+            form:argvs,
+            headers : {
+                userToken : argvs.userToken
+            }
         };
         return request(options);
     };
@@ -101,19 +123,22 @@ module.exports = function(){
         var options = {
             method : 'DELETE',
             timeout : 3000,
-            uri : config()['rurl'] + `/problemhandlingresult/v1/delete/${argvs.id}?userToken=${argvs.userToken}`,
-            // headers : {
-            //      userToken : argvs.userToken  ///!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-            // }
+            uri : config()['rurl'] + `/problemhandlingresult/v1/delete/${argvs.id}`,
+            headers : {
+                userToken : argvs.userToken
+            }
         };
         return request(options);
     };
     //获取总条数
-    this.getConfirmTotal = function(){
+    this.getConfirmTotal = function(argvs){
         var options = {
             method : 'GET',
             timeout : 3000,
-            uri : config()['rurl'] + '/problemhandlingresult/v1/count'
+            uri : config()['rurl'] + '/problemhandlingresult/v1/count',
+            headers:{
+                userToken:argvs.userToken
+            }
         };
         return request(options);
     };
@@ -122,7 +147,10 @@ module.exports = function(){
         var options = {
             method : 'GET',
             timeout : 3000,
-            uri : config()['rurl'] + `/problemhandlingresult/v1/result/${argvs.id}`
+            uri : config()['rurl'] + `/problemhandlingresult/v1/result/${argvs.id}`,
+            headers:{
+                userToken:argvs.userToken
+            }
         };
         return request(options);
     };
@@ -132,8 +160,8 @@ module.exports = function(){
             method : 'GET',
             timeout : 3000,
             uri : config()['rurl'] + `/involvedprocessingtask/v1/list?limit=10&page=${argvs.page}`,
-            headers : {
-                // token : token
+            headers:{
+                userToken:argvs.userToken
             }
         };
         return request(options);
@@ -143,10 +171,10 @@ module.exports = function(){
         var options = {
             method : 'POST',
             timeout : 3000,
-            uri : config()['rurl'] + `/involvedprocessingtask/v1/add?userToken=${argvs.userToken}`,
+            uri : config()['rurl'] + `/involvedprocessingtask/v1/add`,
             form:argvs,
             headers : {
-                // token : token
+                userToken : argvs.userToken
             }
         };
         return request(options);
@@ -156,8 +184,11 @@ module.exports = function(){
         var options = {
             method : 'POST',
             timeout : 3000,
-            uri : config()['rurl'] + `/involvedprocessingtask/v1/edit?userToken=${argvs.userToken}`,
-            form:argvs
+            uri : config()['rurl'] + `/involvedprocessingtask/v1/edit`,
+            form:argvs,
+            headers : {
+                userToken : argvs.userToken
+            }
         };
         return request(options);
     };
@@ -167,16 +198,22 @@ module.exports = function(){
         var options = {
             method : 'DELETE',
             timeout : 3000,
-            uri : config()['rurl'] + `/involvedprocessingtask/v1/delete/${argvs.id}?userToken=${argvs.userToken}`,
+            uri : config()['rurl'] + `/involvedprocessingtask/v1/delete/${argvs.id}`,
+            headers : {
+                userToken : argvs.userToken
+            }
         };
         return request(options);
     };
     //获取总条数
-    this.getTaskTotal = function(){
+    this.getTaskTotal = function(argvs){
         var options = {
             method : 'GET',
             timeout : 3000,
-            uri : config()['rurl'] + '/involvedprocessingtask/v1/count'
+            uri : config()['rurl'] + '/involvedprocessingtask/v1/count',
+            headers:{
+                userToken:argvs.userToken
+            }
         };
         return request(options);
     };
@@ -185,7 +222,10 @@ module.exports = function(){
         var options = {
             method : 'GET',
             timeout : 3000,
-            uri : config()['rurl'] + `/involvedprocessingtask/v1/task/${argvs.id}`
+            uri : config()['rurl'] + `/involvedprocessingtask/v1/task/${argvs.id}`,
+            headers:{
+                userToken:argvs.userToken
+            }
         };
         return request(options);
     };
@@ -194,17 +234,70 @@ module.exports = function(){
         var options = {
             method : 'GET',
             timeout : 3000,
-            uri : config()['rurl'] + `/problemhandlingresult/v1/collect?area=${encodeURIComponent(argvs)}`,
-            form:argvs
+            uri : config()['rurl'] + '/problemhandlingresult/v1/collect?areas='+encodeURIComponent(argvs),
+            headers:{
+                userToken:argvs.userToken
+            }
         };
         return request(options);
     };
     //获取所有地区
-    this.getAllArea = function(){
+    this.getAllArea = function(argvs){
         var options = {
             method : 'GET',
             timeout : 3000,
-            uri : config()['rurl'] + '/problemhandlingresult/v1/area'
+            uri : config()['rurl'] + '/problemhandlingresult/v1/area',
+            headers:{
+                userToken:argvs.userToken
+            }
+        };
+        return request(options);
+    };
+    //权限设置
+    this.listSetting = function(argvs){
+        var options = {
+            method : 'GET',
+            timeout : 3000,
+            uri : config()['rurl'] + `/propermission/v1/list?limit=10&page=${argvs.page}`,
+            headers:{
+                userToken:argvs.userToken
+            }
+        };
+        return request(options);
+    };
+    this.countSetting = function(){
+        var options = {
+            method : 'GET',
+            timeout : 3000,
+            uri : config()['rurl'] + '/propermission/v1/count',
+        };
+        return request(options);
+    };
+    this.getpermit = function(argvs){
+        var options = {
+            method : 'GET',
+            timeout : 3000,
+            uri : config()['rurl'] + `/propermission/v1/getOneById/${argvs.id}`,
+        };
+        return request(options);
+    };
+    this.getListpermit = function(argvs){
+        var options = {
+            method : 'GET',
+            timeout : 3000,
+            uri : config()['rurl'] + `/propermission/v1/listOperateById/${argvs.id}`,
+        };
+        return request(options);
+    };
+    this.editSetting = function(argvs){
+        var options = {
+            method : 'PUT',
+            timeout : 3000,
+            uri : config()['rurl'] + '/propermission/v1/edit',
+            headers:{
+                userToken:argvs.token
+            },
+            form:argvs
         };
         return request(options);
     };

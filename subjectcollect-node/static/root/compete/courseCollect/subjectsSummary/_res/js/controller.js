@@ -5,24 +5,27 @@ app.controller('subjectsSummaryCtrl', function($scope, courseCollectSer,toastr,$
     courseCollectSer.subjectsOne().then(function(response){
         if(response.data.code == 0){
             $scope.firstLevel = response.data.data;
+            
         }
     });
     $scope.changSelect = function(){
-        var data={firstSel:$scope.firstSubject};
+        var data={firstSub:$scope.firstSubject};
         courseCollectSer.subjectsTwo(data).then(function(response){
             if(response.data.code == 0){
                 $scope.secondLevel = response.data.data;
+                
             }
         });
     };
     $scope.changThird = function(){
         var data={
-            firstSel:$scope.firstSubject,
-            secondSel:$scope.secondSubject
+            firstSub:$scope.firstSubject,
+            secondSub:$scope.secondSubject
         };
         courseCollectSer.subjectsThree(data).then(function(response){
             if(response.data.code == 0){
                 $scope.thirdLevel = response.data.data;
+                
             }
         });
     };
@@ -45,13 +48,8 @@ app.controller('subjectsSummaryCtrl', function($scope, courseCollectSer,toastr,$
                     $scope.showed = false;
                 }
                 $scope.summaryLists = response.data.data;
-            }else if(response.data.code==403||response.data.code==401){
-                toastr.error( "请登录用户,2秒后跳至登陆页面", '温馨提示');
-                var absurl = $location.absUrl();
-                ipCookie('absurl', absurl,{ expires:3,expirationUnit: 'minutes' });
-                setTimeout(function(){
-                    window.location.href='http://localhost/login'
-                },2000)
+            }else{
+                toastr.error( response.data.msg, '温馨提示');
             }
         })
     };

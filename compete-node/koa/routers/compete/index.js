@@ -257,22 +257,13 @@ module.exports = function(){
                     $self.status = 408;
                 }
             }));
-    }).get('/user/logout', function*(){//退出用户
-        var $self = this;
-        var token = {token:$self.cookies.get('token')};
-        yield (server().logout(token)
-            .then((parsedBody) =>{
-                var responseText = JSON.parse(parsedBody);
-                if(responseText.code==0){
-                    $self.cookies.set('token','');
-                    $self.body = responseText;
-                }
-
-            }).catch((error) =>{
-                $self.set('Content-Type','application/json;charset=utf-8');
-                $self.body=error.error;
-                console.error(error.error);
-            }));
+    }).get('/user/logout', function*(next){
+        var url = this.request.query;
+        this.cookies.set("absUrl",url.absurl);
+        this.body = {
+            code:0,
+            msg:"重定向"
+        };
     }).get('/listSetting', function*(){
         var $self = this;
         var setting = this.request.query;

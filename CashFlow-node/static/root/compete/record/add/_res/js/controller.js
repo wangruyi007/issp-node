@@ -1,5 +1,26 @@
 var app = angular.module('recordAdd', ['toastr','ipCookie']);
 app.controller('recordAddCtrl', function($scope, recordSer,$state,toastr,ipCookie,$location){
+    // 地区
+    recordSer.areas().then(function(response){
+        if(response.data.code == 0){
+            $scope.areas = response.data.data;
+            console.log($scope.areas)
+        }
+    });
+    // 项目名称
+    recordSer.projects().then(function(response){
+        if(response.data.code == 0){
+            $scope.projects = response.data.data;
+            console.log($scope.projects)
+        }
+    });
+    // 项目组
+    recordSer.projectGroups().then(function(response){
+        if(response.data.code == 0){
+            $scope.projectGroups = response.data.data;
+            console.log($scope.projectGroups)
+        }
+    });
     //添加个人能力
     $scope.recordAddFun = function(){
         var d =  angular.element('.time').val();
@@ -21,6 +42,8 @@ app.controller('recordAddCtrl', function($scope, recordSer,$state,toastr,ipCooki
                 setTimeout(function(){
                     window.location.href='http://localhost/login'
                 },2000)
+            }else{
+                toastr.error(response.data.msg,'温馨提示');
             }
         });
 

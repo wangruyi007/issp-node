@@ -11,6 +11,7 @@ module.exports = function(){
     router.get('/staffentryregister/list', function*(){
        var $self = this;
        var page = $self.request.query;
+        page.userToken = $self.cookies.get('token');
         yield (server().registrationList(page)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -22,7 +23,8 @@ module.exports = function(){
             }));
     }).get('/staffentryregister/count', function*(){  // 获取总条数
         var $self = this;
-        yield (server().registrationCount()
+        var countData= {userToken:$self.cookies.get('token')};
+        yield (server().registrationCount(countData)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
                 $self.body = responseText;
@@ -59,6 +61,7 @@ module.exports = function(){
     }).get('/staffentryregister/getOne', function*(){//编辑ID
         var $self = this;
         var getId = $self.request.query;
+        getId.userToken = $self.cookies.get('token');
         yield (server().registrationById(getId)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -96,7 +99,8 @@ module.exports = function(){
             }));
     }).get('/entry/applylend/list', function*(){ //入职登记列表
         var $self = this;
-        var page = this.request.query;
+        var page = $self.request.query;
+        page.userToken = $self.cookies.get('token');
         yield (server().entryregisterList(page)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -107,7 +111,8 @@ module.exports = function(){
             }));
     }).get('/entry/applylend/count', function*(){
         var $self = this;
-        yield (server().entryregisterCount()
+        var countData= {userToken:$self.cookies.get('token')};
+        yield (server().entryregisterCount(countData)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
                 $self.body = responseText;
@@ -117,9 +122,9 @@ module.exports = function(){
             }));
         //添加
     }).post('/entry/applylend/add', function*(){
-        var addData = this.request.body;
-        addData.userToken = this.cookies.get('token');
         var $self = this;
+        var addData = $self.request.body;
+        addData.userToken = $self.cookies.get('token');
         yield (server().entryregisterAdd(addData)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -132,6 +137,7 @@ module.exports = function(){
     }).get('/entry/applylend/getOneById', function*(){
         var $self = this;
         var EditId = $self.request.query;
+        EditId.userToken = $self.cookies.get('token');
         yield (server().entryregisterById(EditId)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -142,9 +148,9 @@ module.exports = function(){
             }));
         //编辑
     }).post('/entry/applylend/editData', function*(){
-        var EditData = this.request.body;
-        EditData.userToken = this.cookies.get('token');
         var $self = this;
+        var EditData = $self.request.body;
+        EditData.userToken = $self.cookies.get('token');
         yield (server().entryregisterEidt(EditData)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -171,6 +177,7 @@ module.exports = function(){
     }).get('/entrybasicinfo/listEntryBasicInfo', function*(){ //入职基本信息列表
        var $self = this;
        var page = $self.request.query;
+        page.userToken = $self.cookies.get('token');
         yield (server().basicInfoList(page)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -182,7 +189,8 @@ module.exports = function(){
             }));
     }).get('/entrybasicinfo/count', function*(){  // 获取总条数
         var $self = this;
-        yield (server().basicInfoCount()
+        var countData= {userToken:$self.cookies.get('token')};
+        yield (server().basicInfoCount(countData)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
                 $self.body = responseText;
@@ -207,6 +215,7 @@ module.exports = function(){
     }).get('/entrybasicinfo/getEntryBasicInfo', function*(){//编辑ID
         var $self = this;
         var getId = $self.request.query;
+        getId.userToken = $self.cookies.get('token');
         yield (server().basicInfoById(getId)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -244,7 +253,8 @@ module.exports = function(){
             }));
     }).get('/entrybasicinfo/listPost', function*(){  // 获取所有岗位
         var $self = this;
-        yield (server().basicInfoPost()
+        var postData= {userToken:$self.cookies.get('token')};
+        yield (server().basicInfoPost(postData)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
                 $self.body = responseText;
@@ -256,6 +266,7 @@ module.exports = function(){
     }).post('/entrybasicinfo/collect', function*(){ //入职情况汇总
         var $self = this;
         var getCollect = $self.request.body;
+        getCollect.userToken = $self.cookies.get('token');
         yield (server().getInfoCollect(getCollect)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -268,6 +279,7 @@ module.exports = function(){
     }).get('/salaryconfirmrecord/list', function*(){ //薪资确认列表
         var $self = this;
         var page = $self.request.query;
+        page.userToken = $self.cookies.get('token');
         yield (server().salaryList(page)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -279,7 +291,8 @@ module.exports = function(){
             }));
     }).get('/salaryconfirmrecord/count', function*(){  // 获取总条数
         var $self = this;
-        yield (server().salaryCount()
+        var countData= {userToken:$self.cookies.get('token')};
+        yield (server().salaryCount(countData)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
                 $self.body = responseText;
@@ -304,6 +317,7 @@ module.exports = function(){
     }).get('/salaryconfirmrecord/getOne', function*(){//编辑ID
         var $self = this;
         var getId = $self.request.query;
+        getId.userToken = $self.cookies.get('token');
         yield (server().salaryById(getId)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -339,16 +353,72 @@ module.exports = function(){
                 $self.body=error.error;
                 console.error(error.error);
             }));
-    }).get('/user/logout', function*(){ //退出
+    }).get('/user/logout', function*(next){
+        var url = this.request.query;
+        this.cookies.set("absUrl",url.absurl);
+        this.body = {
+            code:0,
+            msg:"重定向"
+        };
+    }).get('/listSetting', function*(){
         var $self = this;
-        var token ={userToken:$self.cookies.get('token')};
-        yield (server().logout(token)
+        var setting = this.request.query;
+        setting.userToken = $self.cookies.get('token');
+        yield (server().listSetting(setting)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
-                if(responseText.code==0){
-                    $self.cookies.set('token','');
-                    $self.body = responseText;
-                }
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
+    }).get('/countSetting', function*(){
+        var $self = this;
+        var data = {userToken:$self.cookies.get('token')};
+        yield (server().countSetting(data)
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
+    }).get('/getpermit', function*(){
+        var $self = this;
+        var getId = $self.request.query;
+        getId.userToken = $self.cookies.get('token');
+        yield (server().getpermit(getId)
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
+    }).get('/getListpermit', function*(){
+        var $self = this;
+        var listPermit = $self.request.query;
+        listPermit.userToken = $self.cookies.get('token');
+        yield (server().getListpermit(listPermit)
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
+    }).post('/editSetting', function*(){
+        var $self = this;
+        var editSet = $self.request.body;
+        editSet.userToken = $self.cookies.get("token");
+        yield (server().editSetting(editSet)
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
             }).catch((error) =>{
                 $self.set('Content-Type','application/json;charset=utf-8');
                 $self.body=error.error;
