@@ -6,8 +6,6 @@ app.controller('detailToviewCtrl', function($scope, detailSer, $stateParams,$loc
     detailSer.getInfoByCustomerNum(cusNum).then(function(response){
         if(response.data.code==0){
             $scope.details = response.data.data;
-        }else if(response.data.code==1){
-            toastr.error( response.data.msg, '温馨提示');
         }else{
             toastr.error( response.data.msg, '温馨提示');
         }
