@@ -31,7 +31,9 @@ app.factory('marketserveSer',function ($http) {
     }
     //id编辑
     function getOneById(data) {
-        return $http.post('/marketActivity/marketserve/getOneById',data)
+        return $http.get('/marketActivity/marketserve/getOneById',{
+            params:data
+        })
     }
     //编辑
     function marketserveapplyEdit(data){

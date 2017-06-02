@@ -9,6 +9,8 @@ app.controller('cooperationEditCtrl', function($scope, basicinfoSer,$state,toast
     });
     $scope.cooperationEditFun = function(){
         var vm = $scope;
+        vm.editInfo.cooperationTime = angular.element('.cooperationTime').val();
+        vm.editInfo.cooperationTerm = angular.element('.cooperationTerm').val();
         basicinfoSer.editCooperation(vm.editInfo).then(function(response){
             if(response.data.code == 0){
                 $state.go('root.supplier.basicinfo.list');

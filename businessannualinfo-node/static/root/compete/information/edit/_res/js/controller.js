@@ -29,6 +29,8 @@ app.controller('informationEditCtrl', function($scope, informationSer,$state,toa
                 setTimeout(function(){
                     window.location.href='http://localhost/login'
                 },2000)
+            }else{
+                toastr.error(response.data.msg,'温馨提示');
             }
         });
     };

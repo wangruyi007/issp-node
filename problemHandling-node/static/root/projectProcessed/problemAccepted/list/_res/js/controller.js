@@ -9,8 +9,10 @@ app.controller('problemListCtrl',function($scope,problemSer,toastr){
         problemSer.ProblemList(listData).then(function(response){
             if(response.data.code==0){
                 $scope.acceptedLists = response.data.data
-            }else{
-                toastr.error( "请求超时，请联系管理员", '温馨提示');
+            }else if(response.data.code==1){
+                toastr.error( response.data.msg, '温馨提示');
+            }else {
+                toastr.error( response.data.msg, '温馨提示');
             }
         });
     }
@@ -52,8 +54,10 @@ app.controller('problemListCtrl',function($scope,problemSer,toastr){
     problemSer.countProblem().then(function(response){
         if(response.data.code==0){
             $scope.custom.itemsCount = response.data.data;
-        }else{
-            toastr.error( "请求超时，请联系管理员", '温馨提示');
+        }else if(response.data.code==1){
+            toastr.error( response.data.msg, '温馨提示');
+        }else {
+            toastr.error( response.data.msg, '温馨提示');
         }
     })
 

@@ -1,5 +1,5 @@
-var app = angular.module('mailSummaryList', ['ng-pagination','toastr']);
-app.controller('mailSummaryListCtrl',function($scope,emailSer,toastr){
+var app = angular.module('mailSummaryList', ['ng-pagination','toastr','ipCookie']);
+app.controller('mailSummaryListCtrl',function($scope,emailSer,toastr,$location,ipCookie){
     $scope.$emit('changeId', null);
     function activatePage(page) {
         var listData = {
@@ -9,8 +9,8 @@ app.controller('mailSummaryListCtrl',function($scope,emailSer,toastr){
             if(response.data.code==0){
 
                 $scope.mailLists = response.data.data
-            }else{
-                toastr.error( "请求超时，请联系管理员", '温馨提示');
+            }else {
+                toastr.error( response.data.msg, '温馨提示');
             }
         });
     }
@@ -60,10 +60,18 @@ app.controller('mailSummaryListCtrl',function($scope,emailSer,toastr){
         emailSer.thawEmail(data).then(function(response){
             if(response.data.code==0){
                 event.status = "THAW"
-            }else if(response.data.code==403){
-                toastr.error( "请登录用户", '温馨提示');
+            }else if(response.data.code==403||response.data.code==401){
+                toastr.error( "请登录用户,2秒后跳至登陆页面", '温馨提示');
+                var absurl = $location.absUrl();
+                ipCookie('absurl', absurl,{ expires:3,expirationUnit: 'minutes',domain:'issp.bjike.com' });
+                setTimeout(function(){
+                    window.location.href='http://localhost/login'
+                },2000)
+            }else if(response.data.code==1){
+                toastr.error( response.data.msg, '温馨提示');
+            }else {
+                toastr.error( response.data.msg, '温馨提示');
             }
-
         })
     }
 //分页
@@ -76,8 +84,8 @@ app.controller('mailSummaryListCtrl',function($scope,emailSer,toastr){
     emailSer.countEmail().then(function(response){
         if(response.data.code==0){
             $scope.custom.itemsCount = response.data.data;
-        }else{
-            toastr.error( "请求超时，请联系管理员", '温馨提示');
+        }else {
+            toastr.error( response.data.msg, '温馨提示');
         }
     })
 

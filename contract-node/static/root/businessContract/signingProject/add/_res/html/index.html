@@ -1,0 +1,116 @@
+<div class="content-input add" verify-scope="tipStyle: 1">
+    <div class="input-list">
+        <section>
+            <ul>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>业务类型</em></label>
+                    <select class="sele" ng-verify="{}" ng-model="signing.businessType" ng-init="signing.businessType='MOBILECOMMUNICATION'">
+                        <option value="MOBILECOMMUNICATION">移动通信类</option>
+                        <option value="SOFTDEVELOP">软件开发类</option>
+                        <option value="INTELLIGENCESYSTEM">智能系统集成类</option>
+                        <option value="ADVERT">广告策划营销类</option>
+                    </select>
+                </li>
+                <li class="required">
+                    <label ><i><img src="/images/mandatory.png"></i><em>业务方向科目</em></label>
+                    <input type="text" ng-verify="{}" ng-model="signing.businessSubject">
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>合作方式</em></label>
+                    <select class="sele" ng-verify="{}" ng-model="signing.businessCooperate" ng-init="signing.businessCooperate='RENTCONTRACT'">
+                        <option value="RENTCONTRACT">租赁合同</option>
+                        <option value="CHARCONTRACT">承包的项目合同</option>
+                        <option value="DISTRIBUTECONTRACT">分包项目合同</option>
+                        <option value="SALECONTRACT">销售合同</option>
+                    </select>
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>外部项目名称</em></label>
+                    <input type="text" ng-verify="{}" ng-model="signing.outerProject">
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>甲方公司名称</em></label>
+                    <input type="text" ng-verify="{}" ng-model="signing.firstCompany">
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>乙方公司名称</em></label>
+                    <input type="text" ng-verify="{}" ng-model="signing.secondCompany">
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>地区</em></label>
+                    <input type="text" ng-verify="{}" ng-model="signing.area">
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>合同金额</em></label>
+                    <input type="number" ng-verify="{}" ng-model="signing.money">
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>开工时间</em></label>
+                    <input type="text" onClick="laydate({istime: true, format: 'YYYY-MM-DD'})" class="add_image addTime" ng-model="signing.startProjectTime">
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>完工时间</em></label>
+                    <input type="text" onClick="laydate({istime: true, format: 'YYYY-MM-DD'})" class="add_image endTime" ng-model="signing.endProjectTime">
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>是否签订合同</em></label>
+                    <select class="sele" ng-model="signing.siginStatus" ng-init="signing.siginStatus='已签订'">
+                        <option value="已签订">已签订</option>
+                        <option value="未签订">未签订</option>
+                    </select>
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>合同属性</em></label>
+                    <select class="sele" ng-model="signing.contractProperty" ng-init="signing.contractProperty='FRAMECONTRACT'">
+                        <option value="FRAMECONTRACT">框架合同</option>
+                        <option value="SINGLECONTRACT">单次合同</option>
+                    </select>
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>立项情况</em></label>
+                    <select class="sele" ng-model="signing.makeProject" ng-init="signing.makeProject='已立项'">
+                        <option value="已立项">已立项</option>
+                        <option value="未立项">未立项</option>
+                    </select>
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>内部项目名称</em></label>
+                    <input type="text" ng-verify="{}" ng-model="signing.innerProject">
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>项目组</em></label>
+                    <input type="text" ng-verify="{}" ng-model="signing.projectGroup">
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>项目负责人</em></label>
+                    <input type="text" ng-verify="{}" ng-model="signing.projectCharge">
+                </li>
+                <li>
+                    <label><em>备注</em></label>
+                    <input type="text" ng-model="signing.remark">
+                </li>
+                <li>
+                    <label><em>总经办</em></label>
+                    <input type="text" ng-model="signing.manager">
+                </li>
+                <li>
+                    <label><em>审核意见</em></label>
+                    <input type="text" ng-model="signing.auditAdvice">
+                </li>
+            </ul>
+        </section>
+    </div>
+    <p class="dataBottom">
+        <span class="imPrompt"><i><img src="/images/prompt.png"></i>带有<i><img src="/images/mandatory.png"></i>的为必填项</span>
+        <button ng-verify="{control:'myform'}" ng-click="signingAddFun()">提交</button>
+    </p>
+</div>
+
+<script type="text/javascript">
+
+    !function(){
+        laydate.skin('dahong');//切换皮肤，请查看skins下面皮肤库
+    }();
+
+
+</script>

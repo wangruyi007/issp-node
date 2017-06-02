@@ -30,13 +30,6 @@ app.controller('selfcapListCtrl',function($scope,selfcapSer,toastr,ipCookie,$loc
             $scope.abili.itemsCount = response.data.data;
         }else if(response.data.code==1){
             toastr.error( response.data.msg, '温馨提示');
-        }else if (response.data.code == 403||response.data.code==401) {
-            toastr.error( "请登录用户,3秒后跳至登陆页面", '温馨提示');
-            var absurl = $location.absUrl();
-            ipCookie('absurl', absurl,{ expires:3,expirationUnit: 'minutes',domain:'issp.bjike.com' })
-            setTimeout(function(){
-                window.location.href='http://localhost/login'
-            },3000)
         }
     })
     function activatePage(page) {
@@ -48,13 +41,6 @@ app.controller('selfcapListCtrl',function($scope,selfcapSer,toastr,ipCookie,$loc
                 $scope.selfcapLists = response.data
             }else if(response.data.code==1){
                 toastr.error( response.data.msg, '温馨提示');
-            }else if (response.data.code == 403||response.data.code==401) {
-                toastr.error( "请登录用户,3秒后跳至登陆页面", '温馨提示');
-                var absurl = $location.absUrl();
-                ipCookie('absurl', absurl,{ expires:3,expirationUnit: 'minutes',domain:'issp.bjike.com' })
-                setTimeout(function(){
-                    window.location.href='http://localhost/login'
-                },3000)
             }
         })
         //搜索
@@ -69,13 +55,6 @@ app.controller('selfcapListCtrl',function($scope,selfcapSer,toastr,ipCookie,$loc
                     $scope.abili.itemsCount = response.data.data;
                 }else if(response.data.code==1){
                     toastr.error( response.data.msg, '温馨提示');
-                }else if (response.data.code == 403||response.data.code==401) {
-                    toastr.error( "请登录用户,3秒后跳至登陆页面", '温馨提示');
-                    var absurl = $location.absUrl();
-                    ipCookie('absurl', absurl,{ expires:3,expirationUnit: 'minutes',domain:'issp.bjike.com' })
-                    setTimeout(function(){
-                        window.location.href='http://localhost/login'
-                    },3000)
                 }
             })
             var data = {
@@ -87,13 +66,6 @@ app.controller('selfcapListCtrl',function($scope,selfcapSer,toastr,ipCookie,$loc
                     $scope.selfcapLists = response.data
                 }else if(response.data.code==1){
                     toastr.error( response.data.msg, '温馨提示');
-                }else if (response.data.code == 403||response.data.code==401) {
-                    toastr.error( "请登录用户,3秒后跳至登陆页面", '温馨提示');
-                    var absurl = $location.absUrl();
-                    ipCookie('absurl', absurl,{ expires:3,expirationUnit: 'minutes',domain:'issp.bjike.com' })
-                    setTimeout(function(){
-                        window.location.href='http://localhost/login'
-                    },3000)
                 }
             });
         };

@@ -8,6 +8,8 @@ app.controller('basicInfoAddCtrl', function($scope, basicinfoSer,$state,toastr,i
             if(response.data.code == 0){
                 $state.go('root.supplier.basicinfo.list');
                 toastr.success("已成功添加", '温馨提示');
+            }else if(response.data.code==1){
+                toastr.error( response.data.msg, '温馨提示');
             }else if (response.data.code == 403||response.data.code == 401) {
                 toastr.error( "请登录用户,3秒后跳至登陆页面", '温馨提示');
                 var absurl = $location.absUrl();

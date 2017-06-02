@@ -1,5 +1,5 @@
-var app = angular.module('interactList', ['ng-pagination','toastr']);
-app.controller('interactListCtrl',function($scope,contactSer,toastr){
+var app = angular.module('interactList', ['ng-pagination','toastr','ipCookie']);
+app.controller('interactListCtrl',function($scope,contactSer,toastr,$location,ipCookie){
     $scope.$emit('changeId', null);
     function activatePage(page) {
         var listData = {
@@ -8,8 +8,15 @@ app.controller('interactListCtrl',function($scope,contactSer,toastr){
         contactSer.interactList(listData).then(function(response){
             if(response.data.code==0){
                 $scope.interactLists = response.data.data
-            }else{
-                toastr.error( "请求超时，请联系管理员", '温馨提示');
+            }else if(response.data.code==403||response.data.code==401){
+                toastr.error( "请登录用户,2秒后跳至登陆页面", '温馨提示');
+                var absurl = $location.absUrl();
+                ipCookie('absurl', absurl,{ expires:3,expirationUnit: 'minutes',domain:'issp.bjike.com' });
+                setTimeout(function(){
+                    window.location.href='http://localhost/login'
+                },2000)
+            }else if(response.data.code==1){
+                toastr.error( response.data.msg, '温馨提示');
             }
         });
         $scope.collect = function(){
@@ -21,8 +28,15 @@ app.controller('interactListCtrl',function($scope,contactSer,toastr){
             contactSer.countInteract2($scope.companyName).then(function (response) {
                 if(response.data.code==0){
                     $scope.custom.itemsCount = response.data.data;
-                }else{
-                    toastr.error( "请求超时，请联系管理员", '温馨提示');
+                }else if(response.data.code==403||response.data.code==401){
+                    toastr.error( "请登录用户,2秒后跳至登陆页面", '温馨提示');
+                    var absurl = $location.absUrl();
+                    ipCookie('absurl', absurl,{ expires:3,expirationUnit: 'minutes',domain:'issp.bjike.com' });
+                    setTimeout(function(){
+                        window.location.href='http://localhost/login'
+                    },2000)
+                }else if(response.data.code==1){
+                    toastr.error( response.data.msg, '温馨提示');
                 }
             });
             var data = {
@@ -32,8 +46,15 @@ app.controller('interactListCtrl',function($scope,contactSer,toastr){
             contactSer.searchInteraction(data).then(function(response){
                 if(response.data.code == 0){
                     $scope.interactLists = response.data
-                }else if(response.data.code==403){
-                    toastr.error( "请登录用户", '温馨提示');
+                }else if(response.data.code==403||response.data.code==401){
+                    toastr.error( "请登录用户,2秒后跳至登陆页面", '温馨提示');
+                    var absurl = $location.absUrl();
+                    ipCookie('absurl', absurl,{ expires:3,expirationUnit: 'minutes',domain:'issp.bjike.com' });
+                    setTimeout(function(){
+                        window.location.href='http://localhost/login'
+                    },2000)
+                }else if(response.data.code==1){
+                    toastr.error( response.data.msg, '温馨提示');
                 }
             });
         };
@@ -78,8 +99,15 @@ app.controller('interactListCtrl',function($scope,contactSer,toastr){
     contactSer.countInteract().then(function(response){
         if(response.data.code==0){
             $scope.custom.itemsCount = response.data.data;
-        }else{
-            toastr.error( "请求超时，请联系管理员", '温馨提示');
+        }else if(response.data.code==403||response.data.code==401){
+            toastr.error( "请登录用户,2秒后跳至登陆页面", '温馨提示');
+            var absurl = $location.absUrl();
+            ipCookie('absurl', absurl,{ expires:3,expirationUnit: 'minutes',domain:'issp.bjike.com' });
+            setTimeout(function(){
+                window.location.href='http://localhost/login'
+            },2000)
+        }else if(response.data.code==1){
+            toastr.error( response.data.msg, '温馨提示');
         }
     })
 
