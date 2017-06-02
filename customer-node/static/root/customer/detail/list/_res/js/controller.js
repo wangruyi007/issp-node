@@ -35,8 +35,6 @@ app.controller('detailListCtrl',function($scope,detailSer,toastr){
         detailSer.listCustomerDetail(listData).then(function(response){
             if(response.data.code==0){
                 $scope.detailLists = response.data.data;
-            }else if(response.data.code==1){
-                toastr.error( response.data.msg, '温馨提示');
             }else{
                 toastr.error( response.data.msg, '温馨提示');
             }
@@ -45,8 +43,6 @@ app.controller('detailListCtrl',function($scope,detailSer,toastr){
     detailSer.countDetail().then(function(response){
         if(response.data.code==0){
             $scope.custom.itemsCount = response.data.data;
-        }else if(response.data.code==1){
-            toastr.error( response.data.msg, '温馨提示');
         }else{
             toastr.error( response.data.msg, '温馨提示');
         }

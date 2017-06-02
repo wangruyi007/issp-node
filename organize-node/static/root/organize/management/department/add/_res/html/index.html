@@ -19,13 +19,15 @@
                 </li>
                 <li class="required">
                     <label><i><img src="/images/mandatory.png"></i><em>所属地区</em></label>
-                    <select class="sele" ng-model="area" ng-verify="{}">
+                    <select class="sele" ng-model="area">
                         <option value="">请选择</option>
                         <option value="广州">广州</option>
                         <option value="佛山">佛山</option>
                         <option value="江门">江门</option>
                     </select>
+                    <input type="text"  class="inputDom" ng-verify="{}" ng-model="area">
                 </li>
+
 
                 <li class="required">
                     <label><i><img src="/images/mandatory.png"></i><em>成本分类</em></label>
