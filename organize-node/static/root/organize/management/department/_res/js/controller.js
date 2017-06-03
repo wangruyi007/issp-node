@@ -34,6 +34,10 @@ app.controller('departmentCtrl',function($scope){
             $scope.menuClass='congealMenu';
         }
     };
+    $scope.jopran = function(){
+            $state.go('root.organize.management.department.joprange[12]',{id:$scope.getId});
+            $scope.menuClass='joprangeMenu';
+    };
 
     $scope.list = function(){
         $scope.menuClass = 'listMenu'
@@ -41,7 +45,15 @@ app.controller('departmentCtrl',function($scope){
     $scope.add = function(){
         $scope.menuClass = 'addMenu'
     };
+    $scope.views = function(){
+        if($scope.getId){
+            $state.go('root.organize.management.department.views[12]',{id:$scope.getId});
+            $scope.menuClass = 'viewsMenu';
+        }
+
+    };
 });
+
 
 //自定义过滤器
 app.filter('cover', function(){

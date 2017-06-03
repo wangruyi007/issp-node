@@ -1,0 +1,59 @@
+<div class="content-input boarding ">
+
+    <div class="boa-body">
+        <div>
+            <ul>
+                <li class="big">
+                    <label><em>员工名称</em></label> <input type="text" ng-model="views.username" disabled>
+                </li>
+                <li class="big">
+                    <label><em>员工编号</em></label> <input type="text" ng-model="views.employeesNumber" disabled>
+                </li>
+                <li style="flex:0 0 100%">
+                    <label><em>职位</em></label> <input type="text" style="width:90%" ng-model="views.position" disabled>
+                </li>
+            </ul>
+        </div>
+        <div>
+            <ul>
+                <li style="flex-wrap:wrap;flex:0 0 90%">
+                    <label><em>职位选项数据</em></label>
+                    <input type="text" style="width:80px;margin: 5px;" disabled ng-repeat="positions in views.positionVo" value="{{positions.position}}">
+                </li>
+            </ul>
+        </div>
+        <h3>职位信息</h3>
+        <div ng-repeat="positionDetails in views.positionDetails">
+            <ul>
+                <li>
+                    <label><em>编号</em></label> <input type="text" disabled value="{{positionDetails.serialNumber}}">
+                </li>
+                <li>
+                    <label><em>体系</em></label> <input type="text" disabled value="{{positionDetails.hierarchyName}}">
+                </li>
+                <li>
+                    <label><em>所属地区</em></label> <input type="text" disabled value="{{positionDetails.area}}">
+                </li>
+                <li>
+                    <label><em>部门</em></label> <input type="text" disabled value="{{positionDetails.departmentName}}">
+                </li>
+                <li>
+                    <label><em>层级</em></label>
+                    <input type="number" disabled value="{{positionDetails.arrangementName}}">
+                </li>
+                <li>
+                    <label><em>资源池</em></label> <input type="text" disabled value="{{positionDetails.pool}}">
+                </li>
+                <li>
+                    <label><em>模块</em></label> <input type="text" disabled value="{{positionDetails.moduleName}}">
+                </li>
+                <li>
+                    <label><em>岗位</em></label> <input type="text" disabled value="{{positionDetails.position}}">
+                </li>
+                <li>
+                    <label><em>当前人数</em></label> <input type="text" disabled value="{{positionDetails.current}}">
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
