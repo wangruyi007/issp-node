@@ -48,8 +48,14 @@ app.filter('cover', function(){
     return function(val){
         var result;
         switch(val){
+            case false:
+            result = "否";
+            break;
+            case true:
+                result = "是";
+                break;
             case "ALEVEL":
-                result = "规模枚举";
+                result = "A级:1-30人";
                 break;
             case "BLEVEL":
                 result = "B级:31-60人";
@@ -69,30 +75,25 @@ app.filter('cover', function(){
             case "GLEVEL":
                 result = "G级:181-210人";
                 break;
-            case false:
-                result = "否";
-                break;
-            case true:
-                result = "是";
-                break;
             case "NEWPROJECT":
                 result = "新项目市场信息数量";
                 break;
+            case "OLDPROJECT":
+                result = "已有项目or进行中项目市场信息数量";
+                break;
             case "MOBILECOMMUNICATION":
-                result = "移动通信行业市场信息数量";
+                result = "移动通信行业";
                 break;
             case "SOFTWAREDEVELOPMENT":
-                result = "软件开发行业市场信息数量";
+                result = "软件开发行业";
                 break;
             case "INTELLIGENTSYSTEMINTEGRATION":
-                result = "智能系统集成行业市场信息数量";
+                result = "智能系统集成行业";
                 break;
             case "PLANNINGMARKETINGSOLUTIONS":
-                result = "策划与营销方案行业市场信息数量";
+                result = "策划与营销方案行业";
                 break;
         }
         return result;
     }
-
-})
-
+});

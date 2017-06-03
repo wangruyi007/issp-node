@@ -50,10 +50,10 @@ app.filter('cover', function(){
                 result = "成本";
                 break;
             case "FEE":
-                result = "事项合作";
+                result = "费用";
                 break;
-            case "G":
-                result = "中介合作";
+            case "PROFIT":
+                result = "利润";
                 break;
         }
         return result;

@@ -22,10 +22,10 @@
                     <label><i><img src="/images/mandatory.png"></i><em>行业</em></label>
                     <select class="sele" ng-model="add.workType">
                         <option value="" disabled>请选择</option>
-                        <option value="MOBILECOMMUNICATION">移动通信行业市场信息数量</option>
-                        <option value="SOFTWAREDEVELOPMENT">软件开发行业市场信息数量</option>
-                        <option value="INTELLIGENTSYSTEMINTEGRATION">智能系统集成行业市场信息数量</option>
-                        <option value="PLANNINGMARKETINGSOLUTIONS">策划与营销方案行业市场信息数量</option>
+                        <option value="MOBILECOMMUNICATION">移动通信行业</option>
+                        <option value="SOFTWAREDEVELOPMENT">软件开发行业</option>
+                        <option value="INTELLIGENTSYSTEMINTEGRATION">智能系统集成行业</option>
+                        <option value="PLANNINGMARKETINGSOLUTIONS">策划与营销方案行业</option>
                     </select>
                 </li>
                 <li class="required">
@@ -41,10 +41,10 @@
                     <input type="text" ng-verify="{}" ng-model="add.projectName">
                 </li>
                 <li class="required">
-                    <label><i><img src="/images/mandatory.png"></i><em>项目名称</em></label>
+                    <label><i><img src="/images/mandatory.png"></i><em>规模</em></label>
                     <select class="sele" ng-model="add.scale">
                         <option value="" disabled>请选择</option>
-                        <option value="ALEVEL">规模枚举</option>
+                        <option value="ALEVEL">A级:1-30人</option>
                         <option value="BLEVEL">B级:31-60人</option>
                         <option value="CLEVEL">C级:61-90</option>
                         <option value="DLEVEL">D级:91-120人</option>
@@ -74,19 +74,19 @@
                     <input type="text" ng-verify="{}" ng-model="add.marketInfoCollecting">
                 </li>
                 <li class="required">
-                    <label><i><img src="/images/mandatory.png"></i><em>是否为有效信息</em></label>
-                    <select class="sele" ng-model="add.effective">
+                    <label><i><img src="/images/mandatory.png"></i><em>项目性质</em></label>
+                    <select class="sele" ng-model="add.projectNature">
                         <option value="" disabled>请选择</option>
-                        <option value=true>否</option>
-                        <option value=false>是</option>
+                        <option value="NEWPROJECT">新项目市场信息数量</option>
+                        <option value="OLDPROJECT">已有项目or进行中项目市场信息数量</option>
                     </select>
                 </li>
                 <li class="required">
-                    <label><i><img src="/images/mandatory.png"></i><em>项目性质</em></label>
-                    <select class="sele" ng-model="add.projectNature">
-                    <option value="" disabled>请选择</option>
-                    <option value="NEWPROJECT">新项目市场信息数量</option>
-                    <option value="OLDPROJECT">已有项目or进行中项目市场信息数量</option>
+                    <label><i><img src="/images/mandatory.png"></i><em>是否为有效信息</em></label>
+                    <select class="sele" ng-model="add.effective">
+                        <option value="" disabled>请选择</option>
+                        <option value=false>否</option>
+                        <option value=true>是</option>
                     </select>
                 </li>
                 <li class="required">
