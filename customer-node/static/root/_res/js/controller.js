@@ -13,8 +13,7 @@ app.controller('rootCtrl', function ($scope,$rootScope,$state,ipCookie,rootSer,$
     }
     $scope.login = function(){
         var absurl = $location.absUrl();
-        ipCookie('absurl', absurl,{ expires:3,expirationUnit: 'minutes' });
-        location.href="http://localhost/login";//部署到线上时要改为登录域名
+        window.location.href='http://localhost/login?url='+absurl
     };
     $scope.logout = function(){
         var abs = window.location.host;

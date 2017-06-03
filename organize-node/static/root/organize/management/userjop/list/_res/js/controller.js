@@ -49,9 +49,7 @@ app.controller('userjopListCtrl',function($scope,toastr,userjopSer){
             }
         })
     });
+});
 
-
-})
-;
 
 

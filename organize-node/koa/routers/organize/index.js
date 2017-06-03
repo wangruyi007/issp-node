@@ -294,6 +294,31 @@ module.exports = function(){
                 $self.body=error.error;
                 console.error(error.error);
             }));
+    }).get('/department/departRange', function*(){
+        var $self = this;
+        var token = {token:$self.cookies.get('token')};
+        yield (server().departRange(token)
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
+    }).get('/department/viewRange', function*(){
+        var $self = this;
+        var viewId = this.request.query;
+        viewId.token = $self.cookies.get('token');
+        yield (server().viewRange(viewId)
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
     }).get('/postlevel/maps', function*(){ //部门列表
         var $self = this;
         var page = $self.request.query;
@@ -1758,10 +1783,11 @@ module.exports = function(){
                 $self.body=error.error;
                 console.error(error.error);
             }));
-    }).get('/user/logout', function*(){
+    }).get('/userjop/positionuser', function*(){
         var $self = this;
-        var token = {token:$self.cookies.get('token')};
-        yield (server().logout(token)
+        var getId = this.request.query;
+        getId.token = $self.cookies.get('token');
+        yield (server().positionuser(getId)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
                 $self.body = responseText;

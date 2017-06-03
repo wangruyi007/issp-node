@@ -9,7 +9,7 @@ const routersPath = '/koa/routers/';
 const sendfile = require('koa-sendfile');
 const convert = require('koa-convert');
 var configsCache = {};
-const port = 9999;
+const port = 9998;
 
 const app = new Koa();
 const config = require(path.resolve('plugins/read-config.js'));
@@ -22,7 +22,6 @@ function fileExists(path) {
     }
     return true;
 }
-
 app.keys = ['issp-node'];//session加密值
 app.use(convert(session(app)));//使用cookie
 app.use(convert(koaBody()));//必需要路由用之前使用,不然获取不到表单

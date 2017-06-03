@@ -12,3 +12,38 @@ app.controller('managementCtrl',function ($scope,$state) {
         $scope.$broadcast("passPositionId",id)
     })
 });
+app.directive('mod',function(){
+    return{
+        restrict:'AE',
+        replace:true,
+        link:function(scope,elements,attrs){
+            elements.hover(function(){
+                var textWidth = elements.text().length*12;
+                var boxWidth = elements.width();
+
+                if(textWidth>boxWidth){
+                    elements.addClass('modac');
+                }
+           })
+            elements.on('click',function(){
+                if(elements.hasClass('modac')){
+                    $('.module').show();
+                    var conText = elements.text();
+                    $('.see-description').text(conText)
+                }
+
+            })
+        }
+    }
+}).directive('modclose',function(){
+    return{
+        restrict:'AE',
+        replace:true,
+        link:function(scope,elements,attrs){
+            elements.on("click",function(){
+                $('.module').hide();
+            });
+
+        }
+    }
+});
