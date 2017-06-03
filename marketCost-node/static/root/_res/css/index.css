@@ -292,7 +292,9 @@ body {
   -ms-flex-align: center;
   align-items: center;
 }
-
+.com-table{
+  margin-top: 80px !important;
+}
 .right-section .top-content .top-fixed .top .search .search-btn {
   width: 19px;
   height: 18px;

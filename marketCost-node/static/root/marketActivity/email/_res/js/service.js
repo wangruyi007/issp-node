@@ -24,11 +24,11 @@ app.factory('emailSer',function ($http) {
     function congealSummary(data){
         return $http.post('/marketActivity/congealSummary/congeal',data)
     }
-    // //解冻
+    //解冻
     function thawSummary(data){
         return $http.post('/marketActivity/thawEmail/thaw',data)
     }
-    // //删除
+    //删除
     function deleteSummary(data){
         return $http.post('/marketActivity/summary/delete',data)
     }

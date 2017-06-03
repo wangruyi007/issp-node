@@ -68,13 +68,14 @@ module.exports = function(){
     }).get('/user/logout', function*(){
         var $self = this;
         var token = {token:$self.cookies.get('token')};
+        var urlRed = this.request.query;
         yield (server().logout(token)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
                 if(responseText.code==0){
                     $self.cookies.set('token', '');
-                    var url = $self.cookies.get('absUrl');
-                    this.redirect(url);
+                    $self.cookies.set('username', '');
+                    this.redirect(`http://${urlRed.absurl}/#!${urlRed.hash}`);
                 }
                 $self.body = responseText;
             }).catch((error) =>{
