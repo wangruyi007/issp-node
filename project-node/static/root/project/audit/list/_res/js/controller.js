@@ -78,4 +78,5 @@ app.controller('auditListCtrl',function($scope,auditSer,toastr,ipCookie,$locatio
             }
         })
     });
+    $scope.titles = ["销售合同号","立项情况"];
 });

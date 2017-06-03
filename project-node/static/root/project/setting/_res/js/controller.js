@@ -14,8 +14,8 @@ app.controller('settingCtrl',function ($scope,$state) {
     $scope.menuClass=urlName+"Menu";
     $rootScope.$on('$locationChangeSuccess', function () {//url地扯改变或者刷新
         if($location.path().split('/').slice(-1)=='list[12]'){
-
             $scope.menuClass = 'listMenu';
+            searchHide();
         }
     });
 

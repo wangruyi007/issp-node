@@ -1,14 +1,11 @@
 <div class="content-tab list">
-    <div class="com-search mod">
-      <span class="com-search2">
-            <label>销售合同号 :</label>
-            <input type="text"  ng-model="saleNum">
-       </span>
-        <span class="com-search2">
-             <label>立项情况 :</label>
-            <input type="text"  ng-model="signProjectCondition">
-       </span>
-        <button ng-click="collect()">查询</button>
+    <div class="search-big">
+        <select class="salc" ng-model="checkedName">
+            <option ng-repeat="item in titles">{{item}}</option>
+        </select>
+        <input type="text" ng-model="saleNum" ng-show="checkedName=='销售合同号'">
+        <input type="text" ng-model="signProjectCondition" ng-show="checkedName=='立项情况'">
+        <a href="javascript:void(0)" ng-click="collect()"><img src="/images/search2.png"></a>
     </div>
     <ul class="table com-table">
         <li class="list-head">

@@ -10,7 +10,9 @@ module.exports = function(){
     router.get('/project/listProjectSituationCap/list', function*(){
         var $self = this;
        var page = this.request.query;
+
         page.token = this.cookies.get('token');
+        console.log(page)
         yield (server().ProjectBaseinfoList(page)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
