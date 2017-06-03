@@ -10,7 +10,8 @@ app.factory('userjopSer',function ($http) {
         parentId:parentId,
         getDepartList:getDepartList,
         getUser:getUser,
-        getPosition:getPosition
+        getPosition:getPosition,
+        positionuser:positionuser
     };
     function listUserjop(data) {
         return $http.get('/userjop/maps',{params: data})
@@ -42,5 +43,8 @@ app.factory('userjopSer',function ($http) {
     }
     function getPosition() {
         return $http.get('/userjop/getPosition')
+    }
+    function positionuser(data) {
+        return $http.get('/userjop/positionuser',{params: data})
     }
 });

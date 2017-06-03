@@ -3,20 +3,24 @@
         <section>
             <ul>
                 <li class="required">
-                    <label><i><img src="/images/mandatory.png"></i><em>编号</em></label>
-                    <input type="text"  ng-model="serialNumber">
+                    <label><i><img src="/images/mandatory.png"></i><em>操作对象</em></label>
+                    <input type="text"  ng-model="add.serialNumber">
                 </li>
                 <li class="required">
-                    <label><i><img src="/images/mandatory.png"></i><em>分类</em></label>
-                    <input type="text"   ng-verify="{}" ng-model="classify">
+                    <label><i><img src="/images/mandatory.png"></i><em>编号信息类型</em></label>
+                    <input type="text"   ng-verify="{}" ng-model="add.type">
                 </li>
                 <li class="required">
-                    <label><i><img src="/images/mandatory.png"></i><em>名称</em></label>
-                    <input type="text"  ng-verify="{}" ng-model="name">
+                    <label><i><img src="/images/mandatory.png"></i><em>举例名称</em></label>
+                    <input type="text"  ng-verify="{}" ng-model="add.illustrate">
                 </li>
                 <li class="required">
-                    <label><em>描述</em></label>
-                    <input type="text" ng-model="description">
+                    <label><i><img src="/images/mandatory.png"></i><em>举例编号</em></label>
+                    <input type="text" ng-model="add.illustrateNumber">
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>编号信息生成说明</em></label>
+                    <input type="text" ng-model="add.description">
                 </li>
 
             </ul>

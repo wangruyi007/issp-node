@@ -70,8 +70,7 @@ module.exports = function(){
         var options = {
             method : 'GET',
             timeout : 3000,
-            uri : config()['marketinform']['rurl'] + '/marketinfo/v1/market/'+argvs.id,
-            form : argvs,
+            uri : config()['marketinform']['rurl'] + `/marketinfo/v1/market/${argvs.id}`,
             headers : {
                 userToken:argvs.token
             }

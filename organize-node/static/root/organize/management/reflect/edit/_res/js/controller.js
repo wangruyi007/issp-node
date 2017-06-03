@@ -3,6 +3,12 @@ app.controller('reflectEditCtrl', function($scope,$state,toastr,reflectSer,$stat
 
     var getIdList={id:$stateParams.id};
 
+    reflectSer.getClassify().then(function(response){
+        if(response.data.code==0){
+            $scope.classifys = response.data.data;
+        }
+    });
+
     reflectSer.getReflect(getIdList).then(function(response){
         if(response.data.code==0){
             $scope.reflectData=response.data.data;

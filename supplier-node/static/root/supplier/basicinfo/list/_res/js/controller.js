@@ -6,7 +6,6 @@ app.controller('basicinfoListCtrl',function($scope,basicinfoSer,toastr){
             page:page
         }
         basicinfoSer.basicInfoList(listData).then(function(response){
-
             if(response.data.code==0){
                 $scope.basicinfoLists = response.data.data
             }else if(response.data.code==1){
@@ -36,7 +35,6 @@ app.controller('basicinfoListCtrl',function($scope,basicinfoSer,toastr){
     };
 
     $scope.$on('deletedId',function(event,delid){
-
         angular.forEach($scope.basicinfoLists,function(obj){
             if(obj.id == delid){
                 obj._delete = delid
@@ -50,7 +48,6 @@ app.controller('basicinfoListCtrl',function($scope,basicinfoSer,toastr){
         take: 10, //每页显示
         activatePage: activatePage
     };
-
     basicinfoSer.countBasicInfo().then(function(response){
         if(response.data.code==0){
             $scope.abili.itemsCount = response.data.data;

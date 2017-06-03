@@ -15,20 +15,16 @@ app.controller('settingListCtrl',function($scope,settingSer,toastr){
             if(response.data.code==0){
                 $scope.settingLists = response.data.data;
                 $scope.operators = response.data.data.cusOperateVO
-            }else if(response.data.code==1){
-                toastr.error( response.data.msg, '温馨提示');
             }else{
-                toastr.error( "请求超时，请联系管理员", '温馨提示');
+                toastr.error(response.data.msg, '温馨提示');
             }
         });
     }
     settingSer.countSetting().then(function(response){
         if(response.data.code==0){
             $scope.pagination.itemsCount = response.data.data;
-        }else if(response.data.code==1){
-            toastr.error( response.data.msg, '温馨提示');
         }else{
-            toastr.error( "请求超时，请联系管理员", '温馨提示');
+            toastr.error(response.data.msg, '温馨提示');
         }
     });
     $scope.selectList = function(event){

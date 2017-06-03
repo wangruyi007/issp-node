@@ -18,12 +18,12 @@
                     <p>{{$index+1}}</p>
                     <p class="data-id"></p>
                     <p class="addcusNum">{{list.customerNum}}</p>
-                    <p>{{list.customerName}}</p>
-                    <p>{{list.area}}</p>
-                    <p>{{list.customerSex|cover}}</p>
-                    <p>{{list.customerType|cover}}</p>
-                    <p>{{list.customerStatus|cover}}</p>
-                    <p>{{list.relation==null?'0':list.relation}}%</p>
+                    <p>{{::list.customerName}}</p>
+                    <p>{{::list.area}}</p>
+                    <p>{{::list.customerSex|cover}}</p>
+                    <p>{{::list.customerType|cover}}</p>
+                    <p>{{::list.customerStatus|cover}}</p>
+                    <p>{{::list.relation==null?'0':list.relation}}%</p>
                     <p>
                         <a href="javascript:void(0)" class="more"  ng-click="moreList(list)">更多详细</a>
                     </p>
