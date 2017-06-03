@@ -1,6 +1,3 @@
-/**
- * Created by ike on 2017/4/18.
- */
 var app = angular.module('summeryEdit', ['toastr','ipCookie']);
 app.controller('emailEditCtrl', function($scope, emailSer,$state,toastr,$stateParams,$location,ipCookie){
     var emaiId = {id : $stateParams.id};
@@ -26,6 +23,8 @@ app.controller('emailEditCtrl', function($scope, emailSer,$state,toastr,$statePa
                 setTimeout(function(){
                     window.location.href='http://localhost/login'
                 },3000)
+            }else{
+                toastr.error(response.data.msg ,'温馨提示');
             }
         }) 
     };

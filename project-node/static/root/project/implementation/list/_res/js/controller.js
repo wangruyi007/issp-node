@@ -1,5 +1,5 @@
-var app = angular.module('implementationList', ['ng-pagination','toastr']);
-app.controller('implementationListCtrl',function($scope,implementationSer,toastr) {
+var app = angular.module('implementationList', ['ng-pagination','toastr','ipCookie']);
+app.controller('implementationListCtrl',function($scope,implementationSer,toastr,ipCookie,$location) {
    //选择
     $scope.selectList = function(event){
         angular.forEach($scope.implementationLists.data,function(obj){
@@ -26,8 +26,8 @@ app.controller('implementationListCtrl',function($scope,implementationSer,toastr
         implementationSer.listImplementation(listData).then(function(response){
             if(response.data.code==0){
                 $scope.implementationLists = response.data
-            }else{
-                toastr.error( "请求超时，请联系管理员", '温馨提示');
+            }else if(response.data.code==1){
+                toastr.error( response.data.msg, '温馨提示');
             }
         });
         $scope.collect = function(){
@@ -39,8 +39,8 @@ app.controller('implementationListCtrl',function($scope,implementationSer,toastr
             implementationSer.countImplementation2($scope.signCondition,$scope.signProject,$scope.area,$scope.businessType,$scope.businessSubject).then(function (response) {
                 if(response.data.code==0){
                     $scope.abili.itemsCount = response.data.data;
-                }else{
-                    toastr.error( "请求超时，请联系管理员", '温馨提示');
+                }else if(response.data.code==1){
+                    toastr.error( response.data.msg, '温馨提示');
                 }
             })
             var data = {
@@ -54,8 +54,8 @@ app.controller('implementationListCtrl',function($scope,implementationSer,toastr
             implementationSer.searchImplementation(data).then(function(response){
                 if(response.data.code == 0){
                     $scope.implementationLists = response.data
-                }else if(response.data.code==403){
-                    toastr.error( "请登录用户", '温馨提示');
+                }else if(response.data.code==1){
+                    toastr.error( response.data.msg, '温馨提示');
                 }
             });
         };
@@ -68,8 +68,8 @@ app.controller('implementationListCtrl',function($scope,implementationSer,toastr
     implementationSer.countImplementation().then(function(response){
         if(response.data.code==0){
             $scope.abili.itemsCount = response.data.data;
-        }else{
-            toastr.error( "请求超时，请联系管理员", '温馨提示');
+        }else if(response.data.code==1){
+            toastr.error( response.data.msg, '温馨提示');
         }
     });
     //删除

@@ -1,6 +1,3 @@
-/**
- * Created by ike on 2017/4/13.
- */
 var app = angular.module('ssuiList', []);
 app.config(function($provide, $stateProvider){
     $stateProvider.state("root.projectmeasure.interface.ssui.list",{

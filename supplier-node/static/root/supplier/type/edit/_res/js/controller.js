@@ -6,8 +6,8 @@ app.controller('typeEditCtrl', function($scope, typeSer,$stateParams,$state,toas
     typeSer.getEditTypeById(editData).then(function(response){
         if(response.data.code=='0'){
             $scope.editTypeBasic = response.data.data;
-        }else if (response.data.code==403){
-            toastr.error( "请登录用户", '温馨提示');
+        }else if(response.data.code==1){
+            toastr.error( response.data.msg, '温馨提示');
         }
     });
     //编辑点击提交

@@ -7,6 +7,7 @@ app.controller('subpackageCtrl',function ($scope,$state) {
     if ($state.current.url == '/subpackage') {//默认加载列表
         $state.go('root.business.outsource.subpackage.list');
     }
+    $scope.$emit('isVi',true);//判断是否出现搜索按钮
 }).controller('subpackageMenuCtrl',function($scope,$state,$rootScope,$location){
     var urlName = $state.current.url.split('/')[1].split('[')[0];
     $scope.menuClass=urlName+"Menu";

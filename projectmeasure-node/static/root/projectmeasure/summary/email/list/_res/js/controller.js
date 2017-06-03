@@ -1,6 +1,4 @@
-/**
- * Created by ike on 2017/4/13.
- */
+
 var app = angular.module('emailList', ['ng-pagination','toastr','ipCookie']);
 app.controller('emailListCtrl',function($scope,emailSer,toastr,$state,ipCookie,$location) {
     $scope.$emit('changeId', null);
@@ -13,7 +11,7 @@ app.controller('emailListCtrl',function($scope,emailSer,toastr,$state,ipCookie,$
             if(response.data.code==0){
                 $scope.emailLists = response.data
             }else{
-                toastr.error( "请求超时，请联系管理员", '温馨提示');
+                toastr.error( response.data.msg, '温馨提示');
             }
         });
     }

@@ -8,7 +8,10 @@ module.exports = function(){
         var options = {
             method : 'GET',
             timeout : 3000,
-            uri : config()['rurl'] + `/siginmanage/v1/list?limit=10&page=${argvs.page}`
+            uri : config()['rurl'] + `/siginmanage/v1/list?limit=10&page=${argvs.page}`,
+            headers:{
+                userToken:argvs.userToken
+            }
         };
         return request(options);
     };
@@ -55,7 +58,10 @@ module.exports = function(){
         var options = {
             method : 'GET',
             timeout : 3000,
-            uri : config()['rurl'] + `/siginmanage/v1/getOneById/${argvs.id}`
+            uri : config()['rurl'] + `/siginmanage/v1/getOneById/${argvs.id}`,
+            headers:{
+                userToken:argvs.userToken
+            }
         };
         return request(options);
     };
@@ -71,24 +77,16 @@ module.exports = function(){
         };
         return request(options);
     };
-    // 审核
-    this.auditSign = function(argvs){
-        var options = {
-            method : 'POST',
-            timeout : 3000,
-            uri : config()['rurl'] + '/siginmanage/v1/audit',
-            headers:{
-                userToken:argvs.userToken
-            }
-        };
-        return request(options);
-    };
+
     //获取总条数
-    this.getSignTotal = function(){
+    this.getSignTotal = function(argvs){
         var options = {
             method : 'GET',
             timeout : 3000,
-            uri : config()['rurl'] + '/siginmanage/v1/count'
+            uri : config()['rurl'] + '/siginmanage/v1/count',
+            headers:{
+                userToken:argvs.userToken
+            }
         };
         return request(options);
     };
@@ -97,7 +95,10 @@ module.exports = function(){
         var options = {
             method : 'GET',
             timeout : 3000,
-            uri : config()['rurl'] + `/baseinfomanage/v1/list?limit=10&page${argvs.page}`
+            uri : config()['rurl'] + `/baseinfomanage/v1/list?limit=10&page${argvs.page}`,
+            headers:{
+                userToken:argvs.userToken
+            }
         };
         return request(options);
     };
@@ -132,7 +133,10 @@ module.exports = function(){
         var options = {
             method : 'GET',
             timeout : 3000,
-            uri : config()['rurl'] + `/baseinfomanage/v1/getOneById/${argvs.id}`
+            uri : config()['rurl'] + `/baseinfomanage/v1/getOneById/${argvs.id}`,
+            headers:{
+                userToken:argvs.userToken
+            }
         };
         return request(options);
     };
@@ -149,11 +153,14 @@ module.exports = function(){
         return request(options);
     };
     //获取项目合同基本信息总条数
-    this.getInfoTotal = function(){
+    this.getInfoTotal = function(argvs){
         var options = {
             method : 'GET',
             timeout : 3000,
-            uri : config()['rurl'] + '/baseinfomanage/v1/count'
+            uri : config()['rurl'] + '/baseinfomanage/v1/count',
+            headers:{
+                userToken:argvs.userToken
+            }
         };
         return request(options);
     };
@@ -162,7 +169,10 @@ module.exports = function(){
         var options = {
             method : 'GET',
             timeout : 3000,
-            uri : config()['rurl'] + `/dispatchsheet/v1/list?limit=10&page${argvs.page}`
+            uri : config()['rurl'] + `/dispatchsheet/v1/list?limit=10&page${argvs.page}`,
+            headers:{
+                userToken:argvs.userToken
+            }
         };
         return request(options);
     };
@@ -197,7 +207,10 @@ module.exports = function(){
         var options = {
             method : 'GET',
             timeout : 3000,
-            uri : config()['rurl'] + `/dispatchsheet/v1/getOneById/${argvs.id}`
+            uri : config()['rurl'] + `/dispatchsheet/v1/getOneById/${argvs.id}`,
+            headers:{
+                userToken:argvs.userToken
+            }
         };
         return request(options);
     };
@@ -214,20 +227,26 @@ module.exports = function(){
         return request(options);
     };
     //获取项目派工单总条数
-    this.getSheetTotal = function(){
+    this.getSheetTotal = function(argvs){
         var options = {
             method : 'GET',
             timeout : 3000,
-            uri : config()['rurl'] + '/dispatchsheet/v1/count'
+            uri : config()['rurl'] + '/dispatchsheet/v1/count',
+            headers:{
+                userToken:argvs.userToken
+            }
         };
         return request(options);
     };
     //获取内部项目编号
-    this.getNum = function(){
+    this.getNum = function(argvs){
         var options = {
             method : 'GET',
             timeout : 3000,
-            uri : config()['rurl'] + '/baseinfomanage/v1/getInnerNum'
+            uri : config()['rurl'] + '/baseinfomanage/v1/getInnerNum',
+            headers:{
+                userToken:argvs.userToken
+            }
         };
         return request(options);
     };
@@ -237,6 +256,9 @@ module.exports = function(){
             method : 'GET',
             timeout : 3000,
             uri : config()['rurl'] + `/contractcategory/v1/list?limit=10&page${argvs.page}`,
+            headers:{
+                userToken:argvs.userToken
+            }
         };
         return request(options);
     };
@@ -271,7 +293,10 @@ module.exports = function(){
         var options = {
             method : 'GET',
             timeout : 3000,
-            uri : config()['rurl'] + `/contractcategory/v1/getOneById/${argvs.id}`
+            uri : config()['rurl'] + `/contractcategory/v1/getOneById/${argvs.id}`,
+            headers:{
+                userToken:argvs.userToken
+            }
         };
         return request(options);
     };
@@ -288,11 +313,14 @@ module.exports = function(){
         return request(options);
     };
     //获取合同类型总条数
-    this.getCategoryTotal = function(){
+    this.getCategoryTotal = function(argvs){
         var options = {
             method : 'GET',
             timeout : 3000,
-            uri : config()['rurl'] + '/contractcategory/v1/count'
+            uri : config()['rurl'] + '/contractcategory/v1/count',
+            headers:{
+                userToken:argvs.userToken
+            }
         };
         return request(options);
     };
@@ -301,7 +329,10 @@ module.exports = function(){
         var options = {
             method : 'GET',
             timeout : 3000,
-            uri : config()['rurl'] + `/collectemail/v1/list?limit=10&page=${argvs.page}`
+            uri : config()['rurl'] + `/collectemail/v1/list?limit=10&page=${argvs.page}`,
+            headers:{
+                userToken:argvs.userToken
+            }
         };
         return request(options);
     };
@@ -336,7 +367,10 @@ module.exports = function(){
         var options = {
             method : 'GET',
             timeout : 3000,
-            uri : config()['rurl'] + `/collectemail/v1/getOneById/${argvs.id}`
+            uri : config()['rurl'] + `/collectemail/v1/getOneById/${argvs.id}`,
+            headers:{
+                userToken:argvs.userToken
+            }
         };
         return request(options);
     };
@@ -353,11 +387,14 @@ module.exports = function(){
         return request(options);
     };
     //获取总条数邮件汇总
-    this.getMailTotal = function(){
+    this.getMailTotal = function(argvs){
         var options = {
             method : 'GET',
             timeout : 3000,
-            uri : config()['rurl'] + '/collectemail/v1/count'
+            uri : config()['rurl'] + '/collectemail/v1/count',
+            headers:{
+                userToken:argvs.userToken
+            }
         };
         return request(options);
     };
@@ -378,7 +415,10 @@ module.exports = function(){
         var options = {
             method : 'DELETE',
             timeout : 3000,
-            uri : config()['rurl'] + `/collectemail/v1/thaw/${argvs.id}`
+            uri : config()['rurl'] + `/collectemail/v1/thaw/${argvs.id}`,
+            headers:{
+                userToken:argvs.userToken
+            }
         };
         return request(options);
     };
@@ -396,11 +436,14 @@ module.exports = function(){
         return request(options);
     };
     //获取合同签订与立项汇总所有地区
-    this.getManageArea = function(){
+    this.getManageArea = function(argvs){
         var options = {
             method : 'GET',
             timeout : 3000,
-            uri : config()['rurl'] + '/siginmanage/v1/listArea'
+            uri : config()['rurl'] + '/siginmanage/v1/listArea',
+            headers:{
+                userToken:argvs.userToken
+            }
         };
         return request(options);
     };
@@ -418,11 +461,14 @@ module.exports = function(){
         return request(options);
     };
     //获取项目基本信息合同所有甲方公司
-    this.getInformationArea = function(){
+    this.getInformationArea = function(argvs){
         var options = {
             method : 'GET',
             timeout : 3000,
-            uri : config()['rurl'] + '/baseinfomanage/v1/listCompany'
+            uri : config()['rurl'] + '/baseinfomanage/v1/listCompany',
+            headers : {
+                userToken : argvs.userToken
+            }
         };
         return request(options);
     };
@@ -440,20 +486,62 @@ module.exports = function(){
         return request(options);
     };
     //获取派工单信息合同所有地区
-    this.getSheetArea = function(){
+    this.getSheetArea = function(argvs){
         var options = {
             method : 'GET',
             timeout : 3000,
-            uri : config()['rurl'] + '/dispatchsheet/v1/listArea'
+            uri : config()['rurl'] + '/dispatchsheet/v1/listArea',
+            headers : {
+                userToken : argvs.userToken
+            }
         };
         return request(options);
     };
-    //退出
-    this.logout = function(argvs){
+    //权限设置
+    this.listSetting = function(argvs){
         var options = {
-            method : 'POST',
+            method : 'GET',
             timeout : 3000,
-            uri : config()['user'] + `/v1/sign-out/${argvs.token}`,
+            uri : config()['rurl'] + `/cuspermission/v1/list?limit=10&page=${argvs.page}`,
+            headers : {
+                userToken : argvs.userToken
+            }
+
+        };
+        return request(options);
+    };
+    this.countSetting = function(){
+        var options = {
+            method : 'GET',
+            timeout : 3000,
+            uri : config()['rurl'] + '/cuspermission/v1/count',
+        };
+        return request(options);
+    };
+    this.getpermit = function(argvs){
+        var options = {
+            method : 'GET',
+            timeout : 3000,
+            uri : config()['rurl'] + `/cuspermission/v1/getOneById/${argvs.id}`,
+        };
+        return request(options);
+    };
+    this.getListpermit = function(argvs){
+        var options = {
+            method : 'GET',
+            timeout : 3000,
+            uri : config()['rurl'] + `/cuspermission/v1/listOperateById/${argvs.id}`,
+        };
+        return request(options);
+    };
+    this.editSetting = function(argvs){
+        var options = {
+            method : 'PUT',
+            timeout : 3000,
+            uri : config()['rurl'] + '/cuspermission/v1/edit',
+            headers:{
+                userToken:argvs.userToken
+            },
             form:argvs
         };
         return request(options);

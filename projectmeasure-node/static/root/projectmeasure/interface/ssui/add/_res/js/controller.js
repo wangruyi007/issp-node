@@ -1,9 +1,6 @@
-/**
- * Created by ike on 2017/4/17.
- */
 var app = angular.module('ssuiAdd', ['toastr','ipCookie']);
 app.controller('ssuiAddCtrl', function($scope, ssuiSer,$state,toastr,ipCookie,$location){
-    //添加竞争对手
+    //添加
     $scope.companyAddFun = function(){
         var data = $scope.data;
         ssuiSer.addMarketserveapply(data).then(function(response){
@@ -17,6 +14,8 @@ app.controller('ssuiAddCtrl', function($scope, ssuiSer,$state,toastr,ipCookie,$l
                 setTimeout(function(){
                     window.location.href='http://localhost/login'
                 },3000)
+            }else if(response.data.code == 1){
+                toastr.error( response.data.msg, '温馨提示');
             }
         });
     };

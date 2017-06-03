@@ -1,0 +1,41 @@
+<div class="collect" style="margin-top:-70px;">
+    <div class="collect-select">
+        <span>
+            地区：
+            <select class="sele"  ng-model="data.lender">
+                <option value="">请选择</option>
+                <option ng-repeat="list in peoples" value="{{list}}">{{ list }}</option>
+            </select>
+            <input type="text"  class="inputArea" ng-model="data.lender">
+        </span>
+        <button ng-click="collect()">汇总</button>
+    </div>
+    <ul class="sum-list">
+        <li class="sum-thead">
+            <span>地区</span>
+            <span>项目利润</span>
+            <span>多项目多界面项目数量</span>
+            <span>多项目单界面项目数量</span>
+            <span>单项目多界面项目数量</span>
+            <span>单项目单界面项目数量</span>
+            <span>长期合作项目数量</span>
+            <span>事项合作项目数量</span>
+            <span>中介项目数量</span>
+            <span>测评结果为盈利项目数量</span>
+            <span>测评结果为亏损项目数量</span>
+        </li>
+        <li class="sum-tbody" ng-repeat="Lists in summaryLists">
+            <span>{{::Lists.area}}</span>
+            <span>{{::Lists.lender}}</span>
+            <span>{{::Lists.projectGroup}}</span>
+            <span>{{::Lists.projectName}}</span>
+            <span>{{::Lists.firstSubject}}</span>
+            <span>{{::Lists.secondSubject}}</span>
+            <span>{{::Lists.thirdSubject}}</span>
+            <span>{{::Lists.payCondition}}</span>
+            <span>{{::Lists.money}}</span>
+            <span>{{::Lists.payCondition}}</span>
+            <span>{{::Lists.money}}</span>
+        </li>
+    </ul>
+</div>

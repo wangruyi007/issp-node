@@ -9,16 +9,22 @@ module.exports = function(){
         var options = {
             method : 'GET',
             timeout : 3000,
-            uri : config()['rurl'] + `/staffentryregister/v1/list?limit=10&page=${argvs.page}`
+            uri : config()['rurl'] + `/staffentryregister/v1/list?limit=10&page=${argvs.page}`,
+            headers : {
+                userToken : argvs.userToken
+            }
         };
         return request(options);
     };
     //获取总条数
-    this.registrationCount = function(){
+    this.registrationCount = function(argvs){
         var options = {
             method : 'GET',
             timeout : 3000,
-            uri : config()['rurl'] + '/staffentryregister/v1/count'
+            uri : config()['rurl'] + '/staffentryregister/v1/count',
+            headers : {
+                userToken : argvs.userToken
+            }
         };
         return request(options);
     };
@@ -87,16 +93,22 @@ module.exports = function(){
         var options = {
             method : 'GET',
             timeout : 3000,
-            uri : config()['rurl'] + `/entryregister/v1/list${urlEncode(argvs,true)}`
+            uri : config()['rurl'] + `/entryregister/v1/list${urlEncode(argvs,true)}`,
+            headers : {
+                userToken : argvs.userToken
+            }
         };
         return request(options);
     };
     //获取条目
-    this.entryregisterCount = function(){
+    this.entryregisterCount = function(argvs){
         var options = {
             method : 'GET',
             timeout : 3000,
             uri : config()['rurl'] + '/entryregister/v1/count',
+            headers : {
+                userToken : argvs.userToken
+            }
         };
         return request(options);
     };
@@ -118,7 +130,10 @@ module.exports = function(){
         var options = {
             method : 'GET',
             timeout : 3000,
-            uri : config()['rurl'] + `/entryregister/v1/getEntryRegister/${argvs.id}`
+            uri : config()['rurl'] + `/entryregister/v1/getEntryRegister/${argvs.id}`,
+            headers : {
+                userToken : argvs.userToken
+            }
         };
         return request(options);
     };
@@ -152,16 +167,22 @@ module.exports = function(){
         var options = {
             method : 'GET',
             timeout : 3000,
-            uri : config()['rurl'] + `/entrybasicinfo/v1/listEntryBasicInfo?limit=10&page=${argvs.page}`
+            uri : config()['rurl'] + `/entrybasicinfo/v1/listEntryBasicInfo?limit=10&page=${argvs.page}`,
+            headers : {
+                userToken : argvs.userToken
+            }
         };
         return request(options);
     };
     //获取入职基本信息总条数
-    this.basicInfoCount = function(){
+    this.basicInfoCount = function(argvs){
         var options = {
             method : 'GET',
             timeout : 3000,
-            uri : config()['rurl'] + '/entrybasicinfo/v1/count'
+            uri : config()['rurl'] + '/entrybasicinfo/v1/count',
+            headers : {
+                userToken : argvs.userToken
+            }
         };
         return request(options);
     };
@@ -183,7 +204,10 @@ module.exports = function(){
         var options = {
             method : 'GET',
             timeout : 3000,
-            uri : config()['rurl'] + `/entrybasicinfo/v1/getEntryBasicInfo/${argvs.id}`
+            uri : config()['rurl'] + `/entrybasicinfo/v1/getEntryBasicInfo/${argvs.id}`,
+            headers : {
+                userToken : argvs.userToken
+            }
         };
         return request(options);
     };
@@ -213,11 +237,14 @@ module.exports = function(){
         return request(options);
     };
     //获取所有岗位
-    this.basicInfoPost = function(){
+    this.basicInfoPost = function(argvs){
         var options = {
             method : 'GET',
             timeout : 3000,
-            uri : config()['rurl'] + '/entrybasicinfo/v1/listPost'
+            uri : config()['rurl'] + '/entrybasicinfo/v1/listPost',
+            headers : {
+                userToken : argvs.userToken
+            }
         };
         return request(options);
     };
@@ -226,7 +253,10 @@ module.exports = function(){
         var options = {
             method : 'GET',
             timeout : 3000,
-            uri : config()['rurl'] + '/entrybasicinfo/v1/collect'+urlEncode(argvs,true)
+            uri : config()['rurl'] + '/entrybasicinfo/v1/collect'+urlEncode(argvs,true),
+            headers : {
+                userToken : argvs.userToken
+            }
         };
         return request(options);
     };
@@ -235,16 +265,22 @@ module.exports = function(){
         var options = {
             method : 'GET',
             timeout : 3000,
-            uri : config()['rurl'] + `/salaryconfirmrecord/v1/list?limit=10&page=${argvs.page}`
+            uri : config()['rurl'] + `/salaryconfirmrecord/v1/list?limit=10&page=${argvs.page}`,
+            headers : {
+                userToken : argvs.userToken
+            }
         };
         return request(options);
     };
     //获取薪资确认总条数
-    this.salaryCount = function(){
+    this.salaryCount = function(argvs){
         var options = {
             method : 'GET',
             timeout : 3000,
-            uri : config()['rurl'] + '/salaryconfirmrecord/v1/count'
+            uri : config()['rurl'] + '/salaryconfirmrecord/v1/count',
+            headers : {
+                userToken : argvs.userToken
+            }
         };
         return request(options);
     };
@@ -266,7 +302,10 @@ module.exports = function(){
         var options = {
             method : 'GET',
             timeout : 3000,
-            uri : config()['rurl'] + `/salaryconfirmrecord/v1/getOne/${argvs.id}`
+            uri : config()['rurl'] + `/salaryconfirmrecord/v1/getOne/${argvs.id}`,
+            headers : {
+                userToken : argvs.userToken
+            }
         };
         return request(options);
     };
@@ -295,14 +334,62 @@ module.exports = function(){
         };
         return request(options);
     };
-    //退出
-    this.logout = function(argvs){
+    //权限设置
+    this.listSetting = function(argvs){
         var options = {
-            method : 'POST',
+            method : 'GET',
             timeout : 3000,
-            uri : config()['user'] + `/v1/sign-out/${argvs.userToken}`,
-			form:argvs
+            uri : config()['rurl'] + `/cuspermission/v1/list?limit=10&page=${argvs.page}`,
+            headers : {
+                userToken : argvs.userToken
+            }
+        };
+        return request(options);
     };
+    this.countSetting = function(argvs){
+        var options = {
+            method : 'GET',
+            timeout : 3000,
+            uri : config()['rurl'] + '/cuspermission/v1/count',
+            headers : {
+                userToken : argvs.userToken
+            }
+
+        };
+        return request(options);
+    };
+    this.getpermit = function(argvs){
+        var options = {
+            method : 'GET',
+            timeout : 3000,
+            uri : config()['rurl'] + `/cuspermission/v1/getOneById/${argvs.id}`,
+            headers : {
+                userToken : argvs.userToken
+            }
+        };
+        return request(options);
+    };
+    this.getListpermit = function(argvs){
+        var options = {
+            method : 'GET',
+            timeout : 3000,
+            uri : config()['rurl'] + `/cuspermission/v1/listOperateById/${argvs.id}`,
+            headers : {
+                userToken : argvs.userToken
+            }
+        };
+        return request(options);
+    };
+    this.editSetting = function(argvs){
+        var options = {
+            method : 'PUT',
+            timeout : 3000,
+            uri : config()['rurl'] + '/cuspermission/v1/edit',
+            headers:{
+                userToken:argvs.userToken
+            },
+            form:argvs
+        };
         return request(options);
     };
     return this;

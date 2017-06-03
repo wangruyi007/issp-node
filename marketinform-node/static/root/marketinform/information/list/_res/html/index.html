@@ -21,7 +21,7 @@
                     <p>{{list.auditOpinion}}</p>
                     <p>{{list.marketInfoId}}</p>
                     <p>{{list.infoCollectionDate}}</p>
-                    <p>{{list.workProfession}}</p>
+                    <p>{{list.workType|cover}}</p>
                     <p>{{list.technologyCategory}}</p>
                     <p>{{list.area}}</p>
                     <p>
@@ -43,13 +43,13 @@
                             </p>
                             <p class="see-children">
                                 <span>{{list.projectName}}</span>
-                                <span>{{list.scale}}</span>
+                                <span>{{list.scale|cover}}</span>
                                 <span>{{list.startTime}}</span>
                                 <span>{{list.importantPoint}}</span>
                                 <span>{{list.endTime}}</span>
                                 <span>{{list.infoSource}}</span>
                                 <span>{{list.marketInfoCollecting}}</span>
-                                <span>{{list.effective}}</span>
+                                <span>{{list.effective|cover}}</span>
                             </p>
                         </li>
                         <li>
@@ -64,7 +64,7 @@
                                 <span>组织机构名称</span>
                            </p>
                             <p class="see-children">
-                                <span>{{list.projectNature}}</span>
+                                <span>{{list.projectNature|cover}}</span>
                                 <span>{{list.marketAnalysts}}</span>
                                 <span>{{list.configurationRequirement}}</span>
                                 <span>{{list.technicalRequirement}}</span>

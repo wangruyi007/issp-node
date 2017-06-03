@@ -1,0 +1,26 @@
+<ul class="list">
+    <li ng-click="list()" ng-class="{'current':menuClass=='listMenu'}" ui-sref=".list">
+        <a href="javascript:void(0)" class="lis">列表<span>Tabulate</span></a>
+    </li>
+    <li ng-click="add()" ng-class="{'current':menuClass=='addMenu'}" ui-sref=".add[12]">
+        <a href="javascript:void(0)" class="add">添加<span>Add</span></a>
+    </li>
+    <li ng-click="edit()" ng-class="{'current':menuClass=='editMenu'}">
+        <a href="javascript:void(0)"  class="same-one">编辑<span>Edit</span></a>
+    </li>
+    <li ng-click="delete()" ng-class="{'current':menuClass=='editMenu'}">
+        <a href="javascript:void(0)" class="same-two" >删除<span>Delete</span></a>
+    </li>
+    <li ng-click="review()" ng-class="{'current':menuClass=='reviewMenu'}">
+        <a href="javascript:void(0)" class="same-three" >审核<span>Review</span></a>
+    </li>
+    <li>
+        <a href="javascript:void(0)"  class="same-one">上传附件<span>Upload</span></a>
+    </li>
+    <li>
+        <a href="javascript:void(0)" class="same-two" >查看附件<span>View</span></a>
+    </li>
+    <li>
+        <a href="javascript:void(0)" class="same-three" >导出<span>Export</span></a>
+    </li>
+</ul>

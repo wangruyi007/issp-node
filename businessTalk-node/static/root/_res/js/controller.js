@@ -18,12 +18,23 @@ app.controller('rootCtrl', function ($scope,$rootScope,$state,ipCookie,$location
         location.href="http://localhost/login";//部署到线上时要改为登录域名
     };
     $scope.logout = function(){
-        rootSer.logout().then(function(response){
+       var absurl = {absurl:$location.absUrl()};
+        rootSer.userLogout(absurl).then(function(response){
             if(response.data.code==0){
                 ipCookie.remove("username");
-                $scope.username="登录用户";
-                $scope.logined=false;
+                location.href="http://localhost/user/logout"
             }
         })
     }
+
+    //搜索功能
+    $scope.isClick = false;
+    $scope.searchToggle = function(){
+        $scope.isClick = !$scope.isClick;
+        //父 Ctrl 监听到事件，向下广播
+        $scope.$broadcast('iSsearch',$scope.isClick)
+    }
+     $scope.$on('isVi',function(event,msg){
+        $scope.isView = msg;
+    });
 })

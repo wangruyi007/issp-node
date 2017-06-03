@@ -19,6 +19,8 @@ app.controller('emailCongealCtrl',function($scope,emailSer,toastr,$stateParams,$
                 setTimeout(function(){
                     window.location.href='http://localhost/login'
                 },3000)
+            }else{
+                toastr.error( response.data.msg, '温馨提示');
             }
         })
     }

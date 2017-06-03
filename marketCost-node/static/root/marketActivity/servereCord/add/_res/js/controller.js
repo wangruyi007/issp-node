@@ -1,8 +1,5 @@
-/**
- * Created by ike on 2017/4/17.
- */
 var app = angular.module('serveCordAdd', ['toastr','ipCookie']);
-app.controller('serverecordAddCtrl', function($scope, servereCordSer,$state,toast,ipCookie,$location){
+app.controller('serverecordAddCtrl', function($scope, servereCordSer,$state,toastr,ipCookie,$location){
     //添加竞争对手
     $scope.companyAddFun = function(){
         $scope.data.planActivityTiming = angular.element('.addPlanTime').val();//计划时间
@@ -21,7 +18,7 @@ app.controller('serverecordAddCtrl', function($scope, servereCordSer,$state,toas
                 setTimeout(function(){
                     window.location.href='http://localhost/login'
                 },3000)
-            }else if(response.data.code == 1){
+            }else{
                 toastr.error( response.data.msg, '温馨提示');
             }
         });

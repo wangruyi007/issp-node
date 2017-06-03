@@ -69,11 +69,26 @@ app.filter('cover', function(){
             case "GLEVEL":
                 result = "G级:181-210人";
                 break;
-            case "0":
+            case false:
                 result = "否";
                 break;
-            case "1":
+            case true:
                 result = "是";
+                break;
+            case "NEWPROJECT":
+                result = "新项目市场信息数量";
+                break;
+            case "MOBILECOMMUNICATION":
+                result = "移动通信行业市场信息数量";
+                break;
+            case "SOFTWAREDEVELOPMENT":
+                result = "软件开发行业市场信息数量";
+                break;
+            case "INTELLIGENTSYSTEMINTEGRATION":
+                result = "智能系统集成行业市场信息数量";
+                break;
+            case "PLANNINGMARKETINGSOLUTIONS":
+                result = "策划与营销方案行业市场信息数量";
                 break;
         }
         return result;
