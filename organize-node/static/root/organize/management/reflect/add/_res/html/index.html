@@ -3,6 +3,12 @@
         <section>
             <ul>
                 <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>分类</em></label>
+                    <select class="sele" ng-model="add.classifyId">
+                        <option ng-repeat="classify in classifys" value="{{classify.id}}">{{classify.name}}</option>
+                    </select>
+                </li>
+                <li class="required">
                     <label><i><img src="/images/mandatory.png"></i><em>名称</em></label>
                     <input type="text"ng-model="add.name">
                 </li>

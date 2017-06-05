@@ -18,7 +18,6 @@ app.controller('numberListCtrl',function($scope,toastr,numberSer){
         activatePage: activatePage
     };
 
-
     function activatePage(page) {
         var pages = {
             page:page
@@ -47,25 +46,6 @@ app.controller('numberListCtrl',function($scope,toastr,numberSer){
         })
     });
 });
-app.directive('mod',function(){
-    return{
-        restrict:'AE',
-        replace:true,
-        link:function(scope,elements,attrs){
-            var textWidth = elements.text().length*12;
-            var boxWidth = elements.width();
-            if(textWidth>boxWidth){
-                elements.addClass('modac');
-            }
-            elements.on('click',function(){
-                if(elements.hasClass('modac')){
 
-                    console.info(elements.index());
-                }
-
-            })
-        }
-    }
-})
 
 

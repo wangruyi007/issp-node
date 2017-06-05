@@ -97,7 +97,14 @@ body {
   display: -ms-flexbox;
   display: flex;
 }
-
+/*菜单*/
+.change-angle{
+  transform:rotate(270deg);
+  -ms-transform:rotate(270deg); 	/* IE 9 */
+  -moz-transform:rotate(270deg); 	/* Firefox */
+  -webkit-transform:rotate(270deg); /* Safari 和 Chrome */
+  -o-transform:rotate(270deg); 	/* Opera */
+}
 /*搜索*/
 .search-all{
   display: -webkit-box;
@@ -117,7 +124,6 @@ body {
   height: 18px;
   background: url("/images/search.png") no-repeat center;
   margin-right: 18px;
-  display: none;
 }
 .search-big{
   width: 480px;

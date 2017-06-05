@@ -1,5 +1,3 @@
-
-
 <div class="content-tab list">
     <ul class="table">
         <li class="list-head">
@@ -14,11 +12,18 @@
                     <p>{{$index+1}}</p>
                     <p>{{::list.username}}</p>
                     <p>{{::list.employeesNumber}}</p>
-                    <p>{{::list.position}}</p>
+                    <p mod>{{::list.position}}</p>
                 </div>
             </section>
         </li>
     </ul>
+    <div class="module">
+        <div class="see-module">
+            <p class="see-type">体现类型</p>
+            <p class="see-description"></p>
+            <button class="btn" modclose>关闭</button>
+        </div>
+    </div>
     <footer class="footer">
         <pagination count="pagination.itemsCount" take="pagination.take" activate="pagination.activatePage"></pagination>
     </footer>

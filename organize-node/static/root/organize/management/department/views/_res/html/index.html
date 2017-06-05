@@ -1,0 +1,32 @@
+<div class="content-tab list">
+    <ul class="table">
+        <li class="list-head">
+            <span></span>
+            <span>业务方向分类</span>
+            <span>业务方向科目</span>
+            <span>专业分类</span>
+            <span>工作范围</span>
+            <span>工作界面(节点)</span>
+        </li>
+        <li class="list-all" ng-repeat="list in viewLists" style="display: {{list._delete?'none':'block'}};">
+            <section  class="{{list.status=='CONGEAL'?'congeal':''}}" >
+                <div class="list-text {{list._selectList?'selectList':''}}" ng-click="selectList(list)">
+                    <p>{{::$index+1}}</p>
+                    <p>{{::list.direction}}</p>
+                    <p>{{::list.project}}</p>
+                    <p>{{::list.classify}}</p>
+                    <p>{{::list.workRange}}</p>
+                    <p>{{::list.node}}</p>
+                </div>
+            </section>
+        </li>
+    </ul>
+    <footer class="footer">
+        <!--<pagination count="pagination.itemsCount" take="pagination.take" activate="pagination.activatePage"></pagination>-->
+    </footer>
+</div>
+
+
+
+
+

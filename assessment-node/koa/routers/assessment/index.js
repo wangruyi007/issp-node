@@ -6,10 +6,10 @@ var config = require(path.resolve('plugins/read-config.js'));
 var fetch = require('node-fetch');//url转发
 module.exports = function(){
     var router = new Router();
-
     router.get('/listBasicInfo/list', function*(){ //列表
         var $self = this;
         var page = $self.request.query;
+        page.token = $self.cookies.get('token');
         yield (server().basicInfoList(page)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -21,7 +21,8 @@ module.exports = function(){
             }));
     }).get('/countInfo/count', function*(){//总条数
         var $self = this;
-        yield (server().getBasicInfoTotal()
+        var token={token:$self.cookies.get('token')};
+        yield (server().getBasicInfoTotal(token)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
                 $self.body = responseText;
@@ -72,6 +73,7 @@ module.exports = function(){
     }).get('/findInfoId/info', function*(){//获取id
         var $self = this;
         var findIdData = $self.request.query;
+        findIdData.token = $self.cookies.get('token');
         yield (server().findBasicInfoId(findIdData)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -84,6 +86,7 @@ module.exports = function(){
     }).get('/listDemand/list', function*(){ //列表
         var $self = this;
         var page = $self.request.query;
+        page.token = $self.cookies.get('token');
         yield (server().demandList(page)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -95,7 +98,8 @@ module.exports = function(){
             }));
     }).get('/countDemand/count', function*(){//总条数
         var $self = this;
-        yield (server().getCountDemandTotal()
+        var token={token:$self.cookies.get('token')};
+        yield (server().getCountDemandTotal(token)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
                 $self.body = responseText;
@@ -146,6 +150,7 @@ module.exports = function(){
     }).get('/findDemandId/info', function*(){//获取id
         var $self = this;
         var findIdData = $self.request.query;
+        findIdData.token = $self.cookies.get('token');
         yield (server().findDemandById(findIdData)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -157,7 +162,8 @@ module.exports = function(){
             }));
     }).get('/allProjects/demand', function*(){//查询所有项目
         var $self = this;
-        yield (server().projectsAllDemandById()
+        var token={token:$self.cookies.get('token')};
+        yield (server().projectsAllDemandById(token)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
                 $self.body = responseText;
@@ -169,6 +175,7 @@ module.exports = function(){
     }).get('/listLabour/list', function*(){ //列表
         var $self = this;
         var page = $self.request.query;
+        page.token = $self.cookies.get('token');
         yield (server().labourList(page)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -180,7 +187,8 @@ module.exports = function(){
             }));
     }).get('/countLabour/count', function*(){//总条数
         var $self = this;
-        yield (server().getCountLabourTotal()
+        var token={token:$self.cookies.get('token')};
+        yield (server().getCountLabourTotal(token)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
                 $self.body = responseText;
@@ -231,6 +239,7 @@ module.exports = function(){
     }).get('/findLabourId/info', function*(){//获取id
         var $self = this;
         var findIdData = $self.request.query;
+        findIdData.token = $self.cookies.get('token');
         yield (server().findLabourById(findIdData)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -242,7 +251,8 @@ module.exports = function(){
             }));
     }).get('/allLabourProjects/id', function*(){//查询所有项目
         var $self = this;
-        yield (server().projectsAllLabourById()
+        var token={token:$self.cookies.get('token')};
+        yield (server().projectsAllLabourById(token)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
                 $self.body = responseText;
@@ -254,6 +264,7 @@ module.exports = function(){
     }).get('/listOther/list', function*(){ //列表
         var $self = this;
         var page = $self.request.query;
+        page.token = $self.cookies.get('token');
         yield (server().otherList(page)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -265,7 +276,8 @@ module.exports = function(){
             }));
     }).get('/countOther/count', function*(){//总条数
         var $self = this;
-        yield (server().getCountotherTotal()
+        var token={token:$self.cookies.get('token')};
+        yield (server().getCountotherTotal(token)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
                 $self.body = responseText;
@@ -316,6 +328,7 @@ module.exports = function(){
     }).get('/findOtherId/info', function*(){//获取id
         var $self = this;
         var findIdData = $self.request.query;
+        findIdData.token = $self.cookies.get('token');
         yield (server().findOtherById(findIdData)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -327,7 +340,8 @@ module.exports = function(){
             }));
     }).get('/allOtherProjects/id', function*(){//查询所有项目
         var $self = this;
-        yield (server().projectsAllOtherById()
+        var token={token:$self.cookies.get('token')};
+        yield (server().projectsAllOtherById(token)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
                 $self.body = responseText;
@@ -339,6 +353,7 @@ module.exports = function(){
     }).get('/listCost/list', function*(){ //列表
         var $self = this;
         var page = $self.request.query;
+        page.token = $self.cookies.get('token');
         yield (server().costList(page)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -350,7 +365,8 @@ module.exports = function(){
             }));
     }).get('/countCost/count', function*(){//总条数
         var $self = this;
-        yield (server().getCountToCostTotal()
+        var token={token:$self.cookies.get('token')};
+        yield (server().getCountToCostTotal(token)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
                 $self.body = responseText;
@@ -401,6 +417,7 @@ module.exports = function(){
     }).get('/findCostdId/info', function*(){//获取id
         var $self = this;
         var findIdData = $self.request.query;
+        findIdData.token = $self.cookies.get('token');
         yield (server().findCostById(findIdData)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -412,7 +429,8 @@ module.exports = function(){
             }));
     }).get('/allCostProjects/id', function*(){//查询所有项目
         var $self = this;
-        yield (server().projectsAllCostById()
+        var token={token:$self.cookies.get('token')};
+        yield (server().projectsAllCostById(token)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
                 $self.body = responseText;
@@ -423,7 +441,8 @@ module.exports = function(){
             }));
     }).get('/listProfit/list', function*(){ //列表
         var $self = this;
-        yield (server().profitList()
+        var token={token:$self.cookies.get('token')};
+        yield (server().profitList(token)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
                 $self.body = responseText;
@@ -435,6 +454,7 @@ module.exports = function(){
     }).get('/listGrow/list', function*(){ //列表
         var $self = this;
         var page = $self.request.query;
+        page.token = $self.cookies.get('token');
         yield (server().growList(page)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -446,7 +466,8 @@ module.exports = function(){
             }));
     }).get('/countGrow/count', function*(){//总条数
         var $self = this;
-        yield (server().getCountToGrowTotal()
+        var token={token:$self.cookies.get('token')};
+        yield (server().getCountToGrowTotal(token)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
                 $self.body = responseText;
@@ -497,6 +518,7 @@ module.exports = function(){
     }).get('/findGrowId/info', function*(){//获取id
         var $self = this;
         var findIdData = $self.request.query;
+        findIdData.token = $self.cookies.get('token');
         yield (server().findGrowById(findIdData)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -508,7 +530,8 @@ module.exports = function(){
             }));
     }).get('/allGrowProjects/id', function*(){//查询所有项目
         var $self = this;
-        yield (server().projectsAllGrowById()
+        var token={token:$self.cookies.get('token')};
+        yield (server().projectsAllGrowById(token)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
                 $self.body = responseText;
@@ -520,6 +543,7 @@ module.exports = function(){
     }).get('/listInformation/list', function*(){ //列表
         var $self = this;
         var page = $self.request.query;
+        page.token = $self.cookies.get('token');
         yield (server().informationList(page)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -531,7 +555,8 @@ module.exports = function(){
             }));
     }).get('/countInformation/count', function*(){//总条数
         var $self = this;
-        yield (server().getCountToInformationTotal()
+        var token={token:$self.cookies.get('token')};
+        yield (server().getCountToInformationTotal(token)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
                 $self.body = responseText;
@@ -582,6 +607,7 @@ module.exports = function(){
     }).get('/findInformationId/info', function*(){//获取id
         var $self = this;
         var findIdData = $self.request.query;
+        findIdData.token = $self.cookies.get('token');
         yield (server().findInformationById(findIdData)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -593,7 +619,8 @@ module.exports = function(){
             }));
     }).get('/allInformationProjects/id', function*(){//查询所有项目
         var $self = this;
-        yield (server().projectsAllInformationById()
+        var token={token:$self.cookies.get('token')};
+        yield (server().projectsAllInformationById(token)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
                 $self.body = responseText;
@@ -605,6 +632,7 @@ module.exports = function(){
     }).get('/listHand/list', function*(){ //列表
         var $self = this;
         var page = $self.request.query;
+        page.token = $self.cookies.get('token');
         yield (server().handList(page)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -616,7 +644,8 @@ module.exports = function(){
             }));
     }).get('/countHand/count', function*(){//总条数
         var $self = this;
-        yield (server().getCountToHandTotal()
+        var token={token:$self.cookies.get('token')};
+        yield (server().getCountToHandTotal(token)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
                 $self.body = responseText;
@@ -667,6 +696,7 @@ module.exports = function(){
     }).get('/findHandId/info', function*(){//获取id
         var $self = this;
         var findIdData = $self.request.query;
+        findIdData.token = $self.cookies.get('token');
         yield (server().findHandById(findIdData)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -678,7 +708,8 @@ module.exports = function(){
             }));
     }).get('/allHandProjects/id', function*(){//查询所有项目
         var $self = this;
-        yield (server().projectsAllHandById()
+        var token={token:$self.cookies.get('token')};
+        yield (server().projectsAllHandById(token)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
                 $self.body = responseText;
@@ -716,6 +747,7 @@ module.exports = function(){
     }).get('/listMoney/list', function*(){ //列表
         var $self = this;
         var page = $self.request.query;
+        page.token = $self.cookies.get('token');
         yield (server().moneyList(page)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -727,7 +759,8 @@ module.exports = function(){
             }));
     }).get('/countMoney/count', function*(){//总条数
         var $self = this;
-        yield (server().getCountToMoneyTotal()
+        var token={token:$self.cookies.get('token')};
+        yield (server().getCountToMoneyTotal(token)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
                 $self.body = responseText;
@@ -778,6 +811,7 @@ module.exports = function(){
     }).get('/findMoneyId/info', function*(){//获取id
         var $self = this;
         var findIdData = $self.request.query;
+        findIdData.token = $self.cookies.get('token');
         yield (server().findMoneyById(findIdData)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -789,7 +823,8 @@ module.exports = function(){
             }));
     }).get('/allMoneyProjects/id', function*(){//查询所有项目
         var $self = this;
-        yield (server().projectsAllMoneyById()
+        var token={token:$self.cookies.get('token')};
+        yield (server().projectsAllMoneyById(token)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
                 $self.body = responseText;
@@ -799,8 +834,9 @@ module.exports = function(){
                 console.error(error.error);
             }));
     }).get('/listMoneyById/id', function*(){
-        var getTyoeData = this.request.query;
         var $self = this;
+        var getTyoeData = this.request.query;
+        getTyoeData.token = $self.cookies.get('token');
         yield (server().typeListById(getTyoeData)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -812,7 +848,8 @@ module.exports = function(){
             }));
     }).get('/listProGrow/list', function*(){ //项目成长能力列表
         var $self = this;
-        yield (server().proGrowList()
+        var token={token:$self.cookies.get('token')};
+        yield (server().proGrowList(token)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
                 $self.body = responseText;
@@ -823,7 +860,8 @@ module.exports = function(){
             }));
     }).get('/listRate/list', function*(){ //项目利润率列表
         var $self = this;
-        yield (server().rateList()
+        var token={token:$self.cookies.get('token')};
+        yield (server().rateList(token)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
                 $self.body = responseText;
@@ -835,6 +873,7 @@ module.exports = function(){
     }).get('/listNew/list', function*(){ //列表
         var $self = this;
         var page = $self.request.query;
+        page.token = $self.cookies.get('token');
         yield (server().newList(page)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -846,7 +885,8 @@ module.exports = function(){
             }));
     }).get('/countNew/count', function*(){//总条数
         var $self = this;
-        yield (server().getCountToNewTotal()
+        var token={token:$self.cookies.get('token')};
+        yield (server().getCountToNewTotal(token)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
                 $self.body = responseText;
@@ -858,6 +898,7 @@ module.exports = function(){
     }).get('/listRelationship/list', function*(){ //列表
         var $self = this;
         var page = $self.request.query;
+        page.token = $self.cookies.get('token');
         yield (server().relationshipList(page)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -869,7 +910,8 @@ module.exports = function(){
             }));
     }).get('/countRelationship/count', function*(){//总条数
         var $self = this;
-        yield (server().getCountToRelationshipTotal()
+        var token={token:$self.cookies.get('token')};
+        yield (server().getCountToRelationshipTotal(token)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
                 $self.body = responseText;
@@ -883,6 +925,7 @@ module.exports = function(){
         .get('/listFrontLine/list', function*(){ //列表
             var $self = this;
             var page = $self.request.query;
+            page.token = $self.cookies.get('token');
             yield (server().frontLineList(page)
                 .then((parsedBody) =>{
                     var responseText = JSON.parse(parsedBody);
@@ -894,7 +937,8 @@ module.exports = function(){
                 }));
         }).get('/countFrontLine/count', function*(){//总条数
         var $self = this;
-        yield (server().getCountToFrontLineTotal()
+        var token={token:$self.cookies.get('token')};
+        yield (server().getCountToFrontLineTotal(token)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
                 $self.body = responseText;
@@ -945,6 +989,7 @@ module.exports = function(){
     }).get('/findFrontLineId/info', function*(){//获取id
         var $self = this;
         var findIdData = $self.request.query;
+        findIdData.token = $self.cookies.get('token');
         yield (server().findFrontLineById(findIdData)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -955,8 +1000,9 @@ module.exports = function(){
                 console.error(error.error);
             }));
     }).get('/allFrontLineProjects/id', function*(){//查询所有项目
-        var $self = this;
-        yield (server().projectsAllFrontLineById()
+        var $self = this
+        var token={token:$self.cookies.get('token')};
+        yield (server().projectsAllFrontLineById(token)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
                 $self.body = responseText;
@@ -970,6 +1016,7 @@ module.exports = function(){
         .get('/listCharge/list', function*(){ //列表
             var $self = this;
             var page = $self.request.query;
+            page.token = $self.cookies.get('token');
             yield (server().chargeList(page)
                 .then((parsedBody) =>{
                     var responseText = JSON.parse(parsedBody);
@@ -981,7 +1028,8 @@ module.exports = function(){
                 }));
         }).get('/countCharge/count', function*(){//总条数
         var $self = this;
-        yield (server().getCountToChargeTotal()
+        var token={token:$self.cookies.get('token')};
+        yield (server().getCountToChargeTotal(token)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
                 $self.body = responseText;
@@ -1032,6 +1080,7 @@ module.exports = function(){
     }).get('/findChargeId/info', function*(){//获取id
         var $self = this;
         var findIdData = $self.request.query;
+        findIdData.token = $self.cookies.get('token');
         yield (server().findChargeById(findIdData)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -1043,7 +1092,8 @@ module.exports = function(){
             }));
     }).get('/allChargeProjects/id', function*(){//查询所有项目
         var $self = this;
-        yield (server().projectsAllChargeById()
+        var token={token:$self.cookies.get('token')};
+        yield (server().projectsAllChargeById(token)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
                 $self.body = responseText;
@@ -1057,6 +1107,7 @@ module.exports = function(){
         .get('/listProject/list', function*(){ //列表
             var $self = this;
             var page = $self.request.query;
+            page.token = $self.cookies.get('token');
             yield (server().projectList(page)
                 .then((parsedBody) =>{
                     var responseText = JSON.parse(parsedBody);
@@ -1068,7 +1119,8 @@ module.exports = function(){
                 }));
         }).get('/countProject/count', function*(){//总条数
         var $self = this;
-        yield (server().getCountToProjectTotal()
+        var token={token:$self.cookies.get('token')};
+        yield (server().getCountToProjectTotal(token)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
                 $self.body = responseText;
@@ -1119,6 +1171,7 @@ module.exports = function(){
     }).get('/findProjectId/info', function*(){//获取id
         var $self = this;
         var findIdData = $self.request.query;
+        findIdData.token = $self.cookies.get('token');
         yield (server().findProjectById(findIdData)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -1130,7 +1183,8 @@ module.exports = function(){
             }));
     }).get('/allProjectPros/id', function*(){//查询所有项目
         var $self = this;
-        yield (server().projectsAllProjectById()
+        var token={token:$self.cookies.get('token')};
+        yield (server().projectsAllProjectById(token)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
                 $self.body = responseText;
@@ -1144,6 +1198,7 @@ module.exports = function(){
         .get('/listResult/list', function*(){ //列表
             var $self = this;
             var page = $self.request.query;
+            page.token = $self.cookies.get('token');
             yield (server().resultList(page)
                 .then((parsedBody) =>{
                     var responseText = JSON.parse(parsedBody);
@@ -1155,7 +1210,8 @@ module.exports = function(){
                 }));
         }).get('/countResult/count', function*(){//总条数
         var $self = this;
-        yield (server().getCountToResultTotal()
+        var token={token:$self.cookies.get('token')};
+        yield (server().getCountToResultTotal(token)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
                 $self.body = responseText;
@@ -1205,7 +1261,8 @@ module.exports = function(){
             }));
     }).get('/listResultProjects/id', function*(){//查询所有项目
         var $self = this;
-        yield (server().projectsAllResultById()
+        var token={token:$self.cookies.get('token')};
+        yield (server().projectsAllResultById(token)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
                 $self.body = responseText;
@@ -1243,6 +1300,7 @@ module.exports = function(){
     }).get('/getEditResultById/id', function*(){//获取id
         var $self = this;
         var findIdData = $self.request.query;
+        findIdData.token = $self.cookies.get('token');
         yield (server().findResultById(findIdData)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -1254,7 +1312,8 @@ module.exports = function(){
             }));
     }).get('/listResultArea/id', function*(){//查询所有地区
         var $self = this;
-        yield (server().projectsAllAreaById()
+        var token={token:$self.cookies.get('token')};
+        yield (server().projectsAllAreaById(token)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
                 $self.body = responseText;

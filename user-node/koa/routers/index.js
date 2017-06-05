@@ -83,6 +83,6 @@ module.exports = function(){
                 $self.body=error.error;
                 console.error(error.error);
             }));
-    })
+    });
     return router;
 };

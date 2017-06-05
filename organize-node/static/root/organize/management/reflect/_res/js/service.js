@@ -9,6 +9,7 @@ app.factory('reflectSer',function ($http) {
         getReflect:getReflect,
         congealReflect:congealReflect,
         thawReflect:thawReflect,
+        getClassify:getClassify
     };
     function listReflect(data) {
         return $http.get('/listReflect/maps',{params: data})
@@ -33,5 +34,8 @@ app.factory('reflectSer',function ($http) {
     }
     function thawReflect(data) {
         return $http.get('/thawReflect/thaw',{params: data})
+    }
+    function getClassify() {
+        return $http.get('/posts/getClassify')
     }
 });

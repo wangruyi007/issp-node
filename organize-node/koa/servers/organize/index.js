@@ -1341,15 +1341,40 @@ module.exports = function () {
         };
         return request(options);
     };
-    this.logout = function(argvs){
+    this.departRange = function(argvs){
         var options = {
-            method : 'POST',
+            method : 'GET',
             timeout : 3000,
-            uri : config()['user'] + `/v1/sign-out/${argvs.token}`,
-            form:argvs
+            uri : config()['rurl'] + '/workRange/v1/findThawOpinion',
+            headers:{
+                userToken:argvs.token
+            },
         };
         return request(options);
     };
+    this.viewRange = function(argvs){
+        var options = {
+            method : 'GET',
+            timeout : 3000,
+            uri : config()['rurl'] + `/workRange/v1/findByDepartment?departmentId=${argvs.id}`,
+            headers:{
+                userToken:argvs.token
+            },
+        };
+        return request(options);
+    };
+    this.positionuser = function(argvs){
+        var options = {
+            method : 'GET',
+            timeout : 3000,
+            uri : config()['rurl'] + `/positiondetailuser/v1/findById/${argvs.id}`,
+            headers:{
+                userToken:argvs.token
+            },
+        };
+        return request(options);
+    };
+
     return this;
 
 

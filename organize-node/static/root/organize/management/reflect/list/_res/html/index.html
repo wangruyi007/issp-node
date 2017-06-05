@@ -2,6 +2,7 @@
     <ul class="table">
         <li class="list-head">
             <span></span>
+            <span>分类</span>
             <span>名称</span>
             <span>描述</span>
             <span>状态时间</span>
@@ -14,6 +15,7 @@
 
                 <div class="list-text {{list._selectList?'selectList':''}}" ng-click="selectList(list)">
                     <p>{{$index+1}}</p>
+                    <p>{{::list.classifyName}}</p>
                     <p>{{::list.name}}</p>
                     <p>{{::list.description}}</p>
                     <p>{{::list.createTime}}</p>
