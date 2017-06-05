@@ -13,6 +13,7 @@ app.controller('settlementCtrl',function ($scope,$state) {
     $rootScope.$on('$locationChangeSuccess', function () {//url地扯改变或者刷新
         if($location.path().split('/').slice(-1)=='list'){
             $scope.menuClass = 'listMenu';
+            searchHide();
         }
     });
     //监听到父Ctrl后改变事件

@@ -1,7 +1,6 @@
-var app = angular.module('basicInfoList', ['ng-pagination','toastr','ipCookie']);
-app.controller('basicInfoListCtrl',function($scope,basicInfoSer,toastr,ipCookie,$location){
+var app = angular.module('basicInfoList', ['ng-pagination','toastr']);
+app.controller('basicInfoListCtrl',function($scope,basicInfoSer,toastr){
     $scope.$emit('changeId', null);
-    $scope.teamInfo = {};
     function activatePage(page) {
         var listData = {
             page:page
@@ -9,15 +8,8 @@ app.controller('basicInfoListCtrl',function($scope,basicInfoSer,toastr,ipCookie,
         basicInfoSer.listBasicInfo(listData).then(function(response){
             if(response.data.code==0){
                 $scope.basicInfoLists = response.data.data
-            }else if(response.data.code==1){
-                toastr.error( response.data.msg, '温馨提示');
-            }else if(response.data.code==403||response.data.code==401){
-                toastr.error( "请登录用户,2秒后跳至登陆页面", '温馨提示');
-                var absurl = $location.absUrl();
-                ipCookie('absurl', absurl,{ expires:3,expirationUnit: 'minutes',domain:'issp.bjike.com' });
-                setTimeout(function(){
-                    window.location.href='http://localhost/login'
-                },2000)
+            }else{
+                toastr.error(response.data.msg, '温馨提示');
             }
         });
     }
@@ -59,7 +51,7 @@ app.controller('basicInfoListCtrl',function($scope,basicInfoSer,toastr,ipCookie,
         if(response.data.code==0){
             $scope.abili.itemsCount = response.data.data;
         }else{
-            toastr.error( "请求超时，请联系管理员", '温馨提示');
+            toastr.error(response.data.msg, '温馨提示');
         }
     })
 

@@ -27,6 +27,22 @@ app.config(function($provide, $stateProvider){
                 controller:"departmentEditCtrl"
             }
         }
+    }).state("root.organize.management.department.joprange[12]", {
+        url : "/joprange[12]?id=",
+        views : {
+            "content@root.organize.management" : {
+                templateUrl : "root/organize/management/department/joprange/_res/html/index.html",
+                controller:"departmentJopCtrl"
+            }
+        }
+    }).state("root.organize.management.department.views[12]", {
+        url : "/views[12]?id=",
+        views : {
+            "content@root.organize.management" : {
+                templateUrl : "root/organize/management/department/views/_res/html/index.html",
+                controller:"departmentViewCtrl"
+            }
+        }
     })
 });
 

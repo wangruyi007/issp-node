@@ -1,38 +1,12 @@
 <div class="content-tab list">
-    <!--<div class="search-big">
-        <select class="salc" ng-change="change(x)" ng-model="x">
-            <option ng-repeat="data in datas">{{data}}</option>
-        </select>
-        <input type="text" ng-click = 'hidden=!hidden' ng-change="changeKeyValue(searchField)" ng-model="searchField" />
-        <a href="javascript:void(0)" ng-click="collect()"><img src="/images/search2.png"></a>
-    </div>-->
     <div class="search-big">
         <select class="salc" ng-model="checkedName">
             <option ng-repeat="item in titles">{{item}}</option>
         </select>
-        <input type="text" ng-model="keywords">
+        <input type="text" ng-model="enginPlace" ng-show="checkedName=='工程地点'">
+        <input type="text" ng-model="completeCondition" ng-show="checkedName=='完工情况'">
         <a href="javascript:void(0)" ng-click="collect()"><img src="/images/search2.png"></a>
     </div>
-
-    <!--<span class="com-search2">
-            <label>工程地点 :</label>
-            <input type="text" ng-change="changeSelect()" ng-model="enginPlace">
-       </span>
-    <a href="javascript:void(0)" ng-click="collect()"><img src="/images/search2.png"></a>-->
-  <!--  <div class="com-search mod">
-        <span class="com-search2">
-            <label>工程地点 :</label>
-            <input type="text" ng-change="changeSelect()" ng-model="enginPlace">
-       </span>
-        <span class="com-search2">
-            <label>完工情况 :</label>
-            <select ng-model="completeCondition">
-                <option>是</option>
-                <option>否</option>
-            </select>
-       </span>
-        <button ng-click="collect()">查询</button>
-    </div>-->
     <ul class="table com-table">
         <li class="list-head">
             <span></span>
@@ -47,7 +21,7 @@
             <span></span>
         </li>
         <li class="list-all">
-            <section ng-repeat="list in situationLists.data|myFilter:checkedName:keywords track by $index" style="display: {{list._delete?'none':'block'}};">
+            <section ng-repeat="list in situationLists.data" style="display: {{list._delete?'none':'block'}};">
                 <div  class="list-text {{list._selectList?'selectList':''}}" ng-click="selectList(list)">
                     <p>{{$index+1}}</p>
                     <p class="data-id"></p>

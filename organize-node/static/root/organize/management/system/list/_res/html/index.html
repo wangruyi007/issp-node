@@ -10,11 +10,11 @@
         <li class="list-all" ng-repeat="list in systemLists" style="display: {{list._delete?'none':'block'}};">
             <section  class="{{list.status=='CONGEAL'?'congeal':''}}" >
                 <div class="list-text {{list._selectList?'selectList':''}}" ng-click="selectList(list)">
-                    <p>{{$index+1}}</p>
-                    <p>{{::list.serialNumber}}</p>
-                    <p>{{::list.hierarchy}}</p>
-                    <p>{{::list.description}}</p>
-                    <p>{{::list.status|cover}}</p>
+                    <p mod>{{$index+1}}</p>
+                    <p mod>{{::list.serialNumber}}</p>
+                    <p mod>{{::list.hierarchy}}</p>
+                    <p mod>{{::list.description}}</p>
+                    <p mod>{{::list.status|cover}}</p>
                 </div>
                 <div class="thaw-modal">
                     <button ng-click="thaw(list)">解冻</button>
@@ -22,6 +22,13 @@
             </section>
         </li>
     </ul>
+    <div class="module">
+        <div class="see-module">
+            <p class="see-type">体现类型</p>
+            <p class="see-description"></p>
+            <button class="btn" modclose>关闭</button>
+        </div>
+    </div>
     <footer class="footer">
         <pagination count="pagination.itemsCount" take="pagination.take" activate="pagination.activatePage"></pagination>
     </footer>

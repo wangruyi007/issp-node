@@ -12,8 +12,8 @@
             <span>备注</span>
             <span class="circle-all">
                 <a href="javascript:void(0)" ng-click="qualiEdit()">编辑</a>
-                <a href="javascript:void(0)" ng-click="qualiDelete()">删除</a>
             </span>
+            <span class="circle-all"><a href="javascript:void(0)" ng-click="qualiDelete()">删除</a></span>
         </li>
         <li class="list-all" ng-repeat="listQualifis in qualificationBasics.data" style="display: {{listQualifis._delete?'none':'block'}};">
             <section>
@@ -26,13 +26,11 @@
                     <p>{{listQualifis.promulgate}}</p>
                     <p>{{listQualifis.aptitude}}</p>
                     <p>{{listQualifis.remark}}</p>
+                    <p></p>
                 </div>
             </section>
         </li>
     </ul>
-<!--    <footer class="footer">
-        <pagination count="abili.itemsCount" take="abili.take" activate="abili.activatePage"></pagination>
-    </footer>-->
    </div>
  </div>
 <div ui-view="modal"></div>

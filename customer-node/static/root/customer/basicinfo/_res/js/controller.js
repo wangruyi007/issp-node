@@ -19,7 +19,6 @@ app.controller('basicinfoCtrl',function ($scope,$state) {
         }
     });
 
-
     //监听到父Ctrl后改变事件
     $scope.$on("listId", function(event, msg){
         $scope.idList = msg;
@@ -43,7 +42,7 @@ app.controller('basicinfoCtrl',function ($scope,$state) {
     };
     $scope.edit = function(){
         if($scope.customerNum){
-            $state.go('root.customer.basicinfo.edit[12]',{cusNum:$scope.customerNum})
+            $state.go('root.customer.basicinfo.edit[12]',{cusNum:$scope.customerNum});
             $scope.menuClass = 'editMenu'
         }
     };

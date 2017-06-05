@@ -18,7 +18,6 @@ app.controller('numberListCtrl',function($scope,toastr,numberSer){
         activatePage: activatePage
     };
 
-
     function activatePage(page) {
         var pages = {
             page:page
@@ -46,7 +45,7 @@ app.controller('numberListCtrl',function($scope,toastr,numberSer){
             }
         })
     });
-})
-;
+});
+
 
 

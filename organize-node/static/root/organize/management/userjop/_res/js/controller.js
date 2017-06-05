@@ -40,6 +40,12 @@ app.controller('userjopCtrl',function($scope,$state){
             $scope.menuClass='congealMenu';
         }
     };
+    $scope.views = function(){
+        if($scope.getId){
+            $state.go('root.organize.management.userjop.views[12]',{id:$scope.getId});
+            $scope.menuClass='viewMenu';
+        }
+    };
 
     $scope.list = function(){
         $scope.menuClass = 'listMenu'

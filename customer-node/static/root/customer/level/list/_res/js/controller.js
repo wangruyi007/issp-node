@@ -4,8 +4,6 @@ app.controller('levelListCtrl',function($scope,levelSer,toastr){
     levelSer.listCustomerLevel().then(function(response){
         if(response.data.code==0){
             $scope.levelLists = response.data.data;
-        }else if(response.data.code==1){
-            toastr.error( response.data.msg, '温馨提示');
         }
     });
 

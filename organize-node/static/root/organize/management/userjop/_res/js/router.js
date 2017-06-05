@@ -27,6 +27,14 @@ app.config(function($provide, $stateProvider){
                 controller:"userjopEditCtrl"
             }
         }
+    }).state("root.organize.management.userjop.views[12]", {
+        url : "/views[12]?id=",
+        views : {
+            "content@root.organize.management.userjop" : {
+                templateUrl : "root/organize/management/userjop/views/_res/html/index.html",
+                controller:"userjopViewCtrl"
+            }
+        }
     })
 });
 
