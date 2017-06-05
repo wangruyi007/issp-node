@@ -98,6 +98,14 @@ body {
   display: -ms-flexbox;
   display: flex;
 }
+/*菜单*/
+.change-angle{
+  transform:rotate(270deg);
+  -ms-transform:rotate(270deg); 	/* IE 9 */
+  -moz-transform:rotate(270deg); 	/* Firefox */
+  -webkit-transform:rotate(270deg); /* Safari 和 Chrome */
+  -o-transform:rotate(270deg); 	/* Opera */
+}
 .com-table{
   margin-top: 97px !important;
 }
@@ -626,6 +634,12 @@ body {
   text-overflow: ellipsis;
   white-space: nowrap;
   margin: 0 5px;
+}
+.right-section .top-content .content .content-wrap .content-tab .table .list-all .list-text p>input{
+  background-color: transparent;
+  line-height: 40px;
+  width: 100%;
+  border: none;
 }
 
 .right-section .top-content .content .content-wrap .content-tab .table .list-all .list-text p:first-child, .right-section .top-content .content .content-wrap .summary .table .list-all .list-text p:first-child, .right-section .top-content .content .content-wrap .total .table .list-all .list-text p:first-child, .right-section .top-content .content .content-wrap .sign-summary .table .list-all .list-text p:first-child {

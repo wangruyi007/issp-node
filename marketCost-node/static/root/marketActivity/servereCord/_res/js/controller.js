@@ -47,9 +47,9 @@ app.controller('servereCordCtrl',function ($scope,$state) {
     //添加客户信息
     $scope.addcustomer = function(){
         if($scope.idList){
-            $scope.idList = '';//清空所有的id
             $state.go('root.marketActivity.servereCord.addcustomer[12]',{id:$scope.idList});
-            $scope.menuClass = 'addcustomerMenu'
+            $scope.menuClass = 'addcustomerMenu';
+            $scope.idList = '';
         }
     };
     //编辑 市场招待信息
@@ -64,6 +64,14 @@ app.controller('servereCordCtrl',function ($scope,$state) {
         if($scope.idList){
             $state.go('root.marketActivity.servereCord.executiveOpinion[12]',{id:$scope.idList});
             $scope.menuClass = 'executiveOpinionMenu'
+        }
+    }
+    //查看客户信息列表
+    $scope.view = function(){
+        if($scope.idList){
+            $state.go('root.marketActivity.servereCord.view[12]',{id:$scope.idList});
+            $scope.menuClass = 'viewMenu';
+            $scope.idList = '';
         }
     }
 });

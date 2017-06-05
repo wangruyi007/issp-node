@@ -14,5 +14,27 @@ app.controller('competeCtrl', function ($scope,$state) {
     $scope.navClass= function(name){
         $scope.navCla=name
     }
+    //下拉菜单
+    $scope.showsList = [
+        {id:"1",item:"竞争对手管理",menuList:[{name:'竞争对手信息'},{name2:'竞争对手管理汇总'}],showIs:false},
+        {id:"2",item:"设置",menuList:[{name3:'设置'}],showIs:false},
+    ];
+      $scope.showMenu = function(obj,event) {
+        if(event){
+            if(obj.showIs){
+                obj.showIs=!event;
+            }else{
+                obj.showIs=event;
+               /* angular.forEach(function(item){ showSubAble sublist*/
+                this.showsList.forEach(function(item){
+                    if(item.id!=obj.id){
+                        item.showIs=!event;
+                    }else{
+                        item.showIs=event;
+                    }
+                });
+            }
+        }
+    };
 });
 

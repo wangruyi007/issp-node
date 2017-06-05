@@ -41,7 +41,7 @@
                 </li>
                 <li class="required">
                     <label><i><img src="/images/mandatory.png"></i><em>洽谈时间</em></label>
-                    <input type="text" onClick="laydate({istime: true, format: 'YYYY-MM-DD hh:mm:ss'})" class="Time">
+                    <input type="text" onClick="laydate({istime: true, format: 'YYYY-MM-DD hh:mm:ss'})" class="Time" ng-model="data.communicateDate">
                 </li>
                 <li class="required">
                     <label><i><img src="/images/mandatory.png"></i><em>洽谈人</em></label>
@@ -57,7 +57,7 @@
                 </li>
                 <li class="required">
                     <label><i><img src="/images/mandatory.png"></i><em>费用预算</em></label>
-                    <input type="number" ng-model="num" ng-verify="{}">
+                    <input type="number" ng-model="data.costBudget" ng-verify="{}">
                 </li>
                 <li class="required">
                     <label><i><img src="/images/mandatory.png"></i><em>合同内部项目名称</em></label>

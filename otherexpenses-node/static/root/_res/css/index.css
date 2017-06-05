@@ -99,7 +99,7 @@ body {
   display: flex;
 }
 .com-table{
-  margin-top: 60px !important;
+  /*margin-top: 60px !important;*/
 }
 .area-table{
   margin-top:140px !important;
@@ -215,6 +215,14 @@ body {
 
 .left-section .nav .nav-list .menu .active a {
   color: #06afe1;
+}
+/*菜单*/
+.change-angle{
+  transform:rotate(270deg);
+  -ms-transform:rotate(270deg); 	/* IE 9 */
+  -moz-transform:rotate(270deg); 	/* Firefox */
+  -webkit-transform:rotate(270deg); /* Safari 和 Chrome */
+  -o-transform:rotate(270deg); 	/* Opera */
 }
 
 .right-section {
@@ -1105,6 +1113,9 @@ body {
   background-image: -webkit-linear-gradient(top, #3b98d6 0, #197ec1 100%) !important;
   background-image: linear-gradient(to bottom, #3b98d6 0, #197ec1 100%) !important;
 }
+.collect:disabled {
+  background-color:#ccc;
+}
 .collect{
   width:100px;
   line-height: 40px;
@@ -1114,7 +1125,8 @@ body {
   border-radius: 5px;
   position: fixed;
   right: 10px;
-  top: 177px
+  top: 177px;
+  background-color:#00c6ff;
 }
 .interval {
   display: -webkit-box;
