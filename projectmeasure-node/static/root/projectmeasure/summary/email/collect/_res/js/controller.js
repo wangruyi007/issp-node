@@ -1,4 +1,4 @@
-var app = angular.module('area', ['toastr','ipCookie']);
+var app = angular.module('area', ['toastr']);
 app.controller('areaCtrl', function($scope, emailSer,toastr,$location,ipCookie){
 
     $scope.showed = true;

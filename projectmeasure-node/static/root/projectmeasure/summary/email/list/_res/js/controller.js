@@ -1,6 +1,6 @@
 
-var app = angular.module('emailList', ['ng-pagination','toastr','ipCookie']);
-app.controller('emailListCtrl',function($scope,emailSer,toastr,$state,ipCookie,$location) {
+var app = angular.module('emailList', ['ng-pagination','toastr']);
+app.controller('emailListCtrl',function($scope,emailSer,toastr,$state) {
     $scope.$emit('changeId', null);
     //分页
     function activatePage(page) {
@@ -37,13 +37,8 @@ app.controller('emailListCtrl',function($scope,emailSer,toastr,$state,ipCookie,$
             if(response.data.code==0){
                 toastr.info( "信息已解冻", '温馨提示');
                 event.status = 'THAW'
-            }else if(response.data.code==403  || response.data.code==401){
-                toastr.error( "请登录用户,3秒后跳至登陆页面", '温馨提示');
-                var absurl = $location.absUrl();
-                ipCookie('absurl', absurl,{ expires:3,expirationUnit: 'minutes',domain:'issp.bjike.com' });
-                setTimeout(function(){
-                    window.location.href='http://localhost/login'
-                },3000)
+            }else{
+                toastr.error( response.data.msg, '温馨提示');
             }
         })
     }
@@ -84,3 +79,41 @@ app.controller('emailListCtrl',function($scope,emailSer,toastr,$state,ipCookie,$
         })
     });
 });
+app.filter('cov',function(){
+    return function(val){
+        var result;
+        switch (val){
+            case 'MINUTE':
+                result = "分钟";
+                break;
+            case 'HOUR':
+                result = "小时";
+                break;
+            case 'DAY':
+                result = "天";
+                break;
+            case 'WEEK':
+                result = "周";
+                break;
+            case 'MONTH':
+                result = "月";
+                break;
+            case 'QUARTER':
+                result = "季";
+                break;
+            case 'YEAR':
+                result = "年";
+                break;
+            case 'NOT':
+                result = "无";
+                break;
+            case 'THAW':
+                result = "解冻";
+                break;
+            case 'CONGEAL':
+                result = "冻结";
+                break;
+        }
+        return result;
+    }
+})

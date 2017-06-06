@@ -1,6 +1,3 @@
-/**
- * Created by ike on 2017/4/13.
- */
 var app = angular.module('projectType', ['ng-pagination','toastr']);
 app.controller('projectTypeCtrl',function($scope,currencySer,toastr) {//projectTypeLists
     $scope.projectTypeList = {};
@@ -18,6 +15,8 @@ app.controller('projectTypeCtrl',function($scope,currencySer,toastr) {//projectT
         currencySer.projectType(projectTypeData).then(function(response){
             if(response.data.code==0){
                 $scope.data = response.data.data;
+            }else {
+                toastr.error( response.data.msg , '温馨提示');
             }
         });
     }

@@ -2,13 +2,14 @@ var request = require('request-promise');
 var path = require('path');
 var config = require(path.resolve('plugins/read-config.js'));
 var form = require(path.resolve('plugins/form.js'));
+var urlEncode = require(path.resolve('plugins/urlEncode.js'));
 module.exports = function(){
     //列表 
    this.contractList= function(argvs){
         var options = {
             method : 'POST',
             timeout : 3000,
-            uri : config()['rurl'] + `/contract/v1/list?limit=10&page=${argvs.page}`,
+            uri : config()['rurl'] + `/contract/v1/list`,
             form:argvs,
             headers : {
                 userToken : argvs.userToken
@@ -17,11 +18,14 @@ module.exports = function(){
         return request(options);
     };
     //获取条目  
-    this.contractCount = function(args){
+    this.contractCount = function(argvs){
         var options = {
             method : 'GET',
             timeout : 3000,
-            uri : config()['rurl'] + '/contract/v1/count'
+            uri : config()['rurl'] + `/contract/v1/count${urlEncode(argvs,true)}`,
+            headers: {
+                userToken : argvs.userToken
+            }
         };
         return request(options);
     };
@@ -93,7 +97,7 @@ module.exports = function(){
         var options = {
             method : 'POST',
             timeout : 3000,
-            uri : config()['rurl'] + `/outsource/v1/list?limit=10&page=${argvs.page}&userToken=${argvs.userToken}`,
+            uri : config()['rurl'] + `/outsource/v1/list`,
             form:argvs,
             headers : {
                 userToken : argvs.userToken
@@ -102,11 +106,14 @@ module.exports = function(){
         return request(options);
     };
     //获取条目  
-    this.outsourceCount = function(){
+    this.outsourceCount = function(argvs){
         var options = {
             method : 'GET',
             timeout : 3000,
-            uri : config()['rurl'] + '/outsource/v1/count'
+            uri : config()['rurl'] + `/outsource/v1/count${urlEncode(argvs,true)}`,
+            headers: {
+                userToken : argvs.userToken
+            }
         };
         return request(options);
     };
@@ -171,44 +178,23 @@ module.exports = function(){
         };
         return request(options);
     };
-    //搜索
-    this.searchCount= function(argvs){
-        var options = {
-            method : 'GET',
-            timeout : 3000,
-            uri : config()['rurl'] + `/contract/v1/list?${argvs.page}`,
-            form:argvs,
-            headers : {
-                userToken : argvs.userToken
-            }
-        };
-        return request(options);
-    };
-    this.searchList= function(argvs){
-        var options = {
-            method : 'GET',
-            timeout : 3000,
-            uri : config()['rurl'] + `/contract/v1/list?${argvs.page}`,
-            form:argvs,
-            headers : {
-                userToken : argvs.userToken
-            }
-        };
-        return request(options);
-    };
+    //设置权限
     this.listSetting = function(argvs){
         var options = {
             method : 'GET',
             timeout : 3000,
             uri : config()['rurl'] + `/cuspermission/v1/list?limit=10&page=${argvs.page}`,
+            headers: {
+                 userToken : argvs.userToken
+            }
         };
         return request(options);
     };
-    this.countSetting = function(){
+    this.countSetting = function(argvs){
         var options = {
             method : 'GET',
             timeout : 3000,
-            uri : config()['rurl'] + '/cuspermission/v1/count',
+            uri : config()['rurl'] + '/cuspermission/v1/count'
         };
         return request(options);
     };
@@ -216,7 +202,7 @@ module.exports = function(){
         var options = {
             method : 'GET',
             timeout : 3000,
-            uri : config()['rurl'] + `/cuspermission/v1/getOneById/${argvs.id}`,
+            uri : config()['rurl'] + `/cuspermission/v1/getOneById/${argvs.id}`
         };
         return request(options);
     };
@@ -224,7 +210,7 @@ module.exports = function(){
         var options = {
             method : 'GET',
             timeout : 3000,
-            uri : config()['rurl'] + `/cuspermission/v1/listOperateById/${argvs.id}`,
+            uri : config()['rurl'] + `/cuspermission/v1/listOperateById/${argvs.id}`
         };
         return request(options);
     };
@@ -233,10 +219,10 @@ module.exports = function(){
             method : 'PUT',
             timeout : 3000,
             uri : config()['rurl'] + '/cuspermission/v1/edit',
-            headers:{
-                userToken:argvs.token
-            },
-            form:argvs
+            form:argvs,
+            headers: {
+                 userToken : argvs.userToken
+            }
         };
         return request(options);
     };

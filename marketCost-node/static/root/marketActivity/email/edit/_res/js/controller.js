@@ -1,4 +1,4 @@
-var app = angular.module('summeryEdit', ['toastr','ipCookie']);
+var app = angular.module('summeryEdit', ['toastr']);
 app.controller('emailEditCtrl', function($scope, emailSer,$state,toastr,$stateParams,$location,ipCookie){
     var emaiId = {id : $stateParams.id};
     //获取值

@@ -1,4 +1,4 @@
-var app = angular.module('emailDelete', ['toastr','ipCookie']);
+var app = angular.module('emailDelete', ['toastr']);
 app.controller('emailDeleteCtrl',function($scope,emailSer,toastr,$stateParams,$state,ipCookie,$location){
     //删除
     $scope.delYes = function(){
