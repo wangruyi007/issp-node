@@ -16,7 +16,7 @@ module.exports = function(){
         var options = {
             method : 'GET',
             timeout : 3000,
-            uri : config()['rurl'] + '/projecttax/v1/count'
+            uri : config()['rurl'] + '/paytax/v1/count'
         };
         return request(options);
     };
@@ -72,12 +72,12 @@ module.exports = function(){
         var options = {
             method : 'POST',
             timeout : 3000,
-            uri : config()['rurl'] + `/paytax/v1/split`,
+            uri : config()['rurl'] + '/paytax/v1/split?project='+encodeURIComponent(argvs.project)+'&splitRate='+argvs.splitRate+'&id='+argvs.id,
             headers : {
                 userToken : argvs.token
             },
         };
-        return request(options);
+          return request(options);
     };
     //汇总
     this.collectSummary = function(argvs){
