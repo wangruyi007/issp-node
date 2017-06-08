@@ -1,5 +1,5 @@
-var app = angular.module('subjectsSummary', ['toastr','ipCookie']);
-app.controller('subjectsSummaryCtrl', function($scope, courseCollectSer,toastr,$location,ipCookie){
+var app = angular.module('subjectsSummary', ['toastr']);
+app.controller('subjectsSummaryCtrl', function($scope, courseCollectSer,toastr){
 
     $scope.showed=true
     courseCollectSer.subjectsOne().then(function(response){

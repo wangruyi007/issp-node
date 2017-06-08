@@ -1,5 +1,5 @@
-var app = angular.module('teamSummary', ['toastr','ipCookie']);
-app.controller('teamSummaryCtrl', function($scope, courseCollectSer,toastr,$location,ipCookie){
+var app = angular.module('teamSummary', ['toastr']);
+app.controller('teamSummaryCtrl', function($scope, courseCollectSer,toastr){
 
     $scope.showed=true;
     // 获取项目组

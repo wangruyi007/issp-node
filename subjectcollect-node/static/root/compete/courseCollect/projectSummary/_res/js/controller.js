@@ -1,5 +1,5 @@
-var app = angular.module('projectNameSummary', ['toastr','ipCookie']);
-app.controller('projectNameSummaryCtrl', function($scope, courseCollectSer,toastr,$location,ipCookie){
+var app = angular.module('projectNameSummary', ['toastr']);
+app.controller('projectNameSummaryCtrl', function($scope, courseCollectSer,toastr){
 
     $scope.showed=true;
     // 获取项目名称
