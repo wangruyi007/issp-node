@@ -1,8 +1,6 @@
-var app = angular.module('entryRegisterAdd', ['toastr','ipCookie']);
-app.controller('entryRegisterAddCtrl', function($scope, registerSer,$state,toastr,$location,ipCookie){
-    $scope.fn = function(){
-        
-    }
+var app = angular.module('entryRegisterAdd', ['toastr']);
+app.controller('entryRegisterAddCtrl', function($scope, registerSer,$state,toastr){
+
     //家庭成员
     $scope.homes = [{},{},{},{}];
     //学习经历
@@ -47,18 +45,48 @@ app.controller('entryRegisterAddCtrl', function($scope, registerSer,$state,toast
             }
         }
         var data = $scope.data;
+        tools(data);
         registerSer.addData(data).then(function(response){
             if(response.data.code == 0){
                 $state.go('root.employeeEntry.entryRegister.list');
                 toastr.success( "已成功添加", '温馨提示');
-            }else if(response.data.code==403 || response.data.code==401){
-                toastr.error( "请登录用户,3秒后跳至登陆页面", '温馨提示');
-                var absurl = $location.absUrl();
-                ipCookie('absurl', absurl,{ expires:3,expirationUnit: 'minutes',domain:'issp.bjike.com' });
-                setTimeout(function(){
-                    window.location.href='http://localhost/login'
-                },3000)
+            }else {
+                toastr.error(response.data.msg,'温馨提示');
             }
         });
     };
 });
+function tools(obj){
+
+    if(obj){
+
+        for(key in obj){
+
+            if(typeof obj[key] == 'object'){
+
+                fn(obj[key]);
+
+            }
+
+        }
+
+    }
+    function fn(obj){
+
+        if(obj){
+
+            for(let i =0;i < 4;i++){
+
+                if(!obj[i]){
+
+                    obj[i] = '';
+
+                }
+
+            }
+
+        }
+
+    }
+
+}

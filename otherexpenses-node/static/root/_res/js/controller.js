@@ -12,18 +12,13 @@ app.controller('rootCtrl', function ($scope,$rootScope,$state,ipCookie,$location
         $scope.logined=true;
     }
 
-    $scope.login = function(){
+     $scope.login = function(){
         var absurl = $location.absUrl();
-        ipCookie('absurl', absurl,{ expires:3,expirationUnit: 'minutes',domain:'issp.bjike.com' });
-        location.href="http://localhost/login";//部署到线上时要改为登录域名
+        window.location.href='http://localhost/login?url='+absurl
     };
     $scope.logout = function(){
-        rootSer.logout().then(function(response){
-            if(response.data.code==0){
-                ipCookie.remove("username");
-                $scope.username="登录用户";
-                $scope.logined=false;
-            }
-        })
+        var abs = window.location.host;
+        var hashs = $location.url().split('?')[0];
+        location.href="http://localhost/user/logout?absurl="+abs+"&hash="+hashs;
     }
 })

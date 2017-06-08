@@ -6,6 +6,7 @@ app.controller('bankbillImportCtrl', function($scope,$state,toastr,bankbillSer,$
         }
     });
 
+
     $scope.updataSel = function(){
         var fd = new FormData();
         var file = document.getElementById('updata').files[0];

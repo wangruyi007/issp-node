@@ -12,8 +12,8 @@
             <span>汇总间隔</span>
             <span></span>
         </li>
-        <li class="list-all" ng-repeat="list in resultLists.data" class="{{list.status=='CONGEAL'?'congeal':''}}" style="display: {{list._delete?'none':'block'}};">
-            <section>
+        <li class="list-all" ng-repeat="list in resultLists.data" style="display: {{list._delete?'none':'block'}};">
+            <section class="{{list.status=='CONGEAL'?'congeal':''}}">
                 <div  class="list-text {{list._selectList?'selectList':''}}" ng-click="selectList(list)">
                     <p>{{$index+1}}</p>
                     <p class="data-id"></p>

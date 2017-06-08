@@ -1,6 +1,3 @@
-/**
- * Created by ike on 2017/4/13.
- */
 var app = angular.module('projectgroup', ['ng-pagination','toastr']);
 app.controller('projectgroupCtrl',function($scope,currencySer,toastr) {//projectgroupLists
     $scope.projectgroupList = {};
@@ -18,6 +15,8 @@ app.controller('projectgroupCtrl',function($scope,currencySer,toastr) {//project
         currencySer.projectgroup(projectgroupData).then(function(response){
             if(response.data.code==0){
                 $scope.data = response.data.data;
+            }else {
+                toastr.error( response.data.msg , '温馨提示');
             }
         });
     }

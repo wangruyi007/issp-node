@@ -1,6 +1,3 @@
-/**
- * Created by ike on 2017/4/17.
- */
 var app = angular.module('messageDelete', ['toastr']);
 app.controller('messageDeleteCtrl',function($scope,currencySer,toastr,$stateParams,$state){
     //删除
@@ -15,8 +12,8 @@ app.controller('messageDeleteCtrl',function($scope,currencySer,toastr,$statePara
                 $scope.deledId = $stateParams.id;
                 //向父Ctrl传递事件
                 $scope.$emit('deletedId', $scope.deledId)
-            }else if(response.data.code==403){
-                toastr.error( "请登录用户", '温馨提示');
+            }else {
+                toastr.error( response.data.msg , '温馨提示');
             }
         })
     }

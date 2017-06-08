@@ -20,7 +20,7 @@ app.config(function($provide, $stateProvider){
             }
         }
     }).state("root.marketActivity.marketserve.addcustomer[12]",{
-        url:"/addcustomer[12]",
+        url:"/addcustomer[12]?id=",
         views:{
             "content@root.marketActivity.marketserve":{
                 templateUrl : "root/marketActivity/marketserve/addcustomer/_res/html/index.html",
@@ -49,6 +49,14 @@ app.config(function($provide, $stateProvider){
             "content@root.marketActivity.marketserve":{
                 templateUrl : "root/marketActivity/marketserve/executiveOpinion/_res/html/index.html",
                 controller:'mExecutiveOpinionCtr'
+            }
+        }
+    }).state("root.marketActivity.marketserve.view[12]",{
+        url:"/view[12]?id=",
+        views:{
+            "content@root.marketActivity.marketserve":{
+                templateUrl : "root/marketActivity/marketserve/view/_res/html/index.html",
+                controller:'mviewCtr'
             }
         }
     })

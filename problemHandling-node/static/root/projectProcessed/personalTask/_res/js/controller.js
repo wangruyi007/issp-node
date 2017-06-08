@@ -7,7 +7,7 @@ app.controller('taskCtrl',function ($scope,$state) {
     if ($state.current.url == '/personalTask') {//默认加载列表
         $state.go('root.projectProcessed.personalTask.list')
     }
-
+    $scope.$emit('isVi',true);//判断是否出现搜索按钮
 }).controller('taskMenuCtrl',function($scope,$state,$rootScope,$location){
     var urlName = $state.current.url.split('/')[1].split('[')[0];
     $scope.menuClass = urlName + "Menu";
@@ -25,14 +25,14 @@ app.controller('taskCtrl',function ($scope,$state) {
         if($scope.idListd){
             $state.go('root.projectProcessed.personalTask.list.delete[12]',{id:$scope.idListd});
         }
-    }
+    };
 
     $scope.edit = function(){
         if($scope.idListd){
             $state.go('root.projectProcessed.personalTask.edit[12]',{id:$scope.idListd});
             $scope.menuClass = 'editMenu'
         }
-    }
+    };
     $scope.list = function(){
         $scope.menuClass = 'listMenu'
     };

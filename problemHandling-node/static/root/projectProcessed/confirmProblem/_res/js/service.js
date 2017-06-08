@@ -2,6 +2,7 @@ var app = angular.module('confirmServer',[]);
 app.factory('confirmSer',function ($http) {
     return {
         resultList : resultList,
+        searchList : searchList,
         addResult:addResult,
         editResult:editResult,
         findResultId:findResultId,
@@ -13,10 +14,14 @@ app.factory('confirmSer',function ($http) {
     function resultList(data) {
         return $http.get('/problemhandlingresult/list',{
             params: data
-
         })
     }
-
+    //搜索
+    function searchList(data) {
+        return $http.get('/problemhandlingresult/search',{
+            params: data
+        })
+    }
     //添加
     function addResult(data){
         return $http.post('/problemhandlingresult/add',data)
@@ -32,8 +37,8 @@ app.factory('confirmSer',function ($http) {
         })
     }
     //分页总条数
-    function countResult(){
-        return $http.get('/problemhandlingresult/count')
+    function countResult(data){
+        return $http.get('/problemhandlingresult/count',{params:data})
     }
     //删除
     function deleteResult(data){

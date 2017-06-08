@@ -156,8 +156,6 @@ app.config(function ($provide, $urlRouterProvider) {
                         });//加载模块
                     });
                 }
-
-
             }
         }
         return $delegate;
@@ -217,11 +215,11 @@ function HttpInterceptor($q,toastr,$location){
             if(-1 === err.status){
                 // 远程服务器无响应
             } else if(500 === err.status){
-                // 处理各类自定义错误
+                toastr.error('服务器出错，请联系管理员', '温馨提示');
             } else if(501 === err.status){
                 // ...
             }else if(404===err.status){
-                toastr.error('服务器出错，请联系管理员', '温馨提示');
+                toastr.error('页面找不到，请联系管理员', '温馨提示');
             }
             return $q.reject(err);
         }

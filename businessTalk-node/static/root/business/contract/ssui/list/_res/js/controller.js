@@ -47,9 +47,9 @@ app.controller('ssuiListCtrl',function($scope,ssuiSer,toastr) {
             var keywords = {
                 communicateUser: $scope.communicateUser,
                 communicateObj: $scope.communicateObj,
-                projectResult: $scope.projectResult
+                communicateResult: $scope.communicateResult
             };
-            ssuiSer.searchCount(keywords).then(function (response) {
+            ssuiSer.countBaseInfo(keywords).then(function (response) {
                 if(response.data.code==0){
                     $scope.abili.itemsCount = response.data.data;
                 }else{
@@ -59,10 +59,10 @@ app.controller('ssuiListCtrl',function($scope,ssuiSer,toastr) {
             var data = {
                 communicateUser: $scope.communicateUser,
                 communicateObj: $scope.communicateObj,
-                projectResult: $scope.projectResult,
+                communicateResult: $scope.communicateResult,
                 page: page
             };
-            ssuiSer.searchList(data).then(function(response){
+            ssuiSer.listMarketserve(data).then(function(response){
                 if(response.data.code == 0){
                     $scope.marketserveLists = response.data
                 }else{
@@ -94,3 +94,21 @@ app.controller('ssuiListCtrl',function($scope,ssuiSer,toastr) {
     // 搜索功能
     $scope.titles = ['洽谈人','洽谈对象','项目结果'];
 });
+//自定义过滤器
+app.filter('cov',function(){
+    return function(val){
+        var result;
+        switch (val){
+            case 'COOPERATE':
+                result = "项目合作";
+                break;
+            case 'TRAIL':
+                result = "项目跟进";
+                break;
+            case 'ABANDON':
+                result = "项目丢弃";
+                break;
+        }
+        return result;
+    }
+})

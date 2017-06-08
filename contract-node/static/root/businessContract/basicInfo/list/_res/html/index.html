@@ -1,50 +1,47 @@
 <div class="content-tab list">
-    <!--<div class="com-search mod">-->
-        <!--<span class="com-search2">-->
-            <!--<label>业务类型:</label>-->
-            <!--<input type="text"  ng-model="teamInfo.businessType">-->
-        <!--</span>-->
-        <!--<span class="com-search2">-->
-            <!--<label>业务方向科目:</label>-->
-            <!--<input type="text"  ng-model="teamInfo.businessSubject">-->
-        <!--</span>-->
-        <!--<span class="com-search2">-->
-            <!--<label>合作方式:</label>-->
-            <!--<input type="text"  ng-model="teamInfo.businessCooperate">-->
-        <!--</span>-->
-        <!--<span class="com-search2">-->
-            <!--<label>甲方公司名称:</label>-->
-            <!--<input type="text"  ng-model="teamInfo.firstCompany">-->
-        <!--</span>-->
-        <!--<span class="com-search2">-->
-            <!--<label>乙方公司名称:</label>-->
-            <!--<input type="text"  ng-model="teamInfo.secondCompany">-->
-        <!--</span>-->
-        <!--<span class="com-search2">-->
-            <!--<label>地区:</label>-->
-            <!--<input type="text"  ng-model="teamInfo.area">-->
-        <!--</span>-->
-        <!--<span class="com-search2">-->
-            <!--<label>合同属性:</label>-->
-            <!--<input type="text"  ng-model="teamInfo.contractProperty">-->
-        <!--</span>-->
-        <!--<span class="com-search2">-->
-            <!--<label>支付方式:</label>-->
-            <!--<input type="text"  ng-model="teamInfo.payWays">-->
-        <!--</span>-->
-        <!--<span class="com-search2">-->
-            <!--<label>客户名称:</label>-->
-            <!--<input type="text"  ng-model="teamInfo.customerName">-->
-        <!--</span>-->
-        <!--<span class="com-search2">-->
-            <!--<label>签订年份:</label>-->
-            <!--<input type="text"  ng-model="teamInfo.siginYear">-->
-        <!--</span>-->
-        <!--<span class="com-search2">-->
-            <!--<label>合同是否已归档:</label>-->
-            <!--<input type="text"  ng-model="teamInfo.fileCondition">-->
-        <!--</span>-->
-    <!--</div>-->
+    <div class="search-big" style="display :{{ isView?'none':'block'}}">
+        <select class="salc" ng-model="checkedName" ng-init="checkedName='业务类型'">
+            <option ng-repeat="item in titles">{{item}}</option>
+        </select>
+        <select class="sle" ng-model="businessType" ng-show="checkedName=='业务类型'">
+            <option value=""></option>
+            <option value="MOBILECOMMUNICATION">移动通信类</option>
+            <option value="SOFTDEVELOP">软件开发类</option>
+            <option value="INTELLIGENCESYSTEM">智能系统集成类</option>
+            <option value="ADVERT">广告策划营销类</option>
+        </select>
+        <input type="text" ng-model="businessSubject" ng-show="checkedName=='业务方向科目'">
+        <select class="sle" ng-model="businessCooperate" ng-show="checkedName=='合作方式'">
+            <option value=""></option>
+            <option value="RENTCONTRACT">租赁合同</option>
+            <option value="CHARCONTRACT">承包的项目合同</option>
+            <option value="DISTRIBUTECONTRACT">分包项目合同</option>
+            <option value="SALECONTRACT">销售合同</option>
+        </select>
+        <input type="text" ng-model="firstCompany" ng-show="checkedName=='甲方公司'">
+        <input type="text" ng-model="secondCompany" ng-show="checkedName=='乙方公司'">
+        <input type="text" ng-model="area" ng-show="checkedName=='地区'">
+        <select class="sle" ng-model="contractProperty" ng-show="checkedName=='合同属性'">
+            <option value=""></option>
+            <option value="FRAMECONTRACT">框架合同</option>
+            <option value="SINGLECONTRACT">单次合同</option>
+        </select>
+        <select class="sle" ng-model="payWays" ng-show="checkedName=='支付方式'">
+            <option value=""></option>
+            <option value="CASH">现金</option>
+            <option value="BANK">银行汇兑</option>
+            <option value="ELECTRIC">电汇</option>
+            <option value="TRANSFERACCOUNTS">转账</option>
+        </select>
+        <input type="text" ng-model="customerName" ng-show="checkedName=='客户名称'">
+        <input type="text" ng-model="siginYear" ng-show="checkedName=='签订年份'">
+        <select class="sle" ng-model="fileCondition" ng-show="checkedName=='合同是否已归档'">
+            <option value=""></option>
+            <option value="已归档">已归档</option>
+            <option value="未归档">未归档</option>
+        </select>
+        <a href="javascript:void(0)" ng-click="collect()"><img src="/images/search2.png"></a>
+    </div>
     <ul class="table">
         <li class="list-head">
             <span></span>
@@ -57,7 +54,7 @@
             <span>合作方式</span>
             <span></span>
         </li>
-        <li class="list-all" ng-repeat="lists in basicLists|filter:teamInfo" style="display: {{lists._delete?'none':'block'}};">
+        <li class="list-all" ng-repeat="lists in basicLists" style="display: {{lists._delete?'none':'block'}};">
             <section>
                 <div class="list-text {{lists._selectList?'selectList':''}}" ng-click="selectList(lists)">
                     <p>{{$index+1}}</p>

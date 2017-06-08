@@ -8,8 +8,8 @@ app.controller('monthPlanListCtrl',function($scope,monthPlanSer,toastr){
         monthPlanSer.monthPlanList(listData).then(function(response){
             if(response.data.code==0){
                 $scope.monthPlanLists = response.data.data
-            }else{
-                toastr.error( "请求超时，请联系管理员", '温馨提示');
+            }else {
+                toastr.error( response.data.msg, '温馨提示');
             }
         })
     }
@@ -51,8 +51,8 @@ app.controller('monthPlanListCtrl',function($scope,monthPlanSer,toastr){
     monthPlanSer.countMonth().then(function(response){
         if(response.data.code==0){
             $scope.custom.monthCount = response.data.data
-        } else {
-            toastr.error( "请求超时，请联系管理员", '温馨提示');
+        }else {
+            toastr.error( response.data.msg, '温馨提示');
         }
     });
 

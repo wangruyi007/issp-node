@@ -22,6 +22,12 @@ app.controller('auditDetailCtrl',function($scope,registerSer,toastr,$stateParams
             $scope.data.phones = [];
             angular.forEach($scope.h,function(val,index){
                 if(val){
+                    var arr = ['title','name','age','unit','position','phone'];
+                    for(let i =0;i<arr.length;i++){
+                        if(!val[arr[i]]){
+                            val[arr[i]] = '';
+                        }
+                    }
                     for(key in val){
                         switch(key){
                             case 'title':
@@ -52,6 +58,12 @@ app.controller('auditDetailCtrl',function($scope,registerSer,toastr,$stateParams
             $scope.data.certificates = [];
             angular.forEach($scope.s,function(val,index){
                 if(val){
+                    var arr = ['startTime','endTime','school','certificate'];
+                    for(let i =0;i<arr.length;i++){
+                        if(!val[arr[i]]){
+                            val[arr[i]] = '';
+                        }
+                    }
                     for(key in val){
                         switch(key){
                             case 'startTime':
@@ -74,8 +86,14 @@ app.controller('auditDetailCtrl',function($scope,registerSer,toastr,$stateParams
             $scope.data.workEndTimes = [];
             $scope.data.firms = [];
             $scope.data.jobDescriptions = [];
-             angular.forEach($scope.w,function(val,index){
+            angular.forEach($scope.w,function(val,index){
                 if(val){
+                    var arr = ['startTime','endTime','firm','jobDescription'];
+                    for(let i =0;i<arr.length;i++){
+                        if(!val[arr[i]]){
+                            val[arr[i]] = '';
+                        }
+                    }
                     for(key in val){
                         switch(key){
                             case 'startTime':
@@ -96,8 +114,14 @@ app.controller('auditDetailCtrl',function($scope,registerSer,toastr,$stateParams
             })
             $scope.data.nameses = [];
             $scope.data.obtainTimes = [];
-             angular.forEach($scope.c,function(val,index){
+            angular.forEach($scope.c,function(val,index){
                 if(val){
+                    var arr = ['name','obtainTime'];
+                    for(let i =0;i<arr.length;i++){
+                        if(!val[arr[i]]){
+                            val[arr[i]] = '';
+                        }
+                    }
                     for(key in val){
                         switch(key){
                             case 'name':

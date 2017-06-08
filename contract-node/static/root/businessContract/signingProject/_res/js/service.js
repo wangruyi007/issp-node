@@ -12,7 +12,6 @@ app.factory('signingSer',function ($http) {
     function signingList(data) {
         return $http.get('/siginmanage/list',{
             params: data
-
         })
     }
 
@@ -32,8 +31,8 @@ app.factory('signingSer',function ($http) {
         })
     }
     //分页总条数
-    function countSigning(){
-        return $http.get('/siginmanage/count')
+    function countSigning(data){
+        return $http.get('/siginmanage/count',{params:data})
     }
     //删除
     function deleteSigning(data){

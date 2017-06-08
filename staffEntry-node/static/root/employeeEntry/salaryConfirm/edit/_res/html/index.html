@@ -55,28 +55,28 @@
                 </li>
                 <li class="required">
                     <label><i><img src="/images/mandatory.png"></i><em>是否需要公司安排住宿</em></label>
-                    <select class="sele" ng-model="dataEdit.whetherArrangeResidence">
+                    <select class="sele" ng-model="dataEdit.whetherArrangeResidence" ng-options='x.id as x.name for x  in [{id:true,name:"是"},{id:false,name:"否"}]'>
                         <option value=true>是</option>
                         <option value=false>否</option>
                     </select>
                 </li>
                 <li class="required">
                     <label><i><img src="/images/mandatory.png"></i><em>是否购买社保</em></label>
-                    <select class="sele" ng-model="dataEdit.whetherSocialSecurity">
+                    <select class="sele" ng-model="dataEdit.whetherSocialSecurity" ng-options='x.id as x.name for x  in [{id:true,name:"是"},{id:false,name:"否"}]'>
                         <option value=true>是</option>
                         <option value=false>否</option>
                     </select>
                 </li>
                 <li class="required">
                     <label><i><img src="/images/mandatory.png"></i><em>是否有面谈确认单原件</em></label>
-                    <select class="sele" ng-model="dataEdit.whetherVoucher">
+                    <select class="sele" ng-model="dataEdit.whetherVoucher" ng-options='x.id as x.name for x  in [{id:true,name:"是"},{id:false,name:"否"}]'>
                         <option value=true>是</option>
                         <option value=false>否</option>
                     </select>
                 </li>
                 <li class="required">
                     <label><i><img src="/images/mandatory.png"></i><em>是否有住宿</em></label>
-                    <select class="sele" ng-model="dataEdit.whetherAccommodation">
+                    <select class="sele" ng-model="dataEdit.whetherAccommodation" ng-options='x.id as x.name for x  in [{id:true,name:"是"},{id:false,name:"否"}]'>
                         <option value=true>是</option>
                         <option value=false>否</option>
                     </select>

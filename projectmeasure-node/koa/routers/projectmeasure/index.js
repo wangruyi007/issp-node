@@ -17,8 +17,9 @@ module.exports = function () {
                 var responseText = JSON.parse(parsedBody);
                 $self.body = responseText;
             }).catch((error) => {
-                $self.set('Content-Type', 'application/json;charset=utf-8');
-                $self.body = error.error;
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
             }));
     }).get('/projectmeasure/coststatus/count', function* () {
         var $self = this;
@@ -29,8 +30,9 @@ module.exports = function () {
                 var responseText = JSON.parse(parsedBody);
                 $self.body = responseText;
             }).catch((error) => {
-                $self.set('Content-Type', 'application/json;charset=utf-8');
-                $self.body = error.error;
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
             }));
         //添加
     }).post('/projectmeasure/coststatus/add', function* () {
@@ -42,8 +44,9 @@ module.exports = function () {
                 var responseText = JSON.parse(parsedBody);
                 $self.body = responseText;
             }).catch((error) => {
-                $self.set('Content-Type', 'application/json;charset=utf-8');
-                $self.body = error.error;
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
             }));
         //编辑ID
     }).post('/projectmeasure/coststatus/getOneById', function* () {
@@ -55,10 +58,9 @@ module.exports = function () {
                 var responseText = JSON.parse(parsedBody);
                 $self.body = responseText;
             }).catch((error) => {
-                if (error.error && error.error.code && error.error.code == 'ETIMEDOUT') {
-                    $self.body = { 'msg': '请求错误！', errno: 3 };
-                    $self.status = 408; marketserveapplyDelete
-                }
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
             }));
         //编辑
     }).post('/projectmeasure/coststatus/edit', function* () {
@@ -70,10 +72,9 @@ module.exports = function () {
                 var responseText = JSON.parse(parsedBody);
                 $self.body = responseText;
             }).catch((error) => {
-                if (error.error && error.error.code && error.error.code == 'ETIMEDOUT') {
-                    $self.body = { 'msg': '请求错误！', errno: 3 };
-                    $self.status = 408;
-                }
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
             }));
         //删除
     }).post('/projectmeasure/coststatus/delete', function* () {
@@ -85,10 +86,9 @@ module.exports = function () {
                 var responseText = JSON.parse(parsedBody);
                 $self.body = responseText;
             }).catch((error) => {
-                if (error.error && error.error.code && error.error.code == 'ETIMEDOUT') {
-                    $self.body = { 'msg': '请求错误！', errno: 3 };
-                    $self.status = 408;
-                }
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
             }));
         //项目基本信息 
     }).get('/projectmeasure/basicinfo/list', function* () {
@@ -100,9 +100,9 @@ module.exports = function () {
                 var responseText = JSON.parse(parsedBody);
                 $self.body = responseText;
             }).catch((error) => {
-                $self.set('Content-Type', 'application/json;charset=utf-8');
-                $self.body = error.error;
-
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
             }));
     }).get('/projectmeasure/basicinfo/count', function* () {
         var $self = this;
@@ -113,8 +113,9 @@ module.exports = function () {
                 var responseText = JSON.parse(parsedBody);
                 $self.body = responseText;
             }).catch((error) => {
-                $self.set('Content-Type', 'application/json;charset=utf-8');
-                $self.body = error.error;
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
             }));
         //添加
     }).post('/projectmeasure/basicinfo/add', function* () {
@@ -126,8 +127,9 @@ module.exports = function () {
                 var responseText = JSON.parse(parsedBody);
                 $self.body = responseText;
             }).catch((error) => {
-                $self.set('Content-Type', 'application/json;charset=utf-8');
-                $self.body = error.error
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
             }));
         //编辑ID
     }).post('/projectmeasure/basicinfo/getOneById', function* () {
@@ -139,10 +141,9 @@ module.exports = function () {
                 var responseText = JSON.parse(parsedBody);
                 $self.body = responseText;
             }).catch((error) => {
-                if (error.error && error.error.code && error.error.code == 'ETIMEDOUT') {
-                    $self.body = { 'msg': '请求错误！', errno: 3 };
-                    $self.status = 408; marketserveapplyDelete
-                }
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
             }));
         //编辑
     }).post('/projectmeasure/basicinfo/edit', function* () {
@@ -154,10 +155,9 @@ module.exports = function () {
                 var responseText = JSON.parse(parsedBody);
                 $self.body = responseText;
             }).catch((error) => {
-                if (error.error && error.error.code && error.error.code == 'ETIMEDOUT') {
-                    $self.body = { 'msg': '请求错误！', errno: 3 };
-                    $self.status = 408;
-                }
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
             }));
         //删除
     }).post('/projectmeasure/basicinfo/delete', function* () {
@@ -169,10 +169,9 @@ module.exports = function () {
                 var responseText = JSON.parse(parsedBody);
                 $self.body = responseText;
             }).catch((error) => {
-                if (error.error && error.error.code && error.error.code == 'ETIMEDOUT') {
-                    $self.body = { 'msg': '请求错误！', errno: 3 };
-                    $self.status = 408;
-                }
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
             }));
         //多项目单个界面
     }).get('/projectmeasure/msui/list', function* () {
@@ -184,8 +183,9 @@ module.exports = function () {
                 var responseText = JSON.parse(parsedBody);
                 $self.body = responseText;
             }).catch((error) => {
-                $self.set('Content-Type', 'application/json;charset=utf-8');
-                $self.body = error.error;
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
             }));
     }).get('/projectmeasure/msui/count', function* () {
         var $self = this;
@@ -196,8 +196,9 @@ module.exports = function () {
                 var responseText = JSON.parse(parsedBody);
                 $self.body = responseText;
             }).catch((error) => {
-                $self.set('Content-Type', 'application/json;charset=utf-8');
-                $self.body = error.error;
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
             }));
         //添加
     }).post('/projectmeasure/msui/add', function* () {
@@ -209,8 +210,9 @@ module.exports = function () {
                 var responseText = JSON.parse(parsedBody);
                 $self.body = responseText;
             }).catch((error) => {
-                $self.set('Content-Type', 'application/json;charset=utf-8');
-                $self.body = error.error;
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
             }));
         //编辑ID
     }).post('/projectmeasure/msui/getOneById', function* () {
@@ -222,10 +224,9 @@ module.exports = function () {
                 var responseText = JSON.parse(parsedBody);
                 $self.body = responseText;
             }).catch((error) => {
-                if (error.error && error.error.code && error.error.code == 'ETIMEDOUT') {
-                    $self.body = { 'msg': '请求错误！', errno: 3 };
-                    $self.status = 408; marketserveapplyDelete
-                }
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
             }));
         //编辑
     }).post('/projectmeasure/msui/edit', function* () {
@@ -237,10 +238,9 @@ module.exports = function () {
                 var responseText = JSON.parse(parsedBody);
                 $self.body = responseText;
             }).catch((error) => {
-                if (error.error && error.error.code && error.error.code == 'ETIMEDOUT') {
-                    $self.body = { 'msg': '请求错误！', errno: 3 };
-                    $self.status = 408;
-                }
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
             }));
         //删除
     }).post('/projectmeasure/msui/delete', function* () {
@@ -252,10 +252,9 @@ module.exports = function () {
                 var responseText = JSON.parse(parsedBody);
                 $self.body = responseText;
             }).catch((error) => {
-                if (error.error && error.error.code && error.error.code == 'ETIMEDOUT') {
-                    $self.body = { 'msg': '请求错误！', errno: 3 };
-                    $self.status = 408;
-                }
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
             }));
         //单个项目单个界面
     }).get('/projectmeasure/ssui/list', function* () {
@@ -267,8 +266,9 @@ module.exports = function () {
                 var responseText = JSON.parse(parsedBody);
                 $self.body = responseText;
             }).catch((error) => {
-                $self.set('Content-Type', 'application/json;charset=utf-8');
-                $self.body = error.error;
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
             }));
     }).get('/projectmeasure/ssui/count', function* () {
         var $self = this;
@@ -279,8 +279,9 @@ module.exports = function () {
                 var responseText = JSON.parse(parsedBody);
                 $self.body = responseText;
             }).catch((error) => {
-                $self.set('Content-Type', 'application/json;charset=utf-8');
-                $self.body = error.error;
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
             }));
         //添加
     }).post('/projectmeasure/ssui/add', function* () {
@@ -292,8 +293,9 @@ module.exports = function () {
                 var responseText = JSON.parse(parsedBody);
                 $self.body = responseText;
             }).catch((error) => {
-                $self.set('Content-Type', 'application/json;charset=utf-8');
-                $self.body = error.error;
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
             }));
         //编辑ID
     }).post('/projectmeasure/ssui/getOneById', function* () {
@@ -305,10 +307,9 @@ module.exports = function () {
                 var responseText = JSON.parse(parsedBody);
                 $self.body = responseText;
             }).catch((error) => {
-                if (error.error && error.error.code && error.error.code == 'ETIMEDOUT') {
-                    $self.body = { 'msg': '请求错误！', errno: 3 };
-                    $self.status = 408; marketserveapplyDelete
-                }
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
             }));
         //编辑
     }).post('/projectmeasure/ssui/edit', function* () {
@@ -320,10 +321,9 @@ module.exports = function () {
                 var responseText = JSON.parse(parsedBody);
                 $self.body = responseText;
             }).catch((error) => {
-                if (error.error && error.error.code && error.error.code == 'ETIMEDOUT') {
-                    $self.body = { 'msg': '请求错误！', errno: 3 };
-                    $self.status = 408;
-                }
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
             }));
         //删除
     }).post('/projectmeasure/ssui/delete', function* () {
@@ -335,10 +335,9 @@ module.exports = function () {
                 var responseText = JSON.parse(parsedBody);
                 $self.body = responseText;
             }).catch((error) => {
-                if (error.error && error.error.code && error.error.code == 'ETIMEDOUT') {
-                    $self.body = { 'msg': '请求错误！', errno: 3 };
-                    $self.status = 408;
-                }
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
             }));
         //单个项目多个界面
     }).get('/projectmeasure/smui/list', function* () {
@@ -350,8 +349,9 @@ module.exports = function () {
                 var responseText = JSON.parse(parsedBody);
                 $self.body = responseText;
             }).catch((error) => {
-                $self.set('Content-Type', 'application/json;charset=utf-8');
-                $self.body = error.error;
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
             }));
     }).get('/projectmeasure/smui/count', function* () {
         var $self = this;
@@ -362,8 +362,9 @@ module.exports = function () {
                 var responseText = JSON.parse(parsedBody);
                 $self.body = responseText;
             }).catch((error) => {
-                $self.set('Content-Type', 'application/json;charset=utf-8');
-                $self.body = error.error;
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
             }));
         //添加
     }).post('/projectmeasure/smui/add', function* () {
@@ -375,8 +376,9 @@ module.exports = function () {
                 var responseText = JSON.parse(parsedBody);
                 $self.body = responseText;
             }).catch((error) => {
-                $self.set('Content-Type', 'application/json;charset=utf-8');
-                $self.body = error.error;
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
             }));
         //编辑ID
     }).post('/projectmeasure/smui/getOneById', function* () {
@@ -388,10 +390,9 @@ module.exports = function () {
                 var responseText = JSON.parse(parsedBody);
                 $self.body = responseText;
             }).catch((error) => {
-                if (error.error && error.error.code && error.error.code == 'ETIMEDOUT') {
-                    $self.body = { 'msg': '请求错误！', errno: 3 };
-                    $self.status = 408; marketserveapplyDelete
-                }
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
             }));
         //编辑
     }).post('/projectmeasure/smui/edit', function* () {
@@ -403,10 +404,9 @@ module.exports = function () {
                 var responseText = JSON.parse(parsedBody);
                 $self.body = responseText;
             }).catch((error) => {
-                if (error.error && error.error.code && error.error.code == 'ETIMEDOUT') {
-                    $self.body = { 'msg': '请求错误！', errno: 3 };
-                    $self.status = 408;
-                }
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
             }));
         //删除
     }).post('/projectmeasure/smui/delete', function* () {
@@ -418,10 +418,9 @@ module.exports = function () {
                 var responseText = JSON.parse(parsedBody);
                 $self.body = responseText;
             }).catch((error) => {
-                if (error.error && error.error.code && error.error.code == 'ETIMEDOUT') {
-                    $self.body = { 'msg': '请求错误！', errno: 3 };
-                    $self.status = 408;
-                }
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
             }));
         //多个项目多个界面mmui
     }).get('/projectmeasure/mmui/list', function* () {
@@ -433,8 +432,9 @@ module.exports = function () {
                 var responseText = JSON.parse(parsedBody);
                 $self.body = responseText;
             }).catch((error) => {
-                $self.set('Content-Type', 'application/json;charset=utf-8');
-                $self.body = error.error;
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
             }));
     }).get('/projectmeasure/mmui/count', function* () {
         var $self = this;
@@ -445,8 +445,9 @@ module.exports = function () {
                 var responseText = JSON.parse(parsedBody);
                 $self.body = responseText;
             }).catch((error) => {
-                $self.set('Content-Type', 'application/json;charset=utf-8');
-                $self.body = error.error;
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
             }));
         //添加
     }).post('/projectmeasure/mmui/add', function* () {
@@ -458,8 +459,9 @@ module.exports = function () {
                 var responseText = JSON.parse(parsedBody);
                 $self.body = responseText;
             }).catch((error) => {
-                $self.set('Content-Type', 'application/json;charset=utf-8');
-                $self.body = error.error;
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
             }));
         //编辑ID
     }).post('/projectmeasure/mmui/getOneById', function* () {
@@ -471,10 +473,9 @@ module.exports = function () {
                 var responseText = JSON.parse(parsedBody);
                 $self.body = responseText;
             }).catch((error) => {
-                if (error.error && error.error.code && error.error.code == 'ETIMEDOUT') {
-                    $self.body = { 'msg': '请求错误！', errno: 3 };
-                    $self.status = 408; marketserveapplyDelete
-                }
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
             }));
         //编辑
     }).post('/projectmeasure/mmui/edit', function* () {
@@ -486,10 +487,9 @@ module.exports = function () {
                 var responseText = JSON.parse(parsedBody);
                 $self.body = responseText;
             }).catch((error) => {
-                if (error.error && error.error.code && error.error.code == 'ETIMEDOUT') {
-                    $self.body = { 'msg': '请求错误！', errno: 3 };
-                    $self.status = 408;
-                }
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
             }));
         //删除
     }).post('/projectmeasure/mmui/delete', function* () {
@@ -516,8 +516,9 @@ module.exports = function () {
                 var responseText = JSON.parse(parsedBody);
                 $self.body = responseText;
             }).catch((error) => {
-                $self.set('Content-Type', 'application/json;charset=utf-8');
-                $self.body = error.error;
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
             }));
     }).get('/projectmeasure/personDemand/count', function* () {
         var $self = this;
@@ -528,8 +529,9 @@ module.exports = function () {
                 var responseText = JSON.parse(parsedBody);
                 $self.body = responseText;
             }).catch((error) => {
-                $self.set('Content-Type', 'application/json;charset=utf-8');
-                $self.body = error.error;
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
             }));
         //添加
     }).post('/projectmeasure/personDemand/add', function* () {
@@ -541,8 +543,9 @@ module.exports = function () {
                 var responseText = JSON.parse(parsedBody);
                 $self.body = responseText;
             }).catch((error) => {
-                $self.set('Content-Type', 'application/json;charset=utf-8');
-                $self.body = error.error;
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
             }));
         //编辑ID
     }).post('/projectmeasure/personDemand/getOneById', function* () {
@@ -554,10 +557,9 @@ module.exports = function () {
                 var responseText = JSON.parse(parsedBody);
                 $self.body = responseText;
             }).catch((error) => {
-                if (error.error && error.error.code && error.error.code == 'ETIMEDOUT') {
-                    $self.body = { 'msg': '请求错误！', errno: 3 };
-                    $self.status = 408; marketserveapplyDelete
-                }
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
             }));
         //编辑
     }).post('/projectmeasure/personDemand/edit', function* () {
@@ -569,10 +571,9 @@ module.exports = function () {
                 var responseText = JSON.parse(parsedBody);
                 $self.body = responseText;
             }).catch((error) => {
-                if (error.error && error.error.code && error.error.code == 'ETIMEDOUT') {
-                    $self.body = { 'msg': '请求错误！', errno: 3 };
-                    $self.status = 408;
-                }
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
             }));
         //删除
     }).post('/projectmeasure/personDemand/delete', function* () {
@@ -584,10 +585,9 @@ module.exports = function () {
                 var responseText = JSON.parse(parsedBody);
                 $self.body = responseText;
             }).catch((error) => {
-                if (error.error && error.error.code && error.error.code == 'ETIMEDOUT') {
-                    $self.body = { 'msg': '请求错误！', errno: 3 };
-                    $self.status = 408;
-                }
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
             }));
         //项目测算邮件发送
     }).get('/projectmeasure/measuresummary/list', function* () {
@@ -599,8 +599,9 @@ module.exports = function () {
                 var responseText = JSON.parse(parsedBody);
                 $self.body = responseText;
             }).catch((error) => {
-                $self.set('Content-Type', 'application/json;charset=utf-8');
-                $self.body = error.error;
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
             }));
     }).get('/projectmeasure/measuresummary/count', function* () {
         var $self = this;
@@ -611,8 +612,9 @@ module.exports = function () {
                 var responseText = JSON.parse(parsedBody);
                 $self.body = responseText;
             }).catch((error) => {
-                $self.set('Content-Type', 'application/json;charset=utf-8');
-                $self.body = error.error;
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
             }));
         //添加
     }).post('/projectmeasure/measuresummary/add', function* () {
@@ -624,8 +626,9 @@ module.exports = function () {
                 var responseText = JSON.parse(parsedBody);
                 $self.body = responseText;
             }).catch((error) => {
-                $self.set('Content-Type', 'application/json;charset=utf-8');
-                $self.body = error.error;
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
             }));
         //编辑ID
     }).post('/projectmeasure/measuresummary/getOneById', function* () {
@@ -637,10 +640,9 @@ module.exports = function () {
                 var responseText = JSON.parse(parsedBody);
                 $self.body = responseText;
             }).catch((error) => {
-                if (error.error && error.error.code && error.error.code == 'ETIMEDOUT') {
-                    $self.body = { 'msg': '请求错误！', errno: 3 };
-                    $self.status = 408; marketserveapplyDelete
-                }
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
             }));
         //编辑
     }).post('/projectmeasure/measuresummary/edit', function* () {
@@ -652,10 +654,9 @@ module.exports = function () {
                 var responseText = JSON.parse(parsedBody);
                 $self.body = responseText;
             }).catch((error) => {
-                if (error.error && error.error.code && error.error.code == 'ETIMEDOUT') {
-                    $self.body = { 'msg': '请求错误！', errno: 3 };
-                    $self.status = 408;
-                }
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
             }));
         //删除
     }).post('/projectmeasure/measuresummary/delete', function* () {
@@ -667,10 +668,9 @@ module.exports = function () {
                 var responseText = JSON.parse(parsedBody);
                 $self.body = responseText;
             }).catch((error) => {
-                if (error.error && error.error.code && error.error.code == 'ETIMEDOUT') {
-                    $self.body = { 'msg': '请求错误！', errno: 3 };
-                    $self.status = 408;
-                }
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
             }));
         //冻结
     }).post('/projectmeasure/measuresummary/congeal', function* () {//冻结
@@ -682,8 +682,9 @@ module.exports = function () {
                 var responseText = JSON.parse(parsedBody);
                 $self.body = responseText;
             }).catch((error) => {
-                $self.set('Content-Type', 'application/json;charset=utf-8');
-                $self.body = error.error;
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
             }));
         //解冻
     }).post('/projectmeasure/measuresummary/thaw', function* () {
@@ -695,20 +696,14 @@ module.exports = function () {
                 var responseText = JSON.parse(parsedBody);
                 $self.body = responseText;
             }).catch((error) => {
-                $self.set('Content-Type', 'application/json;charset=utf-8');
-                $self.body = error.error;
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
             }));
-    }).get('/user/logout', function*(next){
-        var url = this.request.query;
-        this.cookies.set("absUrl",url.absurl);
-        this.body = {
-            code:0,
-            msg:"重定向"
-        };
     }).get('/listSetting', function* () {
         var $self = this;
         var setting = this.request.query;
-        setting.token = $self.cookies.get('token');
+        setting.userToken = $self.cookies.get('token');
         yield (server().listSetting(setting)
             .then((parsedBody) => {
                 var responseText = JSON.parse(parsedBody);
@@ -756,7 +751,7 @@ module.exports = function () {
     }).post('/editSetting', function* () {
         var $self = this;
         var editSet = $self.request.body;
-        editSet.token = $self.cookies.get("token");
+        editSet.userToken = $self.cookies.get("token");
         yield (server().editSetting(editSet)
             .then((parsedBody) => {
                 var responseText = JSON.parse(parsedBody);

@@ -1,6 +1,7 @@
-<div class="nav-list">
-    <h3 class="header-menu big"><i class="nav-arrow"></i>离职管理</h3>
-    <ul class="menu">
-        <li ng-click="navClass('message')" ng-class="{'active':navCla=='message'}"  ui-sref="_root.otherexpenses.expenses.message.list"><a href="javascript:void(0)">离职信息</a></li>
+<div class="nav-list" ng-repeat="list in showsList">
+    <h3 class="header-menu big"  ng-click="showMenu(list,true)"><i class="nav-arrow" ng-class="{true: '', false: 'change-angle'}[list.showIs]"></i>{{list.item}}</h3>
+    <ul class="menu" ng-if="list.menuList.length" ng-show="list.showIs" ng-repeat="menuInfo in list.menuList">
+        <li ng-click="navClass('message')" ng-class="{'active':navCla=='message'}"  ui-sref="_root.otherexpenses.expenses.message.list"><a href="javascript:void(0)">{{menuInfo.name}}</a></li>
+        <li ng-click="navClass('setting')" ng-class="{'active':navCla=='setting'}"  ui-sref="_root.otherexpenses.setting.list[12]" ><a href="javascript:void(0)">{{menuInfo.name2}}</a></li>
     </ul>
 </div>

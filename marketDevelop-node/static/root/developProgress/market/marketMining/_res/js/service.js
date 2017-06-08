@@ -6,7 +6,8 @@ app.factory('marketMiningSer',function ($http) {
         channelEdit:channelEdit,
         findChannelId:findChannelId,
         countChannel:countChannel,
-        channelDelete:channelDelete
+        channelDelete:channelDelete,
+        getType:getType
     };
     function channelList(data) {
         return $http.get('/market/marketchannel/maps',{
@@ -41,4 +42,9 @@ app.factory('marketMiningSer',function ($http) {
 
         })
     }
+    //获取业务类型
+    function getType(){
+        return $http.get('/businesstype/findThaw')
+    }
+
 });

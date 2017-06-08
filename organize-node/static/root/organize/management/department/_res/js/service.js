@@ -9,7 +9,9 @@ app.factory('departSer',function ($http) {
         deleteDepartment:deleteDepartment,
         congealDepartment:congealDepartment,
         thawDepartment:thawDepartment,
-        getSystem:getSystem
+        getSystem:getSystem,
+        departRange:departRange,
+        viewRange:viewRange
     };
     function listDepartment(data) {
         return $http.get('/department/maps',{params: data})
@@ -37,6 +39,12 @@ app.factory('departSer',function ($http) {
     }
     function thawDepartment(data) {
         return $http.get('/department/thaw',{params: data})
+    }
+    function departRange(data) {
+        return $http.get('/department/departRange',{params: data})
+    }
+    function viewRange(data) {
+        return $http.get('/department/viewRange',{params: data})
     }
 
 });

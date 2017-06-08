@@ -19,8 +19,8 @@ app.controller('categorySummaryCtrl', function($scope, spendSer,toastr){
                     $scope.showed=false
                 }
                 $scope.summaryLists = response.data.data;
-            }else if(response.data.code == 403){
-                toastr.error("请登录用户", '温馨提示');
+            }else{
+                toastr.error( response.data.msg, '温馨提示');
             }
         })
     };

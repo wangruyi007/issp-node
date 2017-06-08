@@ -2,6 +2,7 @@ var app = angular.module('taskServer',[]);
 app.factory('taskSer',function ($http) {
     return {
         assignmentList : assignmentList,
+        searchList : searchList,
         addAssignment:addAssignment,
         editAssignment:editAssignment,
         findAssignmentId:findAssignmentId,
@@ -10,6 +11,13 @@ app.factory('taskSer',function ($http) {
     };
     function assignmentList(data) {
         return $http.get('/involvedprocessingtask/list',{
+            params: data
+
+        })
+    }
+    //搜索
+    function searchList(data) {
+        return $http.get('/involvedprocessingtask/search',{
             params: data
 
         })
@@ -30,8 +38,8 @@ app.factory('taskSer',function ($http) {
         })
     }
     //分页总条数
-    function countAssignment(){
-        return $http.get('/involvedprocessingtask/count')
+    function countAssignment(data){
+        return $http.get('/involvedprocessingtask/count',{params:data})
     }
     //删除
     function deleteAssignment(data){

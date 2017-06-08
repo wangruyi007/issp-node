@@ -1,4 +1,4 @@
-var app = angular.module('emailCongeal', ['toastr','ipCookie']);
+var app = angular.module('emailCongeal', ['toastr']);
 app.controller('emailCongealCtrl',function($scope,emailSer,toastr,$stateParams,$state,$location,ipCookie){
     //冻结
     $scope.congealYes = function(){

@@ -9,7 +9,19 @@ module.exports = function(){
         var options = {
             method : 'GET',
             timeout : 3000,
-            uri : config()['rurl'] + `/problemaccept/v1/list?limit=10&page=${argvs.page}`,
+            uri : config()['rurl'] + `/problemaccept/v1/list${urlEncode(argvs,true)}`,
+            headers:{
+                userToken:argvs.userToken
+            }
+        };
+        return request(options);
+    };
+    //搜索
+    this.problemSearchList = function(argvs){
+        var options = {
+            method : 'GET',
+            timeout : 3000,
+            uri : config()['rurl'] + `/problemaccept/v1/search${urlEncode(argvs,true)}`,
             headers:{
                 userToken:argvs.userToken
             }
@@ -60,7 +72,7 @@ module.exports = function(){
         var options = {
             method : 'GET',
             timeout : 3000,
-            uri : config()['rurl'] + '/problemaccept/v1/count',
+            uri : config()['rurl'] + `/problemaccept/v1/count${urlEncode(argvs,true)}`,
             headers:{
                 userToken:argvs.userToken
             }
@@ -84,7 +96,19 @@ module.exports = function(){
         var options = {
             method : 'GET',
             timeout : 3000,
-            uri : config()['rurl'] + `/problemhandlingresult/v1/list?limit=10&page=${argvs.page}`,
+            uri : config()['rurl'] + `/problemhandlingresult/v1/list${urlEncode(argvs,true)}`,
+            headers:{
+                userToken:argvs.userToken
+            }
+        };
+        return request(options);
+    };
+    //确认问题处理结果列表搜索
+    this.confirmSearchList = function(argvs){
+        var options = {
+            method : 'GET',
+            timeout : 3000,
+            uri : config()['rurl'] + `/problemhandlingresult/v1/search${urlEncode(argvs,true)}`,
             headers:{
                 userToken:argvs.userToken
             }
@@ -159,7 +183,19 @@ module.exports = function(){
         var options = {
             method : 'GET',
             timeout : 3000,
-            uri : config()['rurl'] + `/involvedprocessingtask/v1/list?limit=10&page=${argvs.page}`,
+            uri : config()['rurl'] + `/involvedprocessingtask/v1/list${urlEncode(argvs,true)}`,
+            headers:{
+                userToken:argvs.userToken
+            }
+        };
+        return request(options);
+    };
+    //参与处理人员的任务分配列表搜索
+    this.taskSearchList = function(argvs){
+        var options = {
+            method : 'GET',
+            timeout : 3000,
+            uri : config()['rurl'] + `/involvedprocessingtask/v1/search${urlEncode(argvs,true)}`,
             headers:{
                 userToken:argvs.userToken
             }
@@ -210,7 +246,7 @@ module.exports = function(){
         var options = {
             method : 'GET',
             timeout : 3000,
-            uri : config()['rurl'] + '/involvedprocessingtask/v1/count',
+            uri : config()['rurl'] + `/involvedprocessingtask/v1/count${urlEncode(argvs,true)}`,
             headers:{
                 userToken:argvs.userToken
             }

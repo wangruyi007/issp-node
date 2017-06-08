@@ -20,6 +20,19 @@ module.exports = function(){
                 $self.body=error.error;
                 console.error(error.error);
             }));
+    }).get('/problemaccept/search', function*(){ //项目执行中的问题受理列表搜索
+        var $self = this;
+        var page = $self.request.query;
+        page.userToken = this.cookies.get('token');
+        yield (server().problemSearchList(page)
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
     }).post('/problemaccept/add', function*(){//项目执行中的问题受理添加
         var $self = this;
         var addData = $self.request.body;
@@ -97,6 +110,19 @@ module.exports = function(){
                 $self.body=error.error;
                 console.error(error.error);
             }));
+    }).get('/problemhandlingresult/search', function*(){ //确认问题处理结果列表搜索
+        var $self = this;
+        var page = $self.request.query;
+        page.userToken = this.cookies.get('token');
+        yield (server().confirmSearchList(page)
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
     }).post('/problemhandlingresult/add', function*(){//确认问题处理结果添加
         var $self = this;
         var addData = $self.request.body;
@@ -166,6 +192,19 @@ module.exports = function(){
         var page = $self.request.query;
         page.userToken = this.cookies.get('token');
         yield (server().taskList(page)
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
+    }).get('/involvedprocessingtask/search', function*(){ //参与处理人员的任务分配列表
+        var $self = this;
+        var page = $self.request.query;
+        page.userToken = this.cookies.get('token');
+        yield (server().taskSearchList(page)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
                 $self.body = responseText;

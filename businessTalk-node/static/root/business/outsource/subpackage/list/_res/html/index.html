@@ -1,11 +1,16 @@
 <div class="content-tab list">
     <div class="search-big" style="display :{{ isView?'none':'block'}}">
-        <select class="salc" ng-model="checkedName">
+        <select class="salc" ng-model="checkedName"  ng-init="checkedName='洽谈人'">
             <option ng-repeat="item in titles">{{item}}</option>
         </select>
         <input type="text" ng-model="communicateUser" ng-show="checkedName=='洽谈人'">
         <input type="text" ng-model="communicateObj" ng-show="checkedName=='洽谈对象'">
-        <input type="text" ng-model="projectResult" ng-show="checkedName=='项目结果'">
+        <select class="sle" ng-model="communicateResult" ng-show="checkedName=='项目结果'">
+            <option value=""></option>
+            <option value="COOPERATE">项目合作</option>
+            <option value="TRAIL">项目跟进</option>
+            <option value="ABANDON">项目丢弃</option>
+        </select>
         <a href="javascript:void(0)" ng-click="collect()"><img src="/images/search2.png"></a>
     </div>
     <ul class="table com-table">
@@ -61,7 +66,7 @@
                                 <span>{{::list.communicateAddress}}</span>
                                 <span>{{::list.communicateContent}}</span>
                                 <span>{{::list.costBudget}}</span>
-                                <span>{{::list.projectResult}}</span>
+                                <span>{{::list.projectResult | cov}}</span>
                                 <span>{{::list.recordUser}}</span>
                             </p>
                         </li>

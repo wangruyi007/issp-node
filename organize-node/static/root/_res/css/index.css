@@ -2073,13 +2073,12 @@ body {
 .modac{
   cursor:pointer;
 }
- .right-section .top-content .content .content-wrap .sign-summary .table .list-all .module {
-  /*display: none;*/
+ .module {
+  display: none;
 }
 
- .right-section .top-content .content .content-wrap .sign-summary .table .list-all .module .see-module {
+ .module .see-module {
   width: 392px;
-  height: 286px;
   background-color: #fff;
   position: absolute;
   top: 300px;
@@ -2089,7 +2088,7 @@ body {
   border-radius: 5px;
 }
 
-.right-section .top-content .content .content-wrap .sign-summary .table .list-all .module .see-module .see-type {
+ .module .see-module .see-type {
   height: 40px;
   line-height: 40px;
   background-color: #f0f6f4;
@@ -2099,20 +2098,15 @@ body {
   padding-left: 15px;
 }
 
-.right-section .top-content .content .content-wrap .sign-summary .table .list-all .module .see-module .see-description {
-  height: 206px;
+ .module .see-module .see-description {
+  min-height: 100px;
   font-size: 12px;
   color: #666;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  padding: 0 20px;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
+   word-wrap:break-word;
+  padding: 20px;
 }
 
- .right-section .top-content .content .content-wrap .sign-summary .table .list-all .module .see-module .btn {
+.module .see-module .btn {
   width: 100%;
   height: 40px;
   background-color: #758c94;

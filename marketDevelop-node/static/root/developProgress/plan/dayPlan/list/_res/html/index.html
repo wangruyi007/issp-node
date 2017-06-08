@@ -2,7 +2,7 @@
     <ul class="table">
         <li class="list-head">
             <span></span>
-            <span class="data-id">id</span>
+            <span>序号</span>
             <span>时间</span>
             <span>业务状态</span>
             <span>业务类型</span>
@@ -14,10 +14,10 @@
         <li class="list-all" ng-repeat="dayList in dayPlanLists" style="display: {{dayList._delete?'none':'block'}};">
             <section>
                 <div class="list-text {{dayList._selectList?'selectList':''}}" ng-click="selectList(dayList)">
+                    <p>{{$index+1}}</p>
                     <p >{{dayList.serialNumber}}</p>
-                    <p class="data-id"></p>
                     <p>{{dayList.time}}</p>
-                    <p>{{dayList.business}}</p>
+                    <p>{{dayList.business|cover}}</p>
                     <p>{{dayList.type}}</p>
                     <p>{{dayList.source}}</p>
                     <p>{{dayList.name}}</p>

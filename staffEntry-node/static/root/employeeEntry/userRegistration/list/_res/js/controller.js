@@ -1,4 +1,3 @@
-
 var app = angular.module('userRegistrationList', ['ng-pagination','toastr']);
 app.controller('userRegistrationListCtrl',function($scope,userRegistrationSer,toastr) {
     $scope.$emit('changeId', null);

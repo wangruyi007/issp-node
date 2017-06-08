@@ -9,45 +9,34 @@
                 <li class="required">
                     <label><i><img src="/images/mandatory.png"></i><em>年份</em></label>
                     <input type="text" ng-model="editYear.year" disabled>
-                    <!--<select class="sele" ng-model="editYear.year" ng-init="editYear.year=yearArr[0]">-->
-                        <!--<option ng-repeat="year in yearArr" value="{{year}}">{{year}}</option>-->
-                    <!--</select>-->
                 </li>
                 <li class="required">
                     <label><i><img src="/images/mandatory.png"></i><em>业务类型</em></label>
                     <select class="sele" ng-model="editYear.type">
-                        <option value="0">业务类型0</option>
-                        <option value="1">业务类型8</option>
-                        <option value="2">业务类型9</option>
+                        <option ng-repeat="type in types">{{type.type}}</option>
                     </select>
                 </li>
                 <li class="required">
                     <label><i><img src="/images/mandatory.png"></i><em>工作量权重</em></label>
-                    <input type="number" ng-verify="{}" ng-model="editYear.workloadWeight">
+                    <input type="number" ng-verify="{}" ng-model="editYear.workloadWeight" min="0" max="100">
                 </li>
                 <li class="required">
                     <label><i><img src="/images/mandatory.png"></i><em>业务方向科目</em></label>
                     <select class="sele" ng-model="editYear.course">
-                        <option value="0">业务方向科目1</option>
-                        <option value="1">业务方向科目2</option>
-                        <option value="2">业务方向科目3</option>
+                        <option ng-repeat="course in courses">{{course.course}}</option>
                     </select>
                 </li>
                 <li class="required">
-                    <label><i><img src="/images/mandatory.png"></i><em>业务科发展对象</em></label>
-                    <input type="number" ng-verify="{}" ng-model="editYear.development">
+                    <label><i><img src="/images/mandatory.png"></i><em>业务可发展对象</em></label>
+                    <input type="number" min="0" max="100" ng-verify="{}" ng-model="editYear.development">
                 </li>
                 <li class="required">
-                    <label><i><img src="/images/mandatory.png"></i><em>同意类业务类型中占比</em></label>
-                    <input type="number" ng-verify="{}" ng-model="editYear.businessAccounted">
+                    <label><i><img src="/images/mandatory.png"></i><em>同一类业务类型中占比</em></label>
+                    <input type="number" min="0" max="100" ng-verify="{}" ng-model="editYear.businessAccounted">
                 </li>
                 <li class="required">
-                    <label><i><img src="/images/mandatory.png"></i><em>各类业务科目年度占比</em></label>
-                    <input type="number" ng-verify="{}" ng-model="editYear.courseAccounted">
-                </li>
-                <li class="required">
-                    <label><i><img src="/images/mandatory.png"></i><em>年任务量</em></label>
-                    <input type="number" ng-verify="{}" ng-model="editYear.quota">
+                    <label><i><img src="/images/mandatory.png"></i><em>各业务科目年度占比</em></label>
+                    <input type="number" min="0" max="100" ng-verify="{}" ng-model="editYear.courseAccounted">
                 </li>
             </ul>
         </section>
