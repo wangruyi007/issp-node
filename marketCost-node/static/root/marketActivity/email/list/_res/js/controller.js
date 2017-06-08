@@ -24,7 +24,7 @@ app.controller('emailListCtrl',function($scope,emailSer,toastr,$state,$location,
         if(response.data.code==0){
             $scope.abili.itemsCount = response.data.data;
         }else{
-            toastr.error( "请求超时，请联系管理员", '温馨提示');
+            toastr.error( response.data.msg, '温馨提示');
         }
     });
 
@@ -44,6 +44,8 @@ app.controller('emailListCtrl',function($scope,emailSer,toastr,$state,$location,
                 setTimeout(function(){
                     window.location.href='http://localhost/login'
                 },3000)
+            }else {
+                toastr.error( response.data.msg, '温馨提示');
             }
         })
     }
@@ -84,3 +86,42 @@ app.controller('emailListCtrl',function($scope,emailSer,toastr,$state,$location,
         })
     });
 });
+//自定义过滤器
+app.filter('cov',function(){
+    return function(val){
+        var result;
+        switch (val){
+            case 'MINUTE':
+                result = "分钟";
+                break;
+            case 'HOUR':
+                result = "小时";
+                break;
+            case 'DAY':
+                result = "天";
+                break;
+            case 'WEEK':
+                result = "周";
+                break;
+            case 'MONTH':
+                result = "月";
+                break;
+            case 'QUARTER':
+                result = "季";
+                break;
+            case 'YEAR':
+                result = "年";
+                break;
+            case 'NOT':
+                result = "无";
+                break;
+            case 'THAW':
+                result = "解冻";
+                break;
+            case 'CONGEAL':
+                result = "冻结";
+                break;
+        }
+        return result;
+    }
+})

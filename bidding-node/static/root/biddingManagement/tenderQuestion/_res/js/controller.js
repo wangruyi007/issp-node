@@ -7,7 +7,7 @@ app.controller('questionCtrl',function ($scope,$state) {
     if ($state.current.url == '/tenderQuestion') {//默认加载列表
         $state.go('root.biddingManagement.tenderQuestion.list')
     }
-
+    $scope.$emit('isVi',false);//判断是否出现搜索按钮
 }).controller('questionMenuCtrl',function($scope,$state,$rootScope,$location){
     var urlName = $state.current.url.split('/')[1].split('[')[0];
     $scope.menuClass = urlName + "Menu";
@@ -24,6 +24,7 @@ app.controller('questionCtrl',function ($scope,$state) {
     $scope.delete = function(){
         if($scope.idListd){
             $state.go('root.biddingManagement.tenderQuestion.list.delete[12]',{id:$scope.idListd});
+            $scope.menuClass = 'deleteMenu'
         }
     }
 

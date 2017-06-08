@@ -1,5 +1,5 @@
-var app = angular.module('personDemandList', ['ng-pagination','toastr','ipCookie']);
-app.controller('personDemandListCtrl',function($scope,marketserveSer,toastr,ipCookie,$location) {
+var app = angular.module('personDemandList', ['ng-pagination','toastr']);
+app.controller('personDemandListCtrl',function($scope,marketserveSer,toastr) {
     $scope.companySearchFun = function(){
         $scope.teamInfo = {};
     };

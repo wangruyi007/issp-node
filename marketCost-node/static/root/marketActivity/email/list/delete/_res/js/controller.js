@@ -1,4 +1,4 @@
-var app = angular.module('emailDelete', ['toastr','ipCookie']);
+var app = angular.module('emailDelete', ['toastr']);
 app.controller('emailDeleteCtrl',function($scope,emailSer,toastr,$stateParams,$state,ipCookie,$location){
     //删除
     $scope.delYes = function(){
@@ -19,6 +19,8 @@ app.controller('emailDeleteCtrl',function($scope,emailSer,toastr,$stateParams,$s
                 setTimeout(function(){
                     window.location.href='http://localhost/login'
                 },3000)
+            }else {
+                toastr.error( response.data.msg, '温馨提示');
             }
         })
     }

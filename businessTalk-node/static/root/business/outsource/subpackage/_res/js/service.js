@@ -7,17 +7,17 @@ app.factory('subpackageSer',function ($http) {
         getOneById:getOneById,
         marketserveapplyEdit:marketserveapplyEdit,
         marketserveapplyDel:marketserveapplyDel,
-        ssuiCollect:ssuiCollect,
-        searchCount:searchCount,
-        searchList:searchList
+        ssuiCollect:ssuiCollect
     };
     //列表
     function listMarketserve(data) {
         return $http.post('/business/outsource/list',data)
     }
     //分页
-    function countBaseInfo(){
-        return $http.get('/business/outsource/count')
+    function countBaseInfo(data){
+        return $http.get('/business/outsource/count',{
+            params:data
+        })
     }
     //添加
     function addMarketserveapply(data){
@@ -38,17 +38,5 @@ app.factory('subpackageSer',function ($http) {
      //列表
     function ssuiCollect(data) {
         return $http.post('/business/outsource/collect',data)
-    }
-    //搜索
-    function searchCount(data) {
-        return $http.post('/business/contract/searchCount',{
-            params:data
-        })
-    }
-    //
-    function searchList(data) {
-        return $http.post('/business/contract/searchList',{
-            params:data
-        })
     }
 });

@@ -2,6 +2,7 @@ var app = angular.module('problemServer',[]);
 app.factory('problemSer',function ($http) {
     return {
         ProblemList : ProblemList,
+        searchList : searchList,
         addProblem:addProblem,
         editProblem:editProblem,
         findProblemId:findProblemId,
@@ -10,6 +11,13 @@ app.factory('problemSer',function ($http) {
     };
     function ProblemList(data) {
         return $http.get('/problemaccept/listProblemAccept',{
+            params: data
+
+        })
+    }
+    //搜索
+    function searchList(data) {
+        return $http.get('/problemaccept/search',{
             params: data
 
         })
@@ -30,8 +38,8 @@ app.factory('problemSer',function ($http) {
         })
     }
     //分页总条数
-    function countProblem(){
-        return $http.get('/problemaccept/count')
+    function countProblem(data){
+        return $http.get('/problemaccept/count',{params:data})
     }
     //删除
     function deleteProblem(data){

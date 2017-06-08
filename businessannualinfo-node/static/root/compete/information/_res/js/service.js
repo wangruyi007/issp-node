@@ -13,7 +13,7 @@ app.factory('informationSer',function ($http) {
     };
     //列表
     function  listCompeteregistered(data) {
-        return $http.get('/listCompeteregistered',{
+        return $http.get('/listCompeteregistered/list',{
             params:data
         })
     }

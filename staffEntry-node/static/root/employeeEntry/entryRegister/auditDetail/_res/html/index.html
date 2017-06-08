@@ -76,12 +76,12 @@
                         <span>联系方式</span>
                     </li>
                     <li class="body-ct" ng-repeat="list in homes">
-                        <span><input type="text" ng-model="data.titles[$index]"disabled></span>
-                        <span><input type="text" ng-model="data.names[$index]"disabled></span>
-                        <span><input type="number" ng-model="data.ages[$index]"disabled></span>
-                        <span class="two"><input type="text" ng-model="data.units[$index]"disabled></span>
-                        <span><input type="text" ng-model="data.positions[$index]"disabled></span>
-                        <span><input type="text" ng-model="data.phones[$index]"disabled></span>
+                        <span><input type="text" ng-model="data.titles[$index]" disabled></span>
+                        <span><input type="text" ng-model="data.names[$index]" disabled></span>
+                        <span><input type="number" ng-model="data.ages[$index]" disabled></span>
+                        <span class="two"><input type="text" ng-model="data.units[$index]" disabled></span>
+                        <span><input type="text" ng-model="data.positions[$index]" disabled></span>
+                        <span><input type="text" ng-model="data.phones[$index]" disabled></span>
                     </li>
                 </ul>
             </li>
@@ -94,10 +94,10 @@
                         <span class="three">毕业证书(学历)</span>
                     </li>
                     <li class="body-ct" ng-repeat="list in studies">
-                        <span><input type="text" onClick="laydate({istime: true, format: 'YYYY-MM-DD'})" class="time {{ list.a }}" ng-model="data.studyStartTimes[$index]"disabled></span>
-                        <span><input type="text" onClick="laydate({istime: true, format: 'YYYY-MM-DD'})" class="time {{ list.b }}" ng-model="data.studyEndTimes[$index]"disabled></span>
-                        <span class="two"><input type="text" ng-model="data.schools[$index]"disabled></span>
-                        <span class="three"><input type="text" ng-model="data.certificates[$index]"disabled></span>
+                        <span><input type="text" onClick="laydate({istime: true, format: 'YYYY-MM-DD'})" class="time {{ list.a }}" ng-model="data.studyStartTimes[$index]" disabled></span>
+                        <span><input type="text" onClick="laydate({istime: true, format: 'YYYY-MM-DD'})" class="time {{ list.b }}" ng-model="data.studyEndTimes[$index]" disabled></span>
+                        <span class="two"><input type="text" ng-model="data.schools[$index]" disabled></span>
+                        <span class="three"><input type="text" ng-model="data.certificates[$index]" disabled></span>
                     </li>
                 </ul>
             </li>
@@ -110,9 +110,9 @@
                         <span class="three">工作描述</span>
                     </li>
                     <li class="body-ct" ng-repeat="list in works">
-                        <span><input type="text" onClick="laydate({istime: true, format: 'YYYY-MM-DD'})" class="time {{ list.a }}" ng-model="data.workStartTimes[$index]"disabled></span>
-                        <span><input type="text" onClick="laydate({istime: true, format: 'YYYY-MM-DD'})" class="time {{ list.b }}"ng-model="data.workEndTimes[$index]"disabled></span>
-                        <span class="two"><input type="text" ng-model="data.firms[$index]"disabled></span>
+                        <span><input type="text" onClick="laydate({istime: true, format: 'YYYY-MM-DD'})" class="time {{ list.a }}" ng-model="data.workStartTimes[$index]" disabled></span>
+                        <span><input type="text" onClick="laydate({istime: true, format: 'YYYY-MM-DD'})" class="time {{ list.b }}"ng-model="data.workEndTimes[$index]" disabled></span>
+                        <span class="two"><input type="text" ng-model="data.firms[$index]" disabled></span>
                         <span class="three"><input type="text" ng-model="data.jobDescriptions
 [$index]"disabled></span>
                     </li>

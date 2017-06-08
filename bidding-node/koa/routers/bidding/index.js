@@ -10,6 +10,7 @@ module.exports = function(){
     router.get('/biddingwebinfo/list', function*(){ //招投标网站信息列表
         var $self = this;
         var page = $self.request.query;
+        page.userToken = $self.cookies.get('token');
         yield (server().WebInfoList(page)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -60,7 +61,8 @@ module.exports = function(){
             }));
     }).get('/biddingwebinfo/count', function*(){//获取招投标网站信息总条数
         var $self = this;
-        yield (server().getWebInfoTotal()
+        var countToken = {userToken:$self.cookies.get('token')};
+        yield (server().getWebInfoTotal(countToken)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
                 $self.body = responseText;
@@ -72,6 +74,7 @@ module.exports = function(){
     }).get('/biddingwebinfo/web', function*(){//获取id招投标网站信息
         var $self = this;
         var findIdData = $self.request.query;
+        findIdData.userToken = $self.cookies.get('token');
         yield (server().findWebInfoId(findIdData)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -84,7 +87,21 @@ module.exports = function(){
     }).get('/biddinginfo/list', function*(){ //招标信息列表
         var $self = this;
         var page = $self.request.query;
+        page.userToken = $self.cookies.get('token');
         yield (server().InfoList(page)
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
+    }).get('/biddinginfo/search', function*(){ //招标信息列表搜索
+        var $self = this;
+        var page = $self.request.query;
+        page.userToken = $self.cookies.get('token');
+        yield (server().biddingSearch(page)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
                 $self.body = responseText;
@@ -134,7 +151,8 @@ module.exports = function(){
             }));
     }).get('/biddinginfo/count', function*(){//获取招标信息总条数
         var $self = this;
-        yield (server().getInfoTotal()
+        var countToken = {userToken:$self.cookies.get('token')};
+        yield (server().getInfoTotal(countToken)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
                 $self.body = responseText;
@@ -146,6 +164,7 @@ module.exports = function(){
     }).get('/biddinginfo/info', function*(){//获取id招标信息
         var $self = this;
         var findIdData = $self.request.query;
+        findIdData.userToken = $self.cookies.get('token');
         yield (server().getInfoId(findIdData)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -158,6 +177,7 @@ module.exports = function(){
     }).get('/biddinginfo/collect', function*(){ //汇总招标信息
         var $self = this;
         var summaryData = $self.request.query.cities;
+        summaryData.userToken = $self.cookies.get('token');
         yield (server().collectList(summaryData)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -169,7 +189,8 @@ module.exports = function(){
             }));
     }).get('/biddinginfo/cities', function*(){//获取招标信息所有地市
         var $self = this;
-        yield (server().getAllArea()
+        var cityToken = {userToken:$self.cookies.get('token')};
+        yield (server().getAllArea(cityToken)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
                 $self.body = responseText;
@@ -181,6 +202,7 @@ module.exports = function(){
     }).get('/biddinganswerquestions/list', function*(){ //投标答疑问题列表
         var $self = this;
         var page = $self.request.query;
+        page.userToken = $self.cookies.get('token');
         yield (server().questionsList(page)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -231,7 +253,8 @@ module.exports = function(){
             }));
     }).get('/biddinganswerquestions/count', function*(){//获取投标答疑问题总条数
         var $self = this;
-        yield (server().getQuestionsTotal()
+        var countToken = {userToken:$self.cookies.get('token')};
+        yield (server().getQuestionsTotal(countToken)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
                 $self.body = responseText;
@@ -243,6 +266,7 @@ module.exports = function(){
     }).get('/biddinganswerquestions/answer', function*(){//获取id投标答疑问题
         var $self = this;
         var findIdData = $self.request.query;
+        findIdData.userToken = $self.cookies.get('token');
         yield (server().getQuestionsId(findIdData)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -255,6 +279,7 @@ module.exports = function(){
     }).get('/tenderinfo/list', function*(){ //标书资料列表
         var $self = this;
         var page = $self.request.query;
+        page.userToken = $self.cookies.get('token');
         yield (server().tenderList(page)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -305,7 +330,8 @@ module.exports = function(){
             }));
     }).get('/tenderinfo/count', function*(){//获取标书资料总条数
         var $self = this;
-        yield (server().getTenderTotal()
+        var countToken = {userToken:$self.cookies.get('token')};
+        yield (server().getTenderTotal(countToken)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
                 $self.body = responseText;
@@ -317,6 +343,7 @@ module.exports = function(){
     }).get('/tenderinfo/info', function*(){//获取id标书资料
         var $self = this;
         var findIdData = $self.request.query;
+        findIdData.userToken = $self.cookies.get('token');
         yield (server().getTenderId(findIdData)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -329,7 +356,21 @@ module.exports = function(){
     }).get('/bidopeninginfo/list', function*(){ //开标信息列表
         var $self = this;
         var page = $self.request.query;
+        page.userToken = $self.cookies.get('token');
         yield (server().openingInfoList(page)
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
+    }).get('/bidopeninginfo/search', function*(){ //开标信息列表搜索
+        var $self = this;
+        var page = $self.request.query;
+        page.userToken = $self.cookies.get('token');
+        yield (server().openSearchList(page)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
                 $self.body = responseText;
@@ -379,7 +420,8 @@ module.exports = function(){
             }));
     }).get('/bidopeninginfo/count', function*(){//获取开标信息总条数
         var $self = this;
-        yield (server().getOpeningInfoTotal()
+        var countToken = {userToken:$self.cookies.get('token')};
+        yield (server().getOpeningInfoTotal(countToken)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
                 $self.body = responseText;
@@ -391,6 +433,7 @@ module.exports = function(){
     }).get('/bidopeninginfo/info', function*(){//获取id开标信息
         var $self = this;
         var findIdData = $self.request.query;
+        findIdData.userToken = $self.cookies.get('token');
         yield (server().getOpeningInfoId(findIdData)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -403,7 +446,7 @@ module.exports = function(){
     }).get('/bidopeninginfo/collect', function*(){ //汇总开标信息
         var $self = this;
         var summaryData = $self.request.query;
-
+        summaryData.userToken = $self.cookies.get('token');
         yield (server().collectInfo(summaryData)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -415,7 +458,76 @@ module.exports = function(){
             }));
     }).get('/bidopeninginfo/cities', function*(){//获取开标信息所有地市
         var $self = this;
-        yield (server().getAllCities()
+        var cityToken = {userToken:$self.cookies.get('token')};
+        yield (server().getAllCities(cityToken)
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
+    }).get('/user/logout', function*(next){ //登录退出
+        var url = this.request.query;
+        this.cookies.set("absUrl",url.absurl);
+        this.body = {
+            code:0,
+            msg:"重定向"
+        };
+    }).get('/listSetting', function*(){
+        var $self = this;
+        var setting = this.request.query;
+        setting.userToken = $self.cookies.get('token');
+        yield (server().listSetting(setting)
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
+    }).get('/countSetting', function*(){
+        var $self = this;
+        yield (server().countSetting()
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
+    }).get('/getpermit', function*(){
+        var $self = this;
+        var getId = $self.request.query;
+        yield (server().getpermit(getId)
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
+    }).get('/getListpermit', function*(){
+        var $self = this;
+        var listPermit = $self.request.query;
+        yield (server().getListpermit(listPermit)
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
+    }).post('/editSetting', function*(){
+        var $self = this;
+        var editSet = $self.request.body;
+        editSet.userToken = $self.cookies.get("token");
+        yield (server().editSetting(editSet)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
                 $self.body = responseText;

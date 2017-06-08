@@ -1,6 +1,21 @@
 var app = angular.module('yearPlanAdd', ['toastr']);
 app.controller('yearPlanAddCtrl', function($scope, yearPlanSer,$state,toastr){
-
+    //获取业务类型
+    yearPlanSer.getType().then(function(response){
+        if(response.data.code==0){
+            $scope.types = response.data.data;
+        }else {
+            toastr.error( response.data.msg, '温馨提示');
+        }
+    });
+    //获取业务方向科目
+    yearPlanSer.getCourse().then(function(response){
+        if(response.data.code==0){
+            $scope.courses = response.data.data;
+        }else {
+            toastr.error( response.data.msg, '温馨提示');
+        }
+    });
     //年计划添加
     $scope.yearPlanAddFun = function(){
         var vm = $scope;
@@ -8,8 +23,8 @@ app.controller('yearPlanAddCtrl', function($scope, yearPlanSer,$state,toastr){
             if(response.data.code == 0){
                 $state.go('root.developProgress.plan.yearPlan.list');
                 toastr.success("年计划已成功添加", '温馨提示');
-            }else if(response.data.code==403){
-                toastr.error( "请登录用户", '温馨提示');
+            }else {
+                toastr.error( response.data.msg, '温馨提示');
             }
         });
 

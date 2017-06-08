@@ -1,6 +1,3 @@
-/**
- * Created by ike on 2017/4/13.
- */
 var app = angular.module('area', ['ng-pagination','toastr']);
 app.controller('areaCtrl',function($scope,currencySer,toastr) {//areaLists
     $scope.areaList = {};

@@ -6,7 +6,7 @@ var config = require(path.resolve('plugins/read-config.js'));
 var fetch = require('node-fetch');//url转发
 module.exports = function () {
     var router = new Router();
-    //市场招待申请  marketActivity   marketserve
+    //市场招待申请  
     //列表
     router.get('/marketActivity/marketserve/list', function* () {
         var $self = this;
@@ -23,7 +23,8 @@ module.exports = function () {
             }));
     }).get('/marketserve/count', function* () {
         var $self = this;
-        yield (server().countBaseInfo()
+        var countData = {userToken:$self.cookies.get('token')}
+        yield (server().countBaseInfo(countData)
             .then((parsedBody) => {
                 var responseText = JSON.parse(parsedBody);
                 $self.body = responseText;
@@ -60,9 +61,9 @@ module.exports = function () {
                 $self.body = error.error;
                 console.error(error.error);
             }));
-        //编辑  
-    }).post('/marketActivity/marketserve/getOneById', function* () {
-        var EditId = this.request.body;
+        //编辑id
+    }).get('/marketActivity/marketserve/getOneById', function* () {
+        var EditId = this.request.query;
         EditId.userToken = this.cookies.get('token');
         var $self = this;
         yield (server().marketserveEditById(EditId)
@@ -70,10 +71,9 @@ module.exports = function () {
                 var responseText = JSON.parse(parsedBody);
                 $self.body = responseText;
             }).catch((error) => {
-                if (error.error && error.error.code && error.error.code == 'ETIMEDOUT') {
-                    $self.body = { 'msg': '请求错误！', errno: 3 };
-                    $self.status = 408; marketserveapplyDelete
-                }
+                $self.set('Content-Type', 'application/json;charset=utf-8');
+                $self.body = error.error;
+                console.error(error.error);
             }));
     }).post('/marketActivity/marketserve/edit', function* () {
         var Edit = this.request.body;
@@ -84,10 +84,9 @@ module.exports = function () {
                 var responseText = JSON.parse(parsedBody);
                 $self.body = responseText;
             }).catch((error) => {
-                if (error.error && error.error.code && error.error.code == 'ETIMEDOUT') {
-                    $self.body = { 'msg': '请求错误！', errno: 3 };
-                    $self.status = 408;
-                }
+                $self.set('Content-Type', 'application/json;charset=utf-8');
+                $self.body = error.error;
+                console.error(error.error);
             }));
     }).post('/marketActivity/marketserveApply/delete', function* () {
         var delData = this.request.body;
@@ -98,10 +97,9 @@ module.exports = function () {
                 var responseText = JSON.parse(parsedBody);
                 $self.body = responseText;
             }).catch((error) => {
-                if (error.error && error.error.code && error.error.code == 'ETIMEDOUT') {
-                    $self.body = { 'msg': '请求错误！', errno: 3 };
-                    $self.status = 408;
-                }
+                $self.set('Content-Type', 'application/json;charset=utf-8');
+                $self.body = error.error;
+                console.error(error.error);
             }));
         //编辑 资金模块意见 
     }).post('/marketActivity/marketserve/OpinionEidt', function* () {
@@ -113,10 +111,9 @@ module.exports = function () {
                 var responseText = JSON.parse(parsedBody);
                 $self.body = responseText;
             }).catch((error) => {
-                if (error.error && error.error.code && error.error.code == 'ETIMEDOUT') {
-                    $self.body = { 'msg': '请求错误！', errno: 3 };
-                    $self.status = 408;
-                }
+                $self.set('Content-Type', 'application/json;charset=utf-8');
+                $self.body = error.error;
+                console.error(error.error);
             }));
         //编辑 决策层意见
     }).post('/marketActivity/marketserve/executiveEidt', function* () {
@@ -128,10 +125,9 @@ module.exports = function () {
                 var responseText = JSON.parse(parsedBody);
                 $self.body = responseText;
             }).catch((error) => {
-                if (error.error && error.error.code && error.error.code == 'ETIMEDOUT') {
-                    $self.body = { 'msg': '请求错误！', errno: 3 };
-                    $self.status = 408;
-                }
+                $self.set('Content-Type', 'application/json;charset=utf-8');
+                $self.body = error.error;
+                console.error(error.error);
             }));
         //市场招待汇总
     }).get('/marketActivity/summary/list', function* () {
@@ -149,7 +145,9 @@ module.exports = function () {
             }));
     }).get('/marketActivity/summary/count', function* () {
         var $self = this;
-        yield (server().summaryCount()
+        var data = {};
+        data.userToken = $self.cookies.get('token');
+        yield (server().summaryCount(data)
             .then((parsedBody) => {
                 var responseText = JSON.parse(parsedBody);
                 $self.body = responseText;
@@ -165,18 +163,17 @@ module.exports = function () {
         yield (server().summaryCongeal(congealData)
             .then((parsedBody) => {
                 var responseText = JSON.parse(parsedBody);
-                console.log(parsedBody)
                 $self.body = responseText;
             }).catch((error) => {
-                if (error.error && error.error.code && error.error.code == 'ETIMEDOUT') {
-                    $self.body = { 'msg': '请求错误！', errno: 3 };
-                    $self.status = 408;
-                }
+                $self.set('Content-Type', 'application/json;charset=utf-8');
+                $self.body = error.error;
+                console.error(error.error);
             }));
     }).post('/marketActivity/thawEmail/thaw', function* () {//解冻
-        var thawData = this.request.body;
-        thawData.userToken = this.cookies.get('token');
         var $self = this;
+        var thawData = $self.request.body;
+        thawData.userToken = $self.cookies.get('token');
+        console.log(thawData)
         yield (server().summaryBreakfreeze(thawData)
             .then((parsedBody) => {
                 var responseText = JSON.parse(parsedBody);
@@ -253,7 +250,9 @@ module.exports = function () {
             }));
     }).get('/servereCord/count', function* () {
         var $self = this;
-        yield (server().servereCordCount()
+        var data = {};
+        data.userToken = $self.cookies.get('token');
+        yield (server().servereCordCount(data)
             .then((parsedBody) => {
                 var responseText = JSON.parse(parsedBody);
                 $self.body = responseText;
@@ -318,7 +317,7 @@ module.exports = function () {
                 $self.body=error.error;
                 console.error(error.error);
             }));
-    }).post('/marketActivity/servereCord/OpinionEidt', function* () { //编辑
+    }).post('/marketActivity/servereCord/OpinionEidt', function* () { //资金模块意见
         var Edit = this.request.body;
         Edit.userToken = this.cookies.get('token');
         var $self = this;
@@ -345,10 +344,10 @@ module.exports = function () {
                 console.error(error.error);
             }));
     }).post('/marketActivity/servereCordApply/delete', function* () { //编辑审核层意见
-        var executiveEidt = this.request.body;
-        executiveEidt.userToken = this.cookies.get('token');
+        var delData = this.request.body;
+        delData.userToken = this.cookies.get('token');
         var $self = this;
-        yield (server().servereCordDele(executiveEidt)
+        yield (server().servereCordDele(delData)
             .then((parsedBody) => {
                 var responseText = JSON.parse(parsedBody);
                 $self.body = responseText;
@@ -357,17 +356,62 @@ module.exports = function () {
                 $self.body=error.error;
                 console.error(error.error);
             }));
-    }).get('/user/logout', function*(next){
-        var url = this.request.query;
-        this.cookies.set("absUrl",url.absurl);
-        this.body = {
-            code:0,
-            msg:"重定向"
-        };
+    }).get('/marketActivity/marketserveapply/viewCustomer', function* () { //查看客户列表
+        var viewData = this.request.query;
+        viewData.userToken = this.cookies.get('token');
+        var $self = this;
+        yield (server().viewCustomer(viewData)
+            .then((parsedBody) => {
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) => {
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
+    }).post('/marketActivity/servereCordApply/editCustomer', function* () { //编辑客户信息
+        var delData = this.request.body;
+        delData.userToken = this.cookies.get('token');
+        var $self = this;
+        yield (server().editCustomerInfo(delData)
+            .then((parsedBody) => {
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) => {
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
+    }).get('/marketActivity/servereCord/viewCustomer', function* () { //查看客户列表
+        var viewData = this.request.query;
+        viewData.userToken = this.cookies.get('token');
+        var $self = this;
+        yield (server().viewCustomer1(viewData)
+            .then((parsedBody) => {
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) => {
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
+    }).post('/marketActivity/servereCord/editCustomer', function* () { //编辑客户信息
+        var delData = this.request.body;
+        delData.userToken = this.cookies.get('token');
+        var $self = this;
+        yield (server().editCustomerInfo1(delData)
+            .then((parsedBody) => {
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) => {
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
     }).get('/listSetting', function*(){
         var $self = this;
         var setting = this.request.query;
-        setting.token = $self.cookies.get('token');
+        setting.userToken = $self.cookies.get('token');
         yield (server().listSetting(setting)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -379,7 +423,9 @@ module.exports = function () {
             }));
     }).get('/countSetting', function*(){
         var $self = this;
-        yield (server().countSetting()
+        var setting = this.request.query;
+        setting.userToken = $self.cookies.get('token');
+        yield (server().countSetting(setting)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
                 $self.body = responseText;
@@ -390,8 +436,9 @@ module.exports = function () {
             }));
     }).get('/getpermit', function*(){
         var $self = this;
-        var getId = $self.request.query;
-        yield (server().getpermit(getId)
+        var setting = this.request.query;
+        setting.userToken = $self.cookies.get('token');
+        yield (server().getpermit(setting)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
                 $self.body = responseText;
@@ -403,6 +450,7 @@ module.exports = function () {
     }).get('/getListpermit', function*(){
         var $self = this;
         var listPermit = $self.request.query;
+        listPermit.userToken = $self.cookies.get('token');
         yield (server().getListpermit(listPermit)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -415,7 +463,7 @@ module.exports = function () {
     }).post('/editSetting', function*(){
         var $self = this;
         var editSet = $self.request.body;
-        editSet.token = $self.cookies.get("token");
+        editSet.userToken = $self.cookies.get("token");
         yield (server().editSetting(editSet)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);

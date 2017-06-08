@@ -24,8 +24,6 @@ app.controller('jopdesAddCtrl', function($scope,$state,toastr,jopdesSer,$statePa
             });
         }
     });
-
-
     //岗位详细id
     jopdesSer.getPositionId().then(function(response){
         if(response.data.code == 0){

@@ -192,31 +192,38 @@ app.config(function ($provide, $urlRouterProvider) {
 
 app.factory('HttpInterceptor', ['$q', HttpInterceptor]);
 
-function HttpInterceptor($q,toastr){
+function HttpInterceptor($q,toastr,$location){
 
     return {
         request : function(config){
             return config;
         },
         requestError : function(err){
-            console.info(err);
             return $q.reject(err);
         },
         response : function(res){
+            if(res.data.code==403||res.data.code==401){
+                toastr.error( "请登录用户,2秒后跳至登陆页面", '温馨提示');
+                var absurl = $location.absUrl();
+                setTimeout(function(){
+                    window.location.href='http://localhost/login?url='+absurl
+                },2000)
+            }else if(res.data.code==1){
+                toastr.error(res.data.msg, '温馨提示');
+            }
             return res;
         },
         responseError : function(err){
             if(-1 === err.status){
                 // 远程服务器无响应
             } else if(500 === err.status){
-                // 处理各类自定义错误
+                toastr.error('服务器出错，请联系管理员','温馨提示')
             } else if(501 === err.status){
                 // ...
             }else if(404===err.status){
-                toastr.error('服务器出错，请联系管理员', '温馨提示');
+                toastr.error('页面找不到，请联系管理员', '温馨提示');
             }
-            console.log(err);
             return $q.reject(err);
         }
     };
-};
+}

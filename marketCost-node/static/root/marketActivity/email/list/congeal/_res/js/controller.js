@@ -1,4 +1,4 @@
-var app = angular.module('emailCongeal', ['toastr','ipCookie']);
+var app = angular.module('emailCongeal', ['toastr']);
 app.controller('emailCongealCtrl',function($scope,emailSer,toastr,$stateParams,$state,$location,ipCookie){
     //冻结
     $scope.congealYes = function(){
@@ -19,6 +19,8 @@ app.controller('emailCongealCtrl',function($scope,emailSer,toastr,$stateParams,$
                 setTimeout(function(){
                     window.location.href='http://localhost/login'
                 },3000)
+            }else{
+                toastr.error( response.data.msg, '温馨提示');
             }
         })
     }

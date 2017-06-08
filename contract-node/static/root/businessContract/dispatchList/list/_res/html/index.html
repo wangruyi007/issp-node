@@ -1,38 +1,18 @@
 <div class="content-tab list">
-    <!--<div class="com-search mod">-->
-        <!--<span class="com-search2">-->
-            <!--<label>业务类型:</label>-->
-            <!--<input type="text"  ng-model="teamInfo.businessType">-->
-        <!--</span>-->
-        <!--<span class="com-search2">-->
-            <!--<label>业务方向科目:</label>-->
-            <!--<input type="text"  ng-model="teamInfo.businessSubject">-->
-        <!--</span>-->
-        <!--<span class="com-search2">-->
-            <!--<label>合作方式:</label>-->
-            <!--<input type="text"  ng-model="teamInfo.businessCooperate">-->
-        <!--</span>-->
-        <!--<span class="com-search2">-->
-            <!--<label>总包单位名称:</label>-->
-            <!--<input type="text"  ng-model="teamInfo.majorCompany">-->
-        <!--</span>-->
-        <!--<span class="com-search2">-->
-            <!--<label>分包单位名称:</label>-->
-            <!--<input type="text"  ng-model="teamInfo.subCompany">-->
-        <!--</span>-->
-        <!--<span class="com-search2">-->
-            <!--<label>地区:</label>-->
-            <!--<input type="text"  ng-model="teamInfo.area">-->
-        <!--</span>-->
-        <!--<span class="com-search2">-->
-            <!--<label>派工单名称:</label>-->
-            <!--<input type="text"  ng-model="teamInfo.dispatchProject">-->
-        <!--</span>-->
-        <!--<span class="com-search2">-->
-            <!--<label>派工单编号:</label>-->
-            <!--<input type="text"  ng-model="teamInfo.dispatchNum">-->
-        <!--</span>-->
-    <!--</div>-->
+    <div class="search-big" style="display :{{ isView?'none':'block'}}">
+        <select class="salc" ng-model="checkedName" ng-init="checkedName='业务类型'">
+            <option ng-repeat="item in titles">{{item}}</option>
+        </select>
+        <input type="text" ng-model="businessType" ng-show="checkedName=='业务类型'">
+        <input type="text" ng-model="businessSubject" ng-show="checkedName=='业务方向科目'">
+        <input type="text" ng-model="businessCooperate" ng-show="checkedName=='合作方式'">
+        <input type="text" ng-model="majorCompany" ng-show="checkedName=='总包单位名称'">
+        <input type="text" ng-model="subCompany" ng-show="checkedName=='分包单位名称'">
+        <input type="text" ng-model="area" ng-show="checkedName=='地区'">
+        <input type="text" ng-model="dispatchProject" ng-show="checkedName=='派工单名称'">
+        <input type="text" ng-model="dispatchNum" ng-show="checkedName=='派工单编号'">
+        <a href="javascript:void(0)" ng-click="collect()"><img src="/images/search2.png"></a>
+    </div>
     <ul class="table">
         <li class="list-head">
             <span></span>

@@ -2,13 +2,14 @@ var request = require('request-promise');
 var path = require('path');
 var config = require(path.resolve('plugins/read-config.js'));
 var form = require(path.resolve('plugins/form.js'));
+var urlEncode = require(path.resolve('plugins/urlEncode.js'));
 module.exports = function(){
 
     this.signList = function(argvs){
         var options = {
             method : 'GET',
             timeout : 3000,
-            uri : config()['rurl'] + `/siginmanage/v1/list?limit=10&page=${argvs.page}`,
+            uri : config()['rurl'] + `/siginmanage/v1/list${urlEncode(argvs,true)}`,//2014
             headers:{
                 userToken:argvs.userToken
             }
@@ -47,6 +48,7 @@ module.exports = function(){
             method : 'POST',
             timeout : 3000,
             uri : config()['rurl'] + `/siginmanage/v1/audit`,
+            form:argvs,
             headers:{
                 userToken:argvs.userToken
             }
@@ -83,7 +85,7 @@ module.exports = function(){
         var options = {
             method : 'GET',
             timeout : 3000,
-            uri : config()['rurl'] + '/siginmanage/v1/count',
+            uri : config()['rurl'] + `/siginmanage/v1/count${urlEncode(argvs,true)}`,
             headers:{
                 userToken:argvs.userToken
             }
@@ -95,7 +97,7 @@ module.exports = function(){
         var options = {
             method : 'GET',
             timeout : 3000,
-            uri : config()['rurl'] + `/baseinfomanage/v1/list?limit=10&page${argvs.page}`,
+            uri : config()['rurl'] + `/baseinfomanage/v1/list${urlEncode(argvs,true)}`,
             headers:{
                 userToken:argvs.userToken
             }
@@ -157,7 +159,7 @@ module.exports = function(){
         var options = {
             method : 'GET',
             timeout : 3000,
-            uri : config()['rurl'] + '/baseinfomanage/v1/count',
+            uri : config()['rurl'] + `/baseinfomanage/v1/count${urlEncode(argvs,true)}`,
             headers:{
                 userToken:argvs.userToken
             }
@@ -169,7 +171,7 @@ module.exports = function(){
         var options = {
             method : 'GET',
             timeout : 3000,
-            uri : config()['rurl'] + `/dispatchsheet/v1/list?limit=10&page${argvs.page}`,
+            uri : config()['rurl'] + `/dispatchsheet/v1/list${urlEncode(argvs,true)}`,
             headers:{
                 userToken:argvs.userToken
             }
@@ -231,7 +233,7 @@ module.exports = function(){
         var options = {
             method : 'GET',
             timeout : 3000,
-            uri : config()['rurl'] + '/dispatchsheet/v1/count',
+            uri : config()['rurl'] + `/dispatchsheet/v1/count${urlEncode(argvs,true)}`,
             headers:{
                 userToken:argvs.userToken
             }

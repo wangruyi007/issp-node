@@ -9,7 +9,7 @@ module.exports = function(){
         var options = {
             method : 'GET',
             timeout : 3000,
-            uri : config()['rurl'] + '/interactionrelation/v1/listInteractionRelation?limit=10&page='+argvs.page,
+            uri : config()['rurl'] + `/interactionrelation/v1/listInteractionRelation${urlEncode(argvs,true)}`,
             headers : {
                 userToken : argvs.userToken
             }
@@ -71,7 +71,7 @@ module.exports = function(){
         var options = {
             method : 'GET',
             timeout : 3000,
-            uri : config()['rurl'] + '/interactionrelation/v1/count',
+            uri : config()['rurl'] + `/interactionrelation/v1/count${urlEncode(argvs,true)}`,
             headers : {
                 userToken : argvs.userToken
             }
@@ -115,37 +115,13 @@ module.exports = function(){
         };
         return request(options);
     };
-    //互动联系信息搜索
-    this.searchContact= function(argvs){
-        var options = {
-            method : 'GET',
-            timeout : 3000,
-            uri : config()['rurl'] + '/interactionrelation/v1/searchInteractionRelation'+urlEncode(argvs,true),
-            form : argvs,
-            headers : {
-                userToken : argvs.userToken
-            }
-        };
-        return request(options);
-    };
-    //搜索列表分页
-    this.countContact2 = function(argvs){
-        var options = {
-            method : 'GET',
-            timeout : 3000,
-            uri : config()['rurl'] + '/interactionrelation/v1/listInteractionRelation'+urlEncode(argvs,true),
-            headers : {
-                userToken : argvs.userToken
-            }
-        };
-        return request(options);
-    };
+
     //互动平台描述列表
     this.demandList = function(argvs){
         var options = {
             method : 'GET',
             timeout : 3000,
-            uri : config()['rurl'] + `/demand/v1/listDemand?limit=10&page${argvs.page}`,
+            uri : config()['rurl'] + `/demand/v1/listDemand${urlEncode(argvs,true)}`,
             headers : {
                 userToken : argvs.userToken
             }
@@ -207,7 +183,7 @@ module.exports = function(){
         var options = {
             method : 'GET',
             timeout : 3000,
-            uri : config()['rurl'] + '/demand/v1/count',
+            uri : config()['rurl'] + `/demand/v1/count${urlEncode(argvs,true)}`,
             headers : {
                 userToken : argvs.userToken
             }

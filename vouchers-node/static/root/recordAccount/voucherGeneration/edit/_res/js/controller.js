@@ -1,13 +1,13 @@
-var app = angular.module('voucherGenerationEdit', ['toastr','ipCookie']);
-app.controller('voucherGenerationEditCtrl', function($scope, voucherSer,$stateParams,$state,toastr,$location,ipCookie){
+var app = angular.module('voucherGenerationEdit', ['toastr']);
+app.controller('voucherGenerationEditCtrl', function($scope, voucherSer,$stateParams,$state,toastr){
     var voucherData ={id: $stateParams.id};
 
     //获取ID
     voucherSer.findVoucherId(voucherData).then(function(response){
         if(response.data.code=='0'){
             $scope.editVoucher = response.data.data;
-        }else if (response.data.code==403){
-            toastr.error( "请登录用户", '温馨提示');
+        }else{
+            toastr.error(response.data.msg, '温馨提示');
         }
 
     });
@@ -15,6 +15,8 @@ app.controller('voucherGenerationEditCtrl', function($scope, voucherSer,$statePa
     voucherSer.LevelOne().then(function(response){
         if(response.data.code == 0){
             $scope.firstLevel = response.data.data;
+        }else{
+            toastr.error(response.data.msg, '温馨提示');
         }
     });
 
@@ -23,6 +25,8 @@ app.controller('voucherGenerationEditCtrl', function($scope, voucherSer,$statePa
         voucherSer.LevelTwo(data).then(function(response){
             if(response.data.code == 0){
                 $scope.secondLevel = response.data.data;
+            }else{
+                toastr.error(response.data.msg, '温馨提示');
             }
         });
     };
@@ -34,6 +38,8 @@ app.controller('voucherGenerationEditCtrl', function($scope, voucherSer,$statePa
         voucherSer.LevelThree(data).then(function(response){
             if(response.data.code == 0){
                 $scope.thirdLevel = response.data.data;
+            }else{
+                toastr.error(response.data.msg, '温馨提示');
             }
         });
     };
@@ -47,13 +53,8 @@ app.controller('voucherGenerationEditCtrl', function($scope, voucherSer,$statePa
             if(response.data.code == 0){
                 $state.go('root.recordAccount.voucherGeneration.list');
                 toastr.success( "编辑成功", '温馨提示');
-            }else if(response.data.code==403||response.data.code==401){
-                toastr.error( "请登录用户,3秒后跳至登陆页面", '温馨提示');
-                var absurl = $location.absUrl();
-                ipCookie('absurl', absurl,{ expires:3,expirationUnit: 'minutes' });
-                setTimeout(function(){
-                    window.location.href='http://localhost/login'
-                },3000)
+            }else{
+                toastr.error(response.data.msg, '温馨提示');
             }
         });
 

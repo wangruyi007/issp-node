@@ -22,6 +22,8 @@ app.controller('confirmedSecondCtrl',function($scope,confirmedSer,toastr,$stateP
                 setTimeout(function(){
                     window.location.href='http://localhost/login'
                 },2000)
+            }else{
+                toastr.error(response.data.msg,'温馨提示');
             }
         })
     }

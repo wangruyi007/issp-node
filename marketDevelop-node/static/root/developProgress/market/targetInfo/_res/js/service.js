@@ -6,7 +6,10 @@ app.factory('targetInfoSer',function ($http) {
         editTargetInfo:editTargetInfo,
         findTargetInfoId:findTargetInfoId,
         countTarget:countTarget,
-        deleteTargetInfo:deleteTargetInfo
+        deleteTargetInfo:deleteTargetInfo,
+        getArea:getArea,
+        getType:getType,
+        getCourse:getCourse
     };
     function targetInfoList(data) {
         return $http.get('/market/targetinformation/maps',{
@@ -38,5 +41,17 @@ app.factory('targetInfoSer',function ($http) {
             params: data
 
         })
+    }
+    //获取地区
+    function getArea(){
+        return $http.get('/targetinformation/findArea')
+    }
+    //获取业务类型
+    function getType(){
+        return $http.get('/businesstype/findThaw')
+    }
+    //获取业务方向科目数据
+    function getCourse(){
+        return $http.get('/businesscourse/findThaw')
     }
 });

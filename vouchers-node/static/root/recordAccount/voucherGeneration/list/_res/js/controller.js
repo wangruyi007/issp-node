@@ -11,7 +11,7 @@ app.controller('voucherListCtrl',function($scope,voucherSer,toastr){
 
                 $scope.costLists = response.data.data
             }else{
-                toastr.error( "请求超时，请联系管理员", '温馨提示');
+                toastr.error(response.data.msg, '温馨提示');
             }
         });
     }
@@ -54,7 +54,7 @@ app.controller('voucherListCtrl',function($scope,voucherSer,toastr){
         if(response.data.code==0){
             $scope.custom.itemsCount = response.data.data;
         }else{
-            toastr.error( "请求超时，请联系管理员", '温馨提示');
+            toastr.error(response.data.msg, '温馨提示');
         }
     })
 

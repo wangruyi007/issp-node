@@ -15,6 +15,8 @@ app.controller('registeredAddCtrl', function($scope, registeredSer,$state,toastr
                 setTimeout(function(){
                     window.location.href='http://localhost/login'
                 },2000)
+            }else{
+                toastr.error(response.data.msg,'温馨提示');
             }
         });
 

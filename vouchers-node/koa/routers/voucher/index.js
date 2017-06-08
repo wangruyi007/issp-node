@@ -10,6 +10,7 @@ module.exports = function(){
     router.get('/vouchergenerate/list', function*(){ //记账凭证生成设置列表
         var $self = this;
         var page = $self.request.query;
+        page.userToken = $self.cookies.get('token');
         yield (server().generateList(page)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -21,7 +22,8 @@ module.exports = function(){
             }));
     }).get('/vouchergenerate/listFirstSubject', function*(){//获取所有一级科目
         var $self = this;
-        yield (server().FirstSubject()
+        var subjectToken = {userToken:$self.cookies.get('token')};
+        yield (server().FirstSubject(subjectToken)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
                 $self.body = responseText;
@@ -33,6 +35,7 @@ module.exports = function(){
     }).get('/vouchergenerate/listSubByFirst', function*(){//获取所有二级科目
         var $self = this;
         var secondData = $self.request.query;
+        secondData.userToken = $self.cookies.get('token');
         yield (server().SubByFirst(secondData)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -45,6 +48,7 @@ module.exports = function(){
     }).get('/vouchergenerate/listTubByFirst', function*(){//获取所有三级科目
         var $self = this;
         var thirdData = $self.request.query;
+        thirdData.userToken = $self.cookies.get('token');
         yield (server().TubByFirst(thirdData)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -83,6 +87,7 @@ module.exports = function(){
     }).get('/vouchergenerate/getOne', function*(){//ID查询记账凭证生成设置数据
         var $self = this;
         var findById = $self.request.query;
+        findById.userToken = $self.cookies.get('token');
         yield (server().findGenerateId(findById)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -94,7 +99,8 @@ module.exports = function(){
             }));
     }).get('/vouchergenerate/count', function*(){//获取记账凭证生成设置总条数
         var $self = this;
-        yield (server().getGenerateTotal()
+        var countToken = {userToken:$self.cookies.get('token')};
+        yield (server().getGenerateTotal(countToken)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
                 $self.body = responseText;
@@ -119,6 +125,7 @@ module.exports = function(){
     }).get('/vouchergenerate/listAudit', function*(){ //记账凭证审核列表
         var $self = this;
         var page = $self.request.query;
+        page.userToken = $self.cookies.get('token');
         yield (server().reviewList(page)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -130,7 +137,8 @@ module.exports = function(){
             }));
     }).get('/vouchergenerate/countAudit', function*(){//审核列表总条数
         var $self = this;
-        yield (server().getReviewTotal()
+        var countToken = {userToken:$self.cookies.get('token')};
+        yield (server().getReviewTotal(countToken)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
                 $self.body = responseText;
@@ -168,6 +176,7 @@ module.exports = function(){
     }).get('/vouchergenerate/listAudited', function*(){ //已审核列表
         var $self = this;
         var page = $self.request.query;
+        page.userToken = $self.cookies.get('token');
         yield (server().auditList(page)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -179,7 +188,8 @@ module.exports = function(){
             }));
     }).get('/vouchergenerate/countAudited', function*(){//获取已审核列表总条数
         var $self = this;
-        yield (server().getAuditTotal()
+        var countToken = {userToken:$self.cookies.get('token')};
+        yield (server().getAuditTotal(countToken)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
                 $self.body = responseText;
@@ -268,7 +278,8 @@ module.exports = function(){
             }));
     }).get('/vouchergenerate/listArea', function*(){//获取所有地区
         var $self = this;
-        yield (server().getAllArea()
+        var areaToken = {userToken:$self.cookies.get('token')};
+        yield (server().getAllArea(areaToken)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
                 $self.body = responseText;
@@ -279,7 +290,8 @@ module.exports = function(){
             }));
     }).get('/vouchergenerate/listGroup', function*(){//获取所有项目组
         var $self = this;
-        yield (server().getAllGroup()
+        var groupToken = {userToken:$self.cookies.get('token')};
+        yield (server().getAllGroup(groupToken)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
                 $self.body = responseText;
@@ -290,7 +302,8 @@ module.exports = function(){
             }));
     }).get('/vouchergenerate/listProject', function*(){//获取所有项目名称
         var $self = this;
-        yield (server().getAllProject()
+        var projectToken = {userToken:$self.cookies.get('token')};
+        yield (server().getAllProject(projectToken)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
                 $self.body = responseText;
@@ -302,6 +315,7 @@ module.exports = function(){
     }).get('/vouchergenerate/listChecked', function*(){ //已过帐列表
         var $self = this;
         var page = $self.request.query;
+        page.userToken = $self.cookies.get('token');
         yield (server().postedList(page)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -313,7 +327,8 @@ module.exports = function(){
             }));
     }).get('/vouchergenerate/countChecked', function*(){//获取已过帐列表总条数
         var $self = this;
-        yield (server().getPostedTotal()
+        var countToken = {userToken:$self.cookies.get('token')};
+        yield (server().getPostedTotal(countToken)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
                 $self.body = responseText;
@@ -403,6 +418,7 @@ module.exports = function(){
     }).get('/vouchergenerate/listCkRecord', function*(){ //结账记录列表
         var $self = this;
         var page = $self.request.query;
+        page.token = $self.cookies.get('token');
         yield (server().billRecordsList(page)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -414,7 +430,8 @@ module.exports = function(){
             }));
     }).get('/vouchergenerate/countCkRecord', function*(){//获取结账记录列表总条数
         var $self = this;
-        yield (server().getBillRecordsTotal()
+        var countToken = {userToken:$self.cookies.get('token')};
+        yield (server().getBillRecordsTotal(countToken)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
                 $self.body = responseText;
@@ -478,6 +495,7 @@ module.exports = function(){
     }).get('/vouchergenerate/listRecord', function*(){ //记账凭证记录列表
         var $self = this;
         var page = $self.request.query;
+        page.token = $self.cookies.get('token');
         yield (server().VRList(page)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -489,7 +507,8 @@ module.exports = function(){
             }));
     }).get('/vouchergenerate/countRecord', function*(){//获取记账凭证记录列表总条数
         var $self = this;
-        yield (server().getVRTotal()
+        var countToken = {userToken:$self.cookies.get('token')};
+        yield (server().getVRTotal(countToken)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
                 $self.body = responseText;
@@ -550,21 +569,13 @@ module.exports = function(){
                 $self.body=error.error;
                 console.error(error.error);
             }));
-    }).get('/user/logout', function*(){ //登录退出
-        var $self = this;
-        var token ={token:$self.cookies.get('token')};
-        yield (server().logout(token)
-            .then((parsedBody) =>{
-                var responseText = JSON.parse(parsedBody);
-                if(responseText.code==0){
-                    $self.cookies.set('token','');
-                    $self.body = responseText;
-                }
-            }).catch((error) =>{
-                $self.set('Content-Type','application/json;charset=utf-8');
-                $self.body=error.error;
-                console.error(error.error);
-            }));
+    }).get('/user/logout', function*(next){
+        var url = this.request.query;
+        this.cookies.set("absUrl",url.absurl);
+        this.body = {
+            code:0,
+            msg:"重定向"
+        };
     })
     return router;
 };

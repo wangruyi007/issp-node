@@ -7,7 +7,7 @@ app.controller('contractTypeCtrl',function ($scope,$state) {
     if ($state.current.url == '/contractType') {//默认加载列表
         $state.go('root.businessContract.contractType.list')
     }
-
+    $scope.$emit('isVi',false);//判断是否出现搜索按钮
 }).controller('contractTypeMenuCtrl',function($scope,$state,$rootScope,$location){
     var urlName = $state.current.url.split('/')[1].split('[')[0];
     $scope.menuClass = urlName + "Menu";

@@ -1,11 +1,14 @@
 var app = angular.module('descriptList', ['ng-pagination','toastr']);
 app.controller('descriptListCtrl',function($scope,descriptSer,toastr){
     $scope.$emit('changeId', null);
-    $scope.teamInfo = {};
+    //监听切换搜索是否出现
+    $scope.$on('iSsearch',function(event,newIs){
+        $scope.isView = newIs;
+    });
     function activatePage(page) {
         var listData = {
             page:page
-        }
+        };
         descriptSer.descriptList(listData).then(function(response){
             if(response.data.code==0){
 
@@ -14,8 +17,44 @@ app.controller('descriptListCtrl',function($scope,descriptSer,toastr){
                 toastr.error( response.data.msg, '温馨提示');
             }
         });
+        //搜索功能
+        $scope.collect = function(){
+            $scope.custom = {
+                itemsCount: 2, //总条数
+                take: 10, //每页显示
+                activatePage: activatePage
+            };
+            var keywords = {
+                name: $scope.name,
+                businessTarget: $scope.businessTarget,
+                size: $scope.size,
+                profession: $scope.profession
+            };
+            descriptSer.countDescript(keywords).then(function (response) {
+                if(response.data.code==0){
+                    $scope.custom.itemsCount = response.data.data;
+                }else{
+                    toastr.error( response.data.msg, '温馨提示');
+                }
+            });
+            var data = {
+                name: $scope.name,
+                businessTarget: $scope.businessTarget,
+                size: $scope.size,
+                profession: $scope.profession,
+                page: page
+            };
+            descriptSer.descriptList(data).then(function(response){
+                if(response.data.code == 0){
+                    $scope.descriptLists = response.data.data
+                }else{
+                    toastr.error( response.data.msg, '温馨提示');
+                }
+            });
+        };
     }
-
+    // 搜索功能字段
+    $scope.titles = ['需求者姓名','业务方向','规模','专业'];
     $scope.selectList = function(event){
         angular.forEach($scope.descriptLists,function(obj){
                 obj._selectList = false

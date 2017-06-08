@@ -10,7 +10,7 @@ module.exports = function(){
             timeout : 3000,
             uri : config()['plan']['rurl'] + `/yearplan/v1/maps?limit=10&page=${argvs.page}`,
             headers : {
-                // token : token
+                userToken : argvs.userToken
             }
         };
         return request(options);
@@ -20,8 +20,11 @@ module.exports = function(){
         var options = {
             method : 'POST',
             timeout : 3000,
-            uri : config()['plan']['rurl'] + `/yearplan/v1/save?userToken=${argvs.userToken}`,
-            form:argvs
+            uri : config()['plan']['rurl'] + `/yearplan/v1/save`,
+            form:argvs,
+            headers : {
+                userToken : argvs.userToken
+            }
         };
         return request(options);
     };
@@ -30,8 +33,11 @@ module.exports = function(){
         var options = {
             method : 'PUT',
             timeout : 3000,
-            uri : config()['plan']['rurl'] + `/yearplan/v1/update/${argvs.id}?userToken=${argvs.userToken}`,
-            form:argvs
+            uri : config()['plan']['rurl'] + `/yearplan/v1/update/${argvs.id}`,
+            form:argvs,
+            headers : {
+                userToken : argvs.userToken
+            }
         };
         return request(options);
     };
@@ -40,7 +46,10 @@ module.exports = function(){
         var options = {
             method : 'GET',
             timeout : 3000,
-            uri : config()['plan']['rurl'] + `/yearplan/v1/findById/${argvs.yearId}`
+            uri : config()['plan']['rurl'] + `/yearplan/v1/findById/${argvs.yearId}`,
+            headers : {
+                userToken : argvs.userToken
+            }
         };
         return request(options);
     };
@@ -49,16 +58,22 @@ module.exports = function(){
         var options = {
             method : 'DELETE',
             timeout : 3000,
-            uri : config()['plan']['rurl'] + `/yearplan/v1/delete/${argvs.id}?userToken=${argvs.userToken}`
+            uri : config()['plan']['rurl'] + `/yearplan/v1/delete/${argvs.id}`,
+            headers : {
+                userToken : argvs.userToken
+            }
         };
         return request(options);
     };
     //获取总条数
-    this.getYearTotal = function(){
+    this.getYearTotal = function(argvs){
         var options = {
             method : 'GET',
             timeout : 3000,
-            uri : config()['plan']['rurl'] + '/yearplan/v1/getTotal'
+            uri : config()['plan']['rurl'] + '/yearplan/v1/getTotal',
+            headers : {
+                userToken : argvs.userToken
+            }
         };
         return request(options);
 
@@ -70,9 +85,8 @@ module.exports = function(){
             method : 'GET',
             timeout : 3000,
             uri : config()['plan']['rurl'] + `/monthplan/v1/maps?limit=10&page=${argvs.page}`,
-            form:argvs,
             headers : {
-                // token : token
+                userToken : argvs.userToken
             }
         };
         return request(options);
@@ -81,10 +95,10 @@ module.exports = function(){
         var options = {
             method : 'POST',
             timeout : 3000,
-            uri : config()['plan']['rurl'] + `/monthplan/v1/save?userToken=${argvs.userToken}`,
+            uri : config()['plan']['rurl'] + `/monthplan/v1/save`,
             form:argvs,
             headers : {
-                // token : token
+                userToken : argvs.userToken
             }
         };
         return request(options);
@@ -93,10 +107,10 @@ module.exports = function(){
         var options = {
             method : 'PUT',
             timeout : 3000,
-            uri : config()['plan']['rurl'] + `/monthplan/v1/update/${argvs.id}?userToken=${argvs.userToken}`,
+            uri : config()['plan']['rurl'] + `/monthplan/v1/update/${argvs.id}`,
             form:argvs,
             headers : {
-                // token : token
+                userToken : argvs.userToken
             }
         };
         return request(options);
@@ -105,7 +119,10 @@ module.exports = function(){
         var options = {
             method : 'GET',
             timeout : 3000,
-            uri : config()['plan']['rurl'] + `/monthplan/v1/findById/${argvs.monthId}`
+            uri : config()['plan']['rurl'] + `/monthplan/v1/findById/${argvs.monthId}`,
+            headers : {
+                userToken : argvs.userToken
+            }
         };
         return request(options);
     };
@@ -113,15 +130,21 @@ module.exports = function(){
         var options = {
             method : 'GET',
             timeout : 3000,
-            uri : config()['plan']['rurl'] + `/monthplan/v1/findByYearId/${argvs.monthId}`
+            uri : config()['plan']['rurl'] + `/monthplan/v1/findByYearId/${argvs.monthId}`,
+            headers : {
+                userToken : argvs.userToken
+            }
         };
         return request(options);
     };
-    this.getMonthTotal = function(){
+    this.getMonthTotal = function(argvs){
         var options = {
             method : 'GET',
             timeout : 3000,
-            uri : config()['plan']['rurl'] + '/monthplan/v1/getTotal'
+            uri : config()['plan']['rurl'] + '/monthplan/v1/getTotal',
+            headers : {
+                userToken : argvs.userToken
+            }
         };
         return request(options);
     };
@@ -130,7 +153,10 @@ module.exports = function(){
         var options = {
             method : 'DELETE',
             timeout : 3000,
-            uri : config()['plan']['rurl'] + `/monthplan/v1/delete/${argvs.id}?userToken=${argvs.userToken}`
+            uri : config()['plan']['rurl'] + `/monthplan/v1/delete/${argvs.id}?userToken=${argvs.userToken}`,
+            headers : {
+                userToken : argvs.userToken
+            }
         };
         return request(options);
     };
@@ -140,7 +166,9 @@ module.exports = function(){
             method : 'GET',
             timeout : 3000,
             uri : config()['plan']['rurl'] + `/weekplan/v1/maps?limit=10&page=${argvs.page}`,
-            form:argvs,
+            headers : {
+                userToken : argvs.userToken
+            }
         };
         return request(options);
     };
@@ -149,8 +177,11 @@ module.exports = function(){
         var options = {
             method : 'POST',
             timeout : 3000,
-            uri : config()['plan']['rurl'] + `/weekplan/v1/save?userToken=${argvs.userToken}`,
+            uri : config()['plan']['rurl'] + `/weekplan/v1/save`,
             form:argvs,
+            headers : {
+                userToken : argvs.userToken
+            }
         };
         return request(options);
     };
@@ -159,8 +190,11 @@ module.exports = function(){
         var options = {
             method : 'PUT',
             timeout : 3000,
-            uri : config()['plan']['rurl'] + `/weekplan/v1/update/${argvs.id}?userToken=${argvs.userToken}`,
-            form:argvs
+            uri : config()['plan']['rurl'] + `/weekplan/v1/update/${argvs.id}`,
+            form:argvs,
+            headers : {
+                userToken : argvs.userToken
+            }
         };
         return request(options);
     };
@@ -169,15 +203,21 @@ module.exports = function(){
         var options = {
             method : 'GET',
             timeout : 3000,
-            uri : config()['plan']['rurl'] + `/weekplan/v1/findById/${argvs.weekId}`
+            uri : config()['plan']['rurl'] + `/weekplan/v1/findById/${argvs.weekId}`,
+            headers : {
+                userToken : argvs.userToken
+            }
         };
         return request(options);
     };
-    this.getmonthChoice = function(){
+    this.getmonthChoice = function(argvs){
         var options = {
             method : 'GET',
             timeout : 3000,
-            uri : config()['plan']['rurl'] + '/yearplan/v1/getChoice'
+            uri : config()['plan']['rurl'] + '/yearplan/v1/getChoice',
+            headers : {
+                userToken : argvs.userToken
+            }
         };
         return request(options);
     };
@@ -186,27 +226,35 @@ module.exports = function(){
         var options = {
             method : 'GET',
             timeout : 3000,
-            uri : config()['plan']['rurl'] + `/weekplan/v1/findByMonth/${argvs.weekId}`
+            uri : config()['plan']['rurl'] + `/weekplan/v1/findByMonth/${argvs.weekId}`,
+            headers : {
+                userToken : argvs.userToken
+            }
 
         };
         return request(options);
     };
     // 获取月计划选择对象
-    this.weekGetChoice = function(){
+    this.weekGetChoice = function(argvs){
         var options = {
             method : 'GET',
             timeout : 3000,
-            uri : config()['plan']['rurl'] + '/monthplan/v1/getChoice'
-
+            uri : config()['plan']['rurl'] + '/monthplan/v1/getChoice',
+            headers : {
+                userToken : argvs.userToken
+            }
         };
         return request(options);
     };
     // 获取周计划总条数
-    this.getWeekTotal = function(){
+    this.getWeekTotal = function(argvs){
         var options = {
             method : 'GET',
             timeout : 3000,
-            uri : config()['plan']['rurl'] + '/weekplan/v1/getTotal'
+            uri : config()['plan']['rurl'] + '/weekplan/v1/getTotal',
+            headers : {
+                userToken : argvs.userToken
+            }
         };
         return request(options);
     };
@@ -215,7 +263,10 @@ module.exports = function(){
         var options = {
             method : 'DELETE',
             timeout : 3000,
-            uri : config()['plan']['rurl'] + `/weekplan/v1/delete/${argvs.id}?userToken=${argvs.userToken}`
+            uri : config()['plan']['rurl'] + `/weekplan/v1/delete/${argvs.id}`,
+            headers : {
+                userToken : argvs.userToken
+            }
         };
         return request(options);
     };
@@ -225,7 +276,9 @@ module.exports = function(){
             method : 'GET',
             timeout : 3000,
             uri : config()['plan']['rurl'] + `/dayplan/v1/maps?limit=10&page=${argvs.page}`,
-            form:argvs
+            headers : {
+                userToken : argvs.userToken
+            }
         };
         return request(options);
     };
@@ -235,16 +288,22 @@ module.exports = function(){
             method : 'POST',
             timeout : 3000,
             uri : config()['plan']['rurl'] + `/dayplan/v1/save?userToken=${argvs.userToken}`,
-            form:argvs
+            form:argvs,
+            headers : {
+                userToken : argvs.userToken
+            }
         };
         return request(options);
     };
     // 获取天计划总条数
-    this.getDayTotal = function(){
+    this.getDayTotal = function(argvs){
         var options = {
             method : 'GET',
             timeout : 3000,
-            uri : config()['plan']['rurl'] + '/dayplan/v1/getTotal'
+            uri : config()['plan']['rurl'] + '/dayplan/v1/getTotal',
+            headers : {
+                userToken : argvs.userToken
+            }
         };
         return request(options);
     };
@@ -253,8 +312,11 @@ module.exports = function(){
         var options = {
             method : 'PUT',
             timeout : 3000,
-            uri : config()['plan']['rurl'] + `/dayplan/v1/update/${argvs.id}?userToken=${argvs.userToken}`,
-            form:argvs
+            uri : config()['plan']['rurl'] + `/dayplan/v1/update/${argvs.id}`,
+            form:argvs,
+            headers : {
+                userToken : argvs.userToken
+            }
         };
         return request(options);
     };
@@ -263,7 +325,10 @@ module.exports = function(){
         var options = {
             method : 'GET',
             timeout : 3000,
-            uri : config()['plan']['rurl'] + `/dayplan/v1/findById/${argvs.dayId}`
+            uri : config()['plan']['rurl'] + `/dayplan/v1/findById/${argvs.id}`,
+            headers : {
+                userToken : argvs.userToken
+            }
         };
         return request(options);
     };
@@ -272,7 +337,46 @@ module.exports = function(){
         var options = {
             method : 'DELETE',
             timeout : 3000,
-            uri : config()['plan']['rurl'] + `/dayplan/v1/delete/${argvs.id}?userToken=${argvs.userToken}`
+            uri : config()['plan']['rurl'] + `/dayplan/v1/delete/${argvs.id}`,
+            headers : {
+                userToken : argvs.userToken
+            }
+        };
+        return request(options);
+    };
+    // 获取地区
+    this.getAreaData = function(argvs){
+        var options = {
+            method : 'GET',
+            timeout : 3000,
+            uri : config()['plan']['rurl'] + '/targetinformation/v1/findArea',
+            headers : {
+                userToken : argvs.userToken
+            }
+        };
+        return request(options);
+    };
+    // 获取业务类型
+    this.getTypeData = function(argvs){
+        var options = {
+            method : 'GET',
+            timeout : 3000,
+            uri : config()['plan']['rurl'] + '/businesstype/v1/findThaw',
+            headers : {
+                userToken : argvs.userToken
+            }
+        };
+        return request(options);
+    };
+    // 获取业务方向科目数据
+    this.getCourseData = function(argvs){
+        var options = {
+            method : 'GET',
+            timeout : 3000,
+            uri : config()['plan']['rurl'] + '/businesscourse/v1/findThaw',
+            headers : {
+                userToken : argvs.userToken
+            }
         };
         return request(options);
     };

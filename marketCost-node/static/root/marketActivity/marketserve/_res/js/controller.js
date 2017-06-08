@@ -70,5 +70,13 @@ app.controller('marketserveCtrl',function ($scope,$state) {
             $scope.idList = '';
         }
     }
+    //查看客户信息列表
+    $scope.view = function(){
+        if($scope.idList){
+            $state.go('root.marketActivity.marketserve.view[12]',{id:$scope.idList});
+            $scope.menuClass = 'viewMenu';
+            $scope.idList = '';
+        }
+    }
 });
 

@@ -1,5 +1,5 @@
-var app = angular.module('settingEdit', ['toastr','ipCookie','angularjs-dropdown-multiselect']);
-app.controller('settingEditCtrl', function($scope, settingSer, $state,$stateParams,toastr,ipCookie,$location){
+var app = angular.module('settingEdit', ['toastr','angularjs-dropdown-multiselect']);
+app.controller('settingEditCtrl', function($scope, settingSer, $state,$stateParams,toastr){
 
     $scope.getId = {id:$stateParams.id};
     settingSer.getpermit($scope.getId).then(function(response){
@@ -19,8 +19,6 @@ app.controller('settingEditCtrl', function($scope, settingSer, $state,$statePara
         }
     });
 
-
-
     $scope.editSetting = function(){
         var permitArr=[];
         angular.forEach($scope.positions,function(item){
@@ -32,14 +30,7 @@ app.controller('settingEditCtrl', function($scope, settingSer, $state,$statePara
             if(response.data.code == 0){
                 $state.go('root.compete.setting.list[12]');
                 toastr.success("已成功编辑", '温馨提示');
-            }else if(response.data.code==403||response.data.code==401){
-                toastr.error( "请登录用户,2秒后跳至登陆页面", '温馨提示');
-                var absurl = $location.absUrl();
-                ipCookie('absurl', absurl,{ expires:3,expirationUnit: 'minutes',domain:'issp.bjike.com' });
-                setTimeout(function(){
-                    window.location.href='http://user.issp.bjike.com'
-                },2000)
-            }else if(response.data.code==1){
+            }else{
                 toastr.error( response.data.msg, '温馨提示');
             }
         });

@@ -31,8 +31,8 @@ app.factory('descriptSer',function ($http) {
         })
     }
     //分页总条数
-    function countDescript(){
-        return $http.get('/demand/count')
+    function countDescript(data){
+        return $http.get('/demand/count',{params:data})
     }
     //删除
     function deleteDescript(data){

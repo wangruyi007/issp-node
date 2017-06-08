@@ -23,6 +23,8 @@ app.controller('registeredEditCtrl', function($scope, registeredSer,$state,toast
                 setTimeout(function(){
                     window.location.href='http://localhost/login'
                 },2000)
+            }else{
+                toastr.error(response.data.msg,'温馨提示');
             }
         })
     }
