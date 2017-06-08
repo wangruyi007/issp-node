@@ -24,6 +24,7 @@ app.controller('weekPlanCtrl',function ($scope,$state) {
     $scope.delete = function(){
         if($scope.idListd){
             $state.go('root.developProgress.plan.weekPlan.list.delete[12]',{id:$scope.idListd});
+            $scope.menuClass = 'deleteMenu'
         }
     }
 

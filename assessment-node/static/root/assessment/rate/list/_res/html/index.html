@@ -2,6 +2,7 @@
     <ul class="table table-top">
         <li class="list-head">
             <span></span>
+            <span></span>
             <span>地区</span>
             <span>项目</span>
             <span>工期开始时间</span>
@@ -12,6 +13,7 @@
             <section>
                 <div class="list-text {{lists._selectList?'selectList':''}}" ng-click="selectList(lists)">
                     <p>{{$index+1}}</p>
+                    <p>{{lists.totalTitle}}</p>
                     <p>{{lists.area}}</p>
                     <p>{{lists.project}}</p>
                     <p>{{lists.startTime}}</p>

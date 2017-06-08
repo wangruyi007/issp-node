@@ -26,7 +26,11 @@
                 </li>
                 <li>
                     <label><em>指标规定</em></label>
-                    <input type="text"  disabled ng-model="editData.kpiStipulate">
+                    <select class="sele" ng-model="editData.kpiStipulate">
+                        <option value="" disabled>请选择</option>
+                        <option value="ONLYONE">仅允出现一次</option>
+                        <option value="FORBID">禁止</option>
+                    </select>
                 </li>
               </ul>
         </section>

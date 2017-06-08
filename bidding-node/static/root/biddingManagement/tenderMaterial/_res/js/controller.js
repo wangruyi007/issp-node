@@ -7,7 +7,7 @@ app.controller('MaterialCtrl',function ($scope,$state) {
     if ($state.current.url == '/tenderMaterial') {//默认加载列表
         $state.go('root.biddingManagement.tenderMaterial.list')
     }
-
+    $scope.$emit('isVi',false);//判断是否出现搜索按钮
 }).controller('MaterialMenuCtrl',function($scope,$state,$rootScope,$location){
     var urlName = $state.current.url.split('/')[1].split('[')[0];
     $scope.menuClass = urlName + "Menu";
@@ -24,6 +24,7 @@ app.controller('MaterialCtrl',function ($scope,$state) {
     $scope.delete = function(){
         if($scope.idListd){
             $state.go('root.biddingManagement.tenderMaterial.list.delete[12]',{id:$scope.idListd});
+            $scope.menuClass = 'deleteMenu'
         }
     }
 

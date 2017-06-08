@@ -8,10 +8,8 @@ const staticCache = require('koa-static-cache');
 const routersPath = '/koa/routers/';
 const sendfile = require('koa-sendfile');
 var configsCache = {};
-const port = 9999;
-
+const port = 9990;
 const config = require(path.resolve('plugins/read-config.js'));
-
 function fileExists(path) {
     try {
         fs.accessSync(path, fs.F_OK);

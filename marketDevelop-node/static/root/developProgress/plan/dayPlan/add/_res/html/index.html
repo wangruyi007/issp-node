@@ -3,12 +3,8 @@
         <section>
             <ul>
                 <li class="required">
-                    <label><i><img src="/images/mandatory.png"></i><em>序号</em></label>
-                    <input type="text" ng-verify="{}" ng-model="day.serialNumber">
-                </li>
-                <li class="required">
                     <label><i><img src="/images/mandatory.png"></i><em>时间</em></label>
-                    <input type="text" ng-verify="{}" onClick="laydate({istime: true, format: 'YYYY-MM-DD'})" class="add_image addTime" ng-model="day.time">
+                    <input type="text" onClick="laydate({istime: true, format: 'YYYY-MM-DD'})" class="add_image addTime" ng-model="day.time">
                 </li>
                 <li class="required">
                     <label><i><img src="/images/mandatory.png"></i><em>业务状态</em></label>
@@ -19,18 +15,16 @@
                 </li>
                 <li class="required">
                     <label><i><img src="/images/mandatory.png"></i><em>业务类型</em></label>
-                    <select class="sele" ng-model="day.type" ng-init="day.type='0'">
-                        <option value="0">1</option>
-                        <option value="1">2</option>
-                        <option value="2">3</option>
+                    <select class="sele" ng-model="day.type" >
+                        <option value="">请选择</option>
+                        <option ng-repeat="type in types">{{type.type}}</option>
                     </select>
                 </li>
                 <li class="required">
                     <label><i><img src="/images/mandatory.png"></i><em>业务方向科目</em></label>
-                    <select class="sele" ng-model="day.source" ng-init="day.source='0'">
-                        <option value="0">1</option>
-                        <option value="1">2</option>
-                        <option value="2">3</option>
+                    <select class="sele" ng-model="day.source" >
+                        <option value="">请选择</option>
+                        <option ng-repeat="course in courses">{{course.course}}</option>
                     </select>
                 </li>
                 <li class="required">
@@ -47,7 +41,7 @@
                 </li>
                 <li class="required">
                     <label><i><img src="/images/mandatory.png"></i><em>任务量</em></label>
-                    <input type="number" ng-verify="{}" ng-model="day.quota">
+                    <input type="number" ng-verify="{}" ng-model="day.quota" min="1">
                 </li>
                 <li class="required">
                     <label><i><img src="/images/mandatory.png"></i><em>任务人</em></label>
@@ -59,7 +53,7 @@
                 </li>
                 <li class="required">
                     <label><i><img src="/images/mandatory.png"></i><em>商务预算费</em></label>
-                    <input type="number" ng-verify="{}" ng-model="day.budget">
+                    <input type="number" ng-verify="{}" ng-model="day.budget" min="1">
                 </li>
                 <li class="required">
                     <label><i><img src="/images/mandatory.png"></i><em>客户姓名</em></label>
@@ -73,9 +67,9 @@
                     <label><i><img src="/images/mandatory.png"></i><em>商务内容</em></label>
                     <input type="text" ng-verify="{}" ng-model="day.businessContent">
                 </li>
-                <li class="required">
-                    <label><i><img src="/images/mandatory.png"></i><em>配合人</em></label>
-                    <input type="text" ng-verify="{}" ng-model="day.coordinate">
+                <li>
+                    <label><em>配合人</em></label>
+                    <input type="text" ng-model="day.coordinate">
                 </li>
             </ul>
         </section>

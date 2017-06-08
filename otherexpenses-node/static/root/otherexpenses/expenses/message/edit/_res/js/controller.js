@@ -1,8 +1,5 @@
-/**
- * Created by ike on 2017/4/18.
- */
-var app = angular.module('currencyEdit', ['toastr','ipCookie']);
-app.controller('currenyEditCtrl', function($scope, currencySer,$state,toastr,$stateParams,ipCookie,$location){
+var app = angular.module('currencyEdit', ['toastr']);
+app.controller('currenyEditCtrl', function($scope, currencySer,$state,toastr,$stateParams){
     var companyId = {id : $stateParams.id};
     //获取id对应的数据
     currencySer.getOneById1(companyId).then(function(response){
@@ -14,28 +11,17 @@ app.controller('currenyEditCtrl', function($scope, currencySer,$state,toastr,$st
     //点击提交
     $scope.EditFun =function(){
         var data = $scope.data;
-        $scope.data.target = Number($scope.target).toFixed(2);//目标费用
-        $scope.data.actual = Number($scope.actual).toFixed(2);//实际费用
+        // $scope.data.target = Number($scope.target).toFixed(2);//目标费用
+        // $scope.data.actual = Number($scope.actual).toFixed(2);//实际费用
         currencySer.marketserveapplyEdit1(data).then(function(response){
             if(response.data.code == 0){
                 $state.go('root.otherexpenses.expenses.message.list');
-                toastr.success('温馨提示',"此次编辑成功");
-            }else if(response.data.code==403  || response.data.code==401){
-                toastr.error( "请登录用户,3秒后跳至登陆页面", '温馨提示');
-                var absurl = $location.absUrl();
-                ipCookie('absurl', absurl,{ expires:3,expirationUnit: 'minutes',domain:'issp.bjike.com' });
-                setTimeout(function(){
-                    window.location.href='http://localhost/login'
-                },3000)
+                toastr.success("此次编辑成功",'温馨提示');
+            }else{
+                toastr.error( response.data.msg , '温馨提示' );
             }
         })
     }
     
-    //控制年份为整数
-    $scope.changeNum =function(val){
-        if($scope.year){
-            $scope.data.year = parseInt(val);
-        }
-    }
 });
    

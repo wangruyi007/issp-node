@@ -1,5 +1,5 @@
-var app = angular.module('entryRegisterEdit', ['toastr','ipCookie']);
-app.controller('entryRegisterEditCtrl', function($scope, registerSer,$state,toastr,$stateParams,ipCookie,$location){
+var app = angular.module('entryRegisterEdit', ['toastr']);
+app.controller('entryRegisterEditCtrl', function($scope, registerSer,$state,toastr,$stateParams){
     var companyId = {id : $stateParams.id};
     //获取id对应的数据
     registerSer.getOneById1(companyId).then(function(response){
@@ -22,7 +22,14 @@ app.controller('entryRegisterEditCtrl', function($scope, registerSer,$state,toas
             $scope.data.phones = [];
             angular.forEach($scope.h,function(val,index){
                 if(val){
+                    var arr = ['title','name','age','unit','position','phone'];
+                    for(let i =0;i<arr.length;i++){
+                        if(!val[arr[i]]){
+                            val[arr[i]] = '';
+                        }
+                    }
                     for(key in val){
+                        // debugger
                         switch(key){
                             case 'title':
                                 $scope.data.titles.push(val[key]);
@@ -42,6 +49,7 @@ app.controller('entryRegisterEditCtrl', function($scope, registerSer,$state,toas
                             case 'phone':
                                 $scope.data.phones.push(val[key]);
                                 break;
+
                         }
                     }
                 }
@@ -52,6 +60,12 @@ app.controller('entryRegisterEditCtrl', function($scope, registerSer,$state,toas
             $scope.data.certificates = [];
             angular.forEach($scope.s,function(val,index){
                 if(val){
+                    var arr = ['startTime','endTime','school','certificate'];
+                    for(let i =0;i<arr.length;i++){
+                        if(!val[arr[i]]){
+                            val[arr[i]] = '';
+                        }
+                    }
                     for(key in val){
                         switch(key){
                             case 'startTime':
@@ -74,8 +88,14 @@ app.controller('entryRegisterEditCtrl', function($scope, registerSer,$state,toas
             $scope.data.workEndTimes = [];
             $scope.data.firms = [];
             $scope.data.jobDescriptions = [];
-             angular.forEach($scope.w,function(val,index){
+            angular.forEach($scope.w,function(val,index){
                 if(val){
+                    var arr = ['startTime','endTime','firm','jobDescription'];
+                    for(let i =0;i<arr.length;i++){
+                        if(!val[arr[i]]){
+                            val[arr[i]] = '';
+                        }
+                    }
                     for(key in val){
                         switch(key){
                             case 'startTime':
@@ -96,8 +116,14 @@ app.controller('entryRegisterEditCtrl', function($scope, registerSer,$state,toas
             })
             $scope.data.nameses = [];
             $scope.data.obtainTimes = [];
-             angular.forEach($scope.c,function(val,index){
+            angular.forEach($scope.c,function(val,index){
                 if(val){
+                    var arr = ['name','obtainTime'];
+                    for(let i =0;i<arr.length;i++){
+                        if(!val[arr[i]]){
+                            val[arr[i]] = '';
+                        }
+                    }
                     for(key in val){
                         switch(key){
                             case 'name':
@@ -112,7 +138,7 @@ app.controller('entryRegisterEditCtrl', function($scope, registerSer,$state,toas
             })
         }
     });
-   //家庭成员
+    //家庭成员
     $scope.homes = [{},{},{},{}];
     //学习经历
 
@@ -157,18 +183,37 @@ app.controller('entryRegisterEditCtrl', function($scope, registerSer,$state,toas
         }
         var data = $scope.data;
         data.id = companyId.id;
+        tools(data);
         registerSer.editData(data).then(function(response){
             if(response.data.code == 0){
                 $state.go('root.employeeEntry.entryRegister.list');
                 toastr.success('温馨提示',"此次编辑成功");
-            }if(response.data.code == 403 || response.data.code == 401){
-                toastr.error( "请登录用户,3秒后跳至登陆页面", '温馨提示');
-                var absurl = $location.absUrl();
-                ipCookie('absurl', absurl,{ expires:3,expirationUnit: 'minutes',domain:'issp.bjike.com' });
-                setTimeout(function(){
-                    window.location.href='http://localhost/login'
-                },3000)
+            }else {
+                toastr.error(response.data.msg,'温馨提示')
             }
         })
     }
 });
+function tools(obj){
+    if(obj){
+        for(key in obj){
+            if(typeof obj[key] == 'object'){
+                fn(obj[key]);
+            }
+        }
+    }
+    function fn(obj){
+        if(obj){
+            for(let i =0;i < 4;i++){
+                if(!obj[i]){
+                    obj[i] = '';
+                }
+            }
+        }
+    }
+}
+
+//添加空
+function sj(obj,val1,val2,val3,val4,val5,val6){
+
+}

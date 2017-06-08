@@ -1,5 +1,5 @@
-var app = angular.module('implementationList', ['ng-pagination','toastr','ipCookie']);
-app.controller('implementationListCtrl',function($scope,implementationSer,toastr,ipCookie,$location) {
+var app = angular.module('implementationList', ['ng-pagination','toastr']);
+app.controller('implementationListCtrl',function($scope,implementationSer,toastr) {
    //选择
     $scope.selectList = function(event){
         angular.forEach($scope.implementationLists.data,function(obj){
@@ -80,4 +80,5 @@ app.controller('implementationListCtrl',function($scope,implementationSer,toastr
             }
         })
     });
+    $scope.titles = ["合同签订情况","立项情况","地区","业务类型","业务方向科目"];
 });

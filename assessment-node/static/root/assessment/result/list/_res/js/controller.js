@@ -9,8 +9,8 @@ app.controller('resultListCtrl',function($scope,resultSer,toastr) {
         resultSer.listResult(listData).then(function(response){
             if(response.data.code==0){
                 $scope.resultLists = response.data
-            }else{
-                toastr.error( "请求超时，请联系管理员", '温馨提示');
+            }else if(response.data.code==1){
+                toastr.error( response.data.msg, '温馨提示');
             }
         });
     }
@@ -22,8 +22,8 @@ app.controller('resultListCtrl',function($scope,resultSer,toastr) {
     resultSer.countResult().then(function(response){
         if(response.data.code==0){
             $scope.abili.itemsCount = response.data.data;
-        }else{
-            toastr.error( "请求超时，请联系管理员", '温馨提示');
+        }else if(response.data.code==1){
+            toastr.error( response.data.msg, '温馨提示');
         }
     });
 
@@ -34,8 +34,8 @@ app.controller('resultListCtrl',function($scope,resultSer,toastr) {
         resultSer.thawResult(data).then(function(response){
             if(response.data.code==0){
                 event.status = "THAW"
-            }else if(response.data.code==403){
-                toastr.error( "请登录用户", '温馨提示');
+            }else if(response.data.code==1){
+                toastr.error( response.data.msg, '温馨提示');
             }
 
         })

@@ -10,6 +10,7 @@ module.exports = function(){
     router.get('/plan/yearplan/maps', function*(){
         var $self = this;
         var page = $self.request.query;
+        page.userToken = $self.cookies.get('token');
         yield (server().yearplanList(page)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -48,6 +49,7 @@ module.exports = function(){
     }).post('/plan/yearplan/findById', function*(){//查询年计划数据
         var $self = this;
         var findById = $self.request.body;
+        findById.userToken = $self.cookies.get('token');
         yield (server().yearSearch(findById)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -72,7 +74,8 @@ module.exports = function(){
             }));
     }).get('/plan/yearplan/getTotal', function*(){//获取年计划总条数
         var $self = this;
-        yield (server().getYearTotal()
+        var countToken = {userToken:$self.cookies.get('token')};
+        yield (server().getYearTotal(countToken)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
                 $self.body = responseText;
@@ -84,6 +87,7 @@ module.exports = function(){
     }).get('/plan/monthplan/maps', function*(){//月计划列表
         var $self = this;
         var page = $self.request.query;
+        page.userToken = $self.cookies.get('token');
         yield (server().monthplanList(page)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -122,6 +126,7 @@ module.exports = function(){
     }).get('/plan/monthplan/findById', function*(){//获取年计划ID
         var $self = this;
         var findById = $self.request.query;
+        findById.userToken = $self.cookies.get('token');
         yield (server().findMonthId(findById)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -131,9 +136,10 @@ module.exports = function(){
                 $self.body=error.error;
                 console.error(error.error);
             }));
-    }).get('/plan/yearplan/getChoice', function*(){//获取年计划ID
+    }).get('/plan/yearplan/getChoice', function*(){//获取年计划数据
         var $self = this;
-        yield (server().getmonthChoice()
+        var yearToken = {userToken:$self.cookies.get('token')};
+        yield (server().getmonthChoice(yearToken)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
                 $self.body = responseText;
@@ -145,6 +151,7 @@ module.exports = function(){
     }).post('/plan/monthplan/findByYearId', function*(){//根据年计划ID查询月计划
         var $self = this;
         var findById = $self.request.body;
+        findById.userToken = $self.cookies.get('token');
         yield (server().findByYearId(findById)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -156,7 +163,8 @@ module.exports = function(){
             }));
     }).get('/plan/monthplan/getTotal', function*(){//获取月计划总条数
         var $self = this;
-        yield (server().getMonthTotal()
+        var countToken = {userToken:$self.cookies.get('token')};
+        yield (server().getMonthTotal(countToken)
         .then((parsedBody) =>{
             var responseText = JSON.parse(parsedBody);
             $self.body = responseText;
@@ -181,6 +189,7 @@ module.exports = function(){
     }).get('/plan/weekplan/maps', function*(){//周计划列表
         var $self = this;
         var page = $self.request.query;
+        page.userToken = $self.cookies.get('token');
         yield (server().weekplanList(page)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -219,6 +228,7 @@ module.exports = function(){
     }).get('/plan/weekplan/findById', function*(){//获取周计划ID
         var $self = this;
         var findById = $self.request.query;
+        findById.userToken = $self.cookies.get('token');
         yield (server().getWeekId(findById)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -230,7 +240,8 @@ module.exports = function(){
             }));
     }).get('/plan/monthplan/getChoice', function*(){//获取月计划选择对象
         var $self = this;
-        yield (server().weekGetChoice()
+        var monthToken = {userToken:$self.cookies.get('token')};
+        yield (server().weekGetChoice(monthToken)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
                 $self.body = responseText;
@@ -242,6 +253,7 @@ module.exports = function(){
     }).get('/plan/weekplan/findByMonth', function*(){//根据月计划ID查询周计划
         var $self = this;
         var findById = $self.request.query;
+        findById.userToken = $self.cookies.get('token');
         yield (server().weekGetMonth(findById)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -253,7 +265,8 @@ module.exports = function(){
             }));
     }).get('/plan/weekplan/getTotal', function*(){//获取周计划总条数
         var $self = this;
-        yield (server().getWeekTotal()
+        var countToken = {userToken:$self.cookies.get('token')};
+        yield (server().getWeekTotal(countToken)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
                 $self.body = responseText;
@@ -278,6 +291,7 @@ module.exports = function(){
     }).get('/plan/dayplan/maps', function*(){//天计划列表
         var $self = this;
         var page = $self.request.query;
+        page.userToken = $self.cookies.get('token');
         yield (server().dayplanList(page)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -315,7 +329,8 @@ module.exports = function(){
             }));
     }).get('/plan/dayplan/getTotal', function*(){//获取天计划总条数
         var $self = this;
-        yield (server().getDayTotal()
+        var countToken = {userToken:$self.cookies.get('token')};
+        yield (server().getDayTotal(countToken)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
                 $self.body = responseText;
@@ -327,6 +342,7 @@ module.exports = function(){
     }).get('/plan/dayplan/findById', function*(){//获取周计划ID
         var $self = this;
         var findById = $self.request.query;
+        findById.userToken = $self.cookies.get('token');
         yield (server().getDayId(findById)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -349,6 +365,49 @@ module.exports = function(){
                 $self.body=error.error;
                 console.error(error.error);
             }));
+    }).get('/targetinformation/findArea', function*(){ //获取地区
+        var $self = this;
+        var areaData = {userToken:$self.cookies.get('token')};
+        yield (server().getAreaData(areaData)
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
+    }).get('/businesstype/findThaw', function*(){ //获取业务类型
+        var $self = this;
+        var typeData = {userToken:$self.cookies.get('token')};
+        yield (server().getTypeData(typeData)
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
+    }).get('/businesscourse/findThaw', function*(){ //获取业务方向科目数据
+        var $self = this;
+        var typeCourse = {userToken:$self.cookies.get('token')};
+        yield (server().getCourseData(typeCourse)
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
+    }).get('/user/logout', function*(next){
+        var url = this.request.query;
+        this.cookies.set("absUrl",url.absurl);
+        this.body = {
+            code:0,
+            msg:"重定向"
+        };
     })
     return router;
 };

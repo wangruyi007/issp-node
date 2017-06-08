@@ -26,7 +26,7 @@ app.controller('situationListCtrl',function($scope,situationSer,toastr,$statePar
         situationSer.listProjectSituationCap(listData).then(function(response){
             if(response.data.code==0){
                 $scope.situationLists = response.data
-            }else if(response.data.code==1){
+            }else{
                 toastr.error( response.data.msg, '温馨提示');
             }
         });
@@ -43,7 +43,7 @@ app.controller('situationListCtrl',function($scope,situationSer,toastr,$statePar
             situationSer.countProjectBaseInfo2(keywords).then(function (response) {
                 if(response.data.code==0){
                     $scope.abili.itemsCount = response.data.data;
-                }else if(response.data.code==1){
+                }else{
                     toastr.error( response.data.msg, '温馨提示');
                 }
             });
@@ -55,7 +55,7 @@ app.controller('situationListCtrl',function($scope,situationSer,toastr,$statePar
             situationSer.searchProject(data).then(function(response){
                 if(response.data.code == 0){
                     $scope.situationLists = response.data
-                }else if(response.data.code==1){
+                }else{
                     toastr.error( response.data.msg, '温馨提示');
                 }
             });
@@ -89,45 +89,4 @@ app.controller('situationListCtrl',function($scope,situationSer,toastr,$statePar
         })
     });
     $scope.titles = ["工程地点","完工情况"];
-   /* $scope.datas = ["工程地点","完工情况"];
-    $scope.tempdatas = $scope.datas;
-    $scope.hidden=true;
-    $scope.searchField='';
-    $scope.change=function(x){
-        $scope.searchField=x;
-        $scope.hidden=true;
-    }
-    $scope.tempdatas = $scope.datas;
-    $scope.changeKeyValue=function(v){
-        var newDate=[];
-        angular.forEach($scope.datas ,function(data,index,array){
-            if(data.indexOf(v)>=0){
-                newDate.unshift(data);
-            }
-        });
-        $scope.datas=newDate;
-        $scope.hidden=false;
-        if($scope.datas.length==0 || ''==v){
-            $scope.datas=$scope.tempdatas;
-        }
-        console.log($scope.datas);
-    }*/
-});
-app.filter('myFilter',function(){
-    return function(input,name,keywords){
-        /*console.log(input);
-        console.log(name);
-        console.log(keywords);*/
-        if(!keywords)return input;
-        if(!name){
-            return input.filter(function(item){
-                for(var i in item){
-                    if(item[i].toString().indexOf(keywords)!==-1){
-                        return true;
-                    }
-                }
-                return false;
-            });
-        }
-    };
 });

@@ -1,21 +1,22 @@
-<div class="nav-list">
-    <h3 class="header-menu big"><i class="nav-arrow"></i>商业能力互动</h3>
-    <ul class="menu">
+<div class="nav-list" ng-repeat="list in showsList">
+    <h3 class="header-menu big" ng-click="showMenu(list,true)">
+        <i class="nav-arrow" ng-class="{true: '', false: 'change-angle'}[list.showIs]"></i>
+        {{list.item}}</h3>
+    <ul class="menu" ng-if="list.menuList.length"  ng-show="list.showIs" ng-repeat="menuInfo in list.menuList">
         <li ng-click="navClass('interactContact')" ng-class="{'active':navCla=='interactContact'}"  ui-sref="_root.businessInteraction.interactContact.list">
-            <a href="javascript:void(0)">互动联系信息</a>
+            <a href="javascript:void(0)">{{menuInfo.name}}</a>
         </li>
         <li ng-click="navClass('platformDescript')" ng-class="{'active':navCla=='platformDescript'}" ui-sref="_root.businessInteraction.platformDescript.list">
-            <a href="javascript:void(0)">互动平台需求描述</a>
+            <a href="javascript:void(0)">{{menuInfo.name2}}</a>
         </li>
         <li ng-click="navClass('discussDetails')" ng-class="{'active':navCla=='discussDetails'}" ui-sref="_root.businessInteraction.discussDetails.list">
-            <a href="javascript:void(0)">洽谈详情</a>
+            <a href="javascript:void(0)">{{menuInfo.name3}}</a>
         </li>
         <li ng-click="navClass('mailSummary')" ng-class="{'active':navCla=='mailSummary'}" ui-sref="_root.businessInteraction.mailSummary.list">
-            <a href="javascript:void(0)">汇总和邮件发送</a>
+            <a href="javascript:void(0)">{{menuInfo.name4}}</a>
         </li>
-    </ul>
-    <h3 class="header-menu big"><i class="nav-arrow"></i>设置</h3>
-    <ul class="menu">
-        <li ng-click="navClass('setting')" ng-class="{'active':navCla=='setting'}"  ui-sref="_root.businessInteraction.setting.list[12]" ><a href="javascript:void(0)">设置</a></li>
+        <li ng-click="navClass('setting')" ng-class="{'active':navCla=='setting'}"  ui-sref="_root.businessInteraction.setting.list[12]" >
+            <a href="javascript:void(0)">{{menuInfo.name5}}</a>
+        </li>
     </ul>
 </div>

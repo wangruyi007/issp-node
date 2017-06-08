@@ -19,7 +19,7 @@ app.controller('settingCtrl',function ($scope,$state) {
         }
     });
 
-    $scope.$on('listId',function(event,id){
+    $scope.$on('getId',function(event,id){
         $scope.editId=id;
     });
 

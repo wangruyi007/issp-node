@@ -79,12 +79,12 @@
                         <span>联系方式</span>
                     </li> 
                     <li class="body-ct" ng-repeat="list in homes">
-                        <span><input type="text" ng-model="data.titles[$index]"  ng-change="list._isWrite=data.titles[$index]"></span>
+                        <span><input type="text" ng-model="data.titles[$index]"></span>
                         <span><input type="text" ng-model="data.names[$index]"></span>
-                        <span><input type="number" ng-model="data.ages[$index]" ng-show="list._isWrite"></span>
-                        <span class="two"><input type="text" ng-model="data.units[$index]" ng-show="list._isWrite"></span>
-                        <span><input type="text" ng-model="data.positions[$index]" ng-show="list._isWrite"></span>
-                        <span><input type="text" ng-model="data.phones[$index]" ng-show="list._isWrite"></span>
+                        <span><input type="number" ng-model="data.ages[$index]"></span>
+                        <span class="two"><input type="text" ng-model="data.units[$index]"></span>
+                        <span><input type="text" ng-model="data.positions[$index]"></span>
+                        <span><input type="text" ng-model="data.phones[$index]"></span>
                     </li>
                 </ul>
             </li>

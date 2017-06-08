@@ -20,7 +20,7 @@ app.config(function($provide, $stateProvider){
             }
         }
     }).state("root.marketActivity.servereCord.addcustomer[12]",{
-        url:"/addcustomer[12]",
+        url:"/addcustomer[12]?id='11'",
         views:{
             "content@root.marketActivity.servereCord":{
                 templateUrl : "root/marketActivity/servereCord/addcustomer/_res/html/index.html",
@@ -49,6 +49,14 @@ app.config(function($provide, $stateProvider){
             "content@root.marketActivity.servereCord":{
                 templateUrl : "root/marketActivity/servereCord/executiveOpinion/_res/html/index.html",
                 controller:'servercordOpinionCtr'
+            }
+        }
+    }).state("root.marketActivity.servereCord.view[12]",{
+        url:"/view[12]?id=",
+        views:{
+            "content@root.marketActivity.servereCord":{
+                templateUrl : "root/marketActivity/servereCord/view/_res/html/index.html",
+                controller:'mviewCtr'
             }
         }
     })

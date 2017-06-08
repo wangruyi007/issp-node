@@ -20,7 +20,7 @@
                 </li>
                 <li class="required">
                     <label><i><img src="/images/mandatory.png"></i><em>年份</em></label>
-                    <input type="number"  ng-verify="{}" ng-model="year" ng-change="changeNum(year)">
+                    <input type="number"  ng-verify="{}" ng-model="data.year">
                 </li>
                 <li class="required">
                     <label><i><img src="/images/mandatory.png"></i><em>月份</em></label>
@@ -31,11 +31,11 @@
                 </li>
                 <li class="required">
                     <label><i><img src="/images/mandatory.png"></i><em>目标其他费用</em></label>
-                    <input type="number"  ng-verify="{}" ng-model="target">
+                    <input type="number"  ng-verify="{}" ng-model="data.target">
                 </li>
                 <li class="required">
                     <label><i><img src="/images/mandatory.png"></i><em>实际其他费用</em></label>
-                    <input type="number"  ng-verify="{}" ng-model="actual">
+                    <input type="number"  ng-verify="{}" ng-model="data.actual">
                 </li>
             </ul>
         </section>

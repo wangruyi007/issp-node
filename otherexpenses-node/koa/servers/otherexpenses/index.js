@@ -9,8 +9,8 @@ module.exports = function(){
             method : 'GET',
             timeout : 3000,
             uri : config()['rurl'] + `/otherexpenses/v1/maps?limit=10&page=${argvs.page}`,
-            headers : {
-                // token : token
+             headers : {
+               userToken : argvs.userToken
             }
         };
         return request(options);
@@ -22,7 +22,7 @@ module.exports = function(){
             timeout : 3000,
             uri : config()['rurl'] + '/otherexpenses/v1/getTotal',
             headers : {
-                // token : token
+                userToken : argvs.userToken
             }
         };
         return request(options);
@@ -47,6 +47,9 @@ module.exports = function(){
             timeout : 3000,
             uri : config()['rurl'] + `/otherexpenses/v1/findById/${argvs.id}`,
             form : argvs,
+            headers : {
+               userToken : argvs.userToken
+            }
         };
         return request(options);
     };
@@ -82,7 +85,7 @@ module.exports = function(){
             timeout : 3000,
             uri : config()['rurl'] + `/otherexpenses/v1/collect/area?start=${argvs.start}&end=${argvs.end}&area=${encodeURIComponent(argvs.area)}&project=${encodeURIComponent(argvs.project)}&type=${encodeURIComponent(argvs.type)}&name=${encodeURIComponent(argvs.name)}`,
             headers : {
-                // token : token
+                userToken : argvs.userToken
             }
         };
         return request(options);
@@ -94,7 +97,7 @@ module.exports = function(){
             timeout : 3000,
             uri : config()['rurl'] + `/otherexpenses/v1/collect/project?start=${argvs.start}&end=${argvs.end}&area=${encodeURIComponent(argvs.area)}&project=${encodeURIComponent(argvs.project)}&type=${encodeURIComponent(argvs.type)}&name=${encodeURIComponent(argvs.name)}`,
             headers : {
-                // token : token
+               userToken : argvs.userToken
             }
         };
         return request(options);
@@ -106,7 +109,7 @@ module.exports = function(){
             timeout : 3000,
             uri : config()['rurl'] + `/otherexpenses/v1/collect/type?start=${argvs.start}&end=${argvs.end}&area=${encodeURIComponent(argvs.area)}&project=${encodeURIComponent(argvs.project)}&type=${encodeURIComponent(argvs.type)}&name=${encodeURIComponent(argvs.name)}`,
             headers : {
-                // token : token
+                userToken : argvs.userToken
             }
         };
         return request(options);
@@ -118,18 +121,56 @@ module.exports = function(){
             timeout : 3000,
             uri : config()['rurl'] + `/otherexpenses/v1/collect/name?start=${argvs.start}&end=${argvs.end}&area=${encodeURIComponent(argvs.area)}&project=${encodeURIComponent(argvs.project)}&type=${encodeURIComponent(argvs.type)}&name=${encodeURIComponent(argvs.name)}`,
             headers : {
-                // token : token
+               userToken : argvs.userToken
             }
         };
         return request(options);
     };
-    //用户退出
-    this.logout = function(argvs){
+    //设置权限
+    this.listSetting = function(argvs){
         var options = {
-            method : 'POST',
+            method : 'GET',
             timeout : 3000,
-            uri : config()['user'] + `/v1/sign-out/${argvs.token}`,
-            form:argvs
+            uri : config()['rurl'] + `/cuspermission/v1/list?limit=10&page=${argvs.page}`,
+            headers: {
+                 userToken : argvs.userToken
+            }
+        };
+        return request(options);
+    };
+    this.countSetting = function(argvs){
+        var options = {
+            method : 'GET',
+            timeout : 3000,
+            uri : config()['rurl'] + '/cuspermission/v1/count'
+        };
+        return request(options);
+    };
+    this.getpermit = function(argvs){
+        var options = {
+            method : 'GET',
+            timeout : 3000,
+            uri : config()['rurl'] + `/cuspermission/v1/getOneById/${argvs.id}`
+        };
+        return request(options);
+    };
+    this.getListpermit = function(argvs){
+        var options = {
+            method : 'GET',
+            timeout : 3000,
+            uri : config()['rurl'] + `/cuspermission/v1/listOperateById/${argvs.id}`
+        };
+        return request(options);
+    };
+    this.editSetting = function(argvs){
+        var options = {
+            method : 'PUT',
+            timeout : 3000,
+            uri : config()['rurl'] + '/cuspermission/v1/edit',
+            form:argvs,
+            headers: {
+                 userToken : argvs.userToken
+            }
         };
         return request(options);
     };

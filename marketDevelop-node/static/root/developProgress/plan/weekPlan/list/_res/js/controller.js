@@ -4,14 +4,14 @@ app.controller('weekPlanListCtrl',function($scope,weekPlanSer,toastr){
     function activatePage(page) {
         var listData = {
             page:page
-        }
+        };
         weekPlanSer.weekPlanList(listData).then(function(response){
 
             if(response.data.code==0){
 
                 $scope.weekPlanLists = response.data.data
-            }else{
-                toastr.error( "请求超时，请联系管理员", '温馨提示');
+            }else {
+                toastr.error( response.data.msg, '温馨提示');
             }
         })
     }
@@ -52,8 +52,8 @@ app.controller('weekPlanListCtrl',function($scope,weekPlanSer,toastr){
     weekPlanSer.countWeek().then(function(response){
         if(response.data.code==0){
             $scope.custom.weekCount = response.data.data;
-        }else{
-            toastr.error( "请求超时，请联系管理员", '温馨提示');
+        }else {
+            toastr.error( response.data.msg, '温馨提示');
         }
     })
 });

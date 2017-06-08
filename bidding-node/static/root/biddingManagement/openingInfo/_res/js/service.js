@@ -2,6 +2,7 @@ var app = angular.module('openingServer',[]);
 app.factory('openingSer',function ($http) {
     return {
         bidOpeningList : bidOpeningList,
+        searchList : searchList,
         addBidOpening:addBidOpening,
         editBidOpening:editBidOpening,
         findBidOpeningId:findBidOpeningId,
@@ -12,6 +13,12 @@ app.factory('openingSer',function ($http) {
     };
     function bidOpeningList(data) {
         return $http.get('/bidopeninginfo/list',{
+            params: data
+        })
+    }
+    //搜索
+    function searchList(data) {
+        return $http.get('/bidopeninginfo/search',{
             params: data
         })
     }
@@ -31,8 +38,8 @@ app.factory('openingSer',function ($http) {
         })
     }
     //分页总条数
-    function countBidOpening(){
-        return $http.get('/bidopeninginfo/count')
+    function countBidOpening(data){
+        return $http.get('/bidopeninginfo/count',{params:data})
     }
     //删除
     function deleteBidOpening(data){

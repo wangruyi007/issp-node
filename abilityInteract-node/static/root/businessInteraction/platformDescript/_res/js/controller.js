@@ -7,7 +7,7 @@ app.controller('descriptCtrl',function ($scope,$state) {
     if ($state.current.url == '/platformDescript') {//默认加载列表
         $state.go('root.businessInteraction.platformDescript.list')
     }
-
+    $scope.$emit('isVi',true);//判断是否出现搜索按钮
 }).controller('descriptMenuCtrl',function($scope,$state,$rootScope,$location){
     var urlName = $state.current.url.split('/')[1].split('[')[0];
     $scope.menuClass = urlName + "Menu";
@@ -20,10 +20,13 @@ app.controller('descriptCtrl',function ($scope,$state) {
     $scope.$on("getId", function(event, msg){
        $scope.idListd = msg;
     });
-
+    $scope.$on("onSearch", function(event, name){
+        $scope.onSearch = name;
+    });
     $scope.delete = function(){
         if($scope.idListd){
             $state.go('root.businessInteraction.platformDescript.list.delete[12]',{id:$scope.idListd});
+            $scope.menuClass = 'deleteMenu'
         }
     };
 

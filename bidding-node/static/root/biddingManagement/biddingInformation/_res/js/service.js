@@ -2,6 +2,7 @@ var app = angular.module('infoServer',[]);
 app.factory('infoSer',function ($http) {
     return {
         infoList : infoList,
+        searchList : searchList,
         addInfo:addInfo,
         editInfo:editInfo,
         findInfoId:findInfoId,
@@ -12,6 +13,13 @@ app.factory('infoSer',function ($http) {
     };
     function infoList(data) {
         return $http.get('/biddinginfo/list',{
+            params: data
+
+        })
+    }
+    //搜索
+    function searchList(data) {
+        return $http.get('/biddinginfo/search',{
             params: data
 
         })
@@ -32,8 +40,8 @@ app.factory('infoSer',function ($http) {
         })
     }
     //分页总条数
-    function countInfo(){
-        return $http.get('/biddinginfo/count')
+    function countInfo(data){
+        return $http.get('/biddinginfo/count',{params:data})
     }
     //删除
     function deleteInfo(data){

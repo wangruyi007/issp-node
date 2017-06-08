@@ -1,7 +1,7 @@
 var app = angular.module('app', ['ngVerify','ipCookie',
     'indexSerModule'
 ]);
-app.controller('rootCtrl', function ($scope,$rootScope,$state,ipCookie,$location,rootSer) {
+app.controller('rootCtrl', function ($scope,$rootScope,$state,ipCookie,$location) {
     if ($state.current.url == '/root') {//默认加载列表
         $state.go('root.employeeEntry');
     }
@@ -11,19 +11,14 @@ app.controller('rootCtrl', function ($scope,$rootScope,$state,ipCookie,$location
     }else {
         $scope.logined=true;
     }
-
     $scope.login = function(){
         var absurl = $location.absUrl();
-        ipCookie('absurl', absurl,{ expires:3,expirationUnit: 'minutes' });
-        location.href="http://localhost/login";//部署到线上时要改为登录域名
+        ipCookie('absurl', absurl,{ expires:3,expirationUnit: 'minutes',domain:'issp.bjike.com'});
+        location.href="http://user.issp.bjike.com/login";//部署到线上时要改为登录域名
     };
     $scope.logout = function(){
-        var absurl = {absurl:$location.absUrl()};
-        rootSer.userLogout(absurl).then(function(response){
-            if(response.data.code==0){
-                ipCookie.remove("username");
-                location.href="http://localhost/user/logout"
-            }
-        })
+        var abs = window.location.host;
+        var hashs = $location.url().split('?')[0];
+        location.href="http://user.issp.bjike.com/user/logout?absurl="+abs+"&hash="+hashs;
     }
-})
+});

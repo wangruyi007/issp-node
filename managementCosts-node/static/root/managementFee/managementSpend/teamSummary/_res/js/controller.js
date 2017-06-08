@@ -6,8 +6,8 @@ app.controller('teamSummaryCtrl', function($scope, spendSer,toastr){
     spendSer.getTeam().then(function(response){
         if(response.data.code == 0){
             $scope.groups = response.data.data;
-        } else if(response.data.code == 403){
-            toastr.error("请登录用户", '温馨提示');
+        }else{
+            toastr.error( response.data.msg, '温馨提示');
         }
     });
     $scope.collect = function(){
@@ -26,8 +26,8 @@ app.controller('teamSummaryCtrl', function($scope, spendSer,toastr){
                 }
                 $scope.summaryLists = response.data.data;
 
-            }else if(response.data.code == 403){
-                toastr.error("请登录用户", '温馨提示');
+            }else{
+                toastr.error( response.data.msg, '温馨提示');
             }
         })
     };
