@@ -6,12 +6,13 @@ app.factory('yearPlanSer',function ($http) {
         editYearPlan:editYearPlan,
         yearSearch:yearSearch,
         countYear:countYear,
-        deleteYearplan:deleteYearplan
+        deleteYearplan:deleteYearplan,
+        getType:getType,
+        getCourse:getCourse
     };
     function findThisYear(data) {
         return $http.get('/plan/yearplan/maps',{
             params: data
-
         })
     }
 
@@ -38,5 +39,13 @@ app.factory('yearPlanSer',function ($http) {
             params: data
 
         })
+    }
+    //获取业务类型
+    function getType(){
+        return $http.get('/businesstype/findThaw')
+    }
+    //获取业务方向科目数据
+    function getCourse(){
+        return $http.get('/businesscourse/findThaw')
     }
 });

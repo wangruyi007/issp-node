@@ -4,40 +4,31 @@
             <ul>
                 <li class="required">
                     <label><i><img src="/images/mandatory.png"></i><em>地区</em></label>
-                    <select class="sele" ng-verify="{}" ng-model="targetInfo.area" ng-init="targetInfo.area='广州'">
-                        <option value="广州">广州</option>
-                        <option value="江门">江门</option>
-                        <option value="佛山">佛山</option>
-                        <option value="湛江">湛江</option>
+                    <select class="sele" ng-model="targetInfo.area" >
+                        <option value="">请选择</option>
+                        <option ng-repeat="area in areas">{{area.area}}</option>
                     </select>
                 </li>
                 <li class="required">
                     <label><i><img src="/images/mandatory.png"></i><em>业务类型</em></label>
-                    <select class="sele" ng-verify="{}" ng-model="targetInfo.type" ng-init="targetInfo.type='0'">
-                        <option value="0">1</option>
-                        <option value="1">2</option>
-                        <option value="2">3</option>
+                    <select class="sele" ng-model="targetInfo.type" >
+                        <option value="">请选择</option>
+                        <option ng-repeat="type in types">{{type.type}}</option>
                     </select>
                 </li>
                 <li class="required">
                     <label><i><img src="/images/mandatory.png"></i><em>业务方向科目</em></label>
-                    <select class="sele" ng-verify="{}" ng-model="targetInfo.course" ng-init="targetInfo.course='0'">
-                        <option value="0">1</option>
-                        <option value="1">2</option>
-                        <option value="2">3</option>
+                    <select class="sele" ng-model="targetInfo.course" >
+                        <option value="">请选择</option>
+                        <option ng-repeat="course in courses">{{course.course}}</option>
                     </select>
                 </li>
                 <li class="required">
                     <label><i><img src="/images/mandatory.png"></i><em>客户基本信息</em></label>
-                    <select class="sele" ng-verify="{}" ng-model="targetInfo.customerId" ng-init="targetInfo.customerId='0'">
-                        <option value="0">1</option>
-                        <option value="1">2</option>
-                        <option value="2">3</option>
-                        <option value="3">4</option>
-                    </select>
+                    <input type="text" ng-model="targetInfo.customerId">
                 </li>
                 <li>
-                    <label><i><img src="/images/mandatory.png"></i><em>备注</em></label>
+                    <label><em>备注</em></label>
                     <input type="text" ng-model="targetInfo.remark">
                 </li>
             </ul>

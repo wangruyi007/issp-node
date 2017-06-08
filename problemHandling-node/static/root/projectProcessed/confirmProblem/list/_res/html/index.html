@@ -1,19 +1,14 @@
 <div class="content-tab list">
-    <div class="com-search mod">
-        <span class="com-search2">
-            <label>内部项目名称 :</label>
-            <input type="text"  ng-model="teamInfo.internalProjectName">
-       </span>
-        <span class="com-search2">
-            <label>工程类型 :</label>
-            <input type="text"  ng-model="teamInfo.projectType">
-       </span>
-        <span class="com-search2">
-            <label>问题对象 :</label>
-            <input type="text"  ng-model="teamInfo.problemObject">
-       </span>
+    <div class="search-big" style="display :{{ isView?'none':'block'}}">
+        <select class="salc" ng-model="checkedName" ng-init="checkedName='内部项目名称'">
+            <option ng-repeat="item in titles">{{item}}</option>
+        </select>
+        <input type="text" ng-model="internalProjectName" ng-show="checkedName=='内部项目名称'">
+        <input type="text" ng-model="projectType" ng-show="checkedName=='工程类型'">
+        <input type="text" ng-model="problemObject" ng-show="checkedName=='问题对象'">
+        <a href="javascript:void(0)" ng-click="collect()"><img src="/images/search2.png"></a>
     </div>
-    <ul class="table table-top">
+    <ul class="table">
         <li class="list-head">
             <span></span>
             <span>地区</span>
@@ -25,7 +20,7 @@
             <span>问题具体情况</span>
             <span></span>
         </li>
-        <li class="list-all" ng-repeat="lists in confirmLists|filter:teamInfo" style="display: {{lists._delete?'none':'block'}};">
+        <li class="list-all" ng-repeat="lists in confirmLists" style="display: {{lists._delete?'none':'block'}};">
             <section>
                 <div class="list-text {{lists._selectList?'selectList':''}}" ng-click="selectList(lists)">
                     <p>{{$index+1}}</p>

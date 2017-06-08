@@ -4,6 +4,8 @@ app.controller('projectNameDetailsMenu', function($scope,$state,$stateParams,toa
     activitySer.collectAllDetails(contId).then(function(response){
         if(response.data.code==0){
             $scope.showInfo=response.data.data;
+        }else{
+            toastr.error(response.data.msg, '温馨提示');
         }
     });
 });

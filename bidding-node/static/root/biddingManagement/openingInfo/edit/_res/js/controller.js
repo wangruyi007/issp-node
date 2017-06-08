@@ -4,10 +4,10 @@ app.controller('openingEditCtrl', function($scope, openingSer,$stateParams,$stat
 
     //获取ID
     openingSer.findBidOpeningId(infoData).then(function(response){
-        if(response.data.code=='0'){
+        if(response.data.code== 0){
             $scope.editOpening = response.data.data;
-        }else if (response.data.code==403){
-            toastr.error( "请登录用户", '温馨提示');
+        }else{
+            toastr.error( response.data.msg, '温馨提示');
         }
 
     });
@@ -20,8 +20,8 @@ app.controller('openingEditCtrl', function($scope, openingSer,$stateParams,$stat
             if(response.data.code == 0){
                 $state.go('root.biddingManagement.openingInfo.list');
                 toastr.success( "编辑成功", '温馨提示');
-            }else if(response.data.code == 403){
-                toastr.error( "请登录用户", '温馨提示');
+            }else{
+                toastr.error( response.data.msg, '温馨提示');
             }
         });
 

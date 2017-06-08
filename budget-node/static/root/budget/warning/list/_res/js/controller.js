@@ -22,9 +22,8 @@ app.controller('warningListCtrl',function($scope,warningSer,toastr){
         warningSer.listWarning(pages).then(function(response){
             if(response.data.code==0){
                 $scope.warningLists = response.data.data;
-                console.log($scope.warningLists)
             }else{
-                toastr.error( "请求超时，请联系管理员", '温馨提示');
+                toastr.error(response.data.msg, '温馨提示');
             }
         });
     }
@@ -32,15 +31,8 @@ app.controller('warningListCtrl',function($scope,warningSer,toastr){
         if(response.data.code==0){
             $scope.pagination.itemsCount = response.data.data;
         }else{
-            toastr.error( "请求超时，请联系管理员", '温馨提示');
+            toastr.error(response.data.msg, '温馨提示');
         }
-    });
-    $scope.$on('deletedId',function(event,delid){
-        angular.forEach($scope.warningLists,function(obj){
-            if(obj.id == delid){
-                obj._delete = delid
-            }
-        })
     });
     warningSer.allCostProjects().then(function(response){
         var sortArr=[];
@@ -67,6 +59,13 @@ app.controller('warningListCtrl',function($scope,warningSer,toastr){
                return b-a
            })[0];
         }
+    });
+    $scope.$on('deletedId',function(event,delid){
+        angular.forEach($scope.warningLists,function(obj){
+            if(obj.id == delid){
+                obj._delete = delid
+            }
+        })
     });
 });
 

@@ -182,6 +182,15 @@ body {
   vertical-align: middle;
 }
 
+.change-angle{
+  transform:rotate(-90eg);
+  -ms-transform:rotate(-90deg);   /* IE 9 */
+  -moz-transform:rotate(-90deg);  /* Firefox */
+  -webkit-transform:rotate(-90deg); /* Safari 和 Chrome */
+  -o-transform:rotate(-90deg);  /* Opera */
+  margin-top: -10px;
+}
+
 .left-section .nav .nav-list .menu {
   width: 100%;
 }
@@ -1231,7 +1240,7 @@ body {
 .right-section .top-content .content .content-wrap .content-input .input-list section ul li .inputDom{
   width: 45%;
   position: absolute;
-  margin-left: 59px;
+  margin-left: -10px;
   border: 0!important;
   height: 30px;
   padding-left: 10px !important;

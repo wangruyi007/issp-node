@@ -10,16 +10,22 @@ module.exports = function(){
         var options = {
             method : 'GET',
             timeout : 3000,
-            uri : config()['rurl'] + `/vouchergenerate/v1/listVoucher?limit=10&page=${argvs.page}`
+            uri : config()['rurl'] + `/vouchergenerate/v1/listVoucher?limit=10&page=${argvs.page}`,
+            headers:{
+                userToken:argvs.userToken
+            }
         };
         return request(options);
     };
     //获取所有一级科目
-    this.FirstSubject = function(){
+    this.FirstSubject = function(argvs){
         var options = {
             method : 'GET',
             timeout : 3000,
-            uri : config()['rurl'] + '/vouchergenerate/v1/listFirstSubject'
+            uri : config()['rurl'] + '/vouchergenerate/v1/listFirstSubject',
+            headers:{
+                userToken:argvs.userToken
+            }
         };
         return request(options);
     };
@@ -28,7 +34,10 @@ module.exports = function(){
         var options = {
             method : 'GET',
             timeout : 3000,
-            uri : config()['rurl'] + `/vouchergenerate/v1/listSubByFirst?firstSub=${encodeURIComponent(argvs.firstSel)}`
+            uri : config()['rurl'] + `/vouchergenerate/v1/listSubByFirst?firstSub=${encodeURIComponent(argvs.firstSel)}`,
+            headers:{
+                userToken:argvs.userToken
+            }
         };
         return request(options);
     };
@@ -37,7 +46,10 @@ module.exports = function(){
         var options = {
             method : 'GET',
             timeout : 3000,
-            uri : config()['rurl'] + `/vouchergenerate/v1/listTubByFirst?firstSub=${encodeURIComponent(argvs.firstSel)}&secondSub=${encodeURIComponent(argvs.secondSel)}`
+            uri : config()['rurl'] + `/vouchergenerate/v1/listTubByFirst?firstSub=${encodeURIComponent(argvs.firstSel)}&secondSub=${encodeURIComponent(argvs.secondSel)}`,
+            headers:{
+                userToken:argvs.userToken
+            }
         };
         return request(options);
     };
@@ -72,16 +84,22 @@ module.exports = function(){
         var options = {
             method : 'GET',
             timeout : 3000,
-            uri : config()['rurl'] + `/vouchergenerate/v1/getOne/${argvs.id}`
+            uri : config()['rurl'] + `/vouchergenerate/v1/getOne/${argvs.id}`,
+            headers:{
+                userToken:argvs.userToken
+            }
         };
         return request(options);
     };
     //获取总条数记账凭证生成设置
-    this.getGenerateTotal = function(){
+    this.getGenerateTotal = function(argvs){
         var options = {
             method : 'GET',
             timeout : 3000,
-            uri : config()['rurl'] + '/vouchergenerate/v1/count'
+            uri : config()['rurl'] + '/vouchergenerate/v1/count',
+            headers:{
+                userToken:argvs.userToken
+            }
         };
         return request(options);
     };
@@ -102,16 +120,22 @@ module.exports = function(){
         var options = {
             method : 'GET',
             timeout : 3000,
-            uri : config()['rurl'] + `/vouchergenerate/v1/listAudit?limit=10&page=${argvs.page}`
+            uri : config()['rurl'] + `/vouchergenerate/v1/listAudit?limit=10&page=${argvs.page}`,
+            headers:{
+                userToken:argvs.userToken
+            }
         };
         return request(options);
     };
     //获取总条数记账凭证生成设置
-    this.getReviewTotal = function(){
+    this.getReviewTotal = function(argvs){
         var options = {
             method : 'GET',
             timeout : 3000,
-            uri : config()['rurl'] + '/vouchergenerate/v1/countAudit'
+            uri : config()['rurl'] + '/vouchergenerate/v1/countAudit',
+            headers:{
+                userToken:argvs.userToken
+            }
         };
         return request(options);
     };
@@ -145,16 +169,22 @@ module.exports = function(){
         var options = {
             method : 'GET',
             timeout : 3000,
-            uri : config()['rurl'] + `/vouchergenerate/v1/listAudited?limit=10&page=${argvs.page}`
+            uri : config()['rurl'] + `/vouchergenerate/v1/listAudited?limit=10&page=${argvs.page}`,
+            headers:{
+                userToken:argvs.userToken
+            }
         };
         return request(options);
     };
     //获取已审核列表总条数
-    this.getAuditTotal = function(){
+    this.getAuditTotal = function(argvs){
         var options = {
             method : 'GET',
             timeout : 3000,
-            uri : config()['rurl'] + '/vouchergenerate/v1/countAudited'
+            uri : config()['rurl'] + '/vouchergenerate/v1/countAudited',
+            headers:{
+                userToken:argvs.userToken
+            }
         };
         return request(options);
     };
@@ -235,30 +265,39 @@ module.exports = function(){
         return request(options);
     };
     //获取所有地区
-    this.getAllArea = function(){
+    this.getAllArea = function(argvs){
         var options = {
             method : 'GET',
             timeout : 3000,
-            uri : config()['rurl'] + '/vouchergenerate/v1/listArea'
+            uri : config()['rurl'] + '/vouchergenerate/v1/listArea',
+            headers:{
+                userToken:argvs.userToken
+            }
         };
         return request(options);
     };
 
     //获取所有项目组
-    this.getAllGroup = function(){
+    this.getAllGroup = function(argvs){
         var options = {
             method : 'GET',
             timeout : 3000,
-            uri : config()['rurl'] + '/vouchergenerate/v1/listGroup'
+            uri : config()['rurl'] + '/vouchergenerate/v1/listGroup',
+            headers:{
+                userToken:argvs.userToken
+            }
         };
         return request(options);
     };
     //获取所有项目名称
-    this.getAllProject = function(){
+    this.getAllProject = function(argvs){
         var options = {
             method : 'GET',
             timeout : 3000,
-            uri : config()['rurl'] + '/vouchergenerate/v1/listProject'
+            uri : config()['rurl'] + '/vouchergenerate/v1/listProject',
+            headers:{
+                userToken:argvs.userToken
+            }
         };
         return request(options);
     };
@@ -267,16 +306,22 @@ module.exports = function(){
         var options = {
             method : 'GET',
             timeout : 3000,
-            uri : config()['rurl'] + `/vouchergenerate/v1/listChecked?limit=10&page=${argvs.page}`
+            uri : config()['rurl'] + `/vouchergenerate/v1/listChecked?limit=10&page=${argvs.page}`,
+            headers:{
+                userToken:argvs.userToken
+            }
         };
         return request(options);
     };
     //获取已过账列表总条数
-    this.getPostedTotal = function(){
+    this.getPostedTotal = function(argvs){
         var options = {
             method : 'GET',
             timeout : 3000,
-            uri : config()['rurl'] + '/vouchergenerate/v1/countChecked'
+            uri : config()['rurl'] + '/vouchergenerate/v1/countChecked',
+            headers:{
+                userToken:argvs.userToken
+            }
         };
         return request(options);
     };
@@ -366,11 +411,14 @@ module.exports = function(){
         return request(options);
     };
     //获取结账记录列表总条数
-    this.getBillRecordsTotal = function(){
+    this.getBillRecordsTotal = function(argvs){
         var options = {
             method : 'GET',
             timeout : 3000,
-            uri : config()['rurl'] + '/vouchergenerate/v1/countCkRecord'
+            uri : config()['rurl'] + '/vouchergenerate/v1/countCkRecord',
+            headers:{
+                userToken:argvs.userToken
+            }
         };
         return request(options);
     };
@@ -430,16 +478,22 @@ module.exports = function(){
         var options = {
             method : 'GET',
             timeout : 3000,
-            uri : config()['rurl'] + `/vouchergenerate/v1/listCkRecord?limit=10&page=${argvs.page}`
+            uri : config()['rurl'] + `/vouchergenerate/v1/listCkRecord?limit=10&page=${argvs.page}`,
+            headers:{
+                userToken:argvs.userToken
+            }
         };
         return request(options);
     };
     //获取记账凭证记录列表总条数
-    this.getVRTotal = function(){
+    this.getVRTotal = function(argvs){
         var options = {
             method : 'GET',
             timeout : 3000,
-            uri : config()['rurl'] + '/vouchergenerate/v1/countCkRecord'
+            uri : config()['rurl'] + '/vouchergenerate/v1/countCkRecord',
+            headers:{
+                userToken:argvs.userToken
+            }
         };
         return request(options);
     };
@@ -492,16 +546,6 @@ module.exports = function(){
             }
         };
 
-        return request(options);
-    };
-    //退出
-    this.logout = function(argvs){
-        var options = {
-            method : 'POST',
-            timeout : 3000,
-            uri : config()['user'] + `/v1/sign-out/${argvs.token}`,
-            form:argvs
-        };
         return request(options);
     };
     return this;

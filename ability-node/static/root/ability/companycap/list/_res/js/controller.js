@@ -1,5 +1,5 @@
-var app = angular.module('companycapList', ['ng-pagination','toastr','ipCookie']);
-app.controller('companycapListCtrl',function($scope,companycapSer,toastr,ipCookie,$location) {
+var app = angular.module('companycapList', ['ng-pagination','toastr']);
+app.controller('companycapListCtrl',function($scope,companycapSer,toastr) {
    //选择
     $scope.selectList = function(event){
         angular.forEach($scope.companycapLists.data,function(obj){
@@ -26,8 +26,8 @@ app.controller('companycapListCtrl',function($scope,companycapSer,toastr,ipCooki
         companycapSer.listAbilityCompanyCap(listData).then(function(response){
             if(response.data.code==0){
                 $scope.companycapLists = response.data
-            }else if(response.data.code == 1){
-                 toastr.error( response.data.msg, '温馨提示');
+            }else{
+                toastr.error(response.data.msg, '温馨提示');
             }
         });
         $scope.collect = function(){
@@ -39,8 +39,8 @@ app.controller('companycapListCtrl',function($scope,companycapSer,toastr,ipCooki
             companycapSer.countBaseInfo2($scope.company).then(function (response) {
                 if(response.data.code==0){
                     $scope.abili.itemsCount = response.data.data;
-                }else if(response.data.code == 1){
-                    toastr.error( response.data.msg, '温馨提示');
+                }else{
+                    toastr.error(response.data.msg, '温馨提示');
                 }
             })
             var data = {
@@ -50,8 +50,8 @@ app.controller('companycapListCtrl',function($scope,companycapSer,toastr,ipCooki
             companycapSer.searchCompanyAbility(data).then(function(response){
                 if(response.data.code == 0){
                     $scope.companycapLists = response.data
-                }else if(response.data.code == 1){
-                    toastr.error( response.data.msg, '温馨提示');
+                }else{
+                    toastr.error(response.data.msg, '温馨提示');
                 }
             });
         };
@@ -64,8 +64,8 @@ app.controller('companycapListCtrl',function($scope,companycapSer,toastr,ipCooki
     companycapSer.countBaseInfo().then(function(response){
         if(response.data.code==0){
             $scope.abili.itemsCount = response.data.data;
-        }else if(response.data.code == 1){
-            toastr.error( response.data.msg, '温馨提示');
+        }else{
+            toastr.error(response.data.msg, '温馨提示');
         }
     });
     //删除

@@ -1,14 +1,13 @@
-var app = angular.module('basicInfoProAdd', ['toastr','ipCookie']);
-app.controller('basicInfoProAddCtrl', function ($scope, basicInfoSer, $state, toastr,ipCookie,$location,$stateParams) {
+var app = angular.module('basicInfoProAdd', ['toastr']);
+app.controller('basicInfoProAddCtrl', function ($scope, basicInfoSer, $state, toastr,$stateParams) {
     var basicData ={id: $stateParams.id};
     //获取ID
     basicInfoSer.findInfoId(basicData).then(function(response){
         if(response.data.code=='0'){
             $scope.addInfo = response.data.data;
-        }else if (response.data.code==403){
-            toastr.error( "请登录用户", '温馨提示');
+        }else{
+            toastr.error(response.data.msg, '温馨提示');
         }
-
     });
     //添加
     $scope.taxAddFun = function () {
@@ -24,17 +23,11 @@ app.controller('basicInfoProAddCtrl', function ($scope, basicInfoSer, $state, to
             taxDate: angular.element('.taxDate').val()
         };
         basicInfoSer.addTax(data).then(function (response) {
-            console.log(response);
             if (response.data.code == 0) {
                 $state.go('root.payable.basicInfo.list');
                 toastr.success("已成功添加", '温馨提示');
-            } else if (response.data.code == 403) {
-                toastr.error( "请登录用户,3秒后跳至登陆页面", '温馨提示');
-                var absurl = $location.absUrl();
-                ipCookie('absurl', absurl,{ expires:3,expirationUnit: 'minutes',domain:'issp.bjike.com' });
-                setTimeout(function(){
-                    window.location.href='http://localhost/login'
-                },3000)
+            }else{
+                toastr.error(response.data.msg, '温馨提示');
             }
         });
     };

@@ -1,4 +1,3 @@
-
 var app = angular.module('salaryConfirmList', ['ng-pagination','toastr']);
 app.controller('salaryConfirmListCtrl',function($scope,salaryConfirmSer,toastr) {
     $scope.$emit('changeId', null);
@@ -25,7 +24,7 @@ app.controller('salaryConfirmListCtrl',function($scope,salaryConfirmSer,toastr) 
     function activatePage(page) {
         var listData = {
             page:page
-        }
+        };
         salaryConfirmSer.listConfirm(listData).then(function(response){
             if(response.data.code==0){
                 $scope.confirmLists = response.data.data

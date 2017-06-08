@@ -51,5 +51,13 @@ app.config(function($provide, $stateProvider){
                 controller:'detailProSummaryCtrl'
             }
         }
+    }).state("root.payment.detail.settlement[12]",{
+        url:"/settlement[12]?id=",
+        views:{
+            "content@root.payment.detail":{
+                templateUrl : "root/payment/detail/settlement/_res/html/index.html",
+                controller:'settlementCtrl'
+            }
+        }
     })
 });

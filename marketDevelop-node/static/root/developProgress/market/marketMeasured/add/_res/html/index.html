@@ -4,47 +4,45 @@
             <ul>
                 <li class="required">
                     <label><i><img src="/images/mandatory.png"></i><em>业务类型</em></label>
-                    <select class="sele" ng-model="measured.type" ng-init="measured.type='0'">
-                        <option value="0">项目</option>
-                        <option value="1">项目2</option>
-                        <option value="2">项目3</option>
+                    <select class="sele" ng-model="measured.type" >
+                        <option value="">请选择</option>
+                        <option ng-repeat="type in types">{{type.type}}</option>
                     </select>
                 </li>
                 <li class="required">
                     <label><i><img src="/images/mandatory.png"></i><em>业务方向科目</em></label>
-                    <select class="sele" ng-model="measured.course" ng-init="measured.course='0'">
-                        <option value="0">jishu</option>
-                        <option value="1">shuji</option>
-                        <option value="2">kjsgn</option>
+                    <select class="sele" ng-model="measured.course" >
+                        <option value="">请选择</option>
+                        <option ng-repeat="course in courses">{{course.course}}</option>
                     </select>
                 </li>
                 <li class="required">
                     <label><i><img src="/images/mandatory.png"></i><em>资金投入</em></label>
-                    <input type="number" ng-verify="{}" ng-model="measured.capital">
+                    <input type="number" step="0.01" ng-verify="{}" name="capital" ng-model="measured.capital">
                 </li>
                 <li class="required">
                     <label><i><img src="/images/mandatory.png"></i><em>人员成本</em></label>
-                    <input type="number" ng-verify="{}" ng-model="measured.staffCost">
+                    <input type="number" step="0.01" ng-verify="{}" name="staffCost" ng-model="measured.staffCost">
                 </li>
                 <li class="required">
                     <label><i><img src="/images/mandatory.png"></i><em>设备成本</em></label>
-                    <input type="number" ng-verify="{}" ng-model="measured.equipmentCost">
+                    <input type="number" step="0.01" ng-verify="{}" name="equipmentCost" ng-model="measured.equipmentCost">
                 </li>
                 <li class="required">
                     <label><i><img src="/images/mandatory.png"></i><em>车辆成本</em></label>
-                    <input type="number" ng-verify="{}" ng-model="measured.carCost">
+                    <input type="number" step="0.01" ng-verify="{}" name="carCost" ng-model="measured.carCost">
                 </li>
                 <li class="required">
                     <label><i><img src="/images/mandatory.png"></i><em>人员投入</em></label>
-                    <input type="number" ng-verify="{}" ng-model="measured.staff">
+                    <input type="number" step="0.01" ng-verify="{}" name="staff" ng-model="measured.staff">
                 </li>
                 <li class="required">
                     <label><i><img src="/images/mandatory.png"></i><em>设备投入</em></label>
-                    <input type="number" ng-verify="{}" ng-model="measured.equipment">
+                    <input type="number" step="0.01" ng-verify="{}" name="equipment" ng-model="measured.equipment">
                 </li>
                 <li class="required">
                     <label><i><img src="/images/mandatory.png"></i><em>车辆投入</em></label>
-                    <input type="number" ng-verify="{}" ng-model="measured.car">
+                    <input type="number" step="0.01" ng-verify="{}" name="car" ng-model="measured.car">
                 </li>
                 <li>
                     <label><em>备注</em></label>

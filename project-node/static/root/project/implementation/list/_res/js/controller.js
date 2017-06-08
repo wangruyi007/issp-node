@@ -26,8 +26,8 @@ app.controller('implementationListCtrl',function($scope,implementationSer,toastr
         implementationSer.listImplementation(listData).then(function(response){
             if(response.data.code==0){
                 $scope.implementationLists = response.data
-            }else if(response.data.code==1){
-                toastr.error( response.data.msg, '温馨提示');
+            }else{
+                toastr.error(response.data.msg, '温馨提示');
             }
         });
         $scope.collect = function(){
@@ -39,8 +39,8 @@ app.controller('implementationListCtrl',function($scope,implementationSer,toastr
             implementationSer.countImplementation2($scope.signCondition,$scope.signProject,$scope.area,$scope.businessType,$scope.businessSubject).then(function (response) {
                 if(response.data.code==0){
                     $scope.abili.itemsCount = response.data.data;
-                }else if(response.data.code==1){
-                    toastr.error( response.data.msg, '温馨提示');
+                }else{
+                    toastr.error(response.data.msg, '温馨提示');
                 }
             })
             var data = {
@@ -54,8 +54,8 @@ app.controller('implementationListCtrl',function($scope,implementationSer,toastr
             implementationSer.searchImplementation(data).then(function(response){
                 if(response.data.code == 0){
                     $scope.implementationLists = response.data
-                }else if(response.data.code==1){
-                    toastr.error( response.data.msg, '温馨提示');
+                }else{
+                    toastr.error(response.data.msg, '温馨提示');
                 }
             });
         };
@@ -68,8 +68,8 @@ app.controller('implementationListCtrl',function($scope,implementationSer,toastr
     implementationSer.countImplementation().then(function(response){
         if(response.data.code==0){
             $scope.abili.itemsCount = response.data.data;
-        }else if(response.data.code==1){
-            toastr.error( response.data.msg, '温馨提示');
+        }else{
+            toastr.error(response.data.msg, '温馨提示');
         }
     });
     //删除

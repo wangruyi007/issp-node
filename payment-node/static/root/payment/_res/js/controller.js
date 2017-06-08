@@ -16,6 +16,25 @@ app.controller('paymentCtrl', function ($scope,$state) {
     $scope.navClass = function(name){
         $scope.navCla = name;
     }
-
+    $scope.showsList = [
+        {id:"1",item:"回款管理",menuList:[{name:'回款明细'},{name2:"承包商"}],showIs:false},
+    ];
+    $scope.showMenu = function(obj,event) {
+        if(event){
+            if(obj.showIs){
+                obj.showIs=!event;
+            }else{
+                obj.showIs=event;
+                /* angular.forEach(function(item){*/
+                this.showsList.forEach(function(item){
+                    if(item.id!=obj.id){
+                        item.showIs=!event;
+                    }else{
+                        item.showIs=event;
+                    }
+                });
+            }
+        }
+    };
 });
 

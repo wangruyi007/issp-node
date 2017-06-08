@@ -7,7 +7,7 @@ app.controller('openingCtrl',function ($scope,$state) {
     if ($state.current.url == '/openingInfo') {//默认加载列表
         $state.go('root.biddingManagement.openingInfo.list')
     }
-
+    $scope.$emit('isVi',true);//判断是否出现搜索按钮
 }).controller('openingMenuCtrl',function($scope,$state,$rootScope,$location){
     var urlName = $state.current.url.split('/')[1].split('[')[0];
     $scope.menuClass = urlName + "Menu";
@@ -20,10 +20,10 @@ app.controller('openingCtrl',function ($scope,$state) {
     $scope.$on("getId", function(event, msg){
        $scope.idListd = msg;
     });
-
     $scope.delete = function(){
         if($scope.idListd){
             $state.go('root.biddingManagement.openingInfo.list.delete[12]',{id:$scope.idListd});
+            $scope.menuClass = 'deleteMenu'
         }
     };
 
@@ -43,4 +43,3 @@ app.controller('openingCtrl',function ($scope,$state) {
         $scope.menuClass = 'summaryMenu'
     };
 });
-

@@ -27,12 +27,16 @@ app.controller('detailGeneralCtrl', function($scope, detailSer,$state){
         detailSer.summaryGeneralDetails($scope.contractors).then(function(response){
             if(response.data.code == 0){
                 $scope.summaryListDetails = response.data.data;
+            }else{
+                toastr.error(response.data.msg,'温馨提示')
             }
         })
     }};
     $scope.generalMore = function(){
         if($scope.idSocialList){
             $state.go('root.payment.detail.general.generalMore[12]',{suId:$scope.idSocialList});
+        }else{
+            toastr.error(response.data.msg,'温馨提示')
         }
     };
 });

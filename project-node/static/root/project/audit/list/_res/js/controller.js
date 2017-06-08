@@ -1,5 +1,5 @@
-var app = angular.module('auditList', ['ng-pagination','toastr','ipCookie']);
-app.controller('auditListCtrl',function($scope,auditSer,toastr,ipCookie,$location) {
+var app = angular.module('auditList', ['ng-pagination','toastr']);
+app.controller('auditListCtrl',function($scope,auditSer,toastr) {
    //选择
     $scope.selectList = function(event){
         angular.forEach($scope.auditLists.data,function(obj){
@@ -40,8 +40,8 @@ app.controller('auditListCtrl',function($scope,auditSer,toastr,ipCookie,$locatio
             auditSer.countAudit2($scope.saleNum,$scope.signProjectCondition).then(function (response) {
                 if(response.data.code==0){
                     $scope.abili.itemsCount = response.data.data;
-                }else if(response.data.code==1){
-                    toastr.error( response.data.msg, '温馨提示');
+                }else{
+                    toastr.error(response.data.msg, '温馨提示');
                 }
             })
             var data = {
@@ -52,8 +52,8 @@ app.controller('auditListCtrl',function($scope,auditSer,toastr,ipCookie,$locatio
             auditSer.searchAudit(data).then(function(response){
                 if(response.data.code == 0){
                     $scope.auditLists = response.data
-                }else if(response.data.code==1){
-                    toastr.error( response.data.msg, '温馨提示');
+                }else{
+                    toastr.error(response.data.msg, '温馨提示');
                 }
             });
         };
@@ -66,8 +66,8 @@ app.controller('auditListCtrl',function($scope,auditSer,toastr,ipCookie,$locatio
     auditSer.countAudit().then(function(response){
         if(response.data.code==0){
             $scope.abili.itemsCount = response.data.data;
-        }else if(response.data.code==1){
-            toastr.error( response.data.msg, '温馨提示');
+        }else{
+            toastr.error(response.data.msg, '温馨提示');
         }
     });
     //删除

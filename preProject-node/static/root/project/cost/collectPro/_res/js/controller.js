@@ -19,10 +19,8 @@ app.controller('costCollectProCtrl', function($scope,$state,toastr,costSer){
         costSer.collectProject(data).then(function(response){
             if(response.data.code == 0&&response.data.data){
                 $scope.summaryLists = response.data.data
-            }else if(response.data.code==403){
-                toastr.error( "请登录用户", '温馨提示');
-            }else if(response.data.code == 0&& !response.data.data){
-                toastr.error( "汇总信息不存在", '温馨提示');
+            }else{
+                toastr.error(response.data.msg, '温馨提示');
             }
         });
     };
