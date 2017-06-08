@@ -27,14 +27,14 @@
                     <input type="text" ng-verify="{}" ng-model="editInfo.cities">
                 </li>
                 <li class="required">
-                    <label><em>招投标类型</em></label>
+                    <label><i><img src="/images/mandatory.png"></i><em>招投标类型</em></label>
                     <select class="sele" ng-model="editInfo.biddingType">
                         <option value="INVITEDTENDERING">邀请招标</option>
                         <option value="OPENTENDERING">公开招标</option>
                     </select>
                 </li>
                 <li class="required">
-                    <label><em>业务类型</em></label>
+                    <label><i><img src="/images/mandatory.png"></i><em>业务类型</em></label>
                     <select class="sele" ng-model="editInfo.businessType">
                         <option value="SOFTWAREDEVELOPMENT">软件开发</option>
                         <option value="INTELLIGENTSYSTEMINTEGRATION">智能系统集成</option>
@@ -42,43 +42,43 @@
                     </select>
                 </li>
                 <li class="required">
-                    <label><em>业务方向科目</em></label>
+                    <label><i><img src="/images/mandatory.png"></i><em>业务方向科目</em></label>
                     <input type="text" ng-model="editInfo.businessDirectionSubject">
                 </li>
                 <li class="required">
-                    <label><em>标书模块</em></label>
+                    <label><i><img src="/images/mandatory.png"></i><em>标书模块</em></label>
                     <input type="text" ng-model="editInfo.tenderModule">
                 </li>
                 <li class="required">
-                    <label><em>报名时间</em></label>
+                    <label><i><img src="/images/mandatory.png"></i><em>报名时间</em></label>
                     <input type="text" onClick="laydate({istime: true, format: 'YYYY-MM-DD hh:mm:ss'})" class="add_image registrationTime" ng-model="editInfo.registrationTime">
                 </li>
                 <li class="required">
-                    <label><em>投标时间</em></label>
+                    <label><i><img src="/images/mandatory.png"></i><em>投标时间</em></label>
                     <input type="text" onClick="laydate({istime: true, format: 'YYYY-MM-DD hh:mm:ss'})" class="add_image biddingTime" ng-model="editInfo.biddingTime">
                 </li>
                 <li class="required">
-                    <label><em>投标资格要求</em></label>
+                    <label><i><img src="/images/mandatory.png"></i><em>投标资格要求</em></label>
                     <input type="text" ng-model="editInfo.biddingQualifications">
                 </li>
                 <li class="required">
-                    <label><em>账号</em></label>
+                    <label><i><img src="/images/mandatory.png"></i><em>账号</em></label>
                     <input type="text" ng-model="editInfo.account">
                 </li>
                 <li class="required">
-                    <label><em>密码</em></label>
+                    <label><i><img src="/images/mandatory.png"></i><em>密码</em></label>
                     <input type="text" ng-model="editInfo.password">
                 </li>
                 <li class="required">
-                    <label><em>注册人</em></label>
+                    <label><i><img src="/images/mandatory.png"></i><em>注册人</em></label>
                     <input type="text" ng-model="editInfo.registrant">
                 </li>
                 <li class="required">
-                    <label><em>注册信息</em></label>
+                    <label><i><img src="/images/mandatory.png"></i><em>注册信息</em></label>
                     <input type="text" ng-model="editInfo.registrationInfo">
                 </li>
                 <li class="required">
-                    <label><em>状态</em></label>
+                    <label><i><img src="/images/mandatory.png"></i><em>状态</em></label>
                     <select class="sele" ng-model="editInfo.status">
                         <option value="THAW">解冻</option>
                         <option value="CONGEAL">冻结</option>
@@ -88,34 +88,34 @@
                     </select>
                 </li>
                 <li class="required">
-                    <label><em>购买标书时间</em></label>
+                    <label><i><img src="/images/mandatory.png"></i><em>购买标书时间</em></label>
                     <input type="text" onClick="laydate({istime: true, format: 'YYYY-MM-DD hh:mm:ss'})" class="add_image buyTenderTime" ng-model="editInfo.buyTenderTime">
                 </li>
                 <li class="required">
-                    <label><em>价格</em></label>
+                    <label><i><img src="/images/mandatory.png"></i><em>价格</em></label>
                     <input type="text" ng-model="editInfo.price">
                 </li>
                 <li class="required">
-                    <label><em>购买标书要求</em></label>
+                    <label><i><img src="/images/mandatory.png"></i><em>购买标书要求</em></label>
                     <input type="text" ng-model="editInfo.buyTenderRequirements">
                 </li>
                 <li class="required">
-                    <label><em>交保证金时间</em></label>
+                    <label><i><img src="/images/mandatory.png"></i><em>交保证金时间</em></label>
                     <input type="text" onClick="laydate({istime: true, format: 'YYYY-MM-DD hh:mm:ss'})" class="add_image marginTime" ng-model="editInfo.marginTime">
                 </li>
                 <li class="required">
-                    <label><em>交保证金方式</em></label>
+                    <label><i><img src="/images/mandatory.png"></i><em>交保证金方式</em></label>
                     <select class="sele" ng-model="editInfo.marginMethod">
                         <option value="现金支付">现金支付</option>
                         <option value="银行汇兑">银行汇兑</option>
                     </select>
                 </li>
                 <li class="required">
-                    <label><em>保证金退回时间</em></label>
+                    <label><i><img src="/images/mandatory.png"></i><em>保证金退回时间</em></label>
                     <input type="text" onClick="laydate({istime: true, format: 'YYYY-MM-DD hh:mm:ss'})" class="add_image backTimeDeposit" ng-model="editInfo.backTimeDeposit">
                 </li>
-                <li>
-                    <label><em>备注</em></label>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>备注</em></label>
                     <input type="text" ng-model="editInfo.remark">
                 </li>
             </ul>

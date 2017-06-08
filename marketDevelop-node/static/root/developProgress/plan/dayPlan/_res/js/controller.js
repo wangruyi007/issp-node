@@ -24,6 +24,7 @@ app.controller('dayPlanCtrl',function ($scope,$state) {
     $scope.delete = function(){
         if($scope.idListd){
             $state.go('root.developProgress.plan.dayPlan.list.delete[12]',{id:$scope.idListd});
+            $scope.menuClass = 'deleteMenu'
         }
     }
 
@@ -40,5 +41,20 @@ app.controller('dayPlanCtrl',function ($scope,$state) {
         $scope.menuClass = 'addMenu'
     };
 });
+//自定义过滤器
+app.filter('cover', function(){
+    return function(val){
+        var result;
+        switch(val){
+            case true:
+                result = "立项前";
+                break;
+            case false:
+                result = "立项后";
+                break;
+        }
+        return result;
+    }
 
+})
 

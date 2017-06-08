@@ -1,23 +1,15 @@
 <div class="content-tab list">
-    <div class="com-search mod">
-        <span class="com-search2">
-            <label>网站名称:</label>
-            <input type="text"  ng-model="teamInfo.webName">
-       </span>
-        <span class="com-search2">
-            <label>网址:</label>
-            <input type="text" ng-model="teamInfo.url">
-       </span>
-        <span class="com-search2">
-            <label>省份:</label>
-            <input type="text" ng-model="teamInfo.provinces">
-       </span>
-        <span class="com-search2">
-            <label>地市:</label>
-            <input type="text" ng-model="teamInfo.cities">
-       </span>
+    <div class="search-big" style="display :{{ isView?'none':'block'}}">
+        <select class="salc" ng-model="checkedName" ng-init="checkedName='网站名称'">
+            <option ng-repeat="item in titles">{{item}}</option>
+        </select>
+        <input type="text" ng-model="webName" ng-show="checkedName=='网站名称'">
+        <input type="text" ng-model="url" ng-show="checkedName=='网址'">
+        <input type="text" ng-model="provinces" ng-show="checkedName=='省份'">
+        <input type="text" ng-model="cities" ng-show="checkedName=='地市'">
+        <a href="javascript:void(0)" ng-click="collect()"><img src="/images/search2.png"></a>
     </div>
-    <ul class="table table-top">
+    <ul class="table">
         <li class="list-head">
             <span></span>
             <span>网站名称</span>

@@ -32,8 +32,8 @@ app.factory('dispatchSer',function ($http) {
         })
     }
     //分页总条数
-    function countDispatchWorkers(){
-        return $http.get('/dispatchsheet/count')
+    function countDispatchWorkers(data){
+        return $http.get('/dispatchsheet/count',{params:data})
     }
     //删除
     function deleteDispatchWorkers(data){

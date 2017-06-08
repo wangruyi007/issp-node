@@ -6,7 +6,9 @@ app.factory('measuredSer',function ($http) {
         measuredEdit:measuredEdit,
         findMeasuredId:findMeasuredId,
         countMeasured:countMeasured,
-        measuredDelete:measuredDelete
+        measuredDelete:measuredDelete,
+        getType:getType,
+        getCourse:getCourse
     };
     function listMeasured(data) {
         return $http.get('/market/marketmeasure/maps',{
@@ -40,5 +42,13 @@ app.factory('measuredSer',function ($http) {
             params: data
 
         })
+    }
+    //获取业务类型
+    function getType(){
+        return $http.get('/businesstype/findThaw')
+    }
+    //获取业务方向科目数据
+    function getCourse(){
+        return $http.get('/businesscourse/findThaw')
     }
 });

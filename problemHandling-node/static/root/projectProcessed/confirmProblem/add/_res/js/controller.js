@@ -1,5 +1,5 @@
-var app = angular.module('confirmAdd', ['toastr','ipCookie']);
-app.controller('confirmAddCtrl', function ($scope, confirmSer, $state, toastr,$location,ipCookie) {
+var app = angular.module('confirmAdd', ['toastr']);
+app.controller('confirmAddCtrl', function ($scope, confirmSer, $state, toastr) {
 
     //添加
     $scope.resultAddFun = function () {
@@ -12,15 +12,6 @@ app.controller('confirmAddCtrl', function ($scope, confirmSer, $state, toastr,$l
             if (response.data.code == 0) {
                 $state.go('root.projectProcessed.confirmProblem.list');
                 toastr.success("已成功添加", '温馨提示');
-            }else if(response.data.code==403||response.data.code==401){
-                toastr.error( "请登录用户,2秒后跳至登陆页面", '温馨提示');
-                var absurl = $location.absUrl();
-                ipCookie('absurl', absurl,{ expires:3,expirationUnit: 'minutes',domain:'issp.bjike.com' });
-                setTimeout(function(){
-                    window.location.href='http://localhost/login';
-                },2000)
-            }else if(response.data.code==1){
-                toastr.error( response.data.msg, '温馨提示');
             }else {
                 toastr.error( response.data.msg, '温馨提示');
             }

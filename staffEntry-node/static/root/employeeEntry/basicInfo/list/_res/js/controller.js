@@ -24,7 +24,7 @@ app.controller('basicInfoListCtrl',function($scope,basicInfoSer,toastr) {
     function activatePage(page) {
         var listData = {
             page:page
-        }
+        };
         basicInfoSer.listBasicInfo(listData).then(function(response){
             if(response.data.code==0){
                 $scope.registerLists = response.data.data

@@ -7,8 +7,6 @@ app.controller('summaryCtrl', function($scope, confirmSer,toastr){
     confirmSer.getArea().then(function(response){
         if(response.data.code == 0){
             $scope.workOptions = response.data.data;
-        }else if(response.data.code==1){
-            toastr.error( response.data.msg, '温馨提示');
         }else {
             toastr.error( response.data.msg, '温馨提示');
         }
@@ -17,8 +15,6 @@ app.controller('summaryCtrl', function($scope, confirmSer,toastr){
         confirmSer.summaryList($scope.areas).then(function(response){
             if(response.data.code == 0){
                 $scope.summaryLists = response.data.data;
-            }else if(response.data.code==1){
-                toastr.error( response.data.msg, '温馨提示');
             }else {
                 toastr.error( response.data.msg, '温馨提示');
             }

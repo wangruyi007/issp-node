@@ -9,9 +9,9 @@ module.exports = function(){
         var options = {
             method : 'GET',
             timeout : 3000,
-            uri : config()['market']['rurl'] + `/businesstype/v1/maps?limit=10&page=${argvs.page}`,
+            uri : config()['other']['rurl'] + `/businesstype/v1/maps?limit=10&page=${argvs.page}`,
             headers : {
-                // token : token
+                userToken : argvs.userToken
             }
         };
         return request(options);
@@ -21,10 +21,10 @@ module.exports = function(){
         var options = {
             method : 'POST',
             timeout : 3000,
-            uri : config()['market']['rurl'] + `/businesstype/v1/save?userToken=${argvs.userToken}`,
+            uri : config()['other']['rurl'] + `/businesstype/v1/save`,
             form:argvs,
             headers : {
-                // token : token
+                userToken : argvs.userToken
             }
         };
         return request(options);
@@ -34,8 +34,11 @@ module.exports = function(){
         var options = {
             method : 'PUT',
             timeout : 3000,
-            uri : config()['market']['rurl'] + `/businesstype/v1/update/${argvs.id}`,
-            form:argvs
+            uri : config()['other']['rurl'] + `/businesstype/v1/update/${argvs.id}`,
+            form:argvs,
+            headers : {
+                userToken : argvs.userToken
+            }
         };
         return request(options);
     };
@@ -44,7 +47,10 @@ module.exports = function(){
         var options = {
             method : 'GET',
             timeout : 3000,
-            uri : config()['market']['rurl'] + `/businesstype/v1/findById/${argvs.typeId}`
+            uri : config()['other']['rurl'] + `/businesstype/v1/findById/${argvs.typeId}`,
+            headers : {
+                userToken : argvs.userToken
+            }
         };
         return request(options);
     };
@@ -53,7 +59,10 @@ module.exports = function(){
         var options = {
             method : 'DELETE',
             timeout : 3000,
-            uri : config()['market']['rurl'] + `/businesstype/v1/delete/${argvs.id}?userToken=${argvs.userToken}`
+            uri : config()['other']['rurl'] + `/businesstype/v1/delete/${argvs.id}`,
+            headers : {
+                userToken : argvs.userToken
+            }
         };
         return request(options);
     };
@@ -62,7 +71,10 @@ module.exports = function(){
         var options = {
             method : 'PATCH',
             timeout : 3000,
-            uri : config()['market']['rurl'] + `/businesstype/v1/congeal/${argvs.id}`
+            uri : config()['other']['rurl'] + `/businesstype/v1/congeal/${argvs.id}`,
+            headers : {
+                userToken : argvs.userToken
+            }
         };
         return request(options);
     };
@@ -71,16 +83,22 @@ module.exports = function(){
         var options = {
             method : 'PATCH',
             timeout : 3000,
-            uri : config()['market']['rurl'] + `/businesstype/v1/thaw/${argvs.id}`
+            uri : config()['other']['rurl'] + `/businesstype/v1/thaw/${argvs.id}`,
+            headers : {
+                userToken : argvs.userToken
+            }
         };
         return request(options);
     };
     //获取总条数
-    this.getTypeTotal = function(){
+    this.getTypeTotal = function(argvs){
         var options = {
             method : 'GET',
             timeout : 3000,
-            uri : config()['market']['rurl'] + '/businesstype/v1/getTotal'
+            uri : config()['other']['rurl'] + '/businesstype/v1/getTotal',
+            headers : {
+                userToken : argvs.userToken
+            }
         };
         return request(options);
     };
@@ -89,9 +107,9 @@ module.exports = function(){
         var options = {
             method : 'GET',
             timeout : 3000,
-            uri : config()['market']['rurl'] + `/businesscourse/v1/maps?limit=10&page=${argvs.page}`,
+            uri : config()['other']['rurl'] + `/businesscourse/v1/maps?limit=10&page=${argvs.page}`,
             headers : {
-                // token : token
+                userToken : argvs.userToken
             }
         };
         return request(options);
@@ -101,8 +119,11 @@ module.exports = function(){
         var options = {
             method : 'POST',
             timeout : 3000,
-            uri : config()['market']['rurl'] + `/businesscourse/v1/save?userToken=${argvs.userToken}`,
-            form:argvs
+            uri : config()['other']['rurl'] + `/businesscourse/v1/save?userToken=${argvs.userToken}`,
+            form:argvs,
+            headers : {
+                userToken : argvs.userToken
+            }
         };
         return request(options);
     };
@@ -111,8 +132,11 @@ module.exports = function(){
         var options = {
             method : 'PUT',
             timeout : 3000,
-            uri : config()['market']['rurl'] + `/businesscourse/v1/update/${argvs.id}?userToken=${argvs.userToken}`,
-            form:argvs
+            uri : config()['other']['rurl'] + `/businesscourse/v1/update/${argvs.id}`,
+            form:argvs,
+            headers : {
+                userToken : argvs.userToken
+            }
         };
         return request(options);
     };
@@ -121,7 +145,10 @@ module.exports = function(){
         var options = {
             method : 'GET',
             timeout : 3000,
-            uri : config()['market']['rurl'] + `/businesscourse/v1/findById/${argvs.courseId}`
+            uri : config()['other']['rurl'] + `/businesscourse/v1/findById/${argvs.courseId}`,
+            headers : {
+                userToken : argvs.userToken
+            }
         };
         return request(options);
     };
@@ -130,7 +157,10 @@ module.exports = function(){
         var options = {
             method : 'DELETE',
             timeout : 3000,
-            uri : config()['market']['rurl'] + `/businesscourse/v1/delete/${argvs.id}?userToken=${argvs.userToken}`
+            uri : config()['other']['rurl'] + `/businesscourse/v1/delete/${argvs.id}`,
+            headers : {
+                userToken : argvs.userToken
+            }
         };
         return request(options);
     };
@@ -139,7 +169,10 @@ module.exports = function(){
         var options = {
             method : 'PATCH',
             timeout : 3000,
-            uri : config()['market']['rurl'] + `/businesscourse/v1/congeal/${argvs.id}`
+            uri : config()['other']['rurl'] + `/businesscourse/v1/congeal/${argvs.id}`,
+            headers : {
+                userToken : argvs.userToken
+            }
         };
         return request(options);
     };
@@ -148,25 +181,82 @@ module.exports = function(){
         var options = {
             method : 'PATCH',
             timeout : 3000,
-            uri : config()['market']['rurl'] + `/businesscourse/v1/thaw/${argvs.id}`
+            uri : config()['other']['rurl'] + `/businesscourse/v1/thaw/${argvs.id}`,
+            headers : {
+                userToken : argvs.userToken
+            }
         };
         return request(options);
     };
     //获取总条数
-    this.getCourseTotal = function(){
+    this.getCourseTotal = function(argvs){
         var options = {
             method : 'GET',
             timeout : 3000,
-            uri : config()['market']['rurl'] + '/businesscourse/v1/getTotal'
+            uri : config()['other']['rurl'] + '/businesscourse/v1/getTotal',
+            headers : {
+                userToken : argvs.userToken
+            }
         };
         return request(options);
     };
     // 获取业务类型的数据
-    this.CourseFindType = function(){
+    this.CourseFindType = function(argvs){
         var options = {
             method : 'GET',
             timeout : 3000,
-            uri : config()['market']['rurl'] + '/businesstype/v1/findThaw',
+            uri : config()['other']['rurl'] + '/businesstype/v1/findThaw',
+            headers : {
+                userToken : argvs.userToken
+            }
+        };
+        return request(options);
+    };
+    //权限设置
+    this.listSetting = function(argvs){
+        var options = {
+            method : 'GET',
+            timeout : 3000,
+            uri : config()['other']['rurl'] + `/marpermission/v1/list?limit=10&page=${argvs.page}`,
+            headers : {
+                userToken : argvs.token
+            }
+        };
+        return request(options);
+    };
+    this.countSetting = function(){
+        var options = {
+            method : 'GET',
+            timeout : 3000,
+            uri : config()['other']['rurl'] + '/marpermission/v1/count',
+        };
+        return request(options);
+    };
+    this.getpermit = function(argvs){
+        var options = {
+            method : 'GET',
+            timeout : 3000,
+            uri : config()['other']['rurl'] + `/marpermission/v1/getOneById/${argvs.id}`,
+        };
+        return request(options);
+    };
+    this.getListpermit = function(argvs){
+        var options = {
+            method : 'GET',
+            timeout : 3000,
+            uri : config()['other']['rurl'] + `/marpermission/v1/listOperateById/${argvs.id}`,
+        };
+        return request(options);
+    };
+    this.editSetting = function(argvs){
+        var options = {
+            method : 'PUT',
+            timeout : 3000,
+            uri : config()['other']['rurl'] + `/marpermission/v1/edit/${argvs.id}`,
+            headers:{
+                userToken:argvs.token
+            },
+            form:argvs
         };
         return request(options);
     };

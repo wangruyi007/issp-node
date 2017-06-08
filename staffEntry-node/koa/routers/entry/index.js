@@ -375,8 +375,7 @@ module.exports = function(){
             }));
     }).get('/countSetting', function*(){
         var $self = this;
-        var data = {userToken:$self.cookies.get('token')};
-        yield (server().countSetting(data)
+        yield (server().countSetting()
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
                 $self.body = responseText;
@@ -388,7 +387,6 @@ module.exports = function(){
     }).get('/getpermit', function*(){
         var $self = this;
         var getId = $self.request.query;
-        getId.userToken = $self.cookies.get('token');
         yield (server().getpermit(getId)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -401,7 +399,6 @@ module.exports = function(){
     }).get('/getListpermit', function*(){
         var $self = this;
         var listPermit = $self.request.query;
-        listPermit.userToken = $self.cookies.get('token');
         yield (server().getListpermit(listPermit)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);

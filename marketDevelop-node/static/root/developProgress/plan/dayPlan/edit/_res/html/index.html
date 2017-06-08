@@ -3,17 +3,13 @@
         <section>
             <ul>
                 <li class="required">
-                    <label><i><img src="/images/mandatory.png"></i><em>序号</em></label>
-                    <input type="text" ng-verify="{}" ng-model="editDay.serialNumber">
-                </li>
-                <li class="required">
                     <label><i><img src="/images/mandatory.png"></i><em>时间</em></label>
-                    <input type="text" ng-verify="{}" onClick="laydate({istime: true, format: 'YYYY-MM-DD'})" class="add_image editTime" ng-model="editDay.time">
+                    <input type="text" onClick="laydate({istime: true, format: 'YYYY-MM-DD'})" class="add_image editTime" ng-model="editDay.time">
 
                 </li>
                 <li class="required">
                     <label><i><img src="/images/mandatory.png"></i><em>业务状态</em></label>
-                    <select class="sele" ng-model="editDay.business">
+                    <select class="sele" ng-model="editDay.business" ng-options='x.id as x.name for x  in [{id:true,name:"立项前"},{id:false,name:"立项后"}]'>
                         <option value=true>立项前</option>
                         <option value=false>立项后</option>
                     </select>
@@ -21,17 +17,13 @@
                 <li class="required">
                     <label><i><img src="/images/mandatory.png"></i><em>业务类型</em></label>
                     <select class="sele" ng-model="editDay.type">
-                        <option value="0">1</option>
-                        <option value="1">2</option>
-                        <option value="2">3</option>
+                        <option ng-repeat="type in types">{{type.type}}</option>
                     </select>
                 </li>
                 <li class="required">
                     <label><i><img src="/images/mandatory.png"></i><em>业务方向科目</em></label>
-                    <select class="sele" ng-model="editDay.source">
-                        <option value="0">1</option>
-                        <option value="1">2</option>
-                        <option value="2">3</option>
+                    <select class="sele" ng-model="editDay.source" ng-init="editDay.source">
+                        <option ng-repeat="course in courses">{{course.course}}</option>
                     </select>
                 </li>
                 <li class="required">
@@ -68,14 +60,14 @@
                 </li>
                 <li>
                     <label><i><img src="/images/mandatory.png"></i><em>客户电话</em></label>
-                    <input type="text" ng-model="editDay.phone">
+                    <input type="text" ng-verify="{}" ng-model="editDay.phone">
                 </li>
                 <li class="required">
                     <label><i><img src="/images/mandatory.png"></i><em>商务内容</em></label>
                     <input type="text" ng-verify="{}" ng-model="editDay.businessContent">
                 </li>
                 <li>
-                    <label><i><img src="/images/mandatory.png"></i><em>配合人</em></label>
+                    <label><em>配合人</em></label>
                     <input type="text" ng-model="editDay.coordinate">
                 </li>
             </ul>

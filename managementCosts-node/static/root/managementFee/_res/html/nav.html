@@ -1,11 +1,13 @@
-<div class="nav-list">
-    <h3 class="header-menu big"><i class="nav-arrow"></i>管理费用</h3>
-    <ul class="menu">
+<div class="nav-list" ng-repeat="list in showsList">
+    <h3 class="header-menu big" ng-click="showMenu(list,true)">
+        <i class="nav-arrow" ng-class="{true: '', false: 'change-angle'}[list.showIs]"></i>
+        {{list.item}}</h3>
+    <ul class="menu" ng-if="list.menuList.length"  ng-show="list.showIs" ng-repeat="menuInfo in list.menuList">
         <li ng-click="navClass('managementSpend')" ng-class="{'active':navCla=='managementSpend'}"  ui-sref="_root.managementFee.managementSpend.list">
-            <a href="javascript:void(0)">管理费</a>
+            <a href="javascript:void(0)">{{menuInfo.name}}</a>
         </li>
         <li ng-click="navClass('outsourcingFee')" ng-class="{'active':navCla=='outsourcingFee'}" ui-sref="_root.managementFee.outsourcingFee.list">
-            <a href="javascript:void(0)">外包管理费</a>
+            <a href="javascript:void(0)">{{menuInfo.name2}}</a>
         </li>
     </ul>
 </div>
