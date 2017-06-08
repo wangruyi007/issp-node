@@ -4,6 +4,8 @@ app.controller('costDetailsCtrl', function($scope,$state,$stateParams,toastr,cos
     costSer.collectAreaDetails(contId).then(function(response){
         if(response.data.code==0){
             $scope.showInfo=response.data.data;
+        }else{
+            toastr.error(response.data.msg, '温馨提示');
         }
     });
     $scope.moreList = function(event){

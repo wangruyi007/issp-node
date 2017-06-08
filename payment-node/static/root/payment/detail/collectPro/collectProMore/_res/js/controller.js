@@ -7,7 +7,7 @@ app.controller('detailCollectProMoreCtrl', function($scope, detailSer,toastr,$st
         if(response.data.code==0){
             $scope.detailListfs = response.data
         }else{
-            toastr.error( "请求超时，请联系管理员", '温馨提示');
+            toastr.error(response.data.msg,'温馨提示')
         }
     });
     //点击更多详细

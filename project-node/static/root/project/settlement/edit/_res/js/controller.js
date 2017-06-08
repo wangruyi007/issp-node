@@ -1,5 +1,5 @@
-var app = angular.module('settlementEdit', ['toastr','ipCookie']);
-app.controller('settlementEditCtrl', function($scope, settlementSer,$state,toastr,$stateParams,ipCookie,$location){
+var app = angular.module('settlementEdit', ['toastr']);
+app.controller('settlementEditCtrl', function($scope, settlementSer,$state,toastr,$stateParams){
     var settlementId = {id : $stateParams.id};
     //获取值
     settlementSer.getSettlementById(settlementId).then(function(response){
@@ -20,15 +20,8 @@ app.controller('settlementEditCtrl', function($scope, settlementSer,$state,toast
             if(response.data.code == 0){
                 $state.go('root.project.settlement.list');
                 toastr.success( "已成功编辑", '温馨提示');
-            }else if(response.data.code==403||response.data.code==401){
-                toastr.error( "请登录用户,2秒后跳至登陆页面", '温馨提示');
-                var absurl = $location.absUrl();
-                ipCookie('absurl', absurl,{ expires:3,expirationUnit: 'minutes',domain:'issp.bjike.com'});
-                setTimeout(function(){
-                    window.location.href='http://localhost/login'
-                },2000)
-            }else if(response.data.code==1){
-                toastr.error( response.data.msg, '温馨提示');
+            }else{
+                toastr.error(response.data.msg, '温馨提示');
             }
         });
     };

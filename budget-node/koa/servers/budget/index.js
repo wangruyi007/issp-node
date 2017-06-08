@@ -8,14 +8,20 @@ module.exports = function(){
             method : 'GET',
             timeout : 3000,
             uri : config()['rurl'] + `/projectweek/v1/list?limit=10&page=${argvs.page}`,
+            headers : {
+                userToken:argvs.token
+            }
         };
         return request(options);
     };
-    this.proWeekCount = function(){
+    this.proWeekCount = function(argvs){
         var options = {
             method : 'GET',
             timeout : 3000,
             uri : config()['rurl'] + '/projectweek/v1/countNum',
+            headers : {
+                userToken:argvs.token
+            }
         };
         return request(options);
     };
@@ -36,6 +42,9 @@ module.exports = function(){
             method : 'GET',
             timeout : 3000,
             uri : config()['rurl'] + `/projectweek/v1/projectweek/${argvs.id}`,
+            headers : {
+                userToken:argvs.token
+            }
         };
         return request(options);
     };
@@ -75,20 +84,26 @@ module.exports = function(){
         return request(options);
     };
     //汇总
-    this.proWeekSummary = function(){
+    this.proWeekSummary = function(argvs){
         var options = {
             method : 'GET',
             timeout : 3000,
-            uri : config()['rurl'] + `/projectweek/v1/count`
+            uri : config()['rurl'] + `/projectweek/v1/count`,
+            headers : {
+                userToken:argvs.token
+            }
         };
         return request(options);
     };
     //查询所有项目
-    this.proWeekGetSummaryById = function(){
+    this.proWeekGetSummaryById = function(argvs){
         var options = {
             method : 'GET',
             timeout : 3000,
             uri : config()['rurl'] + `/projectweek/v1/findAllProjects`,
+            headers : {
+                userToken:argvs.token
+            }
         };
         return request(options);
     };
@@ -98,23 +113,32 @@ module.exports = function(){
             method : 'GET',
             timeout : 3000,
             uri : config()['rurl'] + `/projectmonth/v1/list?limit=10&page=${argvs.page}`,
+            headers : {
+                userToken:argvs.token
+            }
         };
         return request(options);
     };
-    this.proMonthCount = function(){
+    this.proMonthCount = function(argvs){
         var options = {
             method : 'GET',
             timeout : 3000,
             uri : config()['rurl'] + '/projectmonth/v1/countNum',
+            headers : {
+                userToken:argvs.token
+            }
         };
         return request(options);
     };
     //查询所有项目
-    this.proMonthGetSummaryById = function(){
+    this.proMonthGetSummaryById = function(argvs){
         var options = {
             method : 'GET',
             timeout : 3000,
-            uri : config()['rurl'] + `/projectmonth/v1/findAllProjects`
+            uri : config()['rurl'] + `/projectmonth/v1/findAllProjects`,
+            headers : {
+                userToken:argvs.token
+            }
         };
         return request(options);
     };
@@ -131,11 +155,14 @@ module.exports = function(){
         return request(options);
     };
     //无参汇总
-    this.proMonthSummary = function(){
+    this.proMonthSummary = function(argvs){
         var options = {
             method : 'GET',
             timeout : 3000,
-            uri : config()['rurl'] + `/projectmonth/v1/count`
+            uri : config()['rurl'] + `/projectmonth/v1/count`,
+            headers : {
+                userToken:argvs.token
+            }
         };
         return request(options);
     };
@@ -144,6 +171,9 @@ module.exports = function(){
             method : 'GET',
             timeout : 3000,
             uri : config()['rurl'] + `/projectmonth/v1/findDetail/${argvs.id}`,
+            headers : {
+                userToken:argvs.token
+            }
         };
         return request(options);
     };
@@ -153,14 +183,20 @@ module.exports = function(){
             method : 'GET',
             timeout : 3000,
             uri : config()['rurl'] + `/arrivalweek/v1/list?limit=10&page=${argvs.page}`,
+            headers : {
+                userToken:argvs.token
+            }
         };
         return request(options);
     };
-    this.areaWeekCount = function(){
+    this.areaWeekCount = function(argvs){
         var options = {
             method : 'GET',
             timeout : 3000,
             uri : config()['rurl'] + '/arrivalweek/v1/countNum',
+            headers : {
+                userToken:argvs.token
+            }
         };
         return request(options);
     };
@@ -181,6 +217,9 @@ module.exports = function(){
             method : 'GET',
             timeout : 3000,
             uri : config()['rurl'] + `/arrivalweek/v1/arrivalweek/${argvs.id}`,
+            headers : {
+                userToken:argvs.token
+            }
         };
         return request(options);
     };
@@ -218,20 +257,26 @@ module.exports = function(){
         };
         return request(options);
     };
-    this.areaWeekSummary = function(){
+    this.areaWeekSummary = function(argvs){
         var options = {
             method : 'GET',
             timeout : 3000,
-            uri : config()['rurl'] + `/arrivalweek/v1/count`
+            uri : config()['rurl'] + `/arrivalweek/v1/count`,
+            headers : {
+                userToken:argvs.token
+            }
         };
         return request(options);
     };
     //查询所有地区
-    this.areaWeekGetSummaryById = function(){
+    this.areaWeekGetSummaryById = function(argvs){
         var options = {
             method : 'GET',
             timeout : 3000,
-            uri : config()['rurl'] + `/arrivalweek/v1/findAllArrivals`
+            uri : config()['rurl'] + `/arrivalweek/v1/findAllArrivals`,
+            headers : {
+                userToken:argvs.token
+            }
         };
         return request(options);
     };
@@ -240,14 +285,20 @@ module.exports = function(){
             method : 'GET',
             timeout : 3000,
             uri : config()['rurl'] + `/arrivalmonth/v1/list?limit=10&page=${argvs.page}`,
+            headers : {
+                userToken:argvs.token
+            }
         };
         return request(options);
     };
-    this.areaMonthCount = function(){
+    this.areaMonthCount = function(argvs){
         var options = {
             method : 'GET',
             timeout : 3000,
             uri : config()['rurl'] + '/arrivalmonth/v1/countNum',
+            headers : {
+                userToken:argvs.token
+            }
         };
         return request(options);
     };
@@ -262,19 +313,25 @@ module.exports = function(){
         };
         return request(options);
     };
-    this.areaMonthSummary = function(){
+    this.areaMonthSummary = function(argvs){
         var options = {
             method : 'GET',
             timeout : 3000,
-            uri : config()['rurl'] + `/arrivalmonth/v1/count`
+            uri : config()['rurl'] + `/arrivalmonth/v1/count`,
+            headers : {
+                userToken:argvs.token
+            }
         };
         return request(options);
     };
-    this.areaMonthGetSummaryById = function(){
+    this.areaMonthGetSummaryById = function(argvs){
         var options = {
             method : 'GET',
             timeout : 3000,
-            uri : config()['rurl'] + `/arrivalmonth/v1/findAllArrivals`
+            uri : config()['rurl'] + `/arrivalmonth/v1/findAllArrivals`,
+            headers : {
+                userToken:argvs.token
+            }
         };
         return request(options);
     };
@@ -283,6 +340,9 @@ module.exports = function(){
             method : 'GET',
             timeout : 3000,
             uri : config()['rurl'] + `/arrivalmonth/v1/findDetail/${argvs.id}`,
+            headers : {
+                userToken:argvs.token
+            }
         };
         return request(options);
     };
@@ -291,14 +351,20 @@ module.exports = function(){
             method : 'GET',
             timeout : 3000,
             uri : config()['rurl'] + `/warn/v1/list?limit=10&page=${argvs.page}`,
+            headers : {
+                userToken:argvs.token
+            }
         };
         return request(options);
     };
-    this.warningCount = function(){
+    this.warningCount = function(argvs){
         var options = {
             method : 'GET',
             timeout : 3000,
             uri : config()['rurl'] + '/warn/v1/countNum',
+            headers : {
+                userToken:argvs.token
+            }
         };
         return request(options);
     };
@@ -319,6 +385,9 @@ module.exports = function(){
             method : 'GET',
             timeout : 3000,
             uri : config()['rurl'] + `/warn/v1/moneyready/${argvs.id}`,
+            headers : {
+                userToken:argvs.token
+            }
         };
         return request(options);
     };
@@ -346,27 +415,80 @@ module.exports = function(){
         return request(options);
     };
     //项目收入周
-    this.projectsAllCostById = function(){
+    this.projectsAllCostById = function(argvs){
         var options = {
             method : 'GET',
             timeout : 3000,
             uri : config()['rurl'] + '/projectweek/v1/list?_includes=workDifferences,incomeDifferences',
+            headers : {
+                userToken:argvs.token
+            }
         };
         return request(options);
     };
-    this.areaAllCostById = function(){
+    this.areaAllCostById = function(argvs){
         var options = {
             method : 'GET',
             timeout : 3000,
             uri : config()['rurl'] + '/arrivalweek/v1/list?_includes=workDifferences,incomeDifferences',
+            headers : {
+                userToken:argvs.token
+            }
         };
         return request(options);
     };
-    this.logout = function(argvs){
+    this.listSetting = function(argvs){
         var options = {
-            method : 'POST',
+            method : 'GET',
             timeout : 3000,
-            uri : config()['user'] + `/v1/sign-out/${argvs.token}`,
+            uri : config()['rurl'] + `/cuspermission/v1/list?limit=10&page=${argvs.page}`,
+            headers : {
+                userToken:argvs.token
+            }
+        };
+        return request(options);
+    };
+    this.countSetting = function(argvs){
+        var options = {
+            method : 'GET',
+            timeout : 3000,
+            uri : config()['rurl'] + '/cuspermission/v1/count',
+            headers : {
+                userToken:argvs.token
+            }
+        };
+        return request(options);
+    };
+    this.getpermit = function(argvs){
+        var options = {
+            method : 'GET',
+            timeout : 3000,
+            uri : config()['rurl'] + `/cuspermission/v1/getOneById/${argvs.id}`,
+            headers : {
+                userToken:argvs.token
+            }
+        };
+        return request(options);
+    };
+    this.getListpermit = function(argvs){
+        var options = {
+            method : 'GET',
+            timeout : 3000,
+            uri : config()['rurl'] + `/cuspermission/v1/listOperateById/${argvs.id}`,
+            headers : {
+                userToken:argvs.token
+            }
+        };
+        return request(options);
+    };
+    this.editSetting = function(argvs){
+        var options = {
+            method : 'PUT',
+            timeout : 3000,
+            uri : config()['rurl'] + '/cuspermission/v1/edit',
+            headers:{
+                userToken:argvs.token
+            },
             form:argvs
         };
         return request(options);

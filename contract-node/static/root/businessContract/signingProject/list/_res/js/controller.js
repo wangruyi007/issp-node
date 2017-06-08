@@ -35,7 +35,6 @@ app.controller('signingListCtrl',function($scope,signingSer,toastr){
                 makeProject: $scope.makeProject
             };
             signingSer.countSigning(keywords).then(function (response) {
-                console.log(response)
                 if(response.data.code==0){
                     $scope.custom.itemsCount = response.data.data;
                 }else{
@@ -54,7 +53,6 @@ app.controller('signingListCtrl',function($scope,signingSer,toastr){
                 page: page
             };
             signingSer.signingList(data).then(function(response){
-                console.log(response)
                 if(response.data.code == 0){
                     $scope.signingLists = response.data.data
                 }else{

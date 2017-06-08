@@ -18,7 +18,7 @@ app.controller('settingListCtrl',function($scope,settingSer,toastr){
             }else if(response.data.code==1){
                 toastr.error( response.data.msg, '温馨提示');
             }else{
-                toastr.error( "请求超时，请联系管理员", '温馨提示');
+                toastr.error(response.data.msg, '温馨提示');
             }
         });
     }
@@ -28,7 +28,7 @@ app.controller('settingListCtrl',function($scope,settingSer,toastr){
         }else if(response.data.code==1){
             toastr.error( response.data.msg, '温馨提示');
         }else{
-            toastr.error( "请求超时，请联系管理员", '温馨提示');
+            toastr.error(response.data.msg, '温馨提示');
         }
     });
     $scope.selectList = function(event){
