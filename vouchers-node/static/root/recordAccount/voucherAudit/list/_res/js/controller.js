@@ -4,13 +4,13 @@ app.controller('voucherAuditListCtrl',function($scope,auditSer,toastr){
     function activatePage(page) {
         var listData = {
             page:page
-        }
+        };
         auditSer.AuditList(listData).then(function(response){
             if(response.data.code==0){
 
                 $scope.auditLists = response.data.data
             }else{
-                toastr.error( "请求超时，请联系管理员", '温馨提示');
+                toastr.error(response.data.msg, '温馨提示');
             }
         });
     }
@@ -61,7 +61,7 @@ app.controller('voucherAuditListCtrl',function($scope,auditSer,toastr){
         if(response.data.code==0){
             $scope.custom.itemsCount = response.data.data;
         }else{
-            toastr.error( "请求超时，请联系管理员", '温馨提示');
+            toastr.error(response.data.msg, '温馨提示');
         }
     })
 

@@ -11,15 +11,21 @@ module.exports = function(){
             method : 'GET',
             timeout : 3000,
             uri : config()['rurl'] + `/managefee/v1/list?limit=10&page=${argvs.page}`,
+            headers:{
+                userToken:argvs.userToken
+            }
         };
         return request(options);
     };
     //获取管理费所有年份
-    this.getFeeYear = function(){
+    this.getFeeYear = function(argvs){
         var options = {
             method : 'GET',
             timeout : 3000,
-            uri : config()['rurl'] + '/managefee/v1/listYear'
+            uri : config()['rurl'] + '/managefee/v1/listYear',
+            headers:{
+                userToken:argvs.userToken
+            }
         };
         return request(options);
     };
@@ -54,7 +60,10 @@ module.exports = function(){
         var options = {
             method : 'GET',
             timeout : 3000,
-            uri : config()['rurl'] + `/managefee/v1/getOneById/${argvs.id}`
+            uri : config()['rurl'] + `/managefee/v1/getOneById/${argvs.id}`,
+            headers:{
+                userToken:argvs.userToken
+            }
         };
         return request(options);
     };
@@ -71,11 +80,14 @@ module.exports = function(){
         return request(options);
     };
     //获取总条数管理费
-    this.getFeeTotal = function(){
+    this.getFeeTotal = function(argvs){
         var options = {
             method : 'GET',
             timeout : 3000,
-            uri : config()['rurl'] + '/managefee/v1/count'
+            uri : config()['rurl'] + '/managefee/v1/count',
+            headers:{
+                userToken:argvs.userToken
+            }
         };
         return request(options);
     };
@@ -93,11 +105,14 @@ module.exports = function(){
         return request(options);
     };
     //获取管理费所有地区
-    this.getFeeArea = function(){
+    this.getFeeArea = function(argvs){
         var options = {
             method : 'GET',
             timeout : 3000,
-            uri : config()['rurl'] + '/managefee/v1/listArea'
+            uri : config()['rurl'] + '/managefee/v1/listArea',
+            headers:{
+                userToken:argvs.userToken
+            }
         };
         return request(options);
     };
@@ -115,11 +130,14 @@ module.exports = function(){
         return request(options);
     };
     //获取管理费所有项目组
-    this.getFeeGroup = function(){
+    this.getFeeGroup = function(argvs){
         var options = {
             method : 'GET',
             timeout : 3000,
-            uri : config()['rurl'] + '/managefee/v1/listGroup'
+            uri : config()['rurl'] + '/managefee/v1/listGroup',
+            headers:{
+                userToken:argvs.userToken
+            }
         };
         return request(options);
     };
@@ -150,11 +168,14 @@ module.exports = function(){
         return request(options);
     };
     //获取管理费所有汇总项目名称
-    this.getFeeProject = function(){
+    this.getFeeProject = function(argvs){
         var options = {
             method : 'GET',
             timeout : 3000,
-            uri : config()['rurl'] + '/managefee/v1/listProject'
+            uri : config()['rurl'] + '/managefee/v1/listProject',
+            headers:{
+                userToken:argvs.userToken
+            }
         };
         return request(options);
     };
@@ -164,18 +185,21 @@ module.exports = function(){
             method : 'GET',
             timeout : 3000,
             uri : config()['rurl'] + `/outfee/v1/list?limit=10&page=${argvs.page}`,
-            headers : {
-                // token : token
+            headers:{
+                userToken:argvs.userToken
             }
         };
         return request(options);
     };
     //获取外包费所有年份
-    this.getOutFeeYear = function(){
+    this.getOutFeeYear = function(argvs){
         var options = {
             method : 'GET',
             timeout : 3000,
-            uri : config()['rurl'] + '/outfee/v1/listYear'
+            uri : config()['rurl'] + '/outfee/v1/listYear',
+            headers:{
+                userToken:argvs.userToken
+            }
         };
         return request(options);
     };
@@ -210,7 +234,10 @@ module.exports = function(){
         var options = {
             method : 'GET',
             timeout : 3000,
-            uri : config()['rurl'] + `/outfee/v1/getOneById/${argvs.id}`
+            uri : config()['rurl'] + `/outfee/v1/getOneById/${argvs.id}`,
+            headers:{
+                userToken:argvs.userToken
+            }
         };
         return request(options);
     };
@@ -227,11 +254,14 @@ module.exports = function(){
         return request(options);
     };
     //获取总条数外包费
-    this.getOutFeeTotal = function(){
+    this.getOutFeeTotal = function(argvs){
         var options = {
             method : 'GET',
             timeout : 3000,
-            uri : config()['rurl'] + '/outfee/v1/count'
+            uri : config()['rurl'] + '/outfee/v1/count',
+            headers:{
+                userToken:argvs.userToken
+            }
         };
         return request(options);
     };
@@ -249,11 +279,14 @@ module.exports = function(){
         return request(options);
     };
     //获取外包费所有地区
-    this.getOutFeeArea = function(){
+    this.getOutFeeArea = function(argvs){
         var options = {
             method : 'GET',
             timeout : 3000,
-            uri : config()['rurl'] + '/outfee/v1/listArea'
+            uri : config()['rurl'] + '/outfee/v1/listArea',
+            headers:{
+                userToken:argvs.userToken
+            }
         };
         return request(options);
     };
@@ -271,11 +304,14 @@ module.exports = function(){
         return request(options);
     };
     //获取外包费所有项目组
-    this.getOutFeeGroup = function(){
+    this.getOutFeeGroup = function(argvs){
         var options = {
             method : 'GET',
             timeout : 3000,
-            uri : config()['rurl'] + '/outfee/v1/listGroup'
+            uri : config()['rurl'] + '/outfee/v1/listGroup',
+            headers:{
+                userToken:argvs.userToken
+            }
         };
         return request(options);
     };
@@ -306,21 +342,14 @@ module.exports = function(){
         return request(options);
     };
     //获取外包费所有汇总项目名称
-    this.getOutFeeProject = function(){
+    this.getOutFeeProject = function(argvs){
         var options = {
             method : 'GET',
             timeout : 3000,
-            uri : config()['rurl'] + '/outfee/v1/listProject'
-        };
-        return request(options);
-    };
-    //退出
-    this.logout = function(argvs){
-        var options = {
-            method : 'POST',
-            timeout : 3000,
-            uri : config()['user'] + `/v1/sign-out/${argvs.token}`,
-            form:argvs
+            uri : config()['rurl'] + '/outfee/v1/listProject',
+            headers:{
+                userToken:argvs.userToken
+            }
         };
         return request(options);
     };

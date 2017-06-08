@@ -2,26 +2,41 @@ var app = angular.module('yearPlanEdit', ['toastr']);
 app.controller('yearPlanEditCtrl', function($scope, yearPlanSer,$stateParams,$state,toastr){
     var yearData ={yearId: $stateParams.id};
 
-    //年份
+    //id
     yearPlanSer.yearSearch(yearData).then(function(response){
-        if(response.data.code=='0'){
+        if(response.data.code==0){
             $scope.editYear = response.data.data;
-        }else if (response.data.code==403){
-            toastr.error( "请登录用户", '温馨提示');
+        }else {
+            toastr.error( response.data.msg, '温馨提示');
         }
 
     });
 
-
+    //获取业务类型
+    yearPlanSer.getType().then(function(response){
+        if(response.data.code==0){
+            $scope.types = response.data.data;
+        }else {
+            toastr.error( response.data.msg, '温馨提示');
+        }
+    });
+    //获取业务方向科目
+    yearPlanSer.getCourse().then(function(response){
+        if(response.data.code==0){
+            $scope.courses = response.data.data;
+        }else {
+            toastr.error( response.data.msg, '温馨提示');
+        }
+    });
     // //客户编辑
     $scope.yearPlanEditFun = function(){
         var vm = $scope;
         yearPlanSer.editYearPlan(vm.editYear).then(function(response){
             if(response.data.code == 0){
-                $state.go('root.developProgress.plan.yearPlan.list')
+                $state.go('root.developProgress.plan.yearPlan.list');
                 toastr.success( "编辑成功", '温馨提示');
-            }else if(response.data.code == 403){
-                toastr.error( "请登录用户", '温馨提示');
+            }else {
+                toastr.error( response.data.msg, '温馨提示');
             }
         });
 

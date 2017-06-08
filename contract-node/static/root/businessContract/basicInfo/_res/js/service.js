@@ -31,8 +31,8 @@ app.factory('basicSer',function ($http) {
         })
     }
     //分页总条数
-    function countBasicInfo(){
-        return $http.get('/baseinfomanage/count')
+    function countBasicInfo(data){
+        return $http.get('/baseinfomanage/count',{params:data})
     }
     //删除
     function deleteBasicInfo(data){

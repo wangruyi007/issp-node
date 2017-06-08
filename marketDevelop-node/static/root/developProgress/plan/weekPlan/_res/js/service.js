@@ -8,13 +8,13 @@ app.factory('weekPlanSer',function ($http) {
         weekByMonth:weekByMonth,
         countWeek:countWeek,
         getWeekChoice:getWeekChoice,
-        deleteWeekplan:deleteWeekplan
+        deleteWeekplan:deleteWeekplan,
+        getCourse:getCourse
 
     };
     function weekPlanList(data) {
         return $http.get('/plan/weekplan/maps',{
             params: data
-
         })
     }
     //添加
@@ -50,5 +50,9 @@ app.factory('weekPlanSer',function ($http) {
         return $http.get('/plan/weekplan/delete',{
             params:data
         })
+    }
+    //获取业务方向科目数据
+    function getCourse(){
+        return $http.get('/businesscourse/findThaw')
     }
 });

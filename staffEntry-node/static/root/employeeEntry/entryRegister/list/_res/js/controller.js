@@ -29,7 +29,7 @@ app.controller('entryRegisterListCtrl',function($scope,registerSer,toastr) {
     function activatePage(page) {
         var listData = {
             page:page
-        }
+        };
         registerSer.allList(listData).then(function(response){
             if(response.data.code==0){
                 $scope.applylendLists = response.data

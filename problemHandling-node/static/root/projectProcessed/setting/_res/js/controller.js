@@ -8,7 +8,7 @@ app.controller('settingCtrl',function ($scope,$state) {
     if ($state.current.url == '/setting') {//默认加载列表
         $state.go('root.projectProcessed.setting.list[12]')
     }
-
+    $scope.$emit('isVi',false);//判断是否出现搜索按钮
 }).controller('settingMenuCtrl',function($scope,$state,$rootScope,$location){
     var urlName = $state.current.url.split('/')[1].split('[')[0];
     $scope.menuClass=urlName+"Menu";

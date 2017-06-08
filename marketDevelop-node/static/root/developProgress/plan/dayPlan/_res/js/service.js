@@ -6,8 +6,9 @@ app.factory('dayPlanSer',function ($http) {
         editDayPlan:editDayPlan,
         daySearch:daySearch,
         countDay:countDay,
-        deleteDayPlan:deleteDayPlan
-
+        deleteDayPlan:deleteDayPlan,
+        getType:getType,
+        getCourse:getCourse
     };
     function dayPlanList(data) {
 
@@ -39,5 +40,13 @@ app.factory('dayPlanSer',function ($http) {
         return $http.get('/plan/dayplan/delete',{
             params: data
         })
+    }
+    //获取业务类型
+    function getType(){
+        return $http.get('/businesstype/findThaw')
+    }
+    //获取业务方向科目数据
+    function getCourse(){
+        return $http.get('/businesscourse/findThaw')
     }
 });

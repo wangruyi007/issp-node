@@ -1,6 +1,10 @@
-var app = angular.module('interactList', ['ng-pagination','toastr','ipCookie']);
-app.controller('interactListCtrl',function($scope,contactSer,toastr,$location,ipCookie){
+var app = angular.module('interactList', ['ng-pagination','toastr']);
+app.controller('interactListCtrl',function($scope,contactSer,toastr){
     $scope.$emit('changeId', null);
+    //监听切换搜索是否出现
+    $scope.$on('iSsearch',function(event,newIs){
+        $scope.isView = newIs;
+    });
     function activatePage(page) {
         var listData = {
             page:page
@@ -8,34 +12,24 @@ app.controller('interactListCtrl',function($scope,contactSer,toastr,$location,ip
         contactSer.interactList(listData).then(function(response){
             if(response.data.code==0){
                 $scope.interactLists = response.data.data
-            }else if(response.data.code==403||response.data.code==401){
-                toastr.error( "请登录用户,2秒后跳至登陆页面", '温馨提示');
-                var absurl = $location.absUrl();
-                ipCookie('absurl', absurl,{ expires:3,expirationUnit: 'minutes',domain:'issp.bjike.com' });
-                setTimeout(function(){
-                    window.location.href='http://localhost/login'
-                },2000)
-            }else if(response.data.code==1){
+            }else{
                 toastr.error( response.data.msg, '温馨提示');
             }
         });
+        //搜索功能
         $scope.collect = function(){
             $scope.custom = {
                 itemsCount: 2, //总条数
                 take: 10, //每页显示
                 activatePage: activatePage
             };
-            contactSer.countInteract2($scope.companyName).then(function (response) {
+            var keywords = {
+                companyName: $scope.companyName,
+            };
+            contactSer.countInteract(keywords).then(function (response) {
                 if(response.data.code==0){
                     $scope.custom.itemsCount = response.data.data;
-                }else if(response.data.code==403||response.data.code==401){
-                    toastr.error( "请登录用户,2秒后跳至登陆页面", '温馨提示');
-                    var absurl = $location.absUrl();
-                    ipCookie('absurl', absurl,{ expires:3,expirationUnit: 'minutes',domain:'issp.bjike.com' });
-                    setTimeout(function(){
-                        window.location.href='http://localhost/login'
-                    },2000)
-                }else if(response.data.code==1){
+                }else{
                     toastr.error( response.data.msg, '温馨提示');
                 }
             });
@@ -43,22 +37,17 @@ app.controller('interactListCtrl',function($scope,contactSer,toastr,$location,ip
                 companyName: $scope.companyName,
                 page: page
             };
-            contactSer.searchInteraction(data).then(function(response){
+            contactSer.interactList(data).then(function(response){
                 if(response.data.code == 0){
-                    $scope.interactLists = response.data
-                }else if(response.data.code==403||response.data.code==401){
-                    toastr.error( "请登录用户,2秒后跳至登陆页面", '温馨提示');
-                    var absurl = $location.absUrl();
-                    ipCookie('absurl', absurl,{ expires:3,expirationUnit: 'minutes',domain:'issp.bjike.com' });
-                    setTimeout(function(){
-                        window.location.href='http://localhost/login'
-                    },2000)
-                }else if(response.data.code==1){
+                    $scope.interactLists = response.data.data
+                }else{
                     toastr.error( response.data.msg, '温馨提示');
                 }
             });
         };
     }
+    // 搜索功能字段
+    $scope.titles = ['公司名称'];
 
     $scope.selectList = function(event){
         angular.forEach($scope.interactLists,function(obj){
@@ -99,14 +88,7 @@ app.controller('interactListCtrl',function($scope,contactSer,toastr,$location,ip
     contactSer.countInteract().then(function(response){
         if(response.data.code==0){
             $scope.custom.itemsCount = response.data.data;
-        }else if(response.data.code==403||response.data.code==401){
-            toastr.error( "请登录用户,2秒后跳至登陆页面", '温馨提示');
-            var absurl = $location.absUrl();
-            ipCookie('absurl', absurl,{ expires:3,expirationUnit: 'minutes',domain:'issp.bjike.com' });
-            setTimeout(function(){
-                window.location.href='http://localhost/login'
-            },2000)
-        }else if(response.data.code==1){
+        }else{
             toastr.error( response.data.msg, '温馨提示');
         }
     })

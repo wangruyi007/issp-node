@@ -24,12 +24,14 @@ app.controller('directionCtrl',function ($scope,$state) {
     $scope.delete = function(){
         if($scope.idListd){
             $state.go('root.developProgress.other.directionSubjects.list.delete[12]',{id:$scope.idListd});
+            $scope.menuClass = 'deleteMenu'
         }
-    }
+    };
     //冻结
     $scope.congeal = function(){
         if($scope.idListd){
             $state.go('root.developProgress.other.directionSubjects.list.congeal[12]',{id:$scope.idListd});
+            $scope.menuClass = 'congealMenu'
         }
     };
     $scope.edit = function(){
@@ -37,7 +39,7 @@ app.controller('directionCtrl',function ($scope,$state) {
             $state.go('root.developProgress.other.directionSubjects.edit[12]',{id:$scope.idListd});
             $scope.menuClass = 'editMenu'
         }
-    }
+    };
     $scope.list = function(){
         $scope.menuClass = 'listMenu'
     };

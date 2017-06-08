@@ -4,10 +4,10 @@ app.controller('webEditCtrl', function($scope, websiteSer,$stateParams,$state,to
 
     //获取ID
     websiteSer.findWebsiteId(webData).then(function(response){
-        if(response.data.code=='0'){
+        if(response.data.code==0){
             $scope.webInfoEdit = response.data.data;
-        }else if (response.data.code==403){
-            toastr.error( "请登录用户", '温馨提示');
+        }else{
+            toastr.error( response.data.msg, '温馨提示');
         }
 
     });
@@ -19,8 +19,8 @@ app.controller('webEditCtrl', function($scope, websiteSer,$stateParams,$state,to
             if(response.data.code == 0){
                 $state.go('root.biddingManagement.websiteInfo.list');
                 toastr.success( "编辑成功", '温馨提示');
-            }else if(response.data.code == 403){
-                toastr.error( "请登录用户", '温馨提示');
+            }else{
+                toastr.error( response.data.msg, '温馨提示');
             }
         });
 

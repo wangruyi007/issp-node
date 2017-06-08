@@ -7,7 +7,7 @@ app.controller('emailCtrl',function ($scope,$state) {
     if ($state.current.url == '/mailSummary') {//默认加载列表
         $state.go('root.businessContract.mailSummary.list')
     }
-
+    $scope.$emit('isVi',false);//判断是否出现搜索按钮
 }).controller('emailMenuCtrl',function($scope,$state,$rootScope,$location){
     var urlName = $state.current.url.split('/')[1].split('[')[0];
     $scope.menuClass = urlName + "Menu";

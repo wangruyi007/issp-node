@@ -5,7 +5,7 @@ app.controller('MaterialDeleteCtrl',function($scope,MaterialSer,toastr,$statePar
 
         var data = {
             id :$stateParams.id
-        }
+        };
 
         MaterialSer.deleteSource(data).then(function(response){
             if(response.data.code==0){
@@ -14,9 +14,9 @@ app.controller('MaterialDeleteCtrl',function($scope,MaterialSer,toastr,$statePar
                 $scope.deledId = $stateParams.id;
                 //向父Ctrl传递事件
                 $scope.$emit('deletedId', $scope.deledId);
-                $$scope.$emit('changeId', null);
-            }else if(response.data.code==403){
-                toastr.error( "请登录用户", '温馨提示');
+                $scope.$emit('changeId', null);
+            }else{
+                toastr.error( response.data.msg, '温馨提示');
             }
         })
     }
