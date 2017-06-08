@@ -1,5 +1,5 @@
-var app = angular.module('cooperationList', ['ng-pagination','toastr','ipCookie']);
-app.controller('cooperationListCtrl',function($scope,cooperationSer,toastr,ipCookie,$location) {
+var app = angular.module('cooperationList', ['ng-pagination','toastr']);
+app.controller('cooperationListCtrl',function($scope,cooperationSer,toastr) {
         $scope.teamInfo = {};
    //选择
     $scope.selectList = function(event){
@@ -28,8 +28,8 @@ app.controller('cooperationListCtrl',function($scope,cooperationSer,toastr,ipCoo
         cooperationSer.listAbilityCooperation(listData).then(function(response){
             if(response.data.code==0){
                 $scope.cooperationLists = response.data
-            }else if(response.data.code == 1){
-                toastr.error( response.data.msg, '温馨提示');
+            }else{
+                toastr.error(response.data.msg, '温馨提示');
             }
         });
         $scope.collect = function(){
@@ -41,8 +41,8 @@ app.controller('cooperationListCtrl',function($scope,cooperationSer,toastr,ipCoo
             cooperationSer.countCooperation2($scope.companyName).then(function (response) {
                 if(response.data.code==0){
                     $scope.abili.itemsCount = response.data.data;
-                }else if(response.data.code == 1){
-                    toastr.error( response.data.msg, '温馨提示');
+                }else{
+                    toastr.error(response.data.msg, '温馨提示');
                 }
             })
             var data = {
@@ -52,8 +52,8 @@ app.controller('cooperationListCtrl',function($scope,cooperationSer,toastr,ipCoo
             cooperationSer.searchCooperationAbility(data).then(function(response){
                 if(response.data.code == 0){
                     $scope.cooperationLists = response.data
-                }else if(response.data.code == 1){
-                    toastr.error( response.data.msg, '温馨提示');
+                }else{
+                    toastr.error(response.data.msg, '温馨提示');
                 }
             });
         };
@@ -66,8 +66,8 @@ app.controller('cooperationListCtrl',function($scope,cooperationSer,toastr,ipCoo
     cooperationSer.countCooperation().then(function(response){
         if(response.data.code==0){
             $scope.abili.itemsCount = response.data.data;
-        }else if(response.data.code == 1){
-            toastr.error( response.data.msg, '温馨提示');
+        }else{
+            toastr.error(response.data.msg, '温馨提示');
         }
     });
     //删除

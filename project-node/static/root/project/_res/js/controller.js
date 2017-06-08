@@ -14,7 +14,7 @@ app.controller('projectCtrl', function ($scope,$state) {
     $scope.navClass= function(name){
         $scope.navCla=name
     };
-    $scope.showsList = [
+      $scope.showsList = [
         {id:"1",item:"项目验收、签字、结算进度管理",menuList:[{name:'项目情况'},{name2:"项目实施情况"},{name3:"项目验收情况"},{name4:"项目合同结算跟进"},{name5:"项目实施审核"}],showIs:false},
         {id:"2",item:"设置",menuList:[{name6:'设置'}],showIs:false},
     ];
@@ -24,7 +24,7 @@ app.controller('projectCtrl', function ($scope,$state) {
                 obj.showIs=!event;
             }else{
                 obj.showIs=event;
-               /* angular.forEach(function(item){ showSubAble sublist*/
+               /* angular.forEach(function(item){*/
                 this.showsList.forEach(function(item){
                     if(item.id!=obj.id){
                         item.showIs=!event;

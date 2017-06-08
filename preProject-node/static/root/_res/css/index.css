@@ -61,7 +61,6 @@ button {
   border: 0;
   font-family: "Microsoft YaHei";
 }
-
 select {
   -webkit-appearance: none;
   appearance: none;
@@ -98,7 +97,10 @@ body {
   display: -ms-flexbox;
   display: flex;
 }
-
+.red{
+  color: white;
+  background-color: #ff7e77;
+}
 .left-section {
   width: 200px;
   height: 100%;

@@ -29,7 +29,6 @@ app.controller('signingCtrl',function ($scope,$state) {
             $scope.menuClass = 'deleteMenu'
         }
     };
-
     $scope.edit = function(){
         if($scope.idListd){
             $state.go('root.businessContract.signingProject.edit[12]',{id:$scope.idListd});
@@ -50,9 +49,14 @@ app.controller('signingCtrl',function ($scope,$state) {
     $scope.add = function(){
         $scope.menuClass = 'addMenu'
     };
+    $scope.upload = function(){
+        $scope.menuClass = 'uploadMenu'
+    };
+    $scope.view = function(){
+        $scope.menuClass = 'viewMenu'
+    };
 
 });
-
 //自定义过滤器
 app.filter('cover',function(){
    return function(val){

@@ -25,12 +25,16 @@ app.controller('detailCollectProCtrl', function($scope, detailSer,$state){
         detailSer.summaryProDetails($scope.innerNames).then(function(response){
             if(response.data.code == 0){
                 $scope.summaryListDetails = response.data.data;
+            }else{
+                toastr.error(response.data.msg,'温馨提示')
             }
         })
     }};
     $scope.collectProMore = function(){
         if($scope.idSocialList){
             $state.go('root.payment.detail.collectPro.collectProMore[12]',{suId:$scope.idSocialList});
+        }else{
+            toastr.error(response.data.msg,'温馨提示')
         }
     };
 });

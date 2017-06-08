@@ -6,12 +6,16 @@ app.controller('detailSummaryCtrl', function($scope, detailSer){
     detailSer.listSummaryArea().then(function(response){
         if(response.data.code == 0){
             $scope.workOptions = response.data.data;
+        }else{
+            toastr.error(response.data.msg,'温馨提示')
         }
     });
     $scope.getSummary ={onSelectionChanged(){
         detailSer.summaryDetail($scope.areas).then(function(response){
             if(response.data.code == 0){
                 $scope.summaryLists = response.data.data;
+            }else{
+                toastr.error(response.data.msg,'温馨提示')
             }
         });
     }};

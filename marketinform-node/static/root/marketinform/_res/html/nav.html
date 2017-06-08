@@ -1,10 +1,10 @@
 <div class="nav-list">
-    <h3 class="header-menu big"><i class="nav-arrow"></i>市场信息管理</h3>
-    <ul class="menu">
+    <h3 class="header-menu big" ng-click="a=!a"><i class="nav-arrow" ng-class="{true: '', false: 'change-angle'}[!a]"></i>市场信息管理</h3>
+    <ul class="menu" ng-show="a">
         <li ng-click="navClass('information')" ng-class="{'active':navCla=='information'}"  ui-sref="_root.marketinform.information.list"><a href="javascript:void(0)">市场管理</a></li>
     </ul>
-    <h3 class="header-menu big"><i class="nav-arrow"></i>设置</h3>
-    <ul class="menu">
+    <h3 class="header-menu big" ng-click="b=!b"><i class="nav-arrow" ng-class="{true: '', false: 'change-angle'}[!b]"></i>设置</h3>
+    <ul class="menu" ng-show="b">
         <li ng-click="navClass('setting')" ng-class="{'active':navCla=='setting'}"  ui-sref="_root.marketinform.setting.list[12]" ><a href="javascript:void(0)">设置</a></li>
     </ul>
 </div>

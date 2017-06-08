@@ -1,5 +1,5 @@
-var app = angular.module('emailList', ['ng-pagination','toastr','ipCookie']);
-app.controller('emailListCtrl',function($scope,emailSer,toastr,ipCookie,$location) {
+var app = angular.module('emailList', ['ng-pagination','toastr']);
+app.controller('emailListCtrl',function($scope,emailSer,toastr) {
     $scope.$emit('changeId', null);
     //分页
     function activatePage(page) {
@@ -9,8 +9,8 @@ app.controller('emailListCtrl',function($scope,emailSer,toastr,ipCookie,$locatio
         emailSer.listAbilityEmail(listData).then(function(response){
             if(response.data.code==0){
                 $scope.emailLists = response.data
-            }else if(response.data.code == 1){
-                toastr.error( response.data.msg, '温馨提示');
+            }else{
+                toastr.error(response.data.msg, '温馨提示');
             }
         });
     }
@@ -22,8 +22,8 @@ app.controller('emailListCtrl',function($scope,emailSer,toastr,ipCookie,$locatio
     emailSer.countEmail().then(function(response){
         if(response.data.code==0){
             $scope.abili.itemsCount = response.data.data;
-        }else if(response.data.code == 1){
-            toastr.error( response.data.msg, '温馨提示');
+        }else{
+            toastr.error(response.data.msg, '温馨提示');
         }
     });
 
@@ -34,10 +34,9 @@ app.controller('emailListCtrl',function($scope,emailSer,toastr,ipCookie,$locatio
         emailSer.thawEmail(data).then(function(response){
             if(response.data.code==0){
                 event.status = "THAW"
-            }else if(response.data.code == 1){
-                toastr.error( response.data.msg, '温馨提示');
+            }else{
+                toastr.error(response.data.msg, '温馨提示');
             }
-
         })
     }
     //选择
