@@ -192,17 +192,25 @@ app.config(function ($provide, $urlRouterProvider) {
 
 app.factory('HttpInterceptor', ['$q', HttpInterceptor]);
 
-function HttpInterceptor($q,toastr){
+function HttpInterceptor($q,toastr,$location){
 
     return {
         request : function(config){
             return config;
         },
         requestError : function(err){
-            console.info(err);
             return $q.reject(err);
         },
         response : function(res){
+            if(res.data.code==403||res.data.code==401){
+                toastr.error( "请登录用户,2秒后跳至登陆页面", '温馨提示');
+                var absurl = $location.absUrl();
+                setTimeout(function(){
+                    window.location.href='http://localhost/login?url='+absurl
+                },2000)
+            }else if(res.data.code==1){
+                toastr.error(res.data.msg, '温馨提示');
+            }
             return res;
         },
         responseError : function(err){
@@ -215,7 +223,6 @@ function HttpInterceptor($q,toastr){
             }else if(404===err.status){
                 toastr.error('服务器出错，请联系管理员', '温馨提示');
             }
-            console.info(err);
             return $q.reject(err);
         }
     };

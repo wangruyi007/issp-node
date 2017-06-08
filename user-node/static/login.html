@@ -76,7 +76,7 @@
                 account:$('#username').val(),
                 password:$('#password').val()
             };
-
+            var link = window.location.href.split('?')[1].split('=')[1];
             $.ajax({
                 url:"/user/login",
                 type:"post",
@@ -84,7 +84,6 @@
                 success:function(response){
                     if(response.code==0){
                         $.cookie("username",user.account,{ expires: 7 });
-                        var link = $.cookie('absurl');
                         if(link){
                             window.location.href=link
                         }else {

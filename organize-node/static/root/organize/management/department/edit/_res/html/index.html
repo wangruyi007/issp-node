@@ -16,13 +16,16 @@
                     <label><i><img src="/images/mandatory.png"></i><em>项目组/部门</em></label>
                     <input type="text"   ng-verify="{}" ng-model="departmentData.department" >
                 </li>
+
                 <li class="required">
                     <label><i><img src="/images/mandatory.png"></i><em>所属地区</em></label>
-                    <select class="sele" ng-model="departmentData.area" >
+                    <select class="sele" ng-model="departmentData.area">
+                        <option value="">请选择</option>
                         <option value="广州">广州</option>
                         <option value="佛山">佛山</option>
                         <option value="江门">江门</option>
                     </select>
+                    <input type="text"  class="inputDom" ng-verify="{}" ng-model="departmentData.area">
                 </li>
 
                 <li class="required">
