@@ -17,7 +17,8 @@ app.factory('detailSer',function ($http) {
         summaryProDetails:summaryProDetails,
         listSummaryGeneral:listSummaryGeneral,
         summaryGeneralDetails:summaryGeneralDetails,
-        summaryGeneralDetail:summaryGeneralDetail
+        summaryGeneralDetail:summaryGeneralDetail,
+        listNameGroup:listNameGroup
     };
     function listDetail(data) {
         return $http.get('/listDetail/list',{
@@ -89,5 +90,8 @@ app.factory('detailSer',function ($http) {
     }
     function summaryGeneralDetails(data){
         return $http.get('/summaryGeneralDetails/summary?contractors='+data.join(','))
+    }
+    function listNameGroup(data) {
+        return $http.post('/listNameGroup/group',{params:data})
     }
 });

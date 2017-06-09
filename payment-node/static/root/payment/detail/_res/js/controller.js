@@ -26,13 +26,19 @@ app.controller('detailCtrl',function ($scope,$state) {
             $state.go('root.payment.detail.list.delete[12]',{id:$scope.idListd});
             $scope.menuClass = 'deleteMenu'
         }
-    }
+    };
     $scope.edit = function(){
         if($scope.idListd){
             $state.go('root.payment.detail.edit[12]',{id:$scope.idListd});
             $scope.menuClass = 'editMenu'
         }
-    }
+    };
+    $scope.settlement = function(){
+        if($scope.idListd){
+            $state.go('root.payment.detail.settlement[12]',{id:$scope.idListd});
+            $scope.menuClass = 'settlementMenu'
+        }
+    };
     $scope.list = function(){
         $scope.menuClass = 'listMenu'
     };

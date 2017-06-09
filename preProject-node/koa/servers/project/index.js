@@ -8,14 +8,20 @@ module.exports = function(){
             method : 'GET',
             timeout : 3000,
             uri : config()['rurl'] + `/warn/v1/list?limit=10&page=${argvs.page}`,
+            headers : {
+                userToken : argvs.token
+            }
         };
         return request(options);
     };
-    this.warningCount = function(){
+    this.warningCount = function(argvs){
         var options = {
             method : 'GET',
             timeout : 3000,
             uri : config()['rurl'] + '/warn/v1/countNum',
+            headers : {
+                userToken : argvs.token
+            }
         };
         return request(options);
     };
@@ -36,6 +42,9 @@ module.exports = function(){
             method : 'GET',
             timeout : 3000,
             uri : config()['rurl'] + `/warn/v1/moneyready/${argvs.id}`,
+            headers : {
+                userToken : argvs.token
+            }
         };
         return request(options);
     };
@@ -68,14 +77,20 @@ module.exports = function(){
             method : 'GET',
             timeout : 3000,
             uri : config()['rurl'] + `/grade/v1/list?limit=10&page=${argvs.page}`,
+            headers : {
+                userToken : argvs.token
+            }
         };
         return request(options);
     };
-    this.gradeCount = function(){
+    this.gradeCount = function(argvs){
         var options = {
             method : 'GET',
             timeout : 3000,
             uri : config()['rurl'] + '/grade/v1/countNum',
+            headers : {
+                userToken : argvs.token
+            }
         };
         return request(options);
     };
@@ -96,6 +111,9 @@ module.exports = function(){
             method : 'GET',
             timeout : 3000,
             uri : config()['rurl'] + `/grade/v1/moneyready/${argvs.id}`,
+            headers : {
+                userToken : argvs.token
+            }
         };
         return request(options);
     };
@@ -128,14 +146,20 @@ module.exports = function(){
             method : 'GET',
             timeout : 3000,
             uri : config()['rurl'] + `/costanalysis/v1/list?limit=10&page=${argvs.page}`,
+            headers : {
+                userToken : argvs.token
+            }
         };
         return request(options);
     };
-    this.costCount = function(){
+    this.costCount = function(argvs){
         var options = {
             method : 'GET',
             timeout : 3000,
             uri : config()['rurl'] + '/costanalysis/v1/countNum',
+            headers : {
+                userToken : argvs.token
+            }
         };
         return request(options);
     };
@@ -156,6 +180,9 @@ module.exports = function(){
             method : 'GET',
             timeout : 3000,
             uri : config()['rurl'] + `/costanalysis/v1/costanalysis/${argvs.id}`,
+            headers : {
+                userToken : argvs.token
+            }
         };
         return request(options);
     };
@@ -183,11 +210,14 @@ module.exports = function(){
         return request(options);
     };
     //查询所有等级
-    this.projectsAllGradeById = function () {
+    this.projectsAllGradeById = function (argvs) {
         var options = {
             method: 'GET',
             timeout: 3000,
             uri: config()['rurl'] + '/grade/v1/list?_includes=grade,id',
+            headers : {
+                userToken : argvs.token
+            }
         };
         return request(options);
     };
@@ -196,24 +226,33 @@ module.exports = function(){
         var options = {
             method : 'GET',
             timeout : 3000,
-            uri : config()['rurl'] + `/costanalysis/v1/arrivalCount/${argvs.year}/${argvs.month}`
+            uri : config()['rurl'] + `/costanalysis/v1/arrivalCount/${argvs.year}/${argvs.month}`,
+            headers : {
+                userToken : argvs.token
+            }
         };
         return request(options);
     };
     //查询所有年月
-    this.costAllGradeById = function () {
+    this.costAllGradeById = function (argvs) {
         var options = {
             method: 'GET',
             timeout: 3000,
             uri: config()['rurl'] + '/costanalysis/v1/allYears',
+            headers : {
+                userToken : argvs.token
+            }
         };
         return request(options);
     };
-    this.costAllGradeById2 = function () {
+    this.costAllGradeById2 = function (argvs) {
         var options = {
             method: 'GET',
             timeout: 3000,
             uri: config()['rurl'] + '/costanalysis/v1/allMonths',
+            headers : {
+                userToken : argvs.token
+            }
         };
         return request(options);
     };
@@ -222,7 +261,10 @@ module.exports = function(){
         var options = {
             method : 'GET',
             timeout : 3000,
-            uri : config()['rurl'] + `/costanalysis/v1/projectNameCount/${argvs.year}/${argvs.month}`
+            uri : config()['rurl'] + `/costanalysis/v1/projectNameCount/${argvs.year}/${argvs.month}`,
+            headers : {
+                userToken : argvs.token
+            }
         };
         return request(options);
     };
@@ -231,7 +273,10 @@ module.exports = function(){
         var options = {
             method : 'GET',
             timeout : 3000,
-            uri : config()['rurl'] + `/costanalysis/v1/projectGroupCount/${argvs.year}/${argvs.month}`
+            uri : config()['rurl'] + `/costanalysis/v1/projectGroupCount/${argvs.year}/${argvs.month}`,
+            headers : {
+                userToken : argvs.token
+            }
         };
         return request(options);
     };
@@ -241,6 +286,9 @@ module.exports = function(){
             method : 'GET',
             timeout : 3000,
             uri : config()['rurl'] + `/costanalysis/v1/findDetail/${argvs.id}`,
+            headers : {
+                userToken : argvs.token
+            }
         };
         return request(options);
     };
@@ -250,14 +298,20 @@ module.exports = function(){
             method : 'GET',
             timeout : 3000,
             uri : config()['rurl'] + `/projectmarketfee/v1/list?limit=10&page=${argvs.page}`,
+            headers : {
+                userToken : argvs.token
+            }
         };
         return request(options);
     };
-    this.activityCount = function(){
+    this.activityCount = function(argvs){
         var options = {
             method : 'GET',
             timeout : 3000,
             uri : config()['rurl'] + '/projectmarketfee/v1/countNum',
+            headers : {
+                userToken : argvs.token
+            }
         };
         return request(options);
     };
@@ -266,16 +320,22 @@ module.exports = function(){
         var options = {
             method : 'GET',
             timeout : 3000,
-            uri : config()['rurl'] + `/projectmarketfee/v1/firstSubjectCount/${argvs.startTime}/${argvs.endTime}`
+            uri : config()['rurl'] + `/projectmarketfee/v1/firstSubjectCount/${argvs.startTime}/${argvs.endTime}`,
+            headers : {
+                userToken : argvs.token
+            }
         };
         return request(options);
     };
     //查询所有日期
-    this.firstAllGradeById = function () {
+    this.firstAllGradeById = function (argvs) {
         var options = {
             method: 'GET',
             timeout: 3000,
             uri: config()['rurl'] + '/projectmarketfee/v1/list?_includes=voucherDate',
+            headers : {
+                userToken : argvs.token
+            }
         };
         return request(options);
     };
@@ -284,6 +344,9 @@ module.exports = function(){
             method : 'GET',
             timeout : 3000,
             uri : config()['rurl'] + `/projectmarketfee/v1/findDetail/${argvs.id}`,
+            headers : {
+                userToken : argvs.token
+            }
         };
         return request(options);
     };
@@ -292,7 +355,10 @@ module.exports = function(){
         var options = {
             method : 'GET',
             timeout : 3000,
-            uri : config()['rurl'] + `/projectmarketfee/v1/secondSubjectCount/${argvs.startTime}/${argvs.endTime}`
+            uri : config()['rurl'] + `/projectmarketfee/v1/secondSubjectCount/${argvs.startTime}/${argvs.endTime}`,
+            headers : {
+                userToken : argvs.token
+            }
         };
         return request(options);
     };
@@ -301,7 +367,10 @@ module.exports = function(){
         var options = {
             method : 'GET',
             timeout : 3000,
-            uri : config()['rurl'] + `/projectmarketfee/v1/thirdSubjectCount/${argvs.startTime}/${argvs.endTime}`
+            uri : config()['rurl'] + `/projectmarketfee/v1/thirdSubjectCount/${argvs.startTime}/${argvs.endTime}`,
+            headers : {
+                userToken : argvs.token
+            }
         };
         return request(options);
     };
@@ -310,7 +379,10 @@ module.exports = function(){
         var options = {
             method : 'GET',
             timeout : 3000,
-            uri : config()['rurl'] + `/projectmarketfee/v1/areaCount/${argvs.startTime}/${argvs.endTime}`
+            uri : config()['rurl'] + `/projectmarketfee/v1/areaCount/${argvs.startTime}/${argvs.endTime}`,
+            headers : {
+                userToken : argvs.token
+            }
         };
         return request(options);
     };
@@ -319,7 +391,10 @@ module.exports = function(){
         var options = {
             method : 'GET',
             timeout : 3000,
-            uri : config()['rurl'] + `/projectmarketfee/v1/projectGroupCount/${argvs.startTime}/${argvs.endTime}`
+            uri : config()['rurl'] + `/projectmarketfee/v1/projectGroupCount/${argvs.startTime}/${argvs.endTime}`,
+            headers : {
+                userToken : argvs.token
+            }
         };
         return request(options);
     };
@@ -328,15 +403,64 @@ module.exports = function(){
         var options = {
             method : 'GET',
             timeout : 3000,
-            uri : config()['rurl'] + `/projectmarketfee/v1/projectNameCount/${argvs.startTime}/${argvs.endTime}`
+            uri : config()['rurl'] + `/projectmarketfee/v1/projectNameCount/${argvs.startTime}/${argvs.endTime}`,
+            headers : {
+                userToken : argvs.token
+            }
         };
         return request(options);
     };
-    this.logout = function(argvs){
+    this.differencesById = function(argvs){
         var options = {
-            method : 'POST',
+            method : 'GET',
             timeout : 3000,
-            uri : config()['user'] + `/v1/sign-out/${argvs.token}`,
+            uri : config()['rurl'] + '/costanalysis/v1/list?_includes=differences',
+            headers : {
+                userToken:argvs.token
+            }
+        };
+        return request(options);
+    };
+    this.listSetting = function(argvs){
+        var options = {
+            method : 'GET',
+            timeout : 3000,
+            uri : config()['rurl'] + `/cuspermission/v1/list?limit=10&page=${argvs.page}`,
+        };
+        return request(options);
+    };
+    this.countSetting = function(){
+        var options = {
+            method : 'GET',
+            timeout : 3000,
+            uri : config()['rurl'] + '/cuspermission/v1/count',
+        };
+        return request(options);
+    };
+    this.getpermit = function(argvs){
+        var options = {
+            method : 'GET',
+            timeout : 3000,
+            uri : config()['rurl'] + `/cuspermission/v1/getOneById/${argvs.id}`,
+        };
+        return request(options);
+    };
+    this.getListpermit = function(argvs){
+        var options = {
+            method : 'GET',
+            timeout : 3000,
+            uri : config()['rurl'] + `/cuspermission/v1/listOperateById/${argvs.id}`,
+        };
+        return request(options);
+    };
+    this.editSetting = function(argvs){
+        var options = {
+            method : 'PUT',
+            timeout : 3000,
+            uri : config()['rurl'] + '/cuspermission/v1/edit',
+            headers:{
+                userToken:argvs.token
+            },
             form:argvs
         };
         return request(options);

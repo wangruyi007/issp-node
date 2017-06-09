@@ -57,6 +57,6 @@ app.controller('basicInfoCtrl',function ($scope,$state) {
     $scope.tax = function(){
         $scope.menuClass = 'taxMenu'
     };
-});
+  });
 
 //自定义过滤

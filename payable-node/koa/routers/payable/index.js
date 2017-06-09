@@ -6,7 +6,6 @@ var config = require(path.resolve('plugins/read-config.js'));
 var fetch = require('node-fetch');//url转发
 module.exports = function(){
     var router = new Router();
-
     router.get('/listBasicInfo/list', function*(){ //列表
         var $self = this;
         var page = $self.request.query;

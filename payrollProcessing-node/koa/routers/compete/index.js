@@ -83,6 +83,7 @@ module.exports = function(){
         var $self = this;
         var page = $self.request.query;
         page.userToken = $self.cookies.get('token');
+        page.userToken = $self.cookies.get('token');
         var $self = $self;
         yield (server().invoicesubmitDelete(page)
             .then((parsedBody) =>{
@@ -185,6 +186,7 @@ module.exports = function(){
     }).get('/salaryconfirmDelete/Delete', function*(){
         var $self = this;
         var page = $self.request.query;
+        page.userToken = $self.cookies.get('token');
         page.userToken = $self.cookies.get('token');
         var $self = $self;
         yield (server().salaryconfirmDelete(page)

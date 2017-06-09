@@ -1,5 +1,5 @@
-var app = angular.module('projectacceptanceList', ['ng-pagination','toastr','ipCookie']);
-app.controller('projectacceptanceListCtrl',function($scope,projectacceptanceSer,toastr,ipCookie,$location) {
+var app = angular.module('projectacceptanceList', ['ng-pagination','toastr']);
+app.controller('projectacceptanceListCtrl',function($scope,projectacceptanceSer,toastr) {
    //选择
     $scope.selectList = function(event){
         angular.forEach($scope.projectacceptanceLists.data,function(obj){
@@ -27,8 +27,8 @@ app.controller('projectacceptanceListCtrl',function($scope,projectacceptanceSer,
         projectacceptanceSer.listProjectAcceptance(listData).then(function(response){
             if(response.data.code==0){
                 $scope.projectacceptanceLists = response.data
-            }else if(response.data.code==1){
-                toastr.error( response.data.msg, '温馨提示');
+            }else{
+                toastr.error(response.data.msg, '温馨提示');
             }
         });
     }
@@ -40,8 +40,8 @@ app.controller('projectacceptanceListCtrl',function($scope,projectacceptanceSer,
     projectacceptanceSer.countProjectAcceptance().then(function(response){
         if(response.data.code==0){
             $scope.abili.itemsCount = response.data.data;
-        }else if(response.data.code==1){
-            toastr.error( response.data.msg, '温馨提示');
+        }else{
+            toastr.error(response.data.msg, '温馨提示');
         }
     });
     //删除

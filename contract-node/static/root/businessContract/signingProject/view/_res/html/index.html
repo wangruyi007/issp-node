@@ -1,0 +1,35 @@
+<div class="enclosure">
+    <div class="en-all">
+        <!--选中查看附件 enclosure-yes-->
+        <div class="en-left">
+            <a href="javascript:void(0)">删除</a>
+            <a href="javascript:void(0)">查看</a>
+            <a href="javascript:void(0)">下载</a>
+        </div>
+        <a href="javascript:void(0)" class="right-pic"><img src="/images/pickup.png"></a>
+    </div>
+    <p class="title">
+        <span>全部文件</span>
+        <span>已全部加载，共64个</span>
+    </p>
+    <div class="checkbox-all">
+        <input type="checkbox" checked="checked" class="checked-none" data-style="checked">
+        <label class="tick"></label>
+        <i>全选</i>
+    </div>
+    <div class="content-file">
+        <ul>
+            <li ng-repeat="lists in data" class="list-text {{lists._selectList?'checked':''}}" ng-click="selectList(lists)">
+                <div class="checked-box" style="display: {{lists._selectList?'block':'none'}};">
+                    <input type="checkbox" checked="checked" class="checked-none" data-style="checked">
+                    <label class="tick"></label>
+                </div>
+                <a href="javascript:void(0)">
+                    <img src="/images/pdf.png">
+                    <i>{{lists.name}}</i>
+                </a>
+            </li>
+        </ul>
+    </div>
+    <footer class="footer"></footer>
+</div>

@@ -14,10 +14,10 @@
     <li ng-click="review()" ng-class="{'current':menuClass=='reviewMenu'}">
         <a href="javascript:void(0)" class="same-three" >审核<span>Review</span></a>
     </li>
-    <li>
+    <li ng-click="upload()" ng-class="{'current':menuClass=='uploadMenu'}" ui-sref=".upload[12]">
         <a href="javascript:void(0)"  class="same-one">上传附件<span>Upload</span></a>
     </li>
-    <li>
+    <li ng-click="view()" ng-class="{'current':menuClass=='viewMenu'}" ui-sref=".view[12]">
         <a href="javascript:void(0)" class="same-two" >查看附件<span>View</span></a>
     </li>
     <li>

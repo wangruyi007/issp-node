@@ -6,20 +6,24 @@ app.controller('collectSummaryCtrl', function($scope,$state,toastr,proWeekSer){
     proWeekSer.listSummaryProject().then(function(response){
         if(response.data.code == 0){
             $scope.workOptions = response.data.data;
-        } else if(response.data.code == 403){
-            toastr.error("请登录用户", '温馨提示');
+        }else{
+            toastr.error(response.data.msg, '温馨提示');
         }
     });
     $scope.getSummary ={onSelectionChanged(){
         proWeekSer.collectProject($scope.projects).then(function(response){
             if(response.data.code == 0){
                 $scope.summaryLists = response.data.data;
+            }else{
+                toastr.error(response.data.msg, '温馨提示');
             }
         })
     }};
     proWeekSer.collectProject2().then(function(response){
         if(response.data.code == 0&&response.data.data){
             $scope.summaryLists = response.data.data
+        }else{
+            toastr.error(response.data.msg, '温馨提示');
         }
     });
 });

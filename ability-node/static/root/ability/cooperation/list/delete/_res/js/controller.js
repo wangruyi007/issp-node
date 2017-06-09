@@ -1,5 +1,5 @@
-var app = angular.module('cooperationDelete', ['toastr','ipCookie']);
-app.controller('cooperationDeleteCtrl',function($scope,cooperationSer,toastr,$stateParams,$state,ipCookie,$location){
+var app = angular.module('cooperationDelete', ['toastr']);
+app.controller('cooperationDeleteCtrl',function($scope,cooperationSer,toastr,$stateParams,$state){
     //删除
     $scope.delYes = function(){
         var data = {
@@ -12,18 +12,9 @@ app.controller('cooperationDeleteCtrl',function($scope,cooperationSer,toastr,$st
                 $scope.deledId = $stateParams.id;
                 //向父Ctrl传递事件
                 $scope.$emit('deletedId', $scope.deledId)
-            }else if (response.data.code == 403||response.data.code==401) {
-                 toastr.error( "请登录用户,3秒后跳至登陆页面", '温馨提示');
-                 var absurl = $location.absUrl();
-                 ipCookie('absurl', absurl,{ expires:3,expirationUnit: 'minutes',domain:'issp.bjike.com' })
-                 setTimeout(function(){
-                     window.location.href='http://localhost/login'
-                 },3000)
-             }else if(response.data.code==1){
-                 toastr.error( response.data.msg, '温馨提示');
+            }else{
+                 toastr.error(response.data.msg, '温馨提示');
              }
         })
     }
-
-
 });

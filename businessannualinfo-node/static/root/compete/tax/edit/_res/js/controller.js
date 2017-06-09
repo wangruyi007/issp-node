@@ -1,5 +1,5 @@
-var app = angular.module('taxEdit', ['toastr','ipCookie']);
-app.controller('taxEditCtrl', function($scope, taxSer,$state,toastr,$stateParams,ipCookie,$location){
+var app = angular.module('taxEdit', ['toastr']);
+app.controller('taxEditCtrl', function($scope, taxSer,$state,toastr,$stateParams){
     var taxId = {id : $stateParams.id};
     //获取值
     taxSer.changeOne(taxId).then(function(response){
@@ -19,14 +19,6 @@ app.controller('taxEditCtrl', function($scope, taxSer,$state,toastr,$stateParams
             if(response.data.code == 0){
                 $state.go('root.compete.tax.list');
                 toastr.success( "已成功编辑", '温馨提示');
-            }else if(response.data.code==403||response.data.code==401){
-
-                toastr.error( "请登录用户,2秒后跳至登陆页面", '温馨提示');
-                var absurl = $location.absUrl();
-                ipCookie('absurl', absurl,{ expires:3,expirationUnit: 'minutes' });
-                setTimeout(function(){
-                    window.location.href='http://localhost/login'
-                },2000)
             }else{
                 toastr.error(response.data.msg,'温馨提示');
             }

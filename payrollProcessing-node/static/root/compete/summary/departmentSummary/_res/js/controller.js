@@ -1,5 +1,5 @@
-var app = angular.module('departmentSummary', ['toastr','ipCookie']);
-app.controller('departmentSummaryCtrl', function($scope, summarySer,toastr,$location,ipCookie){
+var app = angular.module('departmentSummary', ['toastr']);
+app.controller('departmentSummaryCtrl', function($scope, summarySer,toastr){
 
     $scope.showed=true;
     // 获取所有地区

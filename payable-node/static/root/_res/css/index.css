@@ -996,13 +996,11 @@ select.ng-not-empty{
   border-radius:5px;
 }
 .inputDom{
-  width: 45%;
+  width: 46%;
   position: absolute;
-  margin-left: -10px;
-  margin-top:3px;
+  margin-left: 63px;
   border: 0!important;
-  height: 28px;
-  padding-left: 10px !important;
+  height: 30px;
 }
 .select2{
   width: 36%;
@@ -1016,6 +1014,12 @@ select.ng-not-empty{
   height:40px;
   border-radius:5px;
   margin-left:15px;
+}
+.select2 label{
+   line-height: 40px;
+}
+.select2 .inputDom{
+  margin-left: 0;
 }
  .select .select-text{
   width:65%;
@@ -2159,10 +2163,9 @@ select.ng-not-empty{
 .right-section .top-content .content .content-wrap .content-input .input-list section ul li .inputDom{
   width: 46%;
   position: absolute;
-  margin-left: 59px;
+  margin-left: 65px;
   border: 0!important;
   height: 30px;
-  padding-left: 10px !important;
 }
 .right-section .top-content .content .content-wrap .content-input .input-list section ul li .inputDom:hover{
   box-shadow: 0 0 3px white !important;
@@ -2184,10 +2187,9 @@ select.ng-not-empty{
 }
 
 .collect .collect-select input{
- /* width:150px;*/
   border: 1px solid #1aafea;
-  /*padding:5px;*/
   border-radius:5px;
+  margin-top: 2px;
 }
 .collect .collect-select button{
   width:60px;

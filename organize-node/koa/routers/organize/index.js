@@ -940,6 +940,7 @@ module.exports = function(){
             }));
     }).get('/jopdetail/findById', function*(){ //根据获取岗位说明书
         var $self = this;
+<<<<<<< Updated upstream
         var id = $self.request.query;
         yield (server().jopdetailGet(id)
             .then((parsedBody) =>{
@@ -968,6 +969,10 @@ module.exports = function(){
         var delId = $self.request.query;
         delId.token = $self.cookies.get('token');
         yield (server().jopdetailDelete(delId)
+=======
+        var getId = this.request.query;
+        yield (server().getJopDetailCountId(getId)
+>>>>>>> Stashed changes
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
                 $self.body = responseText;

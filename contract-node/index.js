@@ -9,9 +9,7 @@ const routersPath = '/koa/routers/';
 const sendfile = require('koa-sendfile');
 var configsCache = {};
 const port = 5555;
-
 const config = require(path.resolve('plugins/read-config.js'));
-
 function fileExists(path) {
     try {
         fs.accessSync(path, fs.F_OK);
