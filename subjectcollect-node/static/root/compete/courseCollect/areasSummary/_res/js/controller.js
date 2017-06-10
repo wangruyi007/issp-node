@@ -1,5 +1,5 @@
-var app = angular.module('areasSummary', ['toastr','ipCookie']);
-app.controller('areasSummaryCtrl', function($scope, courseCollectSer,toastr,$location,ipCookie){
+var app = angular.module('areasSummary', ['toastr']);
+app.controller('areasSummaryCtrl', function($scope, courseCollectSer,toastr){
 
     $scope.showed=true;
     // 获取所有地区

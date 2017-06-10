@@ -6,12 +6,16 @@ app.controller('detailProSummaryCtrl', function($scope, detailSer){
     detailSer.listSummaryPro().then(function(response){
         if(response.data.code == 0){
             $scope.workOptions = response.data.data;
+        }else{
+            toastr.error(response.data.msg,'温馨提示')
         }
     });
     $scope.getSummary ={onSelectionChanged(){
         detailSer.summaryProDetail($scope.innerNames).then(function(response){
             if(response.data.code == 0){
                 $scope.summaryLists = response.data.data;
+            }else{
+                toastr.error(response.data.msg,'温馨提示')
             }
         });
     }};

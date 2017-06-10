@@ -9,7 +9,9 @@ app.factory('servereCordSer',function ($http) {
         marketserveapplyEdit:marketserveapplyEdit,
         servereCordapplyDel:servereCordapplyDel,
         fundModuleOpinionEidt:fundModuleOpinionEidt,
-        executiveOpinionEidt:executiveOpinionEidt
+        executiveOpinionEidt:executiveOpinionEidt,
+        viewCustomer:viewCustomer,
+        editCustomer:editCustomer
     };
     //列表
     function listservereCord(data) {
@@ -48,5 +50,15 @@ app.factory('servereCordSer',function ($http) {
     // //编辑 决策层审核意见
     function executiveOpinionEidt(data) {
         return $http.post('/marketActivity/servereCord/executiveEidt',data)
+    }
+    //查看客户信息列表
+    function viewCustomer(data) {
+        return $http.get('/marketActivity/servereCord/viewCustomer',{
+            params:data
+        })
+    }
+    //编辑 客户信息
+    function editCustomer(data) {
+        return $http.post('/marketActivity/servereCord/editCustomer',data)
     }
 });

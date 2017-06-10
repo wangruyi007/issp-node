@@ -10,6 +10,7 @@ module.exports = function(){
     router.get('/managefee/list', function*(){ //管理费列表
         var $self = this;
         var page = $self.request.query;
+        page.userToken = $self.cookies.get('token');
         yield (server().feeList(page)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -21,7 +22,8 @@ module.exports = function(){
             }));
     }).get('/managefee/listYear', function*(){//获取所有年份
         var $self = this;
-        yield (server().getFeeYear()
+        var countToken = {userToken:$self.cookies.get('token')};
+        yield (server().getFeeYear(countToken)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
                 $self.body = responseText;
@@ -59,6 +61,7 @@ module.exports = function(){
     }).get('/managefee/getOneById', function*(){//ID查询管理费数据
         var $self = this;
         var findById = $self.request.query;
+        findById.userToken = $self.cookies.get('token');
         yield (server().findFeeId(findById)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -83,7 +86,8 @@ module.exports = function(){
             }));
     }).get('/managefee/count', function*(){//获取管理费总条数
         var $self = this;
-        yield (server().getFeeTotal()
+        var countToken = {userToken:$self.cookies.get('token')};
+        yield (server().getFeeTotal(countToken)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
                 $self.body = responseText;
@@ -107,7 +111,8 @@ module.exports = function(){
             }));
     }).get('/managefee/listArea', function*(){//获取管理费所有地区
         var $self = this;
-        yield (server().getFeeArea()
+        var areaToken = {userToken:$self.cookies.get('token')};
+        yield (server().getFeeArea(areaToken)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
                 $self.body = responseText;
@@ -131,7 +136,8 @@ module.exports = function(){
             }));
     }).get('/managefee/listGroup', function*(){//获取管理费所有项目组
         var $self = this;
-        yield (server().getFeeGroup()
+        var groupToken = {userToken:$self.cookies.get('token')};
+        yield (server().getFeeGroup(groupToken)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
                 $self.body = responseText;
@@ -168,7 +174,8 @@ module.exports = function(){
             }));
     }).get('/managefee/listProject', function*(){//获取所有汇总项目
         var $self = this;
-        yield (server().getFeeProject()
+        var projectToken = {userToken:$self.cookies.get('token')};
+        yield (server().getFeeProject(projectToken)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
                 $self.body = responseText;
@@ -180,6 +187,7 @@ module.exports = function(){
     }).get('/outfee/list', function*(){ //外包费列表
         var $self = this;
         var page = $self.request.query;
+        page.userToken = $self.cookies.get('token');
         yield (server().outFeeList(page)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -191,7 +199,8 @@ module.exports = function(){
             }));
     }).get('/outfee/listYear', function*(){//获取所有年份
         var $self = this;
-        yield (server().getOutFeeYear()
+        var yearToken = {userToken:$self.cookies.get('token')};
+        yield (server().getOutFeeYear(yearToken)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
                 $self.body = responseText;
@@ -229,6 +238,7 @@ module.exports = function(){
     }).get('/outfee/getOneById', function*(){//ID查询外包费数据
         var $self = this;
         var findById = $self.request.query;
+        findById.userToken = $self.cookies.get('token');
         yield (server().findOutFeeId(findById)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -253,7 +263,8 @@ module.exports = function(){
             }));
     }).get('/outfee/count', function*(){//获取外包费总条数
         var $self = this;
-        yield (server().getOutFeeTotal()
+        var countToken = {userToken:$self.cookies.get('token')};
+        yield (server().getOutFeeTotal(countToken)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
                 $self.body = responseText;
@@ -277,7 +288,8 @@ module.exports = function(){
             }));
     }).get('/outfee/listArea', function*(){//获取外包费所有地区
         var $self = this;
-        yield (server().getOutFeeArea()
+        var areaToken = {userToken:$self.cookies.get('token')};
+        yield (server().getOutFeeArea(areaToken)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
                 $self.body = responseText;
@@ -301,7 +313,8 @@ module.exports = function(){
             }));
     }).get('/outfee/listGroup', function*(){//获取外包费所有项目组
         var $self = this;
-        yield (server().getOutFeeGroup()
+        var groupToken = {userToken:$self.cookies.get('token')};
+        yield (server().getOutFeeGroup(groupToken)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
                 $self.body = responseText;
@@ -338,7 +351,8 @@ module.exports = function(){
             }));
     }).get('/outfee/listProject', function*(){//获取所有汇总项目
         var $self = this;
-        yield (server().getOutFeeProject()
+        var projectToken = {userToken:$self.cookies.get('token')};
+        yield (server().getOutFeeProject(projectToken)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
                 $self.body = responseText;
@@ -347,21 +361,13 @@ module.exports = function(){
                 $self.body=error.error;
                 console.error(error.error);
             }));
-    }).get('/user/logout', function*(){ //退出
-        var $self = this;
-        var token ={token:$self.cookies.get('token')};
-        yield (server().logout(token)
-            .then((parsedBody) =>{
-                var responseText = JSON.parse(parsedBody);
-                if(responseText.code==0){
-                    $self.cookies.set('token','');
-                    $self.body = responseText;
-                }
-            }).catch((error) =>{
-                $self.set('Content-Type','application/json;charset=utf-8');
-                $self.body=error.error;
-                console.error(error.error);
-            }));
+    }).get('/user/logout', function*(next){
+        var url = this.request.query;
+        this.cookies.set("absUrl",url.absurl);
+        this.body = {
+            code:0,
+            msg:"重定向"
+        };
     })
     return router;
 };

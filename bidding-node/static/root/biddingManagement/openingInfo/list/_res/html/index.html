@@ -1,11 +1,12 @@
 <div class="content-tab list">
-    <div class="com-search mod">
-        <span class="com-search2">
-            <label>竞争公司:</label>
-            <input type="text"  ng-model="teamInfo.competitive">
-       </span>
+    <div class="search-big" style="display :{{ isView?'none':'block'}}">
+        <select class="salc" ng-model="checkedName" ng-init="checkedName='竞争公司'">
+            <option ng-repeat="item in titles">{{item}}</option>
+        </select>
+        <input type="text" ng-model="competitive" ng-show="checkedName=='竞争公司'">
+        <a href="javascript:void(0)" ng-click="collect()"><img src="/images/search2.png"></a>
     </div>
-    <ul class="table table-top">
+    <ul class="table">
         <li class="list-head">
             <span></span>
             <span>招标编号</span>
@@ -17,7 +18,7 @@
             <span>竞争公司</span>
             <span></span>
         </li>
-        <li class="list-all" ng-repeat="lists in openLists|filter:teamInfo" style="display: {{lists._delete?'none':'block'}};">
+        <li class="list-all" ng-repeat="lists in openLists" style="display: {{lists._delete?'none':'block'}};">
             <section>
                 <div class="list-text {{lists._selectList?'selectList':''}}" ng-click="selectList(lists)">
                     <p>{{$index+1}}</p>

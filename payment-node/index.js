@@ -9,9 +9,7 @@ const routersPath = '/koa/routers/';
 const sendfile = require('koa-sendfile');
 var configsCache = {};
 const port = 9999;
-
 const config = require(path.resolve('plugins/read-config.js'));
-
 function fileExists(path) {
     try {
         fs.accessSync(path, fs.F_OK);
@@ -20,7 +18,6 @@ function fileExists(path) {
     }
     return true;
 }
-
 app.keys = ['issp-node'];//session加密值
 app.use(session(app));//使用cookie
 app.use(koaBody());//必需要路由用之前使用,不然获取不到表单
@@ -59,18 +56,11 @@ router.get(/^\/module\/_config(?:\/.|$)/, function *(next) {
 });
 //============路由===========
 app.use(require(path.join(__dirname,routersPath,'/payment/index.js'))().routes());//
-
-
 app.use(router.routes());
-
-
 //============静态文件资源===========
 app.use(staticCache(path.join(__dirname, '/static'), {
     // maxAge: 365 * 24 * 60 * 60
 }));
-
-
-
 app.use(function *(next) {
     var start = new Date;
     yield next;

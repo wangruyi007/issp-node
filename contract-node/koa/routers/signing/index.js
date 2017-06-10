@@ -87,8 +87,9 @@ module.exports = function(){
             }));
      }).get('/siginmanage/count', function*(){//获取合同签订与立项总条数
         var $self = this;
-        var token = {userToken:$self.cookies.get('token')};
-        yield (server().getSignTotal(token)
+        var count = $self.request.query;
+        count.userToken = $self.cookies.get('token');
+        yield (server().getSignTotal(count)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
                 $self.body = responseText;
@@ -164,8 +165,9 @@ module.exports = function(){
             }));
     }).get('/baseinfomanage/count', function*(){//获取项目合同基本信息总条数
         var $self = this;
-        var token ={userToken:$self.cookies.get('token')};
-        yield (server().getInfoTotal(token)
+        var count = $self.request.query;
+        count.userToken = $self.cookies.get('token');
+        yield (server().getInfoTotal(count)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
                 $self.body = responseText;
@@ -241,8 +243,9 @@ module.exports = function(){
             }));
     }).get('/dispatchsheet/count', function*(){//获取项目派工单总条数
         var $self = this;
-        var token = {userToken:$self.cookies.get('token')};
-        yield (server().getSheetTotal(token)
+        var count = $self.request.query;
+        count.userToken = $self.cookies.get('token');
+        yield (server().getSheetTotal(count)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
                 $self.body = responseText;

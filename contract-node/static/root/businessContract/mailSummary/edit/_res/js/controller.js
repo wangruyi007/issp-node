@@ -1,11 +1,11 @@
-var app = angular.module('mailSummaryEdit', ['toastr','ipCookie']);
-app.controller('mailSummaryEditCtrl', function($scope, emailSer,$stateParams,$state,toastr,$location,ipCookie){
+var app = angular.module('mailSummaryEdit', ['toastr']);
+app.controller('mailSummaryEditCtrl', function($scope, emailSer,$stateParams,$state,toastr){
     var emailData ={id: $stateParams.id};
 
     //获取ID
     emailSer.findEmailId(emailData).then(function(response){
 
-        if(response.data.code=='0'){
+        if(response.data.code==0){
             $scope.editMail = response.data.data;
         }else{
             toastr.error(response.data.msg, '温馨提示');
@@ -18,19 +18,11 @@ app.controller('mailSummaryEditCtrl', function($scope, emailSer,$stateParams,$st
     $scope.emailEditFun = function(){
         var vm = $scope;
         emailSer.editEmail(vm.editMail).then(function(response){
-            console.log(response);
             if(response.data.code == 0){
                 $state.go('root.businessContract.mailSummary.list');
                 toastr.success( "编辑成功", '温馨提示');
-            }else if(response.data.code==403||response.data.code==401){
-                toastr.error( "请登录用户,3秒后跳至登陆页面", '温馨提示');
-                var absurl = $location.absUrl();
-                ipCookie('absurl', absurl,{ expires:3,expirationUnit: 'minutes',domain:'issp.bjike.com' });
-                setTimeout(function(){
-                    window.location.href='http://localhost/login'
-                },3000)
-            }else{
-                toastr.error(response.data.msg, '温馨提示');
+            }else {
+                toastr.error( response.data.msg, '温馨提示');
             }
         });
 

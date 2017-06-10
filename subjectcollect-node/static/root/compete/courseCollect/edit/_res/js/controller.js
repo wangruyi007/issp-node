@@ -1,5 +1,5 @@
-var app = angular.module('courseCollectEdit', ['toastr','ipCookie']);
-app.controller('courseCollectEditCtrl', function($scope, courseCollectSer,$state,toastr,$stateParams,ipCookie,$location,$filter){
+var app = angular.module('courseCollectEdit', ['toastr']);
+app.controller('courseCollectEditCtrl', function($scope, courseCollectSer,$state,toastr,$stateParams,$filter){
     var courseCollectId = {id : $stateParams.id};
     //获取值
     courseCollectSer.subjectsId(courseCollectId).then(function(response){
@@ -22,14 +22,6 @@ app.controller('courseCollectEditCtrl', function($scope, courseCollectSer,$state
             if(response.data.code == 0){
                 $state.go('root.compete.courseCollect.list');
                 toastr.success( "已成功编辑", '温馨提示');
-            }else if(response.data.code==403||response.data.code==401){
-
-                toastr.error( "请登录用户,2秒后跳至登陆页面", '温馨提示');
-                var absurl = $location.absUrl();
-                ipCookie('absurl', absurl,{ expires:3,expirationUnit: 'minutes' });
-                setTimeout(function(){
-                    window.location.href='http://localhost/login'
-                },2000)
             }else{
                 toastr.error(response.data.msg,'温馨提示');
             }

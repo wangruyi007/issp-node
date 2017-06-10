@@ -63,7 +63,6 @@ module.exports = function(){
                 userToken : argvs.userToken
             }
         };
-        console.log("成为")
         return request(options);
     };
     //编辑市场招待申请
@@ -94,9 +93,9 @@ module.exports = function(){
     //编辑 资金模块意见
     this.marketserveOpinionEidt1 = function(argvs){
         var options = {
-            method : 'PUT',
+            method : 'PATCH',
             timeout : 3000,
-            uri : config()['rurl'] + '/marketserveapply/v1/fundModuleOpinion',
+            uri : config()['rurl'] + '/marketserveapply/v1/fundModuleOpinion/'+argvs.id,
             form:argvs,
             headers : {
                userToken : argvs.userToken
@@ -130,11 +129,14 @@ module.exports = function(){
         return request(options);
     };
     //总数
-    this.summaryCount= function(){
+    this.summaryCount= function(argvs){
         var options = {
             method : 'GET',
             timeout : 3000,
-            uri : config()['rurl'] + '/marketservesummary/v1/count'
+            uri : config()['rurl'] + '/marketservesummary/v1/count',
+             headers : {
+               userToken : argvs.userToken
+            }
         };
         return request(options);
     };
@@ -347,11 +349,61 @@ module.exports = function(){
         };
         return request(options);
     };
+    //编辑 查看顾客
+    this.viewCustomer = function(argvs){
+        var options = {
+            method : 'GET',
+            timeout : 3000,
+            uri : config()['rurl'] + `/marketserveapply/v1/checkCustomerInfo/${argvs.id}`,
+            headers : {
+               userToken : argvs.userToken
+            }
+        };
+        return request(options);
+    }; 
+    //编辑 客户信息
+    this.editCustomerInfo = function(argvs){
+        var options = {
+            method : 'POST',
+            timeout : 3000,
+            uri : config()['rurl'] + '/marketserveapply/v1/editCustomerInfo',
+            form:argvs,
+            headers : {
+                userToken : argvs.userToken
+            }
+        };
+        return request(options); 
+    }; 
+    //查看顾客
+    this.viewCustomer1 = function(argvs){
+        var options = {
+            method : 'GET',
+            timeout : 3000,
+            uri : config()['rurl'] + `/marketserveapply/v1/checkCustomerInfo/${argvs.id}`,
+            headers : {
+               userToken : argvs.userToken
+            }
+        };
+        return request(options);
+    }; 
+    //编辑 客户信息
+    this.editCustomerInfo1 = function(argvs){
+        var options = {
+            method : 'POST',
+            timeout : 3000,
+            uri : config()['rurl'] + '/marketserveapply/v1/editCustomerInfo',
+            form:argvs,
+            headers : {
+                userToken : argvs.userToken
+            }
+        };
+        return request(options); 
+    };
     this.listSetting = function(argvs){
         var options = {
             method : 'GET',
             timeout : 3000,
-            uri : config()['rurl'] + `/cuspermission/v1/list?limit=10&page=${argvs.page}`,
+            uri : config()['rurl'] + `/marketserveapply/v1/checkCustomerInfo/${argvs.id}`,
         };
         return request(options);
     };

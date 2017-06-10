@@ -4,12 +4,12 @@ app.controller('questionListCtrl',function($scope,questionSer,toastr){
     function activatePage(page) {
         var listData = {
             page:page
-        }
+        };
         questionSer.answerList(listData).then(function(response){
             if(response.data.code==0){
                 $scope.answerLists = response.data.data
             }else{
-                toastr.error( "请求超时，请联系管理员", '温馨提示');
+                toastr.error( response.data.msg, '温馨提示');
             }
         });
     }
@@ -52,7 +52,7 @@ app.controller('questionListCtrl',function($scope,questionSer,toastr){
         if(response.data.code==0){
             $scope.custom.itemsCount = response.data.data;
         }else{
-            toastr.error( "请求超时，请联系管理员", '温馨提示');
+            toastr.error( response.data.msg, '温馨提示');
         }
     })
 

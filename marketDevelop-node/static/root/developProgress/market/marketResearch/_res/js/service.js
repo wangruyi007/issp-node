@@ -6,7 +6,9 @@ app.factory('researchSer',function ($http) {
         researchEdit:researchEdit,
         findResearchId:findResearchId,
         countResearch:countResearch,
-        researchDelete:researchDelete
+        researchDelete:researchDelete,
+        getType:getType,
+        getCourse:getCourse
     };
     function listResearch(data) {
         return $http.get('/market/marketresearch/maps',{
@@ -40,5 +42,13 @@ app.factory('researchSer',function ($http) {
             params: data
 
         })
+    }
+    //获取业务类型
+    function getType(){
+        return $http.get('/businesstype/findThaw')
+    }
+    //获取业务方向科目数据
+    function getCourse(){
+        return $http.get('/businesscourse/findThaw')
     }
 });

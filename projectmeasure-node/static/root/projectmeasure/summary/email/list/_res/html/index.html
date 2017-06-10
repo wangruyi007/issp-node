@@ -1,4 +1,4 @@
-<div class="content-tab list" style="margin-top: -70px;">
+<div class="content-tab list">
     <ul class="table com-table">
        <li class="list-head">
             <span></span>
@@ -23,10 +23,10 @@
                     <p>{{list.createUser}}</p>
                     <p>{{list.updateTime}}</p>
                     <p>{{list.lastTime}}</p>
-                    <p>{{list.sendInterval}}</p>
-                    <p>{{list.detailInterval }}</p>
+                    <p>{{list.sendInterval}} {{list.cycle | cov}}</p>
+                    <p>{{list.detailInterval }} {{list.detailCycle | cov}}</p>
                     <p>{{list.emails}}</p>
-                    <p>{{list.status}}</p>
+                    <p>{{list.status | cov}}</p>
                     <p></p>
                     <!--<p>
                         <a href="javascript:void(0)" class="more" ng-click="moreList(list)">更多详细</a>

@@ -17,7 +17,8 @@
                 </li>
                 <li class="required">
                     <label><i><img src="/images/mandatory.png"></i><em>人员性质</em></label>
-                     <select class="sele" ng-model="data.peopleProperty"  ng-verify="{}">
+                    <input type="text" class="inputDom"  ng-verify="{}" ng-model="data.peopleProperty">
+                     <select class="sele" ng-model="data.peopleProperty">
                          <option>请选择</option>
                         <option value="INTERIOR">内部</option>
                         <option value="LEASE">租赁</option>
@@ -26,10 +27,11 @@
                 <li class="required">
                     <label><i><img src="/images/mandatory.png"></i><em>岗位</em></label>
                     <input type="text" class="inputDom"  ng-verify="{}" ng-model="data.post">
-                    <select class="sele" ng-model="data.post"  ng-verify="{}">
+                    <select class="sele" ng-model="data.post">
                         <option>请选择</option>
-                        <option value="内部">内部</option>
-                        <option value="租赁">租赁</option>
+                        <option value="CTO">CTO</option>
+                        <option value="经理">经理</option>
+                        <option value="主管">主管</option>
                     </select>
                 </li>
                 <li class="required">

@@ -98,7 +98,521 @@ body {
   display: -ms-flexbox;
   display: flex;
 }
+/*上传附件*/
+.user-btn {
+  font-size: 14px;
+  color: white;
+}
+.close-btn {
+  width: 16px;
+  height: 17px;
+  background: url("/images/close.png") no-repeat center;
+  margin-right: 18px;
+}
+.close-line {
+  display: inline-block;
+  width: 2px;
+  height: 35px;
+  margin: 0 18px;
+  content: '';
+  background: -webkit-linear-gradient(rgba(51, 56, 59, 0), white, rgba(51, 56, 59, 0));
+  background: linear-gradient(rgba(51, 56, 59, 0), white, rgba(51, 56, 59, 0));
+}
+.back-btn {
+  display: block;
+  width: 30px;
+  height: 24px;
+  background: url("/images/back.png") no-repeat center;
+}
+.upload-all {
+  width: 95%;
+  border-bottom: 2px dashed #d7d7d7;
+  margin: 0 auto;
+}
+.upload-all .upload-btn {
+  min-height: 500px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  font-size: 18px;
+  color: #05a9e9;
+}
+.upload-all .upload-btn .upload-pic {
+  display: block;
+  width: 66px;
+  height: 60px;
+  background: url("/images/upload.png") no-repeat center;
+  margin-bottom: 12px;
+}
+.sure-no {
+  margin: 25px auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  width: 20%;
+  border: 1px solid #cecece;
+  border-radius: 5px;
+}
+.sure-no .sure-btn {
+  display: inline-block;
+  padding: 12px 0;
+}
+.sure-no .sure-btn .sure-pic {
+  display: inline-block;
+  width: 15px;
+  height: 13px;
+  margin-right: 10px;
+  background: url("/images/sure-no.png") no-repeat center;
+}
+.sure-yes {
+  margin: 25px auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  width: 20%;
+  background-color: #05a9e9;
+}
+.sure-yes .sure-btn {
+  display: inline-block;
+  padding: 12px 0;
+  color: white;
+}
+.sure-yes .sure-btn .sure-pic {
+  display: inline-block;
+  width: 15px;
+  height: 13px;
+  margin-right: 10px;
+  background: url("/images/sure-yes.png") no-repeat center;
+}
+.upload2 {
+  margin-top: 32px;
+}
+.upload-input {
+  width: 95%;
+  border-bottom: 2px dashed #d7d7d7;
+  margin: 0 auto;
+  padding-bottom: 30px;
+  padding-top: 20px;
+}
+.upload-input li {
+  position: relative;
+  width: 80%;
+  margin: 0 auto;
+}
+.upload-input li .upload-close {
+  position: absolute;
+  right: 5px;
+  top: 3px;
+}
+.upload-input li p, .upload-input li .summary .sele, .summary .upload-input li .sele, .upload-input li .notice .notice-all .select-left .select-object .select-sele .sele, .notice .notice-all .select-left .select-object .select-sele .upload-input li .sele {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  width: 100%;
+  height: 41px;
+  text-align: center;
+  border: 2px solid #758c94;
+  margin-top: 10px;
+}
+.upload-yes {
+  width: 95%;
+  border-bottom: 2px dashed #d7d7d7;
+  margin: 0 auto;
+  padding-bottom: 30px;
+  padding-top: 20px;
+}
+.upload-yes li {
+  position: relative;
+  width: 80%;
+  margin: 0 auto;
+}
+.upload-yes li .input-yes {
+  position: absolute;
+  right: 5px;
+  top: 3px;
+}
+.upload-yes li p, .upload-yes li .summary .sele, .summary .upload-yes li .sele, .upload-yes li .notice .notice-all .select-left .select-object .select-sele .sele, .notice .notice-all .select-left .select-object .select-sele .upload-yes li .sele {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  width: 100%;
+  height: 41px;
+  text-align: center;
+  border: 2px solid #05a9e9;
+  margin-top: 10px;
+}
+.enclosure {
+  margin: 25px;
+}
+.enclosure .en-all {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+.enclosure .en-all .en-left a {
+  display: inline-block;
+  text-align: center;
+  border: 2px solid #cecece;
+  width: 96px;
+  height: 37px;
+  line-height: 37px;
+  margin-right: 17px;
+}
+.enclosure .en-all .enclosure-yes a {
+  color: #05a9e9;
+  border: 1px solid #05a9e9;
+}
+.enclosure .title {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  font-size: 14px;
+  color: #666;
+  margin: 20px 0;
+}
+.enclosure .checkbox-all, .enclosure .checked-box, .enclosure .checked-box2 {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+.enclosure .checkbox-all .checked-none[data-style="checked"], .enclosure .checked-box .checked-none[data-style="checked"], .enclosure .checked-box2 .checked-none[data-style="checked"] {
+  display: none;
+}
+.enclosure .checkbox-all .checked-none[data-style="checked"] + label, .enclosure .checked-box .checked-none[data-style="checked"] + label, .enclosure .checked-box2 .checked-none[data-style="checked"] + label {
+  display: inline-block;
+  width: 19px;
+  height: 19px;
+  border: 1px solid #758c94;
+  background-color: #fff;
+  overflow: hidden;
+}
+.enclosure .checkbox-all .checked-none[data-style="checked"]:checked + label, .enclosure .checked-box .checked-none[data-style="checked"]:checked + label, .enclosure .checked-box2 .checked-none[data-style="checked"]:checked + label {
+  background: url("/images/gou.png") no-repeat center;
+}
+.enclosure .checkbox-all .checkedNum[data-style="checkeds"] + label:before, .enclosure .checked-box .checkedNum[data-style="checkeds"] + label:before, .enclosure .checked-box2 .checkedNum[data-style="checkeds"] + label:before {
+  width: 13px;
+  height: 10px;
+  background: url("/images/gou.png") no-repeat center;
+  text-align: center;
+  -webkit-transition: all 0.2s linear;
+  transition: all 0.2s linear;
+}
+.enclosure .checkbox-all .tick, .enclosure .checked-box .tick, .enclosure .checked-box2 .tick {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border: 1px solid #076dc2;
+}
+.enclosure .checkbox-all i, .enclosure .checked-box i, .enclosure .checked-box2 i {
+  color: #666;
+  margin-left: 15px;
+}
+.enclosure .checked-box {
+  position: absolute;
+  top: 5px;
+  left: 5px;
+}
+.enclosure .checked-box .checked-none[data-style="checked"] + label {
+  display: inline-block;
+  width: 19px;
+  height: 19px;
+  border: 1px solid #05a9e9;
+  background-color: #fff;
+  overflow: hidden;
+}
+.enclosure .content-file {
+  margin-top: 10px;
+  border-top: 1px solid #e4f4fb;
+}
+.enclosure .content-file ul {
+  font-size: 12px;
+  color: #252525;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+}
+.enclosure .content-file ul li {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  border: 2px solid #dbdbdb;
+  width: 25%;
+  max-width: 177px;
+  height: 177px;
+  margin-left: 0.7%;
+  margin-right: 0.7%;
+  margin-top: 15px;
+}
+.enclosure .content-file ul li.checked {
+  position: relative;
+  border: 4px solid #05a9e9;
+}
+.enclosure .content-file ul li a {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+.enclosure .content-file ul li i {
+  margin-top: 10px;
+}
+.enclosure2 {
+  margin: 25px;
+}
+.enclosure2 .en-all {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+.enclosure2 .en-all .en-left a {
+  display: inline-block;
+  text-align: center;
+  border: 2px solid #cecece;
+  width: 96px;
+  height: 37px;
+  line-height: 37px;
+  margin-right: 17px;
+}
+.enclosure2 .en-all .enclosure-yes a {
+  color: #05a9e9;
+  border: 1px solid #05a9e9;
+}
+.enclosure2 .title {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  font-size: 14px;
+  color: #666;
+  margin: 20px 0;
+}
+.enclosure2 .checkbox-all, .enclosure2 .enclosure .checked-box, .enclosure .enclosure2 .checked-box, .enclosure2 .checked-box2 {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+.enclosure2 .checkbox-all .checked-none[data-style="checked"], .enclosure2 .enclosure .checked-box .checked-none[data-style="checked"], .enclosure .enclosure2 .checked-box .checked-none[data-style="checked"], .enclosure2 .checked-box2 .checked-none[data-style="checked"] {
+  display: none;
+}
+.enclosure2 .checkbox-all .checked-none[data-style="checked"] + label, .enclosure2 .enclosure .checked-box .checked-none[data-style="checked"] + label, .enclosure .enclosure2 .checked-box .checked-none[data-style="checked"] + label, .enclosure2 .checked-box2 .checked-none[data-style="checked"] + label {
+  display: inline-block;
+  width: 19px;
+  height: 19px;
+  border: 1px solid #758c94;
+  background-color: #fff;
+  overflow: hidden;
+}
+.enclosure2 .checkbox-all .checked-none[data-style="checked"]:checked + label, .enclosure2 .enclosure .checked-box .checked-none[data-style="checked"]:checked + label, .enclosure .enclosure2 .checked-box .checked-none[data-style="checked"]:checked + label, .enclosure2 .checked-box2 .checked-none[data-style="checked"]:checked + label {
+  background: url("/images/gou.png") no-repeat center;
+}
+.enclosure2 .checkbox-all .checkedNum[data-style="checkeds"] + label:before, .enclosure2 .enclosure .checked-box .checkedNum[data-style="checkeds"] + label:before, .enclosure .enclosure2 .checked-box .checkedNum[data-style="checkeds"] + label:before, .enclosure2 .checked-box2 .checkedNum[data-style="checkeds"] + label:before {
+  width: 13px;
+  height: 10px;
+  background: url("/images/gou.png") no-repeat center;
+  text-align: center;
+  -webkit-transition: all 0.2s linear;
+  transition: all 0.2s linear;
+}
+.enclosure2 .checkbox-all .tick, .enclosure2 .enclosure .checked-box .tick, .enclosure .enclosure2 .checked-box .tick, .enclosure2 .checked-box2 .tick {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border: 1px solid #076dc2;
+}
+.enclosure2 .checkbox-all i, .enclosure2 .enclosure .checked-box i, .enclosure .enclosure2 .checked-box i, .enclosure2 .checked-box2 i {
+  color: #666;
+  margin-left: 15px;
+}
+.cont-line {
+  margin-top: 15px;
+  border-top: 1px solid #e4f4fb;
+}
+.cont-line li {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  width: 100%;
+  height: 52px;
+  font-size: 12px;
+  color: #252525;
+  border-bottom: 1px solid #e4f4fb;
+}
+.cont-line li .cont-one {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+.cont-line li:hover {
+  background-color: #f6faff;
+}
+.cont-line a {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  color: #252525;
+}
+.cont-line a img {
+  width: 28px;
+  height: 32px;
+  margin-right: 10px;
+  margin-left: 10px;
+}
 
+/*导航*/
+.change-angle{
+  margin-top: -8px;
+  transform:rotate(270deg);
+  -ms-transform:rotate(270deg); 	/* IE 9 */
+  -moz-transform:rotate(270deg); 	/* Firefox */
+  -webkit-transform:rotate(270deg); /* Safari 和 Chrome */
+  -o-transform:rotate(270deg); 	/* Opera */
+}
+/*搜索*/
+.right-section .top-content .top-fixed .top .search .search-btn {
+  width: 19px;
+  height: 18px;
+  background: url("/images/search.png") no-repeat center;
+  margin-right: 18px;
+}
+.search-all{
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+  -ms-flex-pack: end;
+  justify-content: flex-end;
+  padding-right: 20px;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  font-size: 12px;
+}
+.search-btns{
+  width: 19px;
+  height: 18px;
+  background: url("/images/search.png") no-repeat center;
+  margin-right: 18px;
+  display: none;
+}
+.search-big{
+  width: 480px;
+  height: 36px;
+  line-height: 36px;
+  border-radius: 10px;
+  background-color: white;
+  border: 1px solid #808284;
+  margin-top: 20px;
+  margin-left: 20px;
+  margin-bottom: 20px;
+  display: none;
+}
+.salc{
+  color: #252525;
+  padding-left: 28px;
+  display: inline-block;
+  width: 150px;
+  height: 25px;
+  border-right: 1px solid #bababa;
+  border-left: 0 ;
+  border-top: 0 ;
+  border-bottom: 0 ;
+  background: url("/images/search1.png") no-repeat right 15px center;
+  appearance:none;
+  -moz-appearance:none;
+  -webkit-appearance:none;
+}
+.salc option{
+  box-shadow:0 0 10px rgba(0, 204, 204, .5);
+  color:#333;
+  text-align: center;
+}
+.search-big a{
+  float: right;
+  margin-right: 10px;
+  margin-top: 1%;
+}
+.search-big input{
+  width: 50%;
+}
+.search-big select.sle{
+  width:50%;
+  border: none;
+}
+/*搜索*/
 .left-section {
   width: 200px;
   height: 100%;
@@ -1938,18 +2452,20 @@ body {
 
 .footer {
   width: 100%;
-  height: 70px;
-  background-color: #758c94;
   position: fixed;
   bottom: 0;
   left: 200px;
   right: 0;
 }
 .pagination{
-  display:flex;
-  position:absolute;
-  bottom:90px;
-  left:30px;
+  width: 100%;
+  overflow-x: hidden;
+  display: flex;
+  position: absolute;
+  bottom: 0;
+  padding:14px 0 14px 30px;
+  background: rgba(255,255,255,.9);
+  border-top:1px solid #bfd7df;
 }
 .pagination .page{
   width:30px;

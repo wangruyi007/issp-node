@@ -6,7 +6,9 @@ app.factory('demandAnalysisSer',function ($http) {
         editDemand:editDemand,
         findDemandId:findDemandId,
         countDemand:countDemand,
-        deleteDemand:deleteDemand
+        deleteDemand:deleteDemand,
+        getType:getType,
+        getCourse:getCourse
     };
     function demandList(data) {
         return $http.get('/market/demandanalysis/maps',{
@@ -39,5 +41,13 @@ app.factory('demandAnalysisSer',function ($http) {
             params: data
 
         })
+    }
+    //获取业务类型
+    function getType(){
+        return $http.get('/businesstype/findThaw')
+    }
+    //获取业务方向科目数据
+    function getCourse(){
+        return $http.get('/businesscourse/findThaw')
     }
 });

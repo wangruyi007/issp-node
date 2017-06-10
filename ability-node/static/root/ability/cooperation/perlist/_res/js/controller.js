@@ -5,8 +5,8 @@ app.controller('cooperationAbiCtrl', function($scope, cooperationSer,$state,toas
     cooperationSer.getThreeById(coopId).then(function(response){
        if(response.data.code==0){
             $scope.peditInfo = response.data.data;
-        }else if(response.data.code==1){
-           toastr.error( response.data.msg, '温馨提示');
+        }else{
+           toastr.error(response.data.msg, '温馨提示');
        }
     });
 });

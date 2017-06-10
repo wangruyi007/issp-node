@@ -35,5 +35,21 @@ app.config(function($provide, $stateProvider){
                 controller:'signingReviewCtrl'
             }
         }
+    }).state("root.businessContract.signingProject.upload[12]",{
+        url:"/upload[12]?id=",
+        views:{
+            "content@root.businessContract.signingProject":{
+                templateUrl : "root/businessContract/signingProject/upload/_res/html/index.html",
+                controller:'signingUploadCtrl'
+            }
+        }
+    }).state("root.businessContract.signingProject.view[12]",{
+        url:"/view[12]?id=",
+        views:{
+            "content@root.businessContract.signingProject":{
+                templateUrl : "root/businessContract/signingProject/view/_res/html/index.html",
+                controller:'signingViewCtrl'
+            }
+        }
     })
 });

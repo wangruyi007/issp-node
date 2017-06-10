@@ -47,6 +47,9 @@ module.exports = function(){
             timeout : 3000,
             uri : config()['rurl'] + '/projectcoststatus/v1/projectcoststatus/'+argvs.id,
             form : argvs,
+            headers : {
+                userToken : argvs.userToken
+            }
         };
         return request(options);
     };
@@ -121,6 +124,9 @@ module.exports = function(){
             timeout : 3000,
             uri : config()['rurl'] + '/projectbasicinfo/v1/projectbasicinfo/'+argvs.id,
             form : argvs,
+            headers : {
+                userToken : argvs.userToken
+            }
         };
         return request(options);
     };
@@ -195,6 +201,9 @@ module.exports = function(){
             timeout : 3000,
             uri : config()['rurl'] + '/msui/v1/msui/'+argvs.id,
             form : argvs,
+            headers : {
+                userToken : argvs.userToken
+            }
         };
         return request(options);
     };
@@ -269,6 +278,9 @@ module.exports = function(){
             timeout : 3000,
             uri : config()['rurl'] + '/ssui/v1/ssui/'+argvs.id,
             form : argvs,
+            headers : {
+                userToken : argvs.userToken
+            }
         };
         return request(options);
     };
@@ -343,6 +355,9 @@ module.exports = function(){
             timeout : 3000,
             uri : config()['rurl'] + '/smui/v1/smui/'+argvs.id,
             form : argvs,
+            headers : {
+                userToken : argvs.userToken
+            }
         };
         return request(options);
     };
@@ -417,6 +432,9 @@ module.exports = function(){
             timeout : 3000,
             uri : config()['rurl'] + '/mmui/v1/mmui/'+argvs.id,
             form : argvs,
+            headers : {
+                userToken : argvs.userToken
+            }
         };
         return request(options);
     };
@@ -491,6 +509,9 @@ module.exports = function(){
             timeout : 3000,
             uri : config()['rurl'] + '/projectpersonneldemand/v1/projectpersonneldemand/'+argvs.id,
             form : argvs,
+            headers : {
+                userToken : argvs.userToken
+            }
         };
         return request(options);
     };
@@ -565,6 +586,9 @@ module.exports = function(){
             timeout : 3000,
             uri : config()['rurl'] + '/projectmeasuresummary/v1/projectmeasuresummary/'+argvs.id,
             form : argvs,
+            headers : {
+                userToken : argvs.userToken
+            }
         };
         return request(options);
     };

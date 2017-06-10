@@ -14,5 +14,11 @@ app.controller('competeCtrl', function ($scope,$state) {
     $scope.navClass= function(name){
         $scope.navCla=name
     }
+    //菜单导航
+    angular.element('.big').click(function(){
+        angular.element(this).siblings('h3').find('i').addClass('change-angle').end().next().hide();
+        angular.element(this).next().toggle().end().find('i').toggleClass('change-angle');
+    })
+    angular.element('.big').eq(0).trigger("click");//添加一个默认点击事件
 })
 

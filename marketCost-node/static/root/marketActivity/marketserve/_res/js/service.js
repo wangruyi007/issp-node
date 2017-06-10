@@ -9,7 +9,9 @@ app.factory('marketserveSer',function ($http) {
         marketserveapplyEdit:marketserveapplyEdit,
         marketserveapplyDel:marketserveapplyDel,
         fundModuleOpinionEidt:fundModuleOpinionEidt,
-        executiveOpinionEidt:executiveOpinionEidt
+        executiveOpinionEidt:executiveOpinionEidt,
+        viewCustomer:viewCustomer,
+        editCustomer:editCustomer
     };
     //列表
     function listMarketserve(data) {
@@ -50,5 +52,15 @@ app.factory('marketserveSer',function ($http) {
     //编辑 决策层审核意见
     function executiveOpinionEidt(data) {
         return $http.post('/marketActivity/marketserve/executiveEidt',data)
+    }
+    //查看客户信息列表
+    function viewCustomer(data) {
+        return $http.get('/marketActivity/marketserveapply/viewCustomer',{
+            params:data
+        })
+    }
+    //编辑 客户信息
+    function editCustomer(data) {
+        return $http.post('/marketActivity/servereCordApply/editCustomer',data)
     }
 });

@@ -1,10 +1,10 @@
 <div class="content-tab list">
-    <div class="search-big">
-        <select class="salc">
-            <option>公司名称</option>
+    <div class="search-big" style="display :{{ isView?'none':'block'}}">
+        <select class="salc" ng-model="checkedName" ng-init="checkedName='公司名称'">
+            <option ng-repeat="item in titles">{{item}}</option>
         </select>
-        <input type="text" ng-model="companyName">
-        <a href="javascript:void(0)" ng-click="collect()"><img src="/images/search2.png" style="margin-top: 10px"></a>
+        <input type="text" ng-model="companyName" ng-show="checkedName=='公司名称'">
+        <a href="javascript:void(0)" ng-click="collect()"><img src="/images/search2.png"></a>
     </div>
     <ul class="table">
         <li class="list-head">

@@ -1,5 +1,5 @@
-var app = angular.module('oneSummary', ['toastr','ipCookie']);
-app.controller('oneSummaryCtrl', function($scope, summarySer,toastr,$location,ipCookie){
+var app = angular.module('oneSummary', ['toastr']);
+app.controller('oneSummaryCtrl', function($scope, summarySer,toastr){
 
     $scope.showed=true;
     // 获取所有地区

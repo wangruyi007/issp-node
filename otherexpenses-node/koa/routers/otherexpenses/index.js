@@ -6,11 +6,11 @@ var config = require(path.resolve('plugins/read-config.js'));
 var fetch = require('node-fetch');//url转发
 module.exports = function(){
     var router = new Router();
-                          //
     //列表
     router.get('/expenses/message/list', function*(){
        var $self = this;
-       var page = this.request.query;
+       var page = $self.request.query;
+       $self.userToken = $self.cookies.get('token');
         yield (server().expensesList(page)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -18,22 +18,25 @@ module.exports = function(){
             }).catch((error) =>{
                 $self.set('Content-Type','application/json;charset=utf-8');
                 $self.body=error.error;
+                console.error(error.error);
             }));
     }).get('/expenses/message/count', function*(){
         var $self = this;
-        yield (server().expensesCount()
+        var data = {userToken:$self.cookies.get('token')}
+        yield (server().expensesCount(data)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
                 $self.body = responseText;
             }).catch((error) =>{
                 $self.set('Content-Type','application/json;charset=utf-8');
                 $self.body=error.error;
+                console.error(error.error);
             }));
         //添加
     }).post('/expenses/message/add', function*(){
-            var addData = this.request.body;
-            addData.userToken = this.cookies.get('token');
             var $self = this;
+            var addData = $self.request.body;
+            addData.userToken = $self.cookies.get('token');
             yield (server().expensesAdd(addData)
                 .then((parsedBody) =>{
                     var responseText = JSON.parse(parsedBody);
@@ -41,81 +44,83 @@ module.exports = function(){
                 }).catch((error) =>{
                     $self.set('Content-Type','application/json;charset=utf-8');
                     $self.body=error.error;
+                    console.error(error.error);
                 }));
         //编辑ID
     }).post('/expenses/message/getOneById', function*(){
-            var EditId = this.request.body;
-            EditId.userToken = this.cookies.get('token');
             var $self = this;
+            var EditId = $self.request.body;
+            EditId.userToken = $self.cookies.get('token');
             yield (server().expensesById(EditId)
                 .then((parsedBody) =>{
                     var responseText = JSON.parse(parsedBody);
                     $self.body = responseText;
                 }).catch((error) =>{
-                    if(error.error && error.error.code && error.error.code == 'ETIMEDOUT'){
-                        $self.body = {'msg' : '请求错误！', errno : 3};
-                        $self.status = 408;marketserveapplyDelete
-                    }
+                    $self.set('Content-Type','application/json;charset=utf-8');
+                    $self.body=error.error;
+                    console.error(error.error);
                 }));
             //编辑
     }).post('/expenses/message/edit', function*(){
-                var Edit = this.request.body;
-                Edit.userToken = this.cookies.get('token');
-                var $self = this;
-                yield (server().expensesEidt(Edit)
-                    .then((parsedBody) =>{
-                        var responseText = JSON.parse(parsedBody);
-                        $self.body = responseText;
-                    }).catch((error) =>{
-                        if(error.error && error.error.code && error.error.code == 'ETIMEDOUT'){
-                            $self.body = {'msg' : '请求错误！', errno : 3};
-                            $self.status = 408;
-                        }
-                    }));
+        var $self = this;
+        var Edit = $self.request.body;
+        Edit.userToken = $self.cookies.get('token');
+        yield (server().expensesEidt(Edit)
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
         //删除
     }).post('/expenses/message/delete', function*(){
-        var delData = this.request.body;
-        delData.userToken = this.cookies.get('token');
         var $self = this;
+        var delData = $self.request.body;
+        delData.userToken = $self.cookies.get('token');
         yield (server().expensesDelete(delData)
             .then((parsedBody) => {
                 var responseText = JSON.parse(parsedBody);
                 $self.body = responseText;
             }).catch((error) => {
-                if (error.error && error.error.code && error.error.code == 'ETIMEDOUT') {
-                    $self.body = { 'msg': '请求错误！', errno: 3 };
-                    $self.status = 408;
-                }
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
             }));
          //地区汇总
     }).get('/expenses/message/arealist', function*(){
        var $self = this;
-       var page = this.request.query;
-       console.log(page)
+       var page = $self.request.query;
+       page.userToken = $self.cookies.get('token');
         yield (server().areaList(page)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
                 $self.body = responseText;
             }).catch((error) =>{
-                $self.set('Content-Type','application/json;charset=utf-8');
+               $self.set('Content-Type','application/json;charset=utf-8');
                 $self.body=error.error;
+                console.error(error.error);
             }));
             //项目组汇总
     }).get('/expenses/message/projectgrouplist', function*(){
        var $self = this;
-       var page = this.request.query;
+       var page = $self.request.query;
+       page.userToken = $self.cookies.get('token');
         yield (server().projectgroupList(page)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
                 $self.body = responseText;
             }).catch((error) =>{
-                $self.set('Content-Type','application/json;charset=utf-8');
+               $self.set('Content-Type','application/json;charset=utf-8');
                 $self.body=error.error;
+                console.error(error.error);
             }));
         //类型汇总
     }).get('/expenses/message/projectTypeList', function*(){
        var $self = this;
-       var page = this.request.query;
+       var page = $self.request.query;
+       page.userToken = $self.cookies.get('token');
         yield (server().projectTypeList(page)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -123,36 +128,83 @@ module.exports = function(){
             }).catch((error) =>{
                 $self.set('Content-Type','application/json;charset=utf-8');
                 $self.body=error.error;
+                console.error(error.error);
             }));
             //项目名称汇总
     }).get('/expenses/message/projectNameList', function*(){
        var $self = this;
-       var page = this.request.query;
+       var page = $self.request.query;
+       page.userToken = $self.cookies.get('token');
         yield (server().projectNameList(page)
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+               $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
+    }).get('/listSetting', function*(){//设置权限列表
+        var $self = this;
+        var setting = this.request.query;
+        setting.userToken = $self.cookies.get('token');
+        yield (server().listSetting(setting)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
                 $self.body = responseText;
             }).catch((error) =>{
                 $self.set('Content-Type','application/json;charset=utf-8');
                 $self.body=error.error;
+                console.error(error.error);
             }));
-    }).get('/user/logout', function*(){//退出用户
+    }).get('/countSetting', function*(){
         var $self = this;
-        var token = {token:$self.cookies.get('token')};
-        yield (server().logout(token)
+        yield (server().countSetting()
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
-                if(responseText.code==0){
-                    $self.cookies.set('token','');
-                    $self.body = responseText;
-                }
-
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
+    }).get('/getpermit', function*(){
+        var $self = this;
+        var getId = $self.request.query;
+        yield (server().getpermit(getId)
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
+    }).get('/getListpermit', function*(){
+        var $self = this;
+        var listPermit = $self.request.query;
+        yield (server().getListpermit(listPermit)
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
+    }).post('/editSetting', function*(){
+        var $self = this;
+        var editSet = $self.request.body;
+        editSet.userToken = $self.cookies.get("token");
+        yield (server().editSetting(editSet)
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
             }).catch((error) =>{
                 $self.set('Content-Type','application/json;charset=utf-8');
                 $self.body=error.error;
                 console.error(error.error);
             }));
     })
-
     return router;
 };
