@@ -4,31 +4,39 @@
             <ul>
                 <li class="required">
                     <label><i><img src="/images/mandatory.png"></i><em>地区</em></label>
-                    <select class="sele ng-valid ng-not-empty ng-dirty ng-valid-parse ng-touched area" ng-model="data.area">
-                        <option value="请选择1">请选择1</option>
-                        <option ng-repeat="area in areas" value="{{area.area}}">{{area.area}}</option>
-                    </select> 
+                    <div class="sele ng-valid ng-not-empty ng-dirty ng-valid-parse ng-touched area side">
+                        <select ng-model="data.area" class="sele">
+                            <option value="请选择1">请选择1</option>
+                            <option ng-repeat="area in areas" value="{{area.area}}">{{area.area}}</option>
+                        </select> 
 
-                     <input type="text"  class="inputDom ng-valid ng-not-empty ng-dirty ng-touched" ng-model="data.area" ng-verify="{}" style="width:235px">
+                         <input type="text"  class="inputDom ng-valid ng-not-empty ng-dirty ng-touched" ng-model="data.area" ng-verify="{}">
+                    </div>
                 </li>
                 <li class="required">
                     <label><i><img src="/images/mandatory.png"></i><em>项目组</em></label>
-                    <select class="sele ng-valid ng-not-empty ng-dirty ng-valid-parse ng-touched projectGroup" ng-model="data.projectGroup">
-                        <option value="请选择1">请选择1</option>
-                        <option ng-repeat="projectGroup in projectGroups" value="{{projectGroup.value}}">{{projectGroup.value}}</option>
-                    </select>
+                    <div class="sele ng-valid ng-not-empty ng-dirty ng-valid-parse ng-touched projectGroup side">
+                        <select ng-model="data.projectGroup" class="sele">
+                            <option value="请选择1">请选择1</option>
+                            <option ng-repeat="projectGroup in projectGroups" value="{{projectGroup.value}}">{{projectGroup.value}}</option>
+                        </select> 
 
-                    <input type="text"  class="inputDom ng-valid ng-not-empty ng-dirty ng-touched" ng-model="data.projectGroup" ng-verify="{}" style="width:235px;">
+                         <input type="text"  class="inputDom ng-valid ng-not-empty ng-dirty ng-touched" ng-model="data.projectGroup" ng-verify="{}">
+                    </div>
                 </li>
                 <li class="required">
                     <label><i><img src="/images/mandatory.png"></i><em>项目名称</em></label>
-                    <select class="sele ng-valid ng-not-empty ng-dirty ng-valid-parse ng-touched project" ng-model="data.projectName">
-                        <option value="请选择1">请选择1</option>
-                        <option ng-repeat="projectName in projectNames" value="{{projectName.value}}">{{projectName.value}}</option>
-                    </select>
+                    <div class="sele ng-valid ng-not-empty ng-dirty ng-valid-parse ng-touched projectName side">
+                        <select ng-model="data.projectName" class="sele">
+                            <option value="请选择1">请选择1</option>
+                            <option ng-repeat="projectName in projectNames" value="{{projectName.value}}">{{projectName.value}}</option>
+                        </select> 
 
-                    <input type="text"  class="inputDom ng-valid ng-not-empty ng-dirty ng-touched" ng-model="data.projectName" ng-verify="{}" style="width:235px;">
+                         <input type="text"  class="inputDom ng-valid ng-not-empty ng-dirty ng-touched" ng-model="data.projectName" ng-verify="{}">
+                    </div>
                 </li>
+
+
                 <li class="required f-l">
                     <label><i><img src="/images/mandatory.png"></i><em>住宿地址</em></label>
                     <input type="text"  ng-verify="{}" ng-model="data.address">

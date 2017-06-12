@@ -1231,7 +1231,7 @@ body {
 .right-section .top-content .content .content-wrap .content-input .input-list section ul li .inputDom{
   width: 45%;
   position: absolute;
-  margin-left: -10px;
+  margin-left: 0%;
   border: 0!important;
   height: 30px;
   padding-left: 10px !important;
@@ -1302,7 +1302,7 @@ body {
 }
 
 .right-section .top-content .content .content-wrap .content-input .input-list section ul li .sele {
-  width: 55%;
+  width: 54%;
   height: 36px;
   border: 1px solid #999999;
   background: url("/images/down_b.png") no-repeat right 10px center;
@@ -1310,6 +1310,7 @@ body {
   padding-right: 15px;
   border-radius: 5px;
   margin-left: 14px;
+  position: relative;
 }
 
 .right-section .top-content .content .content-wrap .content-input .input-list section ul li .sele option {
@@ -2267,6 +2268,21 @@ body {
   width: 200px;
   /*height: 100%;*/
   text-align: center;
+}
+.side{
+  padding:0 !important;
+  border:0px solid #1aafea !important;
+}
+.side select{
+  height:100% !important;
+  width:100% !important;
+  margin:0 !important;
+}
+.side input{
+  width:70% !important;
+  position:absolute !important;
+  top:3px !important;
+  left:1px !important;
 }
 /*.height span:first-child{
   margin-left: 30px;
