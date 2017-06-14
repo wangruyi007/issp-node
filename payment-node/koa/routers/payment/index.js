@@ -198,8 +198,7 @@ module.exports = function(){
                 $self.body=error.error;
                 console.error(error.error);
             }));
-    })
-        .get('/listContractor/list', function*(){ //列表
+    }).get('/listContractor/list', function*(){ //列表
             var $self = this;
             var page = $self.request.query;
             yield (server().contractorList(page)
@@ -288,6 +287,19 @@ module.exports = function(){
         var $self = this;
         var token = {token:$self.cookies.get('token')};
         yield (server().logout(token)
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
+    }).post('/listNameGroup/group', function*(){
+        var $self = this;
+        var groupData = $self.request.body;
+        groupData.token = $self.cookies.get('token');
+        yield (server().groupListName(groupData)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
                 $self.body = responseText;

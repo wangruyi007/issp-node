@@ -1,17 +1,54 @@
 var app = angular.module('signingList', ['ng-pagination','toastr']);
-app.controller('signingListCtrl',function($scope,signingSer,toastr){
+app.controller('signingListCtrl',function($scope,signingSer,toastr,$stateParams,$state){
     $scope.$emit('changeId', null);
     //监听切换搜索是否出现
     $scope.$on('iSsearch',function(event,newIs){
         $scope.isView = newIs;
     });
+    //获取id
+    if($stateParams.id){
+        switch ($stateParams.name){
+            case 'delete':
+                $scope.delShow = true;
+                break;
+        }
+    }
+    $scope.cancel = function(){//取消删除
+        $scope.delShow = false;
+        $state.go('root.businessContract.signingProject.list[12]',{id:null,name:null});
+    };
+    $scope.delFn = function(){//确认删除
+        var data = {
+            id:$stateParams.id
+        };
+        signingSer.deleteSigning(data).then(function(response){
+            if(response.data.code==0){
+                toastr.info( "信息已删除", '温馨提示');
+                $scope.deledId = $stateParams.id;
+                $scope.$emit('changeId', null);
+                $scope.delShow = false;
+                $state.go('root.businessContract.signingProject.list[12]',{id:null,name:null});
+            }else{
+                toastr.error( response.data.msg, '温馨提示');
+            }
+        });
+    };
     function activatePage(page) {
         var listData = {
             page:page
         };
         signingSer.signingList(listData).then(function(response){
             if(response.data.code==0){
-                $scope.signingLists = response.data.data
+                $scope.signingLists = response.data.data;
+                if($stateParams.id){
+                    angular.forEach($scope.signingLists,function(obj){
+                        if(obj.id == $stateParams.id){
+                            obj._selectList = true;
+                        }
+                    });
+                    //向父Ctrl传递事件
+                    $scope.$emit('changeId', $stateParams.id);
+                }
             }else{
                 toastr.error( response.data.msg, '温馨提示');
             }
@@ -35,7 +72,6 @@ app.controller('signingListCtrl',function($scope,signingSer,toastr){
                 makeProject: $scope.makeProject
             };
             signingSer.countSigning(keywords).then(function (response) {
-                console.log(response)
                 if(response.data.code==0){
                     $scope.custom.itemsCount = response.data.data;
                 }else{
@@ -54,7 +90,6 @@ app.controller('signingListCtrl',function($scope,signingSer,toastr){
                 page: page
             };
             signingSer.signingList(data).then(function(response){
-                console.log(response)
                 if(response.data.code == 0){
                     $scope.signingLists = response.data.data
                 }else{

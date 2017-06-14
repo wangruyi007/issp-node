@@ -11,6 +11,14 @@ app.config(function($provide, $stateProvider){
                 controller:"signingMenuCtrl"
             }
         }
+    }).state("root.businessContract.signingProject.list[12]",{
+        url:"/list[12]?id=&name=",
+        views:{
+            "content@root.businessContract.signingProject":{
+                templateUrl : "root/businessContract/signingProject/list/_res/html/index.html",
+                controller:'signingListCtrl'
+            }
+        }
     }).state("root.businessContract.signingProject.add[12]",{
         url:"/add[12]",
         views:{
@@ -33,6 +41,38 @@ app.config(function($provide, $stateProvider){
             "content@root.businessContract.signingProject":{
                 templateUrl : "root/businessContract/signingProject/review/_res/html/index.html",
                 controller:'signingReviewCtrl'
+            }
+        }
+    }).state("root.businessContract.signingProject.upload[12]",{
+        url:"/upload[12]?id=",
+        views:{
+            "content@root.businessContract.signingProject":{
+                templateUrl : "root/businessContract/signingProject/upload/_res/html/index.html",
+                controller:'signingUploadCtrl'
+            }
+        }
+    }).state("root.businessContract.signingProject.view[12]",{
+        url:"/view[12]?id=&view=",
+        views:{
+            "content@root.businessContract.signingProject":{
+                templateUrl : "root/businessContract/signingProject/view/_res/html/index.html",
+                controller:'signingViewCtrl'
+            }
+        }
+    }).state("root.businessContract.signingProject.export[12]",{
+        url:"/export[12]",
+        views:{
+            "content@root.businessContract.signingProject":{
+                templateUrl : "root/businessContract/signingProject/export/_res/html/index.html",
+                controller:'signingExportCtrl'
+            }
+        }
+    }).state("root.businessContract.signingProject.import[12]",{
+        url:"/import[12]",
+        views:{
+            "content@root.businessContract.signingProject":{
+                templateUrl : "root/businessContract/signingProject/import/_res/html/index.html",
+                controller:'signingimportCtrl'
             }
         }
     })

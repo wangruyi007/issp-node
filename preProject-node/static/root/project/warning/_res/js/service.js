@@ -6,7 +6,8 @@ app.factory('warningSer',function ($http) {
         addWarning:addWarning,
         getWarning:getWarning,
         editWarning:editWarning,
-        deleteWarning:deleteWarning
+        deleteWarning:deleteWarning,
+        allCostDifferences:allCostDifferences
     };
     function listWarning(data) {
         return $http.get('/listWarning/lit',{params:data})
@@ -26,5 +27,7 @@ app.factory('warningSer',function ($http) {
     function deleteWarning(data) {
         return $http.get('/deleteWarning/delete',{params:data})
     }
-
+    function allCostDifferences() {
+        return $http.get('/allCostDifferences/id')
+    }
 });

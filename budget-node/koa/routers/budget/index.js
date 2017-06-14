@@ -9,6 +9,7 @@ module.exports = function(){
     router.get('/listProWeek/list', function*(){
         var $self = this;
         var page = this.request.query;
+        page.token = this.cookies.get('token');
         yield (server().proWeekList(page)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -20,7 +21,8 @@ module.exports = function(){
             }));
     }).get('/countProWeek/count', function*(){
         var $self = this;
-        yield (server().proWeekCount()
+        var token={token:$self.cookies.get('token')};
+        yield (server().proWeekCount(token)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
                 $self.body = responseText;
@@ -45,6 +47,7 @@ module.exports = function(){
     }).get('/getProWeek/id', function*(){
         var $self = this;
         var getId = $self.request.query;
+        getId.token = $self.cookies.get('token');
         yield (server().proWeekGetById(getId)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -56,7 +59,8 @@ module.exports = function(){
             }));
     }).get('/listSummaryProject/id', function*(){
         var $self = this;
-        yield (server().proWeekGetSummaryById()
+        var token={token:$self.cookies.get('token')};
+        yield (server().proWeekGetSummaryById(token)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
                 $self.body = responseText;
@@ -106,7 +110,8 @@ module.exports = function(){
             }));
     }).get('/collectProject2/project', function*(){
         var $self = this;
-        yield (server().proWeekSummary()
+        var token={token:$self.cookies.get('token')};
+        yield (server().proWeekSummary(token)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
                 $self.body = responseText;
@@ -119,6 +124,7 @@ module.exports = function(){
         .get('/listProMonth/list', function*(){
             var $self = this;
             var page = this.request.query;
+            page.token = $self.cookies.get('token');
             yield (server().proMonthList(page)
                 .then((parsedBody) =>{
                     var responseText = JSON.parse(parsedBody);
@@ -130,7 +136,8 @@ module.exports = function(){
                 }));
         }).get('/countProMonth/count', function*(){
         var $self = this;
-        yield (server().proMonthCount()
+        var token={token:$self.cookies.get('token')};
+        yield (server().proMonthCount(token)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
                 $self.body = responseText;
@@ -141,7 +148,8 @@ module.exports = function(){
             }));
     }).get('/listMonthProject/id', function*(){ //查询所有项目
         var $self = this;
-        yield (server().proMonthGetSummaryById()
+        var token={token:$self.cookies.get('token')};
+        yield (server().proMonthGetSummaryById(token)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
                 $self.body = responseText;
@@ -165,7 +173,8 @@ module.exports = function(){
             }));
     }).get('/collectMonthProject2/project', function*(){
         var $self = this;
-        yield (server().proMonthSummary()
+        var token={token:$self.cookies.get('token')};
+        yield (server().proMonthSummary(token)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
                 $self.body = responseText;
@@ -177,6 +186,7 @@ module.exports = function(){
     }).get('/listTheMonthProject/id', function*(){
         var $self = this;
         var idData = this.request.query;
+        idData.token = $self.cookies.get('token');
         yield (server().theMonthList(idData)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -189,6 +199,7 @@ module.exports = function(){
     }).get('/listAreaWeek/list', function*(){ //地区
         var $self = this;
         var page = this.request.query;
+        page.token = $self.cookies.get('token');
         yield (server().areaWeekList(page)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -200,7 +211,8 @@ module.exports = function(){
             }));
     }).get('/countAreaWeek/count', function*(){
         var $self = this;
-        yield (server().areaWeekCount()
+        var token={token:$self.cookies.get('token')};
+        yield (server().areaWeekCount(token)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
                 $self.body = responseText;
@@ -225,6 +237,7 @@ module.exports = function(){
     }).get('/getAreaWeek/id', function*(){
         var $self = this;
         var getId = $self.request.query;
+        getId.token = $self.cookies.get('token');
         yield (server().areaWeekGetById(getId)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -275,7 +288,8 @@ module.exports = function(){
             }));
     }).get('/collectArea2/area', function*(){
         var $self = this;
-        yield (server().areaWeekSummary()
+        var token={token:$self.cookies.get('token')};
+        yield (server().areaWeekSummary(token)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
                 $self.body = responseText;
@@ -286,7 +300,8 @@ module.exports = function(){
             }));
     }).get('/listSummaryArea/id', function*(){ //查询所有地区
         var $self = this;
-        yield (server().areaWeekGetSummaryById()
+        var token={token:$self.cookies.get('token')};
+        yield (server().areaWeekGetSummaryById(token)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
                 $self.body = responseText;
@@ -298,6 +313,7 @@ module.exports = function(){
     }).get('/listAreaMonth/list', function*(){ //地区
         var $self = this;
         var page = this.request.query;
+        page.token = $self.cookies.get('token');
         yield (server().areaMonthList(page)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -309,7 +325,8 @@ module.exports = function(){
             }));
     }).get('/countAreaMonth/count', function*(){
         var $self = this;
-        yield (server().areaMonthCount()
+        var token={token:$self.cookies.get('token')};
+        yield (server().areaMonthCount(token)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
                 $self.body = responseText;
@@ -333,7 +350,8 @@ module.exports = function(){
             }));
     }).get('/collectByArea2/area', function*(){
         var $self = this;
-        yield (server().areaMonthSummary()
+        var token={token:$self.cookies.get('token')};
+        yield (server().areaMonthSummary(token)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
                 $self.body = responseText;
@@ -344,7 +362,8 @@ module.exports = function(){
             }));
     }).get('/listAreaCol/id', function*(){ //查询所有地区
         var $self = this;
-        yield (server().areaMonthGetSummaryById()
+        var token={token:$self.cookies.get('token')};
+        yield (server().areaMonthGetSummaryById(token)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
                 $self.body = responseText;
@@ -356,6 +375,7 @@ module.exports = function(){
     }).get('/listTheMonthArea/id', function*(){
         var $self = this;
         var idData = this.request.query;
+        idData.token = $self.cookies.get('token');
         yield (server().theMonthAreaList(idData)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -368,6 +388,7 @@ module.exports = function(){
     }).get('/listWarning/lit', function*(){
         var $self = this;
         var page = this.request.query;
+        page.token = $self.cookies.get('token');
         yield (server().warningList(page)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -379,7 +400,8 @@ module.exports = function(){
             }));
     }).get('/countWarning/count', function*(){
         var $self = this;
-        yield (server().warningCount()
+        var token={token:$self.cookies.get('token')};
+        yield (server().warningCount(token)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
                 $self.body = responseText;
@@ -404,6 +426,7 @@ module.exports = function(){
     }).get('/getWarning/id', function*(){
         var $self = this;
         var getId = $self.request.query;
+        getId.token = $self.cookies.get('token');
         yield (server().warningGetById(getId)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -441,7 +464,8 @@ module.exports = function(){
             }));
     }).get('/allCostProjects/id', function*(){//项目所有周
         var $self = this;
-        yield (server().projectsAllCostById()
+        var token={token:$self.cookies.get('token')};
+        yield (server().projectsAllCostById(token)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
                 $self.body = responseText;
@@ -452,7 +476,8 @@ module.exports = function(){
             }));
     }).get('/allCostArea/id', function*(){//地区所有周
         var $self = this;
-        yield (server().areaAllCostById()
+        var token={token:$self.cookies.get('token')};
+        yield (server().areaAllCostById(token)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
                 $self.body = responseText;
@@ -461,10 +486,66 @@ module.exports = function(){
                 $self.body=error.error;
                 console.error(error.error);
             }));
-    }).get('/user/logout', function*(){
+    }).get('/user/logout', function*(next){
+        var url = this.request.query;
+        this.cookies.set("absUrl",url.absurl);
+        this.body = {
+            code:0,
+            msg:"重定向"
+        };
+    }).get('/listSetting', function*(){
         var $self = this;
-        var token = {token:$self.cookies.get('token')};
-        yield (server().logout(token)
+        var setting = this.request.query;
+        setting.token = $self.cookies.get('token');
+        yield (server().listSetting(setting)
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
+    }).get('/countSetting', function*(){
+        var $self = this;
+        yield (server().countSetting()
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
+    }).get('/getpermit', function*(){
+        var $self = this;
+        var getId = $self.request.query;
+        yield (server().getpermit(getId)
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
+    }).get('/getListpermit', function*(){
+        var $self = this;
+        var listPermit = $self.request.query;
+        yield (server().getListpermit(listPermit)
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
+    }).post('/editSetting', function*(){
+        var $self = this;
+        var editSet = $self.request.body;
+        editSet.token = $self.cookies.get("token");
+        yield (server().editSetting(editSet)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
                 $self.body = responseText;

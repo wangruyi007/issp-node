@@ -2,12 +2,19 @@ var app = angular.module('contractServer',[]);
 app.factory('contractSer',function ($http) {
     return {
         contractList : contractList,
+        menuPermission : menuPermission,
         addContract:addContract,
         editContract:editContract,
         findContractId:findContractId,
         countContract:countContract,
-        deleteContract:deleteContract
+        deleteContract:deleteContract,
+        viewFiles:viewFiles
     };
+    //菜单权限
+    function menuPermission(data) {
+        return $http.get('/contractcategory/guidePermission/'+data);
+    }
+    //列表
     function contractList(data) {
         return $http.get('/contractcategory/list',{
             params: data
@@ -40,5 +47,9 @@ app.factory('contractSer',function ($http) {
             params: data
 
         })
+    }
+    //附件列表
+    function viewFiles(data){
+        return $http.get('/contractcategory/listFile',{params:data})
     }
 });

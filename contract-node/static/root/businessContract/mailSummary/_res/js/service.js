@@ -2,6 +2,7 @@ var app = angular.module('emailServer',[]);
 app.factory('emailSer',function ($http) {
     return {
         emailList : emailList,
+        menuPermission : menuPermission,
         addEmail:addEmail,
         editEmail:editEmail,
         findEmailId:findEmailId,
@@ -16,6 +17,11 @@ app.factory('emailSer',function ($http) {
         dispatchSummary:dispatchSummary,
         getDispatchArea:getDispatchArea
     };
+    //菜单权限
+    function menuPermission(data) {
+        return $http.get('/collectemail/guidePermission/'+data);
+    }
+    //列表
     function emailList(data) {
         return $http.get('/collectemail/list',{
             params: data

@@ -226,13 +226,16 @@ module.exports = function(){
         };
         return request(options);
     };
-    this.logout = function(argvs){
+    this.groupListName = function(argvs){
         var options = {
             method : 'POST',
             timeout : 3000,
-            uri : config()['user'] + `/v1/sign-out/${argvs.token}`,
-            form:argvs
-        };
+            uri : config()['rurl'] + '/receivablesubsidiary/v1/progress?group='+encodeURIComponent(argvs.params.group)+'&progress='+encodeURIComponent(argvs.params.progress)+'&id='+argvs.params.id,
+            headers : {
+                userToken:argvs.token
+            }
+           };
+        console.log(argvs);
         return request(options);
     };
     return this;
