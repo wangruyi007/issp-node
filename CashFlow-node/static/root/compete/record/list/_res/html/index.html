@@ -24,13 +24,13 @@
                     <p>{{::list.digest}}</p>
                     <p>{{::list.income}}</p>
                     <p>{{::list.expenditure}}</p>
-                    <p>{{::list.dataSource}}</p>
+                    <p style="color:red">{{::list.dataSource}}</p>
                 </div>
             </section>
         </li>
      </ul>
     <footer class="footer">
-        <pagination count="abili.itemsCount" take="abili.take" activate="abili.activatePage"></pagination>
+        <pagination count="abili.itemsCount" take="abili.limit" activate="abili.activatePage"></pagination>
     </footer>
 </div>
 <div ui-view="modal"></div>

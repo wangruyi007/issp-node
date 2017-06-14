@@ -5,13 +5,13 @@ var form = require(path.resolve('plugins/form.js'));
 var urlEncode = require(path.resolve('plugins/urlEncode.js'));
 module.exports = function(){
     //查询总记录数 
-    this.moneyAll= function(argvs){
+    this.countRecord= function(argvs){
         var options = {
             method : 'GET',
             timeout : 3000,
             uri : config()['rurl'] + '/fundrecord/v1/count',
             headers : {
-                userToken : argvs.token
+                userToken : argvs.userToken
             }
         };
         return request(options);
