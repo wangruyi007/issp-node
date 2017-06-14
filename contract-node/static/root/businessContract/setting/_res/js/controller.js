@@ -56,6 +56,6 @@ app.filter('cover', function(){
         return result;
     }
 
-})
+});
 
 

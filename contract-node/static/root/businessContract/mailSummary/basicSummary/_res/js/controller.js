@@ -12,7 +12,6 @@ app.controller('basicSummaryCtrl', function($scope, emailSer,toastr){
         }
     });
     $scope.getSummary ={onSelectionChanged(){
-
         emailSer.basicSummary($scope.firstCompany).then(function(response){
             if($scope.firstCompany.length==0){
                 $scope.summaryLists = {};
