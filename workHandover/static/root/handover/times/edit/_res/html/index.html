@@ -1,0 +1,32 @@
+<div class="content-input" verify-scope="tipStyle: 1">
+    <div class="input-list">
+     <section>
+            <ul>
+                <li class="required f-l">
+                    <label><i><!-- <img src="/images/mandatory.png"> --></i><em>工作交接原因</em></label>
+                    <input type="text"  ng-verify="{}" ng-model="data.workJoinCause">
+                </li>
+                <li class="required f-l">
+                    <label><i><!-- <img src="/images/mandatory.png"> --></i><em>交接流程</em></label>
+                    <!-- <input type="text"  ng-verify="{}" ng-model="data.joinProcess"> -->
+                    <textarea name="交接流程" cols="62" rows="10" ng-verify="{}" ng-model="data.joinProcess"></textarea>
+                </li>
+                <li class="required">
+                    <label><i><!-- <img src="/images/mandatory.png"> --></i><em>对象</em></label>
+                    <select class="sele ng-valid ng-not-empty ng-dirty ng-valid-parse ng-touched projectName yon" ng-model="object">
+                        <option value="交接者">交接者</option>
+                        <option value="被交接者">被交接者</option>
+                    </select>
+                </li>
+                <li class="required f-l">
+                    <label><i><!-- <img src="/images/mandatory.png"> --></i><em>交接时间</em></label>
+                    <input type="text"  ng-verify="{}" ng-model="data.joinTime">
+                </li>
+            </ul>
+        </section>
+    </div>
+    <p class="dataBottom">
+        <span class="imPrompt"><i><img src="/images/prompt.png"></i>带有<i><img src="/images/mandatory.png"></i>的为必填项</span>
+        <button ng-verify="{control:'myform'}" ng-click="timesEditFun()">提交</button>
+    </p>
+</div>
