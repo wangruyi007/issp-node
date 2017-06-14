@@ -24,7 +24,7 @@ app.directive('mod',function(){
                 if(textWidth>boxWidth){
                     elements.addClass('modac');
                 }
-           })
+           });
             elements.on('click',function(){
                 if(elements.hasClass('modac')){
                     $('.module').show();

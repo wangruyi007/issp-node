@@ -44,14 +44,14 @@
         <li class="list-all" ng-repeat="lists in signingLists" style="display: {{lists._delete?'none':'block'}};">
             <section>
                 <div class="list-text {{lists._selectList?'selectList':''}}" ng-click="selectList(lists)">
-                    <p>{{$index+1}}</p>
-                    <p>{{::lists.businessType|cover}}</p>
-                    <p>{{::lists.businessSubject}}</p>
-                    <p>{{::lists.businessCooperate|cover}}</p>
-                    <p>{{::lists.outerProject}}</p>
-                    <p>{{::lists.firstCompany}}</p>
-                    <p>{{::lists.secondCompany}}</p>
-                    <p>{{::lists.area}}</p>
+                    <p mod>{{$index+1}}</p>
+                    <p mod>{{::lists.businessType|cover}}</p>
+                    <p mod>{{::lists.businessSubject}}</p>
+                    <p mod>{{::lists.businessCooperate|cover}}</p>
+                    <p mod>{{::lists.outerProject}}</p>
+                    <p mod>{{::lists.firstCompany}}</p>
+                    <p mod>{{::lists.secondCompany}}</p>
+                    <p mod>{{::lists.area}}</p>
                     <p>
                         <a href="javascript:void(0)" class="more" ng-click="moreList(lists)">更多详细</a>
                     </p>
@@ -70,14 +70,14 @@
                                 <span>所属项目组</span>
                             </p>
                             <p class="see-children">
-                                <span>{{::lists.money}}</span>
-                                <span>{{::lists.startProjectTime}}</span>
-                                <span>{{::lists.endProjectTime}}</span>
-                                <span>{{::lists.siginStatus}}</span>
-                                <span>{{::lists.contractProperty|cover}}</span>
-                                <span>{{::lists.makeProject}}</span>
-                                <span>{{::lists.innerProject}}</span>
-                                <span>{{::lists.projectGroup}}</span>
+                                <span mod>{{::lists.money}}</span>
+                                <span mod>{{::lists.startProjectTime}}</span>
+                                <span mod>{{::lists.endProjectTime}}</span>
+                                <span mod>{{::lists.siginStatus}}</span>
+                                <span mod>{{::lists.contractProperty|cover}}</span>
+                                <span mod>{{::lists.makeProject}}</span>
+                                <span mod>{{::lists.innerProject}}</span>
+                                <span mod>{{::lists.projectGroup}}</span>
                             </p>
                         </li>
                         <li>
@@ -88,29 +88,41 @@
                                 <span>审核意见</span>
                             </p>
                             <p class="see-children">
-                                <span>{{::lists.projectCharge}}</span>
-                                <span>{{::lists.remark}}</span>
-                                <span>{{::lists.manager}}</span>
-                                <span>{{::lists.auditAdvice}}</span>
+                                <span mod>{{::lists.projectCharge}}</span>
+                                <span mod>{{::lists.remark}}</span>
+                                <span mod>{{::lists.manager}}</span>
+                                <span mod>{{::lists.auditAdvice}}</span>
                             </p>
                         </li>
                     </ul>
-                    <div class="module">
-                        <div class="see-module">
-                            <p class="see-type">体现类型</p>
-                            <p class="see-description"></p>
-                            <button class="btn">关闭</button>
-                        </div>
-                    </div>
                 </div>
             </section>
         </li>
     </ul>
+    <div class="module">
+        <div class="see-module">
+            <p class="see-type">体现类型</p>
+            <p class="see-description"></p>
+            <button class="btn" modclose>关闭</button>
+        </div>
+    </div>
     <footer class="footer">
         <pagination count="custom.itemsCount" take="custom.take" activate="custom.activatePage"></pagination>
     </footer>
 </div>
-<div ui-view="modal"></div>
+<div class="delete mod" ng-show="delShow">
+    <div class="del-head">
+        <h5>温馨提示</h5>
+    </div>
+    <div class="del-con">
+        <p>确定要删除这条数据？</p>
+        <div class="btn">
+            <button ng-click="delFn()">确定</button>
+            <button ng-click="cancel()">取消</button>
+        </div>
+    </div>
+</div>
+<div id="modalbg" ng-show="delShow"></div>
 
 
 

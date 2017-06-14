@@ -21,7 +21,7 @@ app.controller('basicEditCtrl', function($scope, basicSer,$stateParams,$state,to
         vm.editBasic.endProjectTime = angular.element('.endTime').val();
         basicSer.editBasicInfo(vm.editBasic).then(function(response){
             if(response.data.code == 0){
-                $state.go('root.businessContract.basicInfo.list');
+                $state.go('root.businessContract.basicInfo.list[12]');
                 toastr.success( "编辑成功", '温馨提示');
             }else {
                 toastr.error( response.data.msg, '温馨提示');

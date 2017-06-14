@@ -3,61 +3,57 @@
         <section>
             <ul>
                 <li class="required" style="display: none">
-                    <label ><i><img src="/images/mandatory.png"></i><em>id</em></label>
+                    <label><i><img src="/images/mandatory.png"></i><em>id</em></label>
                     <input type="text" ng-model="editSheet.id">
                 </li>
 
                 <li class="required">
-                    <label><i><img src="/images/mandatory.png"></i><em>内部项目编号</em></label>
-                    <!--<select class="sele" ng-model="workers.innerProjectNum">-->
-                        <!--<option value="">请选择</option>-->
-                        <!--<option ng-repeat="number in inner" ng-verify="{}">{{number}}</option>-->
-                    <!--</select>-->
+                    <label><em>内部项目编号</em></label>
                     <input type="text" disabled ng-model="editSheet.innerProjectNum">
                 </li>
                 <li class="required">
-                    <label ><i><img src="/images/mandatory.png"></i><em>业务类型</em></label>
-                    <input type="text" ng-verify="{}" ng-model="editSheet.businessType">
+                    <label><em>业务类型</em></label>
+                    <input type="text" disabled ng-model="editSheet.businessType">
                 </li>
                 <li class="required">
-                    <label ><i><img src="/images/mandatory.png"></i><em>业务方向科目</em></label>
-                    <input type="text" ng-verify="{}" ng-model="editSheet.businessSubject">
+                    <label><em>业务方向科目</em></label>
+                    <input type="text" disabled ng-model="editSheet.businessSubject">
                 </li>
                 <li class="required">
-                    <label><i><img src="/images/mandatory.png"></i><em>合同外部项目名称</em></label>
-                    <input type="text" ng-verify="{}" ng-model="editSheet.outerProject">
+                    <label><em>合同外部项目名称</em></label>
+                    <input type="text" disabled ng-model="editSheet.outerProject">
                 </li>
                 <li class="required">
-                    <label><i><img src="/images/mandatory.png"></i><em>合同外部项目编号</em></label>
-                    <input type="text" ng-verify="{}" ng-model="editSheet.outProjectNum">
+                    <label><em>合同外部项目编号</em></label>
+                    <input type="text" disabled ng-model="editSheet.outProjectNum">
                 </li>
                 <li class="required">
-                    <label><i><img src="/images/mandatory.png"></i><em>对应销售合同编号</em></label>
-                    <input type="text" ng-verify="{}" ng-model="editSheet.saleContractNum">
+                    <label><em>对应销售合同编号</em></label>
+                    <input type="text" disabled ng-model="editSheet.saleContractNum">
                 </li>
                 <li class="required">
-                    <label><i><img src="/images/mandatory.png"></i><em>合作方式</em></label>
-                    <input type="text" ng-verify="{}" ng-model="editSheet.businessCooperate">
+                    <label><em>合作方式</em></label>
+                    <input type="text" disabled ng-model="editSheet.businessCooperate">
                 </li>
                 <li class="required">
-                    <label><i><img src="/images/mandatory.png"></i><em>内部项目名称</em></label>
-                    <input type="text" ng-verify="{}" ng-model="editSheet.innerProject">
+                    <label><em>内部项目名称</em></label>
+                    <input type="text" disabled ng-model="editSheet.innerProject">
                 </li>
                 <li class="required">
-                    <label><i><img src="/images/mandatory.png"></i><em>地区</em></label>
-                    <input type="text" ng-verify="{}" ng-model="editSheet.area">
+                    <label><em>地区</em></label>
+                    <input type="text" disabled ng-model="editSheet.area">
                 </li>
                 <li class="required">
-                    <label><i><img src="/images/mandatory.png"></i><em>所属项目组</em></label>
-                    <input type="text" ng-verify="{}" ng-model="editSheet.projectGroup">
+                    <label><em>所属项目组</em></label>
+                    <input type="text" disabled ng-model="editSheet.projectGroup">
                 </li>
                 <li class="required">
-                    <label><i><img src="/images/mandatory.png"></i><em>签订时间</em></label>
-                    <input type="text" onClick="laydate({istime: true, format: 'YYYY-MM-DD'})" class="add_image siginTime" ng-model="editSheet.siginTime">
+                    <label><em>签订时间</em></label>
+                    <input type="text" disabled onClick="laydate({istime: true, format: 'YYYY-MM-DD'})" class="add_image siginTime" ng-model="editSheet.siginTime">
                 </li>
                 <li class="required">
-                    <label><i><img src="/images/mandatory.png"></i><em>项目负责人</em></label>
-                    <input type="text" ng-verify="{}" ng-model="editSheet.projectCharge">
+                    <label><em>项目负责人</em></label>
+                    <input type="text" disabled ng-model="editSheet.projectCharge">
                 </li>
                 <li class="required">
                     <label><i><img src="/images/mandatory.png"></i><em>派工单名称</em></label>
@@ -117,7 +113,10 @@
                     <label><em>备注</em></label>
                     <input type="text" ng-model="editSheet.remark">
                 </li>
-
+                <li>
+                    <label><em>临时合同编号</em></label>
+                    <input type="text" ng-model="editSheet.tempContractNum">
+                </li>
             </ul>
         </section>
     </div>

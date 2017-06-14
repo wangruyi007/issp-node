@@ -9,7 +9,9 @@ const routersPath = '/koa/routers/';
 const sendfile = require('koa-sendfile');
 var configsCache = {};
 const port = 5555;
+
 const config = require(path.resolve('plugins/read-config.js'));
+
 function fileExists(path) {
     try {
         fs.accessSync(path, fs.F_OK);
@@ -57,7 +59,7 @@ router.get(/^\/module\/_config(?:\/.|$)/, function *(next) {
 });
 
 //============路由===========
-app.use(require(path.join(__dirname,routersPath,'/signing/index.js'))().routes());//项目中问题受理和处理路由
+app.use(require(path.join(__dirname,routersPath,'/signing/index.js'))().routes());//商务合同
 app.use(router.routes());
 
 

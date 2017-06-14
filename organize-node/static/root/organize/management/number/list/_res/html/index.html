@@ -11,12 +11,12 @@
         <li class="list-all" ng-repeat="list in numberLists" style="display: {{list._delete?'none':'block'}};">
             <section >
                 <div class="list-text {{list._selectList?'selectList':''}}" ng-click="selectList(list)">
-                    <p>{{$index+1}}</p>
-                    <p>{{::list.serialNumber}}</p>
-                    <p>{{::list.type}}</p>
-                    <p>{{::list.illustrate}}</p>
-                    <p>{{::list.illustrateNumber}}</p>
-                    <p>{{::list.description}}</p>
+                    <p mod>{{$index+1}}</p>
+                    <p mod>{{::list.serialNumber}}</p>
+                    <p mod>{{::list.type}}</p>
+                    <p mod>{{::list.illustrate}}</p>
+                    <p mod>{{::list.illustrateNumber}}</p>
+                    <p mod>{{::list.description}}</p>
                 </div>
             </section>
         </li>

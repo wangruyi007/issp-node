@@ -22,7 +22,7 @@ app.controller('signingReviewCtrl', function($scope, signingSer,$stateParams,$st
 
         signingSer.reviewSigning(data).then(function(response){
             if(response.data.code == 0){
-                $state.go('root.businessContract.signingProject.list');
+                $state.go('root.businessContract.signingProject.list[12]');
                 toastr.success("已成功审核", '温馨提示');
             }else{
                 toastr.error( response.data.msg, '温馨提示');
