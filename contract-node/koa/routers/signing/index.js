@@ -8,6 +8,7 @@ var koaBody = require('koa-body');
 var request = require('request-promise');
 var uploadFile = require(path.resolve('plugins/uploadFile.js'));
 var urlEncode = require(path.resolve('plugins/urlEncode.js'));
+var fileType = require(path.resolve('plugins/fileType.js'));
 module.exports = function(){
     var router = new Router();
 
@@ -220,50 +221,8 @@ module.exports = function(){
         yield (fetch(config()['rurl']+`/siginmanage/v1/downloadFile${urlEncode(data,true)}`, {
             method : 'GET',
             headers : {'userToken' : $self.cookies.get('token')}
-        }).then(function(res){
-            var fileName = count.path.substring(count.path.lastIndexOf('/')+1);
-            switch(count.fileType){
-                case "PNG":
-                    $self.set('content-type', 'image/png;charset=utf-8');
-                    $self.set('Content-Disposition', 'attachment;  filename='+encodeURI(fileName));
-                    break;
-                case "TXT":
-                    $self.set('Content-Type', 'text/plain;charset=utf-8');
-                    $self.set('Content-Disposition', 'attachment;  filename='+encodeURI(fileName));
-                    break;
-                case "UNKNOW":
-                    $self.set('content-type', 'application/msword;charset=utf-8');
-                    $self.set('Content-Disposition', 'attachment;  filename='+encodeURI(fileName));
-                    break;
-                case "XLSX":
-                    $self.set('content-type', 'application/vnd.ms-excel;charset=utf-8');
-                    $self.set('Content-Disposition', 'attachment;  filename='+encodeURI(fileName));
-                    break;
-                case "XLS":
-                    $self.set('content-type', 'application/vnd.ms-excel;charset=utf-8');
-                    $self.set('Content-Disposition', 'attachment;  filename='+encodeURI(fileName));
-                    break;
-                case "PDF":
-                    $self.set('content-type', 'application/pdf;charset=utf-8');
-                    $self.set('Content-Disposition', 'attachment;  filename='+encodeURI(fileName));
-                    break;
-                case "JPG":
-                    $self.set('content-type', 'application/x-jpg;charset=utf-8');
-                    $self.set('Content-Disposition', 'attachment;  filename='+encodeURI(fileName));
-                    break;
-                case "ZIP":
-                    $self.set('content-type', 'application/x-zip-compressed;charset=utf-8');
-                    $self.set('Content-Disposition', 'attachment;  filename='+encodeURI(fileName));
-                    break;
-                case "RAR":
-                    $self.set('content-type', 'application/octet-stream;charset=utf-8');
-                    $self.set('Content-Disposition', 'attachment;  filename='+encodeURI(fileName));
-                    break;
-                case "ODT":
-                    $self.set('content-type', 'application/vnd.oasis.opendocument.text;charset=utf-8');
-                    $self.set('Content-Disposition', 'attachment;  filename='+encodeURI(fileName));
-                    break;
-            }
+        }).then((res)=>{
+            fileType(count,this);
             return res.buffer();
         }).then(function(data){
             $self.body = data;
@@ -441,50 +400,8 @@ module.exports = function(){
         yield (fetch(config()['rurl']+`/baseinfomanage/v1/downloadFile${urlEncode(data,true)}`, {
             method : 'GET',
             headers : {'userToken' : $self.cookies.get('token')}
-        }).then(function(res){
-            var fileName = count.path.substring(count.path.lastIndexOf('/')+1);
-            switch(count.fileType){
-                case "PNG":
-                    $self.set('content-type', 'image/png;charset=utf-8');
-                    $self.set('Content-Disposition', 'attachment;  filename='+encodeURI(fileName));
-                    break;
-                case "TXT":
-                    $self.set('Content-Type', 'text/plain;charset=utf-8');
-                    $self.set('Content-Disposition', 'attachment;  filename='+encodeURI(fileName));
-                    break;
-                case "UNKNOW":
-                    $self.set('content-type', 'application/msword;charset=utf-8');
-                    $self.set('Content-Disposition', 'attachment;  filename='+encodeURI(fileName));
-                    break;
-                case "XLSX":
-                    $self.set('content-type', 'application/vnd.ms-excel;charset=utf-8');
-                    $self.set('Content-Disposition', 'attachment;  filename='+encodeURI(fileName));
-                    break;
-                case "XLS":
-                    $self.set('content-type', 'application/vnd.ms-excel;charset=utf-8');
-                    $self.set('Content-Disposition', 'attachment;  filename='+encodeURI(fileName));
-                    break;
-                case "PDF":
-                    $self.set('content-type', 'application/pdf;charset=utf-8');
-                    $self.set('Content-Disposition', 'attachment;  filename='+encodeURI(fileName));
-                    break;
-                case "JPG":
-                    $self.set('content-type', 'application/x-jpg;charset=utf-8');
-                    $self.set('Content-Disposition', 'attachment;  filename='+encodeURI(fileName));
-                    break;
-                case "ZIP":
-                    $self.set('content-type', 'application/x-zip-compressed;charset=utf-8');
-                    $self.set('Content-Disposition', 'attachment;  filename='+encodeURI(fileName));
-                    break;
-                case "RAR":
-                    $self.set('content-type', 'application/octet-stream;charset=utf-8');
-                    $self.set('Content-Disposition', 'attachment;  filename='+encodeURI(fileName));
-                    break;
-                case "ODT":
-                    $self.set('content-type', 'application/vnd.oasis.opendocument.text;charset=utf-8');
-                    $self.set('Content-Disposition', 'attachment;  filename='+encodeURI(fileName));
-                    break;
-            }
+        }).then((res)=>{
+            fileType(count,this);
             return res.buffer();
         }).then(function(data){
             $self.body = data;
@@ -687,50 +604,8 @@ module.exports = function(){
         yield (fetch(config()['rurl']+`/dispatchsheet/v1/downloadFile${urlEncode(data,true)}`, {
             method : 'GET',
             headers : {'userToken' : $self.cookies.get('token')}
-        }).then(function(res){
-            var fileName = count.path.substring(count.path.lastIndexOf('/')+1);
-            switch(count.fileType){
-                case "PNG":
-                    $self.set('content-type', 'image/png;charset=utf-8');
-                    $self.set('Content-Disposition', 'attachment;  filename='+encodeURI(fileName));
-                    break;
-                case "TXT":
-                    $self.set('Content-Type', 'text/plain;charset=utf-8');
-                    $self.set('Content-Disposition', 'attachment;  filename='+encodeURI(fileName));
-                    break;
-                case "UNKNOW":
-                    $self.set('content-type', 'application/msword;charset=utf-8');
-                    $self.set('Content-Disposition', 'attachment;  filename='+encodeURI(fileName));
-                    break;
-                case "XLSX":
-                    $self.set('content-type', 'application/vnd.ms-excel;charset=utf-8');
-                    $self.set('Content-Disposition', 'attachment;  filename='+encodeURI(fileName));
-                    break;
-                case "XLS":
-                    $self.set('content-type', 'application/vnd.ms-excel;charset=utf-8');
-                    $self.set('Content-Disposition', 'attachment;  filename='+encodeURI(fileName));
-                    break;
-                case "PDF":
-                    $self.set('content-type', 'application/pdf;charset=utf-8');
-                    $self.set('Content-Disposition', 'attachment;  filename='+encodeURI(fileName));
-                    break;
-                case "JPG":
-                    $self.set('content-type', 'application/x-jpg;charset=utf-8');
-                    $self.set('Content-Disposition', 'attachment;  filename='+encodeURI(fileName));
-                    break;
-                case "ZIP":
-                    $self.set('content-type', 'application/x-zip-compressed;charset=utf-8');
-                    $self.set('Content-Disposition', 'attachment;  filename='+encodeURI(fileName));
-                    break;
-                case "RAR":
-                    $self.set('content-type', 'application/octet-stream;charset=utf-8');
-                    $self.set('Content-Disposition', 'attachment;  filename='+encodeURI(fileName));
-                    break;
-                case "ODT":
-                    $self.set('content-type', 'application/vnd.oasis.opendocument.text;charset=utf-8');
-                    $self.set('Content-Disposition', 'attachment;  filename='+encodeURI(fileName));
-                    break;
-            }
+        }).then((res)=>{
+            fileType(count,this);
             return res.buffer();
         }).then(function(data){
             $self.body = data;
@@ -870,46 +745,8 @@ module.exports = function(){
         yield (fetch(config()['rurl']+`/contractcategory/v1/downloadFile${urlEncode(data,true)}`, {
             method : 'GET',
             headers : {'userToken' : $self.cookies.get('token')}
-        }).then(function(res){
-            var fileName = count.path.substring(count.path.lastIndexOf('/')+1);
-            switch(count.fileType){
-                case "PNG":
-                    $self.set('content-type', 'image/png;charset=utf-8');
-                    $self.set('Content-Disposition', 'attachment;  filename='+encodeURI(fileName));
-                    break;
-                case "TXT":
-                    $self.set('Content-Type', 'text/plain;charset=utf-8');
-                    $self.set('Content-Disposition', 'attachment;  filename='+encodeURI(fileName));
-                    break;
-                case "UNKNOW":
-                    $self.set('content-type', 'application/msword;charset=utf-8');
-                    $self.set('Content-Disposition', 'attachment;  filename='+encodeURI(fileName));
-                    break;
-                case "XLSX":
-                    $self.set('content-type', 'application/vnd.ms-excel;charset=utf-8');
-                    $self.set('Content-Disposition', 'attachment;  filename='+encodeURI(fileName));
-                    break;
-                case "XLS":
-                    $self.set('content-type', 'application/vnd.ms-excel;charset=utf-8');
-                    $self.set('Content-Disposition', 'attachment;  filename='+encodeURI(fileName));
-                    break;
-                case "PDF":
-                    $self.set('content-type', 'application/pdf;charset=utf-8');
-                    $self.set('Content-Disposition', 'attachment;  filename='+encodeURI(fileName));
-                    break;
-                case "JPG":
-                    $self.set('content-type', 'application/x-jpg;charset=utf-8');
-                    $self.set('Content-Disposition', 'attachment;  filename='+encodeURI(fileName));
-                    break;
-                case "ZIP":
-                    $self.set('content-type', 'application/x-zip-compressed;charset=utf-8');
-                    $self.set('Content-Disposition', 'attachment;  filename='+encodeURI(fileName));
-                    break;
-                case "RAR":
-                    $self.set('content-type', 'application/octet-stream;charset=utf-8');
-                    $self.set('Content-Disposition', 'attachment;  filename='+encodeURI(fileName));
-                    break;
-            }
+        }).then((res)=>{
+            fileType(count,this);
             return res.buffer();
         }).then(function(data){
             $self.body = data;
