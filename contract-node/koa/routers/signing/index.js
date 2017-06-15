@@ -272,7 +272,6 @@ module.exports = function(){
         var $self = this;
         var delData = $self.request.body;
         delData.userToken = $self.cookies.get('token');
-        console.log(delData.fields);
         yield (server().delFile(delData)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -439,7 +438,6 @@ module.exports = function(){
         var data = {
             path:count.path
         };
-        console.log(13)
         yield (fetch(config()['rurl']+`/baseinfomanage/v1/downloadFile${urlEncode(data,true)}`, {
             method : 'GET',
             headers : {'userToken' : $self.cookies.get('token')}
@@ -495,7 +493,6 @@ module.exports = function(){
         var $self = this;
         var delData = $self.request.body;
         delData.userToken = $self.cookies.get('token');
-        console.log(delData.fields);
         yield (server().delFileInfo(delData)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -703,6 +700,7 @@ module.exports = function(){
                     break;
                 case "UNKNOW":
                     $self.set('content-type', 'application/msword;charset=utf-8');
+                    $self.set('Content-Disposition', 'attachment;  filename='+encodeURI(fileName));
                     break;
                 case "XLSX":
                     $self.set('content-type', 'application/vnd.ms-excel;charset=utf-8');
@@ -741,7 +739,6 @@ module.exports = function(){
         var $self = this;
         var delData = $self.request.body;
         delData.userToken = $self.cookies.get('token');
-        console.log(delData.fields);
         yield (server().delFileSheet(delData)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -886,6 +883,7 @@ module.exports = function(){
                     break;
                 case "UNKNOW":
                     $self.set('content-type', 'application/msword;charset=utf-8');
+                    $self.set('Content-Disposition', 'attachment;  filename='+encodeURI(fileName));
                     break;
                 case "XLSX":
                     $self.set('content-type', 'application/vnd.ms-excel;charset=utf-8');
@@ -920,7 +918,6 @@ module.exports = function(){
         var $self = this;
         var delData = $self.request.body;
         delData.userToken = $self.cookies.get('token');
-        console.log(delData.fields);
         yield (server().delFileType(delData)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
