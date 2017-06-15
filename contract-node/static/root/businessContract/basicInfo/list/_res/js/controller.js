@@ -21,7 +21,7 @@ app.controller('basicListCtrl',function($scope,basicSer,toastr,$stateParams,$sta
         var data = {
             id:$stateParams.id
         };
-        basicSer.deleteSigning(data).then(function(response){
+        basicSer.deleteBasicInfo(data).then(function(response){
             if(response.data.code==0){
                 toastr.info( "信息已删除", '温馨提示');
                 $scope.deledId = $stateParams.id;

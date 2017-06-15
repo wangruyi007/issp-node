@@ -25,6 +25,7 @@ app.controller('dispatchAddCtrl', function($scope, dispatchSer,$state,toastr){
     };
     //添加
     $scope.workersAddFun = function(){
+        clone($scope.projectNum,$scope.workers);
         var vm = $scope;
         vm.workers.siginTime = angular.element('.siginTime').val();
         vm.workers.startProjectTime = angular.element('.addTime').val();
@@ -41,6 +42,15 @@ app.controller('dispatchAddCtrl', function($scope, dispatchSer,$state,toastr){
     };
 
 });
+function clone(obj1,obj2){
+    if(obj1){
+        for(key in obj1){
+            if(!obj2[key]){
+                obj2[key] = obj1[key];
+            }
+        }
+    }
+}
 
 
 
