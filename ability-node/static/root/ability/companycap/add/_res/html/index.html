@@ -18,8 +18,9 @@
                     </select>
                     <input type="text"  class="inputDom" ng-verify="{}" ng-model="addprofessionAuthen1">
                 </li>
-                  <li class="required">
-                    <label><i><img src="/images/mandatory.png"></i><em>管理资质认证</em></label>
+                <!--  <li class="required">
+                  <label><i><img src="/images/mandatory.png"></i><em>管理资质认证</em></label>
+                  <input type="text"  class="inputDom" ng-verify="{}" ng-model="addmanageAuthen1">
                     <select class="sele" ng-model="addmanageAuthen2" ng-change="changeSelect2()" ng-init="addmanageAuthen2='请选择'">
                         <option disabled>请选择</option>
                         <option>9000族质量管理体系或同类认证</option>
@@ -27,7 +28,15 @@
                         <option>14000族环境管理体系认证证书</option>
                         <option>建筑业企业资质证书</option>
                     </select>
-                    <input type="text"  class="inputDom" ng-verify="{}" ng-model="addmanageAuthen1">
+                    <input type="text"  class="inputDom" ng-verify="{}" ng-model="addmanageAuthen1">-->
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>管理资质认证</em></label>
+                    <div class="select">
+                        <p class="select-text">
+                            <span ng-repeat="word in words">{{words}}, </span>
+                        </p>
+                        <div class="mymultiselect" ng-dropdown-multiselect="" options="workOptions" selected-model="words" extra-settings="stringSettings"></div>
+                    </div>
                 </li>
                   <li class="required">
                     <label><i><img src="/images/mandatory.png"></i><em>公司合作对象</em></label>

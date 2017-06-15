@@ -13,6 +13,5 @@ app.controller('assessmentCtrl', function ($scope,$state) {
     $scope.navClass = function(name){
         $scope.navCla = name;
     }
-
 });
 
