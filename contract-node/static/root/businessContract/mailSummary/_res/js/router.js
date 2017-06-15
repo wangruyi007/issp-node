@@ -11,6 +11,14 @@ app.config(function($provide, $stateProvider){
                 controller:"emailMenuCtrl"
             }
         }
+    }).state("root.businessContract.mailSummary.list[12]",{
+        url:"/list[12]?id=&name=",
+        views:{
+            "content@root.businessContract.mailSummary":{
+                templateUrl : "root/businessContract/mailSummary/list/_res/html/index.html",
+                controller:'mailSummaryListCtrl'
+            }
+        }
     }).state("root.businessContract.mailSummary.add[12]",{
         url:"/add[12]",
         views:{

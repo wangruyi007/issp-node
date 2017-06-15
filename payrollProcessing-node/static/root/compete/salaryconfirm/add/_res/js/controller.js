@@ -1,5 +1,5 @@
-var app = angular.module('salaryconfirmAdd', ['toastr','ipCookie']);
-app.controller('salaryconfirmAddCtrl', function($scope,salaryconfirmSer,salaryconfirmSer,$state,toastr,ipCookie,$location){
+var app = angular.module('salaryconfirmAdd', ['toastr']);
+app.controller('salaryconfirmAddCtrl', function($scope,salaryconfirmSer,salaryconfirmSer,$state,toastr){
     //地区
     salaryconfirmSer.salaryconfirmAreas().then(function(response){
         if(response.data.code == 0){
@@ -33,7 +33,7 @@ app.controller('salaryconfirmAddCtrl', function($scope,salaryconfirmSer,salaryco
             }
         });
     };
-    //添加个人能力
+    //添加
     $scope.salaryconfirmAddFun = function(){
         var t1 =  angular.element('.timeOne').val();
         var t2 =  angular.element('.timeTwo').val();
@@ -62,15 +62,7 @@ app.controller('salaryconfirmAddCtrl', function($scope,salaryconfirmSer,salaryco
         salaryconfirmSer.salaryconfirmAdd(data).then(function(response){
             if(response.data.code == 0){
                 $state.go('root.compete.salaryconfirm.list');
-                toastr.success( "公司已成功添加", '温馨提示');
-            }else if(response.data.code==403||response.data.code==401){
-
-                toastr.error( "请登录用户,2秒后跳至登陆页面", '温馨提示');
-                var absurl = $location.absUrl();
-                ipCookie('absurl', absurl,{ expires:3,expirationUnit: 'minutes' });
-                setTimeout(function(){
-                    window.location.href='http://localhost/login'
-                },2000)
+                toastr.success( "已成功添加", '温馨提示');
             }else{
                 toastr.error(response.data.msg,'温馨提示');
             }

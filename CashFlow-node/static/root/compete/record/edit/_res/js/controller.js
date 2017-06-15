@@ -1,5 +1,5 @@
-var app = angular.module('recordEdit', ['toastr','ipCookie']);
-app.controller('recordEditCtrl', function($scope, recordSer,$state,toastr,$stateParams,ipCookie,$location,$filter){
+var app = angular.module('recordEdit', ['toastr']);
+app.controller('recordEditCtrl', function($scope, recordSer,$state,toastr,$stateParams,$filter){
     // 地区
     recordSer.areas().then(function(response){
         if(response.data.code == 0){
@@ -34,7 +34,7 @@ app.controller('recordEditCtrl', function($scope, recordSer,$state,toastr,$state
         var data = vm.data;
 
         var d =  angular.element('.time').val();
-        data.submitDate=d;
+        data.recordDate=d;
         //只取两位小数
         $scope.data.income = Number($scope.data.income).toFixed(2);
         $scope.data.expenditure = Number($scope.data.expenditure).toFixed(2);
@@ -42,14 +42,6 @@ app.controller('recordEditCtrl', function($scope, recordSer,$state,toastr,$state
             if(response.data.code == 0){
                 $state.go('root.compete.record.list');
                 toastr.success( "已成功编辑", '温馨提示');
-            }else if(response.data.code==403||response.data.code==401){
-
-                toastr.error( "请登录用户,2秒后跳至登陆页面", '温馨提示');
-                var absurl = $location.absUrl();
-                ipCookie('absurl', absurl,{ expires:3,expirationUnit: 'minutes' });
-                setTimeout(function(){
-                    window.location.href='http://localhost/login'
-                },2000)
             }else{
                 toastr.error(response.data.msg,'温馨提示');
             }
