@@ -11,7 +11,7 @@ app.controller('demandAddCtrl', function ($scope, demandSer,$state, toastr) {
         projectInfoId=vm.add.projectInfoId;
         demandSer.addDemand(vm.add).then(function (response) {
             if (response.data.code == 0) {
-                $state.go('root.assessment.demand.list');
+                $state.go('root.assessment.demand.list[12]');
                 toastr.success("已成功添加", '温馨提示');
             }else{
                 toastr.error(response.data.msg, '温馨提示');

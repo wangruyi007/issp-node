@@ -10,7 +10,7 @@ app.controller('growAddCtrl', function ($scope, growSer, $state, toastr) {
         var vm = $scope;
         growSer.addGrow(vm.add).then(function (response) {
             if (response.data.code == 0) {
-                $state.go('root.assessment.grow.list');
+                $state.go('root.assessment.grow.list[12]');
                 toastr.success("已成功添加", '温馨提示');
             }else{
                 toastr.error(response.data.msg, '温馨提示');

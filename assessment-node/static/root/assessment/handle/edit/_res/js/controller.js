@@ -21,7 +21,7 @@ app.controller('handleEditCtrl', function($scope, handleSer,$stateParams,$state,
         vm.editInfo.disposeEndTime = angular.element('.disposeEndTime').val();
         handleSer.editHand(vm.editInfo).then(function(response){
             if(response.data.code == 0){
-                $state.go('root.assessment.handle.list');
+                $state.go('root.assessment.handle.list[12]');
                 toastr.success( "编辑成功", '温馨提示');
             }else{
                 toastr.error(response.data.msg, '温馨提示');

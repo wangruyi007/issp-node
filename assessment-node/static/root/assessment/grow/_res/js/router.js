@@ -27,5 +27,13 @@ app.config(function($provide, $stateProvider){
                 controller:'growEditCtrl'
             }
         }
+    }).state("root.assessment.grow.list[12]",{
+        url:"/list[12]?id=&name=",
+        views:{
+            "content@root.assessment.grow":{
+                templateUrl : "root/assessment/grow/list/_res/html/index.html",
+                controller:'growListCtrl'
+            }
+        }
     })
 });

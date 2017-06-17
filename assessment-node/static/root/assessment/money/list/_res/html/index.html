@@ -1,4 +1,4 @@
-<div class="content-tab list" style="margin-top: -70px;">
+<div class="content-tab list">
     <ul class="table table-top">
         <li class="list-head">
             <span></span>
@@ -15,13 +15,13 @@
             <section>
                 <div class="list-text {{lists._selectList?'selectList':''}}" ng-click="selectList(lists)">
                     <p>{{$index+1}}</p>
-                    <p>{{lists.area}}</p>
-                    <p>{{lists.project}}</p>
-                    <p>{{lists.startTime}}</p>
-                    <p>{{lists.endTime}}</p>
-                    <p>{{lists.cost}}</p>
-                    <p>{{lists.budgetCost}}</p>
-                    <p>{{lists.costSubtract}}</p>
+                    <p mod>{{::lists.area}}</p>
+                    <p mod>{{::lists.project}}</p>
+                    <p mod>{{::lists.startTime}}</p>
+                    <p mod>{{::lists.endTime}}</p>
+                    <p mod>{{::lists.cost}}</p>
+                    <p mod>{{::lists.budgetCost}}</p>
+                    <p mod>{{::lists.costSubtract}}</p>
                     <p>
                         <a href="javascript:void(0)" class="more" ng-click="moreList(lists)">更多详细</a>
                     </p>
@@ -40,14 +40,14 @@
                                 <span>预算税金</span>
                             </p>
                             <p class="see-children">
-                                <span>{{lists.fee}}</span>
-                                <span>{{lists.budgetFee}}</span>
-                                <span>{{lists.feeSubtract}}</span>
-                                <span>{{lists.manageFee}}</span>
-                                <span>{{lists.budgetManageFee}}</span>
-                                <span>{{lists.manageFeeSubtract}}</span>
-                                <span>{{lists.taxes}}</span>
-                                <span>{{lists.budgetTaxes}}</span>
+                                <span mod>{{::lists.fee}}</span>
+                                <span mod>{{::lists.budgetFee}}</span>
+                                <span mod>{{::lists.feeSubtract}}</span>
+                                <span mod>{{::lists.manageFee}}</span>
+                                <span mod>{{::lists.budgetManageFee}}</span>
+                                <span mod>{{::lists.manageFeeSubtract}}</span>
+                                <span mod>{{::lists.taxes}}</span>
+                                <span mod>{{::lists.budgetTaxes}}</span>
                             </p>
                         </li>
                         <li>
@@ -58,29 +58,41 @@
                                 <span>利润与预算利润差额</span>
                             </p>
                             <p class="see-children">
-                                <span>{{lists.budgetTaxes}}</span>
-                                <span>{{lists.profit}}</span>
-                                <span>{{lists.budgetProfit}}</span>
-                                <span>{{lists.profitSubtract}}</span>
+                                <span mod>{{::lists.budgetTaxes}}</span>
+                                <span mod>{{::lists.profit}}</span>
+                                <span mod>{{::lists.budgetProfit}}</span>
+                                <span mod>{{::lists.profitSubtract}}</span>
                             </p>
                         </li>
                     </ul>
-                    <div class="module">
-                        <div class="see-module">
-                            <p class="see-type">体现类型</p>
-                            <p class="see-description"></p>
-                            <button class="btn">关闭</button>
-                        </div>
-                    </div>
                 </div>
             </section>
         </li>
     </ul>
+    <div class="module">
+        <div class="see-module">
+            <p class="see-type">体现类型</p>
+            <p class="see-description"></p>
+            <button class="btn" modclose>关闭</button>
+        </div>
+    </div>
     <footer class="footer">
         <pagination count="abili.itemsCount" take="abili.take" activate="abili.activatePage"></pagination>
     </footer>
 </div>
-<div ui-view="modal"></div>
+<div class="delete mod" ng-show="delShow">
+    <div class="del-head">
+        <h5>温馨提示</h5>
+    </div>
+    <div class="del-con">
+        <p>确定要删除这条数据？</p>
+        <div class="btn">
+            <button ng-click="delYes()">确定</button>
+            <button ng-click="cancel()">取消</button>
+        </div>
+    </div>
+</div>
+<div id="modalbg" ng-show="delShow"></div>
 
 
 
