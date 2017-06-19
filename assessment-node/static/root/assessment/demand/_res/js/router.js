@@ -27,5 +27,13 @@ app.config(function($provide, $stateProvider){
                 controller:'demandEditCtrl'
             }
         }
+    }).state("root.assessment.demand.list[12]",{
+        url:"/list[12]?id=&name=",
+        views:{
+            "content@root.assessment.demand":{
+                templateUrl : "root/assessment/demand/list/_res/html/index.html",
+                controller:'demandListCtrl'
+            }
+        }
     })
 });

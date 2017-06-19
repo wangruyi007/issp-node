@@ -1,5 +1,5 @@
 <div class="nav-list" ng-repeat="list in showsList">
-    <h3 class="header-menu big" ng-click="showMenu(list,true)"><i class="nav-arrow" ng-class="{true: '', false: 'change-angle'}[list.showIs]"></i>商业能力展示</h3>
+    <h3 class="header-menu big" ng-click="showMenu(list,true)"><i class="nav-arrow" ng-class="{true: '', false: 'change-angle'}[list.showIs]"></i>{{list.item}}</h3>
     <ul class="menu" ng-if="list.menuList.length"  ng-show="list.showIs" ng-repeat="menuInfo in list.menuList">
         <li ng-click="navClass('companycap')" ng-class="{'active':navCla=='companycap'}"  ui-sref="_root.ability.companycap.list"><a href="javascript:void(0)">{{menuInfo.name}}</a></li>
         <li ng-click="navClass('selfcap')" ng-class="{'active':navCla=='selfcap'}"  ui-sref="_root.ability.selfcap.list"><a href="javascript:void(0)">{{menuInfo.name2}}</a></li>

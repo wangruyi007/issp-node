@@ -6,28 +6,19 @@
                     <label><i><img src="/images/mandatory.png"></i><em>id</em></label>
                     <input type="text" ng-model="settleInfo.id">
                 </li>
-                <!--<li class="required">
+                <li class="required">
                     <label><i><img src="/images/mandatory.png"></i><em>分组</em></label>
                     <select class="sele" ng-model="group" ng-change="myFunc()">
                         <option disabled value="">请选择</option>
-                        <option ng-repeat="group in groups" value="{{group.id}}">{{group.name}}</option>
+                        <option ng-repeat="group in groups" value="{{group.name}}">{{group.name}}</option>
                     </select>
-                </li>-->
+                </li>
                 <li class="required">
                     <label><i><img src="/images/mandatory.png"></i><em>分组</em></label>
-                    <select class="sele" ng-model="group">
-                        <option disabled value="">请选择</option>
-                        <option>A1</option>
+                    <select class="sele" ng-model="progress" ng-init="progress=selectOptions[0]" ng-options="progress.name for progress in selectOptions">
+                        <!-- <option ng-repeat="progress in selectOptions" value="{{progress.name}}">{{progress.name}}</option>-->
                     </select>
                 </li>
-                <li class="required">
-                    <label><i><img src="/images/mandatory.png"></i><em>结算进度</em></label>
-                    <input type="text" ng-model="progress">
-                </li>
-               <!-- <li class="required">
-                    <label><i><img src="/images/mandatory.png"></i><em>结算进度</em></label>
-                    <input type="text" ng-model="progress" ng-repeat="progress in lists" ng-value="progress.name">
-                </li>-->
             </ul>
         </section>
     </div>
@@ -36,8 +27,7 @@
         <button ng-verify="{control:'myform'}" ng-click="settlementEditFun()">提交</button>
     </p>
 </div>
-
-<script type="text/javascript">
+s<script type="text/javascript">
     !function(){
         laydate.skin('dahong');//切换皮肤，请查看skins下面皮肤库
     }();

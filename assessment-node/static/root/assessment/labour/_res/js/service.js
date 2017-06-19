@@ -8,6 +8,7 @@ app.factory('labourSer',function ($http) {
         findLabourId:findLabourId,
         deleteLabour:deleteLabour,
         allLabourProjects:allLabourProjects,
+        menuPermission:menuPermission
     };
     function listLabour(data) {
         return $http.get('/listLabour/list',{
@@ -41,5 +42,9 @@ app.factory('labourSer',function ($http) {
     //查询所有项目
     function allLabourProjects(){
         return $http.get('/allLabourProjects/id')
+    }
+    //菜单权限
+    function menuPermission(data) {
+        return $http.get('/labour/menu/'+data);
     }
 });

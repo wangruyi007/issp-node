@@ -1,6 +1,6 @@
 <div class="collect">
     <div class="sum-select">
-        <label><i><img src="/images/mandatory.png"></i><em>个人姓名</em></label>
+        <label><i><img src="/images/mandatory.png"></i><em>公司名称</em></label>
         <div class="select">
         <p class="select-text" >
         <span ng-repeat="word in words">{{word}}, </span>
@@ -13,10 +13,7 @@
             <span>公司名称</span>
             <span>专业资质认证数量</span>
             <span>管理资质认证数量</span>
-            <span>公司荣誉证书数量</span>
-            <span>公司人员组成</span>
-            <span>公司已完成项目数量</span>
-            <span>公司正在进行中项目数量</span>
+            <span>公司参与项目数量</span>
         </li>
         <li class="sum-tbody" ng-repeat="summaryList in summaryLists">
             <span>{{summaryList.remark}}</span>

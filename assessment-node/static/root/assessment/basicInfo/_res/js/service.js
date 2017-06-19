@@ -6,7 +6,8 @@ app.factory('basicInfoSer',function ($http) {
         addBasicInfo:addBasicInfo,
         editBasicInfo:editBasicInfo,
         findInfoId:findInfoId,
-        deleteBasicInfo:deleteBasicInfo
+        deleteBasicInfo:deleteBasicInfo,
+        menuPermission:menuPermission
     };
     function listBasicInfo(data) {
         return $http.get('/listBasicInfo/list',{
@@ -36,5 +37,9 @@ app.factory('basicInfoSer',function ($http) {
         return $http.get('/deleteBasicInfo/delete',{
             params: data
         })
+    }
+    //菜单权限
+    function menuPermission(data) {
+        return $http.get('/basicInfo/menu/'+data);
     }
 });

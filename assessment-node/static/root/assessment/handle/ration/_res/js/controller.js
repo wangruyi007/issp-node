@@ -14,7 +14,7 @@ app.controller('rationListCtrl', function($scope, handleSer,$stateParams,$state,
         var vm = $scope;
         handleSer.editRation(vm.editData).then(function(response){
             if(response.data.code == 0){
-                $state.go('root.assessment.handle.list');
+                $state.go('root.assessment.handle.list[12]');
                 toastr.success( "编辑成功", '温馨提示');
             }else{
                 toastr.error(response.data.msg, '温馨提示');

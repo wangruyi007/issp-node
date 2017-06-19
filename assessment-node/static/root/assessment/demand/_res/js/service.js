@@ -8,6 +8,7 @@ app.factory('demandSer',function ($http) {
         findDemandId:findDemandId,
         deleteDemand:deleteDemand,
         allProjects:allProjects,
+        menuPermission:menuPermission
     };
     function listDemand(data) {
         return $http.get('/listDemand/list',{
@@ -41,5 +42,9 @@ app.factory('demandSer',function ($http) {
     //查询所有项目
     function allProjects(){
         return $http.get('/allProjects/demand')
+    }
+    //菜单权限
+    function menuPermission(data) {
+        return $http.get('/demand/menu/'+data);
     }
 });

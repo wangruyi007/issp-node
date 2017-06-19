@@ -43,5 +43,13 @@ app.config(function($provide, $stateProvider){
                 controller:'rationListCtrl'
             }
         }
+    }).state("root.assessment.handle.list[12]",{
+        url:"/list[12]?id=&name=",
+        views:{
+            "content@root.assessment.handle":{
+                templateUrl : "root/assessment/handle/list/_res/html/index.html",
+                controller:'handleListCtrl'
+            }
+        }
     })
 });
