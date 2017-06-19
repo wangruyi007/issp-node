@@ -1,5 +1,7 @@
-var app = angular.module('dispatchExport', ['toastr']);
+var app = angular.module('dispatchExport', ['toastr','angularjs-dropdown-multiselect']);
 app.controller('dispatchExportCtrl', function($scope, dispatchSer,$state,toastr){
+    $scope.Projects = [];
+    $scope.stringSettings = {template : '{{option}}', smartButtonTextConverter(skip, option) { return option; }};
     //获取内部项目名称
     dispatchSer.allProject().then(function(response){
         if(response.data.code==0){
@@ -10,8 +12,9 @@ app.controller('dispatchExportCtrl', function($scope, dispatchSer,$state,toastr)
     });
     //导出
     $scope.workersAddFun = function(){
+        $scope.Projects.push($scope.innerProjects);
         var obj = {
-            innerProject:$scope.innerProject
+            innerProjects : $scope.Projects
         };
         window.open(`http://localhost:5555/dispatchsheet/exportExcel${encode(obj,true)}`);
     };

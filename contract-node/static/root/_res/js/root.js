@@ -8,7 +8,7 @@ app.controller('root', function ($rootScope, $urlRouter, $ocLazyLoad, $location)
                 $location.path('/root');
             }
         }
-        if($location.path().split('/').slice(-1) =='list'){
+        if($location.path().split('/').slice(-1) =='list[12]'){
             searchShow();
         }else {
             searchHide();
