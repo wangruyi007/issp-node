@@ -8,6 +8,7 @@ app.factory('otherSer',function ($http) {
         findOtherId:findOtherId,
         deleteOther:deleteOther,
         allOtherProjects:allOtherProjects,
+        menuPermission:menuPermission,
     };
     function listOther(data) {
         return $http.get('/listOther/list',{
@@ -41,5 +42,9 @@ app.factory('otherSer',function ($http) {
     //查询所有项目
     function allOtherProjects(){
         return $http.get('/allOtherProjects/id')
+    }
+    //菜单权限
+    function menuPermission(data) {
+        return $http.get('/other/menu/'+data);
     }
 });

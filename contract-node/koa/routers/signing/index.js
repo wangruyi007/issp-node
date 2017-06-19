@@ -174,6 +174,18 @@ module.exports = function(){
                 $self.body=error.error;
                 console.error(error.error);
             }));
+    }).get('/siginmanage/templateExport', function*(){//导入模板下载 项目签收与立项
+        var $self = this;
+        var fileName = '项目签订与立项导入模板.xlsx';
+        yield (fetch(config()['rurl']+`/siginmanage/v1/templateExport`, {
+            method : 'GET',
+        }).then(function(res){
+            $self.set('content-type', 'application/vnd.ms-excel;charset=utf-8');
+            $self.set('Content-Disposition', 'attachment;  filename='+encodeURI(fileName));
+            return res.buffer();
+        }).then(function(data){
+            $self.body = data;
+        }));
     }).get('/siginmanage/exportFile', function*(){//导出 项目签收与立项
         var $self = this;
         var count = $self.request.query;
@@ -353,6 +365,18 @@ module.exports = function(){
                 $self.body=error.error;
                 console.error(error.error);
             }));
+    }).get('/baseinfomanage/templateExcel', function*(){//导入模板下载 合同基本信息
+        var $self = this;
+        var fileName = '商务项目合同基本信息管理导入excel模板.xlsx';
+        yield (fetch(config()['rurl']+`/baseinfomanage/v1/templateExcel`, {
+            method : 'GET',
+        }).then(function(res){
+            $self.set('content-type', 'application/vnd.ms-excel;charset=utf-8');
+            $self.set('Content-Disposition', 'attachment;  filename='+encodeURI(fileName));
+            return res.buffer();
+        }).then(function(data){
+            $self.body = data;
+        }));
     }).get('/baseinfomanage/exportExcel', function*(){//导出 合同基本信息
         var $self = this;
         var count = $self.request.query;
@@ -545,7 +569,7 @@ module.exports = function(){
                 $self.body=error.error;
                 console.error(error.error);
             }));
-    }).post('/dispatchsheet/import', koaBody({multipart:true}),function *(next) {//导入 项目派工单
+    }).post('/dispatchsheet/leadExcel', koaBody({multipart:true}),function *(next) {//导入 项目派工单
         var $self = this;
         var fileData = $self.request.body;
         fileData.userToken = $self.cookies.get("token");
@@ -557,6 +581,18 @@ module.exports = function(){
                 $self.body=error.error;
                 console.error(error.error);
             }));
+    }).get('/dispatchsheet/templateExcel', function*(){//导入模板下载 项目派工单
+        var $self = this;
+        var fileName = '商务项目派工单信息管理导入excel模板.xlsx';
+        yield (fetch(config()['rurl']+`/dispatchsheet/v1/templateExcel`, {
+            method : 'GET',
+        }).then(function(res){
+            $self.set('content-type', 'application/vnd.ms-excel;charset=utf-8');
+            $self.set('Content-Disposition', 'attachment;  filename='+encodeURI(fileName));
+            return res.buffer();
+        }).then(function(data){
+            $self.body = data;
+        }));
     }).get('/dispatchsheet/exportExcel', function*(){//导出 项目派工单
         var $self = this;
         var count = $self.request.query;

@@ -1,4 +1,4 @@
-<div class="content-tab list" style="margin-top: -70px;">
+<div class="content-tab list">
     <ul class="table table-top">
         <li class="list-head">
             <span></span>
@@ -15,13 +15,13 @@
             <section>
                 <div class="list-text {{lists._selectList?'selectList':''}}" ng-click="selectList(lists)">
                     <p>{{$index+1}}</p>
-                    <p>{{lists.groupUpType|cover}}</p>
-                    <p>{{lists.area}}</p>
-                    <p>{{lists.project}}</p>
-                    <p>{{lists.startTime}}</p>
-                    <p>{{lists.endTime}}</p>
-                    <p>{{lists.januaryMoney}}</p>
-                    <p>{{lists.januaryGapMoney}}</p>
+                    <p mod>{{::lists.groupUpType|cover}}</p>
+                    <p mod>{{::lists.area}}</p>
+                    <p mod>{{::lists.project}}</p>
+                    <p mod>{{::lists.startTime}}</p>
+                    <p mod>{{::lists.endTime}}</p>
+                    <p mod>{{::lists.januaryMoney}}</p>
+                    <p mod>{{::lists.januaryGapMoney}}</p>
                     <p>
                         <a href="javascript:void(0)" class="more" ng-click="moreList(lists)">更多详细</a>
                     </p>
@@ -30,24 +30,24 @@
                     <ul class="can-see" style="display: {{lists._moreList?'block':'none'}};">
                         <li>
                             <p class="see-parent">
-                                <span>二月</span>
-                                <span>二月与上月差额</span>
-                                <span>三月</span>
-                                <span>三月与上月差额</span>
-                                <span>四月</span>
-                                <span>四月与上月差额</span>
-                                <span>五月</span>
-                                <span>五月与上月差额</span>
+                                <span mod>二月</span>
+                                <span mod>二月与上月差额</span>
+                                <span mod>三月</span>
+                                <span mod>三月与上月差额</span>
+                                <span mod>四月</span>
+                                <span mod>四月与上月差额</span>
+                                <span mod>五月</span>
+                                <span mod>五月与上月差额</span>
                             </p>
                             <p class="see-children">
-                                <span>{{lists.februaryMoney}}</span>
-                                <span>{{lists.februaryGapMoney}}</span>
-                                <span>{{lists.marchMoney}}</span>
-                                <span>{{lists.marchGapMoney}}</span>
-                                <span>{{lists.aprilMoney}}</span>
-                                <span>{{lists.aprilGapMoney}}</span>
-                                <span>{{lists.mayMoney}}</span>
-                                <span>{{lists.mayGapMoney}}</span>
+                                <span mod>{{::lists.februaryMoney}}</span>
+                                <span mod>{{::lists.februaryGapMoney}}</span>
+                                <span mod>{{::lists.marchMoney}}</span>
+                                <span mod>{{::lists.marchGapMoney}}</span>
+                                <span mod>{{::lists.aprilMoney}}</span>
+                                <span mod>{{::lists.aprilGapMoney}}</span>
+                                <span mod>{{::lists.mayMoney}}</span>
+                                <span mod>{{::lists.mayGapMoney}}</span>
                             </p>
                         </li>
                         <li>
@@ -62,55 +62,77 @@
                                 <span>九月与上月差额</span>
                             </p>
                             <p class="see-children">
-                                <span>{{lists.juneMoney}}</span>
-                                <span>{{lists.juneGapMoney}}</span>
-                                <span>{{lists.julyMoney}}</span>
-                                <span>{{lists.julyGapMoney}}</span>
-                                <span>{{lists.augustMoney}}</span>
-                                <span>{{lists.augustGapMoney}}</span>
-                                <span>{{lists.septemberMoney}}</span>
-                                <span>{{lists.septemberGapMoney}}</span>
+                                <span mod>{{::lists.juneMoney}}</span>
+                                <span mod>{{::lists.juneGapMoney}}</span>
+                                <span mod>{{::lists.julyMoney}}</span>
+                                <span mod>{{::lists.julyGapMoney}}</span>
+                                <span mod>{{::lists.augustMoney}}</span>
+                                <span mod>{{::lists.augustGapMoney}}</span>
+                                <span mod>{{::lists.septemberMoney}}</span>
+                                <span mod>{{::lists.septemberGapMoney}}</span>
                             </p>
                         </li>
                         <li>
+                        <p class="see-parent">
+                            <span>十月</span>
+                            <span>十月与上月差额</span>
+                            <span>十一月</span>
+                            <span>十一月与上月差额</span>
+                            <span>十二月</span>
+                            <span>十二月与上月差额</span>
+                            <span>成本差额增速最快月份</span>
+                            <span>成本差额增速最慢月份</span>
+                        </p>
+                        <p class="see-children">
+                            <span mod>{{::lists.octoberMoney}}</span>
+                            <span mod>{{::lists.novemberGapMoney}}</span>
+                            <span mod>{{::lists.novemberMoney}}</span>
+                            <span mod>{{::lists.novemberGapMoney}}</span>
+                            <span mod>{{::lists.decemberMoney}}</span>
+                            <span mod>{{::lists.decemberGapMoney}}</span>
+                            <span mod>{{::lists.fastMonth}}</span>
+                            <span mod>{{::lists.slowMonth}}</span>
+                        </p>
+                    </li>
+                        <li>
                             <p class="see-parent">
-                                <span>十月</span>
-                                <span>十月与上月差额</span>
-                                <span>十一月</span>
-                                <span>十一月与上月差额</span>
-                                <span>十二月</span>
-                                <span>十二月与上月差额</span>
-                                <span>成本差额增速最快月份</span>
-                                <span>成本差额增速最慢月份</span>
+                                <span>收入最多月份</span>
+                                <span>收入最少月份</span>
                             </p>
                             <p class="see-children">
-                                <span>{{lists.octoberMoney}}</span>
-                                <span>{{lists.novemberGapMoney}}</span>
-                                <span>{{lists.novemberMoney}}</span>
-                                <span>{{lists.novemberGapMoney}}</span>
-                                <span>{{lists.decemberMoney}}</span>
-                                <span>{{lists.decemberGapMoney}}</span>
-                                <span>{{lists.fastMonth}}</span>
-                                <span>{{lists.slowMonth}}</span>
+                                <span mod>{{::lists.maximumMonth}}</span>
+                                <span mod>{{::lists.leastMonth}}</span>
                             </p>
                         </li>
                     </ul>
-                    <div class="module">
-                        <div class="see-module">
-                            <p class="see-type">体现类型</p>
-                            <p class="see-description"></p>
-                            <button class="btn">关闭</button>
-                        </div>
-                    </div>
                 </div>
             </section>
         </li>
     </ul>
+    <div class="module">
+        <div class="see-module">
+            <p class="see-type">体现类型</p>
+            <p class="see-description"></p>
+            <button class="btn" modclose>关闭</button>
+        </div>
+    </div>
     <footer class="footer">
         <pagination count="abili.itemsCount" take="abili.take" activate="abili.activatePage"></pagination>
     </footer>
 </div>
-<div ui-view="modal"></div>
+<div class="delete mod" ng-show="delShow">
+    <div class="del-head">
+        <h5>温馨提示</h5>
+    </div>
+    <div class="del-con">
+        <p>确定要删除这条数据？</p>
+        <div class="btn">
+            <button ng-click="delYes()">确定</button>
+            <button ng-click="cancel()">取消</button>
+        </div>
+    </div>
+</div>
+<div id="modalbg" ng-show="delShow"></div>
 
 
 

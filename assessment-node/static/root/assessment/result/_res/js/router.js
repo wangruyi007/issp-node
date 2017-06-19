@@ -35,5 +35,13 @@ app.config(function($provide, $stateProvider){
                 controller:'resultSummaryCtrl'
             }
         }
+    }).state("root.assessment.result.list[12]",{
+        url:"/list[12]?id=&name=",
+        views:{
+            "content@root.assessment.result":{
+                templateUrl : "root/assessment/result/list/_res/html/index.html",
+                controller:'resultListCtrl'
+            }
+        }
     })
 });

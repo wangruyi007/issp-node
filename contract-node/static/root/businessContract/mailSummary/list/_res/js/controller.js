@@ -42,7 +42,7 @@ app.controller('mailSummaryListCtrl',function($scope,emailSer,toastr,$stateParam
                 toastr.info( "信息已冻结", '温馨提示');
                 $scope.deledId = $stateParams.id;
                 $scope.$emit('changeId', null);
-                $scope.delShow = false;
+                $scope.congealShow = false;
                 $state.go('root.businessContract.mailSummary.list[12]',{id:null,name:null});
             }else{
                 toastr.error( response.data.msg, '温馨提示');

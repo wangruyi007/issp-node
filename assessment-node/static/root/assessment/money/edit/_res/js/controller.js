@@ -45,7 +45,7 @@ app.controller('moneyEditCtrl', function($scope, moneySer,$stateParams,$state,to
         };
         moneySer.editMoney(data).then(function(response){
              if(response.data.code == 0){
-                $state.go('root.assessment.money.list');
+                $state.go('root.assessment.money.list[12]');
                 toastr.success( "编辑成功", '温馨提示');
             }else{
                  toastr.error(response.data.msg, '温馨提示');

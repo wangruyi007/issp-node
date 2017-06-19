@@ -90,7 +90,7 @@ app.controller('signingViewCtrl', function($scope,signingSer,$stateParams,toastr
             };
             var iframe = document.createElement('iframe');
 
-            iframe.src=`http://localhost:5555/siginmanage/download${encode(obj,true)}`;
+            iframe.src=`/siginmanage/download${encode(obj,true)}`;
 
             iframe.style.display = 'none';
 

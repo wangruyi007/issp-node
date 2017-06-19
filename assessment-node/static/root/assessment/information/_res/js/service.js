@@ -8,6 +8,7 @@ app.factory('informationSer',function ($http) {
         findInformationId:findInformationId,
         deleteInformation:deleteInformation,
         allInformationProjects:allInformationProjects,
+        menuPermission:menuPermission,
     };
     function listInformation(data) {
         return $http.get('/listInformation/list',{
@@ -41,5 +42,9 @@ app.factory('informationSer',function ($http) {
     //查询所有项目
     function allInformationProjects(){
         return $http.get('/allInformationProjects/id')
+    }
+    //菜单权限
+    function menuPermission(data) {
+        return $http.get('/information/menu/'+data);
     }
 });

@@ -27,5 +27,13 @@ app.config(function($provide, $stateProvider){
                 controller:'informationEditCtrl'
             }
         }
+    }).state("root.assessment.information.list[12]",{
+        url:"/list[12]?id=&name=",
+        views:{
+            "content@root.assessment.information":{
+                templateUrl : "root/assessment/information/list/_res/html/index.html",
+                controller:'informationListCtrl'
+            }
+        }
     })
 });

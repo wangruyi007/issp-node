@@ -23,10 +23,14 @@
         <input type="file" id='uploadFile' style="display: none" onchange='angular.element(this).scope().fileNameChanged()' accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,application/vnd.ms-excel">
     </div>
 </div>
-<div class="{{isUp?'sure-no':'sure-yes'}}" ng-click="updataSel()">
-    <label class="sure-btn">
-        <i class="sure-pic"></i>
-        导入
-    </label>
+<div class="module-btn">
+    <a href="javascript:void(0)" class="module-upload" ng-click="moduleUp()">模板下载</a>
+    <div class="{{isUp?'import-no':'import-yes'}}" ng-click="updataSel()">
+        <label class="sure-btn">
+            <i class="sure-pic"></i>
+            导入
+        </label>
+    </div>
 </div>
+
 <footer class="footer"></footer>

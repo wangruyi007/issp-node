@@ -19,7 +19,7 @@ app.controller('costEditCtrl', function($scope, costSer,$stateParams,$state,toas
         var vm = $scope;
         costSer.editCost(vm.editInfo).then(function(response){
             if(response.data.code == 0){
-                $state.go('root.assessment.cost.list');
+                $state.go('root.assessment.cost.list[12]');
                 toastr.success( "编辑成功", '温馨提示');
             }else{
                 toastr.error(response.data.msg, '温馨提示');
