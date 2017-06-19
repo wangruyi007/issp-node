@@ -12,6 +12,7 @@ app.factory('resultSer',function ($http) {
         getEditResultById:getEditResultById,
         listResultArea:listResultArea,
         ectSummary:ectSummary,
+        menuPermission:menuPermission
 
 
     };
@@ -64,10 +65,12 @@ app.factory('resultSer',function ($http) {
             params:data
         })
     }
-
     //汇总
     function ectSummary(data) {
         return $http.post('/ectSummary/summary',data)
     }
-
+    //菜单权限
+    function menuPermission(data) {
+        return $http.get('/result/menu/'+data);
+    }
 });

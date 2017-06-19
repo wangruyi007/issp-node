@@ -27,5 +27,13 @@ app.config(function($provide, $stateProvider){
                 controller:'basicInfoEditCtrl'
             }
         }
+    }).state("root.assessment.basicInfo.list[12]",{
+        url:"/list[12]?id=&name=",
+        views:{
+            "content@root.assessment.basicInfo":{
+                templateUrl : "root/assessment/basicInfo/list/_res/html/index.html",
+                controller:'basicInfoListCtrl'
+            }
+        }
     })
 });

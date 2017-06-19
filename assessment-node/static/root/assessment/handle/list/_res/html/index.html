@@ -1,4 +1,4 @@
-<div class="content-tab list" style="margin-top: -70px;">
+<div class="content-tab list">
     <ul class="table table-top">
         <li class="list-head">
             <span></span>
@@ -14,14 +14,14 @@
         <li class="list-all" ng-repeat="lists in handleLists" style="display: {{lists._delete?'none':'block'}};">
             <section>
                 <div class="list-text {{lists._selectList?'selectList':''}}" ng-click="selectList(lists)">
-                    <p>{{$index+1}}</p>
-                    <p>{{lists.area}}</p>
-                    <p>{{lists.project}}</p>
-                    <p>{{lists.startTime}}</p>
-                    <p>{{lists.endTime}}</p>
-                    <p>{{lists.source}}</p>
-                    <p>{{lists.informWay}}</p>
-                    <p>{{lists.affectDepartment}}</p>
+                    <p mod>{{$index+1}}</p>
+                    <p mod>{{::lists.area}}</p>
+                    <p mod>{{::lists.project}}</p>
+                    <p mod>{{::lists.startTime}}</p>
+                    <p mod>{{::lists.endTime}}</p>
+                    <p mod>{{::lists.source}}</p>
+                    <p mod>{{::lists.informWay}}</p>
+                    <p mod>{{::lists.affectDepartment}}</p>
                     <p>
                         <a href="javascript:void(0)" class="more" ng-click="moreList(lists)">更多详细</a>
                     </p>
@@ -40,33 +40,45 @@
                                 <span>经验总结</span>
                             </p>
                             <p class="see-children">
-                                <span>{{lists.urgencyLevel}}</span>
-                                <span>{{lists.dutyMan}}</span>
-                                <span>{{lists.disposeMan}}</span>
-                                <span>{{lists.responseType}}</span>
-                                <span>{{lists.detail}}</span>
-                                <span>{{lists.disposeStartTime}}</span>
-                                <span>{{lists.disposeEndTime}}</span>
-                                <span>{{lists.sufferSummary}}</span>
+                                <span mod>{{::lists.urgencyLevel}}</span>
+                                <span mod>{{::lists.dutyMan}}</span>
+                                <span mod>{{::lists.disposeMan}}</span>
+                                <span mod>{{::lists.responseType}}</span>
+                                <span mod>{{::lists.detail}}</span>
+                                <span mod>{{::lists.disposeStartTime}}</span>
+                                <span mod>{{::lists.disposeEndTime}}</span>
+                                <span mod>{{::lists.sufferSummary}}</span>
                             </p>
                         </li>
                     </ul>
-                    <div class="module">
-                        <div class="see-module">
-                            <p class="see-type">体现类型</p>
-                            <p class="see-description"></p>
-                            <button class="btn">关闭</button>
-                        </div>
-                    </div>
                 </div>
             </section>
         </li>
     </ul>
+    <div class="module">
+        <div class="see-module">
+            <p class="see-type">体现类型</p>
+            <p class="see-description"></p>
+            <button class="btn" modclose>关闭</button>
+        </div>
+    </div>
     <footer class="footer">
         <pagination count="abili.itemsCount" take="abili.take" activate="abili.activatePage"></pagination>
     </footer>
 </div>
-<div ui-view="modal"></div>
+<div class="delete mod" ng-show="delShow">
+    <div class="del-head">
+        <h5>温馨提示</h5>
+    </div>
+    <div class="del-con">
+        <p>确定要删除这条数据？</p>
+        <div class="btn">
+            <button ng-click="delYes()">确定</button>
+            <button ng-click="cancel()">取消</button>
+        </div>
+    </div>
+</div>
+<div id="modalbg" ng-show="delShow"></div>
 
 
 

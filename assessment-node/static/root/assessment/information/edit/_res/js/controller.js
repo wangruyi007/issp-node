@@ -19,7 +19,7 @@ app.controller('informationEditCtrl', function($scope, informationSer,$statePara
         var vm = $scope;
         informationSer.editInformation(vm.editInfo).then(function(response){
             if(response.data.code == 0){
-                $state.go('root.assessment.information.list');
+                $state.go('root.assessment.information.list[12]');
                 toastr.success( "编辑成功", '温馨提示');
             }else{
                 toastr.error(response.data.msg, '温馨提示');

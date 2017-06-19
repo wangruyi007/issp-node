@@ -1,5 +1,34 @@
 var app = angular.module('basicInfoList', ['ng-pagination','toastr']);
-app.controller('basicInfoListCtrl',function($scope,basicInfoSer,toastr){
+app.controller('basicInfoListCtrl',function($scope,basicInfoSer,toastr,$stateParams,$state){
+    //获取id
+    if($stateParams.id){
+        switch ($stateParams.name){
+            case 'delete':
+                $scope.delShow = true;
+                break;
+        }
+    }
+    //删除
+    $scope.cancel = function(){//取消删除
+        $scope.delShow = false;
+        $state.go('root.assessment.basicInfo.list[12]',{id:null,name:null});
+    };
+    $scope.delYes = function(){
+        var data = {
+            id :$stateParams.id
+        };
+        basicInfoSer.deleteBasicInfo(data).then(function(response){
+            if(response.data.code==0){
+                toastr.info( "信息已删除", '温馨提示');
+                $scope.deledId = $stateParams.id;
+                $state.go('root.assessment.basicInfo.list[12]',{id:null,name:null});
+                $scope.$emit('changeId', null);
+                $scope.delShow = false;
+            }else{
+                toastr.error(response.data.msg, '温馨提示');
+            }
+        })
+    }
     $scope.$emit('changeId', null);
     function activatePage(page) {
         var listData = {
@@ -7,13 +36,21 @@ app.controller('basicInfoListCtrl',function($scope,basicInfoSer,toastr){
         }
         basicInfoSer.listBasicInfo(listData).then(function(response){
             if(response.data.code==0){
-                $scope.basicInfoLists = response.data.data
+                $scope.basicInfoLists = response.data.data;
+                if($stateParams.id){
+                    angular.forEach($scope.mailLists,function(obj){
+                        if(obj.id == $stateParams.id){
+                            obj._selectList = true;
+                        }
+                    });
+                    //向父Ctrl传递事件
+                    $scope.$emit('changeId', $stateParams.id);
+                }
             }else{
                 toastr.error(response.data.msg, '温馨提示');
             }
         });
     }
-
     $scope.selectList = function(event){
         angular.forEach($scope.basicInfoLists,function(obj){
                 obj._selectList = false
@@ -54,6 +91,5 @@ app.controller('basicInfoListCtrl',function($scope,basicInfoSer,toastr){
             toastr.error(response.data.msg, '温馨提示');
         }
     })
-
 });
 

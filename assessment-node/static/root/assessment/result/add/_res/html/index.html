@@ -7,7 +7,6 @@
                     <option value="" disabled>请选择</option>
                     <option ng-repeat="pros in proData" value="{{pros.id}}">{{pros.project}}</option>
                 </select>
-                <!-- <input type="text" class="inputDom" ng-verify="{}" ng-model="add.projectInfoId">-->
             </li>
             <li class="required f-l">
                 <label><i><img src="/images/mandatory.png"></i><em>发送间隔</em></label>
@@ -44,18 +43,35 @@
                     <option value="" disabled>请选择</option>
                     <option ng-repeat="areas in areaData">{{areas.area}}</option>
                 </select>
-               <!-- <input type="text" ng-verify="{}" ng-model="add.area">-->
             </li>
-            <li class="required">
+            <li class="required ">
                 <label><i><img src="/images/mandatory.png"></i><em>选择对象</em></label>
-                <input type="text"  ng-verify="{}" ng-model="add.sendUser">
+                <select class="sele one-select" ng-model="checkedEmail" ng-init="checkedEmail='自由录入'">
+                    <option ng-repeat="one in emails">{{one}}</option>
+                </select>
+                <input type="text" style=" width:22%;right: 102px; background-color: #fff;" ng-model="sendUsers" ng-show="checkedEmail=='自由录入'">
+                <div class="select two-select" ng-show="checkedEmail=='个人邮箱'">
+                    <select class="sele" style="border: 0" ng-model="sendUsers">
+                        <option value="" disabled>请选择</option>
+                        <option ng-repeat="areas in areaData">{{areas.area}}</option>
+                    </select>
+                </div>
+                <div class="select two-select" ng-show="checkedEmail=='公邮'">
+                    <select class="sele" style="border: 0" ng-model="sendUsers">
+                        <option value="" disabled>请选择</option>
+                        <option ng-repeat="areas in areaData">{{areas.area}}</option>
+                    </select>
+              </div>
+                <button type="button" class="data-add" ng-click="addMail()">添加</button>
             </li>
             <li class="f-send">
                 <p class="send-o">
                     <em>发送对象:</em>
                     <span>(双击可以删除该条邮箱地址)</span>
                 </p>
-                <p class="dclick">{{sendObjectList}}</p>
+                <div class="dclick">
+                    <p ng-repeat="list in objLists" ng-dblclick="dbSend($index)" >{{list}}</p>
+                </div>
             </li>
         </ul>
     </section>

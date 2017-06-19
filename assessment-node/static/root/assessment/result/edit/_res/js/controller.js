@@ -1,5 +1,7 @@
-var app = angular.module('resultEdit', ['toastr']);
+var app = angular.module('resultEdit', ['toastr','angularjs-dropdown-multiselect']);
 app.controller('resultEditCtrl', function($scope, resultSer,$state,toastr,$stateParams){
+    $scope.areaData= [];
+    $scope.stringSettings = {template : '{{option}}', smartButtonTextConverter(skip, option) { return option; }};
     resultSer.listResultProjects().then(function(response){
         if(response.data.code == 0){
             $scope.proData = response.data.data;
@@ -11,8 +13,15 @@ app.controller('resultEditCtrl', function($scope, resultSer,$state,toastr,$state
             $scope.areaData = response.data.data;
         }
     });
-    var resultId = {id : $stateParams.id};
+    $scope.objLists = [];
+    $scope.addMail = function(){
+        $scope.objLists.push($scope.sendUsers);
+        $scope.sendUsers = '';
+    };
+    $scope.emails = ['个人邮箱','公邮','自由录入'];
+    //编辑
     //获取值
+    var resultId = {id : $stateParams.id};
     resultSer.getEditResultById(resultId).then(function(response){
         if(response.data.code==0){
             $scope.editInfo = response.data.data;
@@ -22,13 +31,22 @@ app.controller('resultEditCtrl', function($scope, resultSer,$state,toastr,$state
     });
     $scope.resultEditFun = function(){
         var vm = $scope;
+        vm.editInfo.sendUsers = $scope.objLists;
         resultSer.editResult(vm.editInfo).then(function(response){
             if(response.data.code == 0){
-                $state.go('root.assessment.result.list');
-                toastr.success("已成功编辑", '温馨提示');
+                $state.go('root.assessment.result.list[12]');
+                toastr.success("已成功添加", '温馨提示');
             }else{
                 toastr.error(response.data.msg, '温馨提示');
             }
         });
     };
+    $scope.dbSend = function (index) {
+        $scope.objLists.splice(index,1);
+    }
 });
+
+
+
+
+

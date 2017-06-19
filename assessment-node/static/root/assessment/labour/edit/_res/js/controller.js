@@ -19,7 +19,7 @@ app.controller('labourEditCtrl', function($scope, labourSer,$stateParams,$state,
         var vm = $scope;
         labourSer.editLabour(vm.editInfo).then(function(response){
             if(response.data.code == 0){
-                $state.go('root.assessment.labour.list');
+                $state.go('root.assessment.labour.list[12]');
                 toastr.success( "编辑成功", '温馨提示');
             }else{
                 toastr.error(response.data.msg, '温馨提示');

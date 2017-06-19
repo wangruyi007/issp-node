@@ -14,17 +14,22 @@
                 </li>
                 <li class="required">
                     <label><i><img src="/images/mandatory.png"></i><em>地区</em></label>
-                    <select class="sele" ng-model="add.area">
-                        <option value="" disabled>请选择</option>
-                    </select>
-                    <input type="text"  class="inputDom" ng-model="add.area">
+                    <div class="sele side">
+                        <select class="sele" ng-model="add.area">
+                            <option value="" disabled>请选择</option>
+                        </select>
+                        <input type="text"  class="inputDom" ng-model="add.area">
+                    </div>
                 </li>
+
                 <li class="required">
                     <label><i><img src="/images/mandatory.png"></i><em>项目名称</em></label>
-                    <select class="sele" ng-model="add.project">
-                        <option value="" disabled>请选择</option>
-                    </select>
+                    <div class="sele side">
+                        <select class="sele" ng-model="add.project">
+                            <option value="" disabled>请选择</option>
+                        </select>
                     <input type="text"  class="inputDom" ng-model="add.project">
+                    </div>
                 </li>
                 <li class="required">
                     <label><i><img src="/images/mandatory.png"></i><em>工作量</em></label>

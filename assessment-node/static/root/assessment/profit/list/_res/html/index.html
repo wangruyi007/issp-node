@@ -1,4 +1,4 @@
-<div class="content-tab list" style="margin-top: -70px;">
+<div class="content-tab list">
     <ul class="table table-top">
         <li class="list-head">
             <span></span>
@@ -15,13 +15,13 @@
             <section>
                 <div class="list-text {{lists._selectList?'selectList':''}}" ng-click="selectList(lists)">
                     <p>{{$index+1}}</p>
-                    <p>{{lists.area}}</p>
-                    <p>{{lists.project}}</p>
-                    <p>{{lists.startTime}}</p>
-                    <p>{{lists.endTime}}</p>
-                    <p>{{lists.profit}}</p>
-                    <p>{{lists.projectProfitRate}}</p>
-                    <p>{{lists.costProfitRate}}</p>
+                    <p mod>{{::lists.area}}</p>
+                    <p mod>{{::lists.project}}</p>
+                    <p mod>{{::lists.startTime}}</p>
+                    <p mod>{{::lists.endTime}}</p>
+                    <p mod>{{::lists.profit}}</p>
+                    <p mod>{{::lists.projectProfitRate}}</p>
+                    <p mod>{{::lists.costProfitRate}}</p>
                     <p>
                         <a href="javascript:void(0)" class="more" ng-click="moreList(lists)">更多详细</a>
                     </p>
@@ -33,21 +33,21 @@
                                 <span>费用利润率</span>
                             </p>
                             <p class="see-children">
-                                <span>{{lists.feeProfitRate}}</span>
+                                <span mod>{{::lists.feeProfitRate}}</span>
                             </p>
                         </li>
                     </ul>
-                    <div class="module">
-                        <div class="see-module">
-                            <p class="see-type">体现类型</p>
-                            <p class="see-description"></p>
-                            <button class="btn">关闭</button>
-                        </div>
-                    </div>
                 </div>
             </section>
         </li>
     </ul>
+    <div class="module">
+        <div class="see-module">
+            <p class="see-type">体现类型</p>
+            <p class="see-description"></p>
+            <button class="btn" modclose>关闭</button>
+        </div>
+    </div>
 </div>
 <div ui-view="modal"></div>
 

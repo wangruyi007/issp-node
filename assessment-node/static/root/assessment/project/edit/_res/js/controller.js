@@ -19,7 +19,7 @@ app.controller('projectEditCtrl', function($scope, projectSer,$stateParams,$stat
         var vm = $scope;
         projectSer.editProject(vm.editInfo).then(function(response){
             if(response.data.code == 0){
-                $state.go('root.assessment.project.list');
+                $state.go('root.assessment.project.list[12]');
                 toastr.success( "编辑成功", '温馨提示');
             }else{
                 toastr.error(response.data.msg, '温馨提示');

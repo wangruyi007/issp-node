@@ -12,7 +12,7 @@ app.controller('resultSummaryCtrl', function($scope, resultSer,toastr){
             $scope.areadata = response.data.data;
         }
     });
-        $scope.myFunc = function () {
+        $scope.collect = function () {
             var listData = {
                 proData: $scope.project,
                 proArea: $scope.area
