@@ -7,7 +7,6 @@ app.controller('mailSummaryEditCtrl', function($scope, emailSer,$stateParams,$st
 
         if(response.data.code==0){
             $scope.editMail = response.data.data;
-            // $scope.condis=$scope.editMail.condi
         }else{
             toastr.error(response.data.msg, '温馨提示');
         }
@@ -16,7 +15,6 @@ app.controller('mailSummaryEditCtrl', function($scope, emailSer,$stateParams,$st
 
     $scope.condis= [];
     $scope.stringSettings = {template : '{{option}}', smartButtonTextConverter(skip, option) { return option; }};
-    // $scope.stringSettings = {displayProp: 'value',idProperty: 'id'};
     //获取所有汇总
     $scope.objLists = [];
     $scope.sendCondition = function(val){
