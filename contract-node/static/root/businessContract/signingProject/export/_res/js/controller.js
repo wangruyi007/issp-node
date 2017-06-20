@@ -13,7 +13,7 @@ app.controller('signingExportCtrl', function($scope, signingSer,$state,toastr){
         var obj = {
             innerProject:$scope.innerProject
         };
-        window.open(`http://localhost:5555/siginmanage/exportFile${encode(obj,true)}`);
+        window.open(`/siginmanage/exportFile${encode(obj,true)}`);
     };
 
 });

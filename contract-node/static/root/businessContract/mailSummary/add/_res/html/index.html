@@ -46,7 +46,7 @@
 
         </ul>
         <ul class="inter-right">
-            <div class="sum-select">
+            <li class="sum-select">
                 <label><i><img src="/images/mandatory.png"></i><em>地区/甲方公司名称</em></label>
                 <div class="select">
                     <p class="select-text">
@@ -54,7 +54,7 @@
                     </p>
                     <div class="mymultiselect" events="getSummary" ng-dropdown-multiselect="" options="workOptions" selected-model="condis" extra-settings="stringSettings"></div>
                 </div>
-            </div>
+            </li>
             <li >
                 <label><em>备注</em></label>
                 <input type="text" class="remark" ng-model="addEmails.remark">
@@ -65,7 +65,7 @@
                     <span>(双击可以删除该条邮箱地址)</span>
                 </p>
                 <div class="dclick">
-                    <p ng-repeat="list in objLists" ng-dblclick="dbSend($index)" >{{list}}</p>
+                    <p ng-repeat="item in objLists track by $index" ng-dblclick="dbSend($index)" >{{item}}</p>
                 </div>
             </li>
         </ul>

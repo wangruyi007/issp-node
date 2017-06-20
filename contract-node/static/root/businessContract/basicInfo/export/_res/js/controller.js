@@ -16,7 +16,7 @@ app.controller('basicExportCtrl', function($scope, basicSer,$state,toastr){
         var obj = {
             innerProjects : $scope.Projects
         };
-        window.open(`http://localhost:5555/baseinfomanage/exportExcel${encode(obj,true)}`);
+        window.open(`/baseinfomanage/exportExcel${encode(obj,true)}`);
     };
 
 });

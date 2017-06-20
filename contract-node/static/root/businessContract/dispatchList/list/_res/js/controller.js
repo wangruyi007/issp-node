@@ -1,4 +1,4 @@
-var app = angular.module('dispatchWorkList', ['ng-pagination','toastr']);
+var app = angular.module('dispatchWork', ['ng-pagination','toastr']);
 app.controller('dispatchWorkCtrl',function($scope,dispatchSer,toastr,$stateParams,$state){
     $scope.$emit('changeId', null);
     //监听切换搜索是否出现
