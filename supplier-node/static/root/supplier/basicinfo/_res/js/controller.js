@@ -4,32 +4,41 @@ var app = angular.module('basicinfo', [{
     ]
 }]);
 app.controller('basicinfoCtrl',function ($scope,$state) {
-    if ($state.current.url == '/basicinfo') {//默认加载列表
+    if ($state.current.url == '/basicinfo') {  //默认加载列表
         $state.go('root.supplier.basicinfo.list')
     }
 
-}).controller('basicinfoMenuCtrl',function($scope,$state,$rootScope,$location){
+}).controller('basicinfoMenuCtrl',function($scope,$state,$rootScope,$location, basicinfoSer){
 
-    var urlName = $state.current.url.split('/')[1].split('[')[0]
-    $scope.menuClass = urlName + "Menu";
-
+    var urlName = $state.current.url.split('/')[1].split('[')[0];
+    $scope.menuClass = urlName.split('?')[0] + "Menu";
     $rootScope.$on('$locationChangeSuccess', function () {//url地扯改变或者刷新
-        if($location.path().split('/').slice(-1)=='list'){
+        if($location.path().split('/').slice(-1)=='list[12]' && window.location.href.indexOf('id=') == -1){
             $scope.menuClass = 'listMenu';
         }
     });
+ $scope.menuCheck = function (name){
+        var buttonName = name;
+        $scope.buttonShow = true;
+       basicinfoSer.menuPermission(buttonName).then(function(response){
+            if(response.data.code == 0 &&response.data.data){
+                $scope[buttonName] = true;
+            }else{
+                $scope[buttonName] = false;
+            }
+        });
+        $scope.menuAdd = false;
+    };
     //监听到父Ctrl后改变事件
     $scope.$on("listId", function(event, id){
        $scope.idListd = id;
     });
-
     $scope.delete = function(){
         if($scope.idListd){
-            $state.go('root.supplier.basicinfo.list.delete[12]',{id:$scope.idListd});
+            $state.go('root.supplier.basicinfo.list[12]',{id:$scope.idListd,name:'delete'});
             $scope.menuClass = 'deleteMenu'
         }
-    }
-
+    };
     $scope.edit = function(){
         if($scope.idListd){
             $state.go('root.supplier.basicinfo.edit[12]',{id:$scope.idListd});
@@ -67,6 +76,7 @@ app.controller('basicinfoCtrl',function ($scope,$state) {
     $scope.add = function(){
         $scope.menuClass = 'addMenu'
     };
+
     $scope.details = function(){
         if($scope.idListd){
             $state.go('root.supplier.basicinfo.details[12]',{id:$scope.idListd});
@@ -97,4 +107,55 @@ app.controller('basicinfoCtrl',function ($scope,$state) {
             $scope.menuClass = 'cooperationAddMenu'
         }
     };
+
+});
+
+//自定义过滤器
+app.filter('cover',function(){
+    return function(val){
+        var result;
+        switch(val){
+            case "LIST":
+                result = "查看或列表";
+                break;
+            case "ADD":
+                result = "添加";
+                break;
+            case "EDIT":
+                result = "编辑";
+                break;
+            case "WINN":
+                result = "获奖情况";
+                break;
+            case "DELETE":
+                result = "删除";
+                break;
+            case "REWARDADD":
+                result = "获奖情况添加";
+                break;
+            case "QUALIFICATION":
+                result = "企业资质";
+                break;
+            case "QUALIFIADD":
+                result = "企业资质添加";
+                break;
+            case "CONTACT":
+                result = "联系情况";
+                break;
+            case "CONTACTADD":
+                result = "联系情况添加";
+                break;
+            case "COOPERATION":
+                result = "合作情况";
+                break;
+            case "COOPERATIONADD":
+                result = "合作情况添加";
+                break;
+            case "DETAILS":
+                result = "详细信息";
+                break;
+        }
+        return result;
+    }
+
 });

@@ -1,6 +1,7 @@
 var app = angular.module('basicinfoServer',[]);
 app.factory('basicinfoSer',function ($http) {
     return {
+        menuPermission:menuPermission,
         basicInfoList : basicInfoList,
         countBasicInfo:countBasicInfo,
         basicInfoAdd:basicInfoAdd,
@@ -28,6 +29,11 @@ app.factory('basicinfoSer',function ($http) {
         editCooperation:editCooperation,
         editCooperationById:editCooperationById,
     };
+    //菜单权限
+  function menuPermission(data) {
+        return $http.get('/supplierinformation/guidePermission/'+data);
+    }
+    //列表
     function basicInfoList(data) {
         return $http.get('/basicInfoList/list',{
             params: data

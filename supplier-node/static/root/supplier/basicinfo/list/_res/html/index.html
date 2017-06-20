@@ -1,5 +1,5 @@
 <div class="content-tab list">
-    <ul class="table table-top">
+    <ul class="table">
         <li class="list-head">
             <span></span>
             <span>供应商编号</span>
@@ -14,14 +14,14 @@
         <li class="list-all" ng-repeat="lists in basicinfoLists" style="display: {{lists._delete?'none':'block'}};">
             <section>
                 <div class="list-text {{lists._selectList?'selectList':''}}" ng-click="selectList(lists)">
-                    <p>{{$index+1}}</p>
-                    <p>{{lists.serialNumber}}</p>
-                    <p>{{lists.area}}</p>
-                    <p>{{lists.name}}</p>
-                    <p>{{lists.type}}</p>
-                    <p>{{lists.scope}}</p>
-                    <p>{{lists.product}}</p>
-                    <p>{{lists.contacts}}</p>
+                    <p mod>{{$index+1}}</p>
+                    <p mod>{{lists.serialNumber}}</p>
+                    <p mod>{{lists.area}}</p>
+                    <p mod>{{lists.name}}</p>
+                    <p mod>{{lists.type}}</p>
+                    <p mod>{{lists.scope}}</p>
+                    <p mod>{{lists.product}}</p>
+                    <p mod>{{lists.contacts}}</p>
                     <p>
                         <a href="javascript:void(0)" class="more" ng-click="moreList(lists)">更多详细</a>
                     </p>
@@ -38,32 +38,44 @@
                                 <span>营业执照附件</span>
                             </p>
                             <p class="see-children">
-                                <span>{{lists.duties}}</span>
-                                <span>{{lists.telephone}}</span>
-                                <span>{{lists.email}}</span>
-                                <span>{{lists.fax}}</span>
-                                <span>{{lists.execution}}</span>
-                                <span>{{lists.enclosure}}</span>
+                                <span mod>{{lists.duties}}</span>
+                                <span mod>{{lists.telephone}}</span>
+                                <span mod>{{lists.email}}</span>
+                                <span mod>{{lists.fax}}</span>
+                                <span mod>{{lists.execution}}</span>
+                                <span mod>{{lists.enclosure}}</span>
                             </p>
                         </li>
                     </ul>
-                    <div class="module">
-                        <div class="see-module">
-                            <p class="see-type">体现类型</p>
-                            <p class="see-description"></p>
-                            <button class="btn">关闭</button>
-                        </div>
-                    </div>
+
                 </div>
             </section>
         </li>
     </ul>
+    <div class="module">
+        <div class="see-module">
+            <p class="see-type">体现类型</p>
+            <p class="see-description"></p>
+            <button class="btn" modclose="">关闭</button>
+        </div>
+    </div>
     <footer class="footer">
         <pagination count="abili.itemsCount" take="abili.take" activate="abili.activatePage"></pagination>
     </footer>
 </div>
-<div ui-view="modal"></div>
-
+<div class="delete mod" ng-show="delShow">
+    <div class="del-head">
+        <h5>温馨提示</h5>
+    </div>
+    <div class="del-con">
+        <p>确定要删除这条数据？</p>
+        <div class="btn">
+            <button ng-click="delFn()">确定</button>
+            <button ng-click="cancel()">取消</button>
+        </div>
+    </div>
+</div>
+<div id="modalbg" ng-show="delShow"></div>
 
 
 
