@@ -11,6 +11,14 @@ app.config(function($provide, $stateProvider){
                 controller:"subpackageMenuCtrl"
             }
         }
+    }).state("root.business.outsource.subpackage.list[12]",{
+        url:"/list[12]?id=&name=",
+        views:{
+            "content@root.business.outsource.subpackage":{
+                templateUrl : "root/business/outsource/subpackage/list/_res/html/index.html",
+                controller:'subpackageListCtrl'
+            }
+        }
     }).state("root.business.outsource.subpackage.add[12]",{
         url:"/add[12]",
         views:{
@@ -33,6 +41,38 @@ app.config(function($provide, $stateProvider){
             "content@root.business.outsource.subpackage":{
                 templateUrl : "root/business/outsource/subpackage/collect/_res/html/index.html",
                 controller:'subpackageCollectCtrl'
+            }
+        }
+    }).state("root.business.outsource.subpackage.upload[12]",{
+        url:"/upload[12]?id=",
+        views:{
+            "content@root.business.outsource.subpackage":{
+                templateUrl : "root/business/outsource/subpackage/upload/_res/html/index.html",
+                controller:'subpackageUploadCtrl'
+            }
+        }
+    }).state("root.business.outsource.subpackage.view[12]",{
+        url:"/view[12]?id=",
+        views:{
+            "content@root.business.outsource.subpackage":{
+                templateUrl : "root/business/outsource/subpackage/view/_res/html/index.html",
+                controller:'subpackageViewCtrl'
+            }
+        }
+    }).state("root.business.outsource.subpackage.import[12]",{
+        url:"/import[12]",
+        views:{
+            "content@root.business.outsource.subpackage":{
+                templateUrl : "root/business/outsource/subpackage/import/_res/html/index.html",
+                controller:'subpackageImportCtrl'
+            }
+        }
+    }).state("root.business.outsource.subpackage.export[12]",{
+        url:"/export[12]",
+        views:{
+            "content@root.business.outsource.subpackage":{
+                templateUrl : "root/business/outsource/subpackage/export/_res/html/index.html",
+                controller:'subpackageExportCtrl'
             }
         }
     })

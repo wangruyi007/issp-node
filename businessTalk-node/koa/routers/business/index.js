@@ -4,6 +4,13 @@ var sendfile = require('koa-sendfile');
 var server = require(path.resolve('koa/servers/' + path.basename(path.resolve(__filename,'../'))+'/index.js'));
 var config = require(path.resolve('plugins/read-config.js'));
 var fetch = require('node-fetch');//url转发
+var koaBody = require('koa-body');
+
+var request = require('request-promise');
+var uploadFile = require(path.resolve('plugins/uploadFile.js'));
+var urlEncode = require(path.resolve('plugins/urlEncode.js'));
+
+var fileType = require(path.resolve('plugins/fileType.js'));
 module.exports = function(){
     var router = new Router();
     //列表
@@ -261,9 +268,298 @@ module.exports = function(){
                 $self.body=error.error;
                 console.error(error.error);
             }));
-    })
-
-    
+        //-----------------------------------------------新添的上传下载，导入导出1-----------------------------------------------
+        }).post('/ssuiDelfile/delfile', koaBody({multipart:true}), function*(){//合同基本信息 删除文件
+        var $self = this;
+        var delData = $self.request.body;
+        delData.userToken = $self.cookies.get('token');
+        yield (server().ssuiDelfile(delData)
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
+    //上传文件
+    }).post('/ssuiUpload/upload',koaBody({multipart:true}),function *(next){
+        var $self = this;
+        var uploadData = $self.request.body;
+        uploadData.userToken = $self.cookies.get("token");
+        yield (server().ssuiUpload(uploadData)
+            .then((parsedBody) =>{
+                $self.body = parsedBody;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
+    //设置汇总周期
+    }).get('/ssuiCycle/cycle', function*(){
+        var $self = this;
+        var page = $self.request.query;
+        page.userToken = $self.cookies.get('token');
+        yield (server().ssuiCycle(page)
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
+    //内部项目名称列表
+    }).get('/ssuiProjects/projects', function*(){
+        var $self = this;
+        var page = $self.request.query;
+        page.userToken = $self.cookies.get('token');
+        yield (server().ssuiProjects(page)
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
+    //导入
+    }).post('/ssuiLead/lead', koaBody({multipart:true}),function *(next) {
+        var $self = this;
+        var fileData = $self.request.body;
+        fileData.userToken = $self.cookies.get("token");
+        yield (server().ssuiLead(fileData)
+            .then((parsedBody) =>{
+                $self.body = parsedBody;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
+    //         导出
+        }).get('/ssuiExport/export', function*(){//导出 
+        var $self = this;
+        var count = $self.request.query;
+        yield (fetch(config()['rurl']+`/contract/v1/export${urlEncode(count,true)}`, {
+            method : 'GET',
+            headers : {'userToken' : $self.cookies.get('token')}
+        }).then(function(res){
+            $self.set('content-type', 'application/vnd.ms-excel;charset=utf-8');
+            return res.buffer();
+        }).then(function(data){
+            $self.body = data;
+        }));
+    //文件下载
+            //下载文件 项目签收与立项
+        }).get('/ssuiDownload/download', function*(){
+        var $self = this;
+        var count = $self.request.query;
+        var data = {
+            path:count.path
+        };
+        console.log(1231234124124214124124)
+        yield (fetch(config()['rurl']+`/contract/v1/download${urlEncode(data,true)}`, {
+            method : 'GET',
+            headers : {'userToken' : $self.cookies.get('token')}
+        }).then((res)=>{
+            fileType(count,this);
+            return res.buffer();
+        }).then(function(data){
+            $self.body = data;
+        }));
+    //文件附件列表
+    }).get('/ssuiFiles/files', function*(){
+        var $self = this;
+        var page = $self.request.query;
+        page.userToken = $self.cookies.get('token');
+        yield (server().ssuiFiles(page)
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
+            //导入模板下载
+    }).get('/ssuiImport/templateExport', function*(){
+        var $self = this;
+        var fileName = '项目承包洽谈.xlsx';
+        yield (fetch(config()['rurl']+`/contract/v1/module`, {
+            method : 'GET',
+        }).then(function(res){
+            $self.set('content-type', 'application/vnd.ms-excel;charset=utf-8');
+            $self.set('Content-Disposition', 'attachment;  filename='+encodeURI(fileName));
+            return res.buffer();
+        }).then(function(data){
+            $self.body = data;
+        }));
+        //-----------------------------------------------新添的上传下载，导入导出2-----------------------------------------------
+    //删除文件夹
+        }).post('/outDelfile/delfile', koaBody({multipart:true}), function*(){//删除文件
+        var $self = this;
+        var delData = $self.request.body;
+        delData.userToken = $self.cookies.get('token');
+        yield (server().outDelfile(delData)
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
+        //上传文件
+    }).post('/outUpload/upload',koaBody({multipart:true}),function *(next){
+        var $self = this;
+        var uploadData = $self.request.body;
+        uploadData.userToken = $self.cookies.get("token");
+        yield (server().outUpload(uploadData)
+            .then((parsedBody) =>{
+                $self.body = parsedBody;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
+    //设置汇总周期
+    }).get('/outCycle/cycle', function*(){
+        var $self = this;
+        var page = $self.request.query;
+        page.userToken = $self.cookies.get('token');
+        yield (server().outCycle(page)
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
+        //内部项目名称列表
+    }).get('/outProjects/projects', function*(){
+        var $self = this;
+        var page = $self.request.query;
+        page.userToken = $self.cookies.get('token');
+        yield (server().outProjects(page)
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
+    //导入
+    }).post('/outLead/lead', koaBody({multipart:true}),function *(next) {//导入 项目签收与立项
+        var $self = this;
+        var getId = $self.request.body;
+        getId.userToken = $self.cookies.get('token');
+        yield (server().outLead(getId)
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
+    //导出
+        }).get('/outExport/export', function*(){
+        var $self = this;
+        var count = $self.request.query;
+        yield (fetch(config()['rurl']+`/outsource/v1/export${urlEncode(count,true)}`, {
+            method : 'GET',
+            headers : {'userToken' : $self.cookies.get('token')}
+        }).then(function(res){
+            $self.set('content-type', 'application/vnd.ms-excel;charset=utf-8');
+            return res.buffer();
+        }).then(function(data){
+            $self.body = data;
+        }));
+    //文件下载
+        }).get('/outDownload/download', function*(){
+        var $self = this;
+        var count = $self.request.query;
+        var data = {
+            path:count.path
+        };
+        yield (fetch(config()['rurl']+`/outsource/v1/download${urlEncode(data,true)}`, {
+            method : 'GET',
+            headers : {'userToken' : $self.cookies.get('token')}
+        }).then((res)=>{
+            fileType(count,this);
+            return res.buffer();
+        }).then(function(data){
+            $self.body = data;
+        }));
+    //文件附件列表
+    }).get('/outFiles/files', function*(){
+        var $self = this;
+        var page = $self.request.query;
+        page.userToken = $self.cookies.get('token');
+        yield (server().outFiles(page)
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
+        //导入模板下载
+    }).get('/subpackageImport/templateExport', function*(){
+        var $self = this;
+        var fileName = '项目承包洽谈.xlsx';
+        yield (fetch(config()['rurl']+`/contract/v1/module`, {
+            method : 'GET',
+        }).then(function(res){
+            $self.set('content-type', 'application/vnd.ms-excel;charset=utf-8');
+            $self.set('Content-Disposition', 'attachment;  filename='+encodeURI(fileName));
+            return res.buffer();
+        }).then(function(data){
+            $self.body = data;
+        }));
+//----------------------------------------权限----------------------------------------
+    }).get('/guidePermission/guide', function*(){
+        var $self = this;
+        var page = {name:$self.params.guideAddrStatus,userToken:$self.cookies.get('token')};
+        yield (server().guidePermission(page)
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
+    }).get('/sonPermission/son', function*(){
+        var $self = this;
+        var page = $self.request.query;
+        page.userToken = $self.cookies.get('token');
+        yield (server().sonPermission(page)
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
+    }).get('/setPermission/set', function*(){
+        var $self = this;
+        var page = $self.request.query;
+        page.userToken = $self.cookies.get('token');
+        yield (server().setPermission(page)
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
+    })   
 
     return router;
 };

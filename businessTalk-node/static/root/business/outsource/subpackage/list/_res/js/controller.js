@@ -1,9 +1,59 @@
 var app = angular.module('subpackageList', ['ng-pagination','toastr']);
-app.controller('subpackageListCtrl',function($scope,subpackageSer,toastr) {
+app.controller('subpackageListCtrl',function($scope,subpackageSer,toastr,$state,$stateParams) {
     //监听切换搜索是否出现
     $scope.$on('iSsearch',function(event,newIs){
         $scope.isView = newIs;
     });
+    //删除
+    //获取id
+    if($stateParams.id){
+        switch ($stateParams.name){
+            case 'delete':
+                $scope.delShow = true;
+                break;
+        }
+    }
+    $scope.cancel = function(){//取消删除
+        $scope.delShow = false;
+        $state.go('root.business.outsource.subpackage.list[12]',{id:null,name:null});
+    };
+    $scope.delFn = function(){//确认删除
+        var data = {
+            id:$stateParams.id
+        };
+        subpackageSer.marketserveapplyDel(data).then(function(response){
+            if(response.data.code==0){
+                toastr.info( "信息已删除", '温馨提示');
+                $scope.deledId = $stateParams.id;
+                $scope.$emit('changeId', null);
+                $scope.delShow = false;
+                $state.go('root.business.outsource.subpackage.list[12]',{id:null,name:null});
+            }else{
+                toastr.error( response.data.msg, '温馨提示');
+            }
+        });
+    };
+    function activatePage(page) {
+        var listData = {
+            page:page
+        };
+        subpackageSer.listMarketserve(listData).then(function(response){
+            if(response.data.code==0){
+                $scope.marketserveLists = response.data.data;
+                if($stateParams.id){
+                    angular.forEach($scope.signingLists,function(obj){
+                        if(obj.id == $stateParams.id){
+                            obj._selectList = true;
+                        }
+                    });
+                    //向父Ctrl传递事件
+                    $scope.$emit('changeId', $stateParams.id);
+                }
+            }else{
+                toastr.error( response.data.msg, '温馨提示');
+            }
+        });
+    }
    //选择
     $scope.selectList = function(event){
         angular.forEach($scope.marketserveLists.data,function(obj){
