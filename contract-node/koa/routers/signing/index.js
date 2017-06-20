@@ -189,11 +189,13 @@ module.exports = function(){
     }).get('/siginmanage/exportFile', function*(){//导出 项目签收与立项
         var $self = this;
         var count = $self.request.query;
+        var fileName = count.innerProject+'.xlsx';
         yield (fetch(config()['rurl']+`/siginmanage/v1/export${urlEncode(count,true)}`, {
             method : 'GET',
             headers : {'userToken' : $self.cookies.get('token')}
         }).then(function(res){
             $self.set('content-type', 'application/vnd.ms-excel;charset=utf-8');
+            $self.set('Content-Disposition', 'attachment;  filename='+encodeURI(fileName));
             return res.buffer();
         }).then(function(data){
             $self.body = data;
@@ -380,11 +382,13 @@ module.exports = function(){
     }).get('/baseinfomanage/exportExcel', function*(){//导出 合同基本信息
         var $self = this;
         var count = $self.request.query;
+        var fileName = count.innerProjects[0]+'.xlsx';
         yield (fetch(config()['rurl']+`/baseinfomanage/v1/exportExcel${urlEncode(count,true)}`, {
             method : 'GET',
             headers : {'userToken' : $self.cookies.get('token')}
         }).then(function(res){
             $self.set('content-type', 'application/vnd.ms-excel;charset=utf-8');
+            $self.set('Content-Disposition', 'attachment;  filename='+encodeURI(fileName));
             return res.buffer();
         }).then(function(data){
             $self.body = data;
@@ -596,11 +600,13 @@ module.exports = function(){
     }).get('/dispatchsheet/exportExcel', function*(){//导出 项目派工单
         var $self = this;
         var count = $self.request.query;
+        var fileName = count.innerProjects[0]+'.xlsx';
         yield (fetch(config()['rurl']+`/dispatchsheet/v1/exportExcel${urlEncode(count,true)}`, {
             method : 'GET',
             headers : {'userToken' : $self.cookies.get('token')}
         }).then(function(res){
             $self.set('content-type', 'application/vnd.ms-excel;charset=utf-8');
+            $self.set('Content-Disposition', 'attachment;  filename='+encodeURI(fileName));
             return res.buffer();
         }).then(function(data){
             $self.body = data;
