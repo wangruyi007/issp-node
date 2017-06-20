@@ -90,7 +90,7 @@ app.controller('subpackageViewCtrl', function($scope,subpackageSer,$stateParams,
             };
             var iframe = document.createElement('iframe');
 
-            iframe.src=`http://localhost:8015/outDownload/download${encode(obj,true)}`;
+            iframe.src=`/outDownload/download${encode(obj,true)}`;
 
             iframe.style.display = 'none';
 

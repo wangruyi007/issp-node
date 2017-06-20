@@ -14,7 +14,7 @@ app.controller('ssuiExportCtrl', function($scope, ssuiSer,$state,toastr){
         var obj = {
             innerProject:$scope.innerProject
         };
-        window.open(`http://localhost:8015/ssuiExport/export${encode(obj,true)}`);
+        window.open(`/ssuiExport/export${encode(obj,true)}`);
     };
 
 });

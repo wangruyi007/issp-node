@@ -91,7 +91,7 @@ app.controller('ssuiListCtrl',function($scope,ssuiSer,toastr,$state,$stateParams
     }
    //选择
     $scope.selectList = function(event){
-        angular.forEach($scope.marketserveLists.data,function(obj){
+        angular.forEach($scope.marketserveLists,function(obj){
             obj._selectList = false
         });
         event._selectList = true;
@@ -101,7 +101,7 @@ app.controller('ssuiListCtrl',function($scope,ssuiSer,toastr,$state,$stateParams
     };
     //查看更多
     $scope.moreList = function(event){
-        angular.forEach($scope.marketserveLists.data,function(obj){
+        angular.forEach($scope.marketserveLists,function(obj){
             if(event.id!==obj.id){
                 obj._moreList = false
             }
@@ -123,7 +123,7 @@ app.controller('ssuiListCtrl',function($scope,ssuiSer,toastr,$state,$stateParams
     });
     //删除
     $scope.$on('deletedId',function(event,delid){
-        angular.forEach($scope.marketserveLists.data,function(obj){
+        angular.forEach($scope.marketserveLists,function(obj){
             if(obj.id == delid){
                 obj._delete = true
             }

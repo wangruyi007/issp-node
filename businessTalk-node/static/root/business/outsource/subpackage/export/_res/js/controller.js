@@ -13,7 +13,7 @@ app.controller('subpackageExportCtrl', function($scope, subpackageSer,$state,toa
         var obj = {
             innerProject:$scope.innerProject
         };
-        window.open(`http://localhost:8015/outExport/export${encode(obj,true)}`);
+        window.open(`/outExport/export${encode(obj,true)}`);
     };
 
 });

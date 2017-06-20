@@ -91,7 +91,7 @@ app.controller('ssuiViewCtrl', function($scope,ssuiSer,$stateParams,toastr,$http
             console.log(obj)
             var iframe = document.createElement('iframe');
 
-            iframe.src=`http://localhost:8015/ssuiDownload/download${encode(obj,true)}`;
+            iframe.src=`/ssuiDownload/download${encode(obj,true)}`;
 
             iframe.style.display = 'none';
 

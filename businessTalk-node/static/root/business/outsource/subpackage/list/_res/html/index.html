@@ -33,15 +33,15 @@
                 <div  class="list-text {{list._selectList?'selectList':''}}" ng-click="selectList(list)">
                     <p>{{$index+1}}</p>
                     <p class="data-id"></p>
-                    <p>{{::list.contractExtProject}}</p>
-                    <p>{{::list.contractExtCode}}</p>
-                    <p>{{::list.contractInProject}}</p>
-                    <p>{{::list.contractInCode}}</p>
-                    <p>{{::list.outsourcingProject}}</p>
-                    <p>{{::list.outsourcingCode}}</p>
-                    <p>{{::list.outsourcingInfo}}</p>
-                    <p>{{::list.communicateTimes}}</p>
-                    <p>{{::list.communicateGoal}}</p>
+                    <p mod>{{::list.contractExtProject}}</p>
+                    <p mod>{{::list.contractExtCode}}</p>
+                    <p mod>{{::list.contractInProject}}</p>
+                    <p mod>{{::list.contractInCode}}</p>
+                    <p mod>{{::list.outsourcingProject}}</p>
+                    <p mod>{{::list.outsourcingCode}}</p>
+                    <p mod>{{::list.outsourcingInfo}}</p>
+                    <p mod>{{::list.communicateTimes}}</p>
+                    <p mod>{{::list.communicateGoal}}</p>
                     <p>
                         <a href="javascript:void(0)" class="more"  ng-click="moreList(list)">更多详细</a>
                     </p>
@@ -60,14 +60,14 @@
                                 <span>记录人</span>
                             </p>
                             <p class="see-children">
-                                <span>{{::list.communicateDate}}</span>
-                                <span>{{::list.communicateUser}}</span>
-                                <span>{{::list.communicateObj}}</span>
-                                <span>{{::list.communicateAddress}}</span>
-                                <span>{{::list.communicateContent}}</span>
-                                <span>{{::list.costBudget}}</span>
-                                <span>{{::list.projectResult | cov}}</span>
-                                <span>{{::list.recordUser}}</span>
+                                <span mod>{{::list.communicateDate}}</span>
+                                <span mod>{{::list.communicateUser}}</span>
+                                <span mod>{{::list.communicateObj}}</span>
+                                <span mod>{{::list.communicateAddress}}</span>
+                                <span mod>{{::list.communicateContent}}</span>
+                                <span mod>{{::list.costBudget}}</span>
+                                <span mod>{{::list.projectResult | cov}}</span>
+                                <span mod>{{::list.recordUser}}</span>
                             </p>
                         </li>
                     </ul>

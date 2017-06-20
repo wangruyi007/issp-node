@@ -357,7 +357,7 @@ module.exports = function(){
         var data = {
             path:count.path
         };
-        console.log(1231234124124214124124)
+        // console.log(111111111111)
         yield (fetch(config()['rurl']+`/contract/v1/download${urlEncode(data,true)}`, {
             method : 'GET',
             headers : {'userToken' : $self.cookies.get('token')}
