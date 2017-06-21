@@ -2,12 +2,10 @@
     <div class="collect-select">
         <span>
             内部项目名称：
-            <select class="sele"  ng-model="project">
-            
-                <option>wt</option>
-                <option>广氮12</option>
+            <select class="sele pro"  ng-model="data.project">
+                <option value="{{project.contractInProject}}" ng-repeat="project in projects">{{project.contractInProject}}</option>
             </select>
-            <input type="text"  class="inputArea" ng-model="project" style="margin-left:30px;">
+            <input type="text"  class="inputArea" ng-model="data.project" style="margin-left:30px;">
         </span>
         <span class="com-search2">
             <label>开始日期:</label>

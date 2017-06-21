@@ -2,20 +2,18 @@
     <div class="collect-select">
         <span>
             内部项目名称：
-            <select class="sele"  ng-model="project">
-                <option value="">请选择</option>
-                <option>wt</option>
-                <option>广氮12</option>
+            <select class="sele pro"  ng-model="data.project">
+                <option value="{{project.contractInProject}}" ng-repeat="project in projects">{{project.contractInProject}}</option>
             </select>
-            <input type="text"  class="inputArea" ng-model="project" style="margin-left:30px;">
+            <input type="text"  class="inputArea" ng-model="data.project" style="margin-left:30px;">
         </span>
         <span class="com-search2">
             <label>开始日期:</label>
-            <input type="text" onClick="laydate({istime: true, format: 'YYYY-MM-DD hh:mm:ss'})" class="startTime">
+            <input type="text" onClick="laydate({istime: true, format: 'YYYY-MM-DD hh:mm:ss'})" class="startTime" ng-model="startTime">
        </span>
        <span class="com-search2">
             <label>结束日期 : </label>
-            <input type="text" onClick="laydate({istime: true, format: 'YYYY-MM-DD hh:mm:ss'})" class="endTime">
+            <input type="text" onClick="laydate({istime: true, format: 'YYYY-MM-DD hh:mm:ss'})" class="endTime" ng-model="endTime">
        </span>
         <button ng-click="collectFun()">汇总</button>
     </div>

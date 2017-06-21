@@ -1,5 +1,6 @@
 var app = angular.module('ssuiList', ['ng-pagination','toastr']);
 app.controller('ssuiListCtrl',function($scope,ssuiSer,toastr,$state,$stateParams) {
+    $scope.$emit('changeId', null);
     //监听切换搜索是否出现
     $scope.$on('iSsearch',function(event,newIs){
         $scope.isView = newIs;

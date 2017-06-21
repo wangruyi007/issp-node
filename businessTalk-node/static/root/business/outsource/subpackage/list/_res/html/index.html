@@ -28,7 +28,7 @@
             <span>洽谈目的</span>
             <span></span>
         </li>
-        <li class="list-all"  ng-repeat="list in marketserveLists.data|filter:teamInfo" style="display: {{list._delete?'none':'block'}};">
+        <li class="list-all"  ng-repeat="list in marketserveLists" style="display: {{list._delete?'none':'block'}};">
             <section>
                 <div  class="list-text {{list._selectList?'selectList':''}}" ng-click="selectList(list)">
                     <p>{{$index+1}}</p>
@@ -98,4 +98,4 @@
         </div>
     </div>
 </div>
-<div ui-view="modal"></div>
+<div id="modalbg" ng-show="delShow"></div>
