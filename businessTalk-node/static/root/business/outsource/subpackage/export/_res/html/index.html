@@ -4,9 +4,9 @@
             <ul>
                 <li class="required">
                     <label><em>内部项目名称</em></label>
-                    <select class="sele" ng-model="innerProject">
+                    <select class="sele" ng-model="contractInProject">
                         <option value="">请选择</option>
-                        <option ng-repeat="number in projectName" ng-verify="{}" value="number.contractInProject">{{number.contractInProject}}</option>
+                        <option ng-repeat="number in projectName" ng-verify="{}" value="{{number.contractInProject}}">{{number.contractInProject}}</option>
                     </select>
                 </li>
             </ul>

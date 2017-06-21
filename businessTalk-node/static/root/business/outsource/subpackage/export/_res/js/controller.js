@@ -11,7 +11,7 @@ app.controller('subpackageExportCtrl', function($scope, subpackageSer,$state,toa
     //添加
     $scope.workersAddFun = function(){
         var obj = {
-            innerProject:$scope.innerProject
+            contractInProject:$scope.contractInProject
         };
         window.open(`/outExport/export${encode(obj,true)}`);
     };

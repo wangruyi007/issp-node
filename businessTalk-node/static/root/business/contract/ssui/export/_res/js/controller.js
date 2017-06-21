@@ -12,7 +12,7 @@ app.controller('ssuiExportCtrl', function($scope, ssuiSer,$state,toastr){
     //添加
     $scope.workersAddFun = function(){
         var obj = {
-            innerProject:$scope.innerProject
+            contractInProject:$scope.contractInProject
         };
         window.open(`/ssuiExport/export${encode(obj,true)}`);
     };
