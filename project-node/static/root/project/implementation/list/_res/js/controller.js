@@ -1,12 +1,5 @@
-/**
- * Created by ike on 2017/4/13.
- */
 var app = angular.module('implementationList', ['ng-pagination','toastr']);
 app.controller('implementationListCtrl',function($scope,implementationSer,toastr) {
-    $scope.teamInfo = {};
-    $scope.resetFilter = function(v) {
-        if (!v) $scope.teamInfo = {};
-    };
    //选择
     $scope.selectList = function(event){
         angular.forEach($scope.implementationLists.data,function(obj){
@@ -26,7 +19,6 @@ app.controller('implementationListCtrl',function($scope,implementationSer,toastr
         });
         event._moreList = !event._moreList;
     };
-
     function activatePage(page) {
         var listData = {
             page:page
@@ -35,9 +27,38 @@ app.controller('implementationListCtrl',function($scope,implementationSer,toastr
             if(response.data.code==0){
                 $scope.implementationLists = response.data
             }else{
-                toastr.error( "请求超时，请联系管理员", '温馨提示');
+                toastr.error(response.data.msg, '温馨提示');
             }
         });
+        $scope.collect = function(){
+            $scope.abili = {
+                itemsCount: 12,//总条数
+                take: 10,        //每页显示
+                activatePage: activatePage, //当前页
+            };
+            implementationSer.countImplementation2($scope.signCondition,$scope.signProject,$scope.area,$scope.businessType,$scope.businessSubject).then(function (response) {
+                if(response.data.code==0){
+                    $scope.abili.itemsCount = response.data.data;
+                }else{
+                    toastr.error(response.data.msg, '温馨提示');
+                }
+            })
+            var data = {
+                signCondition: $scope.signCondition,
+                signProject: $scope.signProject,
+                area: $scope.area,
+                businessType: $scope.businessType,
+                businessSubject: $scope.businessSubject,
+                page: page
+            };
+            implementationSer.searchImplementation(data).then(function(response){
+                if(response.data.code == 0){
+                    $scope.implementationLists = response.data
+                }else{
+                    toastr.error(response.data.msg, '温馨提示');
+                }
+            });
+        };
     }
     $scope.abili = {
         itemsCount: 14, //总条数
@@ -48,7 +69,7 @@ app.controller('implementationListCtrl',function($scope,implementationSer,toastr
         if(response.data.code==0){
             $scope.abili.itemsCount = response.data.data;
         }else{
-            toastr.error( "请求超时，请联系管理员", '温馨提示');
+            toastr.error(response.data.msg, '温馨提示');
         }
     });
     //删除
@@ -59,4 +80,5 @@ app.controller('implementationListCtrl',function($scope,implementationSer,toastr
             }
         })
     });
+    $scope.titles = ["合同签订情况","立项情况","地区","业务类型","业务方向科目"];
 });

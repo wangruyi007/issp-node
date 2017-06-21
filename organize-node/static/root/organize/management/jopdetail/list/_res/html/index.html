@@ -1,0 +1,93 @@
+<div class="content-tab list">
+    <ul class="table">
+        <li class="list-head">
+            <span></span>
+            <span>岗位说明书ID</span>
+            <span>编号</span>
+            <span>角度</span>
+            <span>维度</span>
+            <span>分类</span>
+            <span>对应功能</span>
+            <span>工作时间/频率</span>
+            <span></span>
+        </li>
+        <li class="list-all" ng-repeat="list in jopdetailLists" style="display: {{list._delete?'none':'block'}};">
+            <section  class="{{list.status=='CONGEAL'?'congeal':''}}" >
+                <div class="list-text {{list._selectList?'selectList':''}}" ng-click="selectList(list)">
+                    <p>{{$index+1}}</p>
+                    <p>{{::list.instructionId}}</p>
+                    <p>{{::list.serialNumber}}</p>
+                    <p>{{::list.angle}}</p>
+                    <p>{{::list.dimension}}</p>
+                    <p>{{::list.classify}}</p>
+                    <p>{{::list.function}}</p>
+                    <p>{{::list.frequency}}</p>
+                    <p>
+                        <a href="javascript:void(0)" class="more"  ng-click="moreList(list)">更多详细</a>
+                    </p>
+                </div>
+                <div class="can">
+                    <ul class="can-see" style="display: {{list._moreList?'block':'none'}};">
+                        <li>
+                            <p class="see-parent">
+                                <span>汇报时间</span>
+                                <span>汇报形式</span>
+                                <span>汇报内容详述</span>
+                                <span>公示内容</span>
+                                <span>包含的附件</span>
+                                <span>是否有模板</span>
+                                <span>模板存储位置</span>
+                                <span>工作文件存储位置</span>
+                            </p>
+                            <p class="see-children">
+                                <span>{{::list.reportTime}}</span>
+                                <span>{{::list.reportWay}}</span>
+                                <span>{{::list.reportContent}}</span>
+                                <span>{{::list.publicity}}</span>
+                                <span>{{::list.contain}}</span>
+                                <span>{{::list.hasMould|cover}}</span>
+                                <span>{{::list.mouldStorage}}</span>
+                                <span>{{::list.paperStorage}}</span>
+                            </p>
+                        </li>
+                        <li>
+                            <p class="see-parent">
+                                <span>经验总结</span>
+                                <span>公示对象&联系方式</span>
+                            </p>
+                            <p class="see-children">
+                                <span>{{::list.summarize}}</span>
+                                <span>{{::list.contact}}</span>
+                            </p>
+                        </li>
+                    </ul>
+                    <div class="module">
+                        <div class="see-module">
+                            <p class="see-type">体现类型</p>
+                            <p class="see-description"></p>
+                            <button class="btn">关闭</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="thaw-modal">
+                    <button ng-click="thaw(list)">解冻</button>
+                </div>
+            </section>
+        </li>
+    </ul>
+    <footer class="footer">
+        <pagination count="pagination.itemsCount" take="pagination.take" activate="pagination.activatePage"></pagination>
+    </footer>
+</div>
+<div ui-view="modal"></div>
+
+
+
+
+
+
+
+
+
+
+

@@ -48,12 +48,52 @@ app.filter('cover', function(){
     return function(val){
         var result;
         switch(val){
-            case "WOMAN":
-                result = "女";
+            case false:
+            result = "否";
+            break;
+            case true:
+                result = "是";
+                break;
+            case "ALEVEL":
+                result = "A级:1-30人";
+                break;
+            case "BLEVEL":
+                result = "B级:31-60人";
+                break;
+            case "CLEVEL":
+                result = "C级:61-90人";
+                break;
+            case "DLEVEL":
+                result = "D级:91-120人";
+                break;
+            case "ELEVEL":
+                result = "E级:121-150人";
+                break;
+            case "FLEVEL":
+                result = "F级:151-180人";
+                break;
+            case "GLEVEL":
+                result = "G级:181-210人";
+                break;
+            case "NEWPROJECT":
+                result = "新项目市场信息数量";
+                break;
+            case "OLDPROJECT":
+                result = "已有项目or进行中项目市场信息数量";
+                break;
+            case "MOBILECOMMUNICATION":
+                result = "移动通信行业";
+                break;
+            case "SOFTWAREDEVELOPMENT":
+                result = "软件开发行业";
+                break;
+            case "INTELLIGENTSYSTEMINTEGRATION":
+                result = "智能系统集成行业";
+                break;
+            case "PLANNINGMARKETINGSOLUTIONS":
+                result = "策划与营销方案行业";
                 break;
         }
         return result;
     }
-
-})
-
+});

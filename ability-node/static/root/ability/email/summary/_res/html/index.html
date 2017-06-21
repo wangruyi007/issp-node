@@ -19,13 +19,9 @@
             <span>公司正在进行中项目数量</span>
         </li>
         <li class="sum-tbody" ng-repeat="summaryList in summaryLists">
-            <span></span>
-            <span>{{summaryList.name}}</span>
-            <span>{{summaryList.counts}}</span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
+            <span>{{summaryList.remark}}</span>
+            <span ng-repeat="summarycount in summaryList.collectDataList">{{summarycount.counts}}</span>
         </li>
+
     </ul>
 </div>

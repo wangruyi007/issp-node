@@ -1,24 +1,15 @@
 <div class="content-tab list">
-    <div class="com-search mod">
-        <span class="com-search2">
-            <label>需求者姓名:</label>
-            <input type="text"  ng-model="teamInfo.name">
-        </span>
-        <span class="com-search2">
-            <label>业务方向:</label>
-            <input type="text"  ng-model="teamInfo.businessTarget">
-        </span>
-        <span class="com-search2">
-            <label>规模:</label>
-            <input type="text"  ng-model="teamInfo.size">
-        </span>
-        <span class="com-search2">
-            <label>专业:</label>
-            <input type="text"  ng-model="teamInfo.profession">
-        </span>
-
+    <div class="search-big" style="display :{{ isView?'none':'block'}}">
+        <select class="salc" ng-model="checkedName" ng-init="checkedName='需求者姓名'">
+            <option ng-repeat="item in titles">{{item}}</option>
+        </select>
+        <input type="text" ng-model="name" ng-show="checkedName=='需求者姓名'">
+        <input type="text" ng-model="businessTarget" ng-show="checkedName=='业务方向'">
+        <input type="text" ng-model="size" ng-show="checkedName=='规模'">
+        <input type="text" ng-model="profession" ng-show="checkedName=='专业'">
+        <a href="javascript:void(0)" ng-click="collect()"><img src="/images/search2.png"></a>
     </div>
-    <ul class="table table-top">
+    <ul class="table">
         <li class="list-head">
             <span></span>
             <span>需求者来源</span>
@@ -30,7 +21,7 @@
             <span>地区</span>
             <span></span>
         </li>
-        <li class="list-all" ng-repeat="lists in descriptLists|filter:teamInfo" style="display: {{lists._delete?'none':'block'}};">
+        <li class="list-all" ng-repeat="lists in descriptLists" style="display: {{lists._delete?'none':'block'}};">
             <section>
                 <div class="list-text {{lists._selectList?'selectList':''}}" ng-click="selectList(lists)">
                     <p>{{$index+1}}</p>

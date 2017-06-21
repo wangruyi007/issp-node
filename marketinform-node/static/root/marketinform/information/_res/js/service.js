@@ -1,46 +1,52 @@
-var app = angular.module('settlementServer',[]);
-app.factory('settlementSer',function ($http) {
+var app = angular.module('informationServer',[]);
+app.factory('informationSer',function ($http) {
     return {
-        listSettlement : listSettlement,
-        countSettlement:countSettlement,
-        addSettlement:addSettlement,
-        deleteSettlement:deleteSettlement,
-        editSettlement:editSettlement,
-        getSettlementById:getSettlementById,
-        summarySettlement:summarySettlement
+        listInformation : listInformation,
+        countInformation:countInformation,
+        addInformation:addInformation,
+        deleteInformation:deleteInformation,
+        editInformation:editInformation,
+        getInformationById:getInformationById,
+        summaryInformation:summaryInformation,
+        listSummaryArea:listSummaryArea
     };
     //列表
-    function listSettlement(data) {
-        return $http.get('/project/listSettlement/list',{
+    function listInformation(data) {
+        return $http.get('/marketinform/listInformation/list',{
             params:data
         })
     }
     //分页
-    function countSettlement(){
-        return $http.get('/countSettlement/count')
+    function countInformation(){
+        return $http.get('/countInformation/count')
     }
     //添加
-    function addSettlement(data){
-        return $http.post('/project/addSettlement/add',data)
+    function addInformation(data){
+        return $http.post('/marketinform/addInformation/add',data)
     }
     //删除
-    function deleteSettlement(data) {
-        return $http.get('/project/deleteSettlement/delete',{
+    function deleteInformation(data) {
+        return $http.get('/marketinform/deleteInformation/delete',{
             params:data
         })
     }
+
     //编辑
-    function editSettlement(data){
-        return $http.post('/project/editSettlement/edit',data)
+    function editInformation(data){
+        return $http.post('/marketinform/editInformation/edit',data)
     }
     //id编辑
-    function getSettlementById(data) {
-        return $http.get('/project/getSettlementById',{
+    function getInformationById(data) {
+        return $http.get('/marketinform/getInformationById',{
             params:data
         })
     }
     //汇总
-    function summarySettlement(){
-        return $http.get('/summarySettlement/summary')
+    function summaryInformation(data){
+        return $http.get('/summaryInformation/summary?areas='+data.join(','))
+    }
+    //查询所有地区
+    function  listSummaryArea() {
+        return $http.get('/listSummaryArea/id')
     }
 });

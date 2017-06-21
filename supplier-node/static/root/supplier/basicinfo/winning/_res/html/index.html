@@ -1,0 +1,30 @@
+<div ui-view="content">
+<div class="content-tab winning">
+    <ul class="table table-top">
+        <li class="list-head">
+            <span></span>
+            <span>获奖名称</span>
+            <span>获奖时间</span>
+            <span class="circle-all">
+                <a href="javascript:void(0)" ng-click="rewardEdit()">编辑</a>
+                <a href="javascript:void(0)" ng-click="rewardDelete()">删除</a>
+            </span>
+        </li>
+        <li class="list-all" ng-repeat="listWinning in winningBasics.data" style="display: {{listWinning._delete?'none':'block'}};">
+            <section>
+                <div  class="list-text {{listWinning._selectList?'selectList':''}}" ng-click="selectList(listWinning)">
+                    <p>{{$index+1}}</p>
+                    <p>{{listWinning.name}}</p>
+                    <p>{{listWinning.acquisition}}</p>
+                    <p></p>
+                </div>
+            </section>
+        </li>
+    </ul>
+   </div>
+ </div>
+<div ui-view="modal"></div>
+
+
+
+

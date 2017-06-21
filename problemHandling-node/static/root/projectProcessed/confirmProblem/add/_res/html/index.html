@@ -27,6 +27,10 @@
                     <input type="text"  class="inputDom" ng-verify="{}" ng-model="results.problemObject" ng-init="results.problemObject='运行商'">
                 </li>
                 <li class="required">
+                    <label><em>地区</em></label>
+                    <input type="text" ng-model="results.area">
+                </li>
+                <li class="required">
                     <label><em>年份</em></label>
                     <input type="text" ng-model="results.year">
                 </li>
@@ -53,6 +57,7 @@
                 <li class="required">
                     <label><em>问题相关部门</em></label>
                     <select class="sele" ng-model="results.problemRelevantDepartment" ng-init="results.problemRelevantDepartment='FINANCIALDEPARTMENTACCOUNT'">
+                        <option value="FINANCIALDEPARTMENTBUDGET">财务部门-预算</option>
                         <option value="FINANCIALDEPARTMENTACCOUNT">财务部门-账务</option>
                         <option value="FINANCIALDEPARTMENTMONEY">财务部门-资金</option>
                         <option value="COMPREHENSIVERESOURCESWELFARE">综合资源部-福利</option>
@@ -80,7 +85,7 @@
                 <li class="required">
                     <label><em>问题处理结果</em></label>
                     <select class="sele" ng-model="results.problemProcessingResult" ng-init="results.problemProcessingResult='UNFINISHED'">
-                        <!--<option value="COMPLETE">完成</option>-->
+                        <option value="COMPLETE">完成</option>
                         <option value="UNFINISHED">未完成</option>
                     </select>
                 </li>

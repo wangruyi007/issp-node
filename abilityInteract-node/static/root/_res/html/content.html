@@ -1,9 +1,6 @@
-
-
-
 <div class="left-section">
     <div class="header">
-        <a href="#" ui-sref="root" title="issp平台" class="logo">
+        <a href="#" onclick="location.href='/'" title="issp平台" class="logo">
             <img src="/images/logo.png" alt="">
         </a>
         <span>issp平台</span>
@@ -16,14 +13,17 @@
         <div class="top-fixed">
             <div class="top">
                 <div class="top-back">
-                    <a href="javascript:void(0)" class="back">返回</a>
+                    <a href="https://user.issp.bjike.com/market" class="back">返回</a>
                 </div>
                 <div class="search">
-                    <a href="javascript:void(0)" class="search-btn"></a>
-                    <select class="selected" >
-                        <option value="">{{username}}</option>
-                    </select>
-                    <span class="arrow"></span>
+                    <a href="javascript:void(0)" class="search-btn" ng-click="searchToggle()" ng-show='isView'></a>
+                    <div class="selected">
+                        <p class="username"><a href="javascript:void(0)">{{username}}</a></p>
+                        <p class="usermenu">
+                            <a href="javascript:void(0)" ng-hide="logined" ng-click="login()">登录</a>
+                            <a href="javascript:void(0)" ng-show="logined" ng-click="logout()">退出</a>
+                        </p>
+                    </div>
                 </div>
             </div>
 

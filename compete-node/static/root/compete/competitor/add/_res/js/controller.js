@@ -1,8 +1,5 @@
-/**
- * Created by ike on 2017/4/17.
- */
 var app = angular.module('companyAdd', ['toastr']);
-app.controller('companyAddCtrl', function($scope, competitorSer,$state,toastr){
+app.controller('companyAddCtrl', function($scope, competitorSer,$state,toastr,$location,ipCookie){
     //添加竞争对手
     $scope.companyAddFun = function(){
         var data = $scope.data;
@@ -10,9 +7,9 @@ app.controller('companyAddCtrl', function($scope, competitorSer,$state,toastr){
         competitorSer.addCompanyAbility(data).then(function(response){
             if(response.data.code == 0){
                 $state.go('root.compete.competitor.list');
-                toastr.success( vm.addCompany+"已成功添加", '温馨提示');
-            }else if(response.data.code==403){
-                toastr.error( "请登录用户", '温馨提示');
+                toastr.success( "已成功添加", '温馨提示');
+            }else{
+                toastr.error( response.data.msg, '温馨提示');
             }
         });
     };

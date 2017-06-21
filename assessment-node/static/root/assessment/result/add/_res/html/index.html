@@ -1,0 +1,82 @@
+<div class="content-input" verify-scope="tipStyle: 1">
+    <section class="interval">
+        <ul class="inter-left">
+            <li class="required">
+                <label><i><img src="/images/mandatory.png"></i><em>项目</em></label>
+                <select class="sele" ng-verify="{}"   ng-model="add.projectId">
+                    <option value="" disabled>请选择</option>
+                    <option ng-repeat="pros in proData" value="{{pros.id}}">{{pros.project}}</option>
+                </select>
+            </li>
+            <li class="required f-l">
+                <label><i><img src="/images/mandatory.png"></i><em>发送间隔</em></label>
+                <input type="number" ng-model="add.sendInterval" ng-verify="{}">
+                <select class="sele" ng-model="add.sendIntervalType">
+                    <option value="" disabled>请选择</option>
+                    <option value="MINUTE">分钟</option>
+                    <option value="HOUR">小时</option>
+                    <option value="DAY">天</option>
+                    <option value="WEEK">周</option>
+                    <option value="MONTH">月</option>
+                    <option value="QUARTER">季</option>
+                    <option value="YEAR">年</option>
+                </select>
+            </li>
+            <li class="required">
+                <label><i><img src="/images/mandatory.png"></i><em>汇总间隔</em></label>
+                <select class="sele" ng-model="add.collectInterval">
+                    <option value="" disabled>请选择</option>
+                    <option value="DAY">每天</option>
+                    <option value="WEEK">每周</option>
+                    <option value="MONTH">每月</option>
+                </select>
+            </li>
+            <li class="required">
+                <label><i><img src="/images/mandatory.png"></i><em>备注</em></label>
+                <input type="text" ng-verify="{}" ng-model="add.remark">
+            </li>
+        </ul>
+        <ul class="inter-right">
+            <li class="required">
+                <label><i><img src="/images/mandatory.png"></i><em>地区</em></label>
+                <select class="sele" ng-verify="{}"   ng-model="add.area">
+                    <option value="" disabled>请选择</option>
+                    <option ng-repeat="areas in areaData">{{areas.area}}</option>
+                </select>
+            </li>
+            <li class="required ">
+                <label><i><img src="/images/mandatory.png"></i><em>选择对象</em></label>
+                <select class="sele one-select" ng-model="checkedEmail" ng-init="checkedEmail='自由录入'">
+                    <option ng-repeat="one in emails">{{one}}</option>
+                </select>
+                <input type="text" style=" width:22%;right: 102px; background-color: #fff;" ng-model="sendUsers" ng-show="checkedEmail=='自由录入'">
+                <div class="select two-select" ng-show="checkedEmail=='个人邮箱'">
+                    <select class="sele" style="border: 0" ng-model="sendUsers">
+                        <option value="" disabled>请选择</option>
+                        <option ng-repeat="areas in areaData">{{areas.area}}</option>
+                    </select>
+                </div>
+                <div class="select two-select" ng-show="checkedEmail=='公邮'">
+                    <select class="sele" style="border: 0" ng-model="sendUsers">
+                        <option value="" disabled>请选择</option>
+                        <option ng-repeat="areas in areaData">{{areas.area}}</option>
+                    </select>
+              </div>
+                <button type="button" class="data-add" ng-click="addMail()">添加</button>
+            </li>
+            <li class="f-send">
+                <p class="send-o">
+                    <em>发送对象:</em>
+                    <span>(双击可以删除该条邮箱地址)</span>
+                </p>
+                <div class="dclick">
+                    <p ng-repeat="list in objLists" ng-dblclick="dbSend($index)" >{{list}}</p>
+                </div>
+            </li>
+        </ul>
+    </section>
+    <p class="dataBottom">
+        <span class="imPrompt"><i><img src="/images/prompt.png"></i>带有<i><img src="/images/mandatory.png"></i>的为必填项</span>
+        <button ng-verify="{control:'myform'}" ng-click="emailAddFun()">提交</button>
+    </p>
+</div>

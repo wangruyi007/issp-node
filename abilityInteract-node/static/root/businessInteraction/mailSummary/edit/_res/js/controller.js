@@ -5,10 +5,10 @@ app.controller('mailSummaryEditCtrl', function($scope, emailSer,$stateParams,$st
     $scope.stringSettings = {template : '{{option}}', smartButtonTextConverter(skip, option) { return option; }};
     //获取ID
     emailSer.findEmailId(emailData).then(function(response){
-        if(response.data.code=='0'){
+        if(response.data.code==0){
             $scope.editMail = response.data.data;
-        }else if (response.data.code==403){
-            toastr.error( "请登录用户", '温馨提示');
+        }else {
+            toastr.error( response.data.msg, '温馨提示');
         }
 
     });
@@ -16,8 +16,8 @@ app.controller('mailSummaryEditCtrl', function($scope, emailSer,$stateParams,$st
     emailSer.getArea().then(function(response){
         if(response.data.code == 0){
             $scope.workOptions = response.data.data
-        }else if(response.data.code == 403){
-            toastr.error("请登录用户","温馨提示");
+        }else {
+            toastr.error( response.data.msg, '温馨提示');
         }
     });
 
@@ -29,8 +29,8 @@ app.controller('mailSummaryEditCtrl', function($scope, emailSer,$stateParams,$st
             if(response.data.code == 0){
                 $state.go('root.businessInteraction.mailSummary.list');
                 toastr.success( "编辑成功", '温馨提示');
-            }else if(response.data.code == 403){
-                toastr.error( "请登录用户", '温馨提示');
+            }else {
+                toastr.error(response.data.msg,'温馨提示')
             }
         });
 

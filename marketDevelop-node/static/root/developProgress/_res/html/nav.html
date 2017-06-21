@@ -1,48 +1,43 @@
-<div class="nav-list">
-    <h3 class="header-menu big"><i class="nav-arrow"></i>计划管理</h3>
-    <ul class="menu">
+<div class="nav-list" ng-repeat="list in showsList">
+    <h3 class="header-menu big" ng-click="showMenu(list,true)">
+        <i class="nav-arrow" ng-class="{true: '', false: 'change-angle'}[list.showIs]"></i>
+        {{list.item}}</h3>
+    <ul class="menu" ng-if="list.menuList.length"  ng-show="list.showIs" ng-repeat="menuInfo in list.menuList">
         <li ng-click="navClass('yearPlan')" ng-class="{'active':navCla=='yearPlan'}"  ui-sref="_root.developProgress.plan.yearPlan.list">
-            <a href="javascript:void(0)">年计划</a>
+            <a href="javascript:void(0)">{{menuInfo.name}}</a>
         </li>
         <li ng-click="navClass('monthPlan')" ng-class="{'active':navCla=='monthPlan'}" ui-sref="_root.developProgress.plan.monthPlan.list">
-            <a href="javascript:void(0)">月计划</a>
+            <a href="javascript:void(0)">{{menuInfo.name2}}</a>
         </li>
         <li ng-click="navClass('weekPlan')" ng-class="{'active':navCla=='weekPlan'}" ui-sref="_root.developProgress.plan.weekPlan.list">
-            <a href="javascript:void(0)">周计划</a>
+            <a href="javascript:void(0)">{{menuInfo.name3}}</a>
         </li>
         <li ng-click="navClass('dayPlan')" ng-class="{'active':navCla=='dayPlan'}" ui-sref="_root.developProgress.plan.dayPlan.list">
-            <a href="javascript:void(0)">日计划</a>
+            <a href="javascript:void(0)">{{menuInfo.name4}}</a>
         </li>
-    </ul>
-</div>
-<div class="nav-list">
-    <h3 class="header-menu big"><i class="nav-arrow"></i>市场管理</h3>
-    <ul class="menu">
         <li ng-click="navClass('demandAnalysis')" ng-class="{'active':navCla=='demandAnalysis'}" ui-sref="_root.developProgress.market.demandAnalysis.list">
-            <a href="javascript:void(0)">市场需求分析</a>
+            <a href="javascript:void(0)">{{menuInfo.name5}}</a>
         </li>
         <li ng-click="navClass('targetInfo')" ng-class="{'active':navCla=='targetInfo'}" ui-sref="_root.developProgress.market.targetInfo.list">
-            <a href="javascript:void(0)">目标信息</a>
+            <a href="javascript:void(0)">{{menuInfo.name6}}</a>
         </li>
         <li ng-click="navClass('marketMining')" ng-class="{'active':navCla=='marketMining'}" ui-sref="_root.developProgress.market.marketMining.list">
-            <a href="javascript:void(0)">市场挖掘</a>
+            <a href="javascript:void(0)">{{menuInfo.name7}}</a>
         </li>
         <li ng-click="navClass('marketResearch')" ng-class="{'active':navCla=='marketResearch'}" ui-sref="_root.developProgress.market.marketResearch.list">
-            <a href="javascript:void(0)">市场调研</a>
+            <a href="javascript:void(0)">{{menuInfo.name8}}</a>
         </li>
         <li ng-click="navClass('marketMeasured')" ng-class="{'active':navCla=='marketMeasured'}" ui-sref="_root.developProgress.market.marketMeasured.list">
-            <a href="javascript:void(0)">市场测算</a>
+            <a href="javascript:void(0)">{{menuInfo.name9}}</a>
         </li>
-    </ul>
-</div>
-<div class="nav-list">
-    <h3 class="header-menu big"><i class="nav-arrow"></i>其他</h3>
-    <ul class="menu">
         <li ng-click="navClass('businessType')" ng-class="{'active':navCla=='businessType'}" ui-sref="_root.developProgress.other.businessType.list">
-            <a href="javascript:void(0)">业务类型管理</a>
+            <a href="javascript:void(0)">{{menuInfo.name10}}</a>
         </li>
         <li ng-click="navClass('directionSubjects')" ng-class="{'active':navCla=='directionSubjects'}" ui-sref="_root.developProgress.other.directionSubjects.list">
-            <a href="javascript:void(0)">业务方向科目</a>
+            <a href="javascript:void(0)">{{menuInfo.name11}}</a>
+        </li>
+        <li ng-click="navClass('setting')" ng-class="{'active':navCla=='setting'}"  ui-sref="_root.developProgress.other.setting.list[12]" >
+            <a href="javascript:void(0)">{{menuInfo.name12}}</a>
         </li>
     </ul>
 </div>

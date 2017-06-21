@@ -1,0 +1,22 @@
+<div class="nav-list" ng-repeat="list in showsList">
+    <h3 class="header-menu big" ng-click="showMenu(list,true)">
+        <i class="nav-arrow" ng-class="{true: '', false: 'change-angle'}[list.showIs]"></i>
+        {{list.item}}</h3>
+    <ul class="menu" ng-if="list.menuList.length"  ng-show="list.showIs" ng-repeat="menuInfo in list.menuList">
+        <li ng-click="navClass('userRegistration')" ng-class="{'active':navCla=='userRegistration'}"  ui-sref="_root.employeeEntry.userRegistration.list">
+            <a href="javascript:void(0)">{{menuInfo.name}}</a>
+        </li>
+        <li ng-click="navClass('entryRegister')" ng-class="{'active':navCla=='entryRegister'}" ui-sref="_root.employeeEntry.entryRegister.list">
+            <a href="javascript:void(0)">{{menuInfo.name2}}</a>
+        </li>
+        <li ng-click="navClass('basicInfo')" ng-class="{'active':navCla=='basicInfo'}" ui-sref="_root.employeeEntry.basicInfo.list">
+            <a href="javascript:void(0)">{{menuInfo.name3}}</a>
+        </li>
+        <li ng-click="navClass('salaryConfirm')" ng-class="{'active':navCla=='salaryConfirm'}" ui-sref="_root.employeeEntry.salaryConfirm.list">
+            <a href="javascript:void(0)">{{menuInfo.name4}}</a>
+        </li>
+        <li ng-click="navClass('setting')" ng-class="{'active':navCla=='setting'}"  ui-sref="_root.employeeEntry.setting.list[12]" >
+            <a href="javascript:void(0)">{{menuInfo.name5}}</a>
+        </li>
+    </ul>
+</div>

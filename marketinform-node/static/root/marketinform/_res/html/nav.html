@@ -1,10 +1,10 @@
 <div class="nav-list">
-    <h3 class="header-menu big"><i class="nav-arrow"></i>项目验收、签字、结算进度管理</h3>
-    <ul class="menu">
-        <li ng-click="navClass('situation')" ng-class="{'active':navCla=='situation'}"  ui-sref="_root.project.situation.list"><a href="javascript:void(0)">项目情况</a></li>
-        <li ng-click="navClass('implementation')" ng-class="{'active':navCla=='implementation'}"  ui-sref="_root.project.implementation.list"><a href="javascript:void(0)">项目实施情况</a></li>
-        <li ng-click="navClass('projectacceptance')" ng-class="{'active':navCla=='projectacceptance'}"  ui-sref="_root.project.projectacceptance.list"><a href="javascript:void(0)">项目验收情况</a></li>
-        <li ng-click="navClass('settlement')" ng-class="{'active':navCla=='settlement'}"  ui-sref="_root.project.settlement.list"><a href="javascript:void(0)">项目合同结算跟进</a></li>
-        <li ng-click="navClass('audit')" ng-class="{'active':navCla=='audit'}"  ui-sref="_root.project.audit.list"><a href="javascript:void(0)">项目实施审核</a></li>
+    <h3 class="header-menu big" ng-click="a=!a"><i class="nav-arrow" ng-class="{true: '', false: 'change-angle'}[!a]"></i>市场信息管理</h3>
+    <ul class="menu" ng-show="a">
+        <li ng-click="navClass('information')" ng-class="{'active':navCla=='information'}"  ui-sref="_root.marketinform.information.list"><a href="javascript:void(0)">市场管理</a></li>
+    </ul>
+    <h3 class="header-menu big" ng-click="b=!b"><i class="nav-arrow" ng-class="{true: '', false: 'change-angle'}[!b]"></i>设置</h3>
+    <ul class="menu" ng-show="b">
+        <li ng-click="navClass('setting')" ng-class="{'active':navCla=='setting'}"  ui-sref="_root.marketinform.setting.list[12]" ><a href="javascript:void(0)">设置</a></li>
     </ul>
 </div>

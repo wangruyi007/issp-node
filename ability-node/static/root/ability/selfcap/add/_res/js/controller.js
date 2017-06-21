@@ -1,6 +1,3 @@
-/**
- * Created by ike on 2017/4/17.
- */
 var app = angular.module('selfcapAdd', ['toastr']);
 app.controller('selfcapAddCtrl', function($scope, selfcapSer,$state,toastr){
     //添加个人能力
@@ -18,8 +15,8 @@ app.controller('selfcapAddCtrl', function($scope, selfcapSer,$state,toastr){
             if(response.data.code == 0){
                 $state.go('root.ability.selfcap.list');
                 toastr.success( vm.addname+"已成功添加", '温馨提示');
-            }else if(response.data.code==403){
-                toastr.error( "请登录用户", '温馨提示');
+            }else{
+                toastr.error(response.data.msg, '温馨提示');
             }
         });
 

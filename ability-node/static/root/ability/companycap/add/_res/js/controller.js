@@ -1,15 +1,14 @@
-/**
- * Created by ike on 2017/4/17.
- */
-var app = angular.module('companyAdd', ['toastr']);
+var app = angular.module('companyAdd', ['toastr','angularjs-dropdown-multiselect']);
 app.controller('companyAddCtrl', function($scope, companycapSer,$state,toastr){
-    //添加公司能力
+    $scope.workOptions = ["幅度分割", "我们要的都是一点一点那", "鹿晗的新歌"];
+    $scope.words =[];
+    $scope.stringSettings = {template : '{{option}}', smartButtonTextConverter(skip, option) { return option; }};
     $scope.companyAddFun = function(){
         var vm = $scope;
         var data = {
             company: vm.addCompany,
             professionAuthen: vm.addprofessionAuthen1,
-            manageAuthen:vm.addmanageAuthen1,
+            manageAuthen:vm.words,
             companyCertificate:vm.addcompanyCertificate,
             companyDevelop:vm.addcompanyDevelop1,
             projectDevelop:vm.addprojectDevelop,
@@ -28,14 +27,15 @@ app.controller('companyAddCtrl', function($scope, companycapSer,$state,toastr){
             bulletinBoard:vm.addbulletinBoard,
         };
         companycapSer.addCompanyAbility(data).then(function(response){
+            console.log(vm.words);
+            console.log(vm.addCompany);
             if(response.data.code == 0){
                 $state.go('root.ability.companycap.list');
                 toastr.success( vm.addCompany+"已成功添加", '温馨提示');
-            }else if(response.data.code==403){
-                toastr.error( "请登录用户", '温馨提示');
+            }else{
+                toastr.error(response.data.msg, '温馨提示');
             }
         });
-
     };
     //可手填的下拉框
     $scope.changeSelect=function(){
@@ -46,10 +46,8 @@ app.controller('companyAddCtrl', function($scope, companycapSer,$state,toastr){
     };
     $scope.changeSelect3=function(){
         $scope.addcooperate1 = $scope.addcooperate2
-
     };
     $scope.changeSelect4=function(){
-
         $scope.addcompanyDevelop1 = $scope.addcompanyDevelop2;
     };
     $scope.changeSelect5=function(){
@@ -57,11 +55,20 @@ app.controller('companyAddCtrl', function($scope, companycapSer,$state,toastr){
     };
     $scope.changeSelect6=function(){
         $scope.addmoney1 = $scope.addmoney2;
-
     };
     $scope.changeSelect7=function(){
         $scope.addpersonForm1 = $scope.addpersonForm2;
     };
+/*    $scope.positions = [];
+    $scope.stringSettings = {displayProp: 'value',idProperty: 'id'};
+    var getId={id:$stateParams.id};
+    companycapSer.departRange(getId).then(function(response){
+        if(response.data.code==0){
+            $scope.workOptions = response.data.data
+        }else {
+            toastr.error( response.data.msg, '温馨提示');
+        }
+    });*/
 });
 
 

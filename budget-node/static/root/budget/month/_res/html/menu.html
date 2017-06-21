@@ -1,0 +1,11 @@
+<ul class="list">
+    <li  ng-click="list()" ng-class="{'current':menuClass=='listMenu'}" ui-sref=".list" >
+        <a href="javascript:void(0)" >列表<span>Tabulate</span></a>
+    </li>
+    <li ng-click="collect()" ng-class="{'current':menuClass=='collectMenu'}" ui-sref=".collect[12]">
+        <a href="javascript:void(0)" class="same-three">汇总<span>Collect</span></a>
+    </li>
+    <li ng-click="theMonth()" ng-class="{'current':menuClass=='theMonthMenu'}">
+        <a href="javascript:void(0)" class="same-two">查询当月明细<span>TheMonth</span></a>
+    </li>
+</ul>

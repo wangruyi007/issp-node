@@ -7,6 +7,9 @@ app.factory('implementationSer',function ($http) {
         addProjectCarry:addProjectCarry,
         editImplementationProject:editImplementationProject,
         getImplementationOneById:getImplementationOneById,
+        allImplementProjects:allImplementProjects,
+        searchImplementation:searchImplementation,
+        countImplementation2:countImplementation2,
     };
     //列表
     function listImplementation(data) {
@@ -38,16 +41,19 @@ app.factory('implementationSer',function ($http) {
             params:data
         })
     }
-
-
-
-
-
-
-
-
-
-
-
-
+    function allImplementProjects(){
+        return $http.get('/allImplementProjects/id')
+    }
+    //搜索
+    function searchImplementation(data) {
+        return $http.get('/searchImplementation',{
+            params:data
+        })
+    }
+    //搜索count
+    function countImplementation2(data){
+        return $http.get('/countImplementation2/count',{
+            params:data
+        })
+    }
 });

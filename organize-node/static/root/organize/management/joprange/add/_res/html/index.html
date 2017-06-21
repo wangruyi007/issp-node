@@ -1,0 +1,41 @@
+<div class="content-input add" verify-scope="tipStyle: 1">
+    <div class="input-list">
+        <section>
+            <ul>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>方向</em></label>
+                    <select class="sele" ng-model="direction" >
+                        <option ng-repeat="direlist in directionList" value="{{direlist.direction}}">{{direlist.direction}}</option>
+                    </select>
+                    <input type="text"  class="inputDom" ng-verify="{}" ng-model="direction">
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>科目</em></label>
+                    <select class="sele" ng-model="project" >
+                        <option ng-repeat="prolist in projectList" value="{{prolist.project}}">{{prolist.project}}</option>
+                    </select>
+                    <input type="text"  class="inputDom" ng-verify="{}" ng-model="project">
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>专业分类</em></label>
+                    <select class="sele" ng-model="classify">
+                        <option ng-repeat="classlist in classifyList" value="{{classlist.classify}}">{{classlist.classify}}</option>
+                    </select>
+                    <input type="text"  class="inputDom" ng-verify="{}" ng-model="classify">
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>工作范围</em></label>
+                    <input type="text"ng-model="workRange" ng-verify="{}">
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>工作界面</em></label>
+                    <input type="text"ng-model="node" ng-verify="{}">
+                </li>
+            </ul>
+        </section>
+    </div>
+    <p class="dataBottom">
+        <span class="imPrompt"><i><img src="/images/prompt.png"></i>带有<i><img src="/images/mandatory.png"></i>的为必填项</span>
+        <button ng-verify="{control:'myform'}" ng-click="joprangeAddFun()">提交</button>
+    </p>
+</div>

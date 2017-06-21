@@ -6,8 +6,8 @@ app.controller('mailSummaryAddCtrl', function($scope, emailSer,$state,toastr){
         emailSer.getArea().then(function(response){
             if(response.data.code == 0){
                 $scope.workOptions = response.data.data
-            }else if(response.data.code == 403){
-                toastr.error("请登录用户","温馨提示");
+            }else {
+                toastr.error( response.data.msg, '温馨提示');
             }
         });
 
@@ -15,20 +15,29 @@ app.controller('mailSummaryAddCtrl', function($scope, emailSer,$state,toastr){
     //添加
     $scope.EmailAddFun = function(){
         var vm = $scope;
-        vm.email.works = vm.works;
-        emailSer.addEmail(vm.email).then(function(response){
+
+        var data = {
+            works : vm.works,
+            sendNum : vm.sendNum,
+            customerSendUnit:vm.customerSendUnit,
+            customerCollectUnit:vm.customerCollectUnit,
+            sendObjectList:vm.sendObjectList,
+            remark:vm.remark
+        };
+        emailSer.addEmail(data).then(function(response){
             if(response.data.code == 0){
                 $state.go('root.businessInteraction.mailSummary.list');
                 toastr.success("已成功添加", '温馨提示');
-            }else if(response.data.code==403){
-                toastr.error( "请登录用户", '温馨提示');
+            }else {
+                toastr.error(response.data.msg,'温馨提示')
             }
         });
 
     };
-    $scope.words = [];
-    $scope.stringSettings = {template : '{{option}}', smartButtonTextConverter(skip, option) { return option; }};
-
+//双击删除对象
+    $scope.dbsend = function(){
+        $scope.emails.sendObjectList = " ";
+    }
 });
 
 

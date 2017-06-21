@@ -11,44 +11,36 @@
                 </li>
                 <li class="required">
                     <label><i><img src="/images/mandatory.png"></i><em>总任务量</em></label>
-                    <input type="number" ng-verify="{}" ng-model="week.monthTotal">
-                </li>
-                <li class="required">
-                    <label><i><img src="/images/mandatory.png"></i><em>业务方向科目</em></label>
-                    <select class="sele" ng-model="week.course" ng-init="week.course='0'">
-                        <option value="0">1</option>
-                        <option value="1">2</option>
-                        <option value="2">3</option>
-                    </select>
+                    <input type="number" ng-verify="{}" ng-model="week.monthTotal" min="0">
                 </li>
                 <li class="required cycle">
                     <label><i><img src="/images/mandatory.png"></i><em>周期</em></label>
-                    <input type="text" ng-verify="{}" onClick="laydate({istime: true, format: 'YYYY-MM-DD'})" class="add_image addStartCycle" ng-model="week.startCycle">
-                    <input type="text" ng-verify="{}" onClick="laydate({istime: true, format: 'YYYY-MM-DD'})" class="add_image addEndCycle" ng-model="week.endCycle">
+                    <input type="text" onClick="laydate({istime: true, format: 'YYYY-MM-DD'})" class="add_image addStartCycle" ng-model="week.startCycle">
+                    <input type="text" onClick="laydate({istime: true, format: 'YYYY-MM-DD'})" class="add_image addEndCycle" ng-model="week.endCycle">
                 </li>
                 <li class="required">
                     <label><i><img src="/images/mandatory.png"></i><em>各周工作量在整月占比</em></label>
-                    <input type="number" ng-verify="{}" ng-model="week.accounted">%
+                    <input type="number" min="0" max="100" ng-verify="{}" ng-model="week.accounted">%
                 </li>
                 <li class="required">
                     <label><i><img src="/images/mandatory.png"></i><em>查询</em></label>
-                    <input type="number" ng-verify="{}" ng-model="week.inquire">
+                    <input type="number" min="0" ng-verify="{}" ng-model="week.inquire">
                 </li>
                 <li class="required">
                     <label><i><img src="/images/mandatory.png"></i><em>了解</em></label>
-                    <input type="number" ng-verify="{}" ng-model="week.know">
+                    <input type="number" min="0" ng-verify="{}" ng-model="week.know">
                 </li>
                 <li class="required">
                     <label><i><img src="/images/mandatory.png"></i><em>接触</em></label>
-                    <input type="number" ng-verify="{}" ng-model="week.contact">
+                    <input type="number" min="0" ng-verify="{}" ng-model="week.contact">
                 </li>
                 <li class="required">
                     <label><i><img src="/images/mandatory.png"></i><em>拜访</em></label>
-                    <input type="number" ng-verify="{}" ng-model="week.visit">
+                    <input type="number" min="0" ng-verify="{}" ng-model="week.visit">
                 </li>
                 <li class="required">
                     <label><i><img src="/images/mandatory.png"></i><em>活动</em></label>
-                    <input type="number" ng-verify="{}" ng-model="week.activity">
+                    <input type="number" min="0" ng-verify="{}" ng-model="week.activity">
                 </li>
             </ul>
         </section>

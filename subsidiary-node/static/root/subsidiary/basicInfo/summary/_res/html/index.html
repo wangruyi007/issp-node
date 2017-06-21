@@ -1,0 +1,29 @@
+<div class="collect ">
+    <div class="sum-select">
+        <label><i><img src="/images/mandatory.png"></i><em>地区</em></label>
+        <div class="select">
+            <p class="select-text" >
+                <span ng-repeat="area in areas">{{area}}, </span>
+            </p>
+            <div class="mymultiselect" events="getSummary" ng-dropdown-multiselect="" options="workOptions" selected-model="areas" extra-settings="stringSettings"></div>
+        </div>
+    </div>
+    <ul class="sum-list">
+        <li class="sum-thead">
+            <span>地区</span>
+            <span>项目名称</span>
+            <span>项目组/部门</span>
+            <span>一级科目</span>
+            <span>二级科目</span>
+            <span>三级科目</span>
+        </li>
+        <li class="sum-tbody" ng-repeat="summaryList in summaryLists">
+            <span>{{summaryList.area}}</span>
+            <span>{{summaryList.projectName}}</span>
+            <span>{{summaryList.projectGroup}}</span>
+            <span>{{summaryList.firstSubject}}</span>
+            <span>{{summaryList.secondSubject}}</span>
+            <span>{{summaryList.thirdSubject}}</span>
+        </li>
+    </ul>
+</div>

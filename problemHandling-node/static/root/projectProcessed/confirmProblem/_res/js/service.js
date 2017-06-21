@@ -2,19 +2,26 @@ var app = angular.module('confirmServer',[]);
 app.factory('confirmSer',function ($http) {
     return {
         resultList : resultList,
+        searchList : searchList,
         addResult:addResult,
         editResult:editResult,
         findResultId:findResultId,
         countResult:countResult,
-        deleteResult:deleteResult
+        deleteResult:deleteResult,
+        summaryList:summaryList,
+        getArea:getArea
     };
     function resultList(data) {
         return $http.get('/problemhandlingresult/list',{
             params: data
-
         })
     }
-
+    //搜索
+    function searchList(data) {
+        return $http.get('/problemhandlingresult/search',{
+            params: data
+        })
+    }
     //添加
     function addResult(data){
         return $http.post('/problemhandlingresult/add',data)
@@ -30,8 +37,8 @@ app.factory('confirmSer',function ($http) {
         })
     }
     //分页总条数
-    function countResult(){
-        return $http.get('/problemhandlingresult/count')
+    function countResult(data){
+        return $http.get('/problemhandlingresult/count',{params:data})
     }
     //删除
     function deleteResult(data){
@@ -40,5 +47,13 @@ app.factory('confirmSer',function ($http) {
             params: data
 
         })
+    }
+    //汇总
+    function summaryList(data) {
+        return $http.get('/problemhandlingresult/collect?areas='+data.join(','))
+    }
+    //获取所有地区
+    function getArea(){
+        return $http.get('/problemhandlingresult/area')
     }
 });

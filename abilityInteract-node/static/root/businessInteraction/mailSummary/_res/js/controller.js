@@ -7,7 +7,7 @@ app.controller('emailCtrl',function ($scope,$state) {
     if ($state.current.url == '/mailSummary') {//默认加载列表
         $state.go('root.businessInteraction.mailSummary.list')
     }
-
+    $scope.$emit('isVi',false);//判断是否出现搜索按钮
 }).controller('emailMenuCtrl',function($scope,$state,$rootScope,$location){
     var urlName = $state.current.url.split('/')[1].split('[')[0];
     $scope.menuClass = urlName + "Menu";
@@ -24,6 +24,7 @@ app.controller('emailCtrl',function ($scope,$state) {
     $scope.delete = function(){
         if($scope.idListd){
             $state.go('root.businessInteraction.mailSummary.list.delete[12]',{id:$scope.idListd});
+            $scope.menuClass = 'deleteMenu'
         }
     };
 
@@ -36,6 +37,7 @@ app.controller('emailCtrl',function ($scope,$state) {
     $scope.congeal = function(){
         if($scope.idListd){
             $state.go('root.businessInteraction.mailSummary.list.congeal[12]',{id:$scope.idListd});
+            $scope.menuClass = 'congealMenu'
         }
     };
     $scope.list = function(){

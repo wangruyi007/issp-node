@@ -1,5 +1,5 @@
-var app = angular.module('emailList', ['ng-pagination','toastr']);
-app.controller('emailListCtrl',function($scope,emailSer,toastr){
+var app = angular.module('emailList', ['ng-pagination','toastr','ipCookie']);
+app.controller('emailListCtrl',function($scope,emailSer,toastr,ipCookie,$location){
     $scope.$emit('changeId', null);
     //分页
     $scope.custom = {
@@ -16,7 +16,7 @@ app.controller('emailListCtrl',function($scope,emailSer,toastr){
             if(response.data.code==0){
                 $scope.emailLists = response.data.data;
             }else{
-                toastr.error( "请求超时，请联系管理员", '温馨提示');
+                toastr.error( response.data.msg, '温馨提示');
             }
         })
     }
@@ -25,7 +25,7 @@ app.controller('emailListCtrl',function($scope,emailSer,toastr){
         if(response.data.code==0){
             $scope.custom.itemsCount = response.data.data;
         }else{
-            toastr.error( "请求超时，请联系管理员", '温馨提示');
+            toastr.error( response.data.msg, '温馨提示');
         }
     })
 
@@ -69,8 +69,6 @@ app.controller('emailListCtrl',function($scope,emailSer,toastr){
         emailSer.thawEmail(data).then(function(response){
             if(response.data.code==0){
                 event.status = "THAW"
-            }else if(response.data.code==403){
-                toastr.error( "请登录用户", '温馨提示');
             }
 
         })

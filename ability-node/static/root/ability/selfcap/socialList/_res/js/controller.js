@@ -1,9 +1,3 @@
-/**
- * Created by ike on 2017/4/20.
- */
-/**
- * Created by ike on 2017/4/18.
- */
 var app = angular.module('socialListBasic', ['toastr','ng-pagination']);
 app.controller('socialListBasicCtrl', function($scope, selfcapSer,$state,toastr,$stateParams){
 
@@ -35,7 +29,7 @@ app.controller('socialListBasicCtrl', function($scope, selfcapSer,$state,toastr,
         if(response.data.code==0){
             $scope.abili2.itemsCount = response.data.data;
         }else{
-            toastr.error( "请求超时，请联系管理员", '温馨提示');
+            toastr.error(response.data.msg, '温馨提示');
         }
     });
     function activatePage(page) {
@@ -46,8 +40,8 @@ app.controller('socialListBasicCtrl', function($scope, selfcapSer,$state,toastr,
         selfcapSer.listSocialSelf(listData2).then(function (response) {
             if (response.data.code == 0) {
                 $scope.socialListBasics = response.data
-            } else {
-                toastr.error("请求超时，请联系管理员", '温馨提示');
+            }else{
+                toastr.error(response.data.msg, '温馨提示');
             }
         });
     }

@@ -2,6 +2,7 @@ var request = require('request-promise');
 var path = require('path');
 var config = require(path.resolve('plugins/read-config.js'));
 var form = require(path.resolve('plugins/form.js'));
+var urlEncode = require(path.resolve('plugins/urlEncode.js'));
 module.exports = function(){
    //项目情况列表
     this.ProjectBaseinfoList= function(argvs){
@@ -9,15 +10,21 @@ module.exports = function(){
             method : 'GET',
             timeout : 3000,
             uri : config()['project']['rurl'] + '/projectsituation/v1/listProjectSituation?limit=10&page='+argvs.page,
+            headers:{
+                userToken:argvs.token
+            },
         };
         return request(options);
     };
     //项目情况分页
-    this.countProject = function(){
+    this.countProject = function(argvs){
         var options = {
             method : 'GET',
             timeout : 3000,
             uri : config()['project']['rurl'] + '/projectsituation/v1/count',
+            headers:{
+                userToken:argvs.token
+            },
         };
         return request(options);
     };
@@ -26,7 +33,10 @@ module.exports = function(){
         var options = {
             method : 'DELETE',
             timeout : 3000,
-            uri : config()['project']['rurl'] + '/projectsituation/v1/delete/'+argvs.id+'?userToken='+argvs.userToken,
+            uri : config()['project']['rurl'] + '/projectsituation/v1/delete/'+argvs.id,
+            headers:{
+                userToken:argvs.token
+            },
         };
         return request(options);
     };
@@ -35,8 +45,11 @@ module.exports = function(){
         var options = {
             method : 'POST',
             timeout : 3000,
-            uri : config()['project']['rurl'] + '/projectsituation/v1/add'+'?userToken='+argvs.userToken,
+            uri : config()['project']['rurl'] + '/projectsituation/v1/add',
             form:argvs,
+            headers:{
+                userToken:argvs.token
+            },
         };
         return request(options);
     };
@@ -45,8 +58,11 @@ module.exports = function(){
         var options = {
             method : 'PUT',
             timeout : 3000,
-            uri : config()['project']['rurl'] + '/projectsituation/v1/edit'+'?userToken='+argvs.userToken,
+            uri : config()['project']['rurl'] + '/projectsituation/v1/edit',
             form : argvs,
+            headers:{
+                userToken:argvs.token
+            },
         };
         return request(options);
     };
@@ -57,6 +73,9 @@ module.exports = function(){
             timeout : 3000,
             uri : config()['project']['rurl'] + '/projectsituation/v1/getOneById/'+argvs.id,
             form : argvs,
+            headers:{
+                userToken:argvs.token
+            },
         };
         return request(options);
     };
@@ -66,15 +85,21 @@ module.exports = function(){
             method : 'GET',
             timeout : 3000,
             uri : config()['project']['rurl'] + '/projectcarry/v1/list?limit=10&page='+argvs.page,
+            headers:{
+                userToken:argvs.token
+            },
         };
         return request(options);
     };
    //实施情况总数
-    this.implementationCount = function(){
+    this.implementationCount = function(argvs){
         var options = {
             method : 'GET',
             timeout : 3000,
             uri : config()['project']['rurl'] + '/projectcarry/v1/count',
+            headers:{
+                userToken:argvs.token
+            },
         };
         return request(options);
     };
@@ -83,7 +108,10 @@ module.exports = function(){
         var options = {
             method : 'DELETE',
             timeout : 3000,
-            uri : config()['project']['rurl'] + '/projectcarry/v1/delete/'+argvs.id+'?userToken='+argvs.userToken,
+            uri : config()['project']['rurl'] + '/projectcarry/v1/delete/'+argvs.id,
+            headers:{
+                userToken:argvs.token
+            },
         };
         return request(options);
     };
@@ -92,8 +120,11 @@ module.exports = function(){
         var options = {
             method : 'POST',
             timeout : 3000,
-            uri : config()['project']['rurl'] + '/projectcarry/v1/add'+'?userToken='+argvs.userToken,
+            uri : config()['project']['rurl'] + '/projectcarry/v1/add',
             form:argvs,
+            headers:{
+                userToken:argvs.token
+            },
         };
         return request(options);
     };
@@ -102,8 +133,11 @@ module.exports = function(){
         var options = {
             method : 'PUT',
             timeout : 3000,
-            uri : config()['project']['rurl'] + '/projectcarry/v1/edit'+'?userToken='+argvs.userToken,
+            uri : config()['project']['rurl'] + '/projectcarry/v1/edit',
             form : argvs,
+            headers:{
+                userToken:argvs.token
+            },
         };
         return request(options);
     };
@@ -114,6 +148,9 @@ module.exports = function(){
             timeout : 3000,
             uri : config()['project']['rurl'] + '/projectcarry/v1/getOneById/'+argvs.id,
             form : argvs,
+            headers:{
+                userToken:argvs.token
+            },
         };
         return request(options);
     };
@@ -123,15 +160,21 @@ module.exports = function(){
             method : 'GET',
             timeout : 3000,
             uri : config()['project']['rurl'] + '/projectacceptance/v1/list?limit=10&page='+argvs.page,
+            headers:{
+                userToken:argvs.token
+            },
         };
         return request(options);
     };
     //项目验收情况分页
-    this.projectAcceptanceCount = function(){
+    this.projectAcceptanceCount = function(argvs){
         var options = {
             method : 'GET',
             timeout : 3000,
             uri : config()['project']['rurl'] + '/projectacceptance/v1/count',
+            headers:{
+                userToken:argvs.token
+            },
         };
         return request(options);
     };
@@ -140,8 +183,11 @@ module.exports = function(){
         var options = {
             method : 'POST',
             timeout : 3000,
-            uri : config()['project']['rurl'] + '/projectacceptance/v1/add'+'?userToken='+argvs.userToken,
+            uri : config()['project']['rurl'] + '/projectacceptance/v1/add',
             form:argvs,
+            headers:{
+                userToken:argvs.token
+            },
         };
         return request(options);
     };
@@ -150,7 +196,10 @@ module.exports = function(){
         var options = {
             method : 'DELETE',
             timeout : 3000,
-            uri : config()['project']['rurl'] + '/projectacceptance/v1/delete/'+argvs.id+'?userToken='+argvs.userToken,
+            uri : config()['project']['rurl'] + '/projectacceptance/v1/delete/'+argvs.id,
+            headers:{
+                userToken:argvs.token
+            },
         };
         return request(options);
     };
@@ -159,8 +208,11 @@ module.exports = function(){
         var options = {
             method : 'PUT',
             timeout : 3000,
-            uri : config()['project']['rurl'] + '/projectacceptance/v1/edit'+'?userToken='+argvs.userToken,
+            uri : config()['project']['rurl'] + '/projectacceptance/v1/edit',
             form : argvs,
+            headers:{
+                userToken:argvs.token
+            },
         };
         return request(options);
     };
@@ -171,6 +223,9 @@ module.exports = function(){
             timeout : 3000,
             uri : config()['project']['rurl'] + '/projectacceptance/v1/getOneById/'+argvs.id,
             form : argvs,
+            headers:{
+                userToken:argvs.token
+            },
         };
         return request(options);
     };
@@ -180,15 +235,21 @@ module.exports = function(){
             method : 'GET',
             timeout : 3000,
             uri : config()['project']['rurl'] + '/projectsettlementfollow/v1/list?limit=10&page='+argvs.page,
+            headers:{
+                userToken:argvs.token
+            },
         };
         return request(options);
     };
     //项目结算跟进分页
-    this.projectAcceptanceCount = function(){
+    this.projectAcceptanceCount = function(argvs){
         var options = {
             method : 'GET',
             timeout : 3000,
             uri : config()['project']['rurl'] + '/projectsettlementfollow/v1/count',
+            headers:{
+                userToken:argvs.token
+            },
         };
         return request(options);
     };
@@ -197,8 +258,11 @@ module.exports = function(){
         var options = {
             method : 'POST',
             timeout : 3000,
-            uri : config()['project']['rurl'] + '/projectsettlementfollow/v1/add'+'?userToken='+argvs.userToken,
+            uri : config()['project']['rurl'] + '/projectsettlementfollow/v1/add',
             form:argvs,
+            headers:{
+                userToken:argvs.token
+            },
         };
         return request(options);
     };
@@ -207,7 +271,10 @@ module.exports = function(){
         var options = {
             method : 'DELETE',
             timeout : 3000,
-            uri : config()['project']['rurl'] + '/projectsettlementfollow/v1/delete/'+argvs.id+'?userToken='+argvs.userToken,
+            uri : config()['project']['rurl'] + '/projectsettlementfollow/v1/delete/'+argvs.id,
+            headers:{
+                userToken:argvs.token
+            },
         };
         return request(options);
     };
@@ -215,8 +282,11 @@ module.exports = function(){
         var options = {
             method : 'PUT',
             timeout : 3000,
-            uri : config()['project']['rurl'] + '/projectsettlementfollow/v1/edit'+'?userToken='+argvs.userToken,
+            uri : config()['project']['rurl'] + '/projectsettlementfollow/v1/edit',
             form : argvs,
+            headers:{
+                userToken:argvs.token
+            },
         };
         return request(options);
     };
@@ -226,6 +296,9 @@ module.exports = function(){
             timeout : 3000,
             uri : config()['project']['rurl'] + '/projectsettlementfollow/v1/getOneById/'+argvs.id,
             form : argvs,
+            headers:{
+                userToken:argvs.token
+            },
         };
         return request(options);
     };
@@ -235,15 +308,21 @@ module.exports = function(){
             method : 'GET',
             timeout : 3000,
             uri : config()['project']['rurl'] + '/projectcarryaudit/v1/listProjectCarryAudit?limit=10&page='+argvs.page,
+            headers:{
+                userToken:argvs.token
+            },
         };
         return request(options);
     };
     //项目实施分页
-    this.projectAuditCount = function(){
+    this.projectAuditCount = function(argvs){
         var options = {
             method : 'GET',
             timeout : 3000,
             uri : config()['project']['rurl'] + '/projectcarryaudit/v1/count',
+            headers:{
+                userToken:argvs.token
+            },
         };
         return request(options);
     };
@@ -252,8 +331,11 @@ module.exports = function(){
         var options = {
             method : 'POST',
             timeout : 3000,
-            uri : config()['project']['rurl'] + '/projectcarryaudit/v1/add'+'?userToken='+argvs.userToken,
+            uri : config()['project']['rurl'] + '/projectcarryaudit/v1/add',
             form:argvs,
+            headers:{
+                userToken:argvs.token
+            },
         };
         return request(options);
     };
@@ -261,7 +343,10 @@ module.exports = function(){
         var options = {
             method : 'DELETE',
             timeout : 3000,
-            uri : config()['project']['rurl'] + '/projectcarryaudit/v1/delete/'+argvs.id+'?userToken='+argvs.userToken,
+            uri : config()['project']['rurl'] + '/projectcarryaudit/v1/delete/'+argvs.id,
+            headers:{
+                userToken:argvs.token
+            },
         };
         return request(options);
     };
@@ -269,8 +354,11 @@ module.exports = function(){
         var options = {
             method : 'PUT',
             timeout : 3000,
-            uri : config()['project']['rurl'] + '/projectcarryaudit/v1/edit'+'?userToken='+argvs.userToken,
+            uri : config()['project']['rurl'] + '/projectcarryaudit/v1/edit',
             form : argvs,
+            headers:{
+                userToken:argvs.token
+            },
         };
         return request(options);
     };
@@ -280,6 +368,9 @@ module.exports = function(){
             timeout : 3000,
             uri : config()['project']['rurl'] + '/projectsettlementfollow/v1/getOneById/'+argvs.id,
             form : argvs,
+            headers:{
+                userToken:argvs.token
+            },
         };
         return request(options);
     };
@@ -289,14 +380,148 @@ module.exports = function(){
             timeout : 3000,
             uri : config()['project']['rurl'] + '/projectcarryaudit/v1/getOneById/'+argvs.id,
             form : argvs,
+            headers:{
+                userToken:argvs.token
+            },
         };
         return request(options);
     };
-    this.getCollectSummary = function(){
+    this.getCollectSummary = function(argvs){
         var options = {
             method : 'GET',
             timeout : 3000,
             uri : config()['project']['rurl'] + '/projectsettlementfollow/v1/collectSettle',
+            headers:{
+                userToken:argvs.token
+            },
+        };
+        return request(options);
+    };
+    //搜索
+    this.projectSearch= function(argvs){
+        var options = {
+            method : 'GET',
+            timeout : 3000,
+            uri : config()['project']['rurl'] + '/projectsituation/v1/listProjectSituation'+urlEncode(argvs,true),
+            form : argvs,
+            headers:{
+                userToken:argvs.token
+            },
+        };
+        return request(options);
+    };
+    this.countProject2Info = function(argvs){
+        var options = {
+            method : 'GET',
+            timeout : 3000,
+            uri : config()['project']['rurl'] + '/projectsituation/v1/count'+urlEncode(argvs,true),
+            headers:{
+                userToken:argvs.token
+            },
+        };
+        return request(options);
+    };
+    this.implementationSearch= function(argvs){
+        var options = {
+            method : 'GET',
+            timeout : 3000,
+            uri : config()['project']['rurl'] + '/projectcarry/v1/list'+urlEncode(argvs,true),
+            form : argvs,
+            headers:{
+                userToken:argvs.token
+            },
+        };
+        return request(options);
+    };
+
+    this.countImple2Info = function(argvs){
+        var options = {
+            method : 'GET',
+            timeout : 3000,
+            uri : config()['project']['rurl'] + '/projectcarry/v1/count'+urlEncode(argvs,true),
+            headers:{
+                userToken:argvs.token
+            },
+        };
+        return request(options);
+    };
+    this.auditSearch= function(argvs){
+        var options = {
+            method : 'GET',
+            timeout : 3000,
+            uri : config()['project']['rurl'] + '/projectcarryaudit/v1/listProjectCarryAudit'+urlEncode(argvs,true),
+            form : argvs,
+            headers:{
+                userToken:argvs.token
+            },
+        };
+        return request(options);
+    };
+    this.countAudit2Info= function(argvs){
+        var options = {
+            method : 'GET',
+            timeout : 3000,
+            uri : config()['project']['rurl'] + '/projectcarryaudit/v1/count'+urlEncode(argvs,true),
+            form : argvs,
+            headers:{
+                userToken:argvs.token
+            },
+        };
+        return request(options);
+    };
+    this.logout = function(argvs){
+        var options = {
+            method : 'POST',
+            timeout : 3000,
+            uri : config()['user']['rurl'] + `/v1/sign-out/${argvs.token}`,
+            form:argvs,
+        headers:{
+            userToken:argvs.token
+        },
+        };
+        return request(options);
+    };
+    this.listSetting = function(argvs){
+        var options = {
+            method : 'GET',
+            timeout : 3000,
+            uri : config()['project']['rurl'] + `/cuspermission/v1/list?limit=10&page=${argvs.page}`,
+        };
+        return request(options);
+    };
+    this.countSetting = function(){
+        var options = {
+            method : 'GET',
+            timeout : 3000,
+            uri : config()['project']['rurl'] + '/cuspermission/v1/count',
+        };
+        return request(options);
+    };
+    this.getpermit = function(argvs){
+        var options = {
+            method : 'GET',
+            timeout : 3000,
+            uri : config()['project']['rurl'] + `/cuspermission/v1/getOneById/${argvs.id}`,
+        };
+        return request(options);
+    };
+    this.getListpermit = function(argvs){
+        var options = {
+            method : 'GET',
+            timeout : 3000,
+            uri : config()['project']['rurl'] + `/cuspermission/v1/listOperateById/${argvs.id}`,
+        };
+        return request(options);
+    };
+    this.editSetting = function(argvs){
+        var options = {
+            method : 'PUT',
+            timeout : 3000,
+            uri : config()['project']['rurl'] + '/cuspermission/v1/edit',
+            headers:{
+                userToken:argvs.token
+            },
+            form:argvs
         };
         return request(options);
     };

@@ -1,0 +1,97 @@
+<div class="content-tab list">
+    <ul class="table">
+        <li class="list-head">
+            <span></span>
+            <span>编号</span>
+            <span>岗位编号</span>
+            <span>岗位名称</span>
+            <span>岗位层级</span>
+            <span>所属体系</span>
+            <span>所属部门</span>
+            <span>所属人员池</span>
+            <span></span>
+        </li>
+        <li class="list-all" ng-repeat="list in jopdesLists" style="display: {{list._delete?'none':'block'}};">
+            <section>
+                <div class="list-text {{list._selectList?'selectList':''}}" ng-click="selectList(list)">
+                    <p>{{$index+1}}</p>
+                    <p>{{::list.serialNumber}}</p>
+                    <p>{{::list.positionNumber}}</p>
+                    <p>{{::list.positionName}}</p>
+                    <p>{{::list.arrangement}}</p>
+                    <p>{{::list.hierarchy}}</p>
+                    <p>{{::list.department}}</p>
+                    <p>{{::list.pool}}</p>
+                    <p>
+                        <a href="javascript:void(0)" class="more"  ng-click="moreList(list)">更多详细</a>
+                    </p>
+                </div>
+                <div class="can">
+                    <ul class="can-see" style="display: {{list._moreList?'block':'none'}};">
+                        <li>
+                            <p class="see-parent">
+                                <span>编制</span>
+                                <span>直接上级</span>
+                                <span>直接下级</span>
+                                <span>角度</span>
+                                <span>维度</span>
+                                <span>分类</span>
+                                <span>体现类别</span>
+                                <span>操作类型</span>
+                            </p>
+                            <p class="see-children">
+                                <span>{{::list.staff}}</span>
+                                <span>{{::list.parent}}</span>
+                                <span>{{::list.children}}</span>
+                                <span>{{::list.angleName}}</span>
+                                <span>{{::list.dimensionName}}</span>
+                                <span>{{::list.classifyName}}</span>
+                                <span>{{::list.reflectNames}}</span>
+                                <span>{{::list.operateNames}}</span>
+
+                            </p>
+                        </li>
+                        <li>
+                            <p class="see-parent">
+                                <span>工作描述</span>
+                                <span>对应功能</span>
+                                <span>工作时间/频率</span>
+                                <span>工作时间节点</span>
+                                <span>输出结果</span>
+                            </p>
+                            <p class="see-children">
+                                <span>{{::list.description}}</span>
+                                <span>{{::list.function}}</span>
+                                <span>{{::list.frequency}}</span>
+                                <span>{{::list.timeNode}}</span>
+                                <span>{{::list.outcome}}</span>
+                            </p>
+                        </li>
+                    </ul>
+                    <div class="module">
+                        <div class="see-module">
+                            <p class="see-type">体现类型</p>
+                            <p class="see-description"></p>
+                            <button class="btn">关闭</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </li>
+    </ul>
+    <footer class="footer">
+        <pagination count="pagination.itemsCount" take="pagination.take" activate="pagination.activatePage"></pagination>
+    </footer>
+</div>
+<div ui-view="modal"></div>
+
+
+
+
+
+
+
+
+
+
+

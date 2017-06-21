@@ -10,6 +10,9 @@ module.exports = function(){
     router.get('/project/listProjectSituationCap/list', function*(){
         var $self = this;
        var page = this.request.query;
+
+        page.token = this.cookies.get('token');
+        console.log(page)
         yield (server().ProjectBaseinfoList(page)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -21,7 +24,8 @@ module.exports = function(){
             }));
     }).get('/countProjectBaseInfo/count', function*(){
         var $self = this;
-        yield (server().countProject()
+        var token={token:$self.cookies.get('token')};
+        yield (server().countProject(token)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
                 $self.body = responseText;
@@ -31,8 +35,9 @@ module.exports = function(){
                 console.error(error.error);
             }));
     }).post('/project/deleteProjectSit/delete', function*(){  //项目情况删除
-        var delData = this.request.body;
         var $self = this;
+        var delData = this.request.body;
+        delData.token = this.cookies.get('token');
         yield (server().projectSitDelete(delData)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -45,7 +50,7 @@ module.exports = function(){
             }));
     }).post('/project/addProjectSituation/add', function*(){  //项目情况添加
         var addData = this.request.body;
-        addData.userToken = this.cookies.get('token');
+        addData.token = this.cookies.get('token');
         var $self = this;
         yield (server().projectSituationAdd(addData)
             .then((parsedBody) =>{
@@ -58,7 +63,7 @@ module.exports = function(){
             }));
     }).post('/project/editProjectSituation/edit', function*(){
         var editData = this.request.body;
-        editData.userToken = this.cookies.get('token');
+        editData.token = this.cookies.get('token');
         var $self = this;
         yield (server().projectSituationEdit(editData)
             .then((parsedBody) =>{
@@ -70,8 +75,9 @@ module.exports = function(){
                 console.error(error.error);
             }));
     }).post('/project/getOneById', function*(){
-        var EditId = this.request.body;
         var $self = this;
+         var EditId = this.request.body;
+         EditId.token = this.cookies.get('token');
         yield (server().projectEditById(EditId)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -85,6 +91,7 @@ module.exports = function(){
     }).get('/project/listImplementation/list', function*(){
         var $self = this;
         var page = this.request.query;
+        page.token = this.cookies.get('token');
         yield (server().implementationBaseinfoList(page)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -96,7 +103,8 @@ module.exports = function(){
             }));
     }).get('/countImplementation/count', function*(){
         var $self = this;
-        yield (server().implementationCount()
+        var token={token:$self.cookies.get('token')};
+        yield (server().implementationCount(token)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
                 $self.body = responseText;
@@ -108,6 +116,7 @@ module.exports = function(){
     }).get('/project/deleteImplementation/delete', function*(){
         var $self = this;
         var delData2 =this.request.query;
+        delData2.token = this.cookies.get('token');
         yield (server().implementationDelete(delData2)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -120,7 +129,7 @@ module.exports = function(){
             }));
     }).post('/project/addProjectCarry/add', function*(){  //项目实施添加
         var addData2 = this.request.body;
-        addData2.userToken = this.cookies.get('token');
+        addData2.token = this.cookies.get('token');
         var $self = this;
         yield (server().projectCarryAdd(addData2)
             .then((parsedBody) =>{
@@ -132,9 +141,9 @@ module.exports = function(){
                 console.error(error.error);
             }));
     }).post('/project/editImplementationProject/edit', function*(){
-        var editImplementation = this.request.body;
-        editImplementation.userToken = this.cookies.get('token');
         var $self = this;
+        var editImplementation = this.request.body;
+        editImplementation.token = this.cookies.get('token');
         yield (server().implementationProjectEdit(editImplementation)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -145,8 +154,9 @@ module.exports = function(){
                 console.error(error.error);
             }));
     }).get('/project/getImplementationOneById', function*(){
-        var implementationId = this.request.query;
         var $self = this;
+        var implementationId = this.request.query;
+        implementationId.token = this.cookies.get('token');
         yield (server().implementationEditById(implementationId)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -160,6 +170,7 @@ module.exports = function(){
     }).get('/project/listProjectAcceptance/list', function*(){  //验收情况列表
         var $self = this;
         var page = this.request.query;
+        page.token = this.cookies.get('token');
         yield (server().projectAcceptanceList(page)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -171,7 +182,8 @@ module.exports = function(){
             }));
     }).get('/countProjectAcceptance/count', function*(){ //验收情况分页
         var $self = this;
-        yield (server().projectAcceptanceCount()
+        var token={token:$self.cookies.get('token')};
+        yield (server().projectAcceptanceCount(token)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
                 $self.body = responseText;
@@ -182,7 +194,7 @@ module.exports = function(){
             }));
     }).post('/project/addProjectAcceptance/add', function*(){
         var addData = this.request.body;
-        addData.userToken = this.cookies.get('token');
+        addData.token = this.cookies.get('token');
         var $self = this;
         yield (server().projectAcceptanceAdd(addData)
             .then((parsedBody) =>{
@@ -195,6 +207,7 @@ module.exports = function(){
             }));
     }).post('/project/deleteProjectAcceptance/delete', function*(){  //项目情况删除
         var delData = this.request.body;
+        delData.token = this.cookies.get('token');
         var $self = this;
         yield (server().acceptanceDelete(delData)
             .then((parsedBody) =>{
@@ -208,7 +221,7 @@ module.exports = function(){
             }));
     }).post('/project/editProjectAcceptance/edit', function*(){
         var editAcceptanceProject = this.request.body;
-        editAcceptanceProject.userToken = this.cookies.get('token');
+        editAcceptanceProject.token = this.cookies.get('token');
         var $self = this;
         yield (server().projectAcceptanceEdit(editAcceptanceProject)
             .then((parsedBody) =>{
@@ -222,6 +235,7 @@ module.exports = function(){
     }).get('/project/getAcceptanceById', function*(){
         var acceptanceId = this.request.query;
         var $self = this;
+        acceptanceId.token = this.cookies.get('token');
         yield (server().acceptanceEditById(acceptanceId)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -235,6 +249,7 @@ module.exports = function(){
     }).get('/project/listSettlement/list', function*(){ //项目结算跟进列表
         var $self = this;
         var page = this.request.query;
+        page.token = this.cookies.get('token');
         yield (server().settlementList(page)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -246,7 +261,8 @@ module.exports = function(){
             }));
     }).get('/countSettlement/count', function*(){ //项目结算跟进分页
         var $self = this;
-        yield (server().projectAcceptanceCount()
+        var token={token:$self.cookies.get('token')};
+        yield (server().projectAcceptanceCount(token)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
                 $self.body = responseText;
@@ -257,7 +273,7 @@ module.exports = function(){
             }));
     }).post('/project/addSettlement/add', function*(){ //项目结算跟进添加
         var addData = this.request.body;
-        addData.userToken = this.cookies.get('token');
+        addData.token = this.cookies.get('token');
         var $self = this;
         yield (server().settlementAdd(addData)
             .then((parsedBody) =>{
@@ -271,6 +287,7 @@ module.exports = function(){
     }).get('/project/deleteSettlement/delete', function*(){
         var $self = this;
         var delData2 =this.request.query;
+        delData2.token = this.cookies.get('token');
         yield (server().sttlementDelete(delData2)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -283,7 +300,7 @@ module.exports = function(){
             }));
     }).post('/project/editSettlement/edit', function*(){
         var editSettlementProject = this.request.body;
-        editSettlementProject.userToken = this.cookies.get('token');
+        editSettlementProject.token = this.cookies.get('token');
         var $self = this;
         yield (server().projectSettlementEdit(editSettlementProject)
             .then((parsedBody) =>{
@@ -297,6 +314,7 @@ module.exports = function(){
     }).get('/project/getSettlementById', function*(){
         var settlementId = this.request.query;
         var $self = this;
+        settlementId.token = this.cookies.get('token');
         yield (server().settlementEditById(settlementId)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -310,6 +328,7 @@ module.exports = function(){
     }).get('/project/listAudit/list', function*(){ //项目实施审核
         var $self = this;
         var page = this.request.query;
+        page.token = this.cookies.get('token');
         yield (server().auditList(page)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -321,7 +340,8 @@ module.exports = function(){
             }));
     }).get('/countAudit/count', function*(){ //分页
         var $self = this;
-        yield (server().projectAuditCount()
+        var token={token:$self.cookies.get('token')};
+        yield (server().projectAuditCount(token)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
                 $self.body = responseText;
@@ -332,7 +352,7 @@ module.exports = function(){
             }));
     }).post('/project/addAudit/add', function*(){ //添加
         var addData = this.request.body;
-        addData.userToken = this.cookies.get('token');
+        addData.token = this.cookies.get('token');
         var $self = this;
         yield (server().auditAdd(addData)
             .then((parsedBody) =>{
@@ -346,6 +366,7 @@ module.exports = function(){
     }).get('/project/deleteAudit/delete', function*(){
         var $self = this;
         var delAudit =this.request.query;
+        delAudit.token = this.cookies.get('token');
         yield (server().auditDelete(delAudit)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -358,7 +379,7 @@ module.exports = function(){
             }));
     }).post('/project/editAudit/edit', function*(){
         var editAuditProject = this.request.body;
-        editAuditProject.userToken = this.cookies.get('token');
+        editAuditProject.token = this.cookies.get('token');
         var $self = this;
         yield (server().projectAuditEdit(editAuditProject)
             .then((parsedBody) =>{
@@ -372,6 +393,7 @@ module.exports = function(){
     }).get('/project/getAuditById', function*(){
         var auditId = this.request.query;
         var $self = this;
+        auditId.token = this.cookies.get('token');
         yield (server().auditEditById(auditId)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -383,9 +405,155 @@ module.exports = function(){
                 }
             }));
     }).get('/summarySettlement/summary', function*(){
-       /* var getCollect = this.request.query;*/
         var $self = this;
-        yield (server().getCollectSummary()
+        var token={token:$self.cookies.get('token')};
+        yield (server().getCollectSummary(token)
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
+    }).get('/searchProject', function*(){
+        var $self = this;
+        var searchName = this.request.query;
+        searchName.token = this.cookies.get('token');
+        yield (server().projectSearch(searchName)
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
+    }).get('/countProjectBaseInfo2/count', function*(){
+        var $self = this;
+        var countData = this.request.query;
+        countData.token = this.cookies.get('token');
+        yield (server().countProject2Info(countData)
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
+    }).get('/searchImplementation', function*(){
+        var searchName = this.request.query;
+        var $self = this;
+        searchName.token = this.cookies.get('token');
+        yield (server().implementationSearch(searchName)
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
+    }).get('/countImplementation2/count', function*(){
+        var $self = this;
+        var countData = this.request.query;
+        countData.token = this.cookies.get('token');
+        yield (server().countImple2Info(countData)
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
+    }).get('/searchAudit', function*(){
+        var searchName = this.request.query;
+        var $self = this;
+        searchName.token = this.cookies.get('token');
+        yield (server().auditSearch(searchName)
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
+    }).get('/countAudit2/count', function*(){
+        var $self = this;
+        var countData = this.request.query;
+        countData.token = this.cookies.get('token');
+        yield (server().countAudit2Info(countData)
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
+    }).get('/user/logout', function*(next){
+            var url = this.request.query;
+            this.cookies.set("absUrl",url.absurl);
+            this.body = {
+                code:0,
+                msg:"重定向"
+            };
+        }).get('/listSetting', function*(){
+        var $self = this;
+        var setting = this.request.query;
+        setting.token = $self.cookies.get('token');
+        yield (server().listSetting(setting)
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
+    }).get('/countSetting', function*(){
+        var $self = this;
+        yield (server().countSetting()
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
+    }).get('/getpermit', function*(){
+        var $self = this;
+        var getId = $self.request.query;
+        yield (server().getpermit(getId)
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
+    }).get('/getListpermit', function*(){
+        var $self = this;
+        var listPermit = $self.request.query;
+        yield (server().getListpermit(listPermit)
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
+    }).post('/editSetting', function*(){
+        var $self = this;
+        var editSet = $self.request.body;
+        editSet.token = $self.cookies.get("token");
+        yield (server().editSetting(editSet)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
                 $self.body = responseText;

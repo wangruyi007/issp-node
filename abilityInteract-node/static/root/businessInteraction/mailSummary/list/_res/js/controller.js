@@ -1,16 +1,16 @@
 var app = angular.module('mailSummaryList', ['ng-pagination','toastr']);
 app.controller('mailSummaryListCtrl',function($scope,emailSer,toastr){
-
+    $scope.$emit('changeId', null);
     function activatePage(page) {
         var listData = {
             page:page
-        }
+        };
         emailSer.emailList(listData).then(function(response){
             if(response.data.code==0){
 
                 $scope.mailLists = response.data.data
-            }else{
-                toastr.error( "请求超时，请联系管理员", '温馨提示');
+            }else {
+                toastr.error( response.data.msg, '温馨提示');
             }
         });
     }
@@ -60,12 +60,11 @@ app.controller('mailSummaryListCtrl',function($scope,emailSer,toastr){
         emailSer.thawEmail(data).then(function(response){
             if(response.data.code==0){
                 event.status = "THAW"
-            }else if(response.data.code==403){
-                toastr.error( "请登录用户", '温馨提示');
+            }else {
+                toastr.error(response.data.msg,'温馨提示')
             }
-
         })
-    }
+    };
 //分页
     $scope.custom = {
         itemsCount: 2, //总条数
@@ -76,8 +75,8 @@ app.controller('mailSummaryListCtrl',function($scope,emailSer,toastr){
     emailSer.countEmail().then(function(response){
         if(response.data.code==0){
             $scope.custom.itemsCount = response.data.data;
-        }else{
-            toastr.error( "请求超时，请联系管理员", '温馨提示');
+        }else {
+            toastr.error( response.data.msg, '温馨提示');
         }
     })
 

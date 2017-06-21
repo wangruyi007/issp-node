@@ -4,18 +4,14 @@
             <ul>
                 <li class="required">
                     <label><i><img src="/images/mandatory.png"></i><em>业务类型</em></label>
-                    <select class="sele" ng-model="editDemand.type">
-                        <option value="0">1</option>
-                        <option value="1">2</option>
-                        <option value="2">3</option>
+                    <select class="sele" ng-model="editDemand.type" >
+                        <option ng-repeat="type in types">{{type.type}}</option>
                     </select>
                 </li>
                 <li class="required">
                     <label><i><img src="/images/mandatory.png"></i><em>业务方向科目</em></label>
-                    <select class="sele" ng-model="editDemand.course">
-                        <option value="0">1</option>
-                        <option value="1">2</option>
-                        <option value="2">3</option>
+                    <select class="sele" ng-model="editDemand.course" >
+                        <option ng-repeat="course in courses">{{course.course}}</option>
                     </select>
                 </li>
                 <li class="required">
@@ -23,11 +19,11 @@
                     <input type="text" ng-verify="{}" ng-model="editDemand.target">
                 </li>
                 <li class="required">
-                    <label><i><img src="/images/mandatory.png"></i><em>目标定位</em></label>
+                    <label><i><img src="/images/mandatory.png"></i><em>价格定位</em></label>
                     <input type="text" ng-verify="{}" ng-model="editDemand.orientation">
                 </li>
                 <li>
-                    <label><i><img src="/images/mandatory.png"></i><em>备注</em></label>
+                    <label><em>备注</em></label>
                     <input type="text" ng-model="editDemand.remark">
                 </li>
             </ul>

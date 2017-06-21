@@ -1,0 +1,44 @@
+
+
+<div class="content-tab list">
+    <ul class="table">
+        <li class="list-head">
+            <span></span>
+            <span>方向</span>
+            <span>科目</span>
+            <span>专业分类</span>
+            <span>专业范围</span>
+            <span>工作界面</span>
+        </li>
+        <li class="list-all" style="display: {{list._delete?'none':'block'}};" ng-repeat="list in joprangeLists">
+            <section  class="{{list.status=='CONGEAL'?'congeal':''}}" >
+                <div class="list-text {{list._selectList?'selectList':''}}" ng-click="selectList(list)">
+                    <p>{{$index+1}}</p>
+                    <p>{{::list.direction}}</p>
+                    <p>{{::list.project}}</p>
+                    <p>{{::list.classify}}</p>
+                    <p>{{::list.workRange}}</p>
+                    <p>{{::list.node}}</p>
+                </div>
+                <div class="thaw-modal">
+                    <button ng-click="thaw(list)">开启</button>
+                </div>
+            </section>
+        </li>
+    </ul>
+    <footer class="footer">
+        <pagination count="pagination.itemsCount" take="pagination.take" activate="pagination.activatePage"></pagination>
+    </footer>
+</div>
+<div ui-view="modal"></div>
+
+
+
+
+
+
+
+
+
+
+

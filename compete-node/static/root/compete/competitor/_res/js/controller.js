@@ -29,11 +29,6 @@ app.controller('competitorCtrl',function ($scope,$state) {
             $scope.menuClass = 'deleteMenu'
         }
     };
-//关于搜索
-/*    $scope.search = function(){
-        $state.go('root.ability.companycap.list.search[12]');
-        console.log("搜索可以单击")
-    };*/
     //编辑
     $scope.edit = function(){
         if($scope.idList){
@@ -49,10 +44,10 @@ app.controller('competitorCtrl',function ($scope,$state) {
     };
     //组织
     $scope.organize = function(){
-        // if($scope.idList){
+        if($scope.idList){
             $state.go('root.compete.competitor.organize[12]',{id:$scope.idList});
             $scope.menuClass = 'organizeMenu'
-        // }
+        }
     }
 });
 //自定义过滤器

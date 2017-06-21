@@ -1,6 +1,3 @@
-/**
- * Created by ike on 2017/4/18.
- */
 var app = angular.module('companyEdit', ['toastr']);
 app.controller('companyEditCtrl', function($scope, companycapSer,$state,toastr,$stateParams){
     var companyId = {id : $stateParams.id};
@@ -8,6 +5,8 @@ app.controller('companyEditCtrl', function($scope, companycapSer,$state,toastr,$
     companycapSer.getOneById(companyId).then(function(response){
         if(response.data.code==0){
             $scope.editInfo = response.data.data;
+        }else{
+            toastr.error(response.data.msg, '温馨提示');
         }
     });
     $scope.companyEditFun = function(){
@@ -40,15 +39,13 @@ app.controller('companyEditCtrl', function($scope, companycapSer,$state,toastr,$
             if(response.data.code == 0){
                 $state.go('root.ability.companycap.list');
                 toastr.success( "已成功编辑", '温馨提示');
-            }else if(response.data.code==403){
-                toastr.error( "请登录用户", '温馨提示');
+            }else{
+                toastr.error(response.data.msg, '温馨提示');
             }
         });
     };
     //可手填的下拉框
-    $scope.changeSelect=function(){
-        $scope.editInfo.professionAuthen = $scope.editInfo.professionAuthen2;
-    };
+    $scope.changeSelect=function(){$scope.editInfo.professionAuthen = $scope.editInfo.professionAuthen2;};
     $scope.changeSelect2=function(){$scope.editInfo.manageAuthen = $scope.editInfo.manageAuthen2;};
     $scope.changeSelect3=function(){$scope.editInfo.companyDevelop = $scope.editInfo.companyDevelop2;};
     $scope.changeSelect4=function(){$scope.editInfo.area = $scope.editInfo.area2;};

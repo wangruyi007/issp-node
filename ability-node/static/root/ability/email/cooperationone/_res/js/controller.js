@@ -1,6 +1,3 @@
-/**
- * Created by ike on 2017/4/17.
- */
 var app = angular.module('emailCooperationOne', ['toastr','angularjs-dropdown-multiselect']);
 app.controller('emailCooperationOneCtrl', function($scope, emailSer,toastr){
     $scope.words = [];
@@ -9,14 +6,16 @@ app.controller('emailCooperationOneCtrl', function($scope, emailSer,toastr){
     emailSer.getCooperationNames().then(function(response){
         if(response.data.code == 0){
             $scope.workOptions = response.data.data;
-        } else if(response.data.code == 403){
-            toastr.error("请登录用户", '温馨提示');
+        }else{
+            toastr.error(response.data.msg, '温馨提示');
         }
     });
     $scope.getSummary ={onSelectionChanged(){
         emailSer.ectSummaryCooperation($scope.words).then(function(response){
             if(response.data.code == 0){
-                $scope.summarycooperationones = response.data.data[0].collectDataList;
+                $scope.summaryLists = response.data.data;
+            }else{
+                toastr.error(response.data.msg, '温馨提示');
             }
         })
     }}

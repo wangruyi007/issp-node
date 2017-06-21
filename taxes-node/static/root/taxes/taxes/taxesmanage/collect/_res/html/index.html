@@ -1,0 +1,33 @@
+<div class="content-tab list">
+    <div class="com-search mod">
+       <span class="com-search2">
+            <label>公司:</label>
+            <input type="text" ng-model="company">
+       </span>
+       <p>
+            <button class="collect" ng-click="collectFun()">汇总</button>
+        </p>
+    </div>
+    <ul class="table area-table">
+        <li class="list-head">
+            <span></span>
+            <span>公司</span>
+            <span>所属月份</span>
+            <span>税种</span>
+            <span>税率</span>
+            <span>税金</span>
+        </li>
+        <li class="list-all">
+            <section ng-repeat="list in data" style="display: {{$index==10000?'none':'block'}};">
+                <div  class="list-text {{list._selectList?'selectList':''}}" ng-click="selectList(list)">
+                    <p></p>
+                    <p>{{::list.company}}</p>
+                    <p>{{::list.month}}</p>
+                    <p>{{::list.taxType}}</p>
+                    <p>{{::list.rate}}</p>
+                    <p>{{::list.tax}}</p>
+                </div>
+            </section>
+        </li>
+     </ul>
+</div>

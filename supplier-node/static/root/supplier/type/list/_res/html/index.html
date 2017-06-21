@@ -1,0 +1,38 @@
+<div class="content-tab list">
+    <ul class="table table-top">
+        <li class="list-head">
+            <span></span>
+            <span class="data-id">id</span>
+            <span>名称</span>
+            <span>描述</span>
+            <span>状态</span>
+        </li>
+        <li class="list-all" ng-repeat="list in typeLists.data" style="display: {{list._delete?'none':'block'}};">
+            <section class="{{list.status=='CONGEAL'?'congeal':''}}" >
+                <div  class="list-text {{list._selectList?'selectList':''}}" ng-click="selectList(list)">
+                    <p>{{$index+1}}</p>
+                    <p class="data-id"></p>
+                    <p>{{list.name}}</p>
+                    <p>{{list.description}}</p>
+                    <p>{{list.status|cover}}</p>
+                </div>
+                <div class="can">
+                    <div class="module">
+                        <div class="see-module">
+                            <p class="see-type">体现类型</p>
+                            <p class="see-description"></p>
+                            <button class="btn">关闭</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="thaw-modal">
+                    <button ng-click="thaw(list)">解冻</button>
+                </div>
+            </section>
+        </li>
+     </ul>
+    <footer class="footer">
+        <pagination count="abili.itemsCount" take="abili.take" activate="abili.activatePage"></pagination>
+    </footer>
+</div>
+<div ui-view="modal"></div>

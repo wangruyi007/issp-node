@@ -1,0 +1,59 @@
+<div class="content-tab list">
+    <ul class="table table-top">
+        <li class="list-head">
+            <span></span>
+            <span>地区</span>
+            <span>项目</span>
+            <span>工期开始时间</span>
+            <span>工期结束时间</span>
+            <span>月收入月份(最多)</span>
+            <span>月收入月份(最少)</span>
+            <span>差额增速最快月份</span>
+            <span></span>
+        </li>
+        <li class="list-all" ng-repeat="lists in progrowLists" style="display: {{lists._delete?'none':'block'}};">
+            <section>
+                <div class="list-text {{lists._selectList?'selectList':''}}" ng-click="selectList(lists)">
+                    <p>{{$index+1}}</p>
+                    <p mod>{{::lists.area}}</p>
+                    <p mod>{{::lists.project}}</p>
+                    <p mod>{{::lists.startTime}}</p>
+                    <p mod>{{::lists.endTime}}</p>
+                    <p mod>{{::lists.maximumMonth}}</p>
+                    <p mod>{{::lists.leastMonth}}</p>
+                    <p mod>{{::lists.fastMonth}}</p>
+                    <p>
+                        <a href="javascript:void(0)" class="more" ng-click="moreList(lists)">更多详细</a>
+                    </p>
+                </div>
+                <div class="can">
+                    <ul class="can-see" style="display: {{lists._moreList?'block':'none'}};">
+                        <li>
+                            <p class="see-parent">
+                                <span>月支出月份(最多)</span>
+                                <span>月支出月份(最少)</span>
+                                <span>差额增速最慢月份</span>
+                            </p>
+                            <p class="see-children">
+                                <span mod>{{::lists.outMaximumMonth}}</span>
+                                <span mod>{{::lists.outLeastMonth}}</span>
+                                <span mod>{{::lists.slowMonth}}</span>
+                            </p>
+                        </li>
+                    </ul>
+                </div>
+            </section>
+        </li>
+    </ul>
+    <div class="module">
+        <div class="see-module">
+            <p class="see-type">体现类型</p>
+            <p class="see-description"></p>
+            <button class="btn" modclose>关闭</button>
+        </div>
+    </div>
+</div>
+
+
+
+

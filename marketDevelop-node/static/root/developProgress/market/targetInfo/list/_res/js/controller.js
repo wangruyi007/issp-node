@@ -1,5 +1,6 @@
 var app = angular.module('targetInfoList', ['ng-pagination','toastr']);
 app.controller('targetInfoListCtrl',function($scope,targetInfoSer,toastr){
+    $scope.$emit('changeId', null);
     function activatePage(page) {
         var listData = {
             page:page
@@ -7,8 +8,8 @@ app.controller('targetInfoListCtrl',function($scope,targetInfoSer,toastr){
         targetInfoSer.targetInfoList(listData).then(function(response){
             if(response.data.code==0){
                 $scope.targetLists = response.data.data
-            }else{
-                toastr.error( "请求超时，请联系管理员", '温馨提示');
+            }else {
+                toastr.error(response.data.msg,'温馨提示')
             }
         });
     }
@@ -43,8 +44,8 @@ app.controller('targetInfoListCtrl',function($scope,targetInfoSer,toastr){
     targetInfoSer.countTarget().then(function(response){
         if(response.data.code==0){
             $scope.custom.itemsCount = response.data.data;
-        }else{
-            toastr.error( "请求超时，请联系管理员", '温馨提示');
+        }else {
+            toastr.error(response.data.msg,'温馨提示')
         }
     })
 

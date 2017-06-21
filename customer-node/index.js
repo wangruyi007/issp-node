@@ -8,7 +8,7 @@ const staticCache = require('koa-static-cache');
 const routersPath = '/koa/routers/';
 const sendfile = require('koa-sendfile');
 var configsCache = {};
-const port = 9999;
+const port = 9997;
 
 const config = require(path.resolve('plugins/read-config.js'));
 
@@ -59,8 +59,7 @@ router.get(/^\/module\/_config(?:\/.|$)/, function *(next) {
 });
 
 //============路由===========
-app.use(require(path.join(__dirname,routersPath,'/common/index.js'))().routes());//登录路由
-// app.use(require(path.join(__dirname,routersPath,'/business/customer/basicinfo.js'))().routes());//商务
+
 app.use(require(path.join(__dirname,routersPath,'/customer/index.js'))().routes());//客户信息
 app.use(router.routes());
 

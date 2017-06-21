@@ -1,0 +1,37 @@
+<div class="upload-file">
+    <section>
+
+        <div class="file">
+            <input type="file" id="updata" onchange="selectFile()">
+            <label for="updata" class="uploads">
+                <p>
+                    <i>{{uploadFile.name}}</i>
+                    <span>选择文件</span>
+                </p>
+            </label>
+            <span class="imPrompt">
+                    <i><img src="/images/prompt.png"></i>
+                    带有
+                    <i><img src="/images/mandatory.png"></i>
+                    的为必填项
+                </span>
+        </div>
+        <div class="file-right">
+            <div>
+                <label><i><img src="/images/mandatory.png"></i><em>账号名称</em></label>
+                <select ng-model="bank" ng-change="bankSel()">
+                    <option value="">请选择账号</option>
+                    <option ng-repeat="account in accounts" value={{account.id}}>{{account.name}}</option>
+                </select>
+            </div>
+            <div class="btn">
+                <button ng-click="updataSel()">浏览</button>
+                <button ng-click="upload()">上传</button>
+            </div>
+        </div>
+
+
+    </section>
+</div>
+
+

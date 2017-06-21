@@ -1,5 +1,5 @@
-var app = angular.module('levelList', ['ng-pagination']);
-app.controller('levelListCtrl',function($scope,levelSer){
+var app = angular.module('levelList', ['ng-pagination','toastr']);
+app.controller('levelListCtrl',function($scope,levelSer,toastr){
     $scope.$emit('changeCusnum', null)
     levelSer.listCustomerLevel().then(function(response){
         if(response.data.code==0){

@@ -10,7 +10,21 @@ module.exports = function(){
     router.get('/problemaccept/listProblemAccept', function*(){ //项目执行中的问题受理列表
         var $self = this;
         var page = $self.request.query;
+        page.userToken = this.cookies.get('token');
         yield (server().problemList(page)
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
+    }).get('/problemaccept/search', function*(){ //项目执行中的问题受理列表搜索
+        var $self = this;
+        var page = $self.request.query;
+        page.userToken = this.cookies.get('token');
+        yield (server().problemSearchList(page)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
                 $self.body = responseText;
@@ -60,7 +74,8 @@ module.exports = function(){
             }));
     }).get('/problemaccept/count', function*(){//获取项目执行中的问题受理总条数
         var $self = this;
-        yield (server().getProblemTotal()
+        var token ={userToken:$self.cookies.get('token')};
+        yield (server().getProblemTotal(token)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
                 $self.body = responseText;
@@ -72,6 +87,7 @@ module.exports = function(){
     }).get('/problemaccept/problem', function*(){//获取id
         var $self = this;
         var findIdData = $self.request.query;
+        findIdData.userToken = this.cookies.get('token');
         yield (server().findPrombleId(findIdData)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -84,7 +100,21 @@ module.exports = function(){
     }).get('/problemhandlingresult/list', function*(){ //确认问题处理结果列表
         var $self = this;
         var page = $self.request.query;
+        page.userToken = this.cookies.get('token');
         yield (server().confirmList(page)
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
+    }).get('/problemhandlingresult/search', function*(){ //确认问题处理结果列表搜索
+        var $self = this;
+        var page = $self.request.query;
+        page.userToken = this.cookies.get('token');
+        yield (server().confirmSearchList(page)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
                 $self.body = responseText;
@@ -134,7 +164,8 @@ module.exports = function(){
             }));
     }).get('/problemhandlingresult/count', function*(){//获取确认问题处理结果总条数
         var $self = this;
-        yield (server().getConfirmTotal()
+        var token ={userToken:$self.cookies.get('token')};
+        yield (server().getConfirmTotal(token)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
                 $self.body = responseText;
@@ -146,6 +177,7 @@ module.exports = function(){
     }).get('/problemhandlingresult/result', function*(){//获取id确认问题处理结果
         var $self = this;
         var findIdData = $self.request.query;
+        findIdData.userToken = this.cookies.get('token');
         yield (server().findConfirmId(findIdData)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -158,7 +190,21 @@ module.exports = function(){
     }).get('/involvedprocessingtask/list', function*(){ //参与处理人员的任务分配列表
         var $self = this;
         var page = $self.request.query;
+        page.userToken = this.cookies.get('token');
         yield (server().taskList(page)
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
+    }).get('/involvedprocessingtask/search', function*(){ //参与处理人员的任务分配列表
+        var $self = this;
+        var page = $self.request.query;
+        page.userToken = this.cookies.get('token');
+        yield (server().taskSearchList(page)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
                 $self.body = responseText;
@@ -208,7 +254,8 @@ module.exports = function(){
             }));
     }).get('/involvedprocessingtask/count', function*(){//获取参与处理人员的任务分配总条数
         var $self = this;
-        yield (server().getTaskTotal()
+        var token ={userToken:$self.cookies.get('token')};
+        yield (server().getTaskTotal(token)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
                 $self.body = responseText;
@@ -220,6 +267,7 @@ module.exports = function(){
     }).get('/involvedprocessingtask/task', function*(){//获取id参与处理人员的任务分配
         var $self = this;
         var findIdData = $self.request.query;
+        findIdData.userToken = this.cookies.get('token');
         yield (server().findTaskId(findIdData)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -229,10 +277,91 @@ module.exports = function(){
                 $self.body=error.error;
                 console.error(error.error);
             }));
-    }).get('/collect/summary', function*(){ //汇总项目执行中的问题受理及处理结果
+    }).get('/problemhandlingresult/collect', function*(){ //汇总项目执行中的问题受理及处理结果
         var $self = this;
-        var page = $self.request.query;
-        yield (server().summaryList(page)
+        var summaryData = $self.request.query.areas;
+        summaryData.userToken = this.cookies.get('token');
+        yield (server().collectList(summaryData)
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
+    }).get('/problemhandlingresult/area', function*(){//获取所有地区
+        var $self = this;
+        var token ={userToken:$self.cookies.get('token')};
+        yield (server().getAllArea(token)
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
+    }).get('/user/logout', function*(next){
+        var url = this.request.query;
+        this.cookies.set("absUrl",url.absurl);
+        this.body = {
+            code:0,
+            msg:"重定向"
+        };
+    }).get('/listSetting', function*(){
+        var $self = this;
+        var setting = this.request.query;
+        setting.userToken = $self.cookies.get('token');
+        yield (server().listSetting(setting)
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
+    }).get('/countSetting', function*(){
+        var $self = this;
+        yield (server().countSetting()
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
+    }).get('/getpermit', function*(){
+        var $self = this;
+        var getId = $self.request.query;
+        yield (server().getpermit(getId)
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
+    }).get('/getListpermit', function*(){
+        var $self = this;
+        var listPermit = $self.request.query;
+        yield (server().getListpermit(listPermit)
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
+    }).post('/editSetting', function*(){
+        var $self = this;
+        var editSet = $self.request.body;
+        editSet.token = $self.cookies.get("token");
+        yield (server().editSetting(editSet)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
                 $self.body = responseText;

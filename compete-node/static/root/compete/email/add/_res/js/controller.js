@@ -1,6 +1,3 @@
-/**
- * Created by ike on 2017/4/17.
- */
 var app = angular.module('emailAdd', ['toastr']);
 app.controller('emailAddCtrl', function($scope, emailSer,$state,toastr){
 
@@ -10,7 +7,7 @@ app.controller('emailAddCtrl', function($scope, emailSer,$state,toastr){
             if(response.data.code == 0){
                 $scope.companyNames = response.data.data;
             }else if(response.data.code==403){
-                toastr.error( "请登录用户", '温馨提示');
+                toastr.error( response.data.msg , '温馨提示');
             }
         });
     };
@@ -24,8 +21,8 @@ app.controller('emailAddCtrl', function($scope, emailSer,$state,toastr){
             if(response.data.code == 0){
                 $state.go('root.compete.email.list');
                 toastr.success( "竞争对手已成功添加", '温馨提示');
-            }else if(response.data.code==403){
-                toastr.error( "请登录用户", '温馨提示');
+            }else{
+                toastr.error( response.data.msg, '温馨提示');
             }
         });
 

@@ -1,11 +1,8 @@
-/**
- * Created by ike on 2017/4/13.
- */
-var app = angular.module('settlementList', ['ng-pagination','toastr']);
-app.controller('settlementListCtrl',function($scope,settlementSer,toastr) {
+var app = angular.module('informationList', ['ng-pagination','toastr','ipCookie']);
+app.controller('informationListCtrl',function($scope,informationSer,toastr,ipCookie,$location) {
    //选择
     $scope.selectList = function(event){
-        angular.forEach($scope.settlementLists.data,function(obj){
+        angular.forEach($scope.informationLists.data,function(obj){
             obj._selectList = false
         });
         event._selectList = true;
@@ -15,7 +12,7 @@ app.controller('settlementListCtrl',function($scope,settlementSer,toastr) {
     };
     //查看更多
     $scope.moreList = function(event){
-        angular.forEach($scope.settlementLists.data,function(obj){
+        angular.forEach($scope.informationLists.data,function(obj){
             if(event.id!==obj.id){
                 obj._moreList = false
             }
@@ -27,12 +24,13 @@ app.controller('settlementListCtrl',function($scope,settlementSer,toastr) {
         var listData = {
             page:page
         }
-        settlementSer.listSettlement(listData).then(function(response){
+        informationSer.listInformation(listData).then(function(response){
             if(response.data.code==0){
-                $scope.settlementLists = response.data
-            }else{
-                toastr.error( "请求超时，请联系管理员", '温馨提示');
+                $scope.informationLists = response.data
+            }else if(response.data.code==1){
+                toastr.error( response.data.msg, '温馨提示');
             }
+
         });
     }
     $scope.abili = {
@@ -40,16 +38,16 @@ app.controller('settlementListCtrl',function($scope,settlementSer,toastr) {
         take: 10, //每页显示
         activatePage: activatePage
     };
-    settlementSer.countSettlement().then(function(response){
+    informationSer.countInformation().then(function(response){
         if(response.data.code==0){
             $scope.abili.itemsCount = response.data.data;
-        }else{
-            toastr.error( "请求超时，请联系管理员", '温馨提示');
+        }else if(response.data.code==1){
+            toastr.error( response.data.msg, '温馨提示');
         }
     });
     //删除
     $scope.$on('deletedId',function(event,delid){
-        angular.forEach($scope.settlementLists.data,function(obj){
+        angular.forEach($scope.informationLists.data,function(obj){
             if(obj.id == delid){
                 obj._delete = true
             }

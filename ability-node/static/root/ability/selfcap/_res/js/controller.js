@@ -13,6 +13,7 @@ app.controller('selfcapCtrl',function ($scope,$state) {
     $rootScope.$on('$locationChangeSuccess', function () {//url地扯改变或者刷新
         if($location.path().split('/').slice(-1)=='list'){
             $scope.menuClass = 'listMenu';
+            searchShow();
         }
     });
     //监听到父Ctrl后改变事件
@@ -73,7 +74,7 @@ app.controller('selfcapCtrl',function ($scope,$state) {
     $scope.socialList = function(){
         if($scope.idList){
             $state.go('root.ability.selfcap.socialList',{id:$scope.idList});
-            $scope.menuClass = 'socialListMenu'
+            $scope.menuClass = 'socialList?id=Menu'
         }
     };
     //个人社交删除

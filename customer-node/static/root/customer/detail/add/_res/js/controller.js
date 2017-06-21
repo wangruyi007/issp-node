@@ -1,10 +1,12 @@
-var app = angular.module('detailAdd', ['toastr']);
-app.controller('detailAddCtrl', function($scope, detailSer, $state,$location,toastr){
+var app = angular.module('detailAdd', ['toastr','ipCookie']);
+app.controller('detailAddCtrl', function($scope, detailSer, $state,$location,toastr,ipCookie){
 
 
     detailSer.getCusNum().then(function(response){
         if(response.data.code==0){
             $scope.cusnums = response.data.data
+        }else{
+            toastr.error( response.data.msg, '温馨提示');
         }
     });
 
@@ -14,6 +16,10 @@ app.controller('detailAddCtrl', function($scope, detailSer, $state,$location,toa
         detailSer.getCustomers(cusinfo).then(function(response){
             if(response.data.code==0){
                 $scope.customerInfo = response.data.data;
+            }else if(response.data.code==1){
+                toastr.error( response.data.msg, '温馨提示');
+            }else{
+                toastr.error( response.data.msg, '温馨提示');
             }
 
         })
@@ -26,6 +32,8 @@ app.controller('detailAddCtrl', function($scope, detailSer, $state,$location,toa
             detailSer.getCustomers(changeCus).then(function(response){
                 if(response.data.code==0){
                     $scope.customerInfo = response.data.data;
+                }else if(response.data.code==1){
+                    toastr.error( response.data.msg, '温馨提示');
                 }
 
             })
@@ -57,8 +65,8 @@ app.controller('detailAddCtrl', function($scope, detailSer, $state,$location,toa
             if(response.data.code == 0){
                 $state.go('root.customer.detail.list');
                 toastr.success( "客户信息已成功添加", '温馨提示');
-            }else if(response.data.code==403){
-                toastr.error( "请登录用户", '温馨提示');
+            }else{
+                toastr.error( response.data.msg, '温馨提示');
             }
         })
 

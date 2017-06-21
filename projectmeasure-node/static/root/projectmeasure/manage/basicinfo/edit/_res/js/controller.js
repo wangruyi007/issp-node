@@ -1,0 +1,26 @@
+var app = angular.module('basicinfoEdit', ['toastr']);
+app.controller('EditCtrl', function($scope, basicinfoSer,$state,toastr,$stateParams){
+    var companyId = {id : $stateParams.id};
+    //获取值
+    basicinfoSer.getOneById1(companyId).then(function(response){
+        if(response.data.code==0){
+            $scope.data = response.data.data;
+        }
+    });
+    //点击提交
+    $scope.EditFun =function(){
+        $scope.data.startTime = angular.element('.startTiming').val();//开始时间
+        var data = $scope.data;
+        data.id = companyId.id;;
+        basicinfoSer.marketserveapplyEdit1(data).then(function(response){
+            if(response.data.code == 0){
+                $state.go('root.projectmeasure.manage.basicinfo.list');
+                toastr.success('温馨提示',"此次编辑成功");
+            }else{
+                toastr.error( response.data.msg, '温馨提示');
+            }
+        })
+    }
+    
+});
+   

@@ -1,0 +1,69 @@
+<div class="content-input " verify-scope="tipStyle: 1">
+    <div class="input-list">
+        <section>
+            <ul>
+                <input type="hidden" value="{{postsData.serialNumber}}" >
+                <input type="hidden" value="{{postsData.id}}" >
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>角度</em></label>
+                    <select class="sele" ng-model="angleId" ng-verify="{}">
+                        <option value="">请选择</option>
+                        <option ng-repeat="angle in angles" value="{{angle.id}}">{{angle.name}}</option>
+                    </select>
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>维度</em></label>
+                    <select class="sele" ng-model="dimensionId" ng-verify="{}">
+                        <option value="">请选择</option>
+                        <option ng-repeat="dimension in dimensions" value="{{dimension.id}}">{{dimension.name}}</option>
+                    </select>
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>分类</em></label>
+                    <select class="sele" ng-model="classifyId" ng-verify="{}">
+                        <option value="">请选择</option>
+                        <option ng-repeat="classify in classifys" value="{{classify.id}}">{{classify.name}}</option>
+                    </select>
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>体现类别</em></label>
+                    <select class="sele" ng-model="reflectId" ng-verify="{}">
+                        <option value="">请选择</option>
+                        <option ng-repeat="reflect in reflects " value="{{reflect.id}}">{{reflect.name}}</option>
+                    </select>
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>操作类型</em></label>
+                    <select class="sele" ng-model="operateId" ng-verify="{}">
+                        <option value="">请选择</option>
+                        <option ng-repeat="operate in operates" value="{{operate.id}}">{{operate.name}}</option>
+                    </select>
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>工作描述</em></label>
+                    <input type="text"   ng-verify="{}" ng-model="description" >
+                </li>
+                <li>
+                    <label><em>对应功能</em></label>
+                    <input type="text"  ng-model="function" >
+                </li>
+                <li>
+                    <label><em>工作时间/频率</em></label>
+                    <input type="text"  onClick="laydate({istime: true, format: 'YYYY-MM-DD'})" class="add_image frequency">
+                </li>
+                <li>
+                    <label><em>工作时间节点</em></label>
+                    <input type="text" onClick="laydate({istime: true, format: 'YYYY-MM-DD'})" class="add_image timeNode" >
+                </li>
+
+                <li >
+                    <label><em>输出结果</em></label> <input type="text" ng-model="outcome">
+                </li>
+            </ul>
+        </section>
+    </div>
+    <p class="dataBottom">
+        <span class="imPrompt"><i><img src="/images/prompt.png"></i>带有<i><img src="/images/mandatory.png"></i>的为必填项</span>
+        <button ng-verify="{control:'myform'}" ng-click="explainAddFun()">提交</button>
+    </p>
+</div>

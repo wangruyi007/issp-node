@@ -22,15 +22,16 @@ app.controller('typeCtrl',function ($scope,$state) {
     });
 
     $scope.delete = function(){
-        console.log($scope.idListd);
         if($scope.idListd){
             $state.go('root.developProgress.other.businessType.list.delete[12]',{id:$scope.idListd});
+            $scope.menuClass = 'deleteMenu'
         }
     }
     //冻结
     $scope.congeal = function(){
         if($scope.idListd){
             $state.go('root.developProgress.other.businessType.list.congeal[12]',{id:$scope.idListd});
+            $scope.menuClass = 'congealMenu'
         }
     };
     $scope.edit = function(){

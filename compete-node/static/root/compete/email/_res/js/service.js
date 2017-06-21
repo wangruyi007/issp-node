@@ -10,6 +10,7 @@ app.factory('emailSer',function ($http) {
         listNameType:listNameType,
         editEmail:editEmail,
         getFourById:getFourById,
+        allCollect:allCollect
     };
     //列表
     function  listAbilityEmail(data) {
@@ -19,8 +20,8 @@ app.factory('emailSer',function ($http) {
     }
     //分页
     function countEmail(){
-        return $http.get('/countEmail/count')
-    }
+        return $http.get('/compete/countEmail/count')
+    };
     //冻结
     function congealEmail(data){
         return $http.post('/compete/congealEmail/congeal',data)
@@ -48,5 +49,9 @@ app.factory('emailSer',function ($http) {
     //id编辑
     function getFourById(data) {
         return $http.post('/compete/getFourById',data)
+    }
+    //汇总
+    function  allCollect() {
+        return $http.get('/compete/listAbilityEmail/collect')
     }
 });

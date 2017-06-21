@@ -5,7 +5,7 @@ app.controller('confirmDeleteCtrl',function($scope,confirmSer,toastr,$stateParam
 
         var data = {
             id :$stateParams.id
-        }
+        };
 
         confirmSer.deleteResult(data).then(function(response){
             if(response.data.code==0){
@@ -13,10 +13,10 @@ app.controller('confirmDeleteCtrl',function($scope,confirmSer,toastr,$stateParam
                 $state.go('root.projectProcessed.confirmProblem.list');
                 $scope.deledId = $stateParams.id;
                 //向父Ctrl传递事件
-                $scope.$emit('deletedId', $scope.deledId)
-                $scope.$emit('deletedId', null)
-            }else if(response.data.code==403){
-                toastr.error( "请登录用户", '温馨提示');
+                $scope.$emit('deletedId', $scope.deledId);
+                $scope.$emit('changeId', null);
+            }else {
+                toastr.error( response.data.msg, '温馨提示');
             }
         })
     }

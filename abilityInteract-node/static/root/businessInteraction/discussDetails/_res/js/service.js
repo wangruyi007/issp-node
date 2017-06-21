@@ -11,7 +11,6 @@ app.factory('discussSer',function ($http) {
     function discussList(data) {
         return $http.get('/talkdetail/listTalkDetail',{
             params: data
-
         })
     }
 

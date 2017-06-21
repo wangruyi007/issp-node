@@ -1,5 +1,5 @@
-var app = angular.module('levelAdd', ['toastr']);
-app.controller('levelAddCtrl', function($scope, levelSer, $state, toastr){
+var app = angular.module('levelAdd', ['toastr','ipCookie']);
+app.controller('levelAddCtrl', function($scope, levelSer, $state, toastr,ipCookie,$location){
 
     $scope.addLevel = function(){
         var vm = $scope;
@@ -12,8 +12,6 @@ app.controller('levelAddCtrl', function($scope, levelSer, $state, toastr){
             if(response.data.code == 0){
                 $state.go('root.customer.level.list');
                 toastr.success("已成功添加", '温馨提示');
-            } else if(response.data.code == 403){
-                toastr.error("请登录用户", '温馨提示');
             }
         });
 

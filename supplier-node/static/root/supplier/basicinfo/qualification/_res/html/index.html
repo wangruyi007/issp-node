@@ -1,0 +1,43 @@
+<div ui-view="content">
+<div class="content-tab winning">
+    <ul class="table table-top">
+        <li class="list-head">
+            <span></span>
+            <span>序号</span>
+            <span>证书名称</span>
+            <span>证书编号</span>
+            <span>有效期限</span>
+            <span>颁发单位</span>
+            <span>资质等级</span>
+            <span>备注</span>
+            <span class="circle-all">
+                <a href="javascript:void(0)" ng-click="qualiEdit()">编辑</a>
+            </span>
+            <span class="circle-all"><a href="javascript:void(0)" ng-click="qualiDelete()">删除</a></span>
+        </li>
+        <li class="list-all" ng-repeat="listQualifis in qualificationBasics.data" style="display: {{listQualifis._delete?'none':'block'}};">
+            <section>
+                <div  class="list-text {{listQualifis._selectList?'selectList':''}}" ng-click="selectList(listQualifis)">
+                    <p>{{$index+1}}</p>
+                    <p>{{listQualifis.serialNumber}}</p>
+                    <p>{{listQualifis.name}}</p>
+                    <p>{{listQualifis.certificateNumber}}</p>
+                    <p>{{listQualifis.validityPeriod}}</p>
+                    <p>{{listQualifis.promulgate}}</p>
+                    <p>{{listQualifis.aptitude}}</p>
+                    <p>{{listQualifis.remark}}</p>
+<<<<<<< Updated upstream
+                    <p></p>
+=======
+>>>>>>> Stashed changes
+                </div>
+            </section>
+        </li>
+    </ul>
+   </div>
+ </div>
+<div ui-view="modal"></div>
+
+
+
+

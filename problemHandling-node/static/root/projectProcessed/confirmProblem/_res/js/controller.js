@@ -7,7 +7,7 @@ app.controller('confirmCtrl',function ($scope,$state) {
     if ($state.current.url == '/confirmProblem') {//默认加载列表
         $state.go('root.projectProcessed.confirmProblem.list')
     }
-
+    $scope.$emit('isVi',true);//判断是否出现搜索按钮
 }).controller('confirmMenuCtrl',function($scope,$state,$rootScope,$location){
     var urlName = $state.current.url.split('/')[1].split('[')[0];
     $scope.menuClass = urlName + "Menu";
@@ -24,15 +24,19 @@ app.controller('confirmCtrl',function ($scope,$state) {
     $scope.delete = function(){
         if($scope.idListd){
             $state.go('root.projectProcessed.confirmProblem.list.delete[12]',{id:$scope.idListd});
+            $scope.menuClass = 'deleteMenu'
         }
-    }
+    };
 
     $scope.edit = function(){
         if($scope.idListd){
             $state.go('root.projectProcessed.confirmProblem.edit[12]',{id:$scope.idListd});
             $scope.menuClass = 'editMenu'
         }
-    }
+    };
+    $scope.summary = function(){
+        $scope.menuClass = 'summaryMenu'
+    };
     $scope.list = function(){
         $scope.menuClass = 'listMenu'
     };
@@ -46,6 +50,9 @@ app.filter('cover', function(){
     return function (val) {
         var result;
         switch(val){
+            case "FINANCIALDEPARTMENTBUDGET":
+                result = "财务部门-预算";
+                break;
             case "FINANCIALDEPARTMENTACCOUNT":
                 result = "财务部门-账务";
                 break;
@@ -75,6 +82,9 @@ app.filter('cover', function(){
                 break;
             case "BUSINESSDEVELOPPROGRESS":
                 result = "商务发展部-进度管理";
+                break;
+            case "COMPLETE":
+                result = "完成";
                 break;
             case "UNFINISHED":
                 result = "未完成";

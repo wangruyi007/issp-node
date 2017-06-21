@@ -8,9 +8,9 @@ module.exports = function(){
         var options = {
             method : 'GET',
             timeout : 3000,
-            uri : config()['market']['rurl'] + '/demandanalysis/v1/maps?limit=10&page='+argvs.page,
+            uri : config()['market']['rurl'] + `/demandanalysis/v1/maps?limit=10&page=${argvs.page}`,
             headers : {
-                // token : token
+                userToken : argvs.userToken
             }
         };
         return request(options);
@@ -20,10 +20,10 @@ module.exports = function(){
         var options = {
             method : 'POST',
             timeout : 3000,
-            uri : config()['market']['rurl'] + '/demandanalysis/v1/save',
+            uri : config()['market']['rurl'] + `/demandanalysis/v1/save`,
             form:argvs,
             headers : {
-                // token : token
+                userToken : argvs.userToken
             }
         };
         return request(options);
@@ -33,8 +33,11 @@ module.exports = function(){
         var options = {
             method : 'PUT',
             timeout : 3000,
-            uri : config()['market']['rurl'] + '/demandanalysis/v1/udpate/' + argvs.id,
-            form:argvs
+            uri : config()['market']['rurl'] + `/demandanalysis/v1/udpate/${argvs.id}`,
+            form:argvs,
+            headers : {
+                userToken : argvs.userToken
+            }
         };
         return request(options);
     };
@@ -43,7 +46,10 @@ module.exports = function(){
         var options = {
             method : 'GET',
             timeout : 3000,
-            uri : config()['market']['rurl'] + '/demandanalysis/v1/findById/' + argvs.demandId
+            uri : config()['market']['rurl'] + `/demandanalysis/v1/findById/${argvs.demandId}`,
+            headers : {
+                userToken : argvs.userToken
+            }
         };
         return request(options);
     };
@@ -52,16 +58,22 @@ module.exports = function(){
         var options = {
             method : 'DELETE',
             timeout : 3000,
-            uri : config()['market']['rurl'] + '/demandanalysis/v1/delete/' + argvs.id
+            uri : config()['market']['rurl'] + `/demandanalysis/v1/delete/${argvs.id}`,
+            headers : {
+                userToken : argvs.userToken
+            }
         };
         return request(options);
     };
     //获取总条数
-    this.getAnalysisTotal = function(){
+    this.getAnalysisTotal = function(argvs){
         var options = {
             method : 'GET',
             timeout : 3000,
-            uri : config()['market']['rurl'] + '/demandanalysis/v1/getTotal'
+            uri : config()['market']['rurl'] + '/demandanalysis/v1/getTotal',
+            headers : {
+                userToken : argvs.userToken
+            }
         };
         return request(options);
     };
@@ -70,9 +82,9 @@ module.exports = function(){
         var options = {
             method : 'GET',
             timeout : 3000,
-            uri : config()['market']['rurl'] + '/targetinformation/v1/maps?limit=10&page='+argvs.page,
+            uri : config()['market']['rurl'] + `/targetinformation/v1/maps?limit=10&page=${argvs.page}`,
             headers : {
-                // token : token
+                userToken : argvs.userToken
             }
         };
         return request(options);
@@ -82,10 +94,10 @@ module.exports = function(){
         var options = {
             method : 'POST',
             timeout : 3000,
-            uri : config()['market']['rurl'] + '/targetinformation/v1/save',
+            uri : config()['market']['rurl'] + `/targetinformation/v1/save`,
             form:argvs,
             headers : {
-                // token : token
+                userToken : argvs.userToken
             }
         };
         return request(options);
@@ -95,8 +107,11 @@ module.exports = function(){
         var options = {
             method : 'PUT',
             timeout : 3000,
-            uri : config()['market']['rurl'] + '/targetinformation/v1/update/' + argvs.id,
-            form:argvs
+            uri : config()['market']['rurl'] + `/targetinformation/v1/update/${argvs.id}`,
+            form:argvs,
+            headers : {
+                userToken : argvs.userToken
+            }
         };
         return request(options);
     };
@@ -105,7 +120,10 @@ module.exports = function(){
         var options = {
             method : 'GET',
             timeout : 3000,
-            uri : config()['market']['rurl'] + '/targetinformation/v1/findById/' + argvs.targetId
+            uri : config()['market']['rurl'] + `/targetinformation/v1/findById/${argvs.targetId}`,
+            headers : {
+                userToken : argvs.userToken
+            }
         };
         return request(options);
     };
@@ -114,16 +132,22 @@ module.exports = function(){
         var options = {
             method : 'DELETE',
             timeout : 3000,
-            uri : config()['market']['rurl'] + '/targetinformation/v1/delete/' + argvs.id
+            uri : config()['market']['rurl'] + `/targetinformation/v1/delete/${argvs.id}`,
+            headers : {
+                userToken : argvs.userToken
+            }
         };
         return request(options);
     };
     //获取总条数
-    this.getTargetTotal = function(){
+    this.getTargetTotal = function(argvs){
         var options = {
             method : 'GET',
             timeout : 3000,
-            uri : config()['market']['rurl'] + '/targetinformation/v1/getTotal'
+            uri : config()['market']['rurl'] + '/targetinformation/v1/getTotal',
+            headers : {
+                userToken : argvs.userToken
+            }
         };
         return request(options);
     };
@@ -133,9 +157,9 @@ module.exports = function(){
         var options = {
             method : 'GET',
             timeout : 3000,
-            uri : config()['market']['rurl'] + '/marketchannel/v1/maps?limit=10&page='+argvs.page,
+            uri : config()['market']['rurl'] + `/marketchannel/v1/maps?limit=10&page=${argvs.page}`,
             headers : {
-                // token : token
+                userToken : argvs.userToken
             }
         };
         return request(options);
@@ -145,10 +169,10 @@ module.exports = function(){
         var options = {
             method : 'POST',
             timeout : 3000,
-            uri : config()['market']['rurl'] + '/marketchannel/v1/save',
+            uri : config()['market']['rurl'] + `/marketchannel/v1/save`,
             form:argvs,
             headers : {
-                // token : token
+                userToken : argvs.userToken
             }
         };
         return request(options);
@@ -158,8 +182,11 @@ module.exports = function(){
         var options = {
             method : 'PUT',
             timeout : 3000,
-            uri : config()['market']['rurl'] + '/marketchannel/v1/update/' + argvs.id,
-            form:argvs
+            uri : config()['market']['rurl'] + `/marketchannel/v1/update/${argvs.id}`,
+            form:argvs,
+            headers : {
+                userToken : argvs.userToken
+            }
         };
         return request(options);
     };
@@ -168,7 +195,10 @@ module.exports = function(){
         var options = {
             method : 'GET',
             timeout : 3000,
-            uri : config()['market']['rurl'] + '/marketchannel/v1/findById/' + argvs.channelId
+            uri : config()['market']['rurl'] + `/marketchannel/v1/findById/${argvs.channelId}`,
+            headers : {
+                userToken : argvs.userToken
+            }
         };
         return request(options);
     };
@@ -177,16 +207,22 @@ module.exports = function(){
         var options = {
             method : 'DELETE',
             timeout : 3000,
-            uri : config()['market']['rurl'] + '/marketchannel/v1/delete/' + argvs.id
+            uri : config()['market']['rurl'] + `/marketchannel/v1/delete/${argvs.id}`,
+            headers : {
+                userToken : argvs.userToken
+            }
         };
         return request(options);
     };
     //获取总条数
-    this.getChannelTotal = function(){
+    this.getChannelTotal = function(argvs){
         var options = {
             method : 'GET',
             timeout : 3000,
-            uri : config()['market']['rurl'] + '/marketchannel/v1/getTotal'
+            uri : config()['market']['rurl'] + '/marketchannel/v1/getTotal',
+            headers : {
+                userToken : argvs.userToken
+            }
         };
         return request(options);
     };
@@ -195,9 +231,9 @@ module.exports = function(){
         var options = {
             method : 'GET',
             timeout : 3000,
-            uri : config()['market']['rurl'] + '/marketresearch/v1/maps?limit=10&page='+argvs.page,
+            uri : config()['market']['rurl'] + `/marketresearch/v1/maps?limit=10&page=${argvs.page}`,
             headers : {
-                // token : token
+                userToken : argvs.userToken
             }
         };
         return request(options);
@@ -207,10 +243,10 @@ module.exports = function(){
         var options = {
             method : 'POST',
             timeout : 3000,
-            uri : config()['market']['rurl'] + '/marketresearch/v1/save',
+            uri : config()['market']['rurl'] + `/marketresearch/v1/save`,
             form:argvs,
             headers : {
-                // token : token
+                userToken : argvs.userToken
             }
         };
         return request(options);
@@ -220,8 +256,11 @@ module.exports = function(){
         var options = {
             method : 'PUT',
             timeout : 3000,
-            uri : config()['market']['rurl'] + '/marketresearch/v1/update/' + argvs.id,
-            form:argvs
+            uri : config()['market']['rurl'] + `/marketresearch/v1/update/${argvs.id}`,
+            form:argvs,
+            headers : {
+                userToken : argvs.userToken
+            }
         };
         return request(options);
     };
@@ -230,7 +269,10 @@ module.exports = function(){
         var options = {
             method : 'GET',
             timeout : 3000,
-            uri : config()['market']['rurl'] + '/marketresearch/v1/findById/' + argvs.channelId
+            uri : config()['market']['rurl'] + `/marketresearch/v1/findById/${argvs.channelId}`,
+            headers : {
+                userToken : argvs.userToken
+            }
         };
         return request(options);
     };
@@ -239,16 +281,22 @@ module.exports = function(){
         var options = {
             method : 'DELETE',
             timeout : 3000,
-            uri : config()['market']['rurl'] + '/marketresearch/v1/delete/' + argvs.id
+            uri : config()['market']['rurl'] + `/marketresearch/v1/delete/${argvs.id}`,
+            headers : {
+                userToken : argvs.userToken
+            }
         };
         return request(options);
     };
     //获取总条数
-    this.getResearchTotal = function(){
+    this.getResearchTotal = function(argvs){
         var options = {
             method : 'GET',
             timeout : 3000,
-            uri : config()['market']['rurl'] + '/marketresearch/v1/getTotal'
+            uri : config()['market']['rurl'] + '/marketresearch/v1/getTotal',
+            headers : {
+                userToken : argvs.userToken
+            }
         };
         return request(options);
     };
@@ -257,9 +305,9 @@ module.exports = function(){
         var options = {
             method : 'GET',
             timeout : 3000,
-            uri : config()['market']['rurl'] + '/marketmeasure/v1/maps?limit=10&page='+argvs.page,
+            uri : config()['market']['rurl'] + `/marketmeasure/v1/maps?limit=10&page=${argvs.page}`,
             headers : {
-                // token : token
+                userToken : argvs.userToken
             }
         };
         return request(options);
@@ -269,10 +317,10 @@ module.exports = function(){
         var options = {
             method : 'POST',
             timeout : 3000,
-            uri : config()['market']['rurl'] + '/marketmeasure/v1/save',
+            uri : config()['market']['rurl'] + `/marketmeasure/v1/save`,
             form:argvs,
             headers : {
-                // token : token
+                userToken : argvs.userToken
             }
         };
         return request(options);
@@ -282,8 +330,11 @@ module.exports = function(){
         var options = {
             method : 'PUT',
             timeout : 3000,
-            uri : config()['market']['rurl'] + '/marketmeasure/v1/update/' + argvs.id,
-            form:argvs
+            uri : config()['market']['rurl'] + `/marketmeasure/v1/update/${argvs.id}`,
+            form:argvs,
+            headers : {
+                userToken : argvs.userToken
+            }
         };
         return request(options);
     };
@@ -292,7 +343,10 @@ module.exports = function(){
         var options = {
             method : 'GET',
             timeout : 3000,
-            uri : config()['market']['rurl'] + '/marketmeasure/v1/findById/' + argvs.measuredId
+            uri : config()['market']['rurl'] + `/marketmeasure/v1/findById/${argvs.measuredId}`,
+            headers : {
+                userToken : argvs.userToken
+            }
         };
         return request(options);
     };
@@ -301,16 +355,22 @@ module.exports = function(){
         var options = {
             method : 'DELETE',
             timeout : 3000,
-            uri : config()['market']['rurl'] + '/marketmeasure/v1/delete/' + argvs.id
+            uri : config()['market']['rurl'] + `/marketmeasure/v1/delete/${argvs.id}`,
+            headers : {
+                userToken : argvs.userToken
+            }
         };
         return request(options);
     };
     //市场测算获取总条数
-    this.getMeasureTotal = function(){
+    this.getMeasureTotal = function(argvs){
         var options = {
             method : 'GET',
             timeout : 3000,
-            uri : config()['market']['rurl'] + '/marketmeasure/v1/getTotal'
+            uri : config()['market']['rurl'] + '/marketmeasure/v1/getTotal',
+            headers : {
+                userToken : argvs.userToken
+            }
         };
         return request(options);
     };

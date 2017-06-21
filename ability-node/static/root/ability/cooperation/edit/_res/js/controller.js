@@ -1,6 +1,3 @@
-/**
- * Created by ike on 2017/4/18.
- */
 var app = angular.module('cooperationEdit', ['toastr']);
 app.controller('cooperationEditCtrl', function($scope, cooperationSer,$state,toastr,$stateParams){
     var coopcapId = {id : $stateParams.id};
@@ -8,6 +5,8 @@ app.controller('cooperationEditCtrl', function($scope, cooperationSer,$state,toa
     cooperationSer.getThreeById(coopcapId).then(function(response){
         if(response.data.code==0){
             $scope.editInfo = response.data.data;
+        }else{
+            toastr.error(response.data.msg, '温馨提示');
         }
     });
     $scope.coopcapIdEditFun = function(){
@@ -25,10 +24,10 @@ app.controller('cooperationEditCtrl', function($scope, cooperationSer,$state,toa
             if(response.data.code == 0){
                 $state.go('root.ability.cooperation.list');
                 toastr.success(vm.editInfo.companyName+ "已成功编辑", '温馨提示');
-            }else if(response.data.code==403){
-                toastr.error( "请登录用户", '温馨提示');
+            }else{
+                toastr.error(response.data.msg, '温馨提示');
             }
-        });
+      });
     };
     //可手填的下拉框
     $scope.changeSelect=function(){

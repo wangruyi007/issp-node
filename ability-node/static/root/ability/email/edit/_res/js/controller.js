@@ -1,6 +1,3 @@
-/**
- * Created by ike on 2017/4/18.
- */
 var app = angular.module('emailEdit', ['toastr']);
 app.controller('emailEditCtrl', function($scope, emailSer,$state,toastr,$stateParams){
     var emaiId = {id : $stateParams.id};
@@ -13,8 +10,8 @@ app.controller('emailEditCtrl', function($scope, emailSer,$state,toastr,$statePa
                 emailSer.listNameType(type).then(function(response){
                     if(response.data.code == 0){
                         $scope.companyNames = response.data.data;
-                    }else if(response.data.code==403){
-                        toastr.error( "请登录用户", '温馨提示');
+                    }else{
+                        toastr.error(response.data.msg, '温馨提示');
                     }
                 });
             };
@@ -37,8 +34,8 @@ app.controller('emailEditCtrl', function($scope, emailSer,$state,toastr,$statePa
             if(response.data.code == 0){
                 $state.go('root.ability.email.list');
                 toastr.success(vm.editInfo.type+ "已成功编辑", '温馨提示');
-            }else if(response.data.code==403){
-                toastr.error( "请登录用户", '温馨提示');
+            }else{
+                toastr.error(response.data.msg, '温馨提示');
             }
         });
     };

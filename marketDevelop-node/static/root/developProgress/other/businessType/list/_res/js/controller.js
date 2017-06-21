@@ -1,14 +1,15 @@
 var app = angular.module('businessTypeList', ['ng-pagination','toastr']);
 app.controller('typeListCtrl',function($scope,businessTypeSer,toastr){
+    $scope.$emit('changeId', null);
     function activatePage(page) {
         var listData = {
             page:page
-        }
+        };
         businessTypeSer.businessTypeList(listData).then(function(response){
             if(response.data.code==0){
                 $scope.businessTypeLists = response.data.data
             }else{
-                toastr.error( "请求超时，请联系管理员", '温馨提示');
+                toastr.error( response.data.msg, '温馨提示');
             }
         });
     }
@@ -45,16 +46,16 @@ app.controller('typeListCtrl',function($scope,businessTypeSer,toastr){
     $scope.thaw = function(event){
         var data = {
             id :event.id
-        }
+        };
         businessTypeSer.thawType(data).then(function(response){
             if(response.data.code==0){
                 event.status = "THAW"
-            }else if(response.data.code==403){
-                toastr.error( "请登录用户", '温馨提示');
+            }else {
+                toastr.error( response.data.msg, '温馨提示');
             }
 
         })
-    }
+    };
 //分页
     $scope.custom = {
         itemsCount: 2, //总条数
@@ -66,7 +67,7 @@ app.controller('typeListCtrl',function($scope,businessTypeSer,toastr){
         if(response.data.code==0){
             $scope.custom.itemsCount = response.data.data;
         }else{
-            toastr.error( "请求超时，请联系管理员", '温馨提示');
+            toastr.error( response.data.msg, '温馨提示');
         }
     })
 

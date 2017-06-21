@@ -86,7 +86,6 @@ a {
 a:hover {
   text-decoration: none;
 }
-
 svg {
   width: 1.375rem;
   height: 1.375rem;
@@ -98,8 +97,77 @@ body {
   display: -ms-flexbox;
   display: flex;
 }
+/*菜单*/
+.change-angle{
+  transform:rotate(270deg);
+  -ms-transform:rotate(270deg); 	/* IE 9 */
+  -moz-transform:rotate(270deg); 	/* Firefox */
+  -webkit-transform:rotate(270deg); /* Safari 和 Chrome */
+  -o-transform:rotate(270deg); 	/* Opera */
+}
+/*搜索*/
+.search-all{
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+  -ms-flex-pack: end;
+  justify-content: flex-end;
+  padding-right: 20px;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  font-size: 12px;
+}
+.search-btns{
+  width: 19px;
+  height: 18px;
+  background: url("/images/search.png") no-repeat center;
+  margin-right: 18px;
+}
+.search-big{
+  width: 480px;
+  height: 36px;
+  line-height: 36px;
+  border-radius: 10px;
+  background-color: white;
+  border: 1px solid #808284;
+  margin-top: 20px;
+  margin-left: 20px;
+  margin-bottom: 20px;
+  display: none;
+}
+.salc{
+  color: #252525;
+  padding-left: 28px;
+  display: inline-block;
+  width: 150px;
+  height: 25px;
+  border-right: 1px solid #bababa;
+  border-left: 0 ;
+  border-top: 0 ;
+  border-bottom: 0 ;
+  background: url("/images/search1.png") no-repeat right 15px center;
+  appearance:none;
+  -moz-appearance:none;
+  -webkit-appearance:none;
+}
+.salc option{
+  box-shadow:0 0 10px rgba(0, 204, 204, .5);
+  color:#758c94;
+  text-align: center;
+}
+.search-big a{
+  float: right;
+  margin-right: 10px;
+}
+.search-big input{
+  width: 50%;
+}
+/*搜索*/
+
 .com-table{
-  margin-top: 97px !important;
+  /*margin-top: 97px !important;*/
 }
 .left-section {
   width: 200px;
@@ -279,7 +347,6 @@ body {
   border-radius: 5px;
   border: 1px solid #bfbfbf;
 }
-
 .right-section .top-content .top-fixed .top .search {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -305,19 +372,37 @@ body {
   height: 37px;
   background: url("/images/searchbg.png") no-repeat;
   color: #fff;
-  padding-left: 18px;
+  position:relative;
+  text-align:center;
+  margin-right:120px;}
+
+.right-section .top-content .top-fixed .top .search .selected:hover .usermenu{
+  display:flex;
+}
+.right-section .top-content .top-fixed .top .search .selected a{
+  color:#fff;
 }
 
-.right-section .top-content .top-fixed .top .search .selected option {
-  color: #666;
+.right-section .top-content .top-fixed .top .search .selected .username{
+  line-height:37px;
 }
 
-.right-section .top-content .top-fixed .top .search .arrow {
-  width: 9px;
-  height: 7px;
-  background: url("/images/down.png") no-repeat center;
-  cursor: pointer;
-  margin-left: -20px;
+.right-section .top-content .top-fixed .top .search .selected .usermenu{
+  display:none;
+  flex-direction:column;
+  position:absolute;
+  left:1px;
+  width:134px;
+  border:1px solid #ccc;
+  background:#fff;
+}
+.right-section .top-content .top-fixed .top .search .selected .usermenu a{
+  line-height:30px;
+  color:#00c6ff;
+}
+.right-section .top-content .top-fixed .top .search .selected .usermenu a:hover{
+  background:#00c6ff;
+  color:#fff;
 }
 
 .right-section .top-content .content .menu {
@@ -1024,11 +1109,19 @@ body {
   background: #fff;
   padding: 0 30px;
 }
+.com-search3 button{
+  width: 65px;
+  height: 30px;
+  color: white;
+  background-color: #00c6ff;
+  border-radius: 5px;
+  margin-top:27px;
+}
 .com-search {
+  width: 100%;
   position: fixed;
   top:160px;
   z-index: 999;
-  width: 950px;
   line-height: 80px;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -1036,13 +1129,21 @@ body {
   background: #fff;
   padding: 0 30px;
 }
+.com-search button{
+  width: 65px;
+  height: 30px;
+  color: white;
+  background-color: #00c6ff;
+  border-radius: 5px;
+  margin-top:27px;
+}
 .com-search4{
   display: inline-block;
   width: 14%;
 }
 .com-search4 select{
   border: 1px solid #1aafea;
-  width: 30%;
+  width: 40%;
   height: 36px;
   background: url(/images/down_b.png) no-repeat right 10px center;
   padding-left: 15px;
@@ -1051,7 +1152,7 @@ body {
   margin-left: 14px;
 }
 .com-search3 .com-search4 input{
-  width: 30%;
+  width: 40%;
   padding-left: 15px;
   padding-right: 15px;
   height: 36px;
@@ -1061,25 +1162,23 @@ body {
 }
 .com-search2{
   display: inline-block;
-  width: 100%;
+  width: 20%;
 }
 .com-search2 select{
   border: 1px solid #1aafea;
-  width: 68%;
+  width: 58%;
   height: 36px;
   background: url(/images/down_b.png) no-repeat right 10px center;
   padding-left: 15px;
   padding-right: 15px;
   border-radius: 5px;
-  margin-left: 14px;
 }
 .com-search .com-search2 input{
-  width: 68%;
+  width: 58%;
   padding-left: 15px;
   padding-right: 15px;
   height: 36px;
   border-radius: 5px;
-  margin-left: 14px;
   border: 1px solid #1aafea;
 }
 .com-search a {
@@ -1179,7 +1278,9 @@ body {
 .interval .required input, .interval .required .summary .sele, .summary .interval .required .sele, .interval .required .notice .notice-all .select-left .select-object .select-sele .sele, .notice .notice-all .select-left .select-object .select-sele .interval .required .sele, .interval .required .com-search .com-search2 select, .com-search .com-search2 .interval .required select {
   border: 1px solid #1aafea;
 }
-
+.required input{
+  border: 1px solid #1aafea !important;
+}
 .interval .required .sele {
   border: 1px solid #1aafea;
 }
@@ -1237,18 +1338,17 @@ body {
 }
 /*可手填的下拉框*/
 .right-section .top-content .content .content-wrap .content-input .input-list section ul li .inputDom{
-  width: 47%;
+  width: 44%;
   position: absolute;
-  margin-left: 59px;
+  margin-left: 62px;
   border: 0!important;
   height: 30px;
-  padding-left: 10px !important;
 }
 .right-section .top-content .content .content-wrap .content-input .input-list section ul li .inputDom:hover{
   box-shadow: 0 0 3px white !important;
 }
 
-.right-section .top-content .content .content-wrap .content-input .input-list section ul li.required input {
+.right-section .top-content .content .content-wrap .content-input .input-list section ul li. required input {
   border: 1px solid #1aafea;
 }
 
@@ -1297,8 +1397,8 @@ body {
 .right-section .top-content .content .content-wrap .content-input .input-list section ul li input {
   position: relative;
   width: 50%;
-  padding-left: 15px;
-  padding-right: 15px;
+  padding-left: 19px;
+  padding-right: 19px;
   height: 36px;
   border: 1px solid #999999;
   border-radius: 5px;
@@ -1314,7 +1414,7 @@ body {
   height: 36px;
   border: 1px solid #999999;
   background: url("/images/down_b.png") no-repeat right 10px center;
-  padding-left: 15px;
+  padding-left: 20px;
   padding-right: 15px;
   border-radius: 5px;
   margin-left: 14px;

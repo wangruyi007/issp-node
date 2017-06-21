@@ -6,8 +6,8 @@ app.controller('messageAddCtrl', function($scope, contactSer,$stateParams,$state
     contactSer.findInteractId(interactData).then(function(response){
         if(response.data.code=='0'){
             $scope.addMsg = response.data.data;
-        }else if (response.data.code==403){
-            toastr.error( "请登录用户", '温馨提示');
+        }else {
+            toastr.error(response.data.msg,'温馨提示')
         }
 
     });
@@ -19,8 +19,8 @@ app.controller('messageAddCtrl', function($scope, contactSer,$stateParams,$state
             if(response.data.code == 0){
                 $state.go('root.businessInteraction.interactContact.list');
                 toastr.success("已成功添加", '温馨提示');
-            }else if(response.data.code==403){
-                toastr.error( "请登录用户", '温馨提示');
+            }else {
+                toastr.error(response.data.msg,'温馨提示')
             }
         });
 

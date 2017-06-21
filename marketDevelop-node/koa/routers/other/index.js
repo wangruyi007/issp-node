@@ -10,6 +10,7 @@ module.exports = function(){
     router.get('/market/businesstype/maps', function*(){ //业务类型列表
         var $self = this;
         var page = $self.request.query;
+        page.userToken = $self.cookies.get('token');
         yield (server().typeList(page)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -22,6 +23,7 @@ module.exports = function(){
     }).post('/market/businesstype/save', function*(){//业务类型添加
         var $self = this;
         var addData = $self.request.body;
+        addData.userToken = $self.cookies.get('token');
         yield (server().TypeAdd(addData)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -34,6 +36,7 @@ module.exports = function(){
     }).post('/market/businesstype/update', function*(){//修改业务类型
         var $self = this;
         var editData = $self.request.body;
+        editData.userToken = $self.cookies.get('token');
         yield (server().TypeEdit(editData)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -46,6 +49,7 @@ module.exports = function(){
     }).get('/market/businesstype/findById', function*(){//ID查询业务类型
         var $self = this;
         var findById = $self.request.query;
+        findById.userToken = $self.cookies.get('token');
         yield (server().findTypeId(findById)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -58,6 +62,7 @@ module.exports = function(){
     }).get('/market/businesstype/delete', function*(){//删除业务类型
         var $self = this;
         var deleteData = $self.request.query;
+        deleteData.userToken = $self.cookies.get('token');
         yield (server().TypeDelete(deleteData)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -70,6 +75,7 @@ module.exports = function(){
     }).get('/market/businesstype/congeal', function*(){//冻结业务类型
         var $self = this;
         var congealData = $self.request.query;
+        congealData.userToken = $self.cookies.get('token');
         yield (server().TypeCongeal(congealData)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -82,6 +88,7 @@ module.exports = function(){
     }).get('/market/businesstype/thaw', function*(){//解冻业务类型
         var $self = this;
         var thawData = $self.request.query;
+        thawData.userToken = $self.cookies.get('token');
         yield (server().TypeThaw(thawData)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -93,7 +100,8 @@ module.exports = function(){
             }));
     }).get('/market/businesstype/getTotal', function*(){//获取业务类型总条数
         var $self = this;
-        yield (server().getTypeTotal()
+        var countToken = {userToken: $self.cookies.get('token')};
+        yield (server().getTypeTotal(countToken)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
                 $self.body = responseText;
@@ -105,6 +113,7 @@ module.exports = function(){
     }).get('/market/businesscourse/maps', function*(){ //业务方向科目列表
         var $self = this;
         var page = $self.request.query;
+        page.userToken = $self.cookies.get('token');
         yield (server().CourseList(page)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -117,6 +126,7 @@ module.exports = function(){
     }).post('/market/businesscourse/save', function*(){//业务方向科目添加
         var $self = this;
         var addData = $self.request.body;
+        addData.userToken = $self.cookies.get('token');
         yield (server().CourseAdd(addData)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -129,6 +139,7 @@ module.exports = function(){
     }).post('/market/businesscourse/update', function*(){//修改业务方向科目
         var $self = this;
         var editData = $self.request.body;
+        editData.userToken = $self.cookies.get('token');
         yield (server().CourseEdit(editData)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -141,6 +152,7 @@ module.exports = function(){
     }).get('/market/businesscourse/findById', function*(){//ID查询业务方向科目
         var $self = this;
         var findById = $self.request.query;
+        findById.userToken = $self.cookies.get('token');
         yield (server().findIdCourse(findById)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -153,6 +165,7 @@ module.exports = function(){
     }).get('/market/businesscourse/delete', function*(){//删除业务方向科目
         var $self = this;
         var deleteData = $self.request.query;
+        deleteData.userToken = $self.cookies.get('token');
         yield (server().CourseDelete(deleteData)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -164,7 +177,8 @@ module.exports = function(){
             }));
     }).get('/market/businesscourse/getTotal', function*(){//获取业务方向科目总条数
         var $self = this;
-        yield (server().getCourseTotal()
+        var countToken = {userToken: $self.cookies.get('token')};
+        yield (server().getCourseTotal(countToken)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
                 $self.body = responseText;
@@ -175,7 +189,8 @@ module.exports = function(){
             }));
     }).get('/businesstype/findThaw', function*(){//获取业务类型列表数据
         var $self = this;
-        yield (server().CourseFindType()
+        var countToken = {userToken: $self.cookies.get('token')};
+        yield (server().CourseFindType(countToken)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
                 $self.body = responseText;
@@ -187,6 +202,7 @@ module.exports = function(){
     }).get('/market/businesscourse/congeal', function*(){//冻结业务方向科目
         var $self = this;
         var congealData = $self.request.query;
+        congealData.userToken = $self.cookies.get('token');
         yield (server().CourseCongeal(congealData)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -199,7 +215,76 @@ module.exports = function(){
     }).get('/market/businesscourse/thaw', function*(){//解冻业务方向科目
         var $self = this;
         var thawData = $self.request.query;
+        thawData.userToken = $self.cookies.get('token');
         yield (server().CourseThaw(thawData)
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
+    }).get('/user/logout', function*(next){
+        var url = this.request.query;
+        this.cookies.set("absUrl",url.absurl);
+        this.body = {
+            code:0,
+            msg:"重定向"
+        };
+    }).get('/listSetting', function*(){
+        var $self = this;
+        var setting = this.request.query;
+        setting.token = $self.cookies.get('token');
+        yield (server().listSetting(setting)
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
+    }).get('/countSetting', function*(){
+        var $self = this;
+        yield (server().countSetting()
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
+    }).get('/getpermit', function*(){
+        var $self = this;
+        var getId = $self.request.query;
+        yield (server().getpermit(getId)
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
+    }).get('/getListpermit', function*(){
+        var $self = this;
+        var listPermit = $self.request.query;
+        yield (server().getListpermit(listPermit)
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
+    }).post('/editSetting', function*(){
+        var $self = this;
+        var editSet = $self.request.body;
+        editSet.token = $self.cookies.get("token");
+        yield (server().editSetting(editSet)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
                 $self.body = responseText;

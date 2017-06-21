@@ -6,8 +6,8 @@ app.controller('problemEditCtrl', function($scope, problemSer,$stateParams,$stat
     problemSer.findProblemId(problemData).then(function(response){
         if(response.data.code=='0'){
             $scope.editAccept = response.data.data;
-        }else if (response.data.code==403){
-            toastr.error( "请登录用户", '温馨提示');
+        }else{
+            toastr.error( response.data.msg, '温馨提示');
         }
 
     });
@@ -71,8 +71,8 @@ app.controller('problemEditCtrl', function($scope, problemSer,$stateParams,$stat
             if(response.data.code == 0){
                 $state.go('root.projectProcessed.problemAccepted.list');
                 toastr.success( "编辑成功", '温馨提示');
-            }else if(response.data.code == 403){
-                toastr.error( "请登录用户", '温馨提示');
+            }else {
+                toastr.error( response.data.msg, '温馨提示');
             }
         });
 

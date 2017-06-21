@@ -1,0 +1,35 @@
+<!--Angular-UI-Router里的指令ui-sref-active 查看当前激活状态并设置 Class-->
+<ul class="list">
+    <li ng-click="list()" ng-class="{'current':menuClass=='listMenu'}" ui-sref=".list" class="lis">
+        <a href="javascript:void(0)" class="same-two">列表<span>Tabulate</span></a>
+    </li>
+    <li ng-click="add()" ng-class="{'current':menuClass=='addMenu'}" ui-sref=".add[12]">
+        <a href="javascript:void(0)"  class="same-three">添加<span>Add</span></a>
+    </li>
+    <li ng-click="edit()" ng-class="{'current':menuClass=='editMenu'}">
+        <a href="javascript:void(0)" >编辑<span>Edit</span></a>
+    </li>
+    <li ng-click="delete()" ng-class="{'current':menuClass=='deleteMenu'}">
+        <a href="javascript:void(0)"  class="same-three">删除<span>Delete</span></a>
+    </li>
+    <div class="li_width">
+        <ul>
+            <h2 ng-click="View()" ng-hide="isView">查看</h2>
+            <li ng-show="isClick[0]" ng-click="checkTime()" ng-class="{'current':menuClass=='checkTimeMenu'}">
+                <a href="javascript:void(0)">查看放假安排时间</a>
+            </li>
+            <li  ng-show="isClick[1]" ng-click="checkPro()" ng-class="{'current':menuClass=='checkProMenu'}">
+                <a href="javascript:void(0)">查看节假日工作安排</a>
+            </li>
+            <li ng-show="isClick[2]" ng-click="checkPeo()" ng-class="{'current':menuClass=='checkPeoMenu'}">
+                <a href="javascript:void(0)">查看各地区紧急联系人</a>
+            </li>
+            <li ng-show="isClick[3]" ng-click="checkGift()" ng-class="{'current':menuClass=='checkGiftMenu'}">
+                <a href="javascript:void(0)">查看节假日礼品福利</a>
+            </li>
+            <li ng-show="isClick[4]" ng-click="checkNotice()" ng-class="{'current':menuClass=='checkNoticeMenu'}">
+                <a href="javascript:void(0)">查看注意事项</a>
+            </li>
+        </ul>
+    </div>
+</ul>

@@ -1,19 +1,55 @@
 var app = angular.module('taskList', ['ng-pagination','toastr']);
 app.controller('taskListCtrl',function($scope,taskSer,toastr){
-    $scope.teamInfo = {};
+    $scope.$emit('changeId', null);
+    //监听切换搜索是否出现
+    $scope.$on('iSsearch',function(event,newIs){
+        $scope.isView = newIs;
+    });
     function activatePage(page) {
         var listData = {
             page:page
-        }
+        };
         taskSer.assignmentList(listData).then(function(response){
             if(response.data.code==0){
                 $scope.assigneeLists = response.data.data
-            }else{
-                toastr.error( "请求超时，请联系管理员", '温馨提示');
+            }else {
+                toastr.error( response.data.msg, '温馨提示');
             }
         });
+        //搜索功能
+        $scope.collect = function(){
+            $scope.custom = {
+                itemsCount: 2, //总条数
+                take: 10, //每页显示
+                activatePage: activatePage
+            };
+            var keywords = {
+                internalProjectName: $scope.internalProjectName,
+                handler: $scope.handler
+            };
+            taskSer.countAssignment(keywords).then(function (response) {
+                if(response.data.code==0){
+                    $scope.custom.itemsCount = response.data.data;
+                }else{
+                    toastr.error( response.data.msg, '温馨提示');
+                }
+            });
+            var data = {
+                internalProjectName: $scope.internalProjectName,
+                handler: $scope.handler,
+                page: page
+            };
+            taskSer.searchList(data).then(function(response){
+                if(response.data.code == 0){
+                    $scope.assigneeLists = response.data.data
+                }else{
+                    toastr.error( response.data.msg, '温馨提示');
+                }
+            });
+        };
     }
-
+    // 搜索功能字段
+    $scope.titles = ['内部项目名称','处理人员'];
     $scope.selectList = function(event){
         angular.forEach($scope.assigneeLists,function(obj){
                 obj._selectList = false
@@ -43,8 +79,8 @@ app.controller('taskListCtrl',function($scope,taskSer,toastr){
     taskSer.countAssignment().then(function(response){
         if(response.data.code==0){
             $scope.custom.itemsCount = response.data.data;
-        }else{
-            toastr.error( "请求超时，请联系管理员", '温馨提示');
+        }else {
+            toastr.error( response.data.msg, '温馨提示');
         }
     })
 

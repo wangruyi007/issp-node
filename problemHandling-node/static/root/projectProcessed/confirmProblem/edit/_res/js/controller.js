@@ -4,10 +4,10 @@ app.controller('confirmEditCtrl', function($scope, confirmSer,$stateParams,$stat
 
     //获取ID
     confirmSer.findResultId(confirmData).then(function(response){
-        if(response.data.code=='0'){
+        if(response.data.code== 0){
             $scope.resultEdit = response.data.data;
-        }else if (response.data.code==403){
-            toastr.error( "请登录用户", '温馨提示');
+        }else{
+            toastr.error( response.data.msg, '温馨提示');
         }
 
     });
@@ -20,8 +20,8 @@ app.controller('confirmEditCtrl', function($scope, confirmSer,$stateParams,$stat
             if(response.data.code == 0){
                 $state.go('root.projectProcessed.confirmProblem.list');
                 toastr.success( "编辑成功", '温馨提示');
-            }else if(response.data.code == 403){
-                toastr.error( "请登录用户", '温馨提示');
+            }else {
+                toastr.error( response.data.msg, '温馨提示');
             }
         });
 

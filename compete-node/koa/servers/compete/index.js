@@ -10,7 +10,7 @@ module.exports = function(){
             timeout : 3000,
             uri : config()['rurl'] + '/competitor/v1/list?limit=10&page='+argvs.page,
             headers : {
-                // token : token
+                userToken : argvs.userToken
             }
         };
         return request(options);
@@ -22,7 +22,7 @@ module.exports = function(){
             timeout : 3000,
             uri : config()['rurl'] + '/competitor/v1/count',
             headers : {
-                // token : token
+                userToken : argvs.userToken
             }
         };
         return request(options);
@@ -32,10 +32,10 @@ module.exports = function(){
         var options = {
             method : 'POST',
             timeout : 3000,
-            uri : config()['rurl'] + '/competitor/v1/add'+'?userToken='+argvs.userToken,
+            uri : config()['rurl'] + '/competitor/v1/add',
             form:argvs,
             headers : {
-                // token : token
+                userToken : argvs.userToken
             }
         };
         return request(options);
@@ -45,7 +45,10 @@ module.exports = function(){
         var options = {
             method : 'DELETE',
             timeout : 3000,
-            uri : config()['rurl'] + '/competitor/v1/delete/'+argvs.id+'?userToken='+argvs.userToken,
+            uri : config()['rurl'] + '/competitor/v1/delete/'+argvs.id,
+            headers:{
+                userToken : argvs.userToken
+            }
         };
         return request(options);
     };
@@ -54,8 +57,11 @@ module.exports = function(){
         var options = {
             method : 'PUT',
             timeout : 3000,
-            uri : config()['rurl'] + '/competitor/v1/edit'+'?userToken='+argvs.userToken,
-            form : argvs,
+            uri : config()['rurl'] + '/competitor/v1/edit',
+            headers:{
+                userToken : argvs.userToken
+            },
+            form:argvs,
         };
         return request(options);
     };
@@ -74,28 +80,35 @@ module.exports = function(){
         var options = {
             method : 'PUT',
             timeout : 3000,
-            uri : config()['rurl'] + '/competitor/v1/edit'+'?userToken='+argvs.userToken,
+            uri : config()['rurl'] + '/competitor/v1/edit',
             form : argvs,
+            headers:{
+                userToken : argvs.userToken
+            }
         };
         return request(options);
     };
-  //邮件发送
+                        //邮件发送
     this.collectemaillist= function(argvs){
         var options = {
             method : 'GET',
             timeout : 3000,
             uri : config()['rurl'] + '/collect/v1/list?limit=10&page='+argvs.page,
             headers : {
-                // token : token
+                userToken : argvs.userToken
             }
         };
         return request(options);
     };
-    this.emailCountInfo = function(){
+     //分页
+    this.emailCountInfo = function(argvs){
         var options = {
             method : 'GET',
             timeout : 3000,
             uri : config()['rurl'] + '/collect/v1/count',
+            headers : {
+                userToken : argvs.userToken
+            }
         };
         return request(options);
     };
@@ -104,7 +117,10 @@ module.exports = function(){
         var options = {
             method : 'PATCH',
             timeout : 3000,
-            uri : config()['rurl'] + '/collect/v1/freeze/' + argvs.id + '?userToken=' + argvs.userToken,
+            uri : config()['rurl'] + '/collect/v1/freeze/' + argvs.id,
+            headers:{
+                userToken : argvs.userToken
+            }
         };
         return request(options);
     };
@@ -113,7 +129,10 @@ module.exports = function(){
         var options = {
             method : 'PATCH',
             timeout : 3000,
-            uri : config()['rurl'] + '/collect/v1/breakfreeze/' + argvs.id + '?userToken=' + argvs.userToken,
+            uri : config()['rurl'] + '/collect/v1/breakfreeze/' + argvs.id,
+            headers:{
+                userToken : argvs.userToken
+            }
         };
         return request(options);
     };
@@ -122,17 +141,34 @@ module.exports = function(){
         var options = {
             method : 'DELETE',
             timeout : 3000,
-            uri : config()['rurl'] + '/collect/v1/delete/'+argvs.id+'?userToken='+argvs.userToken,
+            uri : config()['rurl'] + '/collect/v1/delete/'+argvs.id,
+            headers:{
+                userToken : argvs.userToken
+            }
         };
         return request(options);
     };
     //添加邮件
-    this.emailAdd = function(argvs){//
+    this.emailAdd = function(argvs){
         var options = {
             method : 'POST',
             timeout : 3000,
-            uri : config()['rurl'] + '/collect/v1/add?userToken='+argvs.userToken,
+            uri : config()['rurl'] + '/collect/v1/add',
             form:argvs,
+            headers:{
+                userToken : argvs.userToken
+            }
+        };
+        return request(options);
+    };
+    this.emailCollect= function(argvs){
+        var options = {
+            method : 'GET',
+            timeout : 3000,
+            uri : config()['rurl'] + '/collect/v1/total',
+            headers : {
+                userToken : argvs.userToken
+            }
         };
         return request(options);
     };
@@ -142,7 +178,9 @@ module.exports = function(){
             method : 'GET',
             timeout : 3000,
             uri : config()['rurl'] + '/cusemail/v1/listName?type='+argvs.type,
-
+            headers:{
+                userToken : argvs.userToken
+            }
         };
         return request(options);
     };
@@ -150,8 +188,11 @@ module.exports = function(){
         var options = {
             method : 'PUT',
             timeout : 3000,
-            uri : config()['rurl'] + '/collect/v1/edit'+'?userToken='+argvs.userToken,
+            uri : config()['rurl'] + '/collect/v1/edit',
             form : argvs,
+            headers:{
+                userToken : argvs.userToken
+            }
         };
         return request(options);
     };
@@ -161,6 +202,53 @@ module.exports = function(){
             timeout : 3000,
             uri : config()['rurl'] + '/collect/v1/find/'+argvs.id,
             form : argvs,
+            headers:{
+                userToken : argvs.userToken
+            }
+        };
+        return request(options);
+    };
+    this.listSetting = function(argvs){
+        var options = {
+            method : 'GET',
+            timeout : 3000,
+            uri : config()['rurl'] + `/cuspermission/v1/list?limit=10&page=${argvs.page}`,
+        };
+        return request(options);
+    };
+    this.countSetting = function(){
+        var options = {
+            method : 'GET',
+            timeout : 3000,
+            uri : config()['rurl'] + '/cuspermission/v1/count',
+        };
+        return request(options);
+    };
+    this.getpermit = function(argvs){
+        var options = {
+            method : 'GET',
+            timeout : 3000,
+            uri : config()['rurl'] + `/cuspermission/v1/getOneById/${argvs.id}`,
+        };
+        return request(options);
+    };
+    this.getListpermit = function(argvs){
+        var options = {
+            method : 'GET',
+            timeout : 3000,
+            uri : config()['rurl'] + `/cuspermission/v1/listOperateById/${argvs.id}`,
+        };
+        return request(options);
+    };
+    this.editSetting = function(argvs){
+        var options = {
+            method : 'PUT',
+            timeout : 3000,
+            uri : config()['rurl'] + '/cuspermission/v1/edit',
+            headers:{
+                userToken:argvs.token
+            },
+            form:argvs
         };
         return request(options);
     };

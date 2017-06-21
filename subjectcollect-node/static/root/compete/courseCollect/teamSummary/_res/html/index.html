@@ -1,0 +1,40 @@
+<div class="collect">
+    <div class="collect-select">
+        <span>开始日期：<input type="text" onClick="laydate({istime: true, format: 'YYYY-MM-DD'})" class="inputter start"  ></span>
+        <span>结束日期：<input type="text" onClick="laydate({istime: true, format: 'YYYY-MM-DD'})" class="inputter end"  ></span>
+        <span>
+            项目组：
+            <select class="sele"  ng-model="projectGroup">
+                <option value="">请选择</option>
+                <option ng-repeat="group in groups" value="{{group}}">{{group}}</option>
+            </select>
+            <input type="text"  class="inputArea" ng-model="projectGroup">
+        </span>
+        <button ng-click="collect()">汇总</button>
+    </div>
+    <ul class="sum-list">
+        <li class="sum-thead">
+            <span>项目组</span>
+            <span ng-hide="showed">一级科目</span>
+            <span ng-hide="showed">二级科目</span>
+            <span ng-hide="showed">三级科目</span>
+            <span>借方金额</span>
+            <span>贷方金额</span>
+            <span ng-hide="showed">地区</span>
+            <span ng-hide="showed">凭证日期</span>
+            <span ng-hide="showed">项目名称</span>
+
+        </li>
+        <li class="sum-tbody" ng-repeat="Lists in summaryLists">
+            <span>{{::Lists.projectGroup}}</span>
+            <span ng-hide="showed">{{::Lists.firstSubject}}</span>
+            <span ng-hide="showed">{{::Lists.secondSubject}}</span>
+            <span ng-hide="showed">{{::Lists.thirdSubject}}</span>
+            <span>{{::Lists.borrowMoney}}</span>
+            <span>{{::Lists.loanMoney}}</span>
+            <span ng-hide="showed">{{::Lists.area}}</span>
+            <span ng-hide="showed">{{::Lists.voucherDate}}</span>
+            <span ng-hide="showed">{{::Lists.projectName}}</span>
+        </li>
+    </ul>
+</div>

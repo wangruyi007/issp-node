@@ -1,0 +1,77 @@
+<div class="content-input edit" verify-scope="tipStyle: 1">
+    <div class="input-list">
+        <section>
+            <ul>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>项目名称</em></label>
+                    <input type="text" ng-verify="{}" ng-model="editTender.projectName">
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>标书编号</em></label>
+                    <input type="text" ng-verify="{}" ng-model="editTender.tenderNumber">
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>资格要求</em></label>
+                    <input type="text" ng-model="editTender.eligibilityRequirements">
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>同类项目经验</em></label>
+                    <input type="text" ng-model="editTender.experienceProject">
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>主营业务收入</em></label>
+                    <input type="text" ng-model="editTender.mainBusinessIncome">
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>专业资质认证</em></label>
+                    <input type="text" ng-model="editTender.professionalQualificationCertification">
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>管理体系认证</em></label>
+                    <input type="text" ng-model="editTender.managementSystemCertification">
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>项目经理素质</em></label>
+                    <input type="text" ng-model="editTender.projectManagerQuality">
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>团队成员素质</em></label>
+                    <input type="text" ng-model="editTender.teamMembersQuality">
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>资源投入</em></label>
+                    <input type="text" ng-model="editTender.resourcesInto">
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>技术方案</em></label>
+                    <input type="text" ng-model="editTender.technicalSolution">
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>额外承诺</em></label>
+                    <input type="text" ng-model="editTender.additionalCommitments">
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>补充资料</em></label>
+                    <input type="text" ng-model="editTender.additionalInformation">
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>经济分册</em></label>
+                    <input type="text" ng-model="editTender.economicVolume">
+                </li>
+            </ul>
+        </section>
+    </div>
+    <p class="dataBottom">
+        <span class="imPrompt"><i><img src="/images/prompt.png"></i>带有<i><img src="/images/mandatory.png"></i>的为必填项</span>
+        <button ng-verify="{control:'myform'}" ng-click="tenderEditFun()">提交</button>
+    </p>
+</div>
+
+<script type="text/javascript">
+
+    !function(){
+        laydate.skin('dahong');//切换皮肤，请查看skins下面皮肤库
+    }();
+
+
+</script>

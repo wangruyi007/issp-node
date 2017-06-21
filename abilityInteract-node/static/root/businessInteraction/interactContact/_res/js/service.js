@@ -34,8 +34,8 @@ app.factory('contactSer',function ($http) {
         })
     }
     //分页总条数
-    function countInteract(){
-        return $http.get('/interactionrelation/count')
+    function countInteract(data){
+        return $http.get('/interactionrelation/count',{params:data})
     }
     //删除
     function deleteInteract(data){

@@ -1,0 +1,37 @@
+<div class="content-tab list">
+   <table border="1" class="table-list" verify-scope="tipStyle: 1">
+       <tr>
+           <th><i><img src="/images/mandatory.png"></i>日期</th>
+           <th><i><img src="/images/mandatory.png"></i>摘要</th>
+           <th><i><img src="/images/mandatory.png"></i>会计科目</th>
+           <th><i><img src="/images/mandatory.png"></i>借款金额</th>
+           <th><i><img src="/images/mandatory.png"></i>贷方金额</th>
+           <th><i><img src="/images/mandatory.png"></i>地区</th>
+           <th><i><img src="/images/mandatory.png"></i>项目</th>
+           <th><i><img src="/images/mandatory.png"></i>项目组</th>
+       </tr>
+       <tr>
+           <td rowspan="2"><input type="text" ng-model="lists.voucherDate"></td>
+           <td rowspan="2"><input type="text" ng-model="lists.sumary"></td>
+           <td><input type="text" ng-model="lists.subjects[0]"></td>
+           <td><input type="number" ng-model="lists.borrowMoneys[0]"></td>
+           <td><input type="number" ng-model="lists.loanMoneys[0]"></td>
+           <td rowspan="2"><input type="text" ng-model="lists.areas" ng-verify="{}"></td>
+           <td rowspan="2"><input type="text" ng-model="lists.projects" ng-verify="{}"></td>
+           <td rowspan="2"><input type="text" ng-model="lists.groups" ng-verify="{}"></td>
+       </tr>
+       <tr>
+           <td><input type="text" ng-model="lists.subjects[1]"></td>
+           <td><input type="number" ng-model="lists.borrowMoneys[1]"></td>
+           <td><input type="number" ng-model="lists.loanMoneys[1]"></td>
+       </tr>
+       <tr>
+           <td colspan="8">
+               <p class="table-p">
+                   <span class="table-span"><i><img src="/images/prompt.png"></i>带有<i><img src="/images/mandatory.png"></i>的为必填项</span>
+                    <button class="submit" ng-click="submit()" ng-verify="{control:'myform'}">提交</button>
+               </p>
+           </td>
+       </tr>
+   </table>
+</div>

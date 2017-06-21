@@ -1,0 +1,30 @@
+<div class="content-tab list">
+    <ul class="table">
+        <li class="list-head">
+            <span></span>
+            <span>一级科目</span>
+            <span>二级科目</span>
+            <span>三级科目</span>
+            <span>地区</span>
+            <span>项目组</span>
+            <span>项目名称</span>
+            <span>日期</span>
+            <span>金额</span>
+        </li>
+        <li class="list-all" ng-repeat="list in showInfo" style="display: {{list._delete?'none':'block'}};">
+            <section>
+                <div class="list-text">
+                    <p>{{$index+1}}</p>
+                    <p>{{list.firstSubject}}</p>
+                    <p>{{list.secondSubject}}</p>
+                    <p>{{list.thirdSubject}}</p>
+                    <p>{{list.area}}</p>
+                    <p>{{list.projectGroup}}</p>
+                    <p>{{list.projectName}}</p>
+                    <p>{{list.voucherDate}}</p>
+                    <p>{{list.borrowMoney}}</p>
+                </div>
+            </section>
+        </li>
+    </ul>
+</div>

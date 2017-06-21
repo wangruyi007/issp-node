@@ -1,0 +1,187 @@
+<div class="content-tab list">
+    <div class="search-big" style="display :{{ isView?'none':'block'}}">
+        <select class="salc" ng-model="checkedName" ng-init="checkedName='内部项目名称'">
+            <option ng-repeat="item in titles">{{item}}</option>
+        </select>
+        <input type="text" ng-model="innerProject" ng-show="checkedName=='内部项目名称'">
+        <input type="text" ng-model="outProjectNum" ng-show="checkedName=='合同外部编号'">
+        <input type="text" ng-model="saleContractNum" ng-show="checkedName=='对应销售合同号'">
+        <select class="sle" ng-model="businessType" ng-show="checkedName=='业务类型'">
+            <option value=""></option>
+            <option value="MOBILECOMMUNICATION">移动通信类</option>
+            <option value="SOFTDEVELOP">软件开发类</option>
+            <option value="INTELLIGENCESYSTEM">智能系统集成类</option>
+            <option value="ADVERT">广告策划营销类</option>
+        </select>
+        <input type="text" ng-model="businessSubject" ng-show="checkedName=='业务方向科目'">
+        <select class="sle" ng-model="businessCooperate" ng-show="checkedName=='合作方式'">
+            <option value=""></option>
+            <option value="RENTCONTRACT">租赁合同</option>
+            <option value="CHARCONTRACT">承包的项目合同</option>
+            <option value="DISTRIBUTECONTRACT">分包项目合同</option>
+            <option value="SALECONTRACT">销售合同</option>
+        </select>
+        <input type="text" ng-model="firstCompany" ng-show="checkedName=='甲方公司名称'">
+        <input type="text" ng-model="secondCompany" ng-show="checkedName=='乙方公司名称'">
+        <input type="text" ng-model="area" ng-show="checkedName=='地区'">
+        <select class="sle" ng-model="contractProperty" ng-show="checkedName=='合同属性'">
+            <option value=""></option>
+            <option value="FRAMECONTRACT">框架合同</option>
+            <option value="SINGLECONTRACT">单次合同</option>
+        </select>
+        <select class="sle" ng-model="payWays" ng-show="checkedName=='支付方式'">
+            <option value=""></option>
+            <option value="CASH">现金</option>
+            <option value="BANK">银行汇兑</option>
+            <option value="ELECTRIC">电汇</option>
+            <option value="TRANSFERACCOUNTS">转账</option>
+        </select>
+        <input type="text" ng-model="customerName" ng-show="checkedName=='客户名称'">
+        <input type="text" ng-model="siginYear" ng-show="checkedName=='签订年份'">
+        <select class="sle" ng-model="fileCondition" ng-show="checkedName=='合同是否已归档'">
+            <option value=""></option>
+            <option value="已归档">已归档</option>
+            <option value="未归档">未归档</option>
+        </select>
+        <a href="javascript:void(0)" ng-click="collect()"><img src="/images/search2.png"></a>
+    </div>
+    <ul class="table">
+        <li class="list-head">
+            <span></span>
+            <span>合同档案编号</span>
+            <span>业务类型</span>
+            <span>业务方向科目</span>
+            <span>合同外部项目名称</span>
+            <span>合同外部项目编号</span>
+            <span>对应销售合同编号</span>
+            <span>合作方式</span>
+            <span></span>
+        </li>
+        <li class="list-all" ng-repeat="lists in basicLists" style="display: {{lists._delete?'none':'block'}};">
+            <section>
+                <div class="list-text {{lists._selectList?'selectList':''}}" ng-click="selectList(lists)">
+                    <p mod>{{$index+1}}</p>
+                    <p mod>{{::lists.contractNum}}</p>
+                    <p mod>{{::lists.businessType|cover}}</p>
+                    <p mod>{{::lists.businessSubject}}</p>
+                    <p mod>{{::lists.outerProject}}</p>
+                    <p mod>{{::lists.outProjectNum}}</p>
+                    <p mod>{{::lists.saleContractNum}}</p>
+                    <p mod>{{::lists.businessCooperate|cover}}</p>
+                    <p>
+                        <a href="javascript:void(0)" class="more" ng-click="moreList(lists)">更多详细</a>
+                    </p>
+                </div>
+                <div class="can">
+                    <ul class="can-see" style="display: {{lists._moreList?'block':'none'}};">
+                        <li>
+                            <p class="see-parent">
+                                <span>内部项目名称</span>
+                                <span>内部项目编号</span>
+                                <span>地区</span>
+                                <span>所属项目组</span>
+                                <span>签订年份</span>
+                                <span>签订时间</span>
+                                <span>合同金额</span>
+                                <span>开工时间</span>
+                            </p>
+                            <p class="see-children">
+                                <span mod>{{::lists.innerProject}}</span>
+                                <span mod>{{::lists.innerProjectNum}}</span>
+                                <span mod>{{::lists.area}}</span>
+                                <span mod>{{::lists.projectGroup}}</span>
+                                <span mod>{{::lists.siginYear}}</span>
+                                <span mod>{{::lists.siginTime}}</span>
+                                <span mod>{{::lists.money}}</span>
+                                <span mod>{{::lists.startProjectTime}}</span>
+                            </p>
+                        </li>
+                        <li>
+                            <p class="see-parent">
+                                <span>完工时间</span>
+                                <span>合同期限</span>
+                                <span>甲方公司名称</span>
+                                <span>甲方联系人</span>
+                                <span>甲方联系人电话</span>
+                                <span>乙方公司名称</span>
+                                <span>项目负责人</span>
+                                <span>项目负责人电话</span>
+                            </p>
+                            <p class="see-children">
+                                <span mod>{{::lists.endProjectTime}}</span>
+                                <span mod>{{::lists.contractRang}}</span>
+                                <span mod>{{::lists.firstCompany}}</span>
+                                <span mod>{{::lists.firstRelation}}</span>
+                                <span mod>{{::lists.firstTel}}</span>
+                                <span mod>{{::lists.secondCompany}}</span>
+                                <span mod>{{::lists.projectCharge}}</span>
+                                <span mod>{{::lists.projectChargeTel}}</span>
+                            </p>
+                        </li>
+                        <li>
+                            <p class="see-parent">
+                                <span>客户名称</span>
+                                <span>合同内容</span>
+                                <span>税率</span>
+                                <span>合同属性</span>
+                                <span>支付方式</span>
+                                <span>付款比例</span>
+                                <span>结算费用来源</span>
+                                <span>合同是否已归档</span>
+                            </p>
+                            <p class="see-children">
+                                <span mod>{{::lists.customerName}}</span>
+                                <span mod>{{::lists.contractText}}</span>
+                                <span mod>{{::lists.rate}}%</span>
+                                <span mod>{{::lists.contractProperty|cover}}</span>
+                                <span mod>{{::lists.payWays|cover}}</span>
+                                <span mod>{{::lists.payRate}}</span>
+                                <span mod>{{::lists.payFeeOrigin|cover}}</span>
+                                <span mod>{{::lists.fileCondition}}</span>
+                            </p>
+                        </li>
+                        <li>
+                            <p class="see-parent">
+                                <span>合同归档数量</span>
+                                <span>备注</span>
+                                <span>临时合同编号</span>
+                            </p>
+                            <p class="see-children">
+                                <span mod>{{::lists.fileCount}}</span>
+                                <span mod>{{::lists.remark}}</span>
+                                <span mod>{{::lists.tempContractNum}}</span>
+                            </p>
+                        </li>
+                    </ul>
+                </div>
+            </section>
+        </li>
+    </ul>
+    <div class="module">
+        <div class="see-module">
+            <p class="see-type">体现类型</p>
+            <p class="see-description"></p>
+            <button class="btn" modclose>关闭</button>
+        </div>
+    </div>
+    <footer class="footer">
+        <pagination count="custom.itemsCount" take="custom.take" activate="custom.activatePage"></pagination>
+    </footer>
+</div>
+<div class="delete mod" ng-show="delShow">
+    <div class="del-head">
+        <h5>温馨提示</h5>
+    </div>
+    <div class="del-con">
+        <p>确定要删除这条数据？</p>
+        <div class="btn">
+            <button ng-click="delFn()">确定</button>
+            <button ng-click="cancel()">取消</button>
+        </div>
+    </div>
+</div>
+<div id="modalbg" ng-show="delShow"></div>
+
+
+
+

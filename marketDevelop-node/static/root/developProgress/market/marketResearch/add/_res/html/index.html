@@ -4,18 +4,16 @@
             <ul>
                 <li class="required">
                     <label><i><img src="/images/mandatory.png"></i><em>业务类型</em></label>
-                    <select class="sele" ng-model="research.type" ng-init="research.type='0'">
-                        <option value="0">项目</option>
-                        <option value="1">项目2</option>
-                        <option value="2">项目3</option>
+                    <select class="sele" ng-model="research.type" >
+                        <option value="">请选择</option>
+                        <option ng-repeat="type in types">{{type.type}}</option>
                     </select>
                 </li>
                 <li class="required">
                     <label><i><img src="/images/mandatory.png"></i><em>业务方向科目</em></label>
-                    <select class="sele" ng-model="research.course" ng-init="research.course='0'">
-                        <option value="0">jishu</option>
-                        <option value="1">shuji</option>
-                        <option value="2">kjsgn</option>
+                    <select class="sele" ng-model="research.course" >
+                        <option value="">请选择</option>
+                        <option ng-repeat="course in courses">{{course.course}}</option>
                     </select>
                 </li>
                 <li class="required">
@@ -31,7 +29,7 @@
                     <input type="text" ng-verify="{}" ng-model="research.evaluate">
                 </li>
                 <li>
-                    <label><i><img src="/images/mandatory.png"></i><em>备注</em></label>
+                    <label><em>备注</em></label>
                     <input type="text" ng-model="research.remark">
                 </li>
             </ul>

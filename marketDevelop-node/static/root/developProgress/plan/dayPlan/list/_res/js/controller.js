@@ -1,5 +1,6 @@
 var app = angular.module('dayPlanList', ['ng-pagination','toastr']);
 app.controller('dayPlanListCtrl',function($scope,dayPlanSer,toastr){
+    $scope.$emit('changeId', null);
     // 点击更多详细
     $scope.moreList = function(event){
         angular.forEach($scope.dayPlanLists,function(obj){
@@ -37,8 +38,8 @@ app.controller('dayPlanListCtrl',function($scope,dayPlanSer,toastr){
     dayPlanSer.countDay().then(function(response){
         if(response.data.code==0){
             $scope.custom.dayCount = response.data.data
-        } else {
-            toastr.error( "请求超时，请联系管理员", '温馨提示');
+        }else {
+            toastr.error( response.data.msg, '温馨提示');
         }
     });
 
@@ -49,8 +50,8 @@ app.controller('dayPlanListCtrl',function($scope,dayPlanSer,toastr){
         dayPlanSer.dayPlanList(listData).then(function(response){
             if(response.data.code==0){
                 $scope.dayPlanLists = response.data.data;
-            }else{
-                toastr.error( "请求超时，请联系管理员", '温馨提示');
+            }else {
+                toastr.error( response.data.msg, '温馨提示');
             }
         })
     }
