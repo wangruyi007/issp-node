@@ -14,7 +14,7 @@ app.controller('subpackageEditCtrl', function($scope, subpackageSer,$state,toast
         var data = $scope.data;
         subpackageSer.marketserveapplyEdit(data).then(function(response){
             if(response.data.code == 0){
-                $state.go('root.business.outsource.subpackage.list');
+                $state.go('root.business.outsource.subpackage.list[12]');
                 toastr.success('温馨提示',"此次编辑成功");
             }else if(response.data.code == 1){
                 toastr.error( response.data.msg, '温馨提示');
