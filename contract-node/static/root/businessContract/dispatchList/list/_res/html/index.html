@@ -1,8 +1,11 @@
 <div class="content-tab list">
     <div class="search-big" style="display :{{ isView?'none':'block'}}">
-        <select class="salc" ng-model="checkedName" ng-init="checkedName='业务类型'">
+        <select class="salc" ng-model="checkedName" ng-init="checkedName='内部项目名称'">
             <option ng-repeat="item in titles">{{item}}</option>
         </select>
+        <input type="text" ng-model="innerProject" ng-show="checkedName=='内部项目名称'">
+        <input type="text" ng-model="outProjectNum" ng-show="checkedName=='合同外部编号'">
+        <input type="text" ng-model="saleContractNum" ng-show="checkedName=='对应销售合同号'">
         <input type="text" ng-model="businessType" ng-show="checkedName=='业务类型'">
         <input type="text" ng-model="businessSubject" ng-show="checkedName=='业务方向科目'">
         <input type="text" ng-model="businessCooperate" ng-show="checkedName=='合作方式'">
@@ -28,14 +31,14 @@
         <li class="list-all" ng-repeat="lists in dispatchLists|filter:teamInfo" style="display: {{lists._delete?'none':'block'}};">
             <section>
                 <div class="list-text {{lists._selectList?'selectList':''}}" ng-click="selectList(lists)">
-                    <p>{{$index+1}}</p>
-                    <p>{{::lists.innerProjectNum}}</p>
-                    <p>{{::lists.businessType}}</p>
-                    <p>{{::lists.businessSubject}}</p>
-                    <p>{{::lists.outerProject}}</p>
-                    <p>{{::lists.outProjectNum}}</p>
-                    <p>{{::lists.saleContractNum}}</p>
-                    <p>{{::lists.businessCooperate}}</p>
+                    <p mod>{{$index+1}}</p>
+                    <p mod>{{::lists.innerProjectNum}}</p>
+                    <p mod>{{::lists.businessType|cover}}</p>
+                    <p mod>{{::lists.businessSubject}}</p>
+                    <p mod>{{::lists.outerProject}}</p>
+                    <p mod>{{::lists.outProjectNum}}</p>
+                    <p mod>{{::lists.saleContractNum}}</p>
+                    <p mod>{{::lists.businessCooperate|cover}}</p>
                     <p>
                         <a href="javascript:void(0)" class="more" ng-click="moreList(lists)">更多详细</a>
                     </p>
@@ -54,14 +57,14 @@
                                 <span>总包单位名称</span>
                             </p>
                             <p class="see-children">
-                                <span>{{::lists.innerProject}}</span>
-                                <span>{{::lists.area}}</span>
-                                <span>{{::lists.projectGroup}}</span>
-                                <span>{{::lists.siginTime}}</span>
-                                <span>{{::lists.projectCharge}}</span>
-                                <span>{{::lists.dispatchProject}}</span>
-                                <span>{{::lists.dispatchNum}}</span>
-                                <span>{{::lists.majorCompany}}</span>
+                                <span mod>{{::lists.innerProject}}</span>
+                                <span mod>{{::lists.area}}</span>
+                                <span mod>{{::lists.projectGroup}}</span>
+                                <span mod>{{::lists.siginTime}}</span>
+                                <span mod>{{::lists.projectCharge}}</span>
+                                <span mod>{{::lists.dispatchProject}}</span>
+                                <span mod>{{::lists.dispatchNum}}</span>
+                                <span mod>{{::lists.majorCompany}}</span>
                             </p>
                         </li>
                         <li>
@@ -76,43 +79,57 @@
                                 <span>合同是否已归档</span>
                             </p>
                             <p class="see-children">
-                                <span>{{::lists.subCompany}}</span>
-                                <span>{{::lists.customerName}}</span>
-                                <span>{{::lists.dispatchText}}</span>
-                                <span>{{::lists.startProjectTime}}</span>
-                                <span>{{::lists.endProjectTime}}</span>
-                                <span>{{::lists.money}}</span>
-                                <span>{{::lists.completeProject}}</span>
-                                <span>{{::lists.fileCondition}}</span>
+                                <span mod>{{::lists.subCompany}}</span>
+                                <span mod>{{::lists.customerName}}</span>
+                                <span mod>{{::lists.dispatchText}}</span>
+                                <span mod>{{::lists.startProjectTime}}</span>
+                                <span mod>{{::lists.endProjectTime}}</span>
+                                <span mod>{{::lists.money}}</span>
+                                <span mod>{{::lists.completeProject}}</span>
+                                <span mod>{{::lists.fileCondition}}</span>
                             </p>
                         </li>
                         <li>
                             <p class="see-parent">
                                 <span>合同归档数量</span>
                                 <span>备注</span>
+                                <span>临时合同编号</span>
                             </p>
                             <p class="see-children">
-                                <span>{{::lists.fileCount}}</span>
-                                <span>{{::lists.remark}}</span>
+                                <span mod>{{::lists.fileCount}}</span>
+                                <span mod>{{::lists.remark}}</span>
+                                <span mod>{{::lists.tempContractNum}}</span>
                             </p>
                         </li>
                     </ul>
-                    <div class="module">
-                        <div class="see-module">
-                            <p class="see-type">体现类型</p>
-                            <p class="see-description"></p>
-                            <button class="btn">关闭</button>
-                        </div>
-                    </div>
                 </div>
             </section>
         </li>
     </ul>
+    <div class="module">
+        <div class="see-module">
+            <p class="see-type">体现类型</p>
+            <p class="see-description"></p>
+            <button class="btn" modclose>关闭</button>
+        </div>
+    </div>
     <footer class="footer">
         <pagination count="custom.itemsCount" take="custom.take" activate="custom.activatePage"></pagination>
     </footer>
 </div>
-<div ui-view="modal"></div>
+<div class="delete mod" ng-show="delShow">
+    <div class="del-head">
+        <h5>温馨提示</h5>
+    </div>
+    <div class="del-con">
+        <p>确定要删除这条数据？</p>
+        <div class="btn">
+            <button ng-click="delFn()">确定</button>
+            <button ng-click="cancel()">取消</button>
+        </div>
+    </div>
+</div>
+<div id="modalbg" ng-show="delShow"></div
 
 
 

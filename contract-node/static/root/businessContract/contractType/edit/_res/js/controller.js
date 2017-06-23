@@ -18,7 +18,7 @@ app.controller('contractTypeEditCtrl', function($scope, contractSer,$stateParams
         var vm = $scope;
         contractSer.editContract(vm.editContract).then(function(response){
             if(response.data.code == 0){
-                $state.go('root.businessContract.contractType.list');
+                $state.go('root.businessContract.contractType.list[12]');
                 toastr.success( "编辑成功", '温馨提示');
             }else{
                 toastr.error(response.data.msg, '温馨提示');

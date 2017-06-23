@@ -7,7 +7,7 @@ app.controller('ssuiAddCtrl', function($scope, ssuiSer,$state,toastr){
         var data = $scope.data;
         ssuiSer.addMarketserveapply(data).then(function(response){
             if(response.data.code == 0){
-                $state.go('root.business.contract.ssui.list');
+                $state.go('root.business.contract.ssui.list[12]');
                 toastr.success( "已成功添加", '温馨提示');
             }else{
                 toastr.error( response.data.msg, '温馨提示');

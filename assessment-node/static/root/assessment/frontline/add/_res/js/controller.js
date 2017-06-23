@@ -10,7 +10,7 @@ app.controller('frontlineAddCtrl', function ($scope, frontlineSer, $state, toast
         var vm = $scope;
         frontlineSer.addFrontLine(vm.add).then(function (response) {
             if (response.data.code == 0) {
-                $state.go('root.assessment.frontline.list');
+                $state.go('root.assessment.frontline.list[12]');
                 toastr.success("已成功添加", '温馨提示');
             }else{
                 toastr.error(response.data.msg, '温馨提示');

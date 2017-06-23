@@ -16,7 +16,7 @@ app.controller('basicInfoEditCtrl', function($scope, basicInfoSer,$stateParams,$
         vm.editInfo.endTime = angular.element('.endTime').val();
         basicInfoSer.editBasicInfo(vm.editInfo).then(function(response){
             if(response.data.code == 0){
-                $state.go('root.assessment.basicInfo.list');
+                $state.go('root.assessment.basicInfo.list[12]');
                 toastr.success( "编辑成功", '温馨提示');
             }else{
                 toastr.error(response.data.msg, '温馨提示');

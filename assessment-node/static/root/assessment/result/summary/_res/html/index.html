@@ -1,20 +1,20 @@
 <div class="collect">
-    <div class="sum-select">
-        <label><i><img src="/images/mandatory.png"></i><em>项目名称</em></label>
-        <div class="select">
-            <select class="allselect" ng-model="project" ng-change="myFunc()">
+    <div class="summary-select">
+        <div class="select3">
+            <label>项目名称：</label>
+            <select ng-model="project">
                 <option value="">请选择</option>
-                <option ng-repeat="pros in prodata" value="{{pros.project}}">{{pros.project}}</option>
+                <option ng-repeat="pros in prodata" value="{{pros.id}}">{{pros.project}}</option>
             </select>
-       </div>
-        <label><i><img src="/images/mandatory.png"></i><em>地区</em></label>
-        <div class="select">
-            <select class="allselect" ng-model="area" ng-change="myFunc()">
+        </div>
+        <div class="select3">
+            <label>地区：</label>
+            <select ng-model="area">
                 <option value="">请选择</option>
                 <option ng-repeat="areas in areadata" value="{{areas.area}}">{{areas.area}}</option>
             </select>
         </div>
-        <!--<button ng-click="collect()">汇总</button>-->
+        <button ng-click="collect()">汇总</button>
     </div>
     <ul class="sum-list">
         <li class="sum-thead">
@@ -44,7 +44,6 @@
             <span>{{summaryList.projectManageFee}}</span>
             <span>{{summaryList.projectProfit}}</span>
             <span>{{summaryList.projectTotalAmount}}</span>
-           <!-- <span ng-repeat="summarycount in summaryList">{{summarycount.counts}}</span>-->
         </li>
     </ul>
 </div>

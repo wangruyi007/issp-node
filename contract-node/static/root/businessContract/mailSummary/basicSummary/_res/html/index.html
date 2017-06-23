@@ -10,7 +10,7 @@
     </div>
     <ul class="sum-list">
         <li class="sum-thead">
-            <span>甲方公司名称</span>
+            <span style="flex: 0 0 20%;">甲方公司名称</span>
             <span ng-repeat="busTypeMapTit in tabTit.busTypeMap">{{busTypeMapTit.remark}}</span>
             <span ng-repeat="cooperWaysMapTit in tabTit.cooperWaysMap">{{cooperWaysMapTit.remark}}</span>
             <span ng-repeat="contractMapTit in tabTit.contractPropertyMap">{{contractMapTit.remark}}</span>
@@ -18,7 +18,7 @@
             <span>合同金额</span>
         </li>
         <li class="sum-tbody" ng-repeat="Lists in summaryLists" ng-model="tabTit">
-            <span>{{Lists.type}}</span>
+            <span style="flex: 0 0 20%;">{{Lists.type}}</span>
             <span ng-repeat="busTypeMapList in Lists.busTypeMap">{{busTypeMapList.count}}</span>
             <span ng-repeat="cooperWaysMapList in Lists.cooperWaysMap">{{cooperWaysMapList.count}}</span>
             <span ng-repeat="contractMapList in Lists.contractPropertyMap">{{contractMapList.count}}</span>

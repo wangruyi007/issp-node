@@ -31,7 +31,7 @@ app.controller('courseCollectListCtrl',function($scope,courseCollectSer,toastr) 
     };
     courseCollectSer.countCourseCollect().then(function(response){
         if(response.data.code == 0){
-            $scope.abili.itemsCount = response.data;
+            $scope.abili.itemsCount = response.data.data;
         }else{
                 toastr.error( response.data.msg, '温馨提示');
             }

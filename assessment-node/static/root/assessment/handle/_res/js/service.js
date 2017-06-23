@@ -9,7 +9,8 @@ app.factory('handleSer',function ($http) {
         deleteHand:deleteHand,
         allHandProjects:allHandProjects,
         editQualitative:editQualitative,
-        editRation:editRation
+        editRation:editRation,
+        menuPermission:menuPermission,
     };
     function listHand(data) {
         return $http.get('/listHand/list',{
@@ -51,5 +52,9 @@ app.factory('handleSer',function ($http) {
     //定量指标
     function editRation(data){
         return $http.post('/editRation/edit',data)
+    }
+    //菜单权限
+    function menuPermission(data) {
+        return $http.get('/handle/menu/'+data);
     }
 });

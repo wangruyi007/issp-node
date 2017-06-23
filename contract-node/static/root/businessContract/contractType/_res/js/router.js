@@ -11,6 +11,14 @@ app.config(function($provide, $stateProvider){
                 controller:"contractTypeMenuCtrl"
             }
         }
+    }).state("root.businessContract.contractType.list[12]",{
+        url:"/list[12]?id=&name=",
+        views:{
+            "content@root.businessContract.contractType":{
+                templateUrl : "root/businessContract/contractType/list/_res/html/index.html",
+                controller:'contractListCtrl'
+            }
+        }
     }).state("root.businessContract.contractType.add[12]",{
         url:"/add[12]",
         views:{
@@ -25,6 +33,22 @@ app.config(function($provide, $stateProvider){
             "content@root.businessContract.contractType":{
                 templateUrl : "root/businessContract/contractType/edit/_res/html/index.html",
                 controller:'contractTypeEditCtrl'
+            }
+        }
+    }).state("root.businessContract.contractType.upload[12]",{
+        url:"/upload[12]?id=",
+        views:{
+            "content@root.businessContract.contractType":{
+                templateUrl : "root/businessContract/contractType/upload/_res/html/index.html",
+                controller:'typeUploadCtrl'
+            }
+        }
+    }).state("root.businessContract.contractType.view[12]",{
+        url:"/view[12]?id=&view=",
+        views:{
+            "content@root.businessContract.contractType":{
+                templateUrl : "root/businessContract/contractType/view/_res/html/index.html",
+                controller:'typeViewCtrl'
             }
         }
     })

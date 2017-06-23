@@ -98,6 +98,8 @@ body {
   display: -ms-flexbox;
   display: flex;
 }
+/*多选可手填下拉框*/
+
 /*菜单*/
 .change-angle{
   transform:rotate(270deg);

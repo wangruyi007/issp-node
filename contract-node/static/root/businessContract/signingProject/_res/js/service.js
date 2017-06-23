@@ -1,14 +1,22 @@
 var app = angular.module('signingServer',[]);
 app.factory('signingSer',function ($http) {
     return {
+        menuPermission : menuPermission,
         signingList : signingList,
         addSigning:addSigning,
         editSigning:editSigning,
         findSigningId:findSigningId,
         countSigning:countSigning,
         deleteSigning:deleteSigning,
+        allProject:allProject,
+        viewSigning:viewSigning,
         reviewSigning:reviewSigning
     };
+    //菜单权限
+    function menuPermission(data) {
+        return $http.get('/siginmanage/guidePermission/'+data);
+    }
+    //列表
     function signingList(data) {
         return $http.get('/siginmanage/list',{
             params: data
@@ -44,5 +52,14 @@ app.factory('signingSer',function ($http) {
     //审核
     function reviewSigning(data){
         return $http.post('/siginmanage/audit',data)
+    }
+
+    //获取所有名称
+    function allProject(){
+        return $http.get('/siginmanage/projectName')
+    }
+    //附件列表
+    function viewSigning(data){
+        return $http.get('/siginmanage/listFile',{params:data})
     }
 });
