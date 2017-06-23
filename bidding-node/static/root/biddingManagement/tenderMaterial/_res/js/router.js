@@ -27,5 +27,21 @@ app.config(function($provide, $stateProvider){
                 controller:'MaterialEditCtrl'
             }
         }
+    }).state("root.biddingManagement.tenderMaterial.export[12]",{
+        url:"/export[12]",
+        views:{
+            "content@root.biddingManagement.tenderMaterial":{
+                templateUrl : "root/biddingManagement/tenderMaterial/export/_res/html/index.html",
+                controller:'MaterialExportCtrl'
+            }
+        }
+    }).state("root.biddingManagement.tenderMaterial.upload[12]",{
+        url:"/upload[12]?id=",
+        views:{
+            "content@root.biddingManagement.tenderMaterial":{
+                templateUrl : "root/biddingManagement/tenderMaterial/upload/_res/html/index.html",
+                controller:'MaterialUploadCtrl'
+            }
+        }
     })
 });

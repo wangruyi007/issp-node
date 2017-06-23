@@ -34,6 +34,15 @@ app.controller('questionCtrl',function ($scope,$state) {
             $scope.menuClass = 'editMenu'
         }
     }
+    $scope.upload = function(){
+        if($scope.idListd){
+            $state.go('root.biddingManagement.tenderQuestion.upload[12]',{id:$scope.idListd});
+            $scope.menuClass = 'uploadMenu'
+        }
+    }
+    $scope.export = function(){
+        $scope.menuClass = 'exportMenu'
+    };
     $scope.list = function(){
         $scope.menuClass = 'listMenu'
     };

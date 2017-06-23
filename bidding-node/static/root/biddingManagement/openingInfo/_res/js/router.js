@@ -35,5 +35,13 @@ app.config(function($provide, $stateProvider){
                 controller:'summaryCtrl'
             }
         }
+    }).state("root.biddingManagement.openingInfo.export[12]",{
+        url:"/export[12]",
+        views:{
+            "content@root.biddingManagement.openingInfo":{
+                templateUrl : "root/biddingManagement/openingInfo/export/_res/html/index.html",
+                controller:'exportCtrl'
+            }
+        }
     })
 });

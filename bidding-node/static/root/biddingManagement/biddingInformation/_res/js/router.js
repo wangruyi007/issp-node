@@ -27,6 +27,22 @@ app.config(function($provide, $stateProvider){
                 controller:'infoEditCtrl'
             }
         }
+    }).state("root.biddingManagement.biddingInformation.upload[12]",{
+        url:"/upload[12]?id=",
+        views:{
+            "content@root.biddingManagement.biddingInformation":{
+                templateUrl : "root/biddingManagement/biddingInformation/upload/_res/html/index.html",
+                controller:'infoUploadCtrl'
+            }
+        }
+    }).state("root.biddingManagement.biddingInformation.export[12]",{
+        url:"/export[12]",
+        views:{
+            "content@root.biddingManagement.biddingInformation":{
+                templateUrl : "root/biddingManagement/biddingInformation/export/_res/html/index.html",
+                controller:'infoExportCtrl'
+            }
+        }
     }).state("root.biddingManagement.biddingInformation.summary[12]",{
         url:"/summary[12]",
         views:{

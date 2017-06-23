@@ -3,6 +3,7 @@ var path = require('path');
 var config = require(path.resolve('plugins/read-config.js'));
 var form = require(path.resolve('plugins/form.js'));
 var urlEncode = require(path.resolve('plugins/urlEncode.js'));
+var uploadFile = require(path.resolve('plugins/uploadFile.js'));
 module.exports = function(){
 
     this.WebInfoList = function(argvs){
@@ -79,6 +80,43 @@ module.exports = function(){
         };
         return request(options);
     };
+    //导航权限
+    this.websitePermission = function(argvs){
+        var options = {
+            method : 'GET',
+            timeout : 3000,
+            uri : config()['rurl'] + '/biddingwebinfo/v1/guidePermission',//2017-06-10
+            headers:{
+                userToken:argvs.userToken
+            }
+        };
+        return request(options);
+    };
+    //获取网址
+    this.websiteUrl = function(argvs){
+        var options = {
+            method : 'GET',
+            timeout : 3000,
+            uri : config()['rurl'] + '/biddingwebinfo/v1/url',
+            headers:{
+                userToken:argvs.userToken
+            }
+        };
+        return request(options);
+    };
+    //获取网站名称
+    this.websiteName = function(argvs){
+        var options = {
+            method : 'GET',
+            timeout : 3000,
+            uri : config()['rurl'] + '/biddingwebinfo/v1/webName',
+            headers:{
+                userToken:argvs.userToken
+            }
+        };
+        return request(options);
+    };
+    //-------------------------------招标信息----------------------------
     //招标信息列表
     this.InfoList = function(argvs){
         var options = {
@@ -190,6 +228,45 @@ module.exports = function(){
         };
         return request(options);
     };
+    //菜单权限
+    this.infoGuide = function(argvs){
+        var options = {
+            method : 'GET',
+            timeout : 3000,
+            uri : config()['rurl'] + `/biddinginfo/v1/guidePermission?guideAddrStatus=`+argvs.name,//2017-06-08
+            headers:{
+                userToken:argvs.userToken
+            }
+        };
+        return request(options);
+    };
+    //上传附件
+    this.infoUploadFile = function(argvs){
+        var options = {
+            url: config()['rurl']+`/biddinginfo/v1/uploadFile/${argvs.fields.id}`,
+            method: 'POST',
+            formData: {
+                files: uploadFile(argvs.files.files)
+            },
+            headers:{
+                userToken:argvs.userToken
+            }
+        };
+        return request(options);
+    };
+    //获取内部项目编号
+    // this.infoListFile = function(argvs){
+    //     var options = {
+    //         method : 'GET',
+    //         timeout : 3000,
+    //         uri : config()['rurl'] + '/baseinfomanage/v1/getInnerNum',
+    //         headers:{
+    //             userToken:argvs.userToken
+    //         }
+    //     };
+    //     return request(options);
+    // };
+    //--------------------------投标答疑问题-----------------------------------
     //投标答疑问题列表
     this.questionsList = function(argvs){
         var options = {
@@ -265,6 +342,21 @@ module.exports = function(){
         };
         return request(options);
     };
+    //上传附件
+    this.questionUploadFile = function(argvs){
+        var options = {
+            url: config()['rurl']+`/biddinganswerquestions/v1/uploadFile/${argvs.fields.id}`,
+            method: 'POST',
+            formData: {
+                files: uploadFile(argvs.files.files)
+            },
+            headers:{
+                userToken:argvs.userToken
+            }
+        };
+        return request(options);
+    };
+    //----------------------------------标书资料------------------------------------
     //标书资料列表
     this.tenderList = function(argvs){
         var options = {
@@ -340,6 +432,21 @@ module.exports = function(){
         };
         return request(options);
     };
+    //上传附件
+    this.materialUploadFile = function(argvs){
+        var options = {
+            url: config()['rurl']+`/tenderinfo/v1/uploadFile/${argvs.fields.id}`,
+            method: 'POST',
+            formData: {
+                files: uploadFile(argvs.files.files)
+            },
+            headers:{
+                userToken:argvs.userToken
+            }
+        };
+        return request(options);
+    };
+    //--------------------------开标信息----------------------------------------------
     //开标信息列表
     this.openingInfoList = function(argvs){
         var options = {
@@ -444,7 +551,7 @@ module.exports = function(){
         var options = {
             method : 'GET',
             timeout : 3000,
-            uri : config()['rurl'] + '/biddinginfo/v1/cities',
+            uri : config()['rurl'] + '/bidopeninginfo/v1/cities',
             headers:{
                 userToken:argvs.userToken
             }
@@ -494,6 +601,66 @@ module.exports = function(){
                 userToken:argvs.userToken
             },
             form:argvs
+        };
+        return request(options);
+    };
+    //导航权限
+    this.siginNav = function(argvs){
+        var options = {
+            method : 'GET',
+            timeout : 3000,
+            uri : config()['rurl'] + '/biddinginfo/v1/sonPermission',//2017-06-10
+            headers:{
+                userToken:argvs.userToken
+            }
+        };
+        return request(options);
+    };
+    //设置导航权限
+    this.settingNav = function(argvs){
+        var options = {
+            method : 'GET',
+            timeout : 3000,
+            uri : config()['rurl'] + '/biddinginfo/v1/setButtonPermission',//2017-06-12
+            headers:{
+                userToken:argvs.userToken
+            }
+        };
+        return request(options);
+    };
+    //获取所有项目名称
+    this.getProjectName = function(argvs){
+        var options = {
+            method : 'GET',
+            timeout : 3000,
+            uri : config()['rurl'] + '/biddinginfo/v1/projectName',
+            headers:{
+                userToken:argvs.userToken
+            }
+        };
+        return request(options);
+    };
+    //获取所有编号
+    this.biddingNumber = function(argvs){
+        var options = {
+            method : 'GET',
+            timeout : 3000,
+            uri : config()['rurl'] + '/biddinginfo/v1/biddingNumber',
+            headers:{
+                userToken:argvs.userToken
+            }
+        };
+        return request(options);
+    };
+    //编号查询
+    this.getBiddingNum = function(argvs){
+        var options = {
+            method : 'GET',
+            timeout : 3000,
+            uri : config()['rurl'] + `/biddinginfo/v1/getBiddingNum${urlEncode(argvs,true)}`,
+            headers:{
+                userToken:argvs.userToken
+            }
         };
         return request(options);
     };

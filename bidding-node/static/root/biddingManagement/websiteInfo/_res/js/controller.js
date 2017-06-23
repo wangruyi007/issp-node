@@ -8,7 +8,7 @@ app.controller('websiteCtrl',function ($scope,$state) {
         $state.go('root.biddingManagement.websiteInfo.list')
     }
     $scope.$emit('isVi',false);//判断是否出现搜索按钮
-}).controller('websiteMenuCtrl',function($scope,$state,$rootScope,$location){
+}).controller('websiteMenuCtrl',function($scope,$state,$rootScope,$location,websiteSer){
     var urlName = $state.current.url.split('/')[1].split('[')[0];
     $scope.menuClass = urlName + "Menu";
     $rootScope.$on('$locationChangeSuccess', function () {//url地扯改变或者刷新
@@ -40,5 +40,21 @@ app.controller('websiteCtrl',function ($scope,$state) {
     $scope.add = function(){
         $scope.menuClass = 'addMenu'
     };
+    websiteSer.websitePermission().then(function(response){
+        if(response.data.code == 0){
+            var data = response.data.data;
+            if(data && data.length){
+                $scope.isHide = false;
+                for(var i =0,len=data.length;i<len;i++){
+                    var obj = data[i];
+                    $scope[obj.name]=obj.flag;
+                }
+            }else if(response.data.data.length == 0){
+                $scope.isHide = true;
+            }
+        }else{
+            $scope.isHide = false;
+        }
+    });
 });
 

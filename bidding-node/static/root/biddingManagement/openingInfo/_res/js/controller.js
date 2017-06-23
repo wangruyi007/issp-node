@@ -42,4 +42,7 @@ app.controller('openingCtrl',function ($scope,$state) {
     $scope.summary = function(){
         $scope.menuClass = 'summaryMenu'
     };
+    $scope.export = function(){
+        $scope.menuClass = 'exportMenu'
+    };
 });

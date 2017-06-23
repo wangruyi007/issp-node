@@ -12,26 +12,26 @@
     <ul class="table">
         <li class="list-head">
             <span></span>
-            <span>网站名称</span>
+            <span>编号</span>
             <span>网址</span>
             <span>招投标类型</span>
             <span>业务类型</span>
             <span>业务方向科目</span>
             <span>标书模块</span>
-            <span>招标编号</span>
+            <span>网站名称</span>
             <span></span>
         </li>
         <li class="list-all" ng-repeat="lists in infoLists|filter:teamInfo" style="display: {{lists._delete?'none':'block'}};">
             <section>
                 <div class="list-text {{lists._selectList?'selectList':''}}" ng-click="selectList(lists)">
                     <p>{{$index+1}}</p>
-                    <p>{{lists.webName}}</p>
+                    <p>{{lists.biddingNumber}}</p>
                     <p>{{lists.url}}</p>
                     <p>{{lists.biddingType|cover}}</p>
                     <p>{{lists.businessType|cover}}</p>
                     <p>{{lists.businessDirectionSubject}}</p>
                     <p>{{lists.tenderModule}}</p>
-                    <p>{{lists.tenderNumber}}</p>
+                    <p>{{lists.webName}}</p>
                     <p>
                         <a href="javascript:void(0)" class="more" ng-click="moreList(lists)">更多详细</a>
                     </p>

@@ -2,6 +2,7 @@
     <ul class="table">
         <li class="list-head">
             <span></span>
+            <span>编号</span>
             <span>项目名称</span>
             <span>答疑准备人</span>
             <span>答疑时间</span>
@@ -13,6 +14,7 @@
             <section>
                 <div class="list-text {{lists._selectList?'selectList':''}}" ng-click="selectList(lists)">
                     <p>{{$index+1}}</p>
+                    <p>{{lists.biddingNumber}}</p>
                     <p>{{lists.projectName}}</p>
                     <p>{{lists.peopleAnswerQuestions}}</p>
                     <p>{{lists.officeHour}}</p>

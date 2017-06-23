@@ -1,7 +1,6 @@
 var app = angular.module('infoEdit', ['toastr']);
 app.controller('infoEditCtrl', function($scope, infoSer,$stateParams,$state,toastr){
     var infoData ={id: $stateParams.id};
-
     //获取ID
     infoSer.findInfoId(infoData).then(function(response){
         if(response.data.code==0){
@@ -11,10 +10,29 @@ app.controller('infoEditCtrl', function($scope, infoSer,$stateParams,$state,toas
         }
 
     });
+    //获取网站名称
+    infoSer.websiteName().then(function(response){
+        if(response.data.code==0){
+            $scope.webNames = response.data.data;
+        }else{
+            toastr.error(response.data.msg, '温馨提示');
+        }
+    });
+        //获取网址
+    infoSer.websiteUrl().then(function(response){
+        if(response.data.code==0){
+            $scope.urls = response.data.data;
+        }else{
+            toastr.error(response.data.msg, '温馨提示');
+        }
+    });
 
     //编辑点击提交
     $scope.infoEditFun = function(){
         var vm = $scope;
+        vm.editInfo.webName = angular.element('.webName').val();
+        vm.editInfo.url = angular.element('.url').val();
+
         vm.editInfo.registrationTime = angular.element('.registrationTime').val();
         vm.editInfo.biddingTime = angular.element('.biddingTime').val();
         vm.editInfo.buyTenderTime = angular.element('.buyTenderTime').val();

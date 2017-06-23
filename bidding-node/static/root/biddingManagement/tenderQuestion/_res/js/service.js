@@ -6,7 +6,10 @@ app.factory('questionSer',function ($http) {
         editAnswer:editAnswer,
         findAnswerId:findAnswerId,
         countAnswer:countAnswer,
-        deleteAnswer:deleteAnswer
+        deleteAnswer:deleteAnswer,
+        getProjectName:getProjectName,
+        getBiddingNum:getBiddingNum,
+        biddingNumber:biddingNumber
     };
     function answerList(data) {
         return $http.get('/biddinganswerquestions/list',{
@@ -39,5 +42,19 @@ app.factory('questionSer',function ($http) {
             params: data
 
         })
+    }
+    //获取所有项目名称
+    function getProjectName(){
+        return $http.get('/getProjectName/projectName')
+    }
+    //编号查询
+    function getBiddingNum(data){
+        return $http.get('/getBiddingNum/num',{
+            params:data
+        })
+    }
+    //获取所有编号
+    function biddingNumber(){
+        return $http.get('/biddingNumber/num')
     }
 });

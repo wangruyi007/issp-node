@@ -3,12 +3,15 @@
         <section>
             <ul>
                 <li class="required">
-                    <label><i><img src="/images/mandatory.png"></i><em>招标编号</em></label>
-                    <input type="text" ng-verify="{}" ng-model="opening.tenderNumber">
+                    <label><i><img src="/images/mandatory.png"></i><em>编号</em></label>
+                    <select class="sele num" ng-model="opening.biddingNumber" ng-change="changSelect()">
+                        <option ng-repeat="biddingNumber in biddingNumbers" value="{{biddingNumber}}">{{biddingNumber}}</option>
+                    </select>
                 </li>
+
                 <li class="required">
                     <label><i><img src="/images/mandatory.png"></i><em>项目名称</em></label>
-                    <input type="text" ng-verify="{}" ng-model="opening.projectName">
+                    <input type="text" value="{{projectNames.projectName}}" class="na">
                 </li>
                 <li class="required">
                     <label><i><img src="/images/mandatory.png"></i><em>竞争公司</em></label>
@@ -20,11 +23,13 @@
                 </li>
                 <li class="required">
                     <label><i><img src="/images/mandatory.png"></i><em>开标时间</em></label>
-                    <input type="text" onClick="laydate({istime: true, format: 'YYYY-MM-DD hh:mm:ss'})" class="add_image bidOpeningTime" ng-model="opening.bidOpeningTime">
+                    <input type="text" onClick="laydate({istime: true, format: 'YYYY-MM-DD'})" class="add_image bidOpeningTime" ng-model="opening.bidOpeningTime">
                 </li>
                 <li class="required">
                     <label><i><img src="/images/mandatory.png"></i><em>开标地点</em></label>
-                    <input type="text" ng-model="opening.bidOpeningPlace">
+                    <select class="sele ea" ng-model="opening.bidOpeningPlace">
+                        <option ng-repeat="workOption in workOptions" value="{{workOption}}">{{workOption}}</option>
+                    </select>
                 </li>
                 <li class="required">
                     <label><i><img src="/images/mandatory.png"></i><em>委托人</em></label>

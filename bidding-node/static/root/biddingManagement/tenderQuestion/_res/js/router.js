@@ -19,6 +19,22 @@ app.config(function($provide, $stateProvider){
                 controller:'questionAddCtrl'
             }
         }
+    }).state("root.biddingManagement.tenderQuestion.export[12]",{
+        url:"/export[12]",
+        views:{
+            "content@root.biddingManagement.tenderQuestion":{
+                templateUrl : "root/biddingManagement/tenderQuestion/export/_res/html/index.html",
+                controller:'questionExportCtrl'
+            }
+        }
+    }).state("root.biddingManagement.tenderQuestion.upload[12]",{
+        url:"/upload[12]?id=",
+        views:{
+            "content@root.biddingManagement.tenderQuestion":{
+                templateUrl : "root/biddingManagement/tenderQuestion/upload/_res/html/index.html",
+                controller:'questionUploadCtrl'
+            }
+        }
     }).state("root.biddingManagement.tenderQuestion.edit[12]",{
         url:"/edit[12]?id=",
         views:{

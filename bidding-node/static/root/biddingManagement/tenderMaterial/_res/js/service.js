@@ -6,7 +6,10 @@ app.factory('MaterialSer',function ($http) {
         editSource:editSource,
         findSourceId:findSourceId,
         countSource:countSource,
-        deleteSource:deleteSource
+        deleteSource:deleteSource,
+        getProjectName:getProjectName,
+        getBiddingNum:getBiddingNum,
+        biddingNumber:biddingNumber
     };
     function sourceList(data) {
         return $http.get('/tenderinfo/list',{
@@ -37,5 +40,19 @@ app.factory('MaterialSer',function ($http) {
         return $http.get('/tenderinfo/delete',{
             params: data
         })
+    }
+    //获取所有项目名称
+    function getProjectName(){
+        return $http.get('/getProjectName/projectName')
+    }
+    //编号查询
+    function getBiddingNum(data){
+        return $http.get('/getBiddingNum/num',{
+            params:data
+        })
+    }
+    //获取所有编号
+    function biddingNumber(){
+        return $http.get('/biddingNumber/num')
     }
 });

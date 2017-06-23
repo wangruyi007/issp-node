@@ -16,6 +16,22 @@ app.controller('informationCtrl',function ($scope,$state) {
             $scope.menuClass = 'listMenu';
         }
     });
+//如果是刷新进来的页面，没有经过list
+    // if (window.location.href.split('id=')[1]) {
+    //     $scope.idListd = window.location.href.split('id=')[1];
+    // }
+    // $scope.menuCheck = function (name) {
+    //     var buttonName = name;
+    //     $scope.buttonShow = true;
+    //     signingSer.menuPermission(buttonName).then(function(response){
+    //         if(response.data.code == 0 && response.data.data){
+    //             $scope[buttonName] = true;
+    //         }else{
+    //             $scope[buttonName] = false;
+    //         }
+    //     });
+    //     $scope.menuAdd = false;
+    // };
     //监听到父Ctrl后改变事件
     $scope.$on("getId", function(event, msg){
        $scope.idListd = msg;
@@ -35,6 +51,15 @@ app.controller('informationCtrl',function ($scope,$state) {
             $state.go('root.biddingManagement.biddingInformation.edit[12]',{id:$scope.idListd});
             $scope.menuClass = 'editMenu'
         }
+    };
+    $scope.upload = function(){
+        if($scope.idListd){
+            $state.go('root.biddingManagement.biddingInformation.upload[12]',{id:$scope.idListd});
+            $scope.menuClass = 'uploadMenu'
+        }
+    };
+    $scope.export = function(){
+        $scope.menuClass = 'exportMenu'
     };
     $scope.list = function(){
         $scope.menuClass = 'listMenu'
@@ -57,6 +82,9 @@ app.filter('cover', function(){
                 break;
             case "OPENTENDERING":
                 result = "公开招标";
+                break;
+            case "MOBILECOMMUNICATION":
+                result = "移动通信";
                 break;
             case "SOFTWAREDEVELOPMENT":
                 result = "软件开发";
