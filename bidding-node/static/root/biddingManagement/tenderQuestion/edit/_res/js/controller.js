@@ -34,7 +34,7 @@ app.controller('questionEditCtrl', function($scope, questionSer,$stateParams,$st
         vm.editQuestions.projectName = angular.element('.na').val();
         questionSer.editAnswer(vm.editQuestions).then(function(response){
             if(response.data.code == 0){
-                $state.go('root.biddingManagement.tenderQuestion.list');
+                $state.go('root.biddingManagement.tenderQuestion.list[12]');
                 toastr.success( "编辑成功", '温馨提示');
             }else{
                 toastr.error( response.data.msg, '温馨提示');

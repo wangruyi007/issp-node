@@ -90,10 +90,10 @@ module.exports = function(){
                 $self.body=error.error;
                 console.error(error.error);
             }));
-        }).get('/websitePermission/permission', function*(){ //导航权限
+        }).get('/websitePermission/permission/:guideAddrStatus', function*(){ //导航权限
         var $self = this;
-        var navToken = {userToken:$self.cookies.get('token')};
-        yield (server().websitePermission(navToken)
+        var page = {name:$self.params.guideAddrStatus,userToken:$self.cookies.get('token')};
+        yield (server().websitePermission(page)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
                 $self.body = responseText;
@@ -241,7 +241,7 @@ module.exports = function(){
                 $self.body=error.error;
                 console.error(error.error);
             }));
-    }).get('/infoGuide/guide', function*(){ //菜单权限
+    }).get('/infoGuide/guide/:guideAddrStatus', function*(){ //菜单权限
         var $self = this;
         var page = {name:$self.params.guideAddrStatus,userToken:$self.cookies.get('token')};
         yield (server().infoGuide(page)
@@ -289,6 +289,17 @@ module.exports = function(){
     //         console.error(error.error);
     //     }));  
         //------------------------------投标答疑问题-----------------------------------------
+        }).get('/questionPermission/questionPermission/:guideAddrStatus', function*(){ //菜单权限
+        var $self = this;
+        var page = {name:$self.params.guideAddrStatus,userToken:$self.cookies.get('token')};
+        yield (server().questionPermission(page)
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+            }));
     }).get('/biddinganswerquestions/list', function*(){ //投标答疑问题列表
         var $self = this;
         var page = $self.request.query;
@@ -391,6 +402,17 @@ module.exports = function(){
                 console.error(error.error);
             }));
         //--------------------------标书资料-----------------------------------------
+    }).get('/MaterialPermission/MaterialPermission/:guideAddrStatus', function*(){ //菜单权限
+        var $self = this;
+        var page = {name:$self.params.guideAddrStatus,userToken:$self.cookies.get('token')};
+        yield (server().MaterialPermission(page)
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+            }));
     }).get('/tenderinfo/list', function*(){ //标书资料列表
         var $self = this;
         var page = $self.request.query;
@@ -493,6 +515,17 @@ module.exports = function(){
                 console.error(error.error);
             }));
         //--------------------------开标信息-----------------------------
+    }).get('/openingPermission/openingPermission/:guideAddrStatus', function*(){ //项目合同基本信息菜单权限
+        var $self = this;
+        var page = {name:$self.params.guideAddrStatus,userToken:$self.cookies.get('token')};
+        yield (server().openingPermission(page)
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+            }));
     }).get('/openingExport/export', function*(){//导出
         var $self = this;
         var count = $self.request.query;

@@ -85,7 +85,7 @@ module.exports = function(){
         var options = {
             method : 'GET',
             timeout : 3000,
-            uri : config()['rurl'] + '/biddingwebinfo/v1/guidePermission',//2017-06-10
+            uri : config()['rurl'] + `/biddingwebinfo/v1/guidePermission?guideAddrStatus=`+argvs.name,//2017-06-08
             headers:{
                 userToken:argvs.userToken
             }
@@ -267,6 +267,18 @@ module.exports = function(){
     //     return request(options);
     // };
     //--------------------------投标答疑问题-----------------------------------
+    //菜单权限
+    this.questionPermission = function(argvs){
+        var options = {
+            method : 'GET',
+            timeout : 3000,
+            uri : config()['rurl'] + `/biddinganswerquestions/v1/guidePermission?guideAddrStatus=`+argvs.name,//2017-06-08
+            headers:{
+                userToken:argvs.userToken
+            }
+        };
+        return request(options);
+    };
     //投标答疑问题列表
     this.questionsList = function(argvs){
         var options = {
@@ -357,6 +369,18 @@ module.exports = function(){
         return request(options);
     };
     //----------------------------------标书资料------------------------------------
+    //菜单权限
+    this.MaterialPermission = function(argvs){
+        var options = {
+            method : 'GET',
+            timeout : 3000,
+            uri : config()['rurl'] + `/tenderinfo/v1/guidePermission?guideAddrStatus=`+argvs.name,//2017-06-08
+            headers:{
+                userToken:argvs.userToken
+            }
+        };
+        return request(options);
+    };
     //标书资料列表
     this.tenderList = function(argvs){
         var options = {
@@ -447,6 +471,18 @@ module.exports = function(){
         return request(options);
     };
     //--------------------------开标信息----------------------------------------------
+    //菜单权限
+    this.openingPermission = function(argvs){
+        var options = {
+            method : 'GET',
+            timeout : 3000,
+            uri : config()['rurl'] + `/bidopeninginfo/v1/guidePermission?guideAddrStatus=`+argvs.name,//2017-06-08
+            headers:{
+                userToken:argvs.userToken
+            }
+        };
+        return request(options);
+    };
     //开标信息列表
     this.openingInfoList = function(argvs){
         var options = {

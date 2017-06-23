@@ -11,6 +11,14 @@ app.config(function($provide, $stateProvider){
                 controller:"openingMenuCtrl"
             }
         }
+    }).state("root.biddingManagement.openingInfo.list[12]",{
+        url:"/list[12]?id=&name=",
+        views:{
+            "content@root.biddingManagement.openingInfo":{
+                templateUrl : "root/biddingManagement/openingInfo/list/_res/html/index.html",
+                controller:'openingListCtrl'
+            }
+        }
     }).state("root.biddingManagement.openingInfo.add[12]",{
         url:"/add[12]",
         views:{

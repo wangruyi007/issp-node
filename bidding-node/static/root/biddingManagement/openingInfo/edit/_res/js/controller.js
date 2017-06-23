@@ -44,7 +44,7 @@ $scope.showed=true
         vm.editOpening.projectName = angular.element('.na').val();
         openingSer.editBidOpening(vm.editOpening).then(function(response){
             if(response.data.code == 0){
-                $state.go('root.biddingManagement.openingInfo.list');
+                $state.go('root.biddingManagement.openingInfo.list[12]');
                 toastr.success( "编辑成功", '温馨提示');
             }else{
                 toastr.error( response.data.msg, '温馨提示');

@@ -48,7 +48,7 @@ app.factory('websiteSer',function ($http) {
     //功能导航权限
     function websitePermission(data){
 
-        return $http.get('/websitePermission/permission');
+        return $http.get('/websitePermission/permission/'+data);
     }
     //获取网址
     function websiteUrl(data){

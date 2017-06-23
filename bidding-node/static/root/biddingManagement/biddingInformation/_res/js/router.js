@@ -11,6 +11,14 @@ app.config(function($provide, $stateProvider){
                 controller:"infoMenuCtrl"
             }
         }
+    }).state("root.biddingManagement.biddingInformation.list[12]",{
+        url:"/list[12]?id=&name=",
+        views:{
+            "content@root.biddingManagement.biddingInformation":{
+                templateUrl : "root/biddingManagement/biddingInformation/list/_res/html/index.html",
+                controller:'infoListCtrl'
+            }
+        }
     }).state("root.biddingManagement.biddingInformation.add[12]",{
         url:"/add[12]",
         views:{

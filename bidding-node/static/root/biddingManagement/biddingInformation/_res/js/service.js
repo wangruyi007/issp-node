@@ -13,7 +13,8 @@ app.factory('infoSer',function ($http) {
         infoListFile:infoListFile,
         websiteUrl:websiteUrl,
         websiteName:websiteName,
-        getProjectName:getProjectName
+        getProjectName:getProjectName,
+        infoGuide:infoGuide
     };
     function infoList(data) {
         return $http.get('/biddinginfo/list',{
@@ -65,7 +66,7 @@ app.factory('infoSer',function ($http) {
     //----------------------------------------------------------
     //功能导航权限
     function infoGuide(data){
-        return $http.get('/infoGuide/guide')
+        return $http.get('/infoGuide/guide/'+data)
     }
     //文件附件列表
     function infoListFile(data){

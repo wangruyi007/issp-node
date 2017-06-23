@@ -33,7 +33,7 @@ app.controller('MaterialEditCtrl', function($scope, MaterialSer,$stateParams,$st
         vm.editTender.projectName = angular.element('.na').val();
         MaterialSer.editSource(vm.editTender).then(function(response){
             if(response.data.code == 0){
-                $state.go('root.biddingManagement.tenderMaterial.list');
+                $state.go('root.biddingManagement.tenderMaterial.list[12]');
                 toastr.success( "编辑成功", '温馨提示');
             }else{
                 toastr.error( response.data.msg, '温馨提示');

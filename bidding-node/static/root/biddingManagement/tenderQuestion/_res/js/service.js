@@ -9,8 +9,13 @@ app.factory('questionSer',function ($http) {
         deleteAnswer:deleteAnswer,
         getProjectName:getProjectName,
         getBiddingNum:getBiddingNum,
-        biddingNumber:biddingNumber
+        biddingNumber:biddingNumber,
+        questionPermission:questionPermission
     };
+    //菜单权限
+    function questionPermission(data) {
+        return $http.get('/questionPermission/questionPermission/'+data);
+    }
     function answerList(data) {
         return $http.get('/biddinganswerquestions/list',{
             params: data

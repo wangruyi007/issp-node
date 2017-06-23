@@ -11,6 +11,14 @@ app.config(function($provide, $stateProvider){
                 controller:"MaterialMenuCtrl"
             }
         }
+    }).state("root.biddingManagement.tenderMaterial.list[12]",{
+        url:"/list[12]?id=&name=",
+        views:{
+            "content@root.biddingManagement.tenderMaterial":{
+                templateUrl : "root/biddingManagement/tenderMaterial/list/_res/html/index.html",
+                controller:'MaterialListCtrl'
+            }
+        }
     }).state("root.biddingManagement.tenderMaterial.add[12]",{
         url:"/add[12]",
         views:{

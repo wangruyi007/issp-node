@@ -5,17 +5,32 @@ var app = angular.module('tenderMaterial', [{
 }]);
 app.controller('MaterialCtrl',function ($scope,$state) {
     if ($state.current.url == '/tenderMaterial') {//默认加载列表
-        $state.go('root.biddingManagement.tenderMaterial.list')
+        $state.go('root.biddingManagement.tenderMaterial.list[12]')
     }
     $scope.$emit('isVi',false);//判断是否出现搜索按钮
-}).controller('MaterialMenuCtrl',function($scope,$state,$rootScope,$location){
+}).controller('MaterialMenuCtrl',function($scope,$state,$rootScope,$location,MaterialSer){
     var urlName = $state.current.url.split('/')[1].split('[')[0];
-    $scope.menuClass = urlName + "Menu";
+    $scope.menuClass=urlName+"Menu";
     $rootScope.$on('$locationChangeSuccess', function () {//url地扯改变或者刷新
-        if($location.path().split('/').slice(-1)=='list'){
+        if($location.path().split('/').slice(-1)=='list[12]' && window.location.href.indexOf('id=') == -1){
             $scope.menuClass = 'listMenu';
         }
     });
+    if (window.location.href.split('id=')[1]) {//如果是刷新进来的页面，没有经过list
+        $scope.idListd = window.location.href.split('id=')[1];
+    }
+    $scope.menuCheck = function (name) {
+        var buttonName = name;
+        $scope.buttonShow = true;
+        MaterialSer.MaterialPermission(buttonName).then(function(response){
+            if(response.data.code == 0 && response.data.data){
+                $scope[buttonName] = true;
+            }else{
+                $scope[buttonName] = false;
+            }
+        });
+        $scope.menuAdd = false;
+    };
     //监听到父Ctrl后改变事件
     $scope.$on("getId", function(event, msg){
        $scope.idListd = msg;
@@ -23,7 +38,7 @@ app.controller('MaterialCtrl',function ($scope,$state) {
 
     $scope.delete = function(){
         if($scope.idListd){
-            $state.go('root.biddingManagement.tenderMaterial.list.delete[12]',{id:$scope.idListd});
+            $state.go('root.biddingManagement.tenderMaterial.list[12]',{id:$scope.idListd,name:'delete'});
             $scope.menuClass = 'deleteMenu'
         }
     }

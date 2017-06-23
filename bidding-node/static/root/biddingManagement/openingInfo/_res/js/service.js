@@ -12,8 +12,13 @@ app.factory('openingSer',function ($http) {
         getCity:getCity,
         getProjectName:getProjectName,
         getBiddingNum:getBiddingNum,
-        biddingNumber:biddingNumber
+        biddingNumber:biddingNumber,
+        openingPermission:openingPermission
     };
+    //菜单权限
+    function openingPermission(data) {
+        return $http.get('/openingPermission/openingPermission/'+data);
+    }
     function bidOpeningList(data) {
         return $http.get('/bidopeninginfo/list',{
             params: data

@@ -9,8 +9,13 @@ app.factory('MaterialSer',function ($http) {
         deleteSource:deleteSource,
         getProjectName:getProjectName,
         getBiddingNum:getBiddingNum,
-        biddingNumber:biddingNumber
+        biddingNumber:biddingNumber,
+        MaterialPermission:MaterialPermission
     };
+    //菜单权限
+    function MaterialPermission(data) {
+        return $http.get('/MaterialPermission/MaterialPermission/'+data);
+    }
     function sourceList(data) {
         return $http.get('/tenderinfo/list',{
             params: data
