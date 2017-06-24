@@ -575,7 +575,7 @@ body {
   background: url("/images/gou.png") no-repeat center;
 }
 .enclosure2 .checkbox-all .tick{
-  
+
 }
 .enclosure2 .checkbox-all .checkedNum[data-style="checkeds"] + label:before, .enclosure2 .enclosure .checked-box .checkedNum[data-style="checkeds"] + label:before, .enclosure .enclosure2 .checked-box .checkedNum[data-style="checkeds"] + label:before, .enclosure2 .checked-box2 .checkedNum[data-style="checkeds"] + label:before {
   width: 13px;
@@ -1278,7 +1278,7 @@ body {
   position:relative;
 }
 /*.content-tab .table .list-all section{*/
-/*overflow: hidden;*/
+  /*overflow: hidden;*/
 /*}*/
 .right-section .top-content .content .content-wrap .content-tab .table .list-all section .thaw-modal{
   display:none;
@@ -1298,7 +1298,7 @@ body {
   position:absolute;
   right:7%;
   top:10px;
-  
+
 }
 .right-section .top-content .content .content-wrap .content-tab .table .list-all section.congeal p .more{
   display:none;
@@ -1660,7 +1660,7 @@ ul li .select{
 ul li .two-select{
   width: 27%;
   height: 35px;
-  
+
 }
 ul li .two-select .mymultiselect .btn{
   height: 35px;
@@ -1745,7 +1745,7 @@ ul li .data-add{
   display:inline-block;
   width:12px;
   height:12px;
-  
+
 }
 .select .mymultiselect .dropdown-menu li a:hover{
   background:#00c6ff;
@@ -1923,7 +1923,7 @@ ul li .data-add{
 .right-section .top-content .content .content-wrap .content-input .dataBottom button:disabled{
   background:#ccc;
   cursor: default;
-  
+
 }
 .right-section .top-content .content .content-wrap .content-input .dataBottom button {
   color: white;
@@ -2686,8 +2686,8 @@ ul li .data-add{
   border-radius: 3px;
   cursor: pointer;
   background:#fff;
-  
-  
+
+
 }
 .pagination .page.active{
   background:#05a9e9;

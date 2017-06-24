@@ -196,7 +196,7 @@ app.config(function ($provide, $urlRouterProvider) {
 
 app.factory('HttpInterceptor', ['$q', HttpInterceptor]);
 
-function HttpInterceptor($q,toastr){
+function HttpInterceptor($q,toastr,$location){
 
     return {
         request : function(config){
