@@ -1088,7 +1088,7 @@ body {
 .right-section .top-content .content .menu .list.width-12 li {
   width: 12%;
 }
-
+/*新的开始*/
 .right-section .top-content .content .menu .list li {
   width: 9%;
   display: -webkit-box;
@@ -1098,14 +1098,14 @@ body {
   -ms-flex-pack: start;
   justify-content: flex-start;
   cursor: pointer;
-  padding-left: 15px;
+  margin-right: 10px;
 }
-
+/*菜单功能当前状态*/
 .right-section .top-content .content .menu .list li.current {
-  height: 78px;
-  line-height: 78px;
+  height: 68px;
+  line-height: 68px;
   background-color: #fff;
-  margin-top: -22px;
+  margin-top: -12px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -1117,13 +1117,18 @@ body {
   border-right: 1px;
   border-style: solid;
   border-color: #e1e1e1;
+  justify-content: center;
+  border-top: 3px solid #05a9e9;
 }
 
 .right-section .top-content .content .menu .list li.current a {
   color: #333;
-  line-height: 1.5;
+  line-height:2.5;
+  padding-left: 3px;
+  border-color: #fff !important;
+  margin-left: -5px;
 }
-
+/*菜单功能当前状态*/
 .right-section .top-content .content .menu .list li.last-select {
   padding-right: 20px;
 }
@@ -1161,13 +1166,16 @@ body {
 .right-section .top-content .content .menu .list li a {
   text-align: left;
   padding-left: 14px;
-  line-height: 1.5;
+  line-height: 2.5;
   border-left: 2px;
   border-style: solid;
   border-color: #fff;
   font-size: 16px;
   height: 42px;
+  margin-left: 10px;
 }
+/*新的结束*/
+
 @media screen and (max-width: 1680px) {
   .right-section .top-content .content .menu .list li a{
     font-size: 14px;

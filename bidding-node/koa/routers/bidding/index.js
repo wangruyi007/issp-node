@@ -653,6 +653,123 @@ module.exports = function(){
                 $self.body=error.error;
                 console.error(error.error);
             }));
+        //--------------------邮件发送-------------------------------------
+    }).get('/emailPermission/emailPermission/:guideAddrStatus', function*(){ //邮件汇总菜单权限
+        var $self = this;
+        var page = {name:$self.params.guideAddrStatus,userToken:$self.cookies.get('token')};
+        yield (server().emailPermission(page)
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+            }));
+    }).get('/emailList/list', function*(){ //邮件汇总列表
+        var $self = this;
+        var page = $self.request.query;
+        page.userToken = $self.cookies.get('token');
+        yield (server().emailList(page)
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
+    }).post('/emailAdd/add', function*(){//邮件汇总添加
+        var $self = this;
+        var addData = $self.request.body;
+        addData.userToken = $self.cookies.get('token');
+        yield (server().emailAdd(addData)
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
+    }).post('/emailEdit/edit', function*(){//邮件汇总编辑
+        var $self = this;
+        var editData = $self.request.body;
+        editData.userToken = $self.cookies.get('token');
+        yield (server().emailEdit(editData)
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
+    }).get('/emailId/getOneById', function*(){//ID查询邮件汇总数据
+        var $self = this;
+        var findById = $self.request.query;
+        findById.userToken = $self.cookies.get('token');
+        yield (server().emailId(findById)
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
+    }).get('/emailDelete/delete', function*(){//删除邮件汇总数据
+        var $self = this;
+        var deleteData = $self.request.query;
+        deleteData.userToken = $self.cookies.get('token');
+        yield (server().emailDelete(deleteData)
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
+    }).get('/emailCount/count', function*(){//获取邮件汇总总条数
+        var $self = this;
+        var token = {userToken:$self.cookies.get('token')};
+        yield (server().emailCount(token)
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
+    }).get('/emailCongeal/congeal', function*(){//冻结邮件汇总数据
+        var $self = this;
+        var congealData = $self.request.query;
+        congealData.userToken = $self.cookies.get('token');
+        yield (server().emailCongeal(congealData)
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
+    }).get('/emailThaw/thaw', function*(){//解冻邮件汇总数据
+        var $self = this;
+        var thawData = $self.request.query;
+        thawData.userToken = $self.cookies.get('token');
+        yield (server().emailThaw(thawData)
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
+
+    //----------------------------------
     }).get('/user/logout', function*(next){ //登录退出
         var url = this.request.query;
         this.cookies.set("absUrl",url.absurl);

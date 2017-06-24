@@ -19,8 +19,11 @@
         <li ng-click="navClass('openingInfo')" ng-show="bidopeninginfo" ng-class="{'active':navCla=='openingInfo'}" ui-sref="_root.biddingManagement.openingInfo.list[12]">
             <a href="javascript:void(0)">{{menuInfo.name5}}</a>
         </li>
-        <li ng-click="navClass('setting')" ng-class="{'active':navCla=='setting'}"  ui-sref="_root.biddingManagement.setting.list[12]" >
+        <li ng-click="navClass('email')" ng-show="collectemail" ng-class="{'active':navCla=='email'}" ui-sref="_root.biddingManagement.email.list[12]">
             <a href="javascript:void(0)">{{menuInfo.name6}}</a>
+        </li>
+        <li ng-click="navClass('setting')" ng-class="{'active':navCla=='setting'}"  ui-sref="_root.biddingManagement.setting.list[12]" >
+            <a href="javascript:void(0)">{{menuInfo.name7}}</a>
         </li>
     </ul>
 </div>
