@@ -1,58 +1,7 @@
 var app = angular.module('mailSummaryList', ['ng-pagination','toastr']);
 app.controller('mailSummaryListCtrl',function($scope,emailSer,toastr,$stateParams,$state){
     $scope.$emit('changeId', null);
-    //获取id
-    if($stateParams.id){
-        switch ($stateParams.name){
-            case 'delete':
-                $scope.delShow = true;
-                break;
-            case 'congeal':
-                $scope.congealShow = true;
-                break;
-        }
-    }
-    $scope.cancel = function(){//取消删除/冻结
-        $scope.delShow = false;
-        $scope.congealShow = false;
-        $state.go('root.businessContract.mailSummary.list[12]',{id:null,name:null});
-    };
-    $scope.delFn = function(){//确认删除
-        var data = {
-            id:$stateParams.id
-        };
-        emailSer.deleteEmail(data).then(function(response){
-            if(response.data.code==0){
-                count++;
-                toastr.info( "信息已删除", '温馨提示');
-                $scope.$emit('changeId', null);
-                $scope.delShow = false;
-                if(($scope.custom.itemsCount-count)%10){
-                    $state.go('root.businessContract.mailSummary.list[12]',{id:null,name:null});
-                }else{
-                    $state.go('root.businessContract.mailSummary.list[12]',{id:null,name:null,page:$stateParams.page-1});
-                }
-            }else{
-                toastr.error( response.data.msg, '温馨提示');
-            }
-        });
-    };
-    $scope.conFn = function(){//确认冻结
-        var data = {
-            id:$stateParams.id
-        };
-        emailSer.congealEmail(data).then(function(response){
-            if(response.data.code==0){
-                count++;
-                toastr.info( "信息已冻结", '温馨提示');
-                $scope.$emit('changeId', null);
-                $scope.congealShow = false;
-                $state.go('root.businessContract.mailSummary.list[12]',{id:null,name:null});
-            }else{
-                toastr.error( response.data.msg, '温馨提示');
-            }
-        })
-    };
+
     function activatePage(page) {
         var listData = {
             page:page
@@ -137,6 +86,58 @@ app.controller('mailSummaryListCtrl',function($scope,emailSer,toastr,$stateParam
             toastr.error(response.data.msg, '温馨提示');
         }
     })
-
+    //获取id
+    if($stateParams.id){
+        switch ($stateParams.name){
+            case 'delete':
+                $scope.delShow = true;
+                break;
+            case 'congeal':
+                $scope.congealShow = true;
+                break;
+        }
+    }
+    $scope.cancel = function(){//取消删除/冻结
+        $scope.delShow = false;
+        $scope.congealShow = false;
+        $state.go('root.businessContract.mailSummary.list[12]',{id:null,name:null});
+    };
+    var count = 0;
+    $scope.delFn = function(){//确认删除
+        var data = {
+            id:$stateParams.id
+        };
+        emailSer.deleteEmail(data).then(function(response){
+            if(response.data.code==0){
+                count++;
+                toastr.info( "信息已删除", '温馨提示');
+                $scope.$emit('changeId', null);
+                $scope.delShow = false;
+                if(($scope.custom.itemsCount-count)%10){
+                    $state.go('root.businessContract.mailSummary.list[12]',{id:null,name:null});
+                }else{
+                    $state.go('root.businessContract.mailSummary.list[12]',{id:null,name:null,page:$stateParams.page-1});
+                }
+            }else{
+                toastr.error( response.data.msg, '温馨提示');
+            }
+        });
+    };
+    $scope.conFn = function(){//确认冻结
+        var data = {
+            id:$stateParams.id
+        };
+        emailSer.congealEmail(data).then(function(response){
+            if(response.data.code==0){
+                count++;
+                toastr.info( "信息已冻结", '温馨提示');
+                $scope.$emit('changeId', null);
+                $scope.congealShow = false;
+                $state.go('root.businessContract.mailSummary.list[12]',{id:null,name:null});
+            }else{
+                toastr.error( response.data.msg, '温馨提示');
+            }
+        })
+    };
 });
 

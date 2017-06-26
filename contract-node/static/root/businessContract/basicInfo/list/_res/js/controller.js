@@ -5,39 +5,7 @@ app.controller('basicListCtrl',function($scope,basicSer,toastr,$stateParams,$sta
     $scope.$on('iSsearch',function(event,newIs){
         $scope.isView = newIs;
     });
-    //获取id
-    if($stateParams.id){
-        switch ($stateParams.name){
-            case 'delete':
-                $scope.delShow = true;
-                break;
-        }
-    }
-    $scope.cancel = function(){//取消删除
-        $scope.delShow = false;
-        $state.go('root.businessContract.basicInfo.list[12]',{id:null,name:null});
-    };
-    $scope.delFn = function(){//确认删除
-        var data = {
-            id:$stateParams.id
-        };
-        basicSer.deleteBasicInfo(data).then(function(response){
-            if(response.data.code==0){
-                count++;
-                toastr.info( "信息已删除", '温馨提示');
-                $scope.deledId = $stateParams.id;
-                $scope.$emit('changeId', null);
-                $scope.delShow = false;
-                if(($scope.custom.itemsCount-count)%10){
-                    $state.go('root.businessContract.basicInfo.list[12]',{id:null,name:null});
-                }else{
-                    $state.go('root.businessContract.basicInfo.list[12]',{id:null,name:null,page:$stateParams.page-1});
-                }
-            }else{
-                toastr.error( response.data.msg, '温馨提示');
-            }
-        });
-    };
+
     function activatePage(page) {
         var listData = {
             page:page
@@ -147,7 +115,6 @@ app.controller('basicListCtrl',function($scope,basicSer,toastr,$stateParams,$sta
         take: 10, //每页显示
         activatePage: activatePage
     };
-
     basicSer.countBasicInfo().then(function(response){
         if(response.data.code==0){
             $scope.custom.itemsCount = response.data.data;
@@ -155,7 +122,39 @@ app.controller('basicListCtrl',function($scope,basicSer,toastr,$stateParams,$sta
         }else{
             toastr.error(response.data.msg, '温馨提示');
         }
-    })
-
+    });
+    //获取id
+    if($stateParams.id){
+        switch ($stateParams.name){
+            case 'delete':
+                $scope.delShow = true;
+                break;
+        }
+    }
+    $scope.cancel = function(){//取消删除
+        $scope.delShow = false;
+        $state.go('root.businessContract.basicInfo.list[12]',{id:null,name:null});
+    };
+    var count = 0;
+    $scope.delFn = function(){//确认删除
+        var data = {
+            id:$stateParams.id
+        };
+        basicSer.deleteBasicInfo(data).then(function(response){
+            if(response.data.code==0){
+                count++;
+                toastr.info( "信息已删除", '温馨提示');
+                $scope.$emit('changeId', null);
+                $scope.delShow = false;
+                if(($scope.custom.itemsCount-count)%10){
+                    $state.go('root.businessContract.basicInfo.list[12]',{id:null,name:null});
+                }else{
+                    $state.go('root.businessContract.basicInfo.list[12]',{id:null,name:null,page:$stateParams.page-1});
+                }
+            }else{
+                toastr.error( response.data.msg, '温馨提示');
+            }
+        });
+    };
 });
 

@@ -1,6 +1,7 @@
 var app = angular.module('businessTypeServer',[]);
 app.factory('businessTypeSer',function ($http) {
     return {
+        menuPermission : menuPermission,
         businessTypeList : businessTypeList,
         businessTypeAdd:businessTypeAdd,
         businessTypeEdit:businessTypeEdit,
@@ -10,6 +11,11 @@ app.factory('businessTypeSer',function ($http) {
         congealType:congealType,
         thawType:thawType
     };
+    //菜单功能权限
+    function menuPermission(data) {
+        return $http.get('/businesstype/guidePermission/'+data);
+    }
+    //列表
     function businessTypeList(data) {
         return $http.get('/market/businesstype/maps',{
             params: data
