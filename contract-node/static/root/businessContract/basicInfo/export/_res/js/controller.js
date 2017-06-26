@@ -1,5 +1,7 @@
-var app = angular.module('basicExport', ['toastr']);
+var app = angular.module('basicExport', ['toastr','angularjs-dropdown-multiselect']);
 app.controller('basicExportCtrl', function($scope, basicSer,$state,toastr){
+    $scope.Projects = [];
+    $scope.stringSettings = {template : '{{option}}', smartButtonTextConverter(skip, option) { return option; }};
     //获取内部项目编号
     basicSer.allProject().then(function(response){
         if(response.data.code==0){
@@ -10,10 +12,11 @@ app.controller('basicExportCtrl', function($scope, basicSer,$state,toastr){
     });
     //导出
     $scope.workersAddFun = function(){
+        $scope.Projects.push($scope.innerProjects);
         var obj = {
-            innerProject:$scope.innerProject
+            innerProjects : $scope.Projects
         };
-        window.open(`http://localhost:5555/baseinfomanage/exportExcel${encode(obj,true)}`);
+        window.open(`/baseinfomanage/exportExcel${encode(obj,true)}`);
     };
 
 });

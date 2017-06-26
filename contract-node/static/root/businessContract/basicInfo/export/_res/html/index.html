@@ -2,12 +2,14 @@
     <div class="input-list">
         <section>
             <ul>
-                <li class="required">
+                <li class="required import-input">
                     <label><em>内部项目名称</em></label>
-                    <select class="sele" ng-model="innerProject">
-                        <option value="">请选择</option>
-                        <option ng-repeat="number in projectName" ng-verify="{}">{{number}}</option>
-                    </select>
+                    <div class="select">
+                        <p class="select-text">
+                            <span ng-repeat="project in Projects">{{project}}, </span>
+                        </p>
+                        <div class="mymultiselect" events="getSummary" ng-dropdown-multiselect="" options="projectName" selected-model="Projects" extra-settings="stringSettings"></div>
+                    </div>
                 </li>
             </ul>
         </section>

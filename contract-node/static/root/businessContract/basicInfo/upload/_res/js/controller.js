@@ -3,18 +3,31 @@ app.controller('basicUploadCtrl', function ($scope, basicSer, $state, toastr, $h
     $scope.isUp = true;//控制按钮颜色
     $scope.files = [];
     $scope.affirmFile = [];
+    var oldFiles = [];
     $scope.fileNameChanged = function () {
         $scope.$apply(function () {//触发angular脏检测
             $scope.isUp = false;
             var elFiles = document.getElementById('uploadFile').files;
             for (var i = 0, len = elFiles.length; i < len; i++) {
                 var file = elFiles[i];
+                var hasOldFile = false;
+                for(var ii=0,iiLen=oldFiles.length;ii<iiLen;ii++){
+                    if(oldFiles[ii].name==file.name){
+                        hasOldFile = true;
+                        break;
+                    }
+                }
+                if(!hasOldFile){
+                    oldFiles.push(file);
+                }
                 $scope.files.push({
                     name: file.name,
                     size: file.size,
                     type: file.type
-                })
+                });
             }
+            var obj = document.getElementById('uploadFile');
+            obj.outerHTML = obj.outerHTML;
         });
     };
     //删除文件
@@ -26,10 +39,9 @@ app.controller('basicUploadCtrl', function ($scope, basicSer, $state, toastr, $h
     };
     $scope.updataSel = function () {
         var fd = new FormData();
-        var files = document.getElementById('uploadFile').files;
         var _files = $scope.files;
-        for (var i = 0; i < files.length; i++) {
-            var f = files[i];
+        for (var i = 0; i < oldFiles.length; i++) {
+            var f = oldFiles[i];
             for (var b = 0; b < _files.length; b++) {
                 if (f.name == _files[b].name) {
                     fd.append('files', f);
@@ -56,9 +68,9 @@ app.controller('basicUploadCtrl', function ($scope, basicSer, $state, toastr, $h
             }, function (data) {
                 console.info(data);
             }).then(function (response) {
-                var obj = document.getElementById('uploadFile');
-                obj.outerHTML = obj.outerHTML;//将input file的选择的文件清空
                 if (response.data.code == 0) {
+                    var obj = document.getElementById('uploadFile');
+                    obj.outerHTML = obj.outerHTML;//将input file的选择的文件清空
                     for (var i = 0; i < _files.length; i++) {//向已经确认里面推送
                         $scope.affirmFile.push(_files[i]);
                     }

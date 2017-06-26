@@ -21,6 +21,7 @@ app.controller('signingCtrl',function ($scope,$state) {
     if (window.location.href.split('id=')[1]) {//如果是刷新进来的页面，没有经过list
         $scope.idListd = window.location.href.split('id=')[1];
     }
+    //功能权限
     $scope.menuCheck = function (name) {
         var buttonName = name;
         $scope.buttonShow = true;
@@ -37,23 +38,27 @@ app.controller('signingCtrl',function ($scope,$state) {
     $scope.$on("getId", function(event, msg){
        $scope.idListd = msg;
     });
-
+    $scope.$on('pageId',function(event,flag){
+        $scope.page = flag;
+    });
+    if(!$scope.page){
+        $scope.page = $location.search().page;
+    }
     $scope.delete = function(){
         if($scope.idListd){
-            $state.go('root.businessContract.signingProject.list[12]',{id:$scope.idListd,name:'delete'});
+            $state.go('root.businessContract.signingProject.list[12]',{id:$scope.idListd,name:'delete',page:$scope.page});
             $scope.menuClass = 'deleteMenu';
-
         }
     };
     $scope.edit = function(){
         if($scope.idListd){
-            $state.go('root.businessContract.signingProject.edit[12]',{id:$scope.idListd});
+            $state.go('root.businessContract.signingProject.edit[12]',{id:$scope.idListd,page:$scope.page});
             $scope.menuClass = 'editMenu'
         }
     };
     $scope.review = function(){
         if($scope.idListd){
-            $state.go('root.businessContract.signingProject.review[12]',{id:$scope.idListd});
+            $state.go('root.businessContract.signingProject.review[12]',{id:$scope.idListd,page:$scope.page});
             $scope.menuClass = 'reviewMenu';
         }
     };
@@ -61,25 +66,28 @@ app.controller('signingCtrl',function ($scope,$state) {
         $scope.menuClass = 'listMenu'
     };
     $scope.add = function(){
-        $scope.menuClass = 'addMenu'
+        $scope.menuClass = 'addMenu';
+        $scope.idListd = ''
     };
     $scope.upload = function(){
         if($scope.idListd){
-            $state.go('root.businessContract.signingProject.upload[12]',{id:$scope.idListd});
+            $state.go('root.businessContract.signingProject.upload[12]',{id:$scope.idListd,page:$scope.page});
             $scope.menuClass = 'uploadMenu'
         }
     };
     $scope.view = function(){
         if($scope.idListd){
-            $state.go('root.businessContract.signingProject.view[12]',{id:$scope.idListd,view:1});
+            $state.go('root.businessContract.signingProject.view[12]',{id:$scope.idListd,view:1,page:$scope.page});
             $scope.menuClass = 'viewMenu'
         }
     };
     $scope.export = function(){
-        $scope.menuClass = 'exportMenu'
+        $scope.menuClass = 'exportMenu';
+        $scope.idListd = ''
     };
     $scope.import = function(){
-        $scope.menuClass = 'importMenu'
+        $scope.menuClass = 'importMenu';
+        $scope.idListd = ''
     };
 });
 

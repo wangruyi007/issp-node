@@ -21,7 +21,7 @@
         <span>全部文件</span>
         <span>已全部加载，共{{  length }}个</span>
     </p>
-    <div class="pa" ng-show="isChild">
+    <div class="pa" ng-hide="isChild">
         <div class="checkbox-all">
             <input type="checkbox" checked="checked" class="checked-none" data-style="checked" ng-model="checked" ng-click="all(checked)">
             <label class="tick" ng-click="all(checked)"></label>
@@ -41,14 +41,14 @@
                 </li>
             </ul>
         </div>
+        <div class="no-file" ng-hide="length || isChild">
+            <img src="/images/no-file.jpg" alt="">
+        </div>
+        <footer class="footer"></footer>
     </div>
-    <div class="no-file" ng-hide="length ">
-        <img src="/images/no-file.jpg" alt="">
-    </div>
-    <footer class="footer"></footer>
 </div>
 
-<div class="enclosure2" ng-hide="isChild">
+<div class="enclosure2" ng-show="isChild">
     <div class="checkbox-all">
         <input type="checkbox" checked="checked" class="checked-none" data-style="checked" ng-model="checked" ng-click="all(checked)">
         <label class="tick" ng-click="all(checked)"></label>

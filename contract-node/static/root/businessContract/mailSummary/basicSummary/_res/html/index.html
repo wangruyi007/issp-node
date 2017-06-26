@@ -1,0 +1,29 @@
+<div class="collect">
+    <div class="sum-select">
+        <label><i><img src="/images/mandatory.png"></i><em>甲方公司名称</em></label>
+        <div class="select">
+        <p class="select-text" >
+        <span ng-repeat="name in firstCompany">{{name}}, </span>
+       </p>
+        <div class="mymultiselect" events="getSummary" ng-dropdown-multiselect="" options="workOptions" selected-model="firstCompany" extra-settings="stringSettings"></div>
+       </div>
+    </div>
+    <ul class="sum-list">
+        <li class="sum-thead">
+            <span style="flex: 0 0 20%;">甲方公司名称</span>
+            <span ng-repeat="busTypeMapTit in tabTit.busTypeMap">{{busTypeMapTit.remark}}</span>
+            <span ng-repeat="cooperWaysMapTit in tabTit.cooperWaysMap">{{cooperWaysMapTit.remark}}</span>
+            <span ng-repeat="contractMapTit in tabTit.contractPropertyMap">{{contractMapTit.remark}}</span>
+            <span ng-repeat="signMapTit in tabTit.signMap">{{signMapTit.remark}}</span>
+            <span>合同金额</span>
+        </li>
+        <li class="sum-tbody" ng-repeat="Lists in summaryLists" ng-model="tabTit">
+            <span style="flex: 0 0 20%;">{{Lists.type}}</span>
+            <span ng-repeat="busTypeMapList in Lists.busTypeMap">{{busTypeMapList.count}}</span>
+            <span ng-repeat="cooperWaysMapList in Lists.cooperWaysMap">{{cooperWaysMapList.count}}</span>
+            <span ng-repeat="contractMapList in Lists.contractPropertyMap">{{contractMapList.count}}</span>
+            <span ng-repeat="signMapList in Lists.signMap">{{signMapList.count}}</span>
+            <span>{{Lists.money}}</span>
+        </li>
+    </ul>
+</div>
