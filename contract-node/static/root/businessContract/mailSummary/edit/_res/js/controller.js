@@ -6,7 +6,8 @@ app.controller('mailSummaryEditCtrl', function($scope, emailSer,$stateParams,$st
     emailSer.findEmailId(emailData).then(function(response){
         if(response.data.code==0){
             $scope.editMail = response.data.data;
-            $scope.objLists = $scope.editMail.sendObjectList.split(',');
+            $scope.condis = $scope.editMail.condi.split(',');
+            $scope.objLists = $scope.editMail.sendObject.split(',');
         }else{
             toastr.error(response.data.msg, '温馨提示');
         }
