@@ -4,15 +4,15 @@ app.controller('mailSummaryEditCtrl', function($scope, emailSer,$stateParams,$st
 
     //获取ID
     emailSer.findEmailId(emailData).then(function(response){
-
         if(response.data.code==0){
             $scope.editMail = response.data.data;
+            $scope.condis = $scope.editMail.condi.split(',');
+            $scope.objLists = $scope.editMail.sendObject.split(',');
         }else{
             toastr.error(response.data.msg, '温馨提示');
         }
 
     });
-
     $scope.condis= [];
     $scope.stringSettings = {template : '{{option}}', smartButtonTextConverter(skip, option) { return option; }};
     //获取所有汇总
@@ -24,7 +24,7 @@ app.controller('mailSummaryEditCtrl', function($scope, emailSer,$stateParams,$st
                 emailSer.getSignArea(data).then(function(response){
 
                     if(response.data.code == 0){
-                        $scope.workOptions = response.data.data;
+                        $scope.collectAll = response.data.data;
                     } else{
                         toastr.error(response.data.msg, '温馨提示');
                     }
@@ -33,7 +33,7 @@ app.controller('mailSummaryEditCtrl', function($scope, emailSer,$stateParams,$st
 
                 emailSer.getBasicArea(data).then(function(response){
                     if(response.data.code == 0){
-                        $scope.workOptions = response.data.data;
+                        $scope.collectAll = response.data.data;
                     } else{
                         toastr.error(response.data.msg, '温馨提示');
                     }
@@ -41,7 +41,7 @@ app.controller('mailSummaryEditCtrl', function($scope, emailSer,$stateParams,$st
             }else if(data.type == '派工单信息汇总'){
                 emailSer.getDispatchArea(data).then(function(response){
                     if(response.data.code == 0){
-                        $scope.workOptions = response.data.data;
+                        $scope.collectAll = response.data.data;
                     } else{
                         toastr.error(response.data.msg, '温馨提示');
                     }
@@ -49,7 +49,7 @@ app.controller('mailSummaryEditCtrl', function($scope, emailSer,$stateParams,$st
             }
 
         }else {
-            $scope.workOptions = null;
+            $scope.collectAll = null;
         }
     };
     $scope.addMail = function(){

@@ -35,23 +35,28 @@ app.controller('emailCtrl',function ($scope,$state) {
     $scope.$on("getId", function(event, msg){
        $scope.idListd = msg;
     });
-
+    $scope.$on('pageId',function(event,flag){
+        $scope.page = flag;
+    });
+    if(!$scope.page){
+        $scope.page = $location.search().page;
+    }
     $scope.delete = function(){
         if($scope.idListd){
-            $state.go('root.businessContract.mailSummary.list[12]',{id:$scope.idListd,name:'delete'});
+            $state.go('root.businessContract.mailSummary.list[12]',{id:$scope.idListd,name:'delete',page:$scope.page});
             $scope.menuClass = 'deleteMenu';
 
         }
     };
     $scope.edit = function(){
         if($scope.idListd){
-            $state.go('root.businessContract.mailSummary.edit[12]',{id:$scope.idListd});
+            $state.go('root.businessContract.mailSummary.edit[12]',{id:$scope.idListd,page:$scope.page});
             $scope.menuClass = 'editMenu'
         }
     };
     $scope.congeal = function(){
         if($scope.idListd){
-            $state.go('root.businessContract.mailSummary.list[12]',{id:$scope.idListd,name:'congeal'});
+            $state.go('root.businessContract.mailSummary.list[12]',{id:$scope.idListd,name:'congeal',page:$scope.page});
             $scope.menuClass = 'congealMenu';
 
         }
@@ -60,16 +65,20 @@ app.controller('emailCtrl',function ($scope,$state) {
         $scope.menuClass = 'listMenu'
     };
     $scope.add = function(){
-        $scope.menuClass = 'addMenu'
+        $scope.menuClass = 'addMenu';
+        $scope.idListd = ''
     };
     $scope.signSummary = function(){
-        $scope.menuClass = 'signSummaryMenu'
+        $scope.menuClass = 'signSummaryMenu';
+        $scope.idListd = ''
     };
     $scope.basicSummary = function(){
-        $scope.menuClass = 'basicSummaryMenu'
+        $scope.menuClass = 'basicSummaryMenu';
+        $scope.idListd = ''
     };
     $scope.dispatchSummary = function(){
-        $scope.menuClass = 'dispatchSummaryMenu'
+        $scope.menuClass = 'dispatchSummaryMenu';
+        $scope.idListd = ''
     };
 });
 
