@@ -8,6 +8,9 @@ app.controller('busContractCtrl', function ($scope,$state) {
     $scope.$on('changeId',function(event,msg) {
         $scope.$broadcast('getId', msg)
     });
+    $scope.$on('page',function(event,msg){
+        $scope.$broadcast('pageId',msg)
+    });
 }).controller('navCtrl',function($scope,$state,$location,contractsSer){
     $scope.navCla='signingProject';
     var active = $location.path().split('/')[3];
@@ -16,6 +19,7 @@ app.controller('busContractCtrl', function ($scope,$state) {
         $scope.navCla = name;
         $scope.$emit('isId',true);//每次切换页面更新搜索值
     };
+    // 前面下拉导航权限
     contractsSer.navPermission().then(function(response){
         if(response.data.code == 0){
             var data = response.data.data;
@@ -32,6 +36,7 @@ app.controller('busContractCtrl', function ($scope,$state) {
             $scope.isHide = false;
         }
     });
+    // 设置导航权限
     contractsSer.setPermission().then(function(response){
         if(response.data.code == 0){
             var data = response.data.data;

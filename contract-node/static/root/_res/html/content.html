@@ -5,7 +5,7 @@
         </a>
         <span>issp平台</span>
     </div>
-    <div class="nav" ui-view="nav">
+    <div class="nav" ui-view="nav" resize ng-style="style()">
     </div>
 </div>
 <section class="right-section">
@@ -13,7 +13,7 @@
         <div class="top-fixed">
             <div class="top">
                 <div class="top-back">
-                    <a href="javascript:void(0)" class="back-btn"></a>
+                    <a href="https://user.issp.bjike.com/opportunity" class="back-btn"></a>
                 </div>
                 <div class="search">
                     <a href="javascript:void(0)" class="search-btn" ng-click="searchToggle()" ng-show='isView'></a>
@@ -22,7 +22,6 @@
                     <a href="javascript:void(0)" ng-show="logined" ng-click="logout()" class="close-btn"></a>
                 </div>
             </div>
-
         </div>
         <div class="content" ui-view="content">
             首页内容

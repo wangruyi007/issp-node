@@ -35,31 +35,34 @@ app.controller('dispatchListCtrl',function ($scope,$state) {
     $scope.$on("getId", function(event, msg){
        $scope.idListd = msg;
     });
-    $scope.$on("onSearch", function(event, name){
-        $scope.onSearch = name;
+    $scope.$on('pageId',function(event,flag){
+        $scope.page = flag;
     });
+    if(!$scope.page){
+        $scope.page = $location.search().page;
+    }
     $scope.delete = function(){
         if($scope.idListd){
-            $state.go('root.businessContract.dispatchList.list[12]',{id:$scope.idListd,name:'delete'});
+            $state.go('root.businessContract.dispatchList.list[12]',{id:$scope.idListd,name:'delete',page:$scope.page});
             $scope.menuClass = 'deleteMenu'
         }
     };
 
     $scope.edit = function(){
         if($scope.idListd){
-            $state.go('root.businessContract.dispatchList.edit[12]',{id:$scope.idListd});
+            $state.go('root.businessContract.dispatchList.edit[12]',{id:$scope.idListd,page:$scope.page});
             $scope.menuClass = 'editMenu'
         }
     };
     $scope.upload = function(){
         if($scope.idListd){
-            $state.go('root.businessContract.dispatchList.upload[12]',{id:$scope.idListd});
+            $state.go('root.businessContract.dispatchList.upload[12]',{id:$scope.idListd,page:$scope.page});
             $scope.menuClass = 'uploadMenu'
         }
     };
     $scope.view = function(){
         if($scope.idListd){
-            $state.go('root.businessContract.dispatchList.view[12]',{id:$scope.idListd,view:1});
+            $state.go('root.businessContract.dispatchList.view[12]',{id:$scope.idListd,view:1,page:$scope.page});
             $scope.menuClass = 'viewMenu'
         }
     };
@@ -67,13 +70,16 @@ app.controller('dispatchListCtrl',function ($scope,$state) {
         $scope.menuClass = 'listMenu'
     };
     $scope.add = function(){
-        $scope.menuClass = 'addMenu'
+        $scope.menuClass = 'addMenu';
+        $scope.idListd = ''
     };
     $scope.import = function(){
-        $scope.menuClass = 'importMenu'
+        $scope.menuClass = 'importMenu';
+        $scope.idListd = ''
     };
     $scope.export = function(){
-        $scope.menuClass = 'exportMenu'
+        $scope.menuClass = 'exportMenu';
+        $scope.idListd = ''
     };
 
 });
