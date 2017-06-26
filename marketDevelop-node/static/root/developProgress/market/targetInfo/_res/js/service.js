@@ -1,6 +1,7 @@
 var app = angular.module('targetInfoServer',[]);
 app.factory('targetInfoSer',function ($http) {
     return {
+        menuPermission : menuPermission,
         targetInfoList : targetInfoList,
         addTargetInfo:addTargetInfo,
         editTargetInfo:editTargetInfo,
@@ -9,8 +10,14 @@ app.factory('targetInfoSer',function ($http) {
         deleteTargetInfo:deleteTargetInfo,
         getArea:getArea,
         getType:getType,
-        getCourse:getCourse
+        getCourse:getCourse,
+        viewFiles:viewFiles
     };
+    //菜单功能权限
+    function menuPermission(data) {
+        return $http.get('/targetinformation/guidePermission/'+data);
+    }
+    //列表
     function targetInfoList(data) {
         return $http.get('/market/targetinformation/maps',{
             params: data
@@ -53,5 +60,9 @@ app.factory('targetInfoSer',function ($http) {
     //获取业务方向科目数据
     function getCourse(){
         return $http.get('/businesscourse/findThaw')
+    }
+    //附件列表
+    function viewFiles(data){
+        return $http.get('/targetinformation/listFile',{params:data})
     }
 });

@@ -1,6 +1,7 @@
 var app = angular.module('demandAnalysisServer',[]);
 app.factory('demandAnalysisSer',function ($http) {
     return {
+        menuPermission : menuPermission,
         demandList : demandList,
         addDemand:addDemand,
         editDemand:editDemand,
@@ -8,12 +9,17 @@ app.factory('demandAnalysisSer',function ($http) {
         countDemand:countDemand,
         deleteDemand:deleteDemand,
         getType:getType,
-        getCourse:getCourse
+        getCourse:getCourse,
+        viewFiles:viewFiles
     };
+    //菜单功能权限
+    function menuPermission(data) {
+        return $http.get('/demandanalysis/guidePermission/'+data);
+    }
+    // 列表
     function demandList(data) {
         return $http.get('/market/demandanalysis/maps',{
             params: data
-
         })
     }
 
@@ -49,5 +55,9 @@ app.factory('demandAnalysisSer',function ($http) {
     //获取业务方向科目数据
     function getCourse(){
         return $http.get('/businesscourse/findThaw')
+    }
+    //附件列表
+    function viewFiles(data){
+        return $http.get('/demandanalysis/listFile',{params:data})
     }
 });

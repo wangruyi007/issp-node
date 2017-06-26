@@ -8,18 +8,20 @@
             <span>上次发送时间</span>
             <span>备注</span>
             <span>发送间隔</span>
+            <span>发送对象</span>
             <span></span>
         </li>
         <li class="list-all" ng-repeat="lists in mailLists" style="display: {{lists._delete?'none':'block'}};">
             <section class="{{lists.status=='CONGEAL'?'congeal':''}}">
                 <div class="list-text {{lists._selectList?'selectList':''}}" ng-click="selectList(lists)">
-                    <p mod>{{$index+1}}</p>
-                    <p mod>{{lists.type}}</p>
-                    <p mod>{{lists.createPersion}}</p>
-                    <p mod>{{lists.modifyTime}}</p>
-                    <p mod>{{lists.lastSendTime}}</p>
-                    <p mod>{{lists.remark}}</p>
-                    <p mod>{{lists.sendNumAndUnit}}</p>
+                    <p mod>{{$index+1+num}}</p>
+                    <p mod>{{::lists.type}}</p>
+                    <p mod>{{::lists.createPersion}}</p>
+                    <p mod>{{::lists.modifyTime}}</p>
+                    <p mod>{{::lists.lastSendTime}}</p>
+                    <p mod>{{::lists.remark}}</p>
+                    <p mod>{{::lists.sendNumAndUnit}}</p>
+                    <p mod>{{::lists.sendObject}}</p>
                     <p>
                         <a href="javascript:void(0)" class="more" ng-click="moreList(lists)">更多详细</a>
                     </p>
@@ -28,12 +30,11 @@
                     <ul class="can-see" style="display: {{lists._moreList?'block':'none'}};">
                         <li>
                             <p class="see-parent">
-                                <span>发送对象</span>
                                 <span>状态</span>
                             </p>
                             <p class="see-children">
-                                <span mod>{{lists.sendObject}}</span>
-                                <span mod>{{lists.status|cover}}</span>
+
+                                <span mod>{{::lists.status|cover}}</span>
                             </p>
                         </li>
                     </ul>

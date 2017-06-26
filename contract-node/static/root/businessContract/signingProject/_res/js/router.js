@@ -12,7 +12,7 @@ app.config(function($provide, $stateProvider){
             }
         }
     }).state("root.businessContract.signingProject.list[12]",{
-        url:"/list[12]?id=&name=",
+        url:"/list[12]?id=&name=&page=",
         views:{
             "content@root.businessContract.signingProject":{
                 templateUrl : "root/businessContract/signingProject/list/_res/html/index.html",
@@ -28,7 +28,7 @@ app.config(function($provide, $stateProvider){
             }
         }
     }).state("root.businessContract.signingProject.edit[12]",{
-        url:"/edit[12]?id=",
+        url:"/edit[12]?id=&page=",
         views:{
             "content@root.businessContract.signingProject":{
                 templateUrl : "root/businessContract/signingProject/edit/_res/html/index.html",
@@ -36,7 +36,7 @@ app.config(function($provide, $stateProvider){
             }
         }
     }).state("root.businessContract.signingProject.review[12]",{
-        url:"/review[12]?id=",
+        url:"/review[12]?id=&page=",
         views:{
             "content@root.businessContract.signingProject":{
                 templateUrl : "root/businessContract/signingProject/review/_res/html/index.html",
@@ -44,7 +44,7 @@ app.config(function($provide, $stateProvider){
             }
         }
     }).state("root.businessContract.signingProject.upload[12]",{
-        url:"/upload[12]?id=",
+        url:"/upload[12]?id=&page=",
         views:{
             "content@root.businessContract.signingProject":{
                 templateUrl : "root/businessContract/signingProject/upload/_res/html/index.html",

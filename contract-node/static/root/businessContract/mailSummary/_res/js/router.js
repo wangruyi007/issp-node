@@ -12,7 +12,7 @@ app.config(function($provide, $stateProvider){
             }
         }
     }).state("root.businessContract.mailSummary.list[12]",{
-        url:"/list[12]?id=&name=",
+        url:"/list[12]?id=&name=&page=",
         views:{
             "content@root.businessContract.mailSummary":{
                 templateUrl : "root/businessContract/mailSummary/list/_res/html/index.html",
@@ -28,7 +28,7 @@ app.config(function($provide, $stateProvider){
             }
         }
     }).state("root.businessContract.mailSummary.edit[12]",{
-        url:"/edit[12]?id=",
+        url:"/edit[12]?id=&page=",
         views:{
             "content@root.businessContract.mailSummary":{
                 templateUrl : "root/businessContract/mailSummary/edit/_res/html/index.html",

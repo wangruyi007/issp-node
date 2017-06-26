@@ -1,5 +1,5 @@
-var app = angular.module('directionEdit', ['toastr','ipCookie']);
-app.controller('directionEditCtrl', function($scope, directionSer,$stateParams,$state,toastr,$location,ipCookie){
+var app = angular.module('directionEdit', ['toastr']);
+app.controller('directionEditCtrl', function($scope, directionSer,$stateParams,$state,toastr){
     var measuredData ={courseId: $stateParams.id};
 
     //获取ID

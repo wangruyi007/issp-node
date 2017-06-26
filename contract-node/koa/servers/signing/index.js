@@ -30,7 +30,7 @@ module.exports = function(){
         };
         return request(options);
     };
-    //菜单权限
+    //菜单功能权限
     this.guidePermission = function(argvs){
         var options = {
             method : 'GET',
@@ -496,7 +496,7 @@ module.exports = function(){
         };
         return request(options);
     };
-;
+
     // 项目派工单 查看附件
     this.listFileSheet = function(argvs){
         var options = {

@@ -10,7 +10,7 @@ app.controller('subpackageAddCtrl', function($scope, subpackageSer,$state,toastr
                 if(response.data.msg){
                     toastr.success( response.data.msg, '温馨提示');
                 }else{
-                    $state.go('root.business.outsource.subpackage.list');
+                    $state.go('root.business.outsource.subpackage.list[12]');
                     toastr.success('添加成功', '温馨提示');
                 }
             }else if(response.data.code == 1){
