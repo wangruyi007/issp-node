@@ -1,21 +1,27 @@
 var app = angular.module('marketMiningServer',[]);
 app.factory('marketMiningSer',function ($http) {
     return {
+        menuPermission : menuPermission,
         channelList : channelList,
         channelAdd:channelAdd,
         channelEdit:channelEdit,
         findChannelId:findChannelId,
         countChannel:countChannel,
         channelDelete:channelDelete,
-        getType:getType
+        getType:getType,
+        viewFiles:viewFiles
     };
+    //菜单功能权限
+    function menuPermission(data) {
+        return $http.get('/marketchannel/guidePermission/'+data);
+    }
+    //列表
     function channelList(data) {
         return $http.get('/market/marketchannel/maps',{
             params: data
 
         })
     }
-
     //添加
     function channelAdd(data){
         return $http.post('/market/marketchannel/save',data)
@@ -46,5 +52,8 @@ app.factory('marketMiningSer',function ($http) {
     function getType(){
         return $http.get('/businesstype/findThaw')
     }
-
+    //附件列表
+    function viewFiles(data){
+        return $http.get('/marketchannel/listFile',{params:data})
+    }
 });

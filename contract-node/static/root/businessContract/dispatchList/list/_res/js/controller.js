@@ -17,6 +17,7 @@ app.controller('dispatchWorkCtrl',function($scope,dispatchSer,toastr,$stateParam
         $scope.delShow = false;
         $state.go('root.businessContract.dispatchList.list[12]',{id:null,name:null});
     };
+    var count = 0;
     $scope.delFn = function(){//确认删除
         var data = {
             id:$stateParams.id
@@ -25,7 +26,6 @@ app.controller('dispatchWorkCtrl',function($scope,dispatchSer,toastr,$stateParam
             if(response.data.code==0){
                 count++;
                 toastr.info( "信息已删除", '温馨提示');
-                $scope.deledId = $stateParams.id;
                 $scope.$emit('changeId', null);
                 $scope.delShow = false;
                 if(($scope.custom.itemsCount-count)%10){

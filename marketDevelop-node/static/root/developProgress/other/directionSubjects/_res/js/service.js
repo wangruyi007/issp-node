@@ -1,6 +1,7 @@
 var app = angular.module('directionServer',[]);
 app.factory('directionSer',function ($http) {
     return {
+        menuPermission : menuPermission,
         listCourse : listCourse,
         coursedAdd:coursedAdd,
         courseEdit:courseEdit,
@@ -12,13 +13,17 @@ app.factory('directionSer',function ($http) {
         thawCourse:thawCourse
 
     };
+    //菜单功能权限
+    function menuPermission(data) {
+        return $http.get('/businesscourse/guidePermission/'+data);
+    }
+    //列表
     function listCourse(data) {
         return $http.get('/market/businesscourse/maps',{
             params: data
 
         })
     }
-
     //添加
     function coursedAdd(data){
         return $http.post('/market/businesscourse/save',data)

@@ -1,6 +1,7 @@
 var app = angular.module('measuredServer',[]);
 app.factory('measuredSer',function ($http) {
     return {
+        menuPermission : menuPermission,
         listMeasured : listMeasured,
         measuredAdd:measuredAdd,
         measuredEdit:measuredEdit,
@@ -8,15 +9,20 @@ app.factory('measuredSer',function ($http) {
         countMeasured:countMeasured,
         measuredDelete:measuredDelete,
         getType:getType,
-        getCourse:getCourse
+        getCourse:getCourse,
+        viewFiles:viewFiles
     };
+    //菜单功能权限
+    function menuPermission(data) {
+        return $http.get('/marketmeasure/guidePermission/'+data);
+    }
+    //列表
     function listMeasured(data) {
         return $http.get('/market/marketmeasure/maps',{
             params: data
 
         })
     }
-
     //添加
     function measuredAdd(data){
         return $http.post('/market/marketmeasure/save',data)
@@ -50,5 +56,9 @@ app.factory('measuredSer',function ($http) {
     //获取业务方向科目数据
     function getCourse(){
         return $http.get('/businesscourse/findThaw')
+    }
+    //附件列表
+    function viewFiles(data){
+        return $http.get('/marketmeasure/listFile',{params:data})
     }
 });

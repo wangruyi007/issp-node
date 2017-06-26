@@ -1,4 +1,4 @@
-var app = angular.module('progress',[]);
+var app = angular.module('developModule',[]);
 app.config(function ($provide, $stateProvider) {
     $stateProvider.state("root.developProgress", {
         url: "/developProgress",

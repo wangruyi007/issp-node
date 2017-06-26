@@ -1,5 +1,5 @@
-var app = angular.module('dayPlanEdit', ['toastr']);
-app.controller('dayPlanEditCtrl', function($scope, dayPlanSer,$stateParams,$state,toastr){
+var app = angular.module('dayEdit', ['toastr']);
+app.controller('dayEditCtrl', function($scope, dayPlanSer,$stateParams,$state,toastr){
     var dayData ={id: $stateParams.id};
 
     dayPlanSer.daySearch(dayData).then(function(response){
@@ -32,18 +32,14 @@ app.controller('dayPlanEditCtrl', function($scope, dayPlanSer,$stateParams,$stat
         var vm = $scope;
         vm.editDay.time = angular.element('.editTime').val();
         dayPlanSer.editDayPlan(vm.editDay).then(function(response){
-            console.log(response);
             if(response.data.code == 0){
-                $state.go('root.developProgress.plan.dayPlan.list');
+                $state.go('root.developProgress.plan.dayPlan.list[12]');
                 toastr.success( "编辑成功", '温馨提示');
             }else {
                 toastr.error( response.data.msg, '温馨提示');
             }
         });
-
     };
-
-
 });
 
 

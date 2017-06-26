@@ -33,7 +33,7 @@ app.controller('yearPlanEditCtrl', function($scope, yearPlanSer,$stateParams,$st
         var vm = $scope;
         yearPlanSer.editYearPlan(vm.editYear).then(function(response){
             if(response.data.code == 0){
-                $state.go('root.developProgress.plan.yearPlan.list');
+                $state.go('root.developProgress.plan.yearPlan.list[12]');
                 toastr.success( "编辑成功", '温馨提示');
             }else {
                 toastr.error( response.data.msg, '温馨提示');

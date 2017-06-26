@@ -1,6 +1,7 @@
 var app = angular.module('monthPlanServer',[]);
 app.factory('monthPlanSer',function ($http) {
     return {
+        menuPermission : menuPermission,
         monthPlanList : monthPlanList,
         addMonthPlan:addMonthPlan,
         monthPlanEdit:monthPlanEdit,
@@ -8,10 +9,15 @@ app.factory('monthPlanSer',function ($http) {
         getChoice:getChoice,
         monthSearch:monthSearch,
         countMonth:countMonth,
-        deleteMonthplan:deleteMonthplan
-
-
+        deleteMonthPlan:deleteMonthPlan,
+        getType:getType,
+        viewFiles:viewFiles
     };
+    //菜单功能权限
+    function menuPermission(data) {
+        return $http.get('/monthplan/guidePermission/'+data);
+    }
+    //列表
     function monthPlanList(data) {
         return $http.get('/plan/monthplan/maps',{
             params: data
@@ -45,9 +51,17 @@ app.factory('monthPlanSer',function ($http) {
         return $http.get('/plan/monthplan/getTotal')
     }
     //删除
-    function deleteMonthplan(data){
+    function deleteMonthPlan(data){
         return $http.get('/plan/monthplan/delete',{
             params:data
         })
+    }
+    //获取业务类型
+    function getType(){
+        return $http.get('/businesstype/findThaw')
+    }
+    //附件列表
+    function viewFiles(data){
+        return $http.get('/monthplan/listFile',{params:data})
     }
 });

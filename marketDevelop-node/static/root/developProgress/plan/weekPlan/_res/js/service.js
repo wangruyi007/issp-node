@@ -1,6 +1,7 @@
 var app = angular.module('weekPlanServer',[]);
 app.factory('weekPlanSer',function ($http) {
     return {
+        menuPermission : menuPermission,
         weekPlanList : weekPlanList,
         addWeekPlan:addWeekPlan,
         editWeekPlan:editWeekPlan,
@@ -9,9 +10,16 @@ app.factory('weekPlanSer',function ($http) {
         countWeek:countWeek,
         getWeekChoice:getWeekChoice,
         deleteWeekplan:deleteWeekplan,
-        getCourse:getCourse
+        getCourse:getCourse,
+        getType:getType,
+        viewFiles:viewFiles
 
     };
+    //菜单功能权限
+    function menuPermission(data) {
+        return $http.get('/weekplan/guidePermission/'+data);
+    }
+    //列表
     function weekPlanList(data) {
         return $http.get('/plan/weekplan/maps',{
             params: data
@@ -54,5 +62,13 @@ app.factory('weekPlanSer',function ($http) {
     //获取业务方向科目数据
     function getCourse(){
         return $http.get('/businesscourse/findThaw')
+    }
+    //获取业务类型
+    function getType(){
+        return $http.get('/businesstype/findThaw')
+    }
+    //附件列表
+    function viewFiles(data){
+        return $http.get('/weekplan/listFile',{params:data})
     }
 });
