@@ -11,6 +11,14 @@ app.config(function($provide, $stateProvider){
                 controller:"typeMenuCtrl"
             }
         }
+    }).state("root.developProgress.other.businessType.list[12]",{
+        url:"/list[12]?id=&name=",
+        views:{
+            "content@root.developProgress.other.businessType":{
+                templateUrl : "root/developProgress/other/businessType/list/_res/html/index.html",
+                controller:'typeListCtrl'
+            }
+        }
     }).state("root.developProgress.other.businessType.add[12]",{
         url:"/add[12]",
         views:{

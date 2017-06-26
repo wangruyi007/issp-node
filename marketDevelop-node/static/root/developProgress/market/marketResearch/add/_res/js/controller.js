@@ -21,7 +21,7 @@ app.controller('researchAddCtrl', function($scope, researchSer,$state,toastr){
         var vm = $scope;
         researchSer.researchAdd(vm.research).then(function(response){
             if(response.data.code == 0){
-                $state.go('root.developProgress.market.marketResearch.list');
+                $state.go('root.developProgress.market.marketResearch.list[12]');
                 toastr.success("已成功添加", '温馨提示');
             }else {
                 toastr.error(response.data.msg,'温馨提示')
