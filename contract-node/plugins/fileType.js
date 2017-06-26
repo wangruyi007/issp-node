@@ -35,6 +35,10 @@ module.exports = function () {
             $self.set('content-type', 'application/x-jpg;charset=utf-8');
             $self.set('Content-Disposition', 'attachment;  filename='+encodeURI(fileName));
             break;
+        case "JPEG":
+            $self.set('content-type', 'image/jpeg;charset=utf-8');
+            $self.set('Content-Disposition', 'attachment;  filename='+encodeURI(fileName));
+            break;
         case "ZIP":
             $self.set('content-type', 'application/x-zip-compressed;charset=utf-8');
             $self.set('Content-Disposition', 'attachment;  filename='+encodeURI(fileName));

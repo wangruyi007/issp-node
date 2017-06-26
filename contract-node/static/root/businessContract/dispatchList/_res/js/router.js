@@ -12,7 +12,7 @@ app.config(function($provide, $stateProvider){
             }
         }
     }).state("root.businessContract.dispatchList.list[12]",{
-        url:"/list[12]?id=&name=",
+        url:"/list[12]?id=&name=&page=",
         views:{
             "content@root.businessContract.dispatchList":{
                 templateUrl : "root/businessContract/dispatchList/list/_res/html/index.html",
@@ -28,7 +28,7 @@ app.config(function($provide, $stateProvider){
             }
         }
     }).state("root.businessContract.dispatchList.edit[12]",{
-        url:"/edit[12]?id=",
+        url:"/edit[12]?id=&page=",
         views:{
             "content@root.businessContract.dispatchList":{
                 templateUrl : "root/businessContract/dispatchList/edit/_res/html/index.html",
@@ -36,7 +36,7 @@ app.config(function($provide, $stateProvider){
             }
         }
     }).state("root.businessContract.dispatchList.upload[12]",{
-        url:"/upload[12]?id=",
+        url:"/upload[12]?id=&page=",
         views:{
             "content@root.businessContract.dispatchList":{
                 templateUrl : "root/businessContract/dispatchList/upload/_res/html/index.html",
@@ -44,7 +44,7 @@ app.config(function($provide, $stateProvider){
             }
         }
     }).state("root.businessContract.dispatchList.view[12]",{
-        url:"/view[12]?id=&view=",
+        url:"/view[12]?id=&view=&page=",
         views:{
             "content@root.businessContract.dispatchList":{
                 templateUrl : "root/businessContract/dispatchList/view/_res/html/index.html",
