@@ -2,7 +2,6 @@
     <ul class="table">
         <li class="list-head">
             <span></span>
-            <span class="data-id">id</span>
             <span>地区</span>
             <span>业务类型</span>
             <span>业务方向科目</span>
@@ -12,22 +11,40 @@
         <li class="list-all" ng-repeat="infoLists in targetLists" style="display: {{infoLists._delete?'none':'block'}};">
             <section>
                 <div class="list-text {{infoLists._selectList?'selectList':''}}" ng-click="selectList(infoLists)">
-                    <p>{{$index+1}}</p>
-                    <p class="data-id"></p>
-                    <p>{{infoLists.area}}</p>
-                    <p>{{infoLists.type}}</p>
-                    <p>{{infoLists.course}}</p>
-                    <p>{{infoLists.customer_id}}</p>
-                    <p>{{infoLists.remark}}</p>
+                    <p mod>{{$index+1+num}}</p>
+                    <p mod>{{infoLists.area}}</p>
+                    <p mod>{{infoLists.type}}</p>
+                    <p mod>{{infoLists.course}}</p>
+                    <p mod>{{infoLists.customer_id}}</p>
+                    <p mod>{{infoLists.remark}}</p>
                 </div>
             </section>
         </li>
     </ul>
+    <div class="module">
+        <div class="see-module">
+            <p class="see-type">体现类型</p>
+            <p class="see-description"></p>
+            <button class="btn" modclose>关闭</button>
+        </div>
+    </div>
     <footer class="footer">
         <pagination count="custom.itemsCount" take="custom.take" activate="custom.activatePage"></pagination>
     </footer>
 </div>
-<div ui-view="modal"></div>
+<div class="delete mod" ng-show="delShow">
+    <div class="del-head">
+        <h5>温馨提示</h5>
+    </div>
+    <div class="del-con">
+        <p>确定要删除这条数据？</p>
+        <div class="btn">
+            <button ng-click="delFn()">确定</button>
+            <button ng-click="cancel()">取消</button>
+        </div>
+    </div>
+</div>
+<div id="modalbg" ng-show="delShow"></div>
 
 
 
