@@ -1,5 +1,5 @@
 var app = angular.module('infoList', ['ng-pagination','toastr']);
-app.controller('infoListCtrl',function($scope,infoSer,toastr,$stateParams,$state){
+app.controller('infoListCtrl',function($scope,infoSer,toastr,$stateParams,$state,$location){
     $scope.$emit('changeId', null);
     //删除
     //获取id
@@ -16,6 +16,7 @@ app.controller('infoListCtrl',function($scope,infoSer,toastr,$stateParams,$state
         $state.go('' +
             'root.biddingManagement.biddingInformation.list[12]',{id:null,name:null});
     };
+    var count=0;
     $scope.delFn = function(){//确认删除
 
         var data = {
@@ -23,11 +24,17 @@ app.controller('infoListCtrl',function($scope,infoSer,toastr,$stateParams,$state
         };
         infoSer.deleteInfo(data).then(function(response){
             if(response.data.code==0){
+                count++;
                 toastr.info( "信息已删除", '温馨提示');
                 $scope.deledId = $stateParams.id;
                 $scope.$emit('changeId', null);
                 $scope.delShow = false;
-                $state.go('root.biddingManagement.biddingInformation.list[12]',{id:null,name:null});
+                if(($scope.custom.itemsCount-count)%10){
+                    $state.go('root.biddingManagement.biddingInformation.list[12]',{id:null,name:null});
+                }else{
+                    $state.go('root.biddingManagement.biddingInformation.list[12]',{id:null,name:null,page:$stateParams.page-1});
+                }
+                // $state.go('root.biddingManagement.biddingInformation.list[12]',{id:null,name:null});
             }else{
                 toastr.error( response.data.msg, '温馨提示');
             }
@@ -104,7 +111,7 @@ app.controller('infoListCtrl',function($scope,infoSer,toastr,$stateParams,$state
         $scope.idListd = event.id;
         //向父Ctrl传递事件
         $scope.$emit('changeId', $scope.idListd);
-
+        $scope.$emit('page',$location.search().page);
     };
     //点击更多详细
     $scope.moreList = function(event){
@@ -133,6 +140,7 @@ app.controller('infoListCtrl',function($scope,infoSer,toastr,$stateParams,$state
     infoSer.countInfo().then(function(response){
         if(response.data.code==0){
             $scope.custom.itemsCount = response.data.data;
+            $scope.num = $stateParams.page*10>10?($stateParams.page-1)*10:null;
         }else{
             toastr.error( response.data.msg, '温馨提示');
         }

@@ -12,7 +12,7 @@ app.config(function($provide, $stateProvider){
             }
         }
     }).state("root.biddingManagement.tenderMaterial.list[12]",{
-        url:"/list[12]?id=&name=",
+        url:"/list[12]?id=&name=&page=",
         views:{
             "content@root.biddingManagement.tenderMaterial":{
                 templateUrl : "root/biddingManagement/tenderMaterial/list/_res/html/index.html",
@@ -28,7 +28,7 @@ app.config(function($provide, $stateProvider){
             }
         }
     }).state("root.biddingManagement.tenderMaterial.edit[12]",{
-        url:"/edit[12]?id=",
+        url:"/edit[12]?id=&page=",
         views:{
             "content@root.biddingManagement.tenderMaterial":{
                 templateUrl : "root/biddingManagement/tenderMaterial/edit/_res/html/index.html",
@@ -49,6 +49,14 @@ app.config(function($provide, $stateProvider){
             "content@root.biddingManagement.tenderMaterial":{
                 templateUrl : "root/biddingManagement/tenderMaterial/upload/_res/html/index.html",
                 controller:'MaterialUploadCtrl'
+            }
+        }
+    }).state("root.biddingManagement.tenderMaterial.view[12]",{
+        url:"/view[12]?id=",
+        views:{
+            "content@root.biddingManagement.tenderMaterial":{
+                templateUrl : "root/biddingManagement/tenderMaterial/view/_res/html/index.html",
+                controller:'MaterialViewCtrl'
             }
         }
     })

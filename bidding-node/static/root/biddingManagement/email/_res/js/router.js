@@ -12,7 +12,7 @@ app.config(function($provide, $stateProvider){
             }
         }
     }).state("root.biddingManagement.email.list[12]",{
-        url:"/list[12]?id=&name=",
+        url:"/list[12]?id=&name=&page=",
         views:{
             "content@root.biddingManagement.email":{
                 templateUrl : "root/biddingManagement/email/list/_res/html/index.html",
@@ -28,7 +28,7 @@ app.config(function($provide, $stateProvider){
             }
         }
     }).state("root.biddingManagement.email.edit[12]",{
-        url:"/edit[12]?id=",
+        url:"/edit[12]?id=&page=",
         views:{
             "content@root.biddingManagement.email":{
                 templateUrl : "root/biddingManagement/email/edit/_res/html/index.html",

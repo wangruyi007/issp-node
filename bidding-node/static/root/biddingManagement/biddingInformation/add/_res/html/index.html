@@ -4,15 +4,13 @@
             <ul>
                 <li class="required">
                     <label><i><img src="/images/mandatory.png"></i><em>网站名称</em></label>
-                    <select class="sele webName" ng-model="webName">
+                    <select class="sele webName" ng-model="webName" ng-change="changSelect()">
                         <option ng-repeat="webName in webNames" value="{{webName}}">{{webName}}</option>
                     </select>
                 </li>
                 <li class="required">
                     <label><i><img src="/images/mandatory.png"></i><em>网址</em></label>
-                    <select class="sele url" ng-model="url">
-                        <option ng-repeat="url in urls" value="{{url}}">{{url}}</option>
-                    </select>
+                    <input type="text" value="{{url.url}}" class="na">
                 </li>
                 <li class="required">
                     <label><i><img src="/images/mandatory.png"></i><em>编号</em></label>
@@ -119,10 +117,10 @@
                     <label><i><img src="/images/mandatory.png"></i><em>保证金退回时间</em></label>
                     <input type="text" onClick="laydate({istime: true, format: 'YYYY-MM-DD'})" class="add_image backTimeDeposit" ng-model="information.backTimeDeposit">
                 </li>
-<!--                 <li class="required">
+                <li class="required">
                     <label><i><img src="/images/mandatory.png"></i><em>备注</em></label>
                     <input type="text" ng-model="information.remark">
-                </li> -->
+                </li>
             </ul>
         </section>
     </div>

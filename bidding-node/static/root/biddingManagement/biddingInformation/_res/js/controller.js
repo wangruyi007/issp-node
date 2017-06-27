@@ -19,6 +19,8 @@ app.controller('informationCtrl',function ($scope,$state) {
 //如果是刷新进来的页面，没有经过list
     if (window.location.href.split('id=')[1]) {
         $scope.idListd = window.location.href.split('id=')[1];
+        $scope.menuClass = $location.search().name + 'Menu';
+
     }
     $scope.menuCheck = function (name) {
         var buttonName = name;
@@ -39,16 +41,22 @@ app.controller('informationCtrl',function ($scope,$state) {
     $scope.$on("onSearch", function(event, name){
         $scope.onSearch = name;
     });
+    $scope.$on('pageId',function(event,flag){
+        $scope.page = flag;
+    });
+    if(!$scope.page){
+        $scope.page = $location.search().page;
+    }
     $scope.delete = function(){
         if($scope.idListd){
-            $state.go('root.biddingManagement.biddingInformation.list[12]',{id:$scope.idListd,name:'delete'});
+            $state.go('root.biddingManagement.biddingInformation.list[12]',{id:$scope.idListd,name:'delete',page:$scope.page});
             $scope.menuClass = 'deleteMenu'
         }
     };
 
     $scope.edit = function(){
         if($scope.idListd){
-            $state.go('root.biddingManagement.biddingInformation.edit[12]',{id:$scope.idListd});
+            $state.go('root.biddingManagement.biddingInformation.edit[12]',{id:$scope.idListd,page:$scope.page});
             $scope.menuClass = 'editMenu'
         }
     };
@@ -56,6 +64,12 @@ app.controller('informationCtrl',function ($scope,$state) {
         if($scope.idListd){
             $state.go('root.biddingManagement.biddingInformation.upload[12]',{id:$scope.idListd});
             $scope.menuClass = 'uploadMenu'
+        }
+    };
+    $scope.view = function(){
+        if($scope.idListd){
+            $state.go('root.biddingManagement.biddingInformation.view[12]',{id:$scope.idListd});
+            $scope.menuClass = 'viewMenu'
         }
     };
     $scope.export = function(){

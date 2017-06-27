@@ -14,7 +14,8 @@ app.factory('infoSer',function ($http) {
         websiteUrl:websiteUrl,
         websiteName:websiteName,
         getProjectName:getProjectName,
-        infoGuide:infoGuide
+        infoGuide:infoGuide,
+        infoFiles:infoFiles//文件附件列表
     };
     function infoList(data) {
         return $http.get('/biddinginfo/list',{
@@ -107,5 +108,11 @@ app.factory('infoSer',function ($http) {
     //获取所有项目名称
     function getProjectName(){
         return $http.get('/getProjectName/projectName')
+    }
+    //文件附件列表
+    function infoFiles(data) {
+        return $http.get('/infoFiles/files',{
+            params:data
+        })
     }
 });

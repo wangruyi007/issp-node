@@ -15,7 +15,7 @@
         <li class="list-all" ng-repeat="lists in materialLists" style="display: {{lists._delete?'none':'block'}};">
             <section>
                 <div class="list-text {{lists._selectList?'selectList':''}}" ng-click="selectList(lists)">
-                    <p>{{$index+1}}</p>
+                    <p>{{$index+1+num}}</p>
                     <p>{{lists.biddingNumber}}</p>
                     <p>{{lists.projectName}}</p>
                     <p>{{lists.eligibilityRequirements}}</p>
@@ -49,7 +49,7 @@
                                 <span>{{lists.additionalCommitments}}</span>
                                 <span>{{lists.additionalInformation}}</span>
                                 <span>{{lists.economicVolume}}</span>
-                                <p>{{lists.mainBusinessIncome}}</p>
+                                <span>{{lists.mainBusinessIncome}}</span>
                             </p>
                         </li>
                     </ul>

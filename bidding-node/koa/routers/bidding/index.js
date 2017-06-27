@@ -101,18 +101,7 @@ module.exports = function(){
                 $self.set('Content-Type','application/json;charset=utf-8');
                 $self.body=error.error;
             }));
-        }).get('/websiteUrl/url', function*(){//获取网址
-        var $self = this;
-        var countToken = {userToken:$self.cookies.get('token')};
-        yield (server().websiteUrl(countToken)
-            .then((parsedBody) =>{
-                var responseText = JSON.parse(parsedBody);
-                $self.body = responseText;
-            }).catch((error) =>{
-                $self.set('Content-Type','application/json;charset=utf-8');
-                $self.body=error.error;
-                console.error(error.error);
-            }));
+        
         }).get('/websiteName/name', function*(){//获取网站名称
         var $self = this;
         var countToken = {userToken:$self.cookies.get('token')};
@@ -126,6 +115,49 @@ module.exports = function(){
                 console.error(error.error);
             }));
         //----------------------招标信息---------------------------
+    //下载文件
+        }).get('/infoDownload/download', function*(){
+        var $self = this;
+        var count = $self.request.query;
+        var data = {
+            path:count.path
+        };
+        yield (fetch(config()['rurl']+`/biddinginfo/v1/downloadFile${urlEncode(data,true)}`, {
+            method : 'GET',
+            headers : {'userToken' : $self.cookies.get('token')}
+        }).then((res)=>{
+            fileType(count,this);
+            return res.buffer();
+        }).then(function(data){
+            $self.body = data;
+        }));
+    //文件附件列表
+    }).get('/infoFiles/files', function*(){
+        var $self = this;
+        var page = $self.request.query;
+        page.userToken = $self.cookies.get('token');
+        yield (server().infoFiles(page)
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
+    }).post('/infoDelfile/delfile', koaBody({multipart:true}), function*(){//合同基本信息 删除文件
+        var $self = this;
+        var delData = $self.request.body;
+        delData.userToken = $self.cookies.get('token');
+        yield (server().infoDelfile(delData)
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
     }).get('/biddinginfo/list', function*(){ //招标信息列表
         var $self = this;
         var page = $self.request.query;
@@ -275,20 +307,51 @@ module.exports = function(){
             return res.buffer();
         }).then(function(data){
             $self.body = data;
-        }));  
-    // }).get('/infoListFile/listFile', function*(){//获取内部项目编号
-    // var $self = this;
-    // var token = {userToken:$self.cookies.get('token')};
-    // yield (server().infoListFile(token)
-    //     .then((parsedBody) =>{
-    //         var responseText = JSON.parse(parsedBody);
-    //         $self.body = responseText;
-    //     }).catch((error) =>{
-    //         $self.set('Content-Type','application/json;charset=utf-8');
-    //         $self.body=error.error;
-    //         console.error(error.error);
-    //     }));  
+        }));   
         //------------------------------投标答疑问题-----------------------------------------
+         //下载文件 
+        }).get('/questionDownload/download', function*(){
+        var $self = this;
+        var count = $self.request.query;
+        var data = {
+            path:count.path
+        };
+        yield (fetch(config()['rurl']+`/biddinganswerquestions/v1/downloadFile${urlEncode(data,true)}`, {
+            method : 'GET',
+            headers : {'userToken' : $self.cookies.get('token')}
+        }).then((res)=>{
+            fileType(count,this);
+            return res.buffer();
+        }).then(function(data){
+            $self.body = data;
+        }));
+    //文件附件列表
+    }).get('/questionFiles/files', function*(){
+        var $self = this;
+        var page = $self.request.query;
+        page.userToken = $self.cookies.get('token');
+        yield (server().questionFiles(page)
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
+        }).post('/questionDelfile/delfile', koaBody({multipart:true}), function*(){// 删除文件
+        var $self = this;
+        var delData = $self.request.body;
+        delData.userToken = $self.cookies.get('token');
+        yield (server().questionDelfile(delData)
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
         }).get('/questionPermission/questionPermission/:guideAddrStatus', function*(){ //菜单权限
         var $self = this;
         var page = {name:$self.params.guideAddrStatus,userToken:$self.cookies.get('token')};
@@ -402,6 +465,49 @@ module.exports = function(){
                 console.error(error.error);
             }));
         //--------------------------标书资料-----------------------------------------
+    //下载文件 
+        }).get('/materialDownload/download', function*(){
+        var $self = this;
+        var count = $self.request.query;
+        var data = {
+            path:count.path
+        };
+        yield (fetch(config()['rurl']+`/tenderinfo/v1/downloadFile${urlEncode(data,true)}`, {
+            method : 'GET',
+            headers : {'userToken' : $self.cookies.get('token')}
+        }).then((res)=>{
+            fileType(count,this);
+            return res.buffer();
+        }).then(function(data){
+            $self.body = data;
+        }));
+    //文件附件列表
+    }).get('/materialFiles/files', function*(){
+        var $self = this;
+        var page = $self.request.query;
+        page.userToken = $self.cookies.get('token');
+        yield (server().materialFiles(page)
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
+        }).post('/materialDelfile/delfile', koaBody({multipart:true}), function*(){// 删除文件
+        var $self = this;
+        var delData = $self.request.body;
+        delData.userToken = $self.cookies.get('token');
+        yield (server().materialDelfile(delData)
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
     }).get('/MaterialPermission/MaterialPermission/:guideAddrStatus', function*(){ //菜单权限
         var $self = this;
         var page = {name:$self.params.guideAddrStatus,userToken:$self.cookies.get('token')};
@@ -877,6 +983,19 @@ module.exports = function(){
         var $self = this;
         var cityToken = {userToken:$self.cookies.get('token')};
         yield (server().biddingNumber(cityToken)
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
+    }).get('/websiteUrl/url', function*(){ //编号查询
+        var $self = this;
+        var summaryData = $self.request.query;
+        summaryData.userToken = $self.cookies.get('token');
+        yield (server().websiteUrl(summaryData)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
                 $self.body = responseText;

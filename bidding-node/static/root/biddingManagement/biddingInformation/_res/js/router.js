@@ -12,7 +12,7 @@ app.config(function($provide, $stateProvider){
             }
         }
     }).state("root.biddingManagement.biddingInformation.list[12]",{
-        url:"/list[12]?id=&name=",
+        url:"/list[12]?id=&name=&page=",
         views:{
             "content@root.biddingManagement.biddingInformation":{
                 templateUrl : "root/biddingManagement/biddingInformation/list/_res/html/index.html",
@@ -28,7 +28,7 @@ app.config(function($provide, $stateProvider){
             }
         }
     }).state("root.biddingManagement.biddingInformation.edit[12]",{
-        url:"/edit[12]?id=",
+        url:"/edit[12]?id=&page=",
         views:{
             "content@root.biddingManagement.biddingInformation":{
                 templateUrl : "root/biddingManagement/biddingInformation/edit/_res/html/index.html",
@@ -41,6 +41,14 @@ app.config(function($provide, $stateProvider){
             "content@root.biddingManagement.biddingInformation":{
                 templateUrl : "root/biddingManagement/biddingInformation/upload/_res/html/index.html",
                 controller:'infoUploadCtrl'
+            }
+        }
+    }).state("root.biddingManagement.biddingInformation.view[12]",{
+        url:"/view[12]?id=",
+        views:{
+            "content@root.biddingManagement.biddingInformation":{
+                templateUrl : "root/biddingManagement/biddingInformation/view/_res/html/index.html",
+                controller:'infoViewCtrl'
             }
         }
     }).state("root.biddingManagement.biddingInformation.export[12]",{

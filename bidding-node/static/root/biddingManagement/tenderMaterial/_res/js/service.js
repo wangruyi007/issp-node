@@ -10,6 +10,7 @@ app.factory('MaterialSer',function ($http) {
         getProjectName:getProjectName,
         getBiddingNum:getBiddingNum,
         biddingNumber:biddingNumber,
+        MaterialFiles:MaterialFiles,//文件附件列表
         MaterialPermission:MaterialPermission
     };
     //菜单权限
@@ -59,5 +60,11 @@ app.factory('MaterialSer',function ($http) {
     //获取所有编号
     function biddingNumber(){
         return $http.get('/biddingNumber/num')
+    }
+    //文件附件列表
+    function MaterialFiles(data) {
+        return $http.get('/materialFiles/files',{
+            params:data
+        })
     }
 });

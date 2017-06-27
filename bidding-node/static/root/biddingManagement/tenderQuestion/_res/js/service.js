@@ -10,6 +10,7 @@ app.factory('questionSer',function ($http) {
         getProjectName:getProjectName,
         getBiddingNum:getBiddingNum,
         biddingNumber:biddingNumber,
+        questionFiles:questionFiles,//文件附件列表
         questionPermission:questionPermission
     };
     //菜单权限
@@ -61,5 +62,11 @@ app.factory('questionSer',function ($http) {
     //获取所有编号
     function biddingNumber(){
         return $http.get('/biddingNumber/num')
+    }
+    //文件附件列表
+    function questionFiles(data) {
+        return $http.get('/questionFiles/files',{
+            params:data
+        })
     }
 });

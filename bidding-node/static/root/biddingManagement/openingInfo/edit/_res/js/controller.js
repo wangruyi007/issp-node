@@ -16,15 +16,6 @@ $scope.showed=true
         });
     };
     var infoData ={id: $stateParams.id};
-//获取地区
-    openingSer.getCity().then(function(response){
-        if(response.data.code == 0){
-            $scope.workOptions = response.data.data;
-
-        }else {
-            toastr.error(response.data.msg,'温馨提示')
-        }
-    });
     //获取ID
     openingSer.findBidOpeningId(infoData).then(function(response){
         if(response.data.code== 0){
@@ -39,7 +30,6 @@ $scope.showed=true
     $scope.openEditFun = function(){
         var vm = $scope;
         vm.editOpening.bidOpeningTime = angular.element('.bidOpeningTime').val();
-        vm.editOpening.bidOpeningPlace = angular.element('.ea').val();
         vm.editOpening.biddingNumber = angular.element('.num').val();
         vm.editOpening.projectName = angular.element('.na').val();
         openingSer.editBidOpening(vm.editOpening).then(function(response){

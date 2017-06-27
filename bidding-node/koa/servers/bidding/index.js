@@ -93,11 +93,23 @@ module.exports = function(){
         return request(options);
     };
     //获取网址
+    // this.websiteUrl = function(argvs){
+    //     var options = {
+    //         method : 'GET',
+    //         timeout : 3000,
+    //         uri : config()['rurl'] + '/biddingwebinfo/v1/getWebInfo',
+    //         headers:{
+    //             userToken:argvs.userToken
+    //         }
+    //     };
+    //     return request(options);
+    // };
+    //获取网址
     this.websiteUrl = function(argvs){
         var options = {
             method : 'GET',
             timeout : 3000,
-            uri : config()['rurl'] + '/biddingwebinfo/v1/url',
+            uri : config()['rurl'] + `/biddingwebinfo/v1/getWebInfo${urlEncode(argvs,true)}`,
             headers:{
                 userToken:argvs.userToken
             }
@@ -117,6 +129,19 @@ module.exports = function(){
         return request(options);
     };
     //-------------------------------招标信息----------------------------
+    //文件附件列表    
+   this.infoFiles= function(argvs){
+        var options = {
+            method : 'GET',
+            timeout : 3000,
+            uri : config()['rurl'] + `/biddinginfo/v1/listFile/${argvs.id}`,
+            form:argvs,
+            headers : {
+                userToken : argvs.userToken
+            }
+        };
+        return request(options);
+    };
     //招标信息列表
     this.InfoList = function(argvs){
         var options = {
@@ -126,6 +151,19 @@ module.exports = function(){
             headers:{
                 userToken:argvs.userToken
             }
+        };
+        return request(options);
+    };
+    //删除文件夹
+    this.infoDelfile = function(argvs){
+        var options = {
+            method : 'POST',
+            timeout : 3000,
+            uri : config()['rurl'] + `/biddinginfo/v1/deleteFile`,
+            headers:{
+                userToken:argvs.userToken
+            },
+            form:argvs.fields
         };
         return request(options);
     };
@@ -254,19 +292,33 @@ module.exports = function(){
         };
         return request(options);
     };
-    //获取内部项目编号
-    // this.infoListFile = function(argvs){
-    //     var options = {
-    //         method : 'GET',
-    //         timeout : 3000,
-    //         uri : config()['rurl'] + '/baseinfomanage/v1/getInnerNum',
-    //         headers:{
-    //             userToken:argvs.userToken
-    //         }
-    //     };
-    //     return request(options);
-    // };
     //--------------------------投标答疑问题-----------------------------------
+    //删除文件夹
+    this.questionDelfile = function(argvs){
+        var options = {
+            method : 'POST',
+            timeout : 3000,
+            uri : config()['rurl'] + `/biddinganswerquestions/v1/deleteFile`,
+            headers:{
+                userToken:argvs.userToken
+            },
+            form:argvs.fields
+        };
+        return request(options);
+    };
+//文件附件列表    
+   this.questionFiles= function(argvs){
+        var options = {
+            method : 'GET',
+            timeout : 3000,
+            uri : config()['rurl'] + `/biddinganswerquestions/v1/listFile/${argvs.id}`,
+            form:argvs,
+            headers : {
+                userToken : argvs.userToken
+            }
+        };
+        return request(options);
+    };
     //菜单权限
     this.questionPermission = function(argvs){
         var options = {
@@ -369,6 +421,32 @@ module.exports = function(){
         return request(options);
     };
     //----------------------------------标书资料------------------------------------
+   //删除文件夹
+    this.materialDelfile = function(argvs){
+        var options = {
+            method : 'POST',
+            timeout : 3000,
+            uri : config()['rurl'] + `/tenderinfo/v1/deleteFile`,
+            headers:{
+                userToken:argvs.userToken
+            },
+            form:argvs.fields
+        };
+        return request(options);
+    };
+//文件附件列表    
+   this.materialFiles= function(argvs){
+        var options = {
+            method : 'GET',
+            timeout : 3000,
+            uri : config()['rurl'] + `/tenderinfo/v1/listFile/${argvs.id}`,
+            form:argvs,
+            headers : {
+                userToken : argvs.userToken
+            }
+        };
+        return request(options);
+    };
     //菜单权限
     this.MaterialPermission = function(argvs){
         var options = {

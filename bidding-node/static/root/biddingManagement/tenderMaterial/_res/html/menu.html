@@ -14,6 +14,9 @@
     <li ng-click="upload()" ng-class="{'current':menuClass=='uploadMenu','seeParent':idListd}" ng-show="UPLOAD" ng-init="menuCheck('UPLOAD')">
         <a href="javascript:void(0)" class="same-one see" >上传<span></span></a>
     </li>
+    <li ng-click="view()" ng-class="{'current':menuClass=='viewMenu','seeParent':idListd}" ng-show="SEEFILE" ng-init="menuCheck('SEEFILE')">
+        <a href="javascript:void(0)" class="same-one see" >查看附件<span></span></a>
+    </li>
     <li ng-click="export()" ng-class="{'current':menuClass=='exportMenu'}" ui-sref=".export[12]" ng-show="EXPORT" ng-init="menuCheck('EXPORT')">
         <a href="javascript:void(0)" class="same-two" >导出<span></span></a>
     </li>

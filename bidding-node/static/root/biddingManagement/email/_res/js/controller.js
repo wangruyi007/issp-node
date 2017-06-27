@@ -18,6 +18,8 @@ app.controller('emailCtrl',function ($scope,$state) {
     });
     if (window.location.href.split('id=')[1]) {//如果是刷新进来的页面，没有经过list
         $scope.idListd = window.location.href.split('id=')[1];
+        $scope.menuClass = $location.search().name + 'Menu';
+
     }
     //-----------------------------------------------------------
     $scope.menuCheck = function (name) {
@@ -36,17 +38,22 @@ app.controller('emailCtrl',function ($scope,$state) {
     $scope.$on("getId", function(event, msg){
        $scope.idListd = msg;
     });
-
+    $scope.$on('pageId',function(event,flag){
+        $scope.page = flag;
+    });
+    if(!$scope.page){
+        $scope.page = $location.search().page;
+    }
     $scope.delete = function(){
         if($scope.idListd){
-            $state.go('root.biddingManagement.email.list[12]',{id:$scope.idListd,name:'delete'});
+            $state.go('root.biddingManagement.email.list[12]',{id:$scope.idListd,name:'delete',page:$scope.page});
             $scope.menuClass = 'deleteMenu';
 
         }
     };
     $scope.edit = function(){
         if($scope.idListd){
-            $state.go('root.biddingManagement.email.edit[12]',{id:$scope.idListd});
+            $state.go('root.biddingManagement.email.edit[12]',{id:$scope.idListd,page:$scope.page});
             $scope.menuClass = 'editMenu'
         }
     };

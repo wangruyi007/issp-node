@@ -12,7 +12,7 @@ app.config(function($provide, $stateProvider){
             }
         }
     }).state("root.biddingManagement.tenderQuestion.list[12]",{
-        url:"/list[12]?id=&name=",
+        url:"/list[12]?id=&name=&page=",
         views:{
             "content@root.biddingManagement.tenderQuestion":{
                 templateUrl : "root/biddingManagement/tenderQuestion/list/_res/html/index.html",
@@ -43,8 +43,16 @@ app.config(function($provide, $stateProvider){
                 controller:'questionUploadCtrl'
             }
         }
+    }).state("root.biddingManagement.tenderQuestion.view[12]",{
+        url:"/view[12]?id=",
+        views:{
+            "content@root.biddingManagement.tenderQuestion":{
+                templateUrl : "root/biddingManagement/tenderQuestion/view/_res/html/index.html",
+                controller:'questionViewCtrl'
+            }
+        }    
     }).state("root.biddingManagement.tenderQuestion.edit[12]",{
-        url:"/edit[12]?id=",
+        url:"/edit[12]?id=&page=",
         views:{
             "content@root.biddingManagement.tenderQuestion":{
                 templateUrl : "root/biddingManagement/tenderQuestion/edit/_res/html/index.html",
