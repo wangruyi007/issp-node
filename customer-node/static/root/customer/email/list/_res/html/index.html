@@ -8,22 +8,19 @@
             <span>上次发送时间</span>
             <span>备注</span>
             <span>发送间隔</span>
-            <span>汇总间隔</span>
             <span></span>
         </li>
         <li class="list-all" ng-repeat="emailList in emailLists" style="display: {{emailList._delete?'none':'block'}};">
             <section class="{{emailList.status=='CONGEAL'?'congeal':''}}">
                 <div class="list-text {{emailList._selectList?'selectList':''}}" ng-click="selectList(emailList)"  >
-                    <p>{{$index+1}}</p>
-                    <p>{{emailList.work}}</p>
-                    <p>{{emailList.createPersion}}</p>
-                    <p>{{emailList.modifyTime}}</p>
-                    <p>{{emailList.lastSendTime}}</p>
-                    <p>{{emailList.remark}}</p>
-                    <p>{{emailList.sendNumAndUnit}}</p>
-                    <p>{{emailList.customerCollectUnit|cover}}</p>
-
-                    <p>
+                    <p mod>{{$index+1}}</p>
+                    <p mod>{{emailList.work}}</p>
+                    <p mod>{{emailList.createPersion}}</p>
+                    <p mod>{{emailList.modifyTime}}</p>
+                    <p mod>{{emailList.lastSendTime}}</p>
+                    <p mod>{{emailList.remark}}</p>
+                    <p mod>{{emailList.sendNumAndUnit}}</p>
+                    <p mod>
                         <a href="javascript:void(0)" class="more" ng-click="moreList(emailList)">更多详细</a>
                     </p>
                 </div>
@@ -35,17 +32,17 @@
                                 <span>状态</span>
                             </p>
                             <p class="see-children">
-                                <span>{{emailList.sendObject}}</span>
-                                <span>{{emailList.status|cover}}</span>
+                                <span mod>{{emailList.sendObject}}</span>
+                                <span mod>{{emailList.status|cover}}</span><!--emailList.status|cover-->
                             </p>
                         </li>
                     </ul>
-                    <div class="module">
-                        <div class="see-module">
-                            <p class="see-type">体现类型</p>
-                            <p class="see-description"></p>
-                            <button class="btn">关闭</button>
-                        </div>
+                </div>
+                <div class="module">
+                    <div class="see-module">
+                        <p class="see-type">体现类型</p>
+                        <p class="see-description"></p>
+                        <button class="btn" modclose="">关闭</button>
                     </div>
                 </div>
                 <div class="thaw-modal">
@@ -58,8 +55,31 @@
         <pagination count="custom.itemsCount" take="custom.take" activate="custom.activatePage"></pagination>
     </footer>
 </div>
-<div ui-view="modal"></div>
-
+<div class="delete mod" ng-show="delShow">
+    <div class="del-head">
+        <h5>温馨提示</h5>
+    </div>
+    <div class="del-con">
+        <p>确定要删除这条数据？</p>
+        <div class="btn">
+            <button ng-click="delFn()">确定</button>
+            <button ng-click="cancel()">取消</button>
+        </div>
+    </div>
+</div>
+<div class="delete mod" ng-show="congealShow">
+    <div class="del-head">
+        <h5>温馨提示</h5>
+    </div>
+    <div class="del-con">
+        <p>确定要冻结这条数据？</p>
+        <div class="btn">
+            <button ng-click="conFn()">确定</button>
+            <button ng-click="cancel()">取消</button>
+        </div>
+    </div>
+</div>
+<div id="modalbg" ng-show="delShow||congealShow"></div>
 
 
 
