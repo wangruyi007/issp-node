@@ -12,9 +12,8 @@ app.controller('marketMiningAddCtrl', function($scope, marketMiningSer,$state,to
     $scope.MiningAddFun = function(){
         var vm = $scope;
         marketMiningSer.channelAdd(vm.mining).then(function(response){
-            console.log(response);
             if(response.data.code == 0){
-                $state.go('root.developProgress.market.marketMining.list');
+                $state.go('root.developProgress.market.marketMining.list[12]');
                 toastr.success("已成功添加", '温馨提示');
             }else {
                 toastr.error(response.data.msg,'温馨提示')

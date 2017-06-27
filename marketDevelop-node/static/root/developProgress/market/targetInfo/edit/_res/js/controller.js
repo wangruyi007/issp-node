@@ -33,7 +33,7 @@ app.controller('targetInfoEditCtrl', function($scope, targetInfoSer,$stateParams
         var vm = $scope;
         targetInfoSer.editTargetInfo(vm.editTarget).then(function(response){
             if(response.data.code == 0){
-                $state.go('root.developProgress.market.targetInfo.list');
+                $state.go('root.developProgress.market.targetInfo.list[12]');
                 toastr.success( "编辑成功", '温馨提示');
             }else {
                 toastr.error(response.data.msg,'温馨提示')

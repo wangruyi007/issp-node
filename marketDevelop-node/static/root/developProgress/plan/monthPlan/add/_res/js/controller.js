@@ -13,7 +13,6 @@ app.controller('monthPlanAddCtrl', function($scope, monthPlanSer,$state,toastr){
     $scope.monthPlanAddFun = function(){
         var vm = $scope;
         monthPlanSer.addMonthPlan(vm.addMonth).then(function(response){
-            console.log(response);
             if(response.data.code == 0){
                 $state.go('root.developProgress.plan.monthPlan.list');
                 toastr.success( "已成功添加", '温馨提示');

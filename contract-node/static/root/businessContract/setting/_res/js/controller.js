@@ -22,7 +22,6 @@ app.controller('settingCtrl',function ($scope,$state) {
     $scope.$on('getId',function(event,id){
         $scope.editId=id;
     });
-
     $scope.list = function(){
         $state.go('root.businessContract.setting.list[12]');
         $scope.menuClass = 'listMenu'

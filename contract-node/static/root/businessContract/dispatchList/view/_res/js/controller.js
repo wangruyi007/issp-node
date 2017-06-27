@@ -14,6 +14,7 @@ app.controller('dispatchViewCtrl', function($scope,dispatchSer,$stateParams,toas
     dispatchSer.viewFiles(pathData).then(function(response){
         if(response.data.code== 0){
             $scope.encloSigning = response.data.data;
+            console.log($scope.isChild);
             $scope.length = $scope.encloSigning ? $scope.encloSigning.length : 0;
         }else{
             toastr.error( response.data.msg, '温馨提示');
@@ -29,10 +30,10 @@ app.controller('dispatchViewCtrl', function($scope,dispatchSer,$stateParams,toas
             for(var i = 0; i < $scope.encloSigning.length;i++){//清空所有的checked
                 $scope.encloSigning[i].checked = false;
             }
-            if($stateParams.view == '1'){
-                $state.go('root.businessContract.dispatchList.view[12]',{view:'2'});
-            }else if($stateParams.view == '2'){
+            if($stateParams.view == '2'){
                 $state.go('root.businessContract.dispatchList.view[12]',{view:'1'});
+            }else if($stateParams.view == '1'){
+                $state.go('root.businessContract.dispatchList.view[12]',{view:'2'});
             }
         }
     };
@@ -89,7 +90,7 @@ app.controller('dispatchViewCtrl', function($scope,dispatchSer,$stateParams,toas
                 };
                 var iframe = document.createElement('iframe');
 
-                iframe.src=`http://localhost:5555/siginmanage/download${encode(obj,true)}`;
+                iframe.src=`/siginmanage/download${encode(obj,true)}`;
 
                 iframe.style.display = 'none';
 
@@ -153,7 +154,8 @@ app.controller('dispatchViewCtrl', function($scope,dispatchSer,$stateParams,toas
                         $scope.length--;
                     }
                     if(!$scope.length){
-                        angular.element('.checked-none[data-style="checked"]:checked + label').css('background','none')
+                        angular.element('.checked-none[data-style="checked"]:checked + label').css('background','none');
+                        $scope.isChild = false;
                     }
                     $scope.isLength = 0;//控制样式
                 } else {

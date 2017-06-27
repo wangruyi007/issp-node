@@ -21,7 +21,7 @@ app.controller('measuredAddCtrl', function($scope, measuredSer,$state,toastr){
         var vm = $scope;
         measuredSer.measuredAdd(vm.measured).then(function(response){
             if(response.data.code == 0){
-                $state.go('root.developProgress.market.marketMeasured.list');
+                $state.go('root.developProgress.market.marketMeasured.list[12]');
                 toastr.success("已成功添加", '温馨提示');
             }else {
                 toastr.error(response.data.msg,'温馨提示')

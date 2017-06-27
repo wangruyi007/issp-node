@@ -18,6 +18,7 @@ app.controller('contractTypeCtrl',function ($scope,$state) {
     });
     if (window.location.href.split('id=')[1]) {//如果是刷新进来的页面，没有经过list
         $scope.idListd = window.location.href.split('id=')[1];
+        if($location.search().name){$scope.menuClass = $location.search().name + 'Menu'}
     }
     $scope.menuCheck = function (name) {
         var buttonName = name;
@@ -35,29 +36,34 @@ app.controller('contractTypeCtrl',function ($scope,$state) {
     $scope.$on("getId", function(event, msg){
        $scope.idListd = msg;
     });
-
+    $scope.$on('pageId',function(event,flag){
+        $scope.page = flag;
+    });
+    if(!$scope.page){
+        $scope.page = $location.search().page;
+    }
     $scope.delete = function(){
         if($scope.idListd){
-            $state.go('root.businessContract.contractType.list[12]',{id:$scope.idListd,name:'delete'});
+            $state.go('root.businessContract.contractType.list[12]',{id:$scope.idListd,name:'delete',page:$scope.page});
             $scope.menuClass = 'deleteMenu'
         }
     };
 
     $scope.edit = function(){
         if($scope.idListd){
-            $state.go('root.businessContract.contractType.edit[12]',{id:$scope.idListd});
+            $state.go('root.businessContract.contractType.edit[12]',{id:$scope.idListd,page:$scope.page});
             $scope.menuClass = 'editMenu'
         }
     };
     $scope.upload = function(){
         if($scope.idListd){
-            $state.go('root.businessContract.contractType.upload[12]',{id:$scope.idListd});
+            $state.go('root.businessContract.contractType.upload[12]',{id:$scope.idListd,page:$scope.page});
             $scope.menuClass = 'uploadMenu'
         }
     };
     $scope.view = function(){
         if($scope.idListd){
-            $state.go('root.businessContract.contractType.view[12]',{id:$scope.idListd,view:1});
+            $state.go('root.businessContract.contractType.view[12]',{id:$scope.idListd,view:1,page:$scope.page});
             $scope.menuClass = 'viewMenu'
         }
     };
@@ -65,7 +71,8 @@ app.controller('contractTypeCtrl',function ($scope,$state) {
         $scope.menuClass = 'listMenu'
     };
     $scope.add = function(){
-        $scope.menuClass = 'addMenu'
+        $scope.menuClass = 'addMenu';
+        $scope.idListd = ''
     };
 
 });

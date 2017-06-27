@@ -7,7 +7,18 @@ var fetch = require('node-fetch');//url转发
 module.exports = function(){
     var router = new Router();
 
-    router.get('/market/businesstype/maps', function*(){ //业务类型列表
+    router.get('/businesstype/guidePermission/:guideAddrStatus', function*(){ //业务类型菜单功能权限
+        var $self = this;
+        var page = {name:$self.params.guideAddrStatus,userToken:$self.cookies.get('token')};
+        yield (server().typeGuidePermission(page)
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+            }));
+    }).get('/market/businesstype/maps', function*(){ //业务类型列表
         var $self = this;
         var page = $self.request.query;
         page.userToken = $self.cookies.get('token');
@@ -109,6 +120,17 @@ module.exports = function(){
                 $self.set('Content-Type','application/json;charset=utf-8');
                 $self.body=error.error;
                 console.error(error.error);
+            }));
+    }).get('/businesscourse/guidePermission/:guideAddrStatus', function*(){ //业务类型菜单功能权限
+        var $self = this;
+        var page = {name:$self.params.guideAddrStatus,userToken:$self.cookies.get('token')};
+        yield (server().courseGuidePermission(page)
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
             }));
     }).get('/market/businesscourse/maps', function*(){ //业务方向科目列表
         var $self = this;
@@ -225,13 +247,6 @@ module.exports = function(){
                 $self.body=error.error;
                 console.error(error.error);
             }));
-    }).get('/user/logout', function*(next){
-        var url = this.request.query;
-        this.cookies.set("absUrl",url.absurl);
-        this.body = {
-            code:0,
-            msg:"重定向"
-        };
     }).get('/listSetting', function*(){
         var $self = this;
         var setting = this.request.query;

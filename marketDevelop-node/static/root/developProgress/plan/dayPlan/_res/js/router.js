@@ -11,6 +11,14 @@ app.config(function($provide, $stateProvider){
                 controller:"dayPlanMenuCtrl"
             }
         }
+    }).state("root.developProgress.plan.dayPlan.list[12]",{
+        url:"/list[12]?id=&name=&page=",
+        views:{
+            "content@root.developProgress.plan.dayPlan":{
+                templateUrl : "root/developProgress/plan/dayPlan/list/_res/html/index.html",
+                controller:'dayPlanListCtrl'
+            }
+        }
     }).state("root.developProgress.plan.dayPlan.add[12]",{
         url:"/add[12]",
         views:{
@@ -24,7 +32,31 @@ app.config(function($provide, $stateProvider){
         views:{
             "content@root.developProgress.plan.dayPlan":{
                 templateUrl : "root/developProgress/plan/dayPlan/edit/_res/html/index.html",
-                controller:'dayPlanEditCtrl'
+                controller:'dayEditCtrl'
+            }
+        }
+    }).state("root.developProgress.plan.dayPlan.upload[12]",{
+        url:"/upload[12]?id=&page=",
+        views:{
+            "content@root.developProgress.plan.dayPlan":{
+                templateUrl : "root/developProgress/plan/dayPlan/upload/_res/html/index.html",
+                controller:'dayPlanUploadCtrl'
+            }
+        }
+    }).state("root.developProgress.plan.dayPlan.view[12]",{
+        url:"/view[12]?id=&view=&page=",
+        views:{
+            "content@root.developProgress.plan.dayPlan":{
+                templateUrl : "root/developProgress/plan/dayPlan/view/_res/html/index.html",
+                controller:'dayPlanViewCtrl'
+            }
+        }
+    }).state("root.developProgress.plan.dayPlan.export[12]",{
+        url:"/export[12]",
+        views:{
+            "content@root.developProgress.plan.dayPlan":{
+                templateUrl : "root/developProgress/plan/dayPlan/export/_res/html/index.html",
+                controller:'dayPlanExportCtrl'
             }
         }
     })
