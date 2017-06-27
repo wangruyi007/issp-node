@@ -51,7 +51,7 @@
                     <p class="select-text">
                         <span ng-repeat="work in condis">{{work}}, </span>
                     </p>
-                    <div class="mymultiselect" events="getSummary" ng-dropdown-multiselect="" options="workOptions" selected-model="condis" extra-settings="stringSettings"></div>
+                    <div class="mymultiselect" events="getSummary" ng-dropdown-multiselect="" options="collectAll" selected-model="condis" extra-settings="stringSettings"></div>
                 </div>
             </div>
             <li >
@@ -64,7 +64,7 @@
                     <span>(双击可以删除该条邮箱地址)</span>
                 </p>
                 <div class="dclick">
-                    <p ng-repeat="list in objLists" ng-dblclick="dbSend($index)">{{list}}</p>
+                    <p ng-repeat="item in objLists track by $index" ng-dblclick="dbSend($index)">{{item}}</p>
                 </div>
             </li>
         </ul>

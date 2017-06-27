@@ -21,7 +21,7 @@ app.controller('yearPlanAddCtrl', function($scope, yearPlanSer,$state,toastr){
         var vm = $scope;
         yearPlanSer.addYearPlan(vm.addYear).then(function(response){
             if(response.data.code == 0){
-                $state.go('root.developProgress.plan.yearPlan.list');
+                $state.go('root.developProgress.plan.yearPlan.list[12]');
                 toastr.success("年计划已成功添加", '温馨提示');
             }else {
                 toastr.error( response.data.msg, '温馨提示');

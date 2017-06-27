@@ -1,6 +1,7 @@
 var app = angular.module('dayPlanServer',[]);
 app.factory('dayPlanSer',function ($http) {
     return {
+        menuPermission : menuPermission,
         dayPlanList : dayPlanList,
         addDayPlan:addDayPlan,
         editDayPlan:editDayPlan,
@@ -8,8 +9,14 @@ app.factory('dayPlanSer',function ($http) {
         countDay:countDay,
         deleteDayPlan:deleteDayPlan,
         getType:getType,
-        getCourse:getCourse
+      getCourse:getCourse,
+        viewFiles:viewFiles
     };
+    //菜单功能权限
+    function menuPermission(data) {
+        return $http.get('/dayplan/guidePermission/'+data);
+    }
+    //列表
     function dayPlanList(data) {
 
         return $http.get('/plan/dayplan/maps',{
@@ -48,5 +55,9 @@ app.factory('dayPlanSer',function ($http) {
     //获取业务方向科目数据
     function getCourse(){
         return $http.get('/businesscourse/findThaw')
+    }
+    //附件列表
+    function viewFiles(data){
+        return $http.get('/dayplan/listFile',{params:data})
     }
 });

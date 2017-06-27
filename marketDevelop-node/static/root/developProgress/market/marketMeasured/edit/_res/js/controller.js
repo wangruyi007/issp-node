@@ -34,7 +34,7 @@ app.controller('measuredEditCtrl', function($scope, measuredSer,$stateParams,$st
         var vm = $scope;
         measuredSer.measuredEdit(vm.editMeasured).then(function(response){
             if(response.data.code == 0){
-                $state.go('root.developProgress.market.marketMeasured.list');
+                $state.go('root.developProgress.market.marketMeasured.list[12]');
                 toastr.success( "编辑成功", '温馨提示');
             }else {
                 toastr.error(response.data.msg,'温馨提示')

@@ -16,7 +16,7 @@ app.controller('dispatchExportCtrl', function($scope, dispatchSer,$state,toastr)
         var obj = {
             innerProjects : $scope.Projects
         };
-        window.open(`http://localhost:5555/dispatchsheet/exportExcel${encode(obj,true)}`);
+        window.open(`/dispatchsheet/exportExcel${encode(obj,true)}`);
     };
 
 });

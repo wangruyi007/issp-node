@@ -1,6 +1,7 @@
 var app = angular.module('researchServer',[]);
 app.factory('researchSer',function ($http) {
     return {
+        menuPermission : menuPermission,
         listResearch : listResearch,
         researchAdd:researchAdd,
         researchEdit:researchEdit,
@@ -8,8 +9,14 @@ app.factory('researchSer',function ($http) {
         countResearch:countResearch,
         researchDelete:researchDelete,
         getType:getType,
-        getCourse:getCourse
+        getCourse:getCourse,
+        viewFiles:viewFiles
     };
+    //菜单功能权限
+    function menuPermission(data) {
+        return $http.get('/marketresearch/guidePermission/'+data);
+    }
+    //列表
     function listResearch(data) {
         return $http.get('/market/marketresearch/maps',{
             params: data
@@ -50,5 +57,9 @@ app.factory('researchSer',function ($http) {
     //获取业务方向科目数据
     function getCourse(){
         return $http.get('/businesscourse/findThaw')
+    }
+    //附件列表
+    function viewFiles(data){
+        return $http.get('/marketresearch/listFile',{params:data})
     }
 });

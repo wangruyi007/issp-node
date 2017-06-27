@@ -60,7 +60,7 @@
         <li class="list-all" ng-repeat="lists in basicLists" style="display: {{lists._delete?'none':'block'}};">
             <section>
                 <div class="list-text {{lists._selectList?'selectList':''}}" ng-click="selectList(lists)">
-                    <p mod>{{$index+1}}</p>
+                    <p mod>{{$index+1+num}}</p>
                     <p mod>{{::lists.contractNum}}</p>
                     <p mod>{{::lists.businessType|cover}}</p>
                     <p mod>{{::lists.businessSubject}}</p>

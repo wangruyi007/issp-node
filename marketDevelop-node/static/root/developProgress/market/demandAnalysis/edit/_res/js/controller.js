@@ -4,7 +4,7 @@ app.controller('demandAnalysisEditCtrl', function($scope, demandAnalysisSer,$sta
 
     //获取ID
     demandAnalysisSer.findDemandId(demandData).then(function(response){
-        if(response.data.code=='0'){
+        if(response.data.code==0){
             $scope.editDemand = response.data.data;
         }else {
             toastr.error(response.data.msg,'温馨提示')
@@ -32,7 +32,7 @@ app.controller('demandAnalysisEditCtrl', function($scope, demandAnalysisSer,$sta
         var vm = $scope;
         demandAnalysisSer.editDemand(vm.editDemand).then(function(response){
             if(response.data.code == 0){
-                $state.go('root.developProgress.market.demandAnalysis.list');
+                $state.go('root.developProgress.market.demandAnalysis.list[12]');
                 toastr.success( "编辑成功", '温馨提示');
             }else {
                 toastr.error(response.data.msg,'温馨提示')

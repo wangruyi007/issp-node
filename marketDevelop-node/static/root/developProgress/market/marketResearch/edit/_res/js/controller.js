@@ -33,7 +33,7 @@ app.controller('researchEditCtrl', function($scope, researchSer,$stateParams,$st
         var vm = $scope;
         researchSer.researchEdit(vm.editResearch).then(function(response){
             if(response.data.code == 0){
-                $state.go('root.developProgress.market.marketResearch.list');
+                $state.go('root.developProgress.market.marketResearch.list[12]');
                 toastr.success( "编辑成功", '温馨提示');
             }else {
                 toastr.error(response.data.msg,'温馨提示')

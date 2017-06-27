@@ -29,10 +29,10 @@ app.controller('basicViewCtrl', function($scope,basicSer,$stateParams,toastr,$ht
             for(var i = 0; i < $scope.encloSigning.length;i++){//清空所有的checked
                 $scope.encloSigning[i].checked = false;
             }
-            if($stateParams.view == '1'){
-                $state.go('root.businessContract.basicInfo.view[12]',{view:'2'});
-            }else if($stateParams.view == '2'){
+            if($stateParams.view == '2'){
                 $state.go('root.businessContract.basicInfo.view[12]',{view:'1'});
+            }else if($stateParams.view == '1'){
+                $state.go('root.businessContract.basicInfo.view[12]',{view:'2'});
             }
         }
     };
@@ -89,7 +89,7 @@ app.controller('basicViewCtrl', function($scope,basicSer,$stateParams,toastr,$ht
                 };
                 var iframe = document.createElement('iframe');
 
-                iframe.src=`http://localhost:5555/siginmanage/download${encode(obj,true)}`;
+                iframe.src=`/siginmanage/download${encode(obj,true)}`;
 
                 iframe.style.display = 'none';
 
