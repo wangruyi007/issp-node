@@ -12,18 +12,18 @@ app.controller('basicinfoAddCtrl', function($scope, basicinfoSer,$state,toastr,i
         if(response.data.code == 0){
             $scope.levels = response.data.data
         }else{
-            toastr.error( response.data.msg, '温馨提示');
+            toastr.error(response.data.msg, '温馨提示');
         }
     });
 
-    //客户添加
+    // 客户添加
     $scope.basicinfoAddFun = function(){
         var vm = $scope;
         var data = {
-            customerNum : vm.cusNumber.customerNum,
+            customerNum :vm.cusNumber.customerNum,
             customerName : vm.addCustomerName,
             area : vm.addArea,
-            customerType : vm.addCustomerType,
+            customerType :vm.addCustomerType,
             customerSex : vm.addCustomerSex,
             customerStatus : vm.addCustomerStatus,
             relation:vm.addRelation,
@@ -32,7 +32,7 @@ app.controller('basicinfoAddCtrl', function($scope, basicinfoSer,$state,toastr,i
             cusEmail : vm.addCusEmail,
             introducer : vm.addIntroducer,
             phone : vm.addPhone,
-            tel : vm.addTel,
+            tel :vm.addTel,
             qq : vm.addqq,
             weChart : vm.addWeChart,
             origanizion : vm.addOriganizion,
@@ -49,8 +49,8 @@ app.controller('basicinfoAddCtrl', function($scope, basicinfoSer,$state,toastr,i
         basicinfoSer.addCustomerbaseinfo(data).then(function(response){
 
             if(response.data.code == 0){
-                $state.go('root.customer.basicinfo.list');
-                toastr.success( "客户信息已成功添加", '温馨提示');
+                $state.go('root.customer.basicinfo.list[12]');
+                toastr.success("客户信息已成功添加", '温馨提示');
             }
         });
 

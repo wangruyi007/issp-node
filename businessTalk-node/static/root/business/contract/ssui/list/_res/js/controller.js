@@ -1,42 +1,60 @@
 var app = angular.module('ssuiList', ['ng-pagination','toastr']);
-app.controller('ssuiListCtrl',function($scope,ssuiSer,toastr) {
+app.controller('ssuiListCtrl',function($scope,ssuiSer,toastr,$state,$stateParams) {
+    $scope.$emit('changeId', null);
     //监听切换搜索是否出现
     $scope.$on('iSsearch',function(event,newIs){
         $scope.isView = newIs;
     });
-    
-   //选择
-    $scope.selectList = function(event){
-        angular.forEach($scope.marketserveLists.data,function(obj){
-            obj._selectList = false
-        });
-        event._selectList = true;
-        $scope.idList = event.id;
-        //向父Ctrl传递事件
-        $scope.$emit('changeId', $scope.idList);
-    };
-    //查看更多
-    $scope.moreList = function(event){
-        angular.forEach($scope.marketserveLists.data,function(obj){
-            if(event.id!==obj.id){
-                obj._moreList = false
-            }
-        });
-        event._moreList = !event._moreList;
-    };
-    
-    function activatePage(page) {
-        var listData = {
-            page:page
+    //删除
+    //获取id
+    if($stateParams.id){
+        switch ($stateParams.name){
+            case 'delete':
+                $scope.delShow = true;
+                break;
         }
-        ssuiSer.listMarketserve(listData).then(function(response){
+    }
+    $scope.cancel = function(){//取消删除
+        $scope.delShow = false;
+        $state.go('' +
+            'root.business.contract.ssui.list[12]',{id:null,name:null});
+    };
+    $scope.delFn = function(){//确认删除
+        var data = {
+            id:$stateParams.id
+        };
+        ssuiSer.marketserveapplyDel(data).then(function(response){
             if(response.data.code==0){
-                $scope.marketserveLists = response.data
+                toastr.info( "信息已删除", '温馨提示');
+                $scope.deledId = $stateParams.id;
+                $scope.$emit('changeId', null);
+                $scope.delShow = false;
+                $state.go('root.business.contract.ssui.list[12]',{id:null,name:null});
             }else{
                 toastr.error( response.data.msg, '温馨提示');
             }
         });
-
+    };
+    function activatePage(page) {
+        var listData = {
+            page:page
+        };
+        ssuiSer.listMarketserve(listData).then(function(response){
+            if(response.data.code==0){
+                $scope.marketserveLists = response.data.data;
+                if($stateParams.id){
+                    angular.forEach($scope.marketserveLists,function(obj){
+                        if(obj.id == $stateParams.id){
+                            obj._selectList = true;
+                        }
+                    });
+                    //向父Ctrl传递事件
+                    $scope.$emit('changeId', $stateParams.id);
+                }
+            }else{
+                toastr.error( response.data.msg, '温馨提示');
+            }
+        });
         //搜索功能
         $scope.collect = function(){
             $scope.abili = {
@@ -70,7 +88,28 @@ app.controller('ssuiListCtrl',function($scope,ssuiSer,toastr) {
                 }
             });
         };
+
     }
+   //选择
+    $scope.selectList = function(event){
+        angular.forEach($scope.marketserveLists,function(obj){
+            obj._selectList = false
+        });
+        event._selectList = true;
+        $scope.idList = event.id;
+        //向父Ctrl传递事件
+        $scope.$emit('changeId', $scope.idList);
+    };
+    //查看更多
+    $scope.moreList = function(event){
+        angular.forEach($scope.marketserveLists,function(obj){
+            if(event.id!==obj.id){
+                obj._moreList = false
+            }
+        });
+        event._moreList = !event._moreList;
+    };
+
     $scope.abili = {
         itemsCount: 9, //总条数
         take: 10, //每页显示
@@ -85,7 +124,7 @@ app.controller('ssuiListCtrl',function($scope,ssuiSer,toastr) {
     });
     //删除
     $scope.$on('deletedId',function(event,delid){
-        angular.forEach($scope.marketserveLists.data,function(obj){
+        angular.forEach($scope.marketserveLists,function(obj){
             if(obj.id == delid){
                 obj._delete = true
             }

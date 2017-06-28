@@ -16,7 +16,6 @@ app.controller('basicinfoEditCtrl', function($scope, basicinfoSer,$stateParams,$
         }
     });
 
-    //
     // //客户编辑
     $scope.basicinfoEditFun = function(){
         var vm = $scope;
@@ -50,7 +49,7 @@ app.controller('basicinfoEditCtrl', function($scope, basicinfoSer,$stateParams,$
         };
         basicinfoSer.editCustomerbaseinfo(data).then(function(response){
             if(response.data.code == 0){
-                $state.go('root.customer.basicinfo.list');
+                $state.go('root.customer.basicinfo.list[12]');
                 toastr.success( vm.editInfo.customerName+"编辑成功", '温馨提示');
             }else{
                 toastr.error( response.data.msg, '温馨提示');

@@ -1,6 +1,7 @@
 var app = angular.module('detailServer',[]);
 app.factory('detailSer',function ($http) {
     return {
+        menuPermission:menuPermission,
         listCustomerDetail : listCustomerDetail,
         getCusNum:getCusNum,
         getCustomers:getCustomers,
@@ -8,8 +9,23 @@ app.factory('detailSer',function ($http) {
         getInfoByCustomerNum:getInfoByCustomerNum,
         countDetail:countDetail,
         editCustomerDetail:editCustomerDetail,
-        deleteDetail:deleteDetail
+        deleteDetail:deleteDetail,
+        alldetailName:alldetailName,
+        alldetailArea:alldetailArea,
+
     };
+    //菜单权限
+    function menuPermission(data){
+        return $http.get('/customerdetail/guidePermission/'+data);
+    }
+    //获取客户名
+    function alldetailName(){
+        return $http.get('/customerbaseinfo/getName')
+    }
+    //获取地区信息
+    function alldetailArea(){
+        return $http.get('/customerbaseinfo/getArea')
+    }
     function listCustomerDetail(data) {
         return $http.post('/customerdetail/listCustomerDetail',data)
     }
@@ -23,7 +39,7 @@ app.factory('detailSer',function ($http) {
 
     //添加客户详情信息
     function addCustomerDetail(data){
-        return $http.post('/customerbaseinfo/getCusNum',data)
+        return $http.post('/customerdetail/add',data)
     }
     //获取客户详情信息
     function getInfoByCustomerNum(data){

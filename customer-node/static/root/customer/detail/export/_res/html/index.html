@@ -1,0 +1,34 @@
+
+<div class="content-input add" verify-scope="tipStyle: 1">
+    <div class="input-list">
+        <section>
+            <ul>
+                <li class="required import-input">
+                    <label><em>地区</em></label>
+                    <div class="select">
+                        <p class="select-text">
+                            <span ng-repeat="number in areas">{{number}}, </span>
+                        </p>
+                        <div class="mymultiselect" events="getSummary" ng-dropdown-multiselect="" options="projectArea" selected-model="areas" extra-settings="stringSettings"></div>
+                    </div>
+                </li>
+
+                <li class="required import-input">
+                    <label><em>用户名</em></label>
+                    <div class="select">
+                        <p class="select-text">
+                            <span ng-repeat="number in customerNames">{{number}}, </span>
+                        </p>
+                        <div class="mymultiselect" events="getSummary" ng-dropdown-multiselect="" options="projectName" selected-model="customerNames" extra-settings="stringSettings"></div>
+                    </div>
+
+                </li>
+
+            </ul>
+        </section>
+    </div>
+    <p class="dataBottom">
+        <button ng-verify="{control:'myform'}" ng-click="workersAddFun()">导出</button>
+    </p>
+</div>
+

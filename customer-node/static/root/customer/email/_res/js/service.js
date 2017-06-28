@@ -1,6 +1,7 @@
 var app = angular.module('emailServer',[]);
 app.factory('emailSer',function ($http) {
     return {
+        menuPermission:menuPermission,
         listEmail : listEmail,
         emailCount:emailCount,
         getWorks:getWorks,
@@ -12,6 +13,9 @@ app.factory('emailSer',function ($http) {
         editEmail:editEmail,
         getSummarys:getSummarys
     };
+    function menuPermission(data){
+        return $http.get('/cusemail/guidePermission/'+data);
+    }
     function listEmail(data) {
         return $http.post('/cusemail/listCusEmail',data)
     }

@@ -11,6 +11,14 @@ app.config(function($provide, $stateProvider){
                 controller:"levelMenuCtrl"
             }
         }
+    }).state("root.customer.level.list[12]",{
+        url:"/list[12]?id=&name=",
+        views:{
+            "content@root.customer.level":{
+                templateUrl : "root/customer/level/list/_res/html/index.html",
+                controller:'levelListCtrl'
+            }
+        }
     }).state("root.customer.level.add[12]",{
         url:"/add[12]",
         views:{
