@@ -1,4 +1,4 @@
-var app = angular.module('business',[]);
+var app = angular.module('businessModule',[]);
 app.config(function ($provide, $stateProvider) {
     $stateProvider.state("root.customer", {
         url: "/customer",

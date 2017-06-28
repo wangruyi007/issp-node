@@ -11,10 +11,9 @@ app.controller('settingCtrl',function ($scope,$state) {
 
 }).controller('settingMenuCtrl',function($scope,$state,$rootScope,$location){
     var urlName = $state.current.url.split('/')[1].split('[')[0];
-    $scope.menuClass=urlName+"Menu";
+    $scope.menuClass = urlName.split('?')[0] + "Menu";
     $rootScope.$on('$locationChangeSuccess', function () {//url地扯改变或者刷新
-        if($location.path().split('/').slice(-1)=='list[12]'){
-
+        if($location.path().split('/').slice(-1)=='list[12]' && window.location.href.indexOf('id=') == -1){
             $scope.menuClass = 'listMenu';
         }
     });
