@@ -138,26 +138,27 @@
                 </li>
             </ul>
         </div>
-        <div ng-show="tab.current=='_family'">
+        <div ng-show="tab.current=='_family'" ng-repeat="list in allFamilyView">
             <ul>
                 <li class="big">
-                    <label><em>称谓</em></label> <input type="text" ng-model="familyTitle" disabled>
+                    <label><em>称谓</em></label> <input type="text" ng-model="list.title" disabled>
                 </li>
                 <li class="big">
-                    <label><em>姓名</em></label> <input type="text" ng-model="familyName" disabled>
+                    <label><em>姓名</em></label> <input type="text" ng-model="list.name" disabled>
                 </li>
                 <li class="big">
-                    <label><em>联系方式</em></label> <input type="text" ng-model="familyContail" disabled>
+                    <label><em>联系方式</em></label> <input type="text" ng-model="list.relationWay" disabled>
                 </li>
                 <li class="big">
-                    <label><em>性格爱好</em></label> <input type="text" ng-model="familyHobby" disabled>
+                    <label><em>性格爱好</em></label> <input type="text" ng-model="list.charactLove" disabled>
                 </li>
                 <li class="big">
-                    <label><em>工作单位</em></label> <input type="text" ng-model="familyWorkPlace" disabled>
+                    <label><em>工作单位</em></label> <input type="text" ng-model="list.workPlace" disabled>
                 </li>
                 <li class="big">
-                    <label><em>职位</em></label> <input type="text" ng-model="familyJobPost" disabled>
+                    <label><em>职位</em></label> <input type="text" ng-model="list.jobPost" disabled>
                 </li>
+                <li></li>
             </ul>
         </div>
     </div>

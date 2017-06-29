@@ -6,15 +6,28 @@ var app = angular.module('level', [{
 app.controller('emailCtrl',function ($scope,$state) {
 
 
-}).controller('emailMenuCtrl',function($scope,$state,$rootScope,$location){
+}).controller('emailMenuCtrl',function($scope,$state,$rootScope,$location,emailSer){
 
     var urlName = $state.current.url.split('/')[1].split('[')[0];
-    $scope.menuClass=urlName+"Menu";
+    $scope.menuClass = urlName.split('?')[0] + "Menu";
     $rootScope.$on('$locationChangeSuccess', function () {//url地扯改变或者刷新
-        if($location.path().split('/').slice(-1)=='list'){
+        if($location.path().split('/').slice(-1)=='list[12]' && window.location.href.indexOf('id=') == -1){
             $scope.menuClass = 'listMenu';
         }
     });
+    $scope.menuCheck = function (name){
+        var buttonName = name;
+        $scope.buttonShow = true;
+        emailSer.menuPermission(buttonName).then(function(response){
+            if(response.data.code == 0 &&response.data.data){
+                $scope[buttonName] = true;
+            }else{
+                $scope[buttonName] = false;
+            }
+        });
+        $scope.menuAdd = false;
+    };
+
     //监听到父Ctrl后改变事件
     $scope.$on("listId", function(event, id){
         $scope.idList = id;
@@ -22,19 +35,22 @@ app.controller('emailCtrl',function ($scope,$state) {
     });
     $scope.delete = function(){
         if($scope.idList){
-            $state.go('root.customer.email.list.delete[12]',{id:$scope.idList});
+            $state.go('root.customer.email.list[12]',{id:$scope.idList,name:'delete'});
+            $scope.menuClass = 'deleteMenu'
         }
     };
 
     $scope.congeal = function(){
         if($scope.idList){
-            $state.go('root.customer.email.list.congeal[12]',{id:$scope.idList});
+            $state.go('root.customer.email.list[12]',{id:$scope.idList,name:'congeal'});
+            $scope.menuClass = 'congealMenu'
         }
     };
 
     $scope.edit = function(){
         if($scope.idList){
             $state.go('root.customer.email.edit[12]',{id:$scope.idList})
+            $scope.menuClass = 'editMenu'
         }
     };
     $scope.list = function(){
@@ -53,51 +69,26 @@ app.filter('cover', function(){
     return function(val){
         var result;
         switch(val){
-            case "MINUTE":
-                result = "分钟";
+            case "LIST":
+                result = "查看或列表";
                 break;
-            case "HOURS":
-                result = "小时";
+            case "ADD":
+                result = "添加";
                 break;
-            case "DAY":
-                result = "天";
-                break;
-            case "WEEK":
-                result = "周";
-                break;
-            case "MONTH":
-                result = "月";
-                break;
-            case "QUARTER":
-                result = "季度";
-                break;
-            case "YEAR":
-                result = "年";
-                break;
-            case "EVERYDAY":
-                result = "每天";
-                break;
-            case "EVERYWEEK":
-                result = "每周";
-                break;
-            case "EVERYMONTH":
-                result = "每月";
-                break;
-            case "THAW":
-                result = "解冻";
-                break;
-            case "CONGEAL":
-                result = "冻结";
+            case "EDIT":
+                result = "编辑";
                 break;
             case "DELETE":
                 result = "删除";
                 break;
-            case "NOACTIVE":
-                result = "未激活";
+            case "COLLECT":
+                result="汇总";
                 break;
-            case "UNREVIEW":
-                result = "未审核";
-                break;
+            case "CONGEL":
+                result="冻结";
+            case "THAW":
+                result="解冻";
+
         }
         return result;
     }

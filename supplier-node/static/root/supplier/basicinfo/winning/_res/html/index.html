@@ -1,6 +1,6 @@
 <div ui-view="content">
 <div class="content-tab winning">
-    <ul class="table table-top">
+    <ul class="table">
         <li class="list-head">
             <span></span>
             <span>获奖名称</span>
@@ -14,7 +14,7 @@
             <section>
                 <div  class="list-text {{listWinning._selectList?'selectList':''}}" ng-click="selectList(listWinning)">
                     <p>{{$index+1}}</p>
-                    <p>{{listWinning.name}}</p>
+                    <p>{{listWinning.awardName}}</p>
                     <p>{{listWinning.acquisition}}</p>
                     <p></p>
                 </div>

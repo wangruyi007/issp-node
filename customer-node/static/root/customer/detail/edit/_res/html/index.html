@@ -138,26 +138,29 @@
                 </li>
             </ul>
         </div>
-        <div ng-show="tab.current=='_family'">
+        <div ng-show="tab.current=='_family'" ng-repeat="list in allFamilyEdit">
             <ul>
                 <li class="big">
-                    <label><em>称谓</em></label> <input type="text" ng-model="familyTitle">
+                    <label><em>称谓</em></label> <input type="text" ng-model="list.title">
                 </li>
                 <li class="big">
-                    <label><em>姓名</em></label> <input type="text" ng-model="familyName">
+                    <label><em>姓名</em></label> <input type="text" ng-model="list.name">
                 </li>
                 <li class="big">
-                    <label><em>联系方式</em></label> <input type="text" ng-model="familyContail">
+                    <label><em>联系方式</em></label> <input type="text" ng-model="list.relationWay">
                 </li>
                 <li class="big">
-                    <label><em>性格爱好</em></label> <input type="text" ng-model="familyHobby">
+                    <label><em>性格爱好</em></label> <input type="text" ng-model="list.charactLove">
                 </li>
                 <li class="big">
-                    <label><em>工作单位</em></label> <input type="text" ng-model="familyWorkPlace">
+                    <label><em>工作单位</em></label> <input type="text" ng-model="list.workPlace">
                 </li>
                 <li class="big">
-                    <label><em>职位</em></label> <input type="text" ng-model="familyJobPost">
+                    <label><em>职位</em></label> <input type="text" ng-model="list.jobPost">
+                    &nbsp; &nbsp;&nbsp;&nbsp;<span ng-click="del($index)" style="color:red;font-size: 22px;">-</span>
+                    &nbsp;&nbsp;&nbsp;&nbsp;<span ng-click="add()" style="color:red;font-size: 22px;">+</span>
                 </li>
+                <li></li>
             </ul>
         </div>
         <p class="dataBottom">

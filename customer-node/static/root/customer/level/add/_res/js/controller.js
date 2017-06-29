@@ -10,7 +10,7 @@ app.controller('levelAddCtrl', function($scope, levelSer, $state, toastr,ipCooki
 
         levelSer.addCustomerLevel(data).then(function(response){
             if(response.data.code == 0){
-                $state.go('root.customer.level.list');
+                $state.go('root.customer.level.list[12]');
                 toastr.success("已成功添加", '温馨提示');
             }
         });

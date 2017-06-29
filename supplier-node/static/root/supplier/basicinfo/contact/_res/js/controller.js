@@ -9,7 +9,7 @@ app.controller('contactBasicCtrl', function($scope, basicinfoSer,$state,toastr,$
         if (response.data.code == 0) {
             $scope.contactBasics = response.data
         } else {
-            toastr.error("请求超时，请联系管理员", '温馨提示');
+            toastr.error(response.data.msg, '温馨提示');
         }
     });
     $scope.selectList = function(event){

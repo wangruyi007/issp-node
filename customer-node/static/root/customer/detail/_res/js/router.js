@@ -11,6 +11,14 @@ app.config(function($provide, $stateProvider){
                 controller:"detailMenuCtrl"
             }
         }
+    }).state("root.customer.detail.list[12]",{
+        url:"/list[12]?id=&name=",
+        views:{
+            "content@root.customer.detail":{
+                templateUrl : "root/customer/detail/list/_res/html/index.html",
+                controller:'detailListCtrl'
+            }
+        }
     }).state("root.customer.detail.add[12]",{
         url:"/add[12]",
         views:{
@@ -33,6 +41,14 @@ app.config(function($provide, $stateProvider){
             "content@root.customer.detail" : {
                 templateUrl : "root/customer/detail/toview/_res/html/index.html",
                 controller:"detailToviewCtrl"
+            }
+        }
+    }).state("root.customer.detail.export[12]",{
+        url:"/export[12]",
+        views:{
+            "content@root.customer.detail":{
+                templateUrl : "root/customer/detail/export/_res/html/index.html",
+                controller:"detailExportCtrl"
             }
         }
     })
