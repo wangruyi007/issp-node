@@ -11,6 +11,14 @@ app.config(function($provide, $stateProvider){
                 controller:"basicinfoMenuCtrl"
             }
         }
+    }).state("root.supplier.basicinfo.list[12]",{
+        url:"/list[12]?id=&name=",
+        views:{
+            "content@root.supplier.basicinfo":{
+                templateUrl : "root/supplier/basicinfo/list/_res/html/index.html",
+                controller:'basicinfoListCtrl'
+            }
+        }
     }).state("root.supplier.basicinfo.add[12]",{
         url:"/add[12]",
         views:{

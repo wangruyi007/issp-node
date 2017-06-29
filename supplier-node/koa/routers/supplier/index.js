@@ -6,7 +6,51 @@ var config = require(path.resolve('plugins/read-config.js'));
 var fetch = require('node-fetch');//url转发
 module.exports = function(){
     var router = new Router();
-    router.get('/basicInfoList/list', function*(){ //列表
+    router.get('/supplierinformation/setButtonPermission', function*(){ //设置导航权限
+        var $self = this;
+        var navToken = {userToken:$self.cookies.get('token')};
+        yield (server().settingNav(navToken)
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+            }));
+    }).get('/supplierinformation/sonPermission', function*(){ //下拉导航权限
+        var $self = this;
+        var navToken = {userToken:$self.cookies.get('token')};
+        yield (server().supplierNav(navToken)
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+            }));
+    }).get('/supplierinformation/guidePermission/:guideAddrStatus', function*(){ //基本信息菜单导航权限
+        var $self = this;
+        var page = {name:$self.params.guideAddrStatus,userToken:$self.cookies.get('token')};
+        yield (server().baseInfoPermission(page)
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+            }));
+    }).get('/suppliertype/guidePermission/:guideAddrStatus', function*(){ //基本信息菜单导航权限
+        var $self = this;
+        var page = {name:$self.params.guideAddrStatus,userToken:$self.cookies.get('token')};
+        yield (server().suppliertype(page)
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+            }));
+    }).get('/basicInfoList/list', function*(){ //列表
         var $self = this;
         var page = $self.request.query;
         page.token = $self.cookies.get('token');
@@ -461,7 +505,6 @@ module.exports = function(){
             }));
     }).get('/user/logout', function*(next){
         var url = this.request.query;
-        console.log(url)
         this.cookies.set("absUrl",url.absurl);
         this.body = {
             code:0,

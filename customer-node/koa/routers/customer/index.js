@@ -4,22 +4,87 @@ var sendfile = require('koa-sendfile');
 var server = require(path.resolve('koa/servers/' + path.basename(path.resolve(__filename, '../')) + '/index.js'));
 var config = require(path.resolve('plugins/read-config.js'));
 var fetch = require('node-fetch');//url转发
+var urlEncode = require(path.resolve('plugins/urlEncode.js'));
 module.exports = function(){
     var router = new Router();
 
-    router.post('/customer/customerbaseinfo/listCustomerBaseInfo', function*(){
+    router.get('/customerlevel/setButtonPermission', function*(){ //设置导航权限
         var $self = this;
-        var page = this.request.body;
+        var navToken = {token:$self.cookies.get('token')};
+        yield (server().settingNav(navToken)
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+            }));
+    }).get('/customerlevel/sonPermission', function*(){  //下拉导航权限
+        var $self = this;
+        var navToken = {token:$self.cookies.get('token')};
+        yield (server().customerNav(navToken)
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+            }));
+    }).get('/customerbaseinfo/guidePermission/:guideAddrStatus', function*(){ //基本信息菜单导航权限
+        var $self = this;
+        var page = {name:$self.params.guideAddrStatus,token:$self.cookies.get('token')};
+        yield (server().baseInfoPermission(page)
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+            }));
+    }).get('/customerdetail/guidePermission/:guideAddrStatus', function*(){ //客户详细信息菜单导航权限
+        var $self = this;
+        var page = {name:$self.params.guideAddrStatus,token:$self.cookies.get('token')};
+        yield (server().detailPermission(page)
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+            }));
+    }).get('/cusemail/guidePermission/:guideAddrStatus', function*(){ //客户邮件信息菜单导航权限/customerlevel/guidePermission/
+        var $self = this;
+        var page = {name:$self.params.guideAddrStatus,token:$self.cookies.get('token')};
+        yield (server().emailPermission(page)
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+            }));
+    }).get('/customerlevel/guidePermission/:guideAddrStatus', function*(){ //客户等级信息菜单导航权限
+        var $self = this;
+        var page = {name:$self.params.guideAddrStatus,token:$self.cookies.get('token')};
+        yield (server().levelPermission(page)
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+            }));
+    }).get('/customer/customerbaseinfo/listCustomerBaseInfo', function*(){
+        var $self = this;
+        var page = this.request.query;
         page.token = this.cookies.get('token');
         yield (server().customerbaseinfoList(page)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
                 $self.body = responseText;
             }).catch((error) =>{
-                if(error.error && error.error.code && error.error.code == 'ETIMEDOUT'){
-                    $self.body = {'msg' : '请求错误！', errno : 3};
-                    $self.status = 408;
-                }
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
             }));
     }).get('/customerbaseinfo/count', function*(){
         var $self = this;
@@ -29,10 +94,8 @@ module.exports = function(){
                 var responseText = JSON.parse(parsedBody);
                 $self.body = responseText;
             }).catch((error) =>{
-                if(error.error && error.error.code && error.error.code == 'ETIMEDOUT'){
-                    $self.body = {'msg' : '请求错误！', errno : 3};
-                    $self.status = 408;
-                }
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
             }));
     }).get('/customer/customerlevel/listCustomerLevel', function*(){
         var $self = this;
@@ -42,10 +105,8 @@ module.exports = function(){
                 var responseText = JSON.parse(parsedBody);
                 $self.body = responseText;
             }).catch((error) =>{
-                if(error.error && error.error.code && error.error.code == 'ETIMEDOUT'){
-                    $self.body = {'msg' : '请求错误！', errno : 3};
-                    $self.status = 408;
-                }
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
             }));
     }).get('/customer/customerbaseinfo/generateNumber', function*(){//自动编号
         var $self = this;
@@ -55,10 +116,8 @@ module.exports = function(){
                 var responseText = JSON.parse(parsedBody);
                 $self.body = responseText;
             }).catch((error) =>{
-                if(error.error && error.error.code && error.error.code == 'ETIMEDOUT'){
-                    $self.body = {'msg' : '请求错误！', errno : 3};
-                    $self.status = 408;
-                }
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
             }));
     }).post('/customer/customerbaseinfo/add', function*(){//添加客户基本信息
         var addData = this.request.body;
@@ -69,10 +128,8 @@ module.exports = function(){
                 var responseText = JSON.parse(parsedBody);
                 $self.body = responseText;
             }).catch((error) =>{
-                if(error.error && error.error.code && error.error.code == 'ETIMEDOUT'){
-                    $self.body = {'msg' : '请求错误！', errno : 3};
-                    $self.status = 408;
-                }
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
             }));
     }).post('/customer/customerbaseinfo/delete', function*(){//删除客户基本信息
         var delData = this.request.body;
@@ -85,7 +142,6 @@ module.exports = function(){
             }).catch((error) =>{
                 $self.set('Content-Type','application/json;charset=utf-8');
                 $self.body=error.error;
-                console.error(error.error);
             }));
     }).post('/customer/customerbaseinfo/congeal', function*(){//冻结客户基本信息
         var congealData = this.request.body;
@@ -98,7 +154,6 @@ module.exports = function(){
             }).catch((error) =>{
                 $self.set('Content-Type','application/json;charset=utf-8');
                 $self.body=error.error;
-                console.error(error.error);
             }));
     }).post('/customer/customerbaseinfo/thaw', function*(){//冻结客户基本信息
         var thawData = this.request.body;
@@ -111,7 +166,6 @@ module.exports = function(){
             }).catch((error) =>{
                 $self.set('Content-Type','application/json;charset=utf-8');
                 $self.body=error.error;
-                console.error(error.error);
             }));
     }).post('/customer/customerbaseinfo/getCustomer', function*(){//h=获取单个客户编号信息
         var cusNum = this.request.body;
@@ -124,7 +178,6 @@ module.exports = function(){
             }).catch((error) =>{
                 $self.set('Content-Type','application/json;charset=utf-8');
                 $self.body=error.error;
-                console.error(error.error);
             }));
     }).post('/customer/customerbaseinfo/edit', function*(){//编辑客户信息
 
@@ -138,7 +191,6 @@ module.exports = function(){
             }).catch((error) =>{
                 $self.set('Content-Type','application/json;charset=utf-8');
                 $self.body=error.error;
-                console.error(error.error);
             }));
     }).get('/customer/customerlevel/listCustomerLevel', function*(){//客户级别列表
         var $self = this;
@@ -150,7 +202,6 @@ module.exports = function(){
             }).catch((error) =>{
                 $self.set('Content-Type','application/json;charset=utf-8');
                 $self.body=error.error;
-                console.error(error.error);
             }));
     }).post('/customer/customerlevel/add', function*(){ //添加客户列表
         var addData = this.request.body;
@@ -163,7 +214,6 @@ module.exports = function(){
             }).catch((error) =>{
                 $self.set('Content-Type','application/json;charset=utf-8');
                 $self.body=error.error;
-                console.error(error.error);
             }));
     }).post('/customerlevel/delete', function*(){
         var deleteData = this.request.body;
@@ -176,7 +226,6 @@ module.exports = function(){
             }).catch((error) =>{
                 $self.set('Content-Type','application/json;charset=utf-8');
                 $self.body=error.error;
-                console.error(error.error);
             }));
     }).post('/customerlevel/getCustomerLevel', function*(){
         var getCustomerLevelData = this.request.body;
@@ -189,7 +238,6 @@ module.exports = function(){
             }).catch((error) =>{
                 $self.set('Content-Type','application/json;charset=utf-8');
                 $self.body=error.error;
-                console.error(error.error);
             }));
     }).post('/customer/customerlevel/edit', function*(){
         var editData = this.request.body;
@@ -202,7 +250,6 @@ module.exports = function(){
             }).catch((error) =>{
                 $self.set('Content-Type','application/json;charset=utf-8');
                 $self.body=error.error;
-                console.error(error.error);
             }));
     }).post('/customerdetail/listCustomerDetail', function*(){//客户详细信息
         var $self = this;
@@ -215,7 +262,6 @@ module.exports = function(){
             }).catch((error) =>{
                 $self.set('Content-Type','application/json;charset=utf-8');
                 $self.body=error.error;
-                console.error(error.error);
             }));
     }).get('/customerdetail/count', function*(){//获取客户条数
         var $self = this;
@@ -227,7 +273,6 @@ module.exports = function(){
             }).catch((error) =>{
                 $self.set('Content-Type','application/json;charset=utf-8');
                 $self.body=error.error;
-                console.error(error.error);
             }));
     }).get('/customerbaseinfo/getCusNum', function*(){//获取客户编号
         var $self = this;
@@ -239,9 +284,8 @@ module.exports = function(){
             }).catch((error) =>{
                 $self.set('Content-Type','application/json;charset=utf-8');
                 $self.body=error.error;
-                console.error(error.error);
             }));
-    }).post('/customerbaseinfo/getCusNum', function*(){//添加客户详情
+    }).post('/customerdetail/add', function*(){//添加客户详情
         var $self = this;
         var addData = this.request.body;
         addData.token = this.cookies.get('token');
@@ -252,7 +296,6 @@ module.exports = function(){
             }).catch((error) =>{
                 $self.set('Content-Type','application/json;charset=utf-8');
                 $self.body=error.error;
-                console.error(error.error);
             }));
     }).post('/customerdetail/getInfoByCustomerNum', function*(){//获取客户详情信息
         var $self = this;
@@ -265,7 +308,6 @@ module.exports = function(){
             }).catch((error) =>{
                 $self.set('Content-Type','application/json;charset=utf-8');
                 $self.body=error.error;
-                console.error(error.error);
             }));
     }).post('/customerdetail/editDetail', function*(){//编辑客户详情信息
         var $self = this;
@@ -278,7 +320,6 @@ module.exports = function(){
             }).catch((error) =>{
                 $self.set('Content-Type','application/json;charset=utf-8');
                 $self.body=error.error;
-                console.error(error.error);
             }));
     }).post('/customerdetail/detail', function*(){//删除客户详情信息
         var $self = this;
@@ -291,7 +332,6 @@ module.exports = function(){
             }).catch((error) =>{
                 $self.set('Content-Type','application/json;charset=utf-8');
                 $self.body=error.error;
-                console.error(error.error);
             }));
     }).post('/cusemail/listCusEmail', function*(){   //客户邮箱列表
         var $self = this;
@@ -304,7 +344,6 @@ module.exports = function(){
             }).catch((error) =>{
                 $self.set('Content-Type','application/json;charset=utf-8');
                 $self.body=error.error;
-                console.error(error.error);
             }));
     }).get('/cusemail/count', function*(){   //客户邮箱列表
         var $self = this;
@@ -316,7 +355,6 @@ module.exports = function(){
             }).catch((error) =>{
                 $self.set('Content-Type','application/json;charset=utf-8');
                 $self.body=error.error;
-                console.error(error.error);
             }));
     }).get('/customerbaseinfo/getWorks', function*(){   //行业数组
         var $self = this;
@@ -328,7 +366,6 @@ module.exports = function(){
             }).catch((error) =>{
                 $self.set('Content-Type','application/json;charset=utf-8');
                 $self.body=error.error;
-                console.error(error.error);
             }));
     }).post('/cusemail/add', function*(){ //添加邮件
         var addData = this.request.body;
@@ -341,7 +378,6 @@ module.exports = function(){
             }).catch((error) =>{
                 $self.set('Content-Type','application/json;charset=utf-8');
                 $self.body=error.error;
-                console.error(error.error);
             }));
     }).post('/cusemail/delete', function*(){ //删除邮件
         var delData = this.request.body;
@@ -354,7 +390,6 @@ module.exports = function(){
             }).catch((error) =>{
                 $self.set('Content-Type','application/json;charset=utf-8');
                 $self.body=error.error;
-                console.error(error.error);
             }));
     }).post('/cusemail/congeal', function*(){ //删除邮件
         var congealData = this.request.body;
@@ -367,7 +402,6 @@ module.exports = function(){
             }).catch((error) =>{
                 $self.set('Content-Type','application/json;charset=utf-8');
                 $self.body=error.error;
-                console.error(error.error);
             }));
     }).post('/cusemail/thaw', function*(){ //冻结邮件
         var thawData = this.request.body;
@@ -380,7 +414,6 @@ module.exports = function(){
             }).catch((error) =>{
                 $self.set('Content-Type','application/json;charset=utf-8');
                 $self.body=error.error;
-                console.error(error.error);
             }));
     }).post('/cusemail/getCusEmailById', function*(){ //冻结邮件
         var cusEmailId = this.request.body;
@@ -393,7 +426,6 @@ module.exports = function(){
             }).catch((error) =>{
                 $self.set('Content-Type','application/json;charset=utf-8');
                 $self.body=error.error;
-                console.error(error.error);
             }));
     }).post('/cusemail/edit', function*(){ //编辑邮件
         var editEmail = this.request.body;
@@ -406,7 +438,6 @@ module.exports = function(){
             }).catch((error) =>{
                 $self.set('Content-Type','application/json;charset=utf-8');
                 $self.body=error.error;
-                console.error(error.error);
             }));
     }).post('/cusemail/collect', function*(){ //汇总
         var getCollect = this.request.body;
@@ -419,7 +450,6 @@ module.exports = function(){
             }).catch((error) =>{
                 $self.set('Content-Type','application/json;charset=utf-8');
                 $self.body=error.error;
-                console.error(error.error);
             }));
     }).get('/listSetting', function*(){
         var $self = this;
@@ -432,7 +462,6 @@ module.exports = function(){
             }).catch((error) =>{
                 $self.set('Content-Type','application/json;charset=utf-8');
                 $self.body=error.error;
-                console.error(error.error);
             }));
     }).get('/countSetting', function*(){
         var $self = this;
@@ -443,7 +472,6 @@ module.exports = function(){
             }).catch((error) =>{
                 $self.set('Content-Type','application/json;charset=utf-8');
                 $self.body=error.error;
-                console.error(error.error);
             }));
     }).get('/getpermit', function*(){
         var $self = this;
@@ -454,8 +482,7 @@ module.exports = function(){
                 $self.body = responseText;
             }).catch((error) =>{
                 $self.set('Content-Type','application/json;charset=utf-8');
-                $self.body=error.error;
-                console.error(error.error);
+                $self.body=error.error;;
             }));
     }).get('/getListpermit', function*(){
         var $self = this;
@@ -467,7 +494,6 @@ module.exports = function(){
             }).catch((error) =>{
                 $self.set('Content-Type','application/json;charset=utf-8');
                 $self.body=error.error;
-                console.error(error.error);
             }));
     }).post('/editSetting', function*(){
         var $self = this;
@@ -480,7 +506,6 @@ module.exports = function(){
             }).catch((error) =>{
                 $self.set('Content-Type','application/json;charset=utf-8');
                 $self.body=error.error;
-                console.error(error.error);
             }));
     }).get('/user/logout', function*(next){
         var url = this.request.query;
@@ -489,6 +514,42 @@ module.exports = function(){
             code:0,
             msg:"重定向"
         };
+    }).get('/customerdetail/exportInfo', function*(){//导出客户详细信息
+        var $self = this;
+        var count = $self.request.query;
+        var fileName = count.customerNames[0]+'.xlsx';
+        var fileAreas = count.areas[0]+'.xlsx';
+
+        yield (fetch(config()['customer'] ['rurl']+`/customerdetail/v1/exportInfo${urlEncode(count,true)}`, {
+            method : 'GET',
+            headers : {'userToken' : $self.cookies.get('token')}
+        }).then(function(res){
+            $self.set('content-type', 'application/vnd.ms-excel;charset=utf-8');
+            $self.set('Content-Disposition', 'attachment;  filename='+encodeURI(fileName,fileAreas));
+            return res.buffer();
+        }).then(function(data){
+            $self.body = data;
+        }));
+    }).get('/customerbaseinfo/getName', function*(){  //获取客户名
+            var $self = this;
+            yield (server().getUserName()
+                .then((parsedBody) =>{
+                    var responseText = JSON.parse(parsedBody);
+                    $self.body = responseText;
+                }).catch((error) =>{
+                    $self.set('Content-Type','application/json;charset=utf-8');
+                    $self.body=error.error;
+                }));
+    }).get('/customerbaseinfo/getArea', function*(){  //获取地区信息
+        var $self = this;
+        yield (server().getAreaInfos()
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+            }));
     })
     return router;
 };

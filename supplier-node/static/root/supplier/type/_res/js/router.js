@@ -11,6 +11,14 @@ app.config(function($provide, $stateProvider){
                 controller:"typeMenuCtrl"
             }
         }
+    }).state("root.supplier.type.list[12]",{
+        url:"/list[12]?id=&name=",
+        views:{
+            "content@root.supplier.type":{
+                templateUrl : "root/supplier/type/list/_res/html/index.html",
+                controller:'typeListCtrl'
+            }
+        }
     }).state("root.supplier.type.add[12]",{
         url:"/add[12]",
         views:{

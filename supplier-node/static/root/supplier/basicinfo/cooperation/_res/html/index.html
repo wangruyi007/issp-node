@@ -1,6 +1,6 @@
 <div ui-view="content">
 <div class="content-tab winning">
-    <ul class="table table-top">
+    <ul class="table">
         <li class="list-head">
             <span></span>
             <span>公司名称</span>
@@ -16,7 +16,7 @@
             <section>
                 <div  class="list-text {{lists._selectList?'selectList':''}}" ng-click="selectList(lists)">
                     <p>{{$index+1}}</p>
-                    <p>{{lists.name}}</p>
+                    <p>{{lists.companyName}}</p>
                     <p>{{lists.product}}</p>
                     <p>{{lists.cooperationTime}}</p>
                     <p>{{lists.cooperationTerm}}</p>
