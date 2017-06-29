@@ -3,6 +3,7 @@ var path = require('path');
 var config = require(path.resolve('plugins/read-config.js'));
 var form = require(path.resolve('plugins/form.js'));
 var urlEncode = require(path.resolve('plugins/urlEncode.js'));
+var uploadFile = require(path.resolve('plugins/uploadFile.js'));
 module.exports = function(){
 
     this.abilitybaseinfoList= function(argvs){
@@ -30,6 +31,7 @@ module.exports = function(){
     };
     //添加公司能力
     this.companyAbilityAdd = function(argvs){
+        console.log(argvs)
         var options = {
             method : 'POST',
             timeout : 3000,
@@ -629,6 +631,145 @@ module.exports = function(){
                 userToken:argvs.token
             },
             form:argvs
+        };
+        return request(options);
+    };
+
+    //设置导航权限
+    this.settingNav = function(argvs){
+        var options = {
+            method : 'GET',
+            timeout : 3000,
+            uri : config()['ability']['rurl'] + '/companycapability/v1/setButtonPermission',
+            headers:{
+                userToken:argvs.token
+            }
+        };
+        return request(options);
+    };
+    //导航权限
+    this.siginNav = function(argvs){
+        var options = {
+            method : 'GET',
+            timeout : 3000,
+            uri : config()['ability']['rurl'] + '/companycapability/v1/sonPermission',
+            headers:{
+                userToken:argvs.token
+            }
+        };
+        return request(options);
+    };
+    //公司能力菜单功能权限
+    this.guidePermission = function(argvs){
+        var options = {
+            method : 'GET',
+            timeout : 3000,
+            uri : config()['ability']['rurl'] + `/companycapability/v1/guidePermission?guideAddrStatus=`+argvs.name,
+            headers:{
+                userToken:argvs.token
+            }
+        };
+        return request(options);
+    };
+    //个人能力
+    this.selfcapPermission = function(argvs){
+        var options = {
+            method : 'GET',
+            timeout : 3000,
+            uri : config()['ability']['rurl'] + `/selfcapability/v1/guidePermission?guideAddrStatus=`+argvs.name,
+            headers:{
+                userToken:argvs.token
+            }
+        };
+        return request(options);
+    };
+    //个人社交资源菜单权限
+    this.selfcapPermission2 = function(argvs){
+        var options = {
+            method : 'GET',
+            timeout : 3000,
+            uri : config()['ability']['rurl'] + `/selfsocial/v1/guidePermission?guideAddrStatus=`+argvs.name,
+            headers:{
+                userToken:argvs.token
+            }
+        };
+        return request(options);
+    };
+    //公司合作菜单权限
+    this.cooperPermission = function(argvs){
+        var options = {
+            method : 'GET',
+            timeout : 3000,
+            uri : config()['ability']['rurl'] + `/coopercapability/v1/guidePermission?guideAddrStatus=`+argvs.name,
+            headers:{
+                userToken:argvs.token
+            }
+        };
+        return request(options);
+    };
+    //邮件发送菜单权限
+    this.emailPermission = function(argvs){
+        var options = {
+            method : 'GET',
+            timeout : 3000,
+            uri : config()['ability']['rurl'] + `/cusemail/v1/guidePermission?guideAddrStatus=`+argvs.name,
+            headers:{
+                userToken:argvs.token
+            }
+        };
+        return request(options);
+    };
+
+    //公司能力导入
+    this.companyImport = function(argvs){
+        var options = {
+            url: config()['ability']['rurl']+'/companycapability/v1/importExcel',
+            method: 'POST',
+            formData: {
+                files: uploadFile(argvs.files.files)
+            },
+            headers:{
+                userToken:argvs.token
+            }
+        };
+        return request(options);
+    };
+    //获取所有公司名称
+    this.companyByName = function(argvs){
+        var options = {
+            method : 'GET',
+            timeout : 3000,
+            uri : config()['ability']['rurl'] + '/companycapability/v1/listAllCompanyName',
+            headers:{
+                userToken:argvs.token
+            }
+        };
+        return request(options);
+    };
+    //公司上传附件
+    this.companyUploadFile = function(argvs){
+        console.log(argvs)
+        var options = {
+            url: config()['ability']['rurl']+`/companycapability/v1/upload/${argvs.fields.id}`,
+            method: 'POST',
+            formData: {
+                files: uploadFile(argvs.files.files)
+            },
+            headers:{
+                userToken:argvs.token
+            }
+        };
+        return request(options);
+    };
+    //公司能力查看附件
+     this.companyEnclosure = function(argvs){
+        var options = {
+            method : 'GET',
+            timeout : 3000,
+            uri : config()['ability']['rurl'] + `/companycapability/v1/files/${argvs.id}`,
+            headers:{
+                userToken:argvs.token
+            }
         };
         return request(options);
     };

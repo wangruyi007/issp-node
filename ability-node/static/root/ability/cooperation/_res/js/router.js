@@ -20,7 +20,7 @@ app.config(function($provide, $stateProvider){
             }
         }
     }).state("root.ability.cooperation.edit[12]",{
-        url:"/edit[12]?id=",
+        url:"/edit[12]?id=&page=",
         views:{
             "content@root.ability.cooperation":{
                 templateUrl : "root/ability/cooperation/edit/_res/html/index.html",
@@ -28,7 +28,7 @@ app.config(function($provide, $stateProvider){
             }
         }
     }).state("root.ability.cooperation.pedit[12]",{
-        url:"/pedit[12]?id=",
+        url:"/pedit[12]?id=&page=",
         views:{
             "content@root.ability.cooperation":{
                 templateUrl : "root/ability/cooperation/pedit/_res/html/index.html",
@@ -36,11 +36,19 @@ app.config(function($provide, $stateProvider){
             }
         }
     }).state("root.ability.cooperation.perlist[12]",{
-        url:"/perlist[12]?id=",
+        url:"/perlist[12]?id=&page=",
         views:{
             "content@root.ability.cooperation":{
                 templateUrl : "root/ability/cooperation/perlist/_res/html/index.html",
                 controller:'cooperationAbiCtrl'
+            }
+        }
+    }).state("root.ability.cooperation.list[12]",{
+        url:"/list[12]?id=&name=&page=",
+        views:{
+            "content@root.ability.cooperation":{
+                templateUrl : "root/ability/cooperation/list/_res/html/index.html",
+                controller:'cooperationListCtrl'
             }
         }
     })
