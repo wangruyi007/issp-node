@@ -8,7 +8,8 @@ app.factory('moneySer',function ($http) {
         findMoneyId:findMoneyId,
         deleteMoney:deleteMoney,
         allMoneyProjects:allMoneyProjects,
-        listMoneyById:listMoneyById
+        listMoneyById:listMoneyById,
+        menuPermission:menuPermission
     };
     function listMoney(data) {
         return $http.get('/listMoney/list',{
@@ -46,5 +47,9 @@ app.factory('moneySer',function ($http) {
     //金额信息
     function listMoneyById(data) {
         return $http.get('/listMoneyById/id',{params:data})
+    }
+    //菜单权限
+    function menuPermission(data) {
+        return $http.get('/money/menu/'+data);
     }
 });

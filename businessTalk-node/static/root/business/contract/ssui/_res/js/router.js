@@ -11,6 +11,14 @@ app.config(function($provide, $stateProvider){
                 controller:"ssuiMenuCtrl"
             }
         }
+    }).state("root.business.contract.ssui.list[12]",{
+        url:"/list[12]?id=&name=",
+        views:{
+            "content@root.business.contract.ssui":{
+                templateUrl : "root/business/contract/ssui/list/_res/html/index.html",
+                controller:'ssuiListCtrl'
+            }
+        }
     }).state("root.business.contract.ssui.add[12]",{
         url:"/add[12]",
         views:{
@@ -33,6 +41,38 @@ app.config(function($provide, $stateProvider){
             "content@root.business.contract.ssui":{
                 templateUrl : "root/business/contract/ssui/collect/_res/html/index.html",
                 controller:'ssuiCollectCtrl'
+            }
+        }
+    }).state("root.business.contract.ssui.upload[12]",{
+        url:"/upload[12]?id=",
+        views:{
+            "content@root.business.contract.ssui":{
+                templateUrl : "root/business/contract/ssui/upload/_res/html/index.html",
+                controller:'ssuiUploadCtrl'
+            }
+        }
+    }).state("root.business.contract.ssui.view[12]",{
+        url:"/view[12]?id=",
+        views:{
+            "content@root.business.contract.ssui":{
+                templateUrl : "root/business/contract/ssui/view/_res/html/index.html",
+                controller:'ssuiViewCtrl'
+            }
+        }
+    }).state("root.business.contract.ssui.import[12]",{
+        url:"/import[12]",
+        views:{
+            "content@root.business.contract.ssui":{
+                templateUrl : "root/business/contract/ssui/import/_res/html/index.html",
+                controller:'ssuiImportCtrl'
+            }
+        }
+    }).state("root.business.contract.ssui.export[12]",{
+        url:"/export[12]",
+        views:{
+            "content@root.business.contract.ssui":{
+                templateUrl : "root/business/contract/ssui/export/_res/html/index.html",
+                controller:'ssuiExportCtrl'
             }
         }
     })

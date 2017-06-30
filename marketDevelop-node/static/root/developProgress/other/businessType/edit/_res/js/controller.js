@@ -18,7 +18,7 @@ app.controller('typeEditCtrl', function($scope, businessTypeSer,$stateParams,$st
         var vm = $scope;
         businessTypeSer.businessTypeEdit(vm.editType).then(function(response){
             if(response.data.code == 0){
-                $state.go('root.developProgress.other.businessType.list');
+                $state.go('root.developProgress.other.businessType.list[12]');
                 toastr.success( "编辑成功", '温馨提示');
             }else {
                 toastr.error( response.data.msg, '温馨提示');

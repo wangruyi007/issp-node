@@ -8,6 +8,7 @@ app.factory('costSer',function ($http) {
         findCostdId:findCostdId,
         deleteCost:deleteCost,
         allCostProjects:allCostProjects,
+        menuPermission:menuPermission
     };
     function listCost(data) {
         return $http.get('/listCost/list',{
@@ -41,5 +42,9 @@ app.factory('costSer',function ($http) {
     //查询所有项目
     function allCostProjects(){
         return $http.get('/allCostProjects/id')
+    }
+    //菜单权限
+    function menuPermission(data) {
+        return $http.get('/cost/menu/'+data);
     }
 });

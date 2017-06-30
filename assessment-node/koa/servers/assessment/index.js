@@ -1182,7 +1182,7 @@ module.exports = function(){
     //冻结
     this.resultCongeal = function(argvs){
         var options = {
-            method : 'PATCH',
+            method : 'PUT',
             timeout : 3000,
             uri : config()['rurl'] + `/collect/v1/freeze/${argvs.id}`,
             headers : {
@@ -1194,7 +1194,7 @@ module.exports = function(){
 //解冻
     this.resultThaw = function(argvs){
         var options = {
-            method : 'PATCH',
+            method : 'PUT',
             timeout : 3000,
             uri : config()['rurl'] + `/collect/v1/unfreeze/${argvs.id}`,
             headers : {
@@ -1342,6 +1342,210 @@ module.exports = function(){
                 userToken:argvs.token
             },
             form:argvs
+        };
+        return request(options);
+    };
+    //设置导航权限
+    this.settingNav = function(argvs){
+        var options = {
+            method : 'GET',
+            timeout : 3000,
+            uri : config()['rurl'] + '/baseinfo/v1/setButtonPermission',
+            headers:{
+                userToken:argvs.userToken
+            }
+        };
+        return request(options);
+    };
+    //导航权限
+    this.siginNav = function(argvs){
+        var options = {
+            method : 'GET',
+            timeout : 3000,
+            uri : config()['rurl'] + '/baseinfo/v1/sonPermission',
+            headers:{
+                userToken:argvs.userToken
+            }
+        };
+        return request(options);
+    };
+    //项目基本信息权限
+    this.baseInfoPermission = function(argvs){
+        var options = {
+            method : 'GET',
+            timeout : 3000,
+            uri : config()['rurl'] + `/baseinfo/v1/guidePermission?guideAddrStatus=`+argvs.name,
+            headers:{
+                userToken:argvs.userToken
+            }
+        };
+        return request(options);
+    };
+    //需求成本
+    this.demandPermission = function(argvs){
+        var options = {
+            method : 'GET',
+            timeout : 3000,
+            uri : config()['rurl'] + `/demandcost/v1/guidePermission?guideAddrStatus=`+argvs.name,
+            headers:{
+                userToken:argvs.userToken
+            }
+        };
+        return request(options);
+    }
+    //劳动成本
+    this.labourPermission = function(argvs){
+        var options = {
+            method : 'GET',
+            timeout : 3000,
+            uri : config()['rurl'] + `/labourcost/v1/guidePermission?guideAddrStatus=`+argvs.name,
+            headers:{
+                userToken:argvs.userToken
+            }
+        };
+        return request(options);
+    };
+    //其他
+    this.otherPermission = function(argvs){
+        var options = {
+            method : 'GET',
+            timeout : 3000,
+            uri : config()['rurl'] + `/anothercost/v1/guidePermission?guideAddrStatus=`+argvs.name,
+            headers:{
+                userToken:argvs.userToken
+            }
+        };
+        return request(options);
+    };
+    //项目费用
+    this.costPermission = function(argvs){
+        var options = {
+            method : 'GET',
+            timeout : 3000,
+            uri : config()['rurl'] + `/projectcost/v1/guidePermission?guideAddrStatus=`+argvs.name,
+            headers:{
+                userToken:argvs.userToken
+            }
+        };
+        return request(options);
+    };
+    //项目利润率
+    this.profitPermission = function(argvs){
+        var options = {
+            method : 'GET',
+            timeout : 3000,
+            uri : config()['rurl'] + `/projectprofitAct/v1/guidePermission?guideAddrStatus=`+argvs.name,
+            headers:{
+                userToken:argvs.userToken
+            }
+        };
+        return request(options);
+    };
+    //项目成长能力
+    this.growPermission = function(argvs){
+        var options = {
+            method : 'GET',
+            timeout : 3000,
+            uri : config()['rurl'] + `/abilitygrowup/v1/guidePermission?guideAddrStatus=`+argvs.name,
+            headers:{
+                userToken:argvs.userToken
+            }
+        };
+        return request(options);
+    };
+    //项目基本信息
+    this.informationPermission = function(argvs){
+        var options = {
+            method : 'GET',
+            timeout : 3000,
+            uri : config()['rurl'] + `/marketsesponse/v1/guidePermission?guideAddrStatus=`+argvs.name,
+            headers:{
+                userToken:argvs.userToken
+            }
+        };
+        return request(options);
+    };
+    //项目问题受理
+    this.handlePermission = function(argvs){
+        var options = {
+            method : 'GET',
+            timeout : 3000,
+            uri : config()['rurl'] + `/problemdispose/v1/guidePermission?guideAddrStatus=`+argvs.name,
+            headers:{
+                userToken:argvs.userToken
+            }
+        };
+        return request(options);
+    };
+    //项目金额
+    this.moneyPermission = function(argvs){
+        var options = {
+            method : 'GET',
+            timeout : 3000,
+            uri : config()['rurl'] + `/businessevaluate/projectamount/v1/guidePermission?guideAddrStatus=`+argvs.name,
+            headers:{
+                userToken:argvs.userToken
+            }
+        };
+        return request(options);
+    };
+    //项目成长能力
+    this.progrowPermission = function(argvs){
+        var options = {
+            method : 'GET',
+            timeout : 3000,
+            uri : config()['rurl'] + `/outabilitygrowup/v1/guidePermission?guideAddrStatus=`+argvs.name,
+            headers:{
+                userToken:argvs.userToken
+            }
+        };
+        return request(options);
+    };
+    //项目利润率
+    this.ratePermission = function(argvs){
+        var options = {
+            method : 'GET',
+            timeout : 3000,
+            uri : config()['rurl'] + `/outprojectprofitAct/v1/guidePermission?guideAddrStatus=`+argvs.name,
+            headers:{
+                userToken:argvs.userToken
+            }
+        };
+        return request(options);
+    };
+    //市场反应和创新能力
+    this.newPermission = function(argvs){
+        var options = {
+            method : 'GET',
+            timeout : 3000,
+            uri : config()['rurl'] + `/outproblemdispose/v1/guidePermission?guideAddrStatus=`+argvs.name,
+            headers:{
+                userToken:argvs.userToken
+            }
+        };
+        return request(options);
+    };
+    //客户关系指标
+    this.relationshipPermission = function(argvs){
+        var options = {
+            method : 'GET',
+            timeout : 3000,
+            uri : config()['rurl'] + `/outmarketsesponse/v1/guidePermission?guideAddrStatus=`+argvs.name,
+            headers:{
+                userToken:argvs.userToken
+            }
+        };
+        return request(options);
+    };
+    //汇总
+    this.resultPermission = function(argvs){
+        var options = {
+            method : 'GET',
+            timeout : 3000,
+            uri : config()['rurl'] + `/collect/v1/guidePermission?guideAddrStatus=`+argvs.name,
+            headers:{
+                userToken:argvs.userToken
+            }
         };
         return request(options);
     };

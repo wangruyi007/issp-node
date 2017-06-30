@@ -2,16 +2,23 @@ var app = angular.module('basicServer',[]);
 app.factory('basicSer',function ($http) {
     return {
         basicInfoList : basicInfoList,
+        menuPermission : menuPermission,
         addBasicInfo:addBasicInfo,
         editBasicInfo:editBasicInfo,
         findBasicInfoId:findBasicInfoId,
         countBasicInfo:countBasicInfo,
-        deleteBasicInfo:deleteBasicInfo
+        deleteBasicInfo:deleteBasicInfo,
+        allProject:allProject,
+        viewFiles:viewFiles
     };
+    //菜单权限
+    function menuPermission(data) {
+        return $http.get('/baseinfomanage/guidePermission/'+data);
+    }
+    //列表
     function basicInfoList(data) {
         return $http.get('/baseinfomanage/list',{
             params: data
-
         })
     }
 
@@ -40,5 +47,13 @@ app.factory('basicSer',function ($http) {
             params: data
 
         })
+    }
+    //获取所有名称
+    function allProject(){
+        return $http.get('/baseinfomanage/allInnerProjects')
+    }
+    //附件列表
+    function viewFiles(data){
+        return $http.get('/baseinfomanage/listFile',{params:data})
     }
 });

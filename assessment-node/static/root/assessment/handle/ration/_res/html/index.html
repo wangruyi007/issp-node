@@ -4,7 +4,7 @@
             <ul>
                 <li class="required">
                     <label><i><img src="/images/mandatory.png"></i><em>错误情况</em></label>
-                    <select class="sele"  ng-model="editData.errorCase">
+                    <select class="sele" ng-verify="{}" ng-model="editData.errorCase">
                         <option value="" disabled>请选择</option>
                         <option value="DATUMRENEGE">资料违约</option>
                         <option value="PROJECTQUALITY">工程质量违检违约</option>
@@ -14,7 +14,7 @@
                 </li>
                 <li class="required">
                     <label><i><img src="/images/mandatory.png"></i><em>错误类型</em></label>
-                    <select class="sele" ng-model="editData.errorType">
+                    <select class="sele" ng-verify="{}" ng-model="editData.errorType">
                         <option value="" disabled>请选择</option>
                         <option value="GENERAL">一般错误</option>
                         <option value="SEVERITY">严重错误</option>
@@ -22,11 +22,11 @@
                 </li>
                 <li class="required">
                 <label><i><img src="/images/mandatory.png"></i><em>违约金确认单评分</em></label>
-                <input type="number" ng-model="editData.grade" placeholder="不得低于98分">
+                <input type="number" ng-verify="{}" ng-model="editData.grade" placeholder="不得低于98分">
                 </li>
                 <li>
                     <label><em>指标规定</em></label>
-                    <select class="sele" ng-model="editData.kpiStipulate">
+                    <select class="sele" ng-verify="{}" ng-model="editData.kpiStipulate">
                         <option value="" disabled>请选择</option>
                         <option value="ONLYONE">仅允出现一次</option>
                         <option value="FORBID">禁止</option>

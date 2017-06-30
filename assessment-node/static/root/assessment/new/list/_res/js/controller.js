@@ -14,7 +14,6 @@ app.controller('newListCtrl',function($scope,newSer,toastr){
             }
         });
     }
-
     $scope.selectList = function(event){
         angular.forEach($scope.newLists,function(obj){
             obj._selectList = false

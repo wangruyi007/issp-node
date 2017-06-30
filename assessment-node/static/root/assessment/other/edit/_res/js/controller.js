@@ -19,7 +19,7 @@ app.controller('otherEditCtrl', function($scope, otherSer,$stateParams,$state,to
         var vm = $scope;
         otherSer.editOther(vm.editInfo).then(function(response){
             if(response.data.code == 0){
-                $state.go('root.assessment.other.list');
+                $state.go('root.assessment.other.list[12]');
                 toastr.success( "编辑成功", '温馨提示');
             }else{
                 toastr.error(response.data.msg, '温馨提示');

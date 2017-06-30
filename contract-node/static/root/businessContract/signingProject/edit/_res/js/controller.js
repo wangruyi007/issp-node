@@ -20,7 +20,7 @@ app.controller('signingEditCtrl', function($scope, signingSer,$stateParams,$stat
         vm.editSigning.endProjectTime = angular.element('.endTime').val();
         signingSer.editSigning(vm.editSigning).then(function(response){
             if(response.data.code == 0){
-                $state.go('root.businessContract.signingProject.list');
+                $state.go('root.businessContract.signingProject.list[12]');
                 toastr.success( "编辑成功", '温馨提示');
             }else{
                 toastr.error( response.data.msg, '温馨提示');

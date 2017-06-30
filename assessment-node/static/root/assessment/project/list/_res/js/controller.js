@@ -1,11 +1,40 @@
 var app = angular.module('projectList', ['ng-pagination','toastr']);
-app.controller('projectListCtrl',function($scope,projectSer,toastr){
+app.controller('projectListCtrl',function($scope,projectSer,toastr,$stateParams,$state){
+    //获取id
+    if($stateParams.id){
+        switch ($stateParams.name){
+            case 'delete':
+                $scope.delShow = true;
+                break;
+        }
+    }
+    //删除
+    $scope.cancel = function(){//取消删除
+        $scope.delShow = false;
+        $state.go('root.assessment.project.list[12]',{id:null,name:null});
+    };
+    $scope.delYes = function(){
+        var data = {
+            id :$stateParams.id
+        };
+        projectSer.deleteProject(data).then(function(response){
+            if(response.data.code==0){
+                toastr.info( "信息已删除", '温馨提示');
+                $scope.deledId = $stateParams.id;
+                $state.go('root.assessment.project.list[12]',{id:null,name:null});
+                $scope.$emit('changeId', null);
+                $scope.delShow = false;
+            }else{
+                toastr.error(response.data.msg, '温馨提示');
+            }
+        })
+    }
     $scope.$emit('changeId', null);
     $scope.teamInfo = {};
     function activatePage(page) {
         var listData = {
             page:page
-        }
+        };
         projectSer.listProject(listData).then(function(response){
             if(response.data.code==0){
                 $scope.projectLists = response.data.data

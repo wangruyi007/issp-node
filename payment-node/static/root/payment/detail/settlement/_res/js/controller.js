@@ -9,19 +9,19 @@ app.controller('settlementCtrl', function($scope, detailSer,$stateParams,$state,
             toastr.error(response.data.msg,'温馨提示')
         }
     });
-      /*  $scope.data = {
+       /* $scope.data = {
         group: '',
         progress: ''
-    };
+    };*/
         $scope.groups = [
-            {id: 1, name: 'A1', progress:[{id: 1, name: '工程督导和网优单位站点准备'},]},
-            {id: 2, name: 'A2', progress: [{id: 1, name: '结算站点核对会审'}]}
+            { name: 'A1', progress:[{name: '工程督导和网优单位站点准备'},]},
+            { name: 'A2', progress: [{name: '结算站点核对会审'}]}
         ];
         $scope.myFunc = function(){
-            $scope.lists = $scope.groups.filter(function(group){
-                return group.id == $scope.group;
+            $scope.selectOptions = $scope.groups.filter(function(group){
+                return group.name == $scope.group;
             })[0].progress;
-        };*/
+        };
     //编辑点击提交
     $scope.settlementEditFun = function(){
         var vm = $scope;

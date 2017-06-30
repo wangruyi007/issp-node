@@ -22,7 +22,7 @@ module.exports = function(){
     };
     this.logout = function(argvs){
         var options = {
-            method : 'POST',
+            method : 'GET',
             timeout : 3000,
             uri : config()['rurl'] + `/v1/sign-out/${argvs.token}`,
             form:argvs

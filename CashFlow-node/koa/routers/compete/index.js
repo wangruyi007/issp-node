@@ -207,7 +207,7 @@ module.exports = function(){
     }).get('/countRecord', function*(){
         var $self = this;
         var token = {userToken:$self.cookies.get('token')};
-        yield (server().moneyAll(token)
+        yield (server().countRecord(token)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
                 $self.body = responseText;

@@ -17,7 +17,7 @@ app.controller('chargeEditCtrl', function($scope, chargeSer,$stateParams,$state,
         var vm = $scope;
         chargeSer.editCharge(vm.editInfo).then(function(response){
             if(response.data.code == 0){
-                $state.go('root.assessment.charge.list');
+                $state.go('root.assessment.charge.list[12]');
                 toastr.success( "编辑成功", '温馨提示');
             }else{
                 toastr.error(response.data.msg, '温馨提示');

@@ -27,5 +27,13 @@ app.config(function($provide, $stateProvider){
                 controller:'chargeEditCtrl'
             }
         }
+    }).state("root.assessment.charge.list[12]",{
+        url:"/list[12]?id=&name=",
+        views:{
+            "content@root.assessment.charge":{
+                templateUrl : "root/assessment/charge/list/_res/html/index.html",
+                controller:'chargeListCtrl'
+            }
+        }
     })
 });

@@ -17,7 +17,7 @@ app.controller('levelEditCtrl', function($scope, levelSer, $state, toastr, $stat
         }
         levelSer.editLevel(data).then(function(response){
             if(response.data.code == 0){
-                $state.go('root.customer.level.list');
+                $state.go('root.customer.level.list[12]');
                 toastr.success("已编辑成功", '温馨提示');
             }else{
                 toastr.error( response.data.msg, '温馨提示');

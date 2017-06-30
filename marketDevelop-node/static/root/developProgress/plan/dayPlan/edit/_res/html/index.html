@@ -9,9 +9,9 @@
                 </li>
                 <li class="required">
                     <label><i><img src="/images/mandatory.png"></i><em>业务状态</em></label>
-                    <select class="sele" ng-model="editDay.business" ng-options='x.id as x.name for x  in [{id:true,name:"立项前"},{id:false,name:"立项后"}]'>
-                        <option value=true>立项前</option>
-                        <option value=false>立项后</option>
+                    <select class="sele" ng-model="editDay.business">
+                        <option value="true">立项前</option>
+                        <option value="false">立项后</option>
                     </select>
                 </li>
                 <li class="required">
@@ -22,7 +22,7 @@
                 </li>
                 <li class="required">
                     <label><i><img src="/images/mandatory.png"></i><em>业务方向科目</em></label>
-                    <select class="sele" ng-model="editDay.source" ng-init="editDay.source">
+                    <select class="sele" ng-model="editDay.source" >
                         <option ng-repeat="course in courses">{{course.course}}</option>
                     </select>
                 </li>

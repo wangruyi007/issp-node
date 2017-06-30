@@ -7,7 +7,7 @@ app.controller('basicInfoAddCtrl', function ($scope, basicInfoSer, $state, toast
         vm.add.endTime = angular.element('.endTime').val();
         basicInfoSer.addBasicInfo(vm.add).then(function (response) {
             if (response.data.code == 0) {
-                $state.go('root.assessment.basicInfo.list');
+                $state.go('root.assessment.basicInfo.list[12]');
                 toastr.success("已成功添加", '温馨提示');
             }else{
                 toastr.error(response.data.msg, '温馨提示');

@@ -1,5 +1,34 @@
 var app = angular.module('informationList', ['ng-pagination','toastr']);
-app.controller('informationListCtrl',function($scope,informationSer,toastr){
+app.controller('informationListCtrl',function($scope,informationSer,toastr,$stateParams,$state){
+    //获取id
+    if($stateParams.id){
+        switch ($stateParams.name){
+            case 'delete':
+                $scope.delShow = true;
+                break;
+        }
+    }
+    //删除
+    $scope.cancel = function(){//取消删除
+        $scope.delShow = false;
+        $state.go('root.assessment.information.list[12]',{id:null,name:null});
+    };
+    $scope.delYes = function(){
+        var data = {
+            id :$stateParams.id
+        };
+        informationSer.deleteInformation(data).then(function(response){
+            if(response.data.code==0){
+                toastr.info( "信息已删除", '温馨提示');
+                $scope.deledId = $stateParams.id;
+                $state.go('root.assessment.information.list[12]',{id:null,name:null});
+                $scope.$emit('changeId', null);
+                $scope.delShow = false;
+            }else{
+                toastr.error(response.data.msg, '温馨提示');
+            }
+        })
+    }
     $scope.$emit('changeId', null);
     $scope.teamInfo = {};
     function activatePage(page) {

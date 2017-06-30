@@ -3,8 +3,7 @@ app.factory('rootSer', function($http){
     return {
         userLogout : userLogout,
     };
-
     function userLogout(data){
-        return $http.get('http://localhost/user/logout',{params:data});
+        return $http.get('/user/logout',{params:data});
     }
-})
+});

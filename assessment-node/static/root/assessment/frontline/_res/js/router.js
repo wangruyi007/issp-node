@@ -27,5 +27,13 @@ app.config(function($provide, $stateProvider){
                 controller:'frontlineEditCtrl'
             }
         }
+    }).state("root.assessment.frontline.list[12]",{
+        url:"/list[12]?id=&name=",
+        views:{
+            "content@root.assessment.frontline":{
+                templateUrl : "root/assessment/frontline/list/_res/html/index.html",
+                controller:'frontlineListCtrl'
+            }
+        }
     })
 });

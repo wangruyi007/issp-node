@@ -27,5 +27,13 @@ app.config(function($provide, $stateProvider){
                 controller:'costEditCtrl'
             }
         }
+    }).state("root.assessment.cost.list[12]",{
+        url:"/list[12]?id=&name=",
+        views:{
+            "content@root.assessment.cost":{
+                templateUrl : "root/assessment/cost/list/_res/html/index.html",
+                controller:'costListCtrl'
+            }
+        }
     })
 });

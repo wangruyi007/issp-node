@@ -1,0 +1,21 @@
+<div class="content-input add" verify-scope="tipStyle: 1">
+    <div class="input-list">
+        <section>
+            <ul>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>业务类型</em></label>
+                    <div class="sele side">
+                        <select ng-model="type" class="sele">
+                            <option value="">请选择</option>
+                            <option ng-repeat="bus in typeName">{{bus.type}}</option>
+                        </select>
+                        <input type="text"  class="inputDom" ng-model="type">
+                    </div>
+                </li>
+            </ul>
+        </section>
+    </div>
+    <p class="dataBottom">
+        <button ng-verify="{control:'myform'}" ng-click="workersAddFun()">导出</button>
+    </p>
+</div>

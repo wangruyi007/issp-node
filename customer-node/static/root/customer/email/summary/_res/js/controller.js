@@ -24,7 +24,7 @@ app.controller('emailSummaryCtrl',function($scope,emailSer,toastr,ipCookie){
                     }
                 });
             }else{
-                toastr.error( response.data.msg, '温馨提示');
+                toastr.error(response.data.msg, '温馨提示');
             }
         })
     }}

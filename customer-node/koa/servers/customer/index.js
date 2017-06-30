@@ -1,9 +1,86 @@
 var request = require('request-promise');
 var path = require('path');
 var config = require(path.resolve('plugins/read-config.js'));
+var urlEncode = require(path.resolve('plugins/urlEncode.js'));
 var form = require(path.resolve('plugins/form.js'));
 module.exports = function(){
+    //设置导航权限
+    this.settingNav = function(argvs){
+        var options = {
+            method : 'GET',
+            timeout : 3000,
+            uri : config()['customer']['rurl'] + '/customerlevel/v1/setButtonPermission',//2017-06-12
+            headers:{
+                userToken:argvs.token
+            }
+        };
+        return request(options);
+    };
+    //下拉导航权限
+    this.customerNav = function(argvs){
+        var options = {
+            method : 'GET',
+            timeout : 3000,
+            uri : config()['customer']['rurl'] + '/customerlevel/v1/sonPermission',//2017-06-10
+            headers:{
+                userToken:argvs.token
+            }
+        };
+        return request(options);
+    };
 
+    //基本信息菜单权限
+    this.baseInfoPermission = function(argvs){
+
+        var options = {
+            method : 'GET',
+            timeout : 3000,
+            uri : config()['customer']['rurl']  + `/customerbaseinfo/v1/guidePermission?guideAddrStatus=`+argvs.name,//2017-06-08
+            headers:{
+                userToken:argvs.token
+            }
+        };
+        return request(options);
+    };
+   //详细信息菜单权限
+    this.detailPermission = function(argvs){
+        var options = {
+            method : 'GET',
+            timeout : 3000,
+            uri : config()['customer']['rurl']  + `/customerdetail/v1/guidePermission?guideAddrStatus=`+argvs.name,//2017-06-08
+            headers:{
+                userToken:argvs.token
+            }
+        };
+        return request(options);
+    };
+
+    //客户邮件信息菜单权限levelPermission
+    this.emailPermission = function(argvs){
+        var options = {
+            method : 'GET',
+            timeout : 3000,
+            uri : config()['customer']['rurl']  + `/cusemail/v1/guidePermission?guideAddrStatus=`+argvs.name,//2017-06-08
+            headers:{
+                userToken:argvs.token
+            }
+        };
+        return request(options);
+    };
+    //客户等级信息菜单权限
+    this.levelPermission = function(argvs){
+        var options = {
+            method : 'GET',
+            timeout : 3000,
+            uri : config()['customer']['rurl']  + `/customerlevel/v1/guidePermission?guideAddrStatus=`+argvs.name,//2017-06-08
+            headers:{
+                userToken:argvs.token
+            }
+        };
+        return request(options);
+    };
+
+ //列表
     this.customerbaseinfoList = function(argvs){
         var options = {
             method : 'GET',
@@ -258,6 +335,7 @@ module.exports = function(){
                 userToken : argvs.token
             }
         };
+        console.log(argvs);
         return request(options);
 
     };
@@ -436,6 +514,37 @@ module.exports = function(){
                 userToken:argvs.token
             },
             form:argvs
+        };
+        return request(options);
+    };
+    //客户管理导出
+  /*  this.exportInfo = function(argvs){
+        var options = {
+            method : 'GET',
+            timeout : 3000,
+            uri : config()['customer']['rurl'] + `/customerdetail/v1/exportInfo?area=${argvs.areas}&customerName=${argvs.customerNames}`,
+            headers:{
+                userToken:argvs.token
+            },
+            form:argvs
+        };
+        return request(options);
+    };*/
+    //获取客户名
+    this.getUserName = function(){
+        var options = {
+            method : 'GET',
+            timeout : 3000,
+            uri : config()['customer']['rurl'] + `/customerbaseinfo/v1/getName`,
+        };
+        return request(options);
+    };
+    //获取地区信息
+    this.getAreaInfos = function(){
+        var options = {
+            method : 'GET',
+            timeout : 3000,
+            uri : config()['customer']['rurl'] + `/customerbaseinfo/v1/getArea`,
         };
         return request(options);
     };

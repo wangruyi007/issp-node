@@ -11,6 +11,14 @@ app.config(function($provide, $stateProvider){
                 controller:"emailMenuCtrl"
             }
         }
+    }).state("root.customer.email.list[12]",{
+        url:"/list[12]?id=&name=",
+        views:{
+            "content@root.customer.email":{
+                templateUrl : "root/customer/email/list/_res/html/index.html",
+                controller:'emailListCtrl'
+            }
+        }
     }).state("root.customer.email.add[12]",{
         url:"/add[12]",
         views:{

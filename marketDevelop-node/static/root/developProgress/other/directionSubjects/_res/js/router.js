@@ -11,6 +11,14 @@ app.config(function($provide, $stateProvider){
                 controller:"directionMenuCtrl"
             }
         }
+    }).state("root.developProgress.other.directionSubjects.list[12]",{
+        url:"/list[12]?id=&name=&page=",
+        views:{
+            "content@root.developProgress.other.directionSubjects":{
+                templateUrl : "root/developProgress/other/directionSubjects/list/_res/html/index.html",
+                controller:'subjectsListCtrl'
+            }
+        }
     }).state("root.developProgress.other.directionSubjects.add[12]",{
         url:"/add[12]",
         views:{

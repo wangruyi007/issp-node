@@ -1,5 +1,5 @@
 var app = angular.module('settingList', ['ng-pagination','toastr']);
-app.controller('settingListCtrl',function($scope,settingSer,toastr){
+app.controller('settingListCtrl',function($scope,settingSer,toastr,$stateParams){
     $scope.$emit('changeId', null);
     //分页
     $scope.pagination = {
@@ -14,11 +14,20 @@ app.controller('settingListCtrl',function($scope,settingSer,toastr){
         settingSer.listSetting(pages).then(function(response){
             if(response.data.code==0){
                 $scope.settingLists = response.data.data;
+                if($stateParams.id){
+                    angular.forEach($scope.dispatchLists,function(obj){
+                        if(obj.id == $stateParams.id){
+                            obj._selectList = true;
+                        }
+                    });
+                    //向父Ctrl传递事件
+                    $scope.$emit('changeId', $stateParams.id);
+                }
                 $scope.operators = response.data.data.supOperateVO
             }else if(response.data.code==1){
                 toastr.error( response.data.msg, '温馨提示');
             }else{
-                toastr.error( "请求超时，请联系管理员", '温馨提示');
+                toastr.error(  response.data.msg, '温馨提示');
             }
         });
     }
@@ -28,7 +37,7 @@ app.controller('settingListCtrl',function($scope,settingSer,toastr){
         }else if(response.data.code==1){
             toastr.error( response.data.msg, '温馨提示');
         }else{
-            toastr.error( "请求超时，请联系管理员", '温馨提示');
+            toastr.error( response.data.msg, '温馨提示');
         }
     });
     $scope.selectList = function(event){

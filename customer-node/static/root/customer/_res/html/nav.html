@@ -1,13 +1,18 @@
-<div class="nav-list">
-    <h3 class="header-menu big"><i class="nav-arrow"></i>客户信息</h3>
-    <ul class="menu">
-        <li ng-click="navClass('basicinfo')" ng-class="{'active':navCla=='basicinfo'}"  ui-sref="_root.customer.basicinfo.list" ><a href="javascript:void(0)">客户基本信息</a></li>
-        <li ng-click="navClass('detail')" ng-class="{'active':navCla=='detail'}" ui-sref="_root.customer.detail.list"><a href="javascript:void(0)">客户详细信息</a></li>
-        <li ng-click="navClass('level')" ng-class="{'active':navCla=='level'}" ui-sref="_root.customer.level.list"><a href="javascript:void(0)" >客户级别设置</a></li>
-        <li ng-click="navClass('email')" ng-class="{'active':navCla=='email'}" ui-sref="_root.customer.email.list"><a href="javascript:void(0)">邮件发送定制</a></li>
+<div class="nav-list" ng-repeat="list in showsList">
+    <h3 class="header-menu big" ng-click="showMenu(list,true)"ng-hide="isHide" ng-init="menuCheck()">
+        <i class="nav-arrow" ng-class="{true: '', false: 'change-angle'}[list.showIs]"></i> {{list.item}}</h3>
+    <ul class="menu" ng-if="list.menuList.length"  ng-show="list.showIs" ng-repeat="menuInfo in list.menuList">
+        <li ng-click="navClass('basicinfo')" ng-show="customerbaseinfo" ng-class="{'active':navCla=='basicinfo'}"  ui-sref="_root.customer.basicinfo.list[12]">
+            <a href="javascript:void(0)">{{menuInfo.name}}</a></li>
+        <li ng-click="navClass('detail')" ng-show="customerdetail" ng-class="{'active':navCla=='detail'}" ui-sref="_root.customer.detail.list[12]">
+            <a href="javascript:void(0)">{{menuInfo.name2}}</a></li>
+        <li ng-click="navClass('level')" ng-show="customerlevel" ng-class="{'active':navCla=='level'}" ui-sref="_root.customer.level.list[12]">
+            <a href="javascript:void(0)">{{menuInfo.name3}}</a></li>
+        <li ng-click="navClass('email')" ng-show="cusemail" ng-class="{'active':navCla=='email'}" ui-sref="_root.customer.email.list[12]">
+            <a href="javascript:void(0)">{{menuInfo.name4}}</a></li>
     </ul>
-    <h3 class="header-menu big"><i class="nav-arrow"></i>设置</h3>
-    <ul class="menu">
-        <li ng-click="navClass('setting')" ng-class="{'active':navCla=='setting'}"  ui-sref="_root.customer.setting.list[12]" ><a href="javascript:void(0)">设置</a></li>
+    <ul  class="menu" ng-if="list.menuList.length"  ng-show="list.showIs" ng-repeat="menuInfo in list.menuList">
+        <li ng-click="navClass('setting')" ng-show="cuspermission" ng-class="{'active':navCla=='setting'}" ui-sref="_root.customer.setting.list[12]">
+          <a href="javascript:void(0)">{{menuInfo.name5}}</a></li>
     </ul>
 </div>

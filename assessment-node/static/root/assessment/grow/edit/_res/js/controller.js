@@ -19,7 +19,7 @@ app.controller('growEditCtrl', function($scope, growSer,$stateParams,$state,toas
         var vm = $scope;
         growSer.editGrow(vm.editInfo).then(function(response){
             if(response.data.code == 0){
-                $state.go('root.assessment.grow.list');
+                $state.go('root.assessment.grow.list[12]');
                 toastr.success( "编辑成功", '温馨提示');
             }else{
                 toastr.error(response.data.msg, '温馨提示');

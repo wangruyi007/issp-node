@@ -8,6 +8,7 @@ app.factory('growSer',function ($http) {
         findGrowId:findGrowId,
         deleteGrowInfo:deleteGrowInfo,
         allGrowProjects:allGrowProjects,
+        menuPermission:menuPermission,
     };
     function listGrow(data) {
         return $http.get('/listGrow/list',{
@@ -41,5 +42,9 @@ app.factory('growSer',function ($http) {
     //查询所有项目
     function allGrowProjects(){
         return $http.get('/allGrowProjects/id')
+    }
+    //菜单权限
+    function menuPermission(data) {
+        return $http.get('/grow/menu/'+data);
     }
 });

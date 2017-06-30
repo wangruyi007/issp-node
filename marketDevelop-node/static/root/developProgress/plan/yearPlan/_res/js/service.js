@@ -1,15 +1,21 @@
 var app = angular.module('yearPlanServer',[]);
 app.factory('yearPlanSer',function ($http) {
     return {
+        menuPermission : menuPermission,
         findThisYear : findThisYear,
         addYearPlan:addYearPlan,
         editYearPlan:editYearPlan,
         yearSearch:yearSearch,
         countYear:countYear,
-        deleteYearplan:deleteYearplan,
+        deleteYearPlan:deleteYearPlan,
         getType:getType,
         getCourse:getCourse
     };
+    //菜单功能权限
+    function menuPermission(data) {
+        return $http.get('/yearplan/guidePermission/'+data);
+    }
+    // 列表
     function findThisYear(data) {
         return $http.get('/plan/yearplan/maps',{
             params: data
@@ -33,7 +39,7 @@ app.factory('yearPlanSer',function ($http) {
         return $http.get('/plan/yearplan/getTotal')
     }
     //删除
-    function deleteYearplan(data){
+    function deleteYearPlan(data){
 
         return $http.get('/plan/yearplan/delete',{
             params: data
