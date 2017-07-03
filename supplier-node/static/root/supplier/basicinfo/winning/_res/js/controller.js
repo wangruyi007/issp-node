@@ -15,7 +15,7 @@ app.controller('winningBasicCtrl', function($scope, basicinfoSer,$state,toastr,$
         if (response.data.code == 0) {
             $scope.winningBasics = response.data
         } else {
-            toastr.error("请求超时，请联系管理员", '温馨提示');
+            toastr.error(response.data.msg, '温馨提示');
         }
     });
     //删除

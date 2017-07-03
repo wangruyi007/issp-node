@@ -12,19 +12,19 @@
             <span>关系程度</span>
             <span></span>
         </li>
-        <li class="list-all" ng-repeat="list in basicinfoLists.data" style="display: {{list._delete?'none':'block'}};">
+        <li class="list-all" ng-repeat="list in basicinfoLists" style="display: {{list._delete?'none':'block'}};">
             <section  class="{{list.status=='CONGEAL'?'congeal':''}}" >
                 <div class="list-text {{list._selectList?'selectList':''}}" ng-click="selectList(list)">
-                    <p>{{$index+1}}</p>
-                    <p class="data-id"></p>
-                    <p class="addcusNum">{{list.customerNum}}</p>
-                    <p>{{::list.customerName}}</p>
-                    <p>{{::list.area}}</p>
-                    <p>{{::list.customerSex|cover}}</p>
-                    <p>{{::list.customerType|cover}}</p>
-                    <p>{{::list.customerStatus|cover}}</p>
-                    <p>{{::list.relation==null?'0':list.relation}}%</p>
-                    <p>
+                    <p mod>{{$index+1}}</p>
+                    <p mod class="data-id"></p>
+                    <p mod class="addcusNum">{{list.customerNum}}</p>
+                    <p mod>{{::list.customerName}}</p>
+                    <p mod>{{::list.area}}</p>
+                    <p mod>{{::list.customerSex|cover}}</p>
+                    <p mod>{{::list.customerType|cover}}</p>
+                    <p mod>{{::list.customerStatus|cover}}</p>
+                    <p mod>{{::list.relation==null?'0':list.relation}}%</p>
+                    <p mod>
                         <a href="javascript:void(0)" class="more"  ng-click="moreList(list)">更多详细</a>
                     </p>
                 </div>
@@ -42,14 +42,14 @@
                                 <span>QQ</span>
                             </p>
                             <p class="see-children">
-                                <span>{{list.customerLevelVO.name}}</span>
-                                <span>{{list.origin}}</span>
-                                <span>{{list.introducer}}</span>
-                                <span>{{list.cusEmail}}</span>
-                                <span>{{list.tel}}</span>
-                                <span>{{list.phone}}</span>
-                                <span>{{list.weChart}}</span>
-                                <span>{{list.qq}}</span>
+                                <span mod>{{list.customerLevelVO.name}}</span>
+                                <span mod>{{list.origin}}</span>
+                                <span mod>{{list.introducer}}</span>
+                                <span mod>{{list.cusEmail}}</span>
+                                <span mod>{{list.tel}}</span>
+                                <span mod>{{list.phone}}</span>
+                                <span mod>{{list.weChart}}</span>
+                                <span mod>{{list.qq}}</span>
                             </p>
                         </li>
                         <li>
@@ -64,14 +64,14 @@
                                 <span>成长地区</span>
                             </p>
                             <p class="see-children">
-                                <span>{{list.workProfession}}</span>
-                                <span>{{list.origanizion}}</span>
-                                <span>{{list.origanizationSize}}</span>
-                                <span>{{list.workPosition}}</span>
-                                <span>{{list.workLevel}}</span>
-                                <span>{{list.workRight}}</span>
-                                <span>{{list.lifeArea}}</span>
-                                <span>{{list.grouthArea}}</span>
+                                <span mod>{{list.workProfession}}</span>
+                                <span mod>{{list.origanizion}}</span>
+                                <span mod>{{list.origanizationSize}}</span>
+                                <span mod>{{list.workPosition}}</span>
+                                <span mod>{{list.workLevel}}</span>
+                                <span mod>{{list.workRight}}</span>
+                                <span mod>{{list.lifeArea}}</span>
+                                <span mod>{{list.grouthArea}}</span>
                             </p>
                         </li>
                         <li>
@@ -84,24 +84,24 @@
                                 <span>客户启用状态</span>
                             </p>
                             <p class="see-children">
-                                <span>{{list.oldWorkPlace}}</span>
-                                <span>{{list.infoComplet}}</span>
-                                <span>{{list.marketReceptTime}}</span>
-                                <span>{{list.modifyPersion}}</span>
-                                <span>{{list.modifyTime}}</span>
-                                <span>{{list.status|cover}}</span>
+                                <span mod>{{list.oldWorkPlace}}</span>
+                                <span mod>{{list.infoComplet}}</span>
+                                <span mod>{{list.marketReceptTime}}</span>
+                                <span mod>{{list.modifyPersion}}</span>
+                                <span mod>{{list.modifyTime}}</span>
+                                <span mod>{{list.status|cover}}</span>
                             </p>
                         </li>
-                    </ul>
-                    <div class="module">
-                        <div class="see-module">
-                            <p class="see-type">体现类型</p>
-                            <p class="see-description"></p>
-                            <button class="btn">关闭</button>
-                        </div>
+                   </ul>
+                </div>
+                <div class="module">
+                    <div class="see-module">
+                        <p class="see-type">体现类型</p>
+                        <p class="see-description"></p>
+                        <button class="btn" modclose="">关闭</button>
                     </div>
                 </div>
-                <div class="thaw-modal">
+               <div class="thaw-modal">
                     <button ng-click="thaw(list)">解冻</button>
                 </div>
             </section>
@@ -111,7 +111,33 @@
         <pagination count="custom.itemsCount" take="custom.take" activate="custom.activatePage"></pagination>
     </footer>
 </div>
-<div ui-view="modal"></div>
+
+<div class="delete mod" ng-show="delShow">
+    <div class="del-head">
+        <h5>温馨提示</h5>
+    </div>
+    <div class="del-con">
+        <p>确定要删除这条数据？</p>
+        <div class="btn">
+            <button ng-click="delFn()">确定</button>
+            <button ng-click="cancel()">取消</button>
+        </div>
+    </div>
+</div>
+<div class="delete mod" ng-show="congealShow">
+    <div class="del-head">
+        <h5>温馨提示</h5>
+    </div>
+    <div class="del-con">
+        <p>确定要冻结这条数据？</p>
+        <div class="btn">
+            <button ng-click="conFn()">确定</button>
+            <button ng-click="cancel()">取消</button>
+        </div>
+    </div>
+</div>
+<div id="modalbg" ng-show="delShow||congealShow"></div>
+
 
 
 

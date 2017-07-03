@@ -1,6 +1,7 @@
 var app = angular.module('typeServer',[]);
 app.factory('typeSer',function ($http) {
     return {
+        menuPermission:menuPermission,
         listType : listType,
         countType:countType,
         congealType:congealType,
@@ -10,6 +11,10 @@ app.factory('typeSer',function ($http) {
         editType:editType,
         getEditTypeById:getEditTypeById
     };
+    //类型管理菜单权限
+    function menuPermission(data){
+        return $http.get('/suppliertype/guidePermission/'+data);
+    }
     //列表
     function  listType(data) {
         return $http.get('/supplier/listType/list',{

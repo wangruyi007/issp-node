@@ -1,7 +1,37 @@
 var app = angular.module('detailList', ['ng-pagination','toastr']);
-app.controller('detailListCtrl',function($scope,detailSer,toastr){
-
+app.controller('detailListCtrl',function($scope,detailSer,toastr,$stateParams,$state){
+    $scope.$emit('changeId', null);
     $scope.$emit('changeCusnum', null)
+
+    //获取id
+    if($stateParams.id){
+        switch ($stateParams.name){
+            case 'delete':
+                $scope.delShow = true;
+                break;
+        }
+    }
+    $scope.cancel = function(){//取消删除
+        $scope.delShow = false;
+        $state.go('root.customer.detail.list[12]',{id:null,name:null});
+    };
+    $scope.delFn = function(){//确认删除
+        var data = {
+            id:$stateParams.id
+        };
+        detailSer.deleteDetail(data).then(function(response){
+            if(response.data.code==0){
+                toastr.info( "信息已删除", '温馨提示');
+                $scope.deledId = $stateParams.id;
+                $scope.$emit('changeId', null);
+                $scope.delShow = false;
+                $state.go('root.customer.detail.list[12]',{id:null,name:null});
+            }else{
+                toastr.error( response.data.msg, '温馨提示');
+            }
+        });
+    };
+
 
     $scope.selectList = function(event){
         angular.forEach($scope.detailLists,function(obj){
@@ -33,6 +63,7 @@ app.controller('detailListCtrl',function($scope,detailSer,toastr){
             page:page
         }
         detailSer.listCustomerDetail(listData).then(function(response){
+
             if(response.data.code==0){
                 $scope.detailLists = response.data.data;
             }else{

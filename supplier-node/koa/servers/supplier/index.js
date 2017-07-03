@@ -4,6 +4,55 @@ var config = require(path.resolve('plugins/read-config.js'));
 var form = require(path.resolve('plugins/form.js'));
 module.exports = function(){
 
+ //设置导航权限
+     this.settingNav = function(argvs){
+     var options = {
+     method : 'GET',
+     timeout : 3000,
+     uri : config()['rurl'] + '/supplierinformation/v1/setButtonPermission',//2017-06-12
+     headers:{
+     userToken:argvs.userToken
+     }
+     };
+     return request(options);
+     };
+     //下拉导航权限
+     this.supplierNav = function(argvs){
+     var options = {
+     method : 'GET',
+     timeout : 3000,
+     uri : config()['rurl'] + '/supplierinformation/v1/sonPermission',//2017-06-10
+     headers:{
+     userToken:argvs.userToken
+     }
+     };
+     return request(options);
+     };
+    //基本信息菜单权限
+     this.baseInfoPermission = function(argvs){
+        var options = {
+            method : 'GET',
+            timeout : 3000,
+            uri : config()['rurl'] + `/supplierinformation/v1/guidePermission?guideAddrStatus=`+argvs.name,//2017-06-08
+            headers:{
+                userToken:argvs.userToken
+            }
+        };
+        return request(options);
+    };
+   //类型管理菜单权限
+    this.suppliertype = function(argvs){
+        var options = {
+            method : 'GET',
+            timeout : 3000,
+            uri : config()['rurl'] + `/suppliertype/v1/guidePermission?guideAddrStatus=`+argvs.name,//2017-06-08
+            headers:{
+                userToken:argvs.userToken
+            }
+        };
+        return request(options);
+    };
+
     this.listBasicInfo = function(argvs){
         var options = {
             method : 'GET',
@@ -390,7 +439,7 @@ module.exports = function(){
     //冻结
     this.typeCongeal = function(argvs){
         var options = {
-            method : 'PATCH',
+            method :'PUT',
             timeout : 3000,
             uri : config()['rurl'] + '/suppliertype/v1/congeal/' + argvs.id,
             headers : {
@@ -402,7 +451,7 @@ module.exports = function(){
     //解冻
     this.typeThaw = function(argvs){
         var options = {
-            method : 'PATCH',
+            method : 'PUT',
             timeout : 3000,
             uri : config()['rurl'] + '/suppliertype/v1/thaw/' + argvs.id,
             headers : {
