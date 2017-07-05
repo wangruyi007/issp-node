@@ -20,7 +20,7 @@ app.config(function($provide, $stateProvider){
             }
         }
     }).state("root.Industrial.setting.list[12]",{
-        url:"/list[12]",
+        url:"/list[12]?id=&page=",
         views:{
             "content@root.Industrial.setting":{
                 templateUrl : "root/Industrial/setting/list/_res/html/index.html",

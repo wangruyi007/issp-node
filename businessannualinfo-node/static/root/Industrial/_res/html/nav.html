@@ -12,7 +12,7 @@
         <li ng-click="navClass('tax')" ng-class="{'active':navCla=='tax'}" ui-sref="_root.Industrial.tax.list[12]" ng-show="businesstaxchange">
             <a href="javascript:void(0)">{{menuInfo.name3}}</a>
         </li>
-        <li ng-click="navClass('setting')" ng-class="{'active':navCla=='setting'}"  ui-sref="_root.Industrial.setting.list[12]" >
+        <li ng-click="navClass('setting')" ng-class="{'active':navCla=='setting'}"  ui-sref="_root.Industrial.setting.list[12]" ng-show="cuspermission">
             <a href="javascript:void(0)">{{menuInfo.name4}}</a>
         </li>
     </ul>

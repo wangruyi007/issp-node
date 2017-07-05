@@ -52,7 +52,6 @@ app.controller('informationCtrl',function ($scope,$state) {
             
             $state.go('root.Industrial.information.list[12]',{id:$scope.idList,name:'delete',page:$scope.page});
             $scope.menuClass = 'deleteMenu';
-            console.log(111)
         }
     };
     //编辑
@@ -66,7 +65,8 @@ app.controller('informationCtrl',function ($scope,$state) {
         $scope.menuClass = 'listMenu'
     };
     $scope.add = function(){
-        $scope.menuClass = 'addMenu'
+        $scope.menuClass = 'addMenu';
+        $scope.idList=''
     };
     //上传
     $scope.upload = function(){

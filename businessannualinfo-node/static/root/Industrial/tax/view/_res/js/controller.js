@@ -88,7 +88,6 @@ app.controller('taxViewCtrl', function($scope,taxSer,$stateParams,toastr,$http,$
                 path:$scope.encloMaterial[i].path,
                 fileType:$scope.encloMaterial[i].fileType
             };
-            console.log(obj)
             var iframe = document.createElement('iframe');
 
             iframe.src=`/changeDownloadFile/downloadFile${encode(obj,true)}`;

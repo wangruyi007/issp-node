@@ -87,12 +87,4 @@ app.controller('taxListCtrl',function($scope,taxSer,toastr,$stateParams,$state,$
             toastr.error( response.data.msg, '温馨提示');
         }
     });
-    //删除
-    $scope.$on('deletedId',function(event,delid){
-        angular.forEach($scope.taxLists.data,function(obj){
-            if(obj.id == delid){
-                obj._delete = true
-            }
-        })
-    });
 });

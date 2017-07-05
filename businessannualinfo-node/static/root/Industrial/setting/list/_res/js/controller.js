@@ -36,6 +36,7 @@ app.controller('settingListCtrl',function($scope,settingSer,toastr,$stateParams)
         event._selectList = true;
         //向父Ctrl传递事件
         $scope.$emit('changeId', event.id);
+        $scope.$emit('page',$location.search().page);
     }
 
 });

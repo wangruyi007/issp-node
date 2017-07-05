@@ -17,7 +17,6 @@ module.exports = function(){
                 userToken : argvs.userToken
             }
         };
-        console.log(argvs)
         return request(options);
     };
     //编辑工商年检

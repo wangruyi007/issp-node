@@ -88,7 +88,6 @@ app.controller('registeredViewCtrl', function($scope,registeredSer,$stateParams,
                 path:$scope.encloMaterial[i].path,
                 fileType:$scope.encloMaterial[i].fileType
             };
-            console.log(obj)
             var iframe = document.createElement('iframe');
 
             iframe.src=`/annualDownloadFile/downloadFile${encode(obj,true)}`;

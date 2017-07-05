@@ -94,12 +94,4 @@ app.controller('registeredListCtrl',function($scope,registeredSer,toastr,$stateP
                 toastr.error( response.data.msg, '温馨提示');
             }
     });
-    //删除
-    $scope.$on('deletedId',function(event,delid){
-        angular.forEach($scope.registeredLists.data,function(obj){
-            if(obj.id == delid){
-                obj._delete = true
-            }
-        })
-    });
 });

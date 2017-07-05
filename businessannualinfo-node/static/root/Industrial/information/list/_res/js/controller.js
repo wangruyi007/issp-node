@@ -85,12 +85,4 @@ app.controller('informationListCtrl',function($scope,informationSer,toastr,$stat
                 toastr.error( response.data.msg, '温馨提示');
             }
     });
-    // 删除
-    $scope.$on('deletedId',function(event,delid){
-        angular.forEach($scope.informationLists.data,function(obj){
-            if(obj.id == delid){
-                obj._delete = true
-            }
-        })
-    });
 });

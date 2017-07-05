@@ -65,7 +65,8 @@ app.controller('taxCtrl',function ($scope,$state) {
         $scope.menuClass = 'listMenu'
     };
     $scope.add = function(){
-        $scope.menuClass = 'addMenu'
+        $scope.menuClass = 'addMenu';
+        $scope.idList=''
     };
 //上传
     $scope.upload = function(){
@@ -83,26 +84,3 @@ app.controller('taxCtrl',function ($scope,$state) {
         }
     }
 });
-//自定义过滤器
-// app.filter('cover', function(){
-//     return function(val){
-//         var result;
-//         switch(val){
-//             case "NAME":
-//                 result = "公司名字";
-//                 break;
-//             case "DATE":
-//                 result = "时间";
-//                 break;
-//             case "DELETE":
-//                 result = "删除";
-//                 break;
-//             case "MONEY":
-//                 result = "资产";
-//                 break;
-//         }
-//         return result;
-//     }
-
-// })
-
