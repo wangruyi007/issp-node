@@ -59,7 +59,10 @@ router.get(/^\/module\/_config(?:\/.|$)/, function *(next) {
 });
 
 //============路由===========
-app.use(require(path.join(__dirname,routersPath,'/compete/index.js'))().routes());//竞争对手展示
+
+app.use(require(path.join(__dirname,routersPath,'/subject/index.js'))().routes());//项目中问题受理和处理路由
+
+
 app.use(router.routes());
 
 
