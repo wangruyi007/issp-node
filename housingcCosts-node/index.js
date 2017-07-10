@@ -60,7 +60,7 @@ router.get(/^\/module\/_config(?:\/.|$)/, function *(next) {
 
 //============路由===========
 
-app.use(require(path.join(__dirname,routersPath,'/subject/index.js'))().routes());
+app.use(require(path.join(__dirname,routersPath,'/house/index.js'))().routes());
 
 
 app.use(router.routes());
