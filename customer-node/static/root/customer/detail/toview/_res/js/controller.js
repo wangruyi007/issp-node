@@ -6,8 +6,9 @@ app.controller('detailToviewCtrl', function($scope, detailSer, $stateParams,$loc
     detailSer.getInfoByCustomerNum(cusNum).then(function(response){
         if(response.data.code==0){
             $scope.details = response.data.data;
+            $scope.allFamilyView=$scope.details.cusFamilyMemberVOList || [{}];
         }else{
-            toastr.error( response.data.msg, '温馨提示');
+            toastr.error(response.data.msg, '温馨提示');
         }
     });
     $scope.tab={

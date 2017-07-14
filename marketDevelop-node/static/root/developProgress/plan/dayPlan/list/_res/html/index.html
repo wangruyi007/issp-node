@@ -14,14 +14,14 @@
         <li class="list-all" ng-repeat="dayList in dayPlanLists" style="display: {{dayList._delete?'none':'block'}};">
             <section>
                 <div class="list-text {{dayList._selectList?'selectList':''}}" ng-click="selectList(dayList)">
-                    <p>{{$index+1}}</p>
-                    <p >{{dayList.serialNumber}}</p>
-                    <p>{{dayList.time}}</p>
-                    <p>{{dayList.business|cover}}</p>
-                    <p>{{dayList.type}}</p>
-                    <p>{{dayList.source}}</p>
-                    <p>{{dayList.name}}</p>
-                    <p>{{dayList.content}}</p>
+                    <p mod>{{$index+1+num}}</p>
+                    <p mod>{{::dayList.serialNumber}}</p>
+                    <p mod>{{::dayList.time}}</p>
+                    <p mod>{{::dayList.business|cover}}</p>
+                    <p mod>{{::dayList.type}}</p>
+                    <p mod>{{::dayList.source}}</p>
+                    <p mod>{{::dayList.name}}</p>
+                    <p mod>{{::dayList.content}}</p>
                     <p>
                         <a href="javascript:void(0)" class="more" ng-click="moreList(dayList)">更多详细</a>
                     </p>
@@ -40,14 +40,14 @@
                                 <span>商务内容</span>
                             </p>
                             <p class="see-children">
-                                <span>{{dayList.phase}}</span>
-                                <span>{{dayList.quota}}</span>
-                                <span>{{dayList.own}}</span>
-                                <span>{{dayList.negotiation}}</span>
-                                <span>{{dayList.budget}}</span>
-                                <span>{{dayList.customer}}</span>
-                                <span>{{dayList.phone}}</span>
-                                <span>{{dayList.businessContent}}</span>
+                                <span mod>{{::dayList.phase}}</span>
+                                <span mod>{{::dayList.quota}}</span>
+                                <span mod>{{::dayList.own}}</span>
+                                <span mod>{{::dayList.negotiation}}</span>
+                                <span mod>{{::dayList.budget}}</span>
+                                <span mod>{{::dayList.customer}}</span>
+                                <span mod>{{::dayList.phone}}</span>
+                                <span mod>{{::dayList.businessContent}}</span>
                             </p>
                         </li>
                         <li>
@@ -55,26 +55,38 @@
                                 <span>配合人</span>
                             </p>
                             <p class="see-children">
-                                <span>{{dayList.coordinate}}</span>
+                                <span mod>{{dayList.coordinate}}</span>
                             </p>
                         </li>
                     </ul>
-                    <div class="module">
-                        <div class="see-module">
-                            <p class="see-type">体现类型</p>
-                            <p class="see-description"></p>
-                            <button class="btn">关闭</button>
-                        </div>
-                    </div>
                 </div>
             </section>
         </li>
     </ul>
+    <div class="module">
+        <div class="see-module">
+            <p class="see-type">体现类型</p>
+            <p class="see-description"></p>
+            <button class="btn" modclose>关闭</button>
+        </div>
+    </div>
     <footer class="footer">
-        <pagination count="custom.dayCount" take="custom.take" activate="custom.activatePage"></pagination>
+        <pagination count="custom.itemsCount" take="custom.take" activate="custom.activatePage"></pagination>
     </footer>
 </div>
-<div ui-view="modal"></div>
+<div class="delete mod" ng-show="delShow">
+    <div class="del-head">
+        <h5>温馨提示</h5>
+    </div>
+    <div class="del-con">
+        <p>确定要删除这条数据？</p>
+        <div class="btn">
+            <button ng-click="delFn()">确定</button>
+            <button ng-click="cancel()">取消</button>
+        </div>
+    </div>
+</div>
+<div id="modalbg" ng-show="delShow"></div>
 
 
 

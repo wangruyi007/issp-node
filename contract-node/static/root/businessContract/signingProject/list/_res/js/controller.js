@@ -1,47 +1,14 @@
 var app = angular.module('signingList', ['ng-pagination','toastr']);
-app.controller('signingListCtrl',function($scope,signingSer,toastr,$stateParams,$state){
+app.controller('signingListCtrl',function($scope,signingSer,toastr,$stateParams,$state,$location){
     $scope.$emit('changeId', null);
     //监听切换搜索是否出现
     $scope.$on('iSsearch',function(event,newIs){
         $scope.isView = newIs;
     });
-    //获取id
-    if($stateParams.id){
-        switch ($stateParams.name){
-            case 'delete':
-                $scope.delShow = true;
-                break;
-        }
-    }
-    $scope.cancel = function(){//取消删除
-        $scope.delShow = false;
-        $state.go('root.businessContract.signingProject.list[12]',{id:null,name:null});
-    };
-    var count = 0;
-    $scope.delFn = function(){//确认删除
-        var data = {
-            id:$stateParams.id
-        };
-        signingSer.deleteSigning(data).then(function(response){
-            if(response.data.code==0){
-                count++;
-                toastr.info( "信息已删除", '温馨提示');
-                $scope.deledId = $stateParams.id;
-                $scope.$emit('changeId', null);
-                $scope.delShow = false;
-                if(($scope.custom.itemsCount-count)%10){
-                    $state.go('root.businessContract.signingProject.list[12]',{id:null,name:null});
-                }else{
-                    $state.go('root.businessContract.signingProject.list[12]',{id:null,name:null,page:$stateParams.page-1});
-                }
-            }else{
-                toastr.error( response.data.msg, '温馨提示');
-            }
-        });
-    };
+
     function activatePage(page) {
         var listData = {
-            page:page
+            page:page || 1
         };
         signingSer.signingList(listData).then(function(response){
             if(response.data.code==0){
@@ -116,7 +83,7 @@ app.controller('signingListCtrl',function($scope,signingSer,toastr,$stateParams,
         $scope.idListd = event.id;
         //向父Ctrl传递事件
         $scope.$emit('changeId', $scope.idListd);
-        $scope.$emit('page', $stateParams.page);
+        $scope.$emit('page', $location.search().page);
 
     };
     //点击更多详细
@@ -139,11 +106,43 @@ app.controller('signingListCtrl',function($scope,signingSer,toastr,$stateParams,
     signingSer.countSigning().then(function(response){
         if(response.data.code==0){
             $scope.custom.itemsCount = response.data.data;
-            $scope.num = $stateParams.page*10>10?($stateParams.page-1)*10:null;
+            $scope.num = $location.search().page*10>10?($location.search().page-1)*10:null;
         }else{
             toastr.error( response.data.msg, '温馨提示');
         }
     })
-
+    //获取id
+    if($stateParams.id){
+        switch ($stateParams.name){
+            case 'delete':
+                $scope.delShow = true;
+                break;
+        }
+    }
+    $scope.cancel = function(){//取消删除
+        $scope.delShow = false;
+        $state.go('root.businessContract.signingProject.list[12]',{id:null,name:null});
+    };
+    var count = 0;
+    $scope.delFn = function(){//确认删除
+        var data = {
+            id:$stateParams.id
+        };
+        signingSer.deleteSigning(data).then(function(response){
+            if(response.data.code==0){
+                count++;
+                toastr.info( "信息已删除", '温馨提示');
+                $scope.$emit('changeId', null);
+                $scope.delShow = false;
+                if(($scope.custom.itemsCount-count)%10){
+                    $state.go('root.businessContract.signingProject.list[12]',{id:null,name:null});
+                }else{
+                    $state.go('root.businessContract.signingProject.list[12]',{id:null,name:null,page:$location.search().page-1});
+                }
+            }else{
+                toastr.error( response.data.msg, '温馨提示');
+            }
+        });
+    };
 });
 

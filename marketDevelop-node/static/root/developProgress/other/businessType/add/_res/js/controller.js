@@ -6,7 +6,7 @@ app.controller('typeAddCtrl', function($scope, businessTypeSer,$state,toastr){
         var vm = $scope;
         businessTypeSer.businessTypeAdd(vm.typeAdd).then(function(response){
             if(response.data.code == 0){
-                $state.go('root.developProgress.other.businessType.list');
+                $state.go('root.developProgress.other.businessType.list[12]');
                 toastr.success("已成功添加", '温馨提示');
             }else {
                 toastr.error( response.data.msg, '温馨提示');

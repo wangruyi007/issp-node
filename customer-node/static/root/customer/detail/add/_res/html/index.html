@@ -17,7 +17,7 @@
         <div ng-show="tab.current=='_basic'" >
             <ul>
                 <li>
-                    <label><em>客户信息编号</em></label>
+                    <label><i><img src="/images/mandatory.png"></i><em>客户信息编号</em></label>
 
                     <select class="sele" ng-model="customerInfo.customerNum" ng-change="changNum(customerInfo.customerNum)" ng-verify="{}">
                         <option value="">请选择编号</option>
@@ -51,7 +51,7 @@
                 </li>
                 <li class="big">
                     <label><em>出生年月日</em></label>
-                    <input type="text" id="birthday" class="add_image " onClick="laydate({istime: true, format: 'YYYY-MM-DD'})">
+                    <input type="text" id="birthday" class="add_image" onClick="laydate({istime: true, format: 'YYYY-MM-DD'})">
                 </li>
                 <li class="big">
                     <label><em>地区</em></label> <input type="text" disabled ng-model="customerInfo.area">
@@ -113,7 +113,7 @@
         <div ng-show="tab.current=='_word'">
             <ul>
                 <li class="l-big">
-                    <label><em>工作经历</em></label> <textarea ng-model="wordexpe"></textarea>
+                    <label><em>工作经历</em></label> <textarea  ng-model="wordexpe"></textarea>
                 </li>
             </ul>
         </div>
@@ -138,26 +138,31 @@
                 </li>
             </ul>
         </div>
-        <div ng-show="tab.current=='_family'">
+
+        <div ng-show="tab.current=='_family'" ng-repeat="list in allFamily">
             <ul>
                 <li class="big">
-                    <label><em>称谓</em></label> <input type="text" ng-model="familyTitle">
+                    <label><em>称谓</em></label> <input type="text" ng-model="list.title">
                 </li>
                 <li class="big">
-                    <label><em>姓名</em></label> <input type="text" ng-model="familyName">
+                    <label><em>姓名</em></label> <input type="text" ng-model="list.name">
                 </li>
                 <li class="big">
-                    <label><em>联系方式</em></label> <input type="text" ng-model="familyContail">
+                    <label><em>联系方式</em></label> <input type="text"  ng-model="list.relationWay">
                 </li>
                 <li class="big">
-                    <label><em>性格爱好</em></label> <input type="text" ng-model="familyHobby">
+                    <label><em>性格爱好</em></label> <input type="text"  ng-model="list.charactLove">
                 </li>
                 <li class="big">
-                    <label><em>工作单位</em></label> <input type="text" ng-model="familyWorkPlace">
+                    <label><em>工作单位</em></label> <input type="text"  ng-model="list.workPlace">
                 </li>
                 <li class="big">
-                    <label><em>职位</em></label> <input type="text" ng-model="familyJobPost">
+                    <label><em>职位</em></label> <input type="text" ng-model="list.jobPost">
+                    &nbsp;&nbsp;&nbsp;&nbsp;<span ng-click="del($index)" style="color:red;font-size:22px;">-</span>
+                    &nbsp;&nbsp;&nbsp;&nbsp;<span ng-click="add()" style="color:red;font-size: 22px;">+</span>
+
                 </li>
+                <li></li>
             </ul>
         </div>
         <p class="dataBottom">
@@ -166,3 +171,7 @@
         </p>
     </div>
 </div>
+
+
+
+

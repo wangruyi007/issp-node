@@ -4,6 +4,18 @@ var config = require(path.resolve('plugins/read-config.js'));
 var form = require(path.resolve('plugins/form.js'));
 module.exports = function(){
 
+    //业务类型菜单功能权限
+    this.typeGuidePermission = function(argvs){
+        var options = {
+            method : 'GET',
+            timeout : 3000,
+            uri : config()['other']['rurl'] + `/businesstype/v1/guidePermission?guideAddrStatus=`+argvs.name,//2017-06-21
+            headers:{
+                userToken:argvs.userToken
+            }
+        };
+        return request(options);
+    };
     // 业务类型列表
     this.typeList = function(argvs){
         var options = {
@@ -69,7 +81,7 @@ module.exports = function(){
     //冻结
     this.TypeCongeal = function(argvs){
         var options = {
-            method : 'PATCH',
+            method : 'PUT',
             timeout : 3000,
             uri : config()['other']['rurl'] + `/businesstype/v1/congeal/${argvs.id}`,
             headers : {
@@ -81,7 +93,7 @@ module.exports = function(){
     //解冻
     this.TypeThaw = function(argvs){
         var options = {
-            method : 'PATCH',
+            method : 'PUT',
             timeout : 3000,
             uri : config()['other']['rurl'] + `/businesstype/v1/thaw/${argvs.id}`,
             headers : {
@@ -98,6 +110,18 @@ module.exports = function(){
             uri : config()['other']['rurl'] + '/businesstype/v1/getTotal',
             headers : {
                 userToken : argvs.userToken
+            }
+        };
+        return request(options);
+    };
+    //业务类型菜单功能权限
+    this.courseGuidePermission = function(argvs){
+        var options = {
+            method : 'GET',
+            timeout : 3000,
+            uri : config()['other']['rurl'] + `/businesscourse/v1/guidePermission?guideAddrStatus=`+argvs.name,//2017-06-21
+            headers:{
+                userToken:argvs.userToken
             }
         };
         return request(options);
@@ -167,7 +191,7 @@ module.exports = function(){
     //冻结
     this.CourseCongeal = function(argvs){
         var options = {
-            method : 'PATCH',
+            method : 'PUT',
             timeout : 3000,
             uri : config()['other']['rurl'] + `/businesscourse/v1/congeal/${argvs.id}`,
             headers : {
@@ -179,7 +203,7 @@ module.exports = function(){
     //解冻
     this.CourseThaw = function(argvs){
         var options = {
-            method : 'PATCH',
+            method : 'PUT',
             timeout : 3000,
             uri : config()['other']['rurl'] + `/businesscourse/v1/thaw/${argvs.id}`,
             headers : {

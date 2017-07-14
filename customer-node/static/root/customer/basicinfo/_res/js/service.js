@@ -1,6 +1,7 @@
 var app = angular.module('basicinfoServer',[]);
 app.factory('basicinfoSer',function ($http) {
     return {
+        menuPermission:menuPermission,
         listCustomerBaseInfo : listCustomerBaseInfo,
         cusNumber:cusNumber,
         customerLevelName:customerLevelName,
@@ -12,8 +13,13 @@ app.factory('basicinfoSer',function ($http) {
         countBaseInfo:countBaseInfo,
         deleteCustomerbaseinfo:deleteCustomerbaseinfo
     };
+    //菜单权限
+    function menuPermission(data){
+        return $http.get('/customerbaseinfo/guidePermission/'+data);
+    }
+
     function listCustomerBaseInfo(data) {
-        return $http.post('/customer/customerbaseinfo/listCustomerBaseInfo',data)
+        return $http.get('/customer/customerbaseinfo/listCustomerBaseInfo',{params:data})
     }
     //获取客户编号
     function cusNumber(){

@@ -1,5 +1,5 @@
-var app = angular.module('directionEdit', ['toastr','ipCookie']);
-app.controller('directionEditCtrl', function($scope, directionSer,$stateParams,$state,toastr,$location,ipCookie){
+var app = angular.module('directionEdit', ['toastr']);
+app.controller('directionEditCtrl', function($scope, directionSer,$stateParams,$state,toastr){
     var measuredData ={courseId: $stateParams.id};
 
     //获取ID
@@ -17,7 +17,7 @@ app.controller('directionEditCtrl', function($scope, directionSer,$stateParams,$
         var vm = $scope;
         directionSer.courseEdit(vm.editCourse).then(function(response){
             if(response.data.code == 0){
-                $state.go('root.developProgress.other.directionSubjects.list');
+                $state.go('root.developProgress.other.directionSubjects.list[12]');
                 toastr.success( "编辑成功", '温馨提示');
             }else {
                 toastr.error( response.data.msg, '温馨提示');
