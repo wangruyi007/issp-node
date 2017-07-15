@@ -7,6 +7,7 @@ app.controller('emailCtrl',function ($scope,$state) {
     if ($state.current.url == '/email') {
         $state.go('root.ability.email.list[12]');
     }
+    $scope.$emit('isVi',false);//判断是否出现搜索按钮
 }).controller('emailMenuCtrl',function($scope,$state,$rootScope,$location,emailSer){
     var urlName = $state.current.url.split('/')[1].split('[')[0];
     $scope.menuClass = urlName.split('?')[0] + "Menu";
@@ -46,6 +47,7 @@ app.controller('emailCtrl',function ($scope,$state) {
     $scope.congeal = function(){
         if($scope.idList){
             $state.go('root.ability.email.list[12]',{id:$scope.idList,name:'congeal',page:$scope.page});
+            $scope.menuClass = 'congealMenu'
         }
     };
     //关于删除
@@ -63,19 +65,24 @@ app.controller('emailCtrl',function ($scope,$state) {
         }
     };
     $scope.list = function(){
-        $scope.menuClass = 'listMenu'
+        $scope.menuClass = 'listMenu';
+         $scope.idList = ''
     };
     $scope.add = function(){
-        $scope.menuClass = 'addMenu'
+        $scope.menuClass = 'addMenu';
+        $scope.idList = ''
     };
     $scope.summary = function(){
-        $scope.menuClass = 'summaryMenu'
+        $scope.menuClass = 'summaryMenu';
+        $scope.idList = ''
     };
     $scope.person = function(){
-        $scope.menuClass = 'personMenu'
+        $scope.menuClass = 'personMenu';
+        $scope.idList = ''
     };
     $scope.cooperationone = function(){
-        $scope.menuClass = 'cooperationoneMenu'
+        $scope.menuClass = 'cooperationoneMenu';
+        $scope.idList = ''
     };
 });
 //自定义过滤器

@@ -2,8 +2,7 @@ var app = angular.module('socialListBasic', ['toastr','ng-pagination']);
 app.controller('socialListBasicCtrl', function($scope, selfcapSer,$state,toastr,$stateParams,$location){
    /* $scope.$emit('changeSocialListId', null);*/
     //获取id
-    if($stateParams.id){
-        console.log($stateParams.subId);
+    if($stateParams.subId){
         switch ($stateParams.name){
             case 'socialDelete':
                 $scope.delShow = true;
@@ -36,13 +35,14 @@ app.controller('socialListBasicCtrl', function($scope, selfcapSer,$state,toastr,
         });
     };
        $scope.selectList = function(event){
+
         angular.forEach($scope.socialListBasics.data,function(obj){
             obj._selectList = false
         });
         event._selectList = true;
         $scope.idSocialList = event.id;
         //向父Ctrl传递事件
-        $scope.$emit('changeSocialListId', $scope.idSocialList);
+        $scope.$emit('changeSocialListId', event.id);
         $scope.$emit('page',$location.search().page);
     };
     //查看更多
@@ -80,13 +80,14 @@ app.controller('socialListBasicCtrl', function($scope, selfcapSer,$state,toastr,
                     if ($stateParams.subId.indexOf('&')) {
                         $stateParams.subId = $stateParams.subId.split('&')[0];
                     }
+
                     angular.forEach($scope.socialListBasics.data, function (obj) {
-                        if (obj.subId == $stateParams.subId.split('&')[0]) {
+                        if (obj.id == $stateParams.subId.split('&')[0]) {
                             obj._selectList = true;
                         }
                     });
                     //向父Ctrl传递事件
-                    $scope.$emit('changeSocialListId', $scope.id);
+                    $scope.$emit('changeSocialListId', $stateParams.subId);
                 }
                }else{
                 toastr.error(response.data.msg, '温馨提示');

@@ -32,6 +32,7 @@ app.controller('emailAddCtrl', function($scope, emailSer,$state,toastr){
             sendObjectList: vm.objLists,
            };
         emailSer.addEmail(data).then(function(response){
+            console.log(response)
             if(response.data.code == 0){
                 $state.go('root.ability.email.list[12]');
                 toastr.success("已成功添加", '温馨提示');

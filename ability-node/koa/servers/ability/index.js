@@ -748,7 +748,6 @@ module.exports = function(){
     };
     //公司上传附件
     this.companyUploadFile = function(argvs){
-        console.log(argvs)
         var options = {
             url: config()['ability']['rurl']+`/companycapability/v1/upload/${argvs.fields.id}`,
             method: 'POST',
@@ -770,6 +769,83 @@ module.exports = function(){
             headers:{
                 userToken:argvs.token
             }
+        };
+        return request(options);
+    };
+    //公司能力删除文件
+    this.delFile = function(argvs){
+        var options = {
+            method : 'POST',
+            timeout : 3000,
+            uri : config()['ability']['rurl'] + `/companycapability/v1/delfile`,
+            headers:{
+                userToken:argvs.token
+            },
+            form:argvs.fields
+        };
+        return request(options);
+    };
+    //合作对象导入
+    this.cooperationImport = function(argvs){
+        var options = {
+            url: config()['ability']['rurl']+'/coopercapability/v1/importExcel',
+            method: 'POST',
+            formData: {
+                files: uploadFile(argvs.files.files)
+            },
+            headers:{
+                userToken:argvs.token
+            }
+        };
+        return request(options);
+    };
+    //合作对象获取所有公司名称
+    this.cooperationByName = function(argvs){
+        var options = {
+            method : 'GET',
+            timeout : 3000,
+            uri : config()['ability']['rurl'] + '/coopercapability/v1/listCompany',
+            headers:{
+                userToken:argvs.token
+            }
+        };
+        return request(options);
+    };
+    this.cooperationUploadFile = function(argvs){
+        var options = {
+            url: config()['ability']['rurl']+`/coopercapability/v1/upload/${argvs.fields.id}`,
+            method: 'POST',
+            formData: {
+                files: uploadFile(argvs.files.files)
+            },
+            headers:{
+                userToken:argvs.token
+            }
+        };
+        return request(options);
+    };
+    //合作对象查看附件
+    this.cooperationEnclosure = function(argvs){
+        var options = {
+            method : 'GET',
+            timeout : 3000,
+            uri : config()['ability']['rurl'] + `/coopercapability/v1/files/${argvs.id}`,
+            headers:{
+                userToken:argvs.token
+            }
+        };
+        return request(options);
+    };
+    //合作对象删除文件
+    this.cooperationFile = function(argvs){
+        var options = {
+            method : 'POST',
+            timeout : 3000,
+            uri : config()['ability']['rurl'] + `/coopercapability/v1/delfile`,
+            headers:{
+                userToken:argvs.token
+            },
+            form:argvs.fields
         };
         return request(options);
     };

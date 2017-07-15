@@ -18,7 +18,11 @@ app.factory('detailSer',function ($http) {
         listSummaryGeneral:listSummaryGeneral,
         summaryGeneralDetails:summaryGeneralDetails,
         summaryGeneralDetail:summaryGeneralDetail,
-        listNameGroup:listNameGroup
+        listNameGroup:listNameGroup,
+        menuPermission:menuPermission,
+        allAuditTime:allAuditTime,
+        allArea:allArea,
+        summaryContrast:summaryContrast
     };
     function listDetail(data) {
         return $http.get('/listDetail/list',{
@@ -93,5 +97,21 @@ app.factory('detailSer',function ($http) {
     }
     function listNameGroup(data) {
         return $http.post('/listNameGroup/group',{params:data})
+    }
+    //菜单权限
+    function menuPermission(data) {
+        return $http.get('/detail/guidePermission/'+data);
+    }
+    //签字审批时间
+    function allAuditTime(data) {
+        return $http.get('/auditTime/time',{params:data})
+    }
+    //地区
+    function allArea(){
+        return $http.get('/allArea/area')
+    }
+    //对比汇总
+    function summaryContrast(data){
+        return $http.post('/summaryContrast/summary',data)
     }
 });

@@ -7,7 +7,6 @@ app.controller('selfcapListCtrl',function($scope,selfcapSer,toastr,$stateParams,
     });
     //获取id
     if($stateParams.id){
-        console.log($stateParams.id);
         switch ($stateParams.name){
             case 'delete':
                 $scope.delShow = true;
@@ -46,7 +45,6 @@ app.controller('selfcapListCtrl',function($scope,selfcapSer,toastr,$stateParams,
         });
         event._selectList = true;
         $scope.idList = event.id;
-        console.log(event.id);
         //向父Ctrl传递事件
         $scope.$emit('changeId', $scope.idList);
         $scope.$emit('page',$location.search().page);
@@ -82,14 +80,12 @@ app.controller('selfcapListCtrl',function($scope,selfcapSer,toastr,$stateParams,
             if (response.data.code == 0) {
                 $scope.selfcapLists = response.data;
                 if ($stateParams.id) {
-                    console.log($stateParams.id);
                     if ($stateParams.id.indexOf('&')) {
                         $stateParams.id = $stateParams.id.split('&')[0];
                     }
                     angular.forEach($scope.selfcapLists.data, function (obj) {
                         if (obj.id == $stateParams.id.split('&')[0]) {
                             obj._selectList = true;
-                            console.log(obj.id);
                         }
                     });
                     //向父Ctrl传递事件

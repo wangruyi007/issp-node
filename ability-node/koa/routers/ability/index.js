@@ -252,7 +252,7 @@ module.exports = function(){
             }));
     }).post('/ability/editEditSocial/editsocial', function*(){
         var editData = this.request.body;
-        editData.userToken = this.cookies.get('token');
+        editData.token = this.cookies.get('token');
         var $self = this;
         yield (server().SocialEdit(editData)
             .then((parsedBody) =>{
@@ -267,7 +267,7 @@ module.exports = function(){
     }).get('/ability/listAbilityCooperation/listCoop', function*(){
         var $self = this;
         var page = this.request.query;
-        page.userToken = this.cookies.get('token');
+        page.token = this.cookies.get('token');
         yield (server().abilityCooperationList(page)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -847,6 +847,138 @@ module.exports = function(){
                 $self.body=error.error;
                 console.error(error.error);
             }));
+    }).post('/company/delFile', koaBody({multipart:true}), function*(){//公司能力删除文件
+        var $self = this;
+        var delData = $self.request.body;
+        delData.token = $self.cookies.get('token');
+        yield (server().delFile(delData)
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
+    }).get('/company/download', function*(){//公司能力附件下载文件
+        var $self = this;
+        var count = $self.request.query;
+        var data = {
+            path:count.path
+        };
+        yield (fetch(config()['ability']['rurl']+`/companycapability/v1/download${urlEncode(data,true)}`, {
+            method : 'GET',
+            headers : {'userToken' : $self.cookies.get('token')}
+        }).then((res)=>{
+            fileType(count,this);
+            return res.buffer();
+        }).then(function(data){
+            $self.body = data;
+        }));
+    }).post('/cooperation/import', koaBody({multipart:true}),function *(next) {//合作对象导入
+        var $self = this;
+        var fileData = $self.request.body;
+        fileData.token = $self.cookies.get("token");
+        yield (server().cooperationImport(fileData)
+            .then((parsedBody) =>{
+                $self.body = parsedBody;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
+    }).get('/cooperation/templateExport', function*(){//合作对象模板下载
+        var $self = this;
+        var fileName = '合作对象商务展示导入模板.xlsx';
+        yield (fetch(config()['ability']['rurl']+`/coopercapability/v1/templateExport`, {
+            method : 'GET',
+        }).then(function(res){
+            $self.set('content-type', 'application/vnd.ms-excel;charset=utf-8');
+            $self.set('Content-Disposition', 'attachment;  filename='+encodeURI(fileName));
+            return res.buffer();
+        }).then(function(data){
+            $self.body = data;
+        }));
+    }).get('/allCooperationName/company', function*(){// 合作对象获取所有公司名称
+        var $self = this;
+        var comData = $self.request.query;
+        comData.token = $self.cookies.get('token');
+        yield (server().cooperationByName(comData)
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
+    }).get('/cooperationName/exportFile', function*(){//合作对象导出
+        var $self = this;
+        var count = $self.request.query;
+        var fileName = count.companyName+'.xlsx';
+        yield (fetch(config()['ability']['rurl']+`/coopercapability/v1/exportExcel${urlEncode(count,true)}`, {
+            method : 'GET',
+            headers : {'userToken' : $self.cookies.get('token')}
+        }).then(function(res){
+            $self.set('content-type', 'application/vnd.ms-excel;charset=utf-8');
+            $self.set('Content-Disposition', 'attachment;  filename='+encodeURI(fileName));
+            return res.buffer();
+        }).then(function(data){
+            $self.body = data;
+        }));
+    }).post('/cooperationManage/upload', koaBody({multipart:true}),function *(next) {//公司能力上传文件
+        var $self = this;
+        var uploadData = $self.request.body;
+        uploadData.token = $self.cookies.get("token");
+        yield (server().cooperationUploadFile(uploadData)
+            .then((parsedBody) =>{
+                $self.body = parsedBody;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
+    }).get('/viewCooperation/listFile', function*(){ //合作对象查看附件
+        var $self = this;
+        var enData = $self.request.query;
+        enData.token = $self.cookies.get('token');
+        yield (server().cooperationEnclosure(enData)
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
+    }).post('/cooperation/delFile', koaBody({multipart:true}), function*(){//合作对象删除文件
+        var $self = this;
+        var delData = $self.request.body;
+        delData.token = $self.cookies.get('token');
+        yield (server().cooperationFile(delData)
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
+    }).get('/cooperation/download', function*(){//合作对象附件下载文件
+        var $self = this;
+        var count = $self.request.query;
+        var data = {
+            path:count.path
+        };
+        yield (fetch(config()['ability']['rurl']+`/coopercapability/v1/download${urlEncode(data,true)}`, {
+            method : 'GET',
+            headers : {'userToken' : $self.cookies.get('token')}
+        }).then((res)=>{
+            fileType(count,this);
+            return res.buffer();
+        }).then(function(data){
+            $self.body = data;
+        }));
     })
     return router;
 };

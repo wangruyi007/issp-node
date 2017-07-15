@@ -78,6 +78,26 @@ app.controller('cooperationCtrl',function ($scope,$state) {
             $scope.menuClass = 'perlistMenu'
        }
     };
+    $scope.import = function(){
+        $scope.menuClass = 'importMenu';
+        $scope.idList = ''
+    };
+    $scope.export = function(){
+        $scope.menuClass = 'exportMenu';
+        $scope.idList = ''
+    };
+    $scope.upload = function(){
+        if($scope.idList){
+            $state.go('root.ability.cooperation.upload[12]',{id:$scope.idList,page:$scope.page});
+            $scope.menuClass = 'uploadMenu'
+        }
+    };
+    $scope.view = function(){
+        if($scope.idList){
+            $state.go('root.ability.cooperation.view[12]',{id:$scope.idList,view:1,page:$scope.page});
+            $scope.menuClass = 'viewMenu'
+        }
+    };
 });
 //自定义过滤器
 app.filter('cover', function(){

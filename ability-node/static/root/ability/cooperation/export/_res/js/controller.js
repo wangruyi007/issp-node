@@ -1,6 +1,6 @@
-var app = angular.module('companyExport', ['toastr']);
-app.controller('companyExportCtrl', function($scope, companycapSer,$state,toastr){
-    companycapSer.allCompanyName().then(function(response){
+var app = angular.module('cooperationExport', ['toastr']);
+app.controller('cooperationExportCtrl', function($scope, cooperationSer,$state,toastr){
+    cooperationSer.allCompanyName().then(function(response){
         if(response.data.code==0){
             $scope.companyNames = response.data.data;
         }else{
@@ -12,7 +12,7 @@ app.controller('companyExportCtrl', function($scope, companycapSer,$state,toastr
         var obj = {
             companyName:$scope.companyName
         };
-        window.open(`/companyName/exportFile${encode(obj,true)}`);
+        window.open(`/cooperationName/exportFile${encode(obj,true)}`);
     };
 });
 function encode(){

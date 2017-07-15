@@ -1,4 +1,4 @@
-var app = angular.module('companyEdit', ['toastr']);
+var app = angular.module('companyEdit', ['toastr','angularjs-dropdown-multiselect']);
 app.controller('companyEditCtrl', function($scope, companycapSer,$state,toastr,$stateParams){
     $scope.modelOptions = ['电信工程专业承包企业资质','通信工程施工总承包企业资质','通信息系网络系统集成企业资质','电子通信广电行业的工程设计资质','通信信息专业工程咨询资质'];
     $scope.modelOptions2 = ['9000族质量管理体系或同类认证','14000族环境管理体系认证证书','建筑业企业资质证书'];

@@ -1,5 +1,5 @@
-var app = angular.module('companyUpload', ['toastr']);
-app.controller('companyUploadCtrl', function ($scope, companycapSer, $state, toastr, $http, $stateParams) {
+var app = angular.module('cooperationUpload', ['toastr']);
+app.controller('cooperationUploadCtrl', function ($scope, cooperationSer, $state, toastr, $http, $stateParams) {
     $scope.isUp = true;//控制按钮颜色
     $scope.files = [];
     $scope.affirmFile = [];
@@ -53,7 +53,7 @@ app.controller('companyUploadCtrl', function ($scope, companycapSer, $state, toa
             fd.append('id', $stateParams.id);
             $http({
                 method: 'POST',
-                url: '/companyManage/upload',
+                url: '/cooperationManage/upload',
                 headers: {
                     'Content-Type': undefined
                 },

@@ -1,5 +1,5 @@
-var app = angular.module('companyImport', ['toastr']);
-app.controller('companyImportCtrl', function($scope, basicSer,$state,toastr,$http,$stateParams){
+var app = angular.module('cooperationImport', ['toastr']);
+app.controller('cooperationImportCtrl', function($scope, cooperationSer,$state,toastr,$http,$stateParams){
     $scope.isUp = true;//控制按钮颜色
     $scope.files = [];
     $scope.affirmFile = [];
@@ -35,7 +35,7 @@ app.controller('companyImportCtrl', function($scope, basicSer,$state,toastr,$htt
         });
     };
     $scope.moduleUp = function(){//下载模板
-        window.open('/companyManage/templateExport');
+        window.open('/cooperation/templateExport');
     };
     //删除文件
     $scope.del = function (index) {
@@ -60,7 +60,7 @@ app.controller('companyImportCtrl', function($scope, basicSer,$state,toastr,$htt
             fd.append('id', $stateParams.id);
             $http({
                 method: 'POST',
-                url: '/companyManage/import',
+                url: '/cooperation/import',
                 headers: {
                     'Content-Type': undefined
                 },

@@ -30,9 +30,9 @@ app.controller('companyViewCtrl', function($scope,companycapSer,$stateParams,toa
                 $scope.encloCompany[i].checked = false;
             }
             if($stateParams.view == '1'){
-                $state.go('root.businessContract.signingProject.view[12]',{view:'2'});
+                $state.go('root.ability.companycap.view[12]',{view:'2'});
             }else if($stateParams.view == '2'){
-                $state.go('root.businessContract.signingProject.view[12]',{view:'1'});
+                $state.go('root.ability.companycap.view[12]',{view:'1'});
             }
         }
     };
@@ -89,7 +89,7 @@ app.controller('companyViewCtrl', function($scope,companycapSer,$stateParams,toa
             };
             var iframe = document.createElement('iframe');
 
-            iframe.src=`/siginmanage/download${encode(obj,true)}`;
+            iframe.src=`/company/download${encode(obj,true)}`;
 
             iframe.style.display = 'none';
 
@@ -130,7 +130,7 @@ app.controller('companyViewCtrl', function($scope,companycapSer,$stateParams,toa
         }
           $http({
                 method: 'POST',
-                url: '/siginmanage/delFile',
+                url: '/company/delFile',
                 headers: {
                     'Content-Type': undefined
                 },

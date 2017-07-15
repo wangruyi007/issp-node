@@ -1,5 +1,5 @@
-var app = angular.module('companyView', ['toastr']);
-app.controller('companyViewCtrl', function($scope,companycapSer,$stateParams,toastr,$http,$state){
+var app = angular.module('cooperationView', ['toastr']);
+app.controller('cooperationViewCtrl', function($scope,cooperationSer,$stateParams,toastr,$http,$state){
     var pathData ={id: $stateParams.id};
     $scope.isView = false;
     $scope.isChild = true;
@@ -11,7 +11,7 @@ app.controller('companyViewCtrl', function($scope,companycapSer,$stateParams,toa
 
     }
     //获取ID
-    companycapSer.viewCompany(pathData).then(function(response){
+    cooperationSer.viewCompany(pathData).then(function(response){
         if(response.data.code== 0){
             $scope.encloCompany = response.data.data;
             $scope.length = $scope.encloCompany ? $scope.encloCompany.length : 0;
@@ -30,9 +30,9 @@ app.controller('companyViewCtrl', function($scope,companycapSer,$stateParams,toa
                 $scope.encloCompany[i].checked = false;
             }
             if($stateParams.view == '1'){
-                $state.go('root.ability.companycap.view[12]',{view:'2'});
+                $state.go('root.ability.cooperation.view[12]',{view:'2'});
             }else if($stateParams.view == '2'){
-                $state.go('root.ability.companycap.view[12]',{view:'1'});
+                $state.go('root.ability.cooperation.view[12]',{view:'1'});
             }
         }
     };
@@ -89,7 +89,7 @@ app.controller('companyViewCtrl', function($scope,companycapSer,$stateParams,toa
             };
             var iframe = document.createElement('iframe');
 
-            iframe.src=`/company/download${encode(obj,true)}`;
+            iframe.src=`/cooperation/download${encode(obj,true)}`;
 
             iframe.style.display = 'none';
 
@@ -130,7 +130,7 @@ app.controller('companyViewCtrl', function($scope,companycapSer,$stateParams,toa
         }
           $http({
                 method: 'POST',
-                url: '/company/delFile',
+                url: '/cooperation/delFile',
                 headers: {
                     'Content-Type': undefined
                 },

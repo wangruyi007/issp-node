@@ -51,5 +51,37 @@ app.config(function($provide, $stateProvider){
                 controller:'cooperationListCtrl'
             }
         }
+    }).state("root.ability.cooperation.import[12]",{
+        url:"/import[12]",
+        views:{
+            "content@root.ability.cooperation":{
+                templateUrl : "root/ability/cooperation/import/_res/html/index.html",
+                controller:'cooperationImportCtrl'
+            }
+        }
+    }).state("root.ability.cooperation.export[12]",{
+        url:"/export[12]",
+        views:{
+            "content@root.ability.cooperation":{
+                templateUrl : "root/ability/cooperation/export/_res/html/index.html",
+                controller:'cooperationExportCtrl'
+            }
+        }
+    }).state("root.ability.cooperation.upload[12]",{
+        url:"/upload[12]?id=&page=",
+        views:{
+            "content@root.ability.cooperation":{
+                templateUrl : "root/ability/cooperation/upload/_res/html/index.html",
+                controller:'cooperationUploadCtrl'
+            }
+        }
+    }).state("root.ability.cooperation.view[12]",{
+        url:"/view[12]?id=&view=&page=",
+        views:{
+            "content@root.ability.cooperation":{
+                templateUrl : "root/ability/cooperation/view/_res/html/index.html",
+                controller:'cooperationViewCtrl'
+            }
+        }
     })
 });

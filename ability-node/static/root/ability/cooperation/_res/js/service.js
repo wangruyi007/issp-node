@@ -10,7 +10,9 @@ app.factory('cooperationSer',function ($http) {
         getThreeById:getThreeById,
         searchCooperationAbility:searchCooperationAbility,
         countCooperation2:countCooperation2,
-        menuPermission:menuPermission
+        menuPermission:menuPermission,
+        allCompanyName:allCompanyName,
+        viewCompany:viewCompany,
     };
     //列表
     function  listAbilityCooperation(data) {
@@ -55,5 +57,13 @@ app.factory('cooperationSer',function ($http) {
     //菜单权限
     function menuPermission(data) {
         return $http.get('/cooperation/guidePermission/'+data);
+    }
+    //获取所有公司名
+    function allCompanyName(){
+        return $http.get('/allCooperationName/company')
+    }
+    //附件列表
+    function viewCompany(data){
+        return $http.get('/viewCooperation/listFile',{params:data})
     }
 });

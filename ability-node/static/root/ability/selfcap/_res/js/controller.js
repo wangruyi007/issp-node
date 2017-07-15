@@ -107,7 +107,6 @@ app.controller('selfcapCtrl',function ($scope,$state) {
     //个人社交删除
     $scope.socialDelete = function(){
         if($scope.idSocialList){
-            console.log($scope.idSocialList);
             $state.go('root.ability.selfcap.socialList[12]',{subId:$scope.idSocialList,name:'socialDelete',page:$scope.page});
             $scope.menuClass = 'socialDeleteMenu';
         }
@@ -118,7 +117,7 @@ app.controller('selfcapCtrl',function ($scope,$state) {
             $state.go('root.ability.selfcap.socialEdit[12]',{subId:$scope.idSocialList,id:$scope.idList,page:$scope.page});
             $scope.menuClass = 'socialEditMenu'
         }
-    };
+    }
 });
 //自定义过滤器
 app.filter('cover', function(){

@@ -28,7 +28,7 @@ app.controller('emailListCtrl',function($scope,emailSer,toastr,$stateParams,$sta
                 toastr.info( "信息已删除", '温馨提示');
                 $scope.$emit('changeId', null);
                 $scope.delShow = false;
-                if(($scope.custom.itemsCount-count)%10){
+                if(($scope.abili.itemsCount-count)%10){
                     $state.go('root.ability.email.list[12]',{id:null,name:null});
                 }else{
                     $state.go('root.ability.email.list[12]',{id:null,name:null,page:$stateParams.page-1});
