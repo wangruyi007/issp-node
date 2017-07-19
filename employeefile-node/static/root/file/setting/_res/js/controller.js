@@ -1,12 +1,12 @@
 var app = angular.module('setting', [{
     files:[
-        "root/out/setting/_res/js/service.js"
+        "root/file/setting/_res/js/service.js"
     ]
 }]);
 app.controller('settingCtrl',function ($scope,$state) {
 
     if ($state.current.url == '/setting') {//默认加载列表
-        $state.go('root.out.setting.list[12]')
+        $state.go('root.file.setting.list[12]')
     }
 }).controller('settingMenuCtrl',function($scope,$state,$rootScope,$location){
     var urlName = $state.current.url.split('/')[1].split('[')[0];
@@ -17,8 +17,8 @@ app.controller('settingCtrl',function ($scope,$state) {
         }
     });
 
-    $scope.$on('listId',function(event,id){
-        $scope.editId=id;
+    $scope.$on("listId", function(event, id){
+        $scope.idList = id;
     });
     $scope.$on('pageId',function(event,flag){
         $scope.page = flag;
@@ -27,15 +27,14 @@ app.controller('settingCtrl',function ($scope,$state) {
         $scope.page = $location.search().page;
     }
     $scope.list = function(){
-        $state.go('root.out.setting.list[12]');
+        $state.go('root.file.setting.list[12]');
         $scope.menuClass = 'listMenu'
     };
     $scope.edit = function(){
-        if($scope.editId){
-            $state.go('root.out.setting.edit[12]',{id:$scope.editId,page:$scope.page});
+        if($scope.idList){
+            $state.go('root.file.setting.edit[12]',{id:$scope.idList,page:$scope.page});
             $scope.menuClass = 'editMenu'
         }
-
     }
 });
 

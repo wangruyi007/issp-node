@@ -27,5 +27,13 @@ app.config(function($provide, $stateProvider){
                 controller:'manageUploadCtrl'
             }
         }
+    }).state("root.file.management.view[12]",{
+        url:"/view[12]?id=&view=&page=",
+        views:{
+            "content@root.file.management":{
+                templateUrl : "root/file/management/view/_res/html/index.html",
+                controller:'manageViewCtrl'
+            }
+        }
     })
 });

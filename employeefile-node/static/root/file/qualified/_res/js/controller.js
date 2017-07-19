@@ -65,8 +65,14 @@ app.controller('qualifiedCtrl',function ($scope,$state) {
     };
     $scope.upload = function(){
         if($scope.idList){
-            $state.go('root.file.management.upload[12]',{id:$scope.idList,page:$scope.page});
+            $state.go('root.file.qualified.upload[12]',{id:$scope.idList,page:$scope.page});
             $scope.menuClass = 'uploadMenu'
+        }
+    };
+    $scope.view = function(){
+        if($scope.idList){
+            $state.go('root.file.qualified.view[12]',{id:$scope.idList,view:1,page:$scope.page});
+            $scope.menuClass = 'viewMenu'
         }
     };
 });

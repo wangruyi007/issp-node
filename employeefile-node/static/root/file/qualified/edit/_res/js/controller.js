@@ -1,12 +1,32 @@
 var app = angular.module('qualifiedEdit', ['toastr']);
 app.controller('qualifiedEditCtrl', function($scope, qualifiedSer,$state,toastr,$stateParams){
-    var capId = {id : $stateParams.id};
+    var quaId = {id : $stateParams.id};
     //获取值
-    qualifiedSer.getOneById(capId).then(function(response){
+    qualifiedSer.getOneById(quaId).then(function(response){
         if(response.data.code==0){
             $scope.editInfo = response.data.data;
         }else{
             toastr.error(response.data.msg, '温馨提示');
+        }
+    });
+    qualifiedSer.laborElation().then(function(response){
+        if(response.data.code == 0){
+            $scope.proData = response.data.data;
+        }
+    });
+    qualifiedSer.socialSecurity().then(function(response){
+        if(response.data.code == 0){
+            $scope.socialData = response.data.data;
+        }
+    });
+    qualifiedSer.laborElation().then(function(response){
+        if(response.data.code == 0){
+            $scope.proData = response.data.data;
+        }
+    });
+    qualifiedSer.nameQualified().then(function(response){
+        if(response.data.code == 0){
+            $scope.nameData = response.data.data;
         }
     });
     $scope.quaEditFun = function(){

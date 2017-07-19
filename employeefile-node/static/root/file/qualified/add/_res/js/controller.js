@@ -1,5 +1,20 @@
 var app = angular.module('qualifiedAdd', ['toastr']);
 app.controller('qualifiedAddCtrl', function($scope, qualifiedSer,$state,toastr){
+    qualifiedSer.laborElation().then(function(response){
+        if(response.data.code == 0){
+            $scope.proData = response.data.data;
+        }
+    });
+    qualifiedSer.socialSecurity().then(function(response){
+        if(response.data.code == 0){
+            $scope.socialData = response.data.data;
+        }
+    });
+    qualifiedSer.nameQualified().then(function(response){
+        if(response.data.code == 0){
+            $scope.nameData = response.data.data;
+        }
+    });
     $scope.quaAddFun = function(){
         var vm = $scope;
         qualifiedSer.addQualified(vm.add).then(function(response){

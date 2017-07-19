@@ -53,6 +53,12 @@ app.controller('managementCtrl',function ($scope,$state) {
             $scope.menuClass = 'uploadMenu'
         }
     };
+    $scope.view = function(){
+        if($scope.idList){
+            $state.go('root.file.management.view[12]',{id:$scope.idList,view:1,page:$scope.page});
+            $scope.menuClass = 'viewMenu'
+        }
+    };
 });
 //自定义过滤器
 app.filter('cover', function(){

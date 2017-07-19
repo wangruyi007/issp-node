@@ -4,15 +4,24 @@
             <ul>
                 <li class="required">
                     <label ><i><img src="/images/mandatory.png"></i><em>姓名</em></label>
-                    <input type="text" ng-verify="{}" ng-model="add.username">
+                    <select class="sele" ng-verify="option:0"   ng-model="add.username">
+                        <option value="" disabled>请选择</option>
+                        <option ng-repeat="pros in nameData">{{pros}}</option>
+                    </select>
                 </li>
                 <li class="required">
                     <label ><i><img src="/images/mandatory.png"></i><em>劳动关系类型</em></label>
-                    <input type="text" ng-verify="{}" ng-model="add.laborId">
-                </li>
+                    <select class="sele" ng-verify="option:0"   ng-model="add.laborId">
+                        <option value="" disabled>请选择</option>
+                        <option ng-repeat="pros in proData" value="{{pros.id}}">{{pros.name}}</option>
+                    </select>
+               </li>
                 <li class="required">
                     <label ><i><img src="/images/mandatory.png"></i><em>社保购买类型</em></label>
-                    <input type="text" ng-verify="{}" ng-model="add.socialId">
+                    <select class="sele" ng-verify="option:0"   ng-model="add.socialId">
+                        <option value="" disabled>请选择</option>
+                        <option ng-repeat="pros in socialData" value="{{pros.id}}">{{pros.name}}</option>
+                    </select>
                 </li>
                 <li class="required">
                     <label ><i><img src="/images/mandatory.png"></i><em>资质证书1</em></label>
@@ -28,19 +37,19 @@
                 </li>
                 <li>
                     <label><em>资质证书2</em></label>
-                    <input type="text" ng-verify="{}" ng-model="add.certificateTwo">
+                    <input type="text" ng-model="add.certificateTwo">
                 </li>
                 <li>
                     <label><em>查询网站链接2</em></label>
-                    <input type="text" ng-verify="{}" ng-model="add.websiteTwo">
+                    <input type="text" ng-model="add.websiteTwo">
                 </li>
                 <li>
                     <label><em>证书有效期限2</em></label>
-                    <input type="text" ng-verify="{}" ng-model="add.effectiveTwo">
+                    <input type="text" ng-model="add.effectiveTwo">
                 </li>
                 <li>
                     <label><em>备注信息</em></label>
-                    <input type="text" ng-verify="{}" ng-model="add.remark">
+                    <input type="text" ng-model="add.remark">
                 </li>
             </ul>
         </section>

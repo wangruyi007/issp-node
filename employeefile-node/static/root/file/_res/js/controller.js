@@ -12,7 +12,7 @@ app.controller('fileCtrl', function ($scope,$state) {
     $scope.$on('page',function(event,msg){
         $scope.$broadcast('pageId',msg)
     });
-}).controller('navCtrl',function($scope,$state,$location,basicSer){
+}).controller('navCtrl',function($scope,$state,$location,fileSer){
     $scope.navCla='management';
     var active = $location.path().split('/')[3];
     $scope.navCla=active?active:'management';
@@ -20,7 +20,8 @@ app.controller('fileCtrl', function ($scope,$state) {
         $scope.navCla=name;
     };
     // 前面下拉导航权限
-    basicSer.navPermission().then(function(response){
+    fileSer.navPermission().then(function(response){
+
         if(response.data.code == 0){
             var data = response.data.data;
             if(data && data.length){
@@ -37,7 +38,7 @@ app.controller('fileCtrl', function ($scope,$state) {
         }
     });
     // 设置导航权限
-    basicSer.setPermission().then(function(response){
+    fileSer.setPermission().then(function(response){
         if(response.data.code == 0){
             var data = response.data.data;
             if(data && data.length){
@@ -55,8 +56,11 @@ app.controller('fileCtrl', function ($scope,$state) {
     });
     $scope.showsList = [
         {id:"1",item:"员工档案管理",menuList:[{name:'员工档案',msg:'management'}],showIs:false},
-        {id:"2",item:"档案管理",menuList:[{name1:'人员资质',msg:'qualified'}],showIs:false},
-        {id:"3",item:"设置",menuList:[{name4:'设置',msg:'setting'}],showIs:false},
+        {id:"2",item:"档案管理",menuList:[{name1:'人员资质',msg:'qualified'},{name2:'档案调阅',msg:'archives'},
+            {name3:'档案明细',msg:'detailed'},{name4:'档案收集',msg:'collect'}],showIs:false},
+        {id:"3",item:"对外信息管理",menuList:[{name5:'对外人员基本信息设置',msg:'basic'},{name6:'对外人员信息',msg:'message'}],showIs:false},
+        {id:"4",item:"其他信息",menuList:[{name7:'公司社保购买类型',msg:'social'},{name8:'劳动关系类型',msg:'labour'},{name9:'附件类型',msg:'annex'}],showIs:false},
+        {id:"5",item:"设置",menuList:[{name10:'设置',msg:'setting'}],showIs:false},
     ];
 
     if(active){

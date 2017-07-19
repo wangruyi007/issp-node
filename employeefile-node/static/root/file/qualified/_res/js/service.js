@@ -1,4 +1,4 @@
-var app = angular.module('managementServer',[]);
+var app = angular.module('qualifiedServer',[]);
 app.factory('qualifiedSer',function ($http) {
     return {
         listQualified : listQualified,
@@ -7,7 +7,11 @@ app.factory('qualifiedSer',function ($http) {
         getOneById:getOneById,
         menuPermission:menuPermission,
         addQualified:addQualified,
-        editQualified:editQualified
+        editQualified:editQualified,
+        laborElation:laborElation,
+        socialSecurity:socialSecurity,
+        viewQualifiedFile:viewQualifiedFile,
+        nameQualified:nameQualified
     };
     function listQualified(data) {
         return $http.get('/listQualified/list',{
@@ -31,5 +35,19 @@ app.factory('qualifiedSer',function ($http) {
     }
     function editQualified(data){
         return $http.post('/editQualified/edit',data)
+    }
+    //劳动关系类型
+    function laborElation(){
+        return $http.get('/laborElation/id')
+    }
+    //社保类型
+    function socialSecurity(){
+        return $http.get('/socialSecurity/id')
+    }
+    function viewQualifiedFile(data){
+        return $http.get('/viewQualifiedFile/listFile',{params:data})
+    }
+    function nameQualified(){
+        return $http.get('/name/id')
     }
 });

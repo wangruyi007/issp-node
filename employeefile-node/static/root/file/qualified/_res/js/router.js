@@ -43,5 +43,13 @@ app.config(function($provide, $stateProvider){
                 controller:'qualifiedUploadCtrl'
             }
         }
+    }).state("root.file.qualified.view[12]",{
+        url:"/view[12]?id=&view=&page=",
+        views:{
+            "content@root.file.qualified":{
+                templateUrl : "root/file/qualified/view/_res/html/index.html",
+                controller:'qualifiedViewCtrl'
+            }
+        }
     })
 });

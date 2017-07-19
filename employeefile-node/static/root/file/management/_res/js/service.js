@@ -4,6 +4,7 @@ app.factory('managementSer',function ($http) {
         listManagement : listManagement,
         countManagement:countManagement,
         getOneById:getOneById,
+        viewManageFile:viewManageFile,
         menuPermission:menuPermission,
     };
     function listManagement(data) {
@@ -19,5 +20,8 @@ app.factory('managementSer',function ($http) {
     }
     function getOneById(data) {
         return $http.get('/management/getOneById',{params:data})
+    }
+    function viewManageFile(data){
+        return $http.get('/viewManageFile/listFile',{params:data})
     }
 });
