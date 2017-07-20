@@ -35,29 +35,6 @@ app.config(function($provide, $stateProvider){
                 controller:'statiEditCtrl'
             }
         }
-    }).state("root.rotation.statistical.export[12]",{
-        url:"/export[12]",
-        views:{
-            "content@root.rotation.statistical":{
-                templateUrl : "root/rotation/statistical/export/_res/html/index.html",
-                controller:'statiExportCtrl'
-            }
-        }
-    }).state("root.rotation.statistical.upload[12]",{
-        url:"/upload[12]?id=",
-        views:{
-            "content@root.rotation.statistical":{
-                templateUrl : "root/rotation/statistical/upload/_res/html/index.html",
-                controller:'statiUploadCtrl'
-            }
-        }
-    }).state("root.rotation.statistical.view[12]",{
-        url:"/view[12]?id=",
-        views:{
-            "content@root.rotation.statistical":{
-                templateUrl : "root/rotation/statistical/view/_res/html/index.html",
-                controller:'statiViewCtrl'
-            }
-        }
+    
     })
 });

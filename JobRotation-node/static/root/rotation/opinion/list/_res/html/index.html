@@ -2,58 +2,27 @@
     <ul class="table">
         <li class="list-head">
             <span></span>
-            <span>编号</span>
-            <span>项目名称</span>
-            <span>资格要求</span>
-            <span>标书编号</span>
-            <span>同类项目经验</span>
-            
-            <span>专业资质认证</span>
-            <span>管理体系认证</span>
-            <span></span>
+            <span>姓名</span>
+            <span>岗位层级</span>
+            <span>补助周期开始时间</span>
+            <span>补助周期结束时间</span>
+            <span>开始担任时间</span>
+            <span>结束担任时间</span>
+            <span>周期天数</span>
+            <span>周期内补贴天数</span>
         </li>
-        <li class="list-all" ng-repeat="lists in materialLists" style="display: {{lists._delete?'none':'block'}};">
+        <li class="list-all" ng-repeat="lists in statiLists" style="display: {{lists._delete?'none':'block'}};">
             <section>
                 <div class="list-text {{lists._selectList?'selectList':''}}" ng-click="selectList(lists)">
                     <p mod>{{$index+1+num}}</p>
-                    <p mod>{{lists.biddingNumber}}</p>
-                    <p mod>{{lists.projectName}}</p>
-                    <p mod>{{lists.eligibilityRequirements}}</p>
-                    <p mod>{{lists.tenderNumber}}</p>
-                    <p mod>{{lists.experienceProject}}</p>
-                    
-                    <p mod>{{lists.professionalQualificationCertification}}</p>
-                    <p mod>{{lists.managementSystemCertification}}</p>
-                    <p>
-                        <a href="javascript:void(0)" class="more" ng-click="moreList(lists)">更多详细</a>
-                    </p>
-                </div>
-                <div class="can">
-                    <ul class="can-see" style="display: {{lists._moreList?'block':'none'}};">
-                        <li>
-                            <p class="see-parent">
-                                <span>项目经理素质</span>
-                                <span>团队成员素质</span>
-                                <span>资源投入</span>
-                                <span>技术方案</span>
-                                <span>额外承诺</span>
-                                <span>补充资料</span>
-                                <span>经济分册</span>
-                                <span>主营业务收入</span>
-                            </p>
-                            <p class="see-children">
-                                <span mod>{{lists.projectManagerQuality}}</span>
-                                <span mod>{{lists.teamMembersQuality}}</span>
-                                <span mod>{{lists.resourcesInto}}</span>
-                                <span mod>{{lists.technicalSolution}}</span>
-                                <span mod>{{lists.additionalCommitments}}</span>
-                                <span mod>{{lists.additionalInformation}}</span>
-                                <span mod>{{lists.economicVolume}}</span>
-                                <span mod>{{lists.mainBusinessIncome}}</span>
-                            </p>
-                        </li>
-                    </ul>
-                    
+                    <p mod>{{lists.username}}</p>
+                    <p mod>{{lists.arrangementName}}</p>
+                    <p mod>{{lists.subsidyStart}}</p>
+                    <p mod>{{lists.subsidyEnd}}</p>
+                    <p mod>{{lists.occupyStart}}</p>
+                    <p mod>{{lists.occupyEnd}}</p>
+                    <p mod>{{lists.cycle}}</p>
+                    <p mod>{{lists.subsidy}}</p>
                 </div>
             </section>
         </li>

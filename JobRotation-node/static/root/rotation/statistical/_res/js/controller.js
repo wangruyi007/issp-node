@@ -18,7 +18,9 @@ app.controller('statiCtrl',function ($scope,$state) {
     });
     if (window.location.href.split('id=')[1]) {//如果是刷新进来的页面，没有经过list
         $scope.idListd = window.location.href.split('id=')[1];
-        $scope.menuClass = $location.search().name + 'Menu';
+        if($location.search().name){
+            $scope.menuClass = $location.search().name + 'Menu';
+        }
 
     }
     $scope.menuCheck = function (name) {
@@ -56,21 +58,6 @@ app.controller('statiCtrl',function ($scope,$state) {
             $scope.menuClass = 'editMenu'
         }
     }
-    $scope.upload = function(){
-        if($scope.idListd){
-            $state.go('root.rotation.statistical.upload[12]',{id:$scope.idListd});
-            $scope.menuClass = 'uploadMenu'
-        }
-    }
-    $scope.view = function(){
-        if($scope.idListd){
-            $state.go('root.rotation.statistical.view[12]',{id:$scope.idListd});
-            $scope.menuClass = 'viewMenu'
-        }
-    }
-    $scope.export = function(){
-        $scope.menuClass = 'exportMenu'
-    };
     $scope.list = function(){
         $scope.menuClass = 'listMenu'
     };

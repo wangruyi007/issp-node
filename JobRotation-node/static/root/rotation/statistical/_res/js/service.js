@@ -8,7 +8,7 @@ app.factory('statiSer',function ($http) {
         statCount:statCount,
         statDelete:statDelete,
         gitName:gitName,
-        gitLevel:gitLevel,
+        gitTier:gitTier,
         statPermission:statPermission
     };
     //菜单权限
@@ -50,7 +50,7 @@ app.factory('statiSer',function ($http) {
         return $http.get('/gitName/name')
     }
     //举荐轮换等级
-    function gitLevel(){
-        return $http.get('/gitLevel/level')
+    function gitTier(){
+        return $http.get('/gitTier/tier')
     }
 });

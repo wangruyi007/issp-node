@@ -4,14 +4,14 @@
             <ul>
                 <li class="required">
                     <label><i><img src="/images/mandatory.png"></i><em>姓名</em></label>
-                    <select class="sele na" ng-model="recom.username">
+                    <select class="sele na" ng-model="stst.username">
                         <option ng-repeat="username in usernames" value="{{username.name}}">{{username.name}}</option>
                     </select>
                 </li>
                 <li class="required">
                     <label><i><img src="/images/mandatory.png"></i><em>举荐轮换岗位层级</em></label>
-                    <select class="sele le" ng-model="recom.applyLevelId">
-                        <option ng-repeat="applyLevelId in applyLevelIds" value="{{applyLevelId.value}}">{{applyLevelId.value}}</option>
+                    <select class="sele le" ng-model="stst.arrangementId">
+                        <option ng-repeat="applyLevelId in applyLevelIds" value="{{applyLevelId.id}}">{{applyLevelId.arrangement}}</option>
                     </select>
                 </li>
                 <li class="required">  
@@ -33,10 +33,6 @@
                 <li class="required f-l">
                     <label><i><img src="/images/mandatory.png"></i><em>周期内补贴天数</em></label>
                     <input type="number"  ng-verify="{}" ng-model="stst.subsidy">
-                </li>
-                <li class="required f-l">
-                    <label><i><img src="/images/mandatory.png"></i><em>岗位补贴标准数据id</em></label>
-                    <input type="text"  ng-verify="{}" ng-model="stst.arrangementId">
                 </li>
             </ul>
         </section>
