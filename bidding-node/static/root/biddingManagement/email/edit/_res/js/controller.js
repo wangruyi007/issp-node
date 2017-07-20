@@ -7,7 +7,10 @@ app.controller('emailEditCtrl', function($scope, emailSer,$stateParams,$state,to
 
         if(response.data.code==0){
             $scope.editMail = response.data.data;
-            // $scope.condis=$scope.editMail.condi
+            $scope.condis = $scope.editMail.condi.split(';');
+            $scope.objLists = $scope.editMail.sendObject.split(';');
+            $scope.condis.reUndefined();
+            $scope.objLists.reUndefined();
         }else{
             toastr.error(response.data.msg, '温馨提示');
         }
