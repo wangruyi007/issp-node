@@ -1,0 +1,31 @@
+<div class="content-tab list" style="margin-top: -70px;">
+    <ul class="table com-table">
+       <li class="list-head">
+            <span></span>
+            <span>制度文件夹编号</span>
+            <span>制度文件夹存储路径</span>
+            <span>经验总结编号</span>
+            <span>经验总结存储路径</span>
+            <span>工作设计账号，密码文件名称</span>
+            <span>账号，密码存储路径</span>
+        </li>
+        <!---->
+        <li class="list-all">
+            <section ng-repeat="list in meansLists" class="{{list.status?'':'congeal'}}"  style="display: {{list._delete?'none':'block'}};">
+                <div  class="list-text {{list._selectList?'selectList':''}}" ng-click="selectList(list)">
+                    <p>{{$index+1}}</p>
+                    <p>{{::list.systemFolderNum}}</p>
+                    <p>{{::list.systemFolderPath}}</p>
+                    <p>{{::list.experienceNum}}</p>
+                    <p>{{::list.experiencePath}}</p>
+                    <p>{{::list.jobDesignName}}</p>
+                    <p>{{::list.accountPath}}</p>
+                </div>
+            </section>
+        </li>
+     </ul>
+    <footer class="footer">
+        <pagination count="abili.itemsCount" take="abili.take" activate="abili.activatePage"></pagination>
+    </footer>
+</div>
+<div ui-view="modal"></div>
