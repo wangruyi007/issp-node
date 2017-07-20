@@ -89,13 +89,13 @@ app.controller('mailSummaryListCtrl',function($scope,emailSer,toastr,$stateParam
     }
     $scope.cancel = function(){//取消删除/冻结
         $scope.delShow = false;
-        $scope.congealShow = false;
         $state.go('root.businessContract.mailSummary.list[12]',{id:null,name:null});
     };
     $scope.conCancel = function(){//取消/冻结
         $scope.congealShow = false;
         $state.go('root.businessContract.mailSummary.list[12]',{id:null,name:null});
     };
+
     var count = 0;
     $scope.delFn = function(){//确认删除
         var data = {

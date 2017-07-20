@@ -16,7 +16,8 @@ app.factory('selfcapSer',function ($http) {
         editSocialSelf:editSocialSelf,
         getFiveById:getFiveById,
         countSelfCap2:countSelfCap2,
-
+        menuPermission:menuPermission,
+        menuPermission2:menuPermission2,
     };
     //列表
     function listAbilitySelfCap(data) {
@@ -87,5 +88,13 @@ app.factory('selfcapSer',function ($http) {
         return $http.get('/ability/getFiveById',{
             params:data
         })
+    }
+    //菜单权限
+    function menuPermission(data) {
+        return $http.get('/selfcap/guidePermission/'+data);
+    }
+    //个人社交资源菜单权限
+    function menuPermission2(data) {
+        return $http.get('/selfcap2/guidePermission/'+data);
     }
 });
