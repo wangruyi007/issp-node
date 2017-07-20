@@ -9,6 +9,9 @@ app.factory('companycapSer',function ($http) {
         getOneById:getOneById,
         searchCompanyAbility:searchCompanyAbility,
         countBaseInfo2:countBaseInfo2,
+        menuPermission:menuPermission,
+        allCompanyName:allCompanyName,
+        viewCompany:viewCompany,
     };
     //列表
     function listAbilityCompanyCap(data) {
@@ -45,5 +48,17 @@ app.factory('companycapSer',function ($http) {
         return $http.get('/countBaseInfo2/count',{
             params:data
         })
+    }
+    //菜单权限
+    function menuPermission(data) {
+        return $http.get('/companyCap/guidePermission/'+data);
+    }
+    //获取所有公司名
+    function allCompanyName(){
+        return $http.get('/allCompanyName/company')
+    }
+    //附件列表
+    function viewCompany(data){
+        return $http.get('/viewCompany/listFile',{params:data})
     }
 });

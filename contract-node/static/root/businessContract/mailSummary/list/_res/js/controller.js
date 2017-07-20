@@ -75,7 +75,7 @@ app.controller('mailSummaryListCtrl',function($scope,emailSer,toastr,$stateParam
         }else{
             toastr.error(response.data.msg, '温馨提示');
         }
-    })
+    });
     //获取id
     if($stateParams.id){
         switch ($stateParams.name){
@@ -87,11 +87,15 @@ app.controller('mailSummaryListCtrl',function($scope,emailSer,toastr,$stateParam
                 break;
         }
     }
-    $scope.cancel = function(){//取消删除/冻结
+    $scope.cancel = function(){//取消删除
         $scope.delShow = false;
+        $state.go('root.businessContract.mailSummary.list[12]',{id:null,name:null});
+    };
+    $scope.conCancel = function(){//取消冻结
         $scope.congealShow = false;
         $state.go('root.businessContract.mailSummary.list[12]',{id:null,name:null});
     };
+
     var count = 0;
     $scope.delFn = function(){//确认删除
         var data = {
@@ -119,7 +123,6 @@ app.controller('mailSummaryListCtrl',function($scope,emailSer,toastr,$stateParam
         };
         emailSer.congealEmail(data).then(function(response){
             if(response.data.code==0){
-                count++;
                 toastr.info( "信息已冻结", '温馨提示');
                 $scope.$emit('changeId', null);
                 $scope.congealShow = false;
