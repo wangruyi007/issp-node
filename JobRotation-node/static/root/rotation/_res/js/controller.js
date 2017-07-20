@@ -55,7 +55,7 @@ app.controller('rotatCtrl', function ($scope,$state) {
     // });
     $scope.showsList = [
         {id:"1",item:"岗位轮换",menuList:[{name2:'岗位轮换自荐',msg:'cover'},{name4:'岗位轮换推荐',msg:'recommended'}],showIs:false},
-        {id:"2",item:"轮换管理",menuList:[{name:'岗位轮换条件',msg:'conditions'},{name3:'岗位轮换自荐意见',msg:'opinion'},{name5:'岗位补贴标准',msg:'standard'},{name6:'岗位轮换统计',msg:'statistical'}],showIs:false},
+        {id:"2",item:"轮换管理",menuList:[{name:'岗位轮换条件',msg:'conditions'},{name3:'目前岗位情况',msg:'opinion'},{name5:'岗位补贴标准',msg:'standard'},{name6:'岗位轮换统计',msg:'statistical'}],showIs:false},
         {id:"3",item:"设置",menuList:[{name7:'设置',msg:'setting'}],showIs:false}
     ];
     if(active){
