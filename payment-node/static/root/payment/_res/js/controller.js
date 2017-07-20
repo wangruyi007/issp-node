@@ -58,8 +58,8 @@ app.controller('paymentCtrl', function ($scope,$state) {
         }
     });
     $scope.showsList = [
-        {id:"1",item:"回款管理",menuList:[{name:'回款明细'},{name2:"承包商"}],showIs:true},
-        {id:"2",item:"设置",menuList:[{name3:'设置'}],showIs:true},
+        {id:"1",item:"回款管理",menuList:[{name:'承包商'},{name2:"回款明细"}],showIs:false},
+        {id:"2",item:"设置",menuList:[{name3:'设置'}],showIs:false},
     ];
     $scope.showMenu = function(obj,event) {
         if(event){

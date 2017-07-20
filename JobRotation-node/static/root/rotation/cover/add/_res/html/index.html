@@ -5,7 +5,7 @@
                 <li class="required">
                     <label><i><img src="/images/mandatory.png"></i><em>申请轮换等级</em></label>
                     <select class="sele le" ng-model="cover.applyLevelId" ng-change="changSelect()">
-                        <option ng-repeat="applyLevelId in applyLevelIds" value="{{applyLevelId.value}}">{{applyLevelId.value}}</option>
+                        <option ng-repeat="applyLevelId in applyLevelIds" value="{{applyLevelId.id}}">{{applyLevelId.arrangement}}</option>
                     </select>
                 </li>
                 <li class="required">

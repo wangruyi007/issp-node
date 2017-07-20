@@ -20,8 +20,9 @@ app.controller('recomIdeaZCtrl', function($scope, recomSer,$stateParams,$state,t
     //点击提交
     $scope.recomEditFun = function(){
         var vm = $scope;
-        vm.recom.biddingNumber = angular.element('.num').val();
-        vm.recom.projectName = angular.element('.na').val();
+        vm.recom.pass = angular.element('.ye').val();
+        vm.recom.rotationDate = angular.element('.time').val();
+        vm.recom.rotationLevelId = angular.element('.le').val();
         recomSer.recomIdeaZ(vm.recom).then(function(response){
             if(response.data.code == 0){
                 $state.go('root.rotation.recommended.list[12]');

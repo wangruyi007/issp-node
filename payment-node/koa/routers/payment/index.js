@@ -434,6 +434,45 @@ module.exports = function(){
                 $self.body=error.error;
                 console.error(error.error);
             }));
+    }).get('/planTime/time', function*(){
+        var $self = this;
+        var timeData = $self.request.query;
+        timeData.token = $self.cookies.get('token');
+        yield (server().auditTimeId2(timeData)
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
+    }).get('/allERPTime/time', function*(){
+        var $self = this;
+        var timeData = $self.request.query;
+        timeData.token = $self.cookies.get('token');
+        yield (server().auditTimeId3(timeData)
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
+    }).get('/allBillTime/time', function*(){
+        var $self = this;
+        var timeData = $self.request.query;
+        timeData.token = $self.cookies.get('token');
+        yield (server().auditTimeId4(timeData)
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
     }).post('/detail/import', koaBody({multipart:true}),function *(next) {//回款明细导入
         var $self = this;
         var fileData = $self.request.body;
@@ -501,6 +540,19 @@ module.exports = function(){
         var summaryData = $self.request.body;
         summaryData.token = $self.cookies.get('token');
         yield (server().contrastSummary(summaryData)
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
+    }).post('/editTime/edit', function*(){//编辑
+        var $self = this;
+        var editData = $self.request.body;
+        editData.token = $self.cookies.get('token');
+        yield (server().editTimeEdit(editData)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
                 $self.body = responseText;
