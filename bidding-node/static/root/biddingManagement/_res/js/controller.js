@@ -20,7 +20,6 @@ app.controller('biddingCtrl', function ($scope,$state) {
         $scope.navCla = name;
         $scope.$emit('isId',true);//每次切换页面更新搜索值
     };
-
     bidSer.navPermission().then(function(response){
         if(response.data.code == 0){
             var data = response.data.data;
