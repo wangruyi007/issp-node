@@ -27,8 +27,9 @@ module.exports = function(){
             }));
     }).get('/abilitycompanycap/count', function*(){
         var $self = this;
-        var token={token:$self.cookies.get('token')};
-        yield (server().countBaseInfos(token)
+        var countData = $self.request.query;
+        countData.token = this.cookies.get('token');
+        yield (server().countBaseInfos(countData)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
                 $self.body = responseText;
@@ -92,47 +93,7 @@ module.exports = function(){
                 $self.body=error.error;
                 console.error(error.error);
             }));
-    }).post('/ability/searchCompanyAbility', function*(){
-        var $self = this;
-        var searchName = this.request.body;
-        searchName.token = $self.cookies.get('token');
-        yield (server().companySeachByname(searchName)
-            .then((parsedBody) =>{
-                var responseText = JSON.parse(parsedBody);
-                $self.body = responseText;
-            }).catch((error) =>{
-                $self.set('Content-Type','application/json;charset=utf-8');
-                $self.body=error.error;
-                console.error(error.error);
-            }));
-    }).post('/ability/searchPersonAbility', function*(){
-        var searchName = this.request.body;
-        var $self = this;
-        searchName.token = $self.cookies.get('token');
-        yield (server().personSeachByname(searchName)
-            .then((parsedBody) =>{
-                var responseText = JSON.parse(parsedBody);
-                $self.body = responseText;
-            }).catch((error) =>{
-                $self.set('Content-Type','application/json;charset=utf-8');
-                $self.body=error.error;
-                console.error(error.error);
-            }));
-    }).get('/ability/searchCooperationAbility', function*(){
-        var $self = this;
-        var searchName = this.request.query;
-        searchName.token = $self.cookies.get('token');
-        yield (server().cooperationSeachByName(searchName)
-            .then((parsedBody) =>{
-                var responseText = JSON.parse(parsedBody);
-                $self.body = responseText;
-            }).catch((error) =>{
-                $self.set('Content-Type','application/json;charset=utf-8');
-                $self.body=error.error;
-                console.error(error.error);
-            }));
-    })
-        .get('/ability/abilitySelfCap/listAbilitySelfCap', function*(){
+    }).get('/ability/abilitySelfCap/listAbilitySelfCap', function*(){
         var $self = this;
         var page2 = this.request.query;
             page2.token = $self.cookies.get('token');
@@ -147,47 +108,9 @@ module.exports = function(){
             }));
     }).get('/abilitySelfCap/count', function*(){
         var $self = this;
-        var token={token:$self.cookies.get('token')};
-        yield (server().countSelfCapInfo(token)
-            .then((parsedBody) =>{
-                var responseText = JSON.parse(parsedBody);
-                $self.body = responseText;
-            }).catch((error) =>{
-                $self.set('Content-Type','application/json;charset=utf-8');
-                $self.body=error.error;
-                console.error(error.error);
-            }));
-    }).get('/countSelfCap2/count', function*(){
-        var $self = this;
         var countData = this.request.query;
         countData.token = $self.cookies.get('token');
-        yield (server().countSelfCap2Info(countData)
-            .then((parsedBody) =>{
-                var responseText = JSON.parse(parsedBody);
-                $self.body = responseText;
-            }).catch((error) =>{
-                $self.set('Content-Type','application/json;charset=utf-8');
-                $self.body=error.error;
-                console.error(error.error);
-            }));
-    }).get('/countBaseInfo2/count', function*(){
-        var $self = this;
-        var countData = this.request.query;
-        countData.token = $self.cookies.get('token');
-        yield (server().countBaseInfo2Info(countData)
-            .then((parsedBody) =>{
-                var responseText = JSON.parse(parsedBody);
-                $self.body = responseText;
-            }).catch((error) =>{
-                $self.set('Content-Type','application/json;charset=utf-8');
-                $self.body=error.error;
-                console.error(error.error);
-            }));
-    }).get('/countCooperation2/count', function*(){
-        var $self = this;
-        var countData = this.request.query;
-        countData.token = $self.cookies.get('token');
-        yield (server().countCooperation2Info(countData)
+        yield (server().countSelfCapInfo(countData)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
                 $self.body = responseText;
@@ -279,8 +202,9 @@ module.exports = function(){
             }));
     }).get('/countCooperation/count', function*(){
         var $self = this;
-        var token={token:$self.cookies.get('token')};
-        yield (server().CooperationInfo(token)
+        var page = this.request.query;
+        page.token = this.cookies.get('token');
+        yield (server().CooperationInfo(page)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
                 $self.body = responseText;

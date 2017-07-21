@@ -7,8 +7,6 @@ app.factory('companycapSer',function ($http) {
         deleteCompanyAbility:deleteCompanyAbility,
         editCompanyAbility:editCompanyAbility,
         getOneById:getOneById,
-        searchCompanyAbility:searchCompanyAbility,
-        countBaseInfo2:countBaseInfo2,
         menuPermission:menuPermission,
         allCompanyName:allCompanyName,
         viewCompany:viewCompany,
@@ -20,8 +18,10 @@ app.factory('companycapSer',function ($http) {
         })
     }
     //分页
-    function countBaseInfo(){
-        return $http.get('/abilitycompanycap/count')
+    function countBaseInfo(data){
+        return $http.get('/abilitycompanycap/count',{
+            params:data
+        })
     }
     //添加公司能力
     function addCompanyAbility(data){
@@ -38,16 +38,6 @@ app.factory('companycapSer',function ($http) {
     //id编辑
     function getOneById(data) {
         return $http.post('/ability/getOneById',data)
-    }
-    //搜索
-    function searchCompanyAbility(data) {
-        return $http.post('/ability/searchCompanyAbility',data)
-    }
-    //搜索count
-    function countBaseInfo2(data){
-        return $http.get('/countBaseInfo2/count',{
-            params:data
-        })
     }
     //菜单权限
     function menuPermission(data) {

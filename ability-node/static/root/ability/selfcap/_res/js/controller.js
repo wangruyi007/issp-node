@@ -69,7 +69,7 @@ app.controller('selfcapCtrl',function ($scope,$state) {
     //关于删除
     $scope.delete = function(){
         if($scope.idList){
-            $state.go('root.ability.selfcap.list[12]',{id:$scope.idList,name:'delete',page:$scope.page});
+            $state.go('root.ability.selfcap.list[12]',{id:$scope.idList,names:'delete',page:$scope.page});
             $scope.menuClass = 'deleteMenu'
         }
     };

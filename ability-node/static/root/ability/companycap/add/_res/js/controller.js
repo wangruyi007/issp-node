@@ -9,6 +9,7 @@ app.controller('companyAddCtrl', function($scope, companycapSer,$state,toastr){
     $scope.yhModel3 = [];
     $scope.yhModel4 = [];
     $scope.yhModel5 = [];
+    $scope.yhModel6 = [];
     $scope.stringSettings = {template : '{{option}}', smartButtonTextConverter(skip, option) { return option; }};
     $scope.getSummary ={onSelectionChanged(){
         $scope.word = $scope.yhModel.join(',');

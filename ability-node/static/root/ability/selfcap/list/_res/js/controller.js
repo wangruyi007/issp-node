@@ -7,7 +7,7 @@ app.controller('selfcapListCtrl',function($scope,selfcapSer,toastr,$stateParams,
     });
     //获取id
     if($stateParams.id){
-        switch ($stateParams.name){
+        switch ($stateParams.names){
             case 'delete':
                 $scope.delShow = true;
                 break;
@@ -58,23 +58,29 @@ app.controller('selfcapListCtrl',function($scope,selfcapSer,toastr,$stateParams,
         });
         event._moreList = !event._moreList;
     };
+    $scope.name = $stateParams.name?$stateParams.name:'';
+    if($stateParams.name){
+        $scope.$emit('isId', false);
+        $scope.isView = false;
+    }else{
+        $scope.$emit('isId', true);
+    }
+
+    $scope.search = function(){
+        $state.go('root.ability.selfcap.list[12]',{name:$scope.name,page:1});
+    }
+
+
     //分页
     $scope.abili = {
         itemsCount: 2,//总条数
         take: 10,        //每页显示
         activatePage: activatePage, //当前页
     };
-    selfcapSer.countSelfCap().then(function (response) {
-        if(response.data.code==0){
-            $scope.abili.itemsCount = response.data.data;
-            $scope.num = $stateParams.page*10>10?($stateParams.page-1)*10:null;
-        }else{
-            toastr.error(response.data.msg, '温馨提示');
-        }
-    })
     function activatePage(page) {
         var listData = {
             page: page||1,
+            name:$scope.name || " ",
         };
         selfcapSer.listAbilitySelfCap(listData).then(function (response) {
             if (response.data.code == 0) {
@@ -95,39 +101,13 @@ app.controller('selfcapListCtrl',function($scope,selfcapSer,toastr,$stateParams,
                 toastr.error( response.data.msg, '温馨提示');
             }
         });
-        //搜索
-        $scope.collect = function(){
-            $scope.abili = {
-                itemsCount: 2,//总条数
-                take: 10,        //每页显示
-                activatePage: activatePage, //当前页
-            };
-            selfcapSer.countSelfCap2($scope.name).then(function (response) {
-                if(response.data.code==0){
-                    $scope.abili.itemsCount = response.data.data;
-                }else{
-                    toastr.error(response.data.msg, '温馨提示');
-                }
-            })
-            var data = {
-                name: $scope.name,
-                page: page
-            };
-            selfcapSer.searchPersonAbility(data).then(function(response){
-                if(response.data.code == 0){
-                    $scope.selfcapLists = response.data
-                }else{
-                    toastr.error(response.data.msg, '温馨提示');
-                }
-            });
-        };
-    }
-    //删除
-    $scope.$on('deletedId',function(event,delid){
-        angular.forEach($scope.selfcapLists.data,function(obj){
-            if(obj.id == delid){
-                obj._delete = true
+        selfcapSer.countSelfCap(listData).then(function (response) {
+            if(response.data.code==0){
+                $scope.abili.itemsCount = response.data.data;
+                $scope.num = $stateParams.page*10>10?($stateParams.page-1)*10:null;
+            }else{
+                toastr.error(response.data.msg, '温馨提示');
             }
         })
-    });
+    }
 });

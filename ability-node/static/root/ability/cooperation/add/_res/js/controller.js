@@ -4,7 +4,6 @@ app.controller('cooperationAddCtrl', function($scope, cooperationSer,$state,toas
     $scope.cooperationAddFun = function(){
         var vm = $scope;
         cooperationSer.addCooperationAbility(vm.add).then(function(response){
-           console.log(response);
             if(response.data.code == 0){
                 $state.go('root.ability.cooperation.list[12]');
                 toastr.success("已成功添加", '温馨提示');

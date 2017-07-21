@@ -3,7 +3,7 @@ var app = angular.module('file', [{
 }]);
 app.controller('fileCtrl', function ($scope,$state) {
     if ($state.current.url == '/file') {//默认加载列表
-         $state.go('root.file.management');
+         $state.go('root.file.resources');
     }
     //父 Ctrl 监听到事件，向下广播
     $scope.$on('changeId',function(event,msg){
@@ -13,9 +13,9 @@ app.controller('fileCtrl', function ($scope,$state) {
         $scope.$broadcast('pageId',msg)
     });
 }).controller('navCtrl',function($scope,$state,$location,fileSer){
-    $scope.navCla='management';
+    $scope.navCla='resources';
     var active = $location.path().split('/')[3];
-    $scope.navCla=active?active:'management';
+    $scope.navCla=active?active:'resources';
     $scope.navClass= function(name){
         $scope.navCla=name;
     };
@@ -54,8 +54,10 @@ app.controller('fileCtrl', function ($scope,$state) {
         }
     });
     $scope.showsList = [
-        {id:"1",item:"参考指标",menuList:[{name:'参考指标',msg:'resources'}],showIs:false},
-        {id:"4",item:"设置",menuList:[{name10:'设置',msg:'setting'}],showIs:false},
+        {id:"1",item:"参考指标",menuList:[{name:'参考指标',msg:'resources'},{name2:'日指标',msg:'date'},{name3:'周指标',msg:'week'}
+            ,{name4:'月指标',msg:'month'}
+        ],showIs:false},
+        {id:"2",item:"设置",menuList:[{name5:'设置',msg:'setting'}],showIs:false},
     ];
     if(active){
         for(var i = 0; i < $scope.showsList.length; i++) {
