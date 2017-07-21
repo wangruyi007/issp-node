@@ -8,20 +8,20 @@
             <span>年份</span>
             <span>月份</span>
             <span>计划每月任务量</span>
-            <span>每周人工</span>
+            <span>计划每月人工</span>
             <span></span>
         </li>
         <li class="list-all">
-            <section ng-repeat="list in basicLists.data">
-                <div  class="list-text {{list._selectList?'selectList':''}}" ng-click="selectList(list)">
+            <section ng-repeat="lists in basicLists.data">
+                <div  class="list-text {{lists._selectList?'selectList':''}}" ng-click="selectList(lists)">
                     <p mod>{{$index+1+num}}</p>
-                    <p mod>{{::lists.cooperateWay|cover}}</p>
                     <p mod>{{::lists.area}}</p>
-                    <p mod>{{::lists.project}}</p>
-                    <p mod>{{::lists.workload}}</p>
-                    <p mod>{{::lists.cost}}</p>
-                    <p mod>{{::lists.totalAmount}}</p>
-                    <p mod>{{::lists.startTime}}</p>
+                    <p mod>{{::lists.type}}</p>
+                    <p mod>{{::lists.node}}</p>
+                    <p mod>{{::lists.year}}</p>
+                    <p mod>{{::lists.month}}</p>
+                    <p mod>{{::lists.monthTask}}</p>
+                    <p mod>{{::lists.monthArtificial}}</p>
                     <p>
                         <a href="javascript:void(0)" class="more" ng-click="moreList(lists)">更多详细</a>
                     </p>
@@ -30,12 +30,16 @@
                     <ul class="can-see" style="display: {{lists._moreList?'block':'none'}};">
                         <li>
                             <p class="see-parent">
+                                <span>每周任务量</span>
+                                <span>每周人工</span>
                                 <span>每天任务量</span>
                                 <span>每天人工</span>
                             </p>
                             <p class="see-children">
-                                <span mod>{{::lists.endTime}}</span>
-                                <span mod>{{::lists.experienceTime}}</span>
+                                <span mod>{{::lists.weekTask}}</span>
+                                <span mod>{{::lists.weekArtificial}}</span>
+                                <span mod>{{::lists.dayTask}}</span>
+                                <span mod>{{::lists.dayArtificial}}</span>
                             </p>
                         </li>
                     </ul>
@@ -61,7 +65,7 @@
     <div class="del-con">
         <p>确定要删除这条数据？</p>
         <div class="btn">
-            <button ng-click="delYes()">确定</button>
+            <button ng-click="delFn()">确定</button>
             <button ng-click="cancel()">取消</button>
         </div>
     </div>

@@ -8,14 +8,12 @@ app.factory('selfcapSer',function ($http) {
         editSelfCapAbility:editSelfCapAbility,
         editEditSocial:editEditSocial,
         getTwoById:getTwoById,
-        searchPersonAbility:searchPersonAbility,
         addSocialSelf:addSocialSelf,
         listSocialSelf:listSocialSelf,
         countSocial:countSocial,
         deleteSocialSelf:deleteSocialSelf,
         editSocialSelf:editSocialSelf,
         getFiveById:getFiveById,
-        countSelfCap2:countSelfCap2,
         menuPermission:menuPermission,
         menuPermission2:menuPermission2,
     };
@@ -50,17 +48,6 @@ app.factory('selfcapSer',function ($http) {
     function getTwoById(data) {
         return $http.post('/ability/getTwoById',data)
     }
-    //搜索
-    function searchPersonAbility(data) {
-        return $http.post('/ability/searchPersonAbility',data)
-    }
-    //搜索count
-    function countSelfCap2(data){
-        return $http.get('/countSelfCap2/count',{
-            params:data
-        })
-    }
-
     //添加个人社交
     function addSocialSelf(data){
         return $http.post('/ability/addSocialSelf/add',data)

@@ -21,27 +21,6 @@ app.controller('selfcapAddCtrl', function($scope, selfcapSer,$state,toastr){
         });
 
     };
-    //可手填的下拉框
-    $scope.changeSelect=function(){
-        $scope.addname = $scope.addname2;
-    };
-    $scope.changeSelect2=function(){
-        $scope.addcapacity = $scope.addcapacity2;
-    };
-    $scope.changeSelect3=function(){
-        $scope.addselfJobTitle = $scope.addselfJobTitle2
-
-    };
-    $scope.changeSelect4=function(){
-
-        $scope.addpositionTitle = $scope.addpositionTitle2;
-    };
-    $scope.changeSelect5=function(){
-        $scope.addworkYear = $scope.addworkYear2;
-    };
-    $scope.changeSelect6=function(){
-        $scope.addselfProject = $scope.addselfProject2;
-    };
 });
 
 
