@@ -1,21 +1,22 @@
 var app = angular.module('settingList', ['ng-pagination','toastr']);
-app.controller('settingListCtrl',function($scope,settingSer,toastr,$stateParams){
+app.controller('settingListCtrl',function($scope,settingSer,toastr,$stateParams,$location){
     $scope.$emit('changeId', null);
     //分页
     $scope.pagination = {
-        itemsCount: 11,//总条数
+        itemsCount:9,//总条数
         take: 10,        //每页显示
         activatePage: activatePage
     };
+
     function activatePage(page) {
         var pages = {
-            page:page || 1
+            page:page
         };
         settingSer.listSetting(pages).then(function(response){
             if(response.data.code==0){
                 $scope.settingLists = response.data.data;
-                $scope.operators = response.data.data.cusOperateVO
-            }else{
+                $scope.operators = response.data.data.proOperateVO
+            }else {
                 toastr.error( response.data.msg, '温馨提示');
             }
         });
@@ -24,7 +25,7 @@ app.controller('settingListCtrl',function($scope,settingSer,toastr,$stateParams)
         if(response.data.code==0){
             $scope.pagination.itemsCount = response.data.data;
             $scope.num = $stateParams.page*10>10?($stateParams.page-1)*10:null;
-        }else{
+        }else {
             toastr.error( response.data.msg, '温馨提示');
         }
     });
@@ -35,6 +36,7 @@ app.controller('settingListCtrl',function($scope,settingSer,toastr,$stateParams)
         event._selectList = true;
         //向父Ctrl传递事件
         $scope.$emit('changeId', event.id);
+        $scope.$emit('page',$location.search().page);
     }
 
 });
