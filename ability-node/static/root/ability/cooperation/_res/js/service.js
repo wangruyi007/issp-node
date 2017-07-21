@@ -8,8 +8,6 @@ app.factory('cooperationSer',function ($http) {
         editCooperationAbility:editCooperationAbility,
         editRelation:editRelation,
         getThreeById:getThreeById,
-        searchCooperationAbility:searchCooperationAbility,
-        countCooperation2:countCooperation2,
         menuPermission:menuPermission,
         allCompanyName:allCompanyName,
         viewCompany:viewCompany,
@@ -21,8 +19,10 @@ app.factory('cooperationSer',function ($http) {
         })
     }
     //分页
-    function countCooperation(){
-        return $http.get('/countCooperation/count')
+    function countCooperation(data){
+        return $http.get('/countCooperation/count',{
+            params:data
+        })
     }
     //删除
     function deleteCooperationSelf(data){
@@ -42,17 +42,6 @@ app.factory('cooperationSer',function ($http) {
     //id编辑
     function getThreeById(data) {
         return $http.post('/ability/getThreeById',data)
-    }
-    //搜索
-    function searchCooperationAbility(data) {
-        return $http.get('/ability/searchCooperationAbility',{
-            params:data
-        })
-    }
-    function countCooperation2(data){
-        return $http.get('/countCooperation2/count',{
-            params:data
-        })
     }
     //菜单权限
     function menuPermission(data) {

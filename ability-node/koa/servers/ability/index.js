@@ -10,7 +10,7 @@ module.exports = function(){
         var options = {
             method : 'GET',
             timeout : 3000,
-            uri : config()['ability']['rurl'] + '/companycapability/v1/listCompanyCapability?limit=10&page='+argvs.page,
+            uri : config()['ability']['rurl'] + `/companycapability/v1/listCompanyCapability${urlEncode(argvs,true)}`,
             headers : {
                 userToken : argvs.token
             }
@@ -22,7 +22,7 @@ module.exports = function(){
         var options = {
             method : 'GET',
             timeout : 3000,
-            uri : config()['ability']['rurl'] + '/companycapability/v1/count',
+            uri : config()['ability']['rurl'] + `/companycapability/v1/count${urlEncode(argvs,true)}`,
             headers : {
                 userToken : argvs.token
             }
@@ -31,7 +31,6 @@ module.exports = function(){
     };
     //添加公司能力
     this.companyAbilityAdd = function(argvs){
-        console.log(argvs)
         var options = {
             method : 'POST',
             timeout : 3000,
@@ -81,49 +80,11 @@ module.exports = function(){
         };
         return request(options);
     };
-   //搜索
-    this.companySeachByname= function(argvs){
-        var options = {
-            method : 'GET',
-            timeout : 3000,
-            uri : config()['ability']['rurl'] + '/companycapability/v1/listCapabilityByCompanyName'+urlEncode(argvs,true),
-            form : argvs,
-            headers : {
-                userToken:argvs.token
-            }
-        };
-        return request(options);
-    };
-    //个人搜索
-    this.personSeachByname= function(argvs){
-        var options = {
-            method : 'GET',
-            timeout : 3000,
-            uri : config()['ability']['rurl'] + '/selfcapability/v1/listSelf'+urlEncode(argvs,true),
-            form : argvs,
-            headers : {
-                userToken:argvs.token
-            }
-        };
-        return request(options);
-    };
-    this.cooperationSeachByName= function(argvs){
-        var options = {
-            method : 'GET',
-            timeout : 3000,
-            uri : config()['ability']['rurl'] + '/coopercapability/v1/list'+urlEncode(argvs,true),
-            form : argvs,
-            headers : {
-                userToken:argvs.token
-            }
-        };
-        return request(options);
-    };
     this.abilitySelfCapList= function(argvs){
         var options = {
             method : 'GET',
             timeout : 3000,
-            uri : config()['ability']['rurl'] + '/selfcapability/v1/listSelf?limit=10&page='+argvs.page,
+            uri : config()['ability']['rurl'] + `/selfcapability/v1/listSelf${urlEncode(argvs,true)}`,
             headers : {
                 userToken:argvs.token
             }
@@ -135,43 +96,7 @@ module.exports = function(){
         var options = {
             method : 'GET',
             timeout : 3000,
-            uri : config()['ability']['rurl'] + '/selfcapability/v1/count',
-            headers : {
-                userToken:argvs.token
-            }
-        };
-        return request(options);
-    };
-    //分页2
-    this.countSelfCap2Info = function(argvs){
-        var options = {
-            method : 'GET',
-            timeout : 3000,
-            uri : config()['ability']['rurl'] + '/selfcapability/v1/count?name='+argvs.name,
-            headers : {
-                userToken:argvs.token
-            }
-        };
-        return request(options);
-    };
-    //公司分页
-    this.countBaseInfo2Info = function(argvs){
-        var options = {
-            method : 'GET',
-            timeout : 3000,
-            uri : config()['ability']['rurl'] + '/companycapability/v1/listCompanyCapability?company='+argvs.company,
-            headers : {
-                userToken:argvs.token
-            }
-        };
-        return request(options);
-    };
-    //合作对象
-    this.countCooperation2Info = function(argvs){
-        var options = {
-            method : 'GET',
-            timeout : 3000,
-            uri : config()['ability']['rurl'] + '/coopercapability/v1/list?companyName='+argvs.companyName,
+            uri : config()['ability']['rurl'] + `/selfcapability/v1/count${urlEncode(argvs,true)}`,
             headers : {
                 userToken:argvs.token
             }
@@ -245,7 +170,7 @@ module.exports = function(){
         var options = {
             method : 'GET',
             timeout : 3000,
-            uri : config()['ability']['rurl'] + '/coopercapability/v1/list?limit=10&page='+argvs.page,
+            uri : config()['ability']['rurl'] + `/coopercapability/v1/list${urlEncode(argvs,true)}`,
             form : argvs,
             headers : {
                 userToken:argvs.token
@@ -259,7 +184,7 @@ module.exports = function(){
         var options = {
             method : 'GET',
             timeout : 3000,
-            uri : config()['ability']['rurl'] + '/coopercapability/v1/count',
+            uri : config()['ability']['rurl'] + `/coopercapability/v1/count${urlEncode(argvs,true)}`,
             headers : {
                 userToken:argvs.token
             }

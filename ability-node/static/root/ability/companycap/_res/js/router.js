@@ -28,7 +28,7 @@ app.config(function($provide, $stateProvider){
             }
         }
     }).state("root.ability.companycap.list[12]",{
-        url:"/list[12]?id=&name=&page=",
+        url:"/list[12]?id=&name=&page=&company=",
         views:{
             "content@root.ability.companycap":{
                 templateUrl : "root/ability/companycap/list/_res/html/index.html",
