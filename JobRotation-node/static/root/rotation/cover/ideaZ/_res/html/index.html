@@ -5,8 +5,8 @@
                 <li class="required">
                     <label><i><img src="/images/mandatory.png"></i><em>是否通过</em></label>
                     <select class="sele ye" ng-model="cover.pass">
-                        <option value="是">是</option>
-                        <option value="否">否</option>
+                        <option value="true">是</option>
+                        <option value="false">否</option>
                     </select>
                 </li>
                 <li class="required">
@@ -15,12 +15,12 @@
                 </li>
                 <li class="required">
                     <label><i><img src="/images/mandatory.png"></i><em>轮换时间</em></label>
-                    <input type="text" onClick="laydate({istime: true, format: 'YYYY-MM-DD'})" class="add_image biddingTime" ng-model="cover.rotationDate">
+                    <input type="text" onClick="laydate({istime: true, format: 'YYYY-MM-DD'})" class="add_image time" ng-model="cover.rotationDate">
                 </li>
                 <li class="required">
                     <label><i><img src="/images/mandatory.png"></i><em>轮换后岗位等级</em></label>
-                    <select class="sele le" ng-model="cover.applyLevelId">
-                        <option ng-repeat="applyLevelId in applyLevelIds" value="{{applyLevelId.value}}">{{applyLevelId.value}}</option>
+                    <select class="sele le" ng-model="cover.rotationLevelId">
+                        <option ng-repeat="applyLevelId in applyLevelIds" value="{{applyLevelId.id}}">{{applyLevelId.arrangement}}</option>
                     </select>
                 </li>
             </ul>

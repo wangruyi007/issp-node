@@ -17,11 +17,13 @@ app.controller('coverIdeaZCtrl', function($scope, coverSer,$stateParams,$state,t
 
     });
 
-    //编辑点击提交
+    //点击提交
     $scope.coverEditFun = function(){
         var vm = $scope;
+        vm.cover.rotationDate = angular.element('.time').val();
         vm.cover.pass = angular.element('.ye').val();
-        vm.cover.applyLevelId = angular.element('.le').val();
+        vm.cover.rotationLevelId = angular.element('.le').val();
+        console.log(vm.cover)
         coverSer.coverIdeaZ(vm.cover).then(function(response){
             if(response.data.code == 0){
                 $state.go('root.rotation.cover.list[12]');

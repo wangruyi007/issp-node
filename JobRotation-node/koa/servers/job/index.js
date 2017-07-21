@@ -120,14 +120,15 @@ this.coverList = function(argvs){
     // 编辑
     this.coverEdit = function(argvs){
         var options = {
-            method : 'POST',
+            method : 'PUT',
             timeout : 3000,
-            uri : config()['rurl'] + `/coverrotation/v1/general/opinion/${argvs.id}`,
+            uri : config()['rurl'] + `/coverrotation/v1/update/${argvs.id}`,
             form:argvs,
             headers:{
                 userToken:argvs.userToken
             }
         };
+        console.log(argvs)
         return request(options);
     };
 
@@ -172,7 +173,7 @@ this.coverList = function(argvs){
         var options = {
             method : 'PUT',
             timeout : 3000,
-            uri : config()['rurl'] + `coverrotation/v1/general/opinion/${argvs.id}`,
+            uri : config()['rurl'] + `/coverrotation/v1/general/opinion/${argvs.id}`,
             form:argvs,
             headers:{
                 userToken:argvs.userToken
@@ -205,59 +206,21 @@ this.coverList = function(argvs){
         };
         return request(options);
     };
-//-------------------岗位轮换自荐意见-------------------
-this.WebInfoList = function(argvs){
+//-------------------目前岗位情况-------------------
+this.opinList = function(argvs){
         var options = {
             method : 'GET',
             timeout : 3000,
-            uri : config()['rurl'] + `/biddingwebinfo/v1/list?limit=10&page=${argvs.page}`,
+            uri : config()['rurl'] + `/rotationstatistics/v1/getDetail?limit=10&page=${argvs.page}`,
             headers:{
                 userToken:argvs.userToken
             }
         };
         return request(options);
     };
-    // 添加
-    this.WebInfoAdd = function(argvs){
-        var options = {
-            method : 'POST',
-            timeout : 3000,
-            uri : config()['rurl'] + `/biddingwebinfo/v1/add?userToken=${argvs.userToken}`,
-            form:argvs,
-            headers:{
-                userToken:argvs.userToken
-            }
-        };
-        return request(options);
-    };
-    // 编辑
-    this.WebInfoEdit = function(argvs){
-        var options = {
-            method : 'POST',
-            timeout : 3000,
-            uri : config()['rurl'] + `/biddingwebinfo/v1/edit?userToken=${argvs.userToken}`,
-            form:argvs,
-            headers:{
-                userToken:argvs.userToken
-            }
-        };
-        return request(options);
-    };
-
-    //删除
-    this.WebInfoDelete = function(argvs){
-        var options = {
-            method : 'DELETE',
-            timeout : 3000,
-            uri : config()['rurl'] + `/biddingwebinfo/v1/delete/${argvs.id}`,
-            headers:{
-                userToken:argvs.userToken
-            }
-        };
-        return request(options);
-    };
+   
     //获取总条数
-    this.getWebInfoTotal = function(argvs){
+    this.opinCount = function(argvs){
         var options = {
             method : 'GET',
             timeout : 3000,
@@ -268,20 +231,9 @@ this.WebInfoList = function(argvs){
         };
         return request(options);
     };
-    //获取ID
-    this.findWebInfoId = function(argvs){
-        var options = {
-            method : 'GET',
-            timeout : 3000,
-            uri : config()['rurl'] + `/biddingwebinfo/v1/web/${argvs.id}`,
-            headers:{
-                userToken:argvs.userToken
-            }
-        };
-        return request(options);
-    };
+  
     //导航权限
-    this.websitePermission = function(argvs){
+    this.opinPermission = function(argvs){
         var options = {
             method : 'GET',
             timeout : 3000,
@@ -320,7 +272,7 @@ this.WebInfoList = function(argvs){
     // 编辑
     this.recomEdit = function(argvs){
         var options = {
-            method : 'POST',
+            method : 'PUT',
             timeout : 3000,
             uri : config()['rurl'] + `/recommendrotation/v1/update/${argvs.id}`,
             form:argvs,
@@ -382,7 +334,7 @@ this.WebInfoList = function(argvs){
     // 总经办意见
     this.recomIdeaZ = function(argvs){
         var options = {
-            method : 'POST',
+            method : 'PUT',
             timeout : 3000,
             uri : config()['rurl'] + `/recommendrotation/v1/opinion/${argvs.id}`,
             form:argvs,
@@ -702,7 +654,19 @@ this.standList = function(argvs){
         var options = {
             method : 'GET',
             timeout : 3000,
-            uri : config()['rurl'] + '/coverrotation/v/findThawOpinion',
+            uri : config()['rurl'] + '/subsidystandard/v1/findThaw',
+            headers:{
+                userToken:argvs.userToken
+            }
+        };
+        return request(options);
+    };
+    //举荐轮换等级
+    this.gitTier = function(argvs){
+        var options = {
+            method : 'GET',
+            timeout : 3000,
+            uri : config()['rurl'] + '/subsidystandard/v1/findThaw',
             headers:{
                 userToken:argvs.userToken
             }

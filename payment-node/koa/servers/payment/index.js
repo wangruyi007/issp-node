@@ -76,7 +76,18 @@ module.exports = function(){
         };
         return request(options);
     };
-
+    this.editTimeEdit = function(argvs){
+        var options = {
+            method : 'POST',
+            timeout : 3000,
+            uri : config()['rurl'] + `/receivablesubsidiary/v1/editTime`,
+            form:argvs,
+            headers : {
+                userToken:argvs.token
+            }
+        };
+        return request(options);
+    };
     //删除
     this.detailDelete = function(argvs){
         var options = {
@@ -390,6 +401,39 @@ module.exports = function(){
             method : 'GET',
             timeout : 3000,
             uri : config()['rurl'] + `/receivablesubsidiary/v1/auditTime?auditTime=${encodeURIComponent(argvs.auditTime)}`,
+            headers:{
+                userToken:argvs.token
+            }
+        };
+        return request(options);
+    };
+    this.auditTimeId2 = function(argvs){
+        var options = {
+            method : 'GET',
+            timeout : 3000,
+            uri : config()['rurl'] + `/receivablesubsidiary/v1/planTime?planTime=${encodeURIComponent(argvs.planTime)}`,
+            headers:{
+                userToken:argvs.token
+            }
+        };
+        return request(options);
+    };
+    this.auditTimeId3 = function(argvs){
+        var options = {
+            method : 'GET',
+            timeout : 3000,
+            uri : config()['rurl'] + `/receivablesubsidiary/v1/countTime?countTime=${encodeURIComponent(argvs.countTime)}`,
+            headers:{
+                userToken:argvs.token
+            }
+        };
+        return request(options);
+    };
+    this.auditTimeId4 = function(argvs){
+        var options = {
+            method : 'GET',
+            timeout : 3000,
+            uri : config()['rurl'] + `/receivablesubsidiary/v1/billTime?billTime=${encodeURIComponent(argvs.billTime)}`,
             headers:{
                 userToken:argvs.token
             }
