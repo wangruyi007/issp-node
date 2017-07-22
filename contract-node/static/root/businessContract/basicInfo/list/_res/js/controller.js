@@ -6,20 +6,32 @@ app.controller('basicListCtrl',function($scope,basicSer,toastr,$stateParams,$sta
         $scope.isView = newIs;
     });
     //搜索字段
-    if($stateParams.inner){$scope.innerProject = $stateParams.innerProject;$scope.isView = false;}
-    if($stateParams.outNum){$scope.outProjectNum = $stateParams.outNum;$scope.isView = false;}
-    if($stateParams.saleNum){$scope.saleContractNum = $stateParams.saleNum;$scope.isView = false;}
-    if($stateParams.type){$scope.businessType = $stateParams.type;$scope.isView = false;}
-    if($stateParams.subject){$scope.businessSubject = $stateParams.subject;$scope.isView = false;}
-    if($stateParams.cooperate){$scope.businessCooperate = $stateParams.cooperate;$scope.isView = false;}
-    if($stateParams.first){$scope.firstCompany = $stateParams.first;$scope.isView = false;}
-    if($stateParams.second){$scope.secondCompany = $stateParams.second;$scope.isView = false;}
-    if($stateParams.area){$scope.area = $stateParams.area;$scope.isView = false;}
-    if($stateParams.property){$scope.contractProperty = $stateParams.property;$scope.isView = false;}
-    if($stateParams.payWays){$scope.payWays = $stateParams.payWays;$scope.isView = false;}
-    if($stateParams.customerName){$scope.customerName = $stateParams.customerName;$scope.isView = false;}
-    if($stateParams.siginYear){$scope.siginYear = $stateParams.siginYear;$scope.isView = false;}
-    if($stateParams.fileCondition){$scope.fileCondition = $stateParams.fileCondition;$scope.isView = false;}
+    $scope.innerProject = $stateParams.inner?$stateParams.inner:'';
+    $scope.outProjectNum = $stateParams.outNum?$stateParams.outNum:'';
+    $scope.saleContractNum = $stateParams.saleNum?$stateParams.saleNum:'';
+    $scope.businessType = $stateParams.type?$stateParams.type:'';
+    $scope.businessSubject = $stateParams.subject?$stateParams.subject:'';
+    $scope.businessCooperate = $stateParams.cooperate?$stateParams.cooperate:'';
+    $scope.firstCompany = $stateParams.first?$stateParams.first:'';
+    $scope.secondCompany = $stateParams.second?$stateParams.second:'';
+    $scope.area = $stateParams.area?$stateParams.area:'';
+    $scope.contractProperty = $stateParams.property?$stateParams.property:'';
+    $scope.payWays = $stateParams.payWays?$stateParams.payWays:'';
+    $scope.customerName = $stateParams.customerName?$stateParams.customerName:'';
+    $scope.siginYear = $stateParams.siginYear?$stateParams.siginYear:'';
+    $scope.fileCondition = $stateParams.fileCondition?$stateParams.fileCondition:'';
+
+    if($stateParams.inner || $stateParams.outNum ||
+        $stateParams.saleNum || $stateParams.type ||
+        $stateParams.subject || $stateParams.cooperate ||
+        $stateParams.first || $stateParams.second || $stateParams.area ||
+        $stateParams.property || $stateParams.payWays || $stateParams.customerName ||
+        $stateParams.siginYear || $stateParams.fileCondition){
+        $scope.$emit('isId', false);
+        $scope.isView = false;
+    }else{
+        $scope.$emit('isId', true);
+    }
     //点击搜索功能
     $scope.search = function(){
         $state.go('root.businessContract.basicInfo.list[12]',{
