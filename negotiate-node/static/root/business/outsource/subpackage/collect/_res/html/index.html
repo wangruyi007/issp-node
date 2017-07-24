@@ -1,0 +1,44 @@
+<div class="collect">
+    <div class="collect-select">
+        <span>
+            内部项目名称：
+            <select class="sele pro"  ng-model="data.project">
+                <option value="{{project.contractInProject}}" ng-repeat="project in projects">{{project.contractInProject}}</option>
+            </select>
+            <input type="text"  class="inputArea" ng-model="data.project" style="margin-left:30px;">
+        </span>
+        <span class="com-search2">
+            <label>开始日期:</label>
+            <input type="text" onClick="laydate({istime: true, format: 'YYYY-MM-DD hh:mm:ss'})" class="startTime">
+       </span>
+       <span class="com-search2">
+            <label>结束日期 : </label>
+            <input type="text" onClick="laydate({istime: true, format: 'YYYY-MM-DD hh:mm:ss'})" class="endTime">
+       </span>
+        <button ng-click="collectFun()">汇总</button>
+    </div>
+    <ul class="sum-list">
+        <li class="sum-thead">
+            <span>合同外部项目名称</span>
+            <span>内部项目名称</span>
+            <span>洽谈轮次</span>
+            <span>洽谈人</span>
+            <span>洽谈对象</span>
+            <span>费用预算</span>
+            <span>项目合作</span>
+            <span>项目跟进</span>
+            <span>项目丢弃</span>
+        </li>
+        <li class="sum-tbody" ng-repeat="list in data" style="background-color: {{$index==length-1?'yellow':''}};">
+            <span mod>{{::list.contractExtProject}}</span>
+            <span mod>{{::list.contractInProject}}</span>
+            <span mod>{{::list.communicateTimes}}</span>
+            <span mod>{{::list.communicateUser}}</span>
+            <span mod>{{::list.communicateObj}}</span>
+            <span mod>{{::list.costBudget}}</span>
+            <span mod>{{::list.cooperate}}</span>
+            <span mod>{{::list.trail}}</span>
+            <span mod>{{::list.abandon}}</span>
+        </li>
+    </ul>
+</div>

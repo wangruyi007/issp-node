@@ -667,30 +667,8 @@ module.exports = function(){
         };
         return request(options);
     };
-    //导航权限
-    this.siginNav = function(argvs){
-        var options = {
-            method : 'GET',
-            timeout : 3000,
-            uri : config()['rurl'] + '/biddinginfo/v1/sonPermission',//2017-06-10
-            headers:{
-                userToken:argvs.userToken
-            }
-        };
-        return request(options);
-    };
-    //设置导航权限
-    this.settingNav = function(argvs){
-        var options = {
-            method : 'GET',
-            timeout : 3000,
-            uri : config()['rurl'] + '/biddinginfo/v1/setButtonPermission',//2017-06-12
-            headers:{
-                userToken:argvs.userToken
-            }
-        };
-        return request(options);
-    };
+   
+    
     //获取编号
     this.gitNum = function(argvs){
         var options = {
@@ -736,7 +714,7 @@ module.exports = function(){
             headers:{
                 userToken:argvs.userToken
             }
-        };
+        };console.log(argvs)
         return request(options);
     };
     return this;
