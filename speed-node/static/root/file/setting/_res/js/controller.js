@@ -31,8 +31,8 @@ app.controller('settingCtrl',function ($scope,$state) {
         $scope.menuClass = 'listMenu'
     };
     $scope.edit = function(){
-        if($scope.editId){
-            $state.go('root.file.setting.edit[12]',{id:$scope.editId,page:$scope.page});
+        if($scope.idList){
+            $state.go('root.file.setting.edit[12]',{id:$scope.idList,page:$scope.page});
             $scope.menuClass = 'editMenu'
         }
     }

@@ -58,10 +58,35 @@ app.controller('companycapListCtrl',function($scope,companycapSer,toastr,$stateP
         });
         event._moreList = !event._moreList;
     };
+    $scope.company = $stateParams.company?$stateParams.company:'';
+    if($stateParams.company){
+        $scope.$emit('isId', false);
+        $scope.isView = false;
+    }else{
+        $scope.$emit('isId', true);
+    }
+
+    $scope.search = function(){
+        $state.go('root.ability.companycap.list[12]',{company:$scope.company,page:1});
+    }
+    $scope.abili = {
+        itemsCount: 2, //总条数
+        take: 10, //每页显示
+        activatePage: activatePage
+    };
     function activatePage(page) {
         var listData = {
-            page:page
+            company:$scope.company || " ",
+            page:page||1
         };
+        companycapSer.countBaseInfo(listData).then(function(response){
+            if(response.data.code==0){
+                $scope.abili.itemsCount = response.data.data;
+                $scope.num = $stateParams.page*10>10?($stateParams.page-1)*10:null;
+            }else{
+                toastr.error(response.data.msg, '温馨提示');
+            }
+        });
         companycapSer.listAbilityCompanyCap(listData).then(function(response){
             if(response.data.code==0) {
                 $scope.companycapLists = response.data;
@@ -81,51 +106,5 @@ app.controller('companycapListCtrl',function($scope,companycapSer,toastr,$stateP
                 toastr.error( response.data.msg, '温馨提示');
             }
         });
-        $scope.collect = function(){
-            $scope.abili = {
-                itemsCount: 2,//总条数
-                take: 10,        //每页显示
-                activatePage: activatePage, //当前页
-            };
-            companycapSer.countBaseInfo2($scope.company).then(function (response) {
-                if(response.data.code==0){
-                    $scope.abili.itemsCount = response.data.data;
-                }else{
-                    toastr.error(response.data.msg, '温馨提示');
-                }
-            })
-            var data = {
-                company: $scope.company,
-                page: page
-            };
-            companycapSer.searchCompanyAbility(data).then(function(response){
-                if(response.data.code == 0){
-                    $scope.companycapLists = response.data
-                }else{
-                    toastr.error(response.data.msg, '温馨提示');
-                }
-            });
-        };
     }
-    $scope.abili = {
-        itemsCount: 2, //总条数
-        take: 10, //每页显示
-        activatePage: activatePage
-    };
-    companycapSer.countBaseInfo().then(function(response){
-        if(response.data.code==0){
-            $scope.abili.itemsCount = response.data.data;
-            $scope.num = $stateParams.page*10>10?($stateParams.page-1)*10:null;
-        }else{
-            toastr.error(response.data.msg, '温馨提示');
-        }
-    });
-    //删除
-    $scope.$on('deletedId',function(event,delid){
-        angular.forEach($scope.companycapLists.data,function(obj){
-            if(obj.id == delid){
-                obj._delete = true
-            }
-        })
-    });
 });

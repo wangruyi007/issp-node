@@ -44,7 +44,7 @@ app.config(function($provide, $stateProvider){
             }
         }
     }).state("root.ability.cooperation.list[12]",{
-        url:"/list[12]?id=&name=&page=",
+        url:"/list[12]?id=&name=&page=&companyName=",
         views:{
             "content@root.ability.cooperation":{
                 templateUrl : "root/ability/cooperation/list/_res/html/index.html",

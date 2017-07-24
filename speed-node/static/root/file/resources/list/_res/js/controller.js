@@ -1,5 +1,5 @@
-var app = angular.module('basicList', ['ng-pagination','toastr']);
-app.controller('basicListCtrl',function($scope,basicSer,toastr,$stateParams,$state,$location) {
+var app = angular.module('resourcesList', ['ng-pagination','toastr']);
+app.controller('resourcesListCtrl',function($scope,resourcesSer,toastr,$stateParams,$state,$location) {
     $scope.$emit('changeId', null);
     //获取id
     if($stateParams.id){
@@ -7,65 +7,32 @@ app.controller('basicListCtrl',function($scope,basicSer,toastr,$stateParams,$sta
             case 'delete':
                 $scope.delShow = true;
                 break;
-            case 'congeal':
-                $scope.congealShow = true;
-                break;
         }
     }
     $scope.cancel = function(){
         $scope.delShow = false;
-        $scope.congealShow = false;
-        $state.go('root.file.basic.list[12]',{id:null,name:null});
+        $state.go('root.file.resources.list[12]',{id:null,name:null});
     };
     var count = 0;
     $scope.delFn = function(){
         var data = {
             id:$stateParams.id
         };
-        basicSer.deleteBasic(data).then(function(response){
+        resourcesSer.deleteContent(data).then(function(response){
             if(response.data.code==0){
                 count++;
                 toastr.info( "信息已删除", '温馨提示');
                 $scope.$emit('changeId', null);
                 $scope.delShow = false;
                 if(($scope.abili.itemsCount-count)%10){
-                    $state.go('root.file.basic.list[12]',{id:null,name:null});
+                    $state.go('root.file.resources.list[12]',{id:null,name:null});
                 }else{
-                    $state.go('root.file.basic.list[12]',{id:null,name:null,page:$stateParams.page-1});
+                    $state.go('root.file.resources.list[12]',{id:null,name:null,page:$stateParams.page-1});
                 }
             }else{
                 toastr.error( response.data.msg, '温馨提示');
             }
         });
-    };
-    $scope.conFn = function(){//确认冻结
-        var data = {
-            id:$stateParams.id
-        };
-        basicSer.congealBasic(data).then(function(response){
-            if(response.data.code==0){
-                count++;
-                toastr.info( "信息已冻结", '温馨提示');
-                $scope.$emit('changeId', null);
-                $scope.congealShow = false;
-                $state.go('root.file.basic.list[12]',{id:null,name:null});
-            }else{
-                toastr.error( response.data.msg, '温馨提示');
-            }
-        })
-    };
-    //解冻
-    $scope.thaw = function(event){
-        var data = {
-            id :event.id
-        };
-        basicSer.thawBasic(data).then(function(response){
-            if(response.data.code==0){
-                event.status = "THAW"
-            }else {
-                toastr.error( response.data.msg, '温馨提示');
-            }
-        })
     };
    //选择
     $scope.selectList = function(event){
@@ -91,7 +58,7 @@ app.controller('basicListCtrl',function($scope,basicSer,toastr,$stateParams,$sta
         var listData = {
             page:page||1
         };
-        basicSer.listBasic(listData).then(function(response){
+        resourcesSer.listContent(listData).then(function(response){
             if(response.data.code==0) {
                 $scope.basicLists = response.data;
                 if ($stateParams.id) {
@@ -116,7 +83,7 @@ app.controller('basicListCtrl',function($scope,basicSer,toastr,$stateParams,$sta
         take: 10, //每页显示
         activatePage: activatePage
     };
-    basicSer.countBasic().then(function(response){
+    resourcesSer.countContent().then(function(response){
         if(response.data.code==0){
             $scope.abili.itemsCount = response.data.data;
             $scope.num = $stateParams.page*10>10?($stateParams.page-1)*10:null;

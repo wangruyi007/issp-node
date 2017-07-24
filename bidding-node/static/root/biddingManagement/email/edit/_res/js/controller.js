@@ -11,6 +11,7 @@ app.controller('emailEditCtrl', function($scope, emailSer,$stateParams,$state,to
             $scope.objLists = $scope.editMail.sendObject.split(';');
             $scope.condis.reUndefined();
             $scope.objLists.reUndefined();
+            // $scope.condis=$scope.editMail.condi
         }else{
             toastr.error(response.data.msg, '温馨提示');
         }
