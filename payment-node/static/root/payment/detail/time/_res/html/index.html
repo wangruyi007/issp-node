@@ -2,9 +2,13 @@
     <div class="input-list input-list3">
         <section>
             <ul>
+                <li style="display: none">
+                    <label><em>id</em></label>
+                    <input type="text" ng-model="editInfo.id">
+                </li>
                 <li class="required">
                     <label><i><img src="/images/mandatory.png"></i><em>签字审批时间</em></label>
-                    <input type="text"  ng-model="settleInfo.auditTime" onClick="laydate({istime: true, format: 'YYYY-MM-DD'})" class="auditTime" ng-change="myFunc()">
+                    <input def-laydate id="id1" aydate type="text" ng-model="auditTime" onClick="laydate({istime: true, format: 'YYYY-MM-DD'})" class="auditTime" ng-ch="myFunc()"/>
                     <div class="receivable">
                         <span>已审批</span>
                         <div class="row">
@@ -15,10 +19,9 @@
                         </div>
                     </div>
                 </li>
-
                 <li class="required">
                     <label><i><img src="/images/mandatory.png"></i><em>ERP结算审批时间</em></label>
-                    <input type="text"  ng-model="settleInfo.countTime" onClick="laydate({istime: true, format: 'YYYY-MM-DD'})" class="add_image countTime" >
+                    <input def-laydate type="text"  ng-model="listNames.countTime" onClick="laydate({istime: true, format: 'YYYY-MM-DD'})" class="countTime" ng-ch="myFunc3()">
                     <div class="receivable">
                         <span>已审批</span>
                         <div class="row">
@@ -31,7 +34,7 @@
                 </li>
                 <li class="required">
                 <label><i><img src="/images/mandatory.png"></i><em>发票审核时间</em></label>
-                <input type="text"  ng-model="settleInfo.billTime" onClick="laydate({istime: true, format: 'YYYY-MM-DD'})" class="add_image billTime" >
+                <input def-laydate type="text"  ng-model="listNames.billTime" onClick="laydate({istime: true, format: 'YYYY-MM-DD'})" class="billTime" ng-ch="myFunc4()" >
                 <div class="receivable">
                     <span>已审批</span>
                     <div class="row">
@@ -44,7 +47,7 @@
             </li>
                 <li class="required">
                     <label><i><img src="/images/mandatory.png"></i><em>预计支付时间</em></label>
-                    <input type="text"  ng-model="settleInfo.planTime" onClick="laydate({istime: true, format: 'YYYY-MM-DD'})" class="add_image planTime" >
+                    <input def-laydate type="text"  ng-model="listNames.planTime" onClick="laydate({istime: true, format: 'YYYY-MM-DD'})" class="planTime" ng-ch="myFunc2()">
                     <div class="receivable">
                         <span>已审批</span>
                         <div class="row">
@@ -57,7 +60,7 @@
                 </li>
                 <li class="required">
                     <label><i><img src="/images/mandatory.png"></i><em>到账时间</em></label>
-                    <input type="text"  ng-model="settleInfo.accountTime" onClick="laydate({istime: true, format: 'YYYY-MM-DD'})" class="add_image accountTime" >
+                    <input type="text"  ng-model="listNames.accountTime" onClick="laydate({istime: true, format: 'YYYY-MM-DD'})" class="accountTime" >
                 </li>
             </ul>
          </section>

@@ -1,54 +1,16 @@
-var app = angular.module('MaterialList', ['ng-pagination','toastr']);
-app.controller('MaterialListCtrl',function($scope,MaterialSer,toastr,$stateParams,$state,$location){
+var app = angular.module('statiList', ['ng-pagination','toastr']);
+app.controller('statiListCtrl',function($scope,statiSer,toastr,$stateParams,$state,$location){
     $scope.$emit('changeId', null);
-    //删除
-    //获取id
     
-    if($stateParams.id){
-        switch ($stateParams.name){
-            case 'delete':
-                $scope.delShow = true;
-                break;
-        }
-    }
-    $scope.cancel = function(){//取消删除
-        $scope.delShow = false;
-        $state.go('' +
-            'root.rotation.opinion.list[12]',{id:null,name:null});
-    };
-    var count=0;
-    $scope.delFn = function(){//确认删除
-
-        var data = {
-            id:$stateParams.id
-        };
-        MaterialSer.deleteSource(data).then(function(response){
-            if(response.data.code==0){
-                count++;
-                toastr.info( "信息已删除", '温馨提示');
-                $scope.deledId = $stateParams.id;
-                $scope.$emit('changeId', null);
-                $scope.delShow = false;
-                if(($scope.custom.itemsCount-count)%10){
-                    $state.go('root.rotation.opinion.list[12]',{id:null,name:null});
-                }else{
-                    $state.go('root.rotation.opinion.list[12]',{id:null,name:null,page:$stateParams.page-1});
-                }
-                // $state.go('root.rotation.opinion.list[12]',{id:null,name:null});
-            }else{
-                toastr.error( response.data.msg, '温馨提示');
-            }
-        });
-    };
     function activatePage(page) {
         var listData = {
             page:page || 1
         };
-        MaterialSer.sourceList(listData).then(function(response){
+        statiSer.opinList(listData).then(function(response){
             if(response.data.code==0){
-                $scope.materialLists = response.data.data;
+                $scope.statiLists = response.data.data;
                 if($stateParams.id){
-                    angular.forEach($scope.materialLists,function(obj){
+                    angular.forEach($scope.statiLists,function(obj){
                         if(obj.id == $stateParams.id){
                             obj._selectList = true;
                         }
@@ -63,7 +25,7 @@ app.controller('MaterialListCtrl',function($scope,MaterialSer,toastr,$stateParam
     }
 
     $scope.selectList = function(event){
-        angular.forEach($scope.materialLists,function(obj){
+        angular.forEach($scope.statiLists,function(obj){
                 obj._selectList = false
         });
         event._selectList = true;
@@ -74,7 +36,7 @@ app.controller('MaterialListCtrl',function($scope,MaterialSer,toastr,$stateParam
     };
     //点击更多详细
     $scope.moreList = function(event){
-        angular.forEach($scope.materialLists,function(obj){
+        angular.forEach($scope.statiLists,function(obj){
             if(event.id!==obj.id){
                 obj._moreList = false
             }
@@ -89,14 +51,14 @@ app.controller('MaterialListCtrl',function($scope,MaterialSer,toastr,$stateParam
         activatePage: activatePage
     };
 
-    MaterialSer.countSource().then(function(response){
-        if(response.data.code==0){
-            $scope.custom.itemsCount = response.data.data;
-            $scope.num = $stateParams.page*10>10?($stateParams.page-1)*10:null;
-        }else{
-            toastr.error( response.data.msg, '温馨提示');
-        }
-    })
+    // statiSer.opinCount().then(function(response){
+    //     if(response.data.code==0){
+    //         $scope.custom.itemsCount = response.data.data;
+    //         $scope.num = $stateParams.page*10>10?($stateParams.page-1)*10:null;
+    //     }else{
+    //         toastr.error( response.data.msg, '温馨提示');
+    //     }
+    // })
 
 });
 

@@ -8,7 +8,7 @@ app.controller('statiEditCtrl', function($scope, statiSer,$stateParams,$state,to
         }
     });
 
-    statiSer.gitLevel().then(function(response){
+    statiSer.gitTier().then(function(response){
         if(response.data.code == 0){
             $scope.applyLevelIds = response.data.data;
         }
@@ -27,7 +27,7 @@ app.controller('statiEditCtrl', function($scope, statiSer,$stateParams,$state,to
     $scope.ststEditFun = function(){
         var vm = $scope;
         vm.stst.username = angular.element('.na').val();
-        vm.stst.applyLevelId = angular.element('.le').val();
+        vm.stst.arrangementId = angular.element('.le').val();
         vm.stst.subsidyStart = angular.element('.time1').val();
         vm.stst.subsidyEnd = angular.element('.time2').val();
         vm.stst.occupyStart = angular.element('.time3').val();

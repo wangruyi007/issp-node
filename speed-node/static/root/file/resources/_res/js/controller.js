@@ -7,7 +7,7 @@ app.controller('resourcesCtrl',function ($scope,$state) {
     if ($state.current.url == '/resources') {//默认加载列表
         $state.go('root.file.resources.list[12]');
     }
-}).controller('resourcesMenuCtrl',function($scope,$state,$rootScope,$location,basicSer){
+}).controller('resourcesMenuCtrl',function($scope,$state,$rootScope,$location,resourcesSer){
     var urlName = $state.current.url.split('/')[1].split('[')[0];
     $scope.menuClass = urlName.split('?')[0] + "Menu";
     $rootScope.$on('$locationChangeSuccess', function () {//url地扯改变或者刷新
@@ -24,7 +24,7 @@ app.controller('resourcesCtrl',function ($scope,$state) {
     $scope.menuCheck = function (name) {
         var buttonName = name;
         $scope.buttonShow = true;
-        basicSer.menuPermission(buttonName).then(function(response){
+        resourcesSer.menuPermission(buttonName).then(function(response){
             if(response.data.code == 0 && response.data.data){
                 $scope[buttonName] = true;
             }else{

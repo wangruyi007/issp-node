@@ -216,12 +216,12 @@ module.exports = function(){
                 $self.body=error.error;
                 console.error(error.error);
             }));
-//-------------------岗位轮换自荐意见-------------------
-    }).get('/biddingwebinfo/list', function*(){ //列表
+//-------------------目前岗位情况-------------------
+    }).get('/opinList/list', function*(){ //列表
         var $self = this;
         var page = $self.request.query;
         page.userToken = $self.cookies.get('token');
-        yield (server().WebInfoList(page)
+        yield (server().opinList(page)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
                 $self.body = responseText;
@@ -230,49 +230,10 @@ module.exports = function(){
                 $self.body=error.error;
                 console.error(error.error);
             }));
-    }).post('/biddingwebinfo/add', function*(){//添加
-        var $self = this;
-        var addData = $self.request.body;
-        addData.userToken = $self.cookies.get('token');
-        yield (server().WebInfoAdd(addData)
-            .then((parsedBody) =>{
-                var responseText = JSON.parse(parsedBody);
-                $self.body = responseText;
-            }).catch((error) =>{
-                $self.set('Content-Type','application/json;charset=utf-8');
-                $self.body=error.error;
-                console.error(error.error);
-            }));
-    }).post('/biddingwebinfo/edit', function*(){//编辑
-        var $self = this;
-        var editData = $self.request.body;
-        editData.userToken = $self.cookies.get('token');
-        yield (server().WebInfoEdit(editData)
-            .then((parsedBody) =>{
-                var responseText = JSON.parse(parsedBody);
-                $self.body = responseText;
-            }).catch((error) =>{
-                $self.set('Content-Type','application/json;charset=utf-8');
-                $self.body=error.error;
-                console.error(error.error);
-            }));
-    }).get('/biddingwebinfo/delete', function*(){//删除
-        var $self = this;
-        var deleteData = $self.request.query;
-        deleteData.userToken = $self.cookies.get('token');
-        yield (server().WebInfoDelete(deleteData)
-            .then((parsedBody) =>{
-                var responseText = JSON.parse(parsedBody);
-                $self.body = responseText;
-            }).catch((error) =>{
-                $self.set('Content-Type','application/json;charset=utf-8');
-                $self.body=error.error;
-                console.error(error.error);
-            }));
-    }).get('/biddingwebinfo/count', function*(){//获取总条数
+    }).get('/opinCount/count', function*(){//获取总条数
         var $self = this;
         var countToken = {userToken:$self.cookies.get('token')};
-        yield (server().getWebInfoTotal(countToken)
+        yield (server().opinCount(countToken)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
                 $self.body = responseText;
@@ -281,23 +242,10 @@ module.exports = function(){
                 $self.body=error.error;
                 console.error(error.error);
             }));
-    }).get('/biddingwebinfo/web', function*(){//获取id
-        var $self = this;
-        var findIdData = $self.request.query;
-        findIdData.userToken = $self.cookies.get('token');
-        yield (server().findWebInfoId(findIdData)
-            .then((parsedBody) =>{
-                var responseText = JSON.parse(parsedBody);
-                $self.body = responseText;
-            }).catch((error) =>{
-                $self.set('Content-Type','application/json;charset=utf-8');
-                $self.body=error.error;
-                console.error(error.error);
-            }));
-        }).get('/websitePermission/permission/:guideAddrStatus', function*(){ //导航权限
+        }).get('/opinPermission/opinPermission/:guideAddrStatus', function*(){ //导航权限
         var $self = this;
         var page = {name:$self.params.guideAddrStatus,userToken:$self.cookies.get('token')};
-        yield (server().websitePermission(page)
+        yield (server().opinPermission(page)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
                 $self.body = responseText;
@@ -762,6 +710,19 @@ module.exports = function(){
         var summaryData = $self.request.query;
         summaryData.userToken = $self.cookies.get('token');
         yield (server().gitLevel(summaryData)
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
+    }).get('/gitTier/tier', function*(){ //举荐轮换层级
+        var $self = this;
+        var summaryData = $self.request.query;
+        summaryData.userToken = $self.cookies.get('token');
+        yield (server().gitTier(summaryData)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
                 $self.body = responseText;

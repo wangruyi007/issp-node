@@ -121,74 +121,22 @@ module.exports = function(){
                 $self.body=error.error;
                 console.error(error.error);
             }));
-    })
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-   .get('/laborElation/id', function*(){
+    }).get('/date/guidePermission/:guideAddrStatus', function*(){  //日指标导航权限
         var $self = this;
-        var token={token:$self.cookies.get('token')};
-        yield (server().laborById(token)
+        var page = {name:$self.params.guideAddrStatus,token:$self.cookies.get('token')};
+        yield (server().datePermission(page)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
                 $self.body = responseText;
             }).catch((error) =>{
                 $self.set('Content-Type','application/json;charset=utf-8');
                 $self.body=error.error;
-                console.error(error.error);
             }));
-    }).get('/socialSecurity/id', function*(){
-        var $self = this;
-        var token={token:$self.cookies.get('token')};
-        yield (server().socialById(token)
-            .then((parsedBody) =>{
-                var responseText = JSON.parse(parsedBody);
-                $self.body = responseText;
-            }).catch((error) =>{
-                $self.set('Content-Type','application/json;charset=utf-8');
-                $self.body=error.error;
-                console.error(error.error);
-            }));
-    }).post('/qualified/upload', koaBody({multipart:true}),function *(next) {
-        var $self = this;
-        var uploadData = $self.request.body;
-        uploadData.token = $self.cookies.get("token");
-        yield (server().quaUploadFile(uploadData)
-            .then((parsedBody) =>{
-                $self.body = parsedBody;
-            }).catch((error) =>{
-                $self.set('Content-Type','application/json;charset=utf-8');
-                $self.body=error.error;
-                console.error(error.error);
-            }));
-    }).get('/listArchives/list', function*(){
+    }).get('/date/list', function*(){
         var $self = this;
         var page = $self.request.query;
         page.token = this.cookies.get('token');
-        yield (server().archivesList(page)
+        yield (server().dateList(page)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
                 $self.body = responseText;
@@ -197,10 +145,10 @@ module.exports = function(){
                 $self.body=error.error;
                 console.error(error.error);
             }));
-    }).get('/countArchives/count', function*(){
+    }) .get('/date/count', function*(){
         var $self = this;
         var token={token:$self.cookies.get('token')};
-        yield (server().countArchives(token)
+        yield (server().dateCount(token)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
                 $self.body = responseText;
@@ -209,11 +157,11 @@ module.exports = function(){
                 $self.body=error.error;
                 console.error(error.error);
             }));
-    }).get('/deleteArchives/delete', function*(){
+    }).get('/date/delete', function*(){
         var $self = this;
         var delData = $self.request.query;
         delData.token = this.cookies.get('token');
-        yield (server().archivesDelete(delData)
+        yield (server().dateDelete(delData)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
                 $self.body = responseText;
@@ -222,11 +170,11 @@ module.exports = function(){
                 $self.body=error.error;
                 console.error(error.error);
             }));
-    }).post('/addArchives/add', function*(){
+    }).post('/date/add', function*(){
         var $self = this;
         var addData = this.request.body;
         addData.token = this.cookies.get('token');
-        yield (server().archivesAdd(addData)
+        yield (server().dateAdd(addData)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
                 $self.body = responseText;
@@ -235,11 +183,11 @@ module.exports = function(){
                 $self.body=error.error;
                 console.error(error.error);
             }));
-    }).get('/archives/getOneById', function*(){
+    }).get('/date/getOneById', function*(){
         var $self = this;
         var editId = $self.request.query;
         editId.token = $self.cookies.get('token');
-        yield (server().archivesEditById(editId)
+        yield (server().dateEditById(editId)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
                 $self.body = responseText;
@@ -248,11 +196,11 @@ module.exports = function(){
                 $self.body=error.error;
                 console.error(error.error);
             }));
-    }).post('/editArchives/edit', function*(){
+    }).post('/date/edit', function*(){
         var $self = this;
         var editData = this.request.body;
         editData.token = this.cookies.get('token');
-        yield (server().archivesEdit(editData)
+        yield (server().dateEdit(editData)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
                 $self.body = responseText;
@@ -261,11 +209,11 @@ module.exports = function(){
                 $self.body=error.error;
                 console.error(error.error);
             }));
-    }).post('/reviewArchives/review', function*(){
+    }).post('/stand/edit', function*(){
         var $self = this;
-        var auditData = $self.request.body;
-        auditData.token = $self.cookies.get('token');
-        yield (server().reArchives(auditData)
+        var editData = this.request.body;
+        editData.token = this.cookies.get('token');
+        yield (server().standEdit(editData)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
                 $self.body = responseText;
@@ -274,11 +222,22 @@ module.exports = function(){
                 $self.body=error.error;
                 console.error(error.error);
             }));
-    }).get('/listDetailed/list', function*(){
+    }).get('/week/guidePermission/:guideAddrStatus', function*(){  //周指标指标导航权限
+        var $self = this;
+        var page = {name:$self.params.guideAddrStatus,token:$self.cookies.get('token')};
+        yield (server().weekPermission(page)
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+            }));
+    }).get('/week/list', function*(){
         var $self = this;
         var page = $self.request.query;
         page.token = this.cookies.get('token');
-        yield (server().detailedList(page)
+        yield (server().weekList(page)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
                 $self.body = responseText;
@@ -287,10 +246,10 @@ module.exports = function(){
                 $self.body=error.error;
                 console.error(error.error);
             }));
-    }).get('/countDetailed/count', function*(){
+    }) .get('/week/count', function*(){
         var $self = this;
         var token={token:$self.cookies.get('token')};
-        yield (server().countDetail(token)
+        yield (server().weekCount(token)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
                 $self.body = responseText;
@@ -299,11 +258,11 @@ module.exports = function(){
                 $self.body=error.error;
                 console.error(error.error);
             }));
-    }).get('/deleteDetailed/delete', function*(){
+    }).get('/week/delete', function*(){
         var $self = this;
         var delData = $self.request.query;
         delData.token = this.cookies.get('token');
-        yield (server().detailedDelete(delData)
+        yield (server().weekDelete(delData)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
                 $self.body = responseText;
@@ -312,11 +271,11 @@ module.exports = function(){
                 $self.body=error.error;
                 console.error(error.error);
             }));
-    }).post('/addDetailed/add', function*(){
+    }).post('/week/add', function*(){
         var $self = this;
         var addData = this.request.body;
         addData.token = this.cookies.get('token');
-        yield (server().detailedAdd(addData)
+        yield (server().weekAdd(addData)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
                 $self.body = responseText;
@@ -325,11 +284,11 @@ module.exports = function(){
                 $self.body=error.error;
                 console.error(error.error);
             }));
-    }).get('/detailed/getOneById', function*(){
+    }).get('/week/getOneById', function*(){
         var $self = this;
         var editId = $self.request.query;
         editId.token = $self.cookies.get('token');
-        yield (server().detailedEditById(editId)
+        yield (server().weekEditById(editId)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
                 $self.body = responseText;
@@ -338,11 +297,11 @@ module.exports = function(){
                 $self.body=error.error;
                 console.error(error.error);
             }));
-    }).post('/editDetailed/edit', function*(){
+    }).post('/week/edit', function*(){
         var $self = this;
         var editData = this.request.body;
         editData.token = this.cookies.get('token');
-        yield (server().detailedEdit(editData)
+        yield (server().weekEdit(editData)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
                 $self.body = responseText;
@@ -351,23 +310,35 @@ module.exports = function(){
                 $self.body=error.error;
                 console.error(error.error);
             }));
-    }).post('/detailed/upload', koaBody({multipart:true}),function *(next) {
+    }).post('/standweek/edit', function*(){
         var $self = this;
-        var uploadData = $self.request.body;
-        uploadData.token = $self.cookies.get("token");
-        yield (server().detailedUploadFile(uploadData)
+        var editData = this.request.body;
+        editData.token = this.cookies.get('token');
+        yield (server().standweekEdit(editData)
             .then((parsedBody) =>{
-                $self.body = parsedBody;
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
             }).catch((error) =>{
                 $self.set('Content-Type','application/json;charset=utf-8');
                 $self.body=error.error;
                 console.error(error.error);
             }));
-    }).get('/listCollect/list', function*(){
+    }).get('/month/guidePermission/:guideAddrStatus', function*(){  //月指标指标导航权限
+        var $self = this;
+        var page = {name:$self.params.guideAddrStatus,token:$self.cookies.get('token')};
+        yield (server().monthPermission(page)
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+            }));
+    }).get('/month/list', function*(){
         var $self = this;
         var page = $self.request.query;
         page.token = this.cookies.get('token');
-        yield (server().collectList(page)
+        yield (server().monthList(page)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
                 $self.body = responseText;
@@ -376,10 +347,10 @@ module.exports = function(){
                 $self.body=error.error;
                 console.error(error.error);
             }));
-    }).get('/countCollect/count', function*(){
+    }) .get('/month/count', function*(){
         var $self = this;
         var token={token:$self.cookies.get('token')};
-        yield (server().collectCount(token)
+        yield (server().monthCount(token)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
                 $self.body = responseText;
@@ -388,11 +359,11 @@ module.exports = function(){
                 $self.body=error.error;
                 console.error(error.error);
             }));
-    }).get('/deleteCollect/delete', function*(){
+    }).get('/month/delete', function*(){
         var $self = this;
         var delData = $self.request.query;
         delData.token = this.cookies.get('token');
-        yield (server().collectDelete(delData)
+        yield (server().monthDelete(delData)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
                 $self.body = responseText;
@@ -401,11 +372,11 @@ module.exports = function(){
                 $self.body=error.error;
                 console.error(error.error);
             }));
-    }).post('/addCollect/add', function*(){
+    }).post('/month/add', function*(){
         var $self = this;
         var addData = this.request.body;
         addData.token = this.cookies.get('token');
-        yield (server().collectAdd(addData)
+        yield (server().monthAdd(addData)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
                 $self.body = responseText;
@@ -414,11 +385,11 @@ module.exports = function(){
                 $self.body=error.error;
                 console.error(error.error);
             }));
-    }).get('/collect/getOneById', function*(){
+    }).get('/month/getOneById', function*(){
         var $self = this;
         var editId = $self.request.query;
         editId.token = $self.cookies.get('token');
-        yield (server().collectEditById(editId)
+        yield (server().monthEditById(editId)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
                 $self.body = responseText;
@@ -427,11 +398,11 @@ module.exports = function(){
                 $self.body=error.error;
                 console.error(error.error);
             }));
-    }).post('/editCollect/edit', function*(){
+    }).post('/month/edit', function*(){
         var $self = this;
         var editData = this.request.body;
         editData.token = this.cookies.get('token');
-        yield (server().collectEdit(editData)
+        yield (server().monthEdit(editData)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
                 $self.body = responseText;
@@ -440,113 +411,11 @@ module.exports = function(){
                 $self.body=error.error;
                 console.error(error.error);
             }));
-    }).post('/collect/upload', koaBody({multipart:true}),function *(next) {
-        var $self = this;
-        var uploadData = $self.request.body;
-        uploadData.token = $self.cookies.get("token");
-        yield (server().collectUploadFile(uploadData)
-            .then((parsedBody) =>{
-                $self.body = parsedBody;
-            }).catch((error) =>{
-                $self.set('Content-Type','application/json;charset=utf-8');
-                $self.body=error.error;
-                console.error(error.error);
-            }));
-    }).get('/listBasic/list', function*(){
-        var $self = this;
-        var page = $self.request.query;
-        page.token = this.cookies.get('token');
-        yield (server().basicList(page)
-            .then((parsedBody) =>{
-                var responseText = JSON.parse(parsedBody);
-                $self.body = responseText;
-            }).catch((error) =>{
-                $self.set('Content-Type','application/json;charset=utf-8');
-                $self.body=error.error;
-                console.error(error.error);
-            }));
-    }).get('/countBasic/count', function*(){
-        var $self = this;
-        var token={token:$self.cookies.get('token')};
-        yield (server().basicCount(token)
-            .then((parsedBody) =>{
-                var responseText = JSON.parse(parsedBody);
-                $self.body = responseText;
-            }).catch((error) =>{
-                $self.set('Content-Type','application/json;charset=utf-8');
-                $self.body=error.error;
-                console.error(error.error);
-            }));
-    }).get('/deleteBasic/delete', function*(){
-        var $self = this;
-        var delData = $self.request.query;
-        delData.token = this.cookies.get('token');
-        yield (server().basicDelete(delData)
-            .then((parsedBody) =>{
-                var responseText = JSON.parse(parsedBody);
-                $self.body = responseText;
-            }).catch((error) =>{
-                $self.set('Content-Type','application/json;charset=utf-8');
-                $self.body=error.error;
-                console.error(error.error);
-            }));
-    }).get('/congealBasic/congeal', function*(){
-        var $self = this;
-        var congealData = $self.request.query;
-        congealData.token = $self.cookies.get('token');
-        yield (server().basicCongeal(congealData)
-            .then((parsedBody) =>{
-                var responseText = JSON.parse(parsedBody);
-                $self.body = responseText;
-            }).catch((error) =>{
-                $self.set('Content-Type','application/json;charset=utf-8');
-                $self.body=error.error;
-                console.error(error.error);
-            }));
-    }).get('/thawBasic/thaw', function*(){
-        var $self = this;
-        var thawData = $self.request.query;
-        thawData.token = $self.cookies.get('token');
-        yield (server().basicThaw(thawData)
-            .then((parsedBody) =>{
-                var responseText = JSON.parse(parsedBody);
-                $self.body = responseText;
-            }).catch((error) =>{
-                $self.set('Content-Type','application/json;charset=utf-8');
-                $self.body=error.error;
-                console.error(error.error);
-            }));
-    }).post('/addBasic/add', function*(){
-        var $self = this;
-        var addData = this.request.body;
-        addData.token = this.cookies.get('token');
-        yield (server().basicAdd(addData)
-            .then((parsedBody) =>{
-                var responseText = JSON.parse(parsedBody);
-                $self.body = responseText;
-            }).catch((error) =>{
-                $self.set('Content-Type','application/json;charset=utf-8');
-                $self.body=error.error;
-                console.error(error.error);
-            }));
-    }).get('/basic/getOneById', function*(){
-        var $self = this;
-        var editId = $self.request.query;
-        editId.token = $self.cookies.get('token');
-        yield (server().basicEditById(editId)
-            .then((parsedBody) =>{
-                var responseText = JSON.parse(parsedBody);
-                $self.body = responseText;
-            }).catch((error) =>{
-                $self.set('Content-Type','application/json;charset=utf-8');
-                $self.body=error.error;
-                console.error(error.error);
-            }));
-    }).post('/editBasic/edit', function*(){
+    }).post('/standmonth/edit', function*(){
         var $self = this;
         var editData = this.request.body;
         editData.token = this.cookies.get('token');
-        yield (server().basicEdit(editData)
+        yield (server().standmonthEdit(editData)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
                 $self.body = responseText;
@@ -555,684 +424,7 @@ module.exports = function(){
                 $self.body=error.error;
                 console.error(error.error);
             }));
-    }).get('/listMessage/list', function*(){
-        var $self = this;
-        var page = $self.request.query;
-        page.token = this.cookies.get('token');
-        yield (server().messageList(page)
-            .then((parsedBody) =>{
-                var responseText = JSON.parse(parsedBody);
-                $self.body = responseText;
-            }).catch((error) =>{
-                $self.set('Content-Type','application/json;charset=utf-8');
-                $self.body=error.error;
-                console.error(error.error);
-            }));
-    }).get('/countMessage/count', function*(){
-        var $self = this;
-        var token={token:$self.cookies.get('token')};
-        yield (server().messageCount(token)
-            .then((parsedBody) =>{
-                var responseText = JSON.parse(parsedBody);
-                $self.body = responseText;
-            }).catch((error) =>{
-                $self.set('Content-Type','application/json;charset=utf-8');
-                $self.body=error.error;
-                console.error(error.error);
-            }));
-    }).get('/deleteMessage/delete', function*(){
-        var $self = this;
-        var delData = $self.request.query;
-        delData.token = this.cookies.get('token');
-        yield (server().messageDelete(delData)
-            .then((parsedBody) =>{
-                var responseText = JSON.parse(parsedBody);
-                $self.body = responseText;
-            }).catch((error) =>{
-                $self.set('Content-Type','application/json;charset=utf-8');
-                $self.body=error.error;
-                console.error(error.error);
-            }));
-    }).post('/addMessage/add', function*(){
-        var $self = this;
-        var addData = this.request.body;
-        addData.token = this.cookies.get('token');
-        yield (server().messageAdd(addData)
-            .then((parsedBody) =>{
-                var responseText = JSON.parse(parsedBody);
-                $self.body = responseText;
-            }).catch((error) =>{
-                $self.set('Content-Type','application/json;charset=utf-8');
-                $self.body=error.error;
-                console.error(error.error);
-            }));
-    }).get('/message/getOneById', function*(){
-        var $self = this;
-        var editId = $self.request.query;
-        editId.token = $self.cookies.get('token');
-        yield (server().messageEditById(editId)
-            .then((parsedBody) =>{
-                var responseText = JSON.parse(parsedBody);
-                $self.body = responseText;
-            }).catch((error) =>{
-                $self.set('Content-Type','application/json;charset=utf-8');
-                $self.body=error.error;
-                console.error(error.error);
-            }));
-    }).post('/editMessage/edit', function*(){
-        var $self = this;
-        var editData = this.request.body;
-        editData.token = this.cookies.get('token');
-        yield (server().messageEdit(editData)
-            .then((parsedBody) =>{
-                var responseText = JSON.parse(parsedBody);
-                $self.body = responseText;
-            }).catch((error) =>{
-                $self.set('Content-Type','application/json;charset=utf-8');
-                $self.body=error.error;
-                console.error(error.error);
-            }));
-    }).get('/name/id', function*(){
-        var $self = this;
-        var token={token:$self.cookies.get('token')};
-        yield (server().nameById(token)
-            .then((parsedBody) =>{
-                var responseText = JSON.parse(parsedBody);
-                $self.body = responseText;
-            }).catch((error) =>{
-                $self.set('Content-Type','application/json;charset=utf-8');
-                $self.body=error.error;
-                console.error(error.error);
-            }));
-    }).get('/informMessage/id', function*(){
-        var $self = this;
-        var token={token:$self.cookies.get('token')};
-        yield (server().informById(token)
-            .then((parsedBody) =>{
-                var responseText = JSON.parse(parsedBody);
-                $self.body = responseText;
-            }).catch((error) =>{
-                $self.set('Content-Type','application/json;charset=utf-8');
-                $self.body=error.error;
-                console.error(error.error);
-            }));
-    }).get('/listSocial/list', function*(){
-        var $self = this;
-        var page = $self.request.query;
-        page.token = this.cookies.get('token');
-        yield (server().socialList(page)
-            .then((parsedBody) =>{
-                var responseText = JSON.parse(parsedBody);
-                $self.body = responseText;
-            }).catch((error) =>{
-                $self.set('Content-Type','application/json;charset=utf-8');
-                $self.body=error.error;
-                console.error(error.error);
-            }));
-    }).get('/countSocial/count', function*(){
-        var $self = this;
-        var token={token:$self.cookies.get('token')};
-        yield (server().socialCount(token)
-            .then((parsedBody) =>{
-                var responseText = JSON.parse(parsedBody);
-                $self.body = responseText;
-            }).catch((error) =>{
-                $self.set('Content-Type','application/json;charset=utf-8');
-                $self.body=error.error;
-                console.error(error.error);
-            }));
-    }).get('/deleteSocial/delete', function*(){
-        var $self = this;
-        var delData = $self.request.query;
-        delData.token = this.cookies.get('token');
-        yield (server().socialDelete(delData)
-            .then((parsedBody) =>{
-                var responseText = JSON.parse(parsedBody);
-                $self.body = responseText;
-            }).catch((error) =>{
-                $self.set('Content-Type','application/json;charset=utf-8');
-                $self.body=error.error;
-                console.error(error.error);
-            }));
-    }).get('/congealSocial/congeal', function*(){
-        var $self = this;
-        var congealData = $self.request.query;
-        congealData.token = $self.cookies.get('token');
-        yield (server().socialCongeal(congealData)
-            .then((parsedBody) =>{
-                var responseText = JSON.parse(parsedBody);
-                $self.body = responseText;
-            }).catch((error) =>{
-                $self.set('Content-Type','application/json;charset=utf-8');
-                $self.body=error.error;
-                console.error(error.error);
-            }));
-    }).get('/thawSocial/thaw', function*(){
-        var $self = this;
-        var thawData = $self.request.query;
-        thawData.token = $self.cookies.get('token');
-        yield (server().socialThaw(thawData)
-            .then((parsedBody) =>{
-                var responseText = JSON.parse(parsedBody);
-                $self.body = responseText;
-            }).catch((error) =>{
-                $self.set('Content-Type','application/json;charset=utf-8');
-                $self.body=error.error;
-                console.error(error.error);
-            }));
-    }).post('/addSocial/add', function*(){
-        var $self = this;
-        var addData = this.request.body;
-        addData.token = this.cookies.get('token');
-        yield (server().socialAdd(addData)
-            .then((parsedBody) =>{
-                var responseText = JSON.parse(parsedBody);
-                $self.body = responseText;
-            }).catch((error) =>{
-                $self.set('Content-Type','application/json;charset=utf-8');
-                $self.body=error.error;
-                console.error(error.error);
-            }));
-    }).get('/social/getOneById', function*(){
-        var $self = this;
-        var editId = $self.request.query;
-        editId.token = $self.cookies.get('token');
-        yield (server().socialEditById(editId)
-            .then((parsedBody) =>{
-                var responseText = JSON.parse(parsedBody);
-                $self.body = responseText;
-            }).catch((error) =>{
-                $self.set('Content-Type','application/json;charset=utf-8');
-                $self.body=error.error;
-                console.error(error.error);
-            }));
-    }).post('/editSocial/edit', function*(){
-        var $self = this;
-        var editData = this.request.body;
-        editData.token = this.cookies.get('token');
-        yield (server().socialEdit(editData)
-            .then((parsedBody) =>{
-                var responseText = JSON.parse(parsedBody);
-                $self.body = responseText;
-            }).catch((error) =>{
-                $self.set('Content-Type','application/json;charset=utf-8');
-                $self.body=error.error;
-                console.error(error.error);
-            }));
-    }).get('/listLabour/list', function*(){
-        var $self = this;
-        var page = $self.request.query;
-        page.token = this.cookies.get('token');
-        yield (server().labourList(page)
-            .then((parsedBody) =>{
-                var responseText = JSON.parse(parsedBody);
-                $self.body = responseText;
-            }).catch((error) =>{
-                $self.set('Content-Type','application/json;charset=utf-8');
-                $self.body=error.error;
-                console.error(error.error);
-            }));
-    }).get('/countLabour/count', function*(){
-        var $self = this;
-        var token={token:$self.cookies.get('token')};
-        yield (server().labourCount(token)
-            .then((parsedBody) =>{
-                var responseText = JSON.parse(parsedBody);
-                $self.body = responseText;
-            }).catch((error) =>{
-                $self.set('Content-Type','application/json;charset=utf-8');
-                $self.body=error.error;
-                console.error(error.error);
-            }));
-    }).get('/deleteLabour/delete', function*(){
-        var $self = this;
-        var delData = $self.request.query;
-        delData.token = this.cookies.get('token');
-        yield (server().labourDelete(delData)
-            .then((parsedBody) =>{
-                var responseText = JSON.parse(parsedBody);
-                $self.body = responseText;
-            }).catch((error) =>{
-                $self.set('Content-Type','application/json;charset=utf-8');
-                $self.body=error.error;
-                console.error(error.error);
-            }));
-    }).get('/congealLabour/congeal', function*(){
-        var $self = this;
-        var congealData = $self.request.query;
-        congealData.token = $self.cookies.get('token');
-        yield (server().labourCongeal(congealData)
-            .then((parsedBody) =>{
-                var responseText = JSON.parse(parsedBody);
-                $self.body = responseText;
-            }).catch((error) =>{
-                $self.set('Content-Type','application/json;charset=utf-8');
-                $self.body=error.error;
-                console.error(error.error);
-            }));
-    }).get('/thawLabour/thaw', function*(){
-        var $self = this;
-        var thawData = $self.request.query;
-        thawData.token = $self.cookies.get('token');
-        yield (server().labourThaw(thawData)
-            .then((parsedBody) =>{
-                var responseText = JSON.parse(parsedBody);
-                $self.body = responseText;
-            }).catch((error) =>{
-                $self.set('Content-Type','application/json;charset=utf-8');
-                $self.body=error.error;
-                console.error(error.error);
-            }));
-    }).post('/addLabour/add', function*(){
-        var $self = this;
-        var addData = this.request.body;
-        addData.token = this.cookies.get('token');
-        yield (server().labourAdd(addData)
-            .then((parsedBody) =>{
-                var responseText = JSON.parse(parsedBody);
-                $self.body = responseText;
-            }).catch((error) =>{
-                $self.set('Content-Type','application/json;charset=utf-8');
-                $self.body=error.error;
-                console.error(error.error);
-            }));
-    }).get('/labour/getOneById', function*(){
-        var $self = this;
-        var editId = $self.request.query;
-        editId.token = $self.cookies.get('token');
-        yield (server().labourEditById(editId)
-            .then((parsedBody) =>{
-                var responseText = JSON.parse(parsedBody);
-                $self.body = responseText;
-            }).catch((error) =>{
-                $self.set('Content-Type','application/json;charset=utf-8');
-                $self.body=error.error;
-                console.error(error.error);
-            }));
-    }).post('/editLabour/edit', function*(){
-        var $self = this;
-        var editData = this.request.body;
-        editData.token = this.cookies.get('token');
-        yield (server().labourEdit(editData)
-            .then((parsedBody) =>{
-                var responseText = JSON.parse(parsedBody);
-                $self.body = responseText;
-            }).catch((error) =>{
-                $self.set('Content-Type','application/json;charset=utf-8');
-                $self.body=error.error;
-                console.error(error.error);
-            }));
-    }).get('/listLabour/list', function*(){
-        var $self = this;
-        var page = $self.request.query;
-        page.token = this.cookies.get('token');
-        yield (server().labourList(page)
-            .then((parsedBody) =>{
-                var responseText = JSON.parse(parsedBody);
-                $self.body = responseText;
-            }).catch((error) =>{
-                $self.set('Content-Type','application/json;charset=utf-8');
-                $self.body=error.error;
-                console.error(error.error);
-            }));
-    }).get('/countLabour/count', function*(){
-        var $self = this;
-        var token={token:$self.cookies.get('token')};
-        yield (server().labourCount(token)
-            .then((parsedBody) =>{
-                var responseText = JSON.parse(parsedBody);
-                $self.body = responseText;
-            }).catch((error) =>{
-                $self.set('Content-Type','application/json;charset=utf-8');
-                $self.body=error.error;
-                console.error(error.error);
-            }));
-    }).get('/deleteLabour/delete', function*(){
-        var $self = this;
-        var delData = $self.request.query;
-        delData.token = this.cookies.get('token');
-        yield (server().labourDelete(delData)
-            .then((parsedBody) =>{
-                var responseText = JSON.parse(parsedBody);
-                $self.body = responseText;
-            }).catch((error) =>{
-                $self.set('Content-Type','application/json;charset=utf-8');
-                $self.body=error.error;
-                console.error(error.error);
-            }));
-    }).get('/congealLabour/congeal', function*(){
-        var $self = this;
-        var congealData = $self.request.query;
-        congealData.token = $self.cookies.get('token');
-        yield (server().labourCongeal(congealData)
-            .then((parsedBody) =>{
-                var responseText = JSON.parse(parsedBody);
-                $self.body = responseText;
-            }).catch((error) =>{
-                $self.set('Content-Type','application/json;charset=utf-8');
-                $self.body=error.error;
-                console.error(error.error);
-            }));
-    }).get('/thawLabour/thaw', function*(){
-        var $self = this;
-        var thawData = $self.request.query;
-        thawData.token = $self.cookies.get('token');
-        yield (server().labourThaw(thawData)
-            .then((parsedBody) =>{
-                var responseText = JSON.parse(parsedBody);
-                $self.body = responseText;
-            }).catch((error) =>{
-                $self.set('Content-Type','application/json;charset=utf-8');
-                $self.body=error.error;
-                console.error(error.error);
-            }));
-    }).post('/addLabour/add', function*(){
-        var $self = this;
-        var addData = this.request.body;
-        addData.token = this.cookies.get('token');
-        yield (server().labourAdd(addData)
-            .then((parsedBody) =>{
-                var responseText = JSON.parse(parsedBody);
-                $self.body = responseText;
-            }).catch((error) =>{
-                $self.set('Content-Type','application/json;charset=utf-8');
-                $self.body=error.error;
-                console.error(error.error);
-            }));
-    }).get('/labour/getOneById', function*(){
-        var $self = this;
-        var editId = $self.request.query;
-        editId.token = $self.cookies.get('token');
-        yield (server().labourEditById(editId)
-            .then((parsedBody) =>{
-                var responseText = JSON.parse(parsedBody);
-                $self.body = responseText;
-            }).catch((error) =>{
-                $self.set('Content-Type','application/json;charset=utf-8');
-                $self.body=error.error;
-                console.error(error.error);
-            }));
-    }).post('/editLabour/edit', function*(){
-        var $self = this;
-        var editData = this.request.body;
-        editData.token = this.cookies.get('token');
-        yield (server().labourEdit(editData)
-            .then((parsedBody) =>{
-                var responseText = JSON.parse(parsedBody);
-                $self.body = responseText;
-            }).catch((error) =>{
-                $self.set('Content-Type','application/json;charset=utf-8');
-                $self.body=error.error;
-                console.error(error.error);
-            }));
-    }).get('/listAnnex/list', function*(){
-        var $self = this;
-        var page = $self.request.query;
-        page.token = this.cookies.get('token');
-        yield (server().annexList(page)
-            .then((parsedBody) =>{
-                var responseText = JSON.parse(parsedBody);
-                $self.body = responseText;
-            }).catch((error) =>{
-                $self.set('Content-Type','application/json;charset=utf-8');
-                $self.body=error.error;
-                console.error(error.error);
-            }));
-    }).get('/countAnnex/count', function*(){
-        var $self = this;
-        var token={token:$self.cookies.get('token')};
-        yield (server().annexCount(token)
-            .then((parsedBody) =>{
-                var responseText = JSON.parse(parsedBody);
-                $self.body = responseText;
-            }).catch((error) =>{
-                $self.set('Content-Type','application/json;charset=utf-8');
-                $self.body=error.error;
-                console.error(error.error);
-            }));
-    }).get('/deleteAnnex/delete', function*(){
-        var $self = this;
-        var delData = $self.request.query;
-        delData.token = this.cookies.get('token');
-        yield (server().annexDelete(delData)
-            .then((parsedBody) =>{
-                var responseText = JSON.parse(parsedBody);
-                $self.body = responseText;
-            }).catch((error) =>{
-                $self.set('Content-Type','application/json;charset=utf-8');
-                $self.body=error.error;
-                console.error(error.error);
-            }));
-    }).get('/congealAnnex/congeal', function*(){
-        var $self = this;
-        var congealData = $self.request.query;
-        congealData.token = $self.cookies.get('token');
-        yield (server().annexCongeal(congealData)
-            .then((parsedBody) =>{
-                var responseText = JSON.parse(parsedBody);
-                $self.body = responseText;
-            }).catch((error) =>{
-                $self.set('Content-Type','application/json;charset=utf-8');
-                $self.body=error.error;
-                console.error(error.error);
-            }));
-    }).get('/thawAnnex/thaw', function*(){
-        var $self = this;
-        var thawData = $self.request.query;
-        thawData.token = $self.cookies.get('token');
-        yield (server().annexThaw(thawData)
-            .then((parsedBody) =>{
-                var responseText = JSON.parse(parsedBody);
-                $self.body = responseText;
-            }).catch((error) =>{
-                $self.set('Content-Type','application/json;charset=utf-8');
-                $self.body=error.error;
-                console.error(error.error);
-            }));
-    }).post('/addAnnex/add', function*(){
-        var $self = this;
-        var addData = this.request.body;
-        addData.token = this.cookies.get('token');
-        yield (server().annexAdd(addData)
-            .then((parsedBody) =>{
-                var responseText = JSON.parse(parsedBody);
-                $self.body = responseText;
-            }).catch((error) =>{
-                $self.set('Content-Type','application/json;charset=utf-8');
-                $self.body=error.error;
-                console.error(error.error);
-            }));
-    }).get('/annex/getOneById', function*(){
-        var $self = this;
-        var editId = $self.request.query;
-        editId.token = $self.cookies.get('token');
-        yield (server().annexEditById(editId)
-            .then((parsedBody) =>{
-                var responseText = JSON.parse(parsedBody);
-                $self.body = responseText;
-            }).catch((error) =>{
-                $self.set('Content-Type','application/json;charset=utf-8');
-                $self.body=error.error;
-                console.error(error.error);
-            }));
-    }).post('/editAnnex/edit', function*(){
-        var $self = this;
-        var editData = this.request.body;
-        editData.token = this.cookies.get('token');
-        yield (server().annexEdit(editData)
-            .then((parsedBody) =>{
-                var responseText = JSON.parse(parsedBody);
-                $self.body = responseText;
-            }).catch((error) =>{
-                $self.set('Content-Type','application/json;charset=utf-8');
-                $self.body=error.error;
-                console.error(error.error);
-            }));
-    }).get('/viewManageFile/listFile', function*(){ //员工档案查看附件
-        var $self = this;
-        var enData = $self.request.query;
-        enData.token = $self.cookies.get('token');
-        yield (server().manageEnclosure(enData)
-            .then((parsedBody) =>{
-                var responseText = JSON.parse(parsedBody);
-                $self.body = responseText;
-            }).catch((error) =>{
-                $self.set('Content-Type','application/json;charset=utf-8');
-                $self.body=error.error;
-                console.error(error.error);
-            }));
-    }).get('/management/download', function*(){//员工档案附件下载文件
-        var $self = this;
-        var count = $self.request.query;
-        var data = {
-            path:count.path
-        };
-        yield (fetch(config()['rurl']+`/staffrecords/v1/downloadFile${urlEncode(data,true)}`, {
-            method : 'GET',
-            headers : {'userToken' : $self.cookies.get('token')}
-        }).then((res)=>{
-            fileType(count,this);
-            return res.buffer();
-        }).then(function(data){
-            $self.body = data;
-        }));
-    }).post('/management/delFile', koaBody({multipart:true}), function*(){//员工档案删除文件
-        var $self = this;
-        var delData = $self.request.body;
-        delData.token = $self.cookies.get('token');
-        yield (server().delFile(delData)
-            .then((parsedBody) =>{
-                var responseText = JSON.parse(parsedBody);
-                $self.body = responseText;
-            }).catch((error) =>{
-                $self.set('Content-Type','application/json;charset=utf-8');
-                $self.body=error.error;
-                console.error(error.error);
-            }));
-    }).get('/viewQualifiedFile/listFile', function*(){
-        var $self = this;
-        var enData = $self.request.query;
-        enData.token = $self.cookies.get('token');
-        yield (server().qualifiedEnclosure(enData)
-            .then((parsedBody) =>{
-                var responseText = JSON.parse(parsedBody);
-                $self.body = responseText;
-            }).catch((error) =>{
-                $self.set('Content-Type','application/json;charset=utf-8');
-                $self.body=error.error;
-                console.error(error.error);
-            }));
-    }).get('/qualified/download', function*(){
-        var $self = this;
-        var count = $self.request.query;
-        var data = {
-            path:count.path
-        };
-        yield (fetch(config()['rurl']+`/personnelqualification/v1/downloadFile${urlEncode(data,true)}`, {
-            method : 'GET',
-            headers : {'userToken' : $self.cookies.get('token')}
-        }).then((res)=>{
-            fileType(count,this);
-            return res.buffer();
-        }).then(function(data){
-            $self.body = data;
-        }));
-    }).post('/qualified/delFile', koaBody({multipart:true}), function*(){
-        var $self = this;
-        var delData = $self.request.body;
-        delData.token = $self.cookies.get('token');
-        yield (server().delQualified(delData)
-            .then((parsedBody) =>{
-                var responseText = JSON.parse(parsedBody);
-                $self.body = responseText;
-            }).catch((error) =>{
-                $self.set('Content-Type','application/json;charset=utf-8');
-                $self.body=error.error;
-                console.error(error.error);
-            }));
-    }).get('/detailed/listFile', function*(){
-        var $self = this;
-        var enData = $self.request.query;
-        enData.token = $self.cookies.get('token');
-        yield (server().detailedEnclosure(enData)
-            .then((parsedBody) =>{
-                var responseText = JSON.parse(parsedBody);
-                $self.body = responseText;
-            }).catch((error) =>{
-                $self.set('Content-Type','application/json;charset=utf-8');
-                $self.body=error.error;
-                console.error(error.error);
-            }));
-    }).get('/detailed/download', function*(){
-        var $self = this;
-        var count = $self.request.query;
-        var data = {
-            path:count.path
-        };
-        yield (fetch(config()['rurl']+`/archivedetail/v1/downloadFile${urlEncode(data,true)}`, {
-            method : 'GET',
-            headers : {'userToken' : $self.cookies.get('token')}
-        }).then((res)=>{
-            fileType(count,this);
-            return res.buffer();
-        }).then(function(data){
-            $self.body = data;
-        }));
-    }).post('/detailed/delFile', koaBody({multipart:true}), function*(){
-        var $self = this;
-        var delData = $self.request.body;
-        delData.token = $self.cookies.get('token');
-        yield (server().delDetailed(delData)
-            .then((parsedBody) =>{
-                var responseText = JSON.parse(parsedBody);
-                $self.body = responseText;
-            }).catch((error) =>{
-                $self.set('Content-Type','application/json;charset=utf-8');
-                $self.body=error.error;
-                console.error(error.error);
-            }));
-    }).get('/collect/listFile', function*(){
-        var $self = this;
-        var enData = $self.request.query;
-        enData.token = $self.cookies.get('token');
-        yield (server().collectEnclosure(enData)
-            .then((parsedBody) =>{
-                var responseText = JSON.parse(parsedBody);
-                $self.body = responseText;
-            }).catch((error) =>{
-                $self.set('Content-Type','application/json;charset=utf-8');
-                $self.body=error.error;
-                console.error(error.error);
-            }));
-    }).get('/collect/download', function*(){
-        var $self = this;
-        var count = $self.request.query;
-        var data = {
-            path:count.path
-        };
-        yield (fetch(config()['rurl']+`/archivegather/v1/downloadFile${urlEncode(data,true)}`, {
-            method : 'GET',
-            headers : {'userToken' : $self.cookies.get('token')}
-        }).then((res)=>{
-            fileType(count,this);
-            return res.buffer();
-        }).then(function(data){
-            $self.body = data;
-        }));
-    }).post('/collect/delFile', koaBody({multipart:true}), function*(){
-            var $self = this;
-            var delData = $self.request.body;
-            delData.token = $self.cookies.get('token');
-            yield (server().delCollect(delData)
-                .then((parsedBody) =>{
-                    var responseText = JSON.parse(parsedBody);
-                    $self.body = responseText;
-                }).catch((error) =>{
-                    $self.set('Content-Type','application/json;charset=utf-8');
-                    $self.body=error.error;
-                    console.error(error.error);
-                }));
-        }) .get('/user/logout', function*(next){
+    }).get('/user/logout', function*(next){
         var url = this.request.query;
         this.cookies.set("absUrl",url.absurl);
         this.body = {

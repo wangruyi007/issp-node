@@ -9,7 +9,7 @@ app.controller('coverEditCtrl', function($scope, coverSer,$stateParams,$state,to
     });
 
     // $scope.changSelect = function(){
-    //     var obj={biddingNumber:$scope.editcover.biddingNumber};
+    //     var obj={biddingNumber:$scope.cover.biddingNumber};
     //     coverSer.getBiddingNum(obj).then(function(response){
     //         if(response.data.code == 0){
     //             $scope.projectNames = response.data.data;
@@ -19,7 +19,7 @@ app.controller('coverEditCtrl', function($scope, coverSer,$stateParams,$state,to
     //获取ID
     coverSer.coverId(infoData).then(function(response){
         if(response.data.code == 0){
-            $scope.editcover = response.data.data;
+            $scope.cover = response.data.data;
         }else{
             toastr.error( response.data.msg, '温馨提示');
         }
@@ -29,8 +29,9 @@ app.controller('coverEditCtrl', function($scope, coverSer,$stateParams,$state,to
     //编辑点击提交
     $scope.coverEditFun = function(){
         var vm = $scope;
+
         vm.cover.applyLevelId = angular.element('.le').val();
-        coverSer.coverEdit(vm.editcover).then(function(response){
+        coverSer.coverEdit(vm.cover).then(function(response){
             if(response.data.code == 0){
                 $state.go('root.rotation.cover.list[12]');
                 toastr.success( "编辑成功", '温馨提示');

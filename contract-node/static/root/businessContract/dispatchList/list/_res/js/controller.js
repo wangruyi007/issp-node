@@ -39,17 +39,28 @@ app.controller('dispatchWorkCtrl',function($scope,dispatchSer,toastr,$stateParam
         });
     };
     //搜索字段
-    if($stateParams.inner){$scope.innerProject = $stateParams.innerProject;$scope.isView = false;}
-    if($stateParams.outNum){$scope.outProjectNum = $stateParams.outNum;$scope.isView = false;}
-    if($stateParams.saleNum){$scope.saleContractNum = $stateParams.saleNum;$scope.isView = false;}
-    if($stateParams.businessType){$scope.businessType = $stateParams.businessType;$scope.isView = false;}
-    if($stateParams.subject){$scope.businessSubject = $stateParams.subject;$scope.isView = false;}
-    if($stateParams.cooperate){$scope.businessCooperate = $stateParams.cooperate;$scope.isView = false;}
-    if($stateParams.major){$scope.majorCompany = $stateParams.major;$scope.isView = false;}
-    if($stateParams.sub){$scope.subCompany = $stateParams.sub;$scope.isView = false;}
-    if($stateParams.area){$scope.area = $stateParams.area;$scope.isView = false;}
-    if($stateParams.dispatchProject){$scope.dispatchProject = $stateParams.dispatchProject;$scope.isView = false;}
-    if($stateParams.dispatchNum){$scope.dispatchNum = $stateParams.dispatchNum;$scope.isView = false;}
+    $scope.innerProject = $stateParams.inner?$stateParams.inner:'';
+    $scope.outProjectNum = $stateParams.outNum?$stateParams.outNum:'';
+    $scope.saleContractNum = $stateParams.saleNum?$stateParams.saleNum:'';
+    $scope.businessType = $stateParams.businessType?$stateParams.businessType:'';
+    $scope.businessSubject = $stateParams.subject?$stateParams.subject:'';
+    $scope.businessCooperate = $stateParams.cooperate?$stateParams.cooperate:'';
+    $scope.majorCompany = $stateParams.major?$stateParams.major:'';
+    $scope.subCompany = $stateParams.sub?$stateParams.sub:'';
+    $scope.area = $stateParams.area?$stateParams.area:'';
+    $scope.dispatchProject = $stateParams.dispatchProject?$stateParams.dispatchProject:'';
+    $scope.dispatchNum = $stateParams.dispatchNum?$stateParams.dispatchNum:'';
+
+    if($stateParams.inner || $stateParams.outNum ||
+        $stateParams.saleNum || $stateParams.businessType ||
+        $stateParams.subject || $stateParams.cooperate ||
+        $stateParams.major || $stateParams.sub || $stateParams.area ||
+        $stateParams.dispatchProject || $stateParams.dispatchNum){
+        $scope.$emit('isId', false);
+        $scope.isView = false;
+    }else{
+        $scope.$emit('isId', true);
+    }
     //点击搜索功能
     $scope.search = function(){
         $state.go('root.businessContract.dispatchList.list[12]',{

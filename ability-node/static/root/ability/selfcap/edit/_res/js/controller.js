@@ -29,11 +29,4 @@ app.controller('selfcapEditCtrl', function($scope, selfcapSer,$state,toastr,$sta
             }
         });
     };
-    //可手填的下拉框
-    $scope.changeSelect=function(){$scope.editInfo.name = $scope.editInfo.name2;};
-    $scope.changeSelect2=function(){$scope.editInfo.capacity = $scope.editInfo.capacity2;};
-    $scope.changeSelect3=function(){$scope.editInfo.selfJobTitle = $scope.editInfo.selfJobTitle2;};
-    $scope.changeSelect4=function(){$scope.editInfo.positionTitle = $scope.editInfo.positionTitle2;};
-    $scope.changeSelect5=function(){$scope.editInfo.workYear = $scope.editInfo.workYear2;};
-    $scope.changeSelect6=function(){$scope.editInfo.selfProject = $scope.editInfo.selfProject2;};
 });

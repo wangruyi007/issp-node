@@ -36,7 +36,7 @@ app.config(function($provide, $stateProvider){
             }
         }
     }).state("root.ability.selfcap.list[12]",{
-        url:"/list[12]?id=&name=&page=",
+        url:"/list[12]?id=&name=&page=&names=",
         views:{
             "content@root.ability.selfcap":{
                 templateUrl : "root/ability/selfcap/list/_res/html/index.html",
