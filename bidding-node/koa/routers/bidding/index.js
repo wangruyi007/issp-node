@@ -300,11 +300,13 @@ module.exports = function(){
     }).get('/infoExport/export', function*(){//导出
         var $self = this;
         var count = $self.request.query;
+        var fileName = '招标信息.xlsx';
         yield (fetch(config()['rurl']+`/biddinginfo/v1/export${urlEncode(count,true)}`, {
             method : 'GET',
             headers : {'userToken' : $self.cookies.get('token')}
         }).then(function(res){
             $self.set('content-type', 'application/vnd.ms-excel;charset=utf-8');
+            $self.set('Content-Disposition', 'attachment;  filename='+encodeURI(fileName));
             return res.buffer();
         }).then(function(data){
             $self.body = data;
@@ -444,11 +446,13 @@ module.exports = function(){
     }).get('/questionExport/export', function*(){//导出
         var $self = this;
         var count = $self.request.query;
+        var fileName = '投标答疑问题.xlsx';
         yield (fetch(config()['rurl']+`/biddinganswerquestions/v1/export${urlEncode(count,true)}`, {
             method : 'GET',
             headers : {'userToken' : $self.cookies.get('token')}
         }).then(function(res){
             $self.set('content-type', 'application/vnd.ms-excel;charset=utf-8');
+            $self.set('Content-Disposition', 'attachment;  filename='+encodeURI(fileName));
             return res.buffer();
         }).then(function(data){
             $self.body = data;
@@ -600,11 +604,13 @@ module.exports = function(){
     }).get('/materialExport/export', function*(){//导出
         var $self = this;
         var count = $self.request.query;
+        var fileName ='标书资料.xlsx';
         yield (fetch(config()['rurl']+`/tenderinfo/v1/export${urlEncode(count,true)}`, {
             method : 'GET',
             headers : {'userToken' : $self.cookies.get('token')}
         }).then(function(res){
             $self.set('content-type', 'application/vnd.ms-excel;charset=utf-8');
+            $self.set('Content-Disposition', 'attachment;  filename='+encodeURI(fileName));
             return res.buffer();
         }).then(function(data){
             $self.body = data;
@@ -622,7 +628,7 @@ module.exports = function(){
                 console.error(error.error);
             }));
         //--------------------------开标信息-----------------------------
-    }).get('/openingPermission/openingPermission/:guideAddrStatus', function*(){ //项目合同基本信息菜单权限
+    }).get('/openingPermission/openingPermission/:guideAddrStatus', function*(){ //菜单权限
         var $self = this;
         var page = {name:$self.params.guideAddrStatus,userToken:$self.cookies.get('token')};
         yield (server().openingPermission(page)
@@ -636,11 +642,13 @@ module.exports = function(){
     }).get('/openingExport/export', function*(){//导出
         var $self = this;
         var count = $self.request.query;
+        var fileName ='开标信息.xlsx';
         yield (fetch(config()['rurl']+`/bidopeninginfo/v1/export${urlEncode(count,true)}`, {
             method : 'GET',
             headers : {'userToken' : $self.cookies.get('token')}
         }).then(function(res){
             $self.set('content-type', 'application/vnd.ms-excel;charset=utf-8');
+            $self.set('Content-Disposition', 'attachment;  filename='+encodeURI(fileName));
             return res.buffer();
         }).then(function(data){
             $self.body = data;
