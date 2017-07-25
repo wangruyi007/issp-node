@@ -5,15 +5,25 @@ app.controller('signingListCtrl',function($scope,signingSer,toastr,$stateParams,
     $scope.$on('isSearch',function(event,newIs){
         $scope.isView = newIs;
     });
-    //搜索
-    if($stateParams.type){$scope.businessType = $stateParams.type;$scope.isView = false;}
-    if($stateParams.subject){$scope.businessSubject = $stateParams.subject;$scope.isView = false;}
-    if($stateParams.cooperate){$scope.businessCooperate = $stateParams.cooperate;$scope.isView = false;}
-    if($stateParams.first){$scope.firstCompany = $stateParams.first;$scope.isView = false;}
-    if($stateParams.second){$scope.secondCompany = $stateParams.second;$scope.isView = false;}
-    if($stateParams.area){$scope.area = $stateParams.area;$scope.isView = false;}
-    if($stateParams.property){$scope.contractProperty = $stateParams.property;$scope.isView = false;}
-    if($stateParams.makeProject){$scope.makeProject = $stateParams.makeProject;$scope.isView = false;}
+    //搜索字段
+    $scope.businessType = $stateParams.type?$stateParams.type:'';
+    $scope.businessSubject = $stateParams.subject?$stateParams.subject:'';
+    $scope.businessCooperate = $stateParams.cooperate?$stateParams.cooperate:'';
+    $scope.firstCompany = $stateParams.first?$stateParams.first:'';
+    $scope.secondCompany = $stateParams.second?$stateParams.second:'';
+    $scope.area = $stateParams.area?$stateParams.area:'';
+    $scope.contractProperty = $stateParams.property?$stateParams.property:'';
+    $scope.makeProject = $stateParams.makeProject?$stateParams.makeProject:'';
+
+    if($stateParams.type || $stateParams.subject ||
+        $stateParams.cooperate || $stateParams.first ||
+        $stateParams.second || $stateParams.area ||
+        $stateParams.property || $stateParams.makeProject){
+        $scope.$emit('isId', false);
+        $scope.isView = false;
+    }else{
+        $scope.$emit('isId', true);
+    }
     //搜索功能
     $scope.search = function(){
         $state.go('root.businessContract.signingProject.list[12]',{
