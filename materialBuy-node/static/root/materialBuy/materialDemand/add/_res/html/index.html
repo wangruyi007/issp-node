@@ -5,7 +5,7 @@
                 <li class="required">
                     <label><i><img src="/images/mandatory.png"></i><em>地区</em></label>
                     <div class="sele side">
-                        <select class="sele" ng-model="demand.area">
+                        <select class="sele" ng-model="demand.area" >
                             <option value="广州">广州</option>
                             <option value="北京">北京</option>
                             <option value="深圳">深圳</option>
@@ -13,7 +13,7 @@
                             <option value="江门">江门</option>
                             <option value="湛江">湛江</option>
                         </select>
-                        <input type="text"  class="inputDom" ng-verify="{}" ng-model="demand.area" placeholder="请输入">
+                        <input type="text"  class="inputDom" ng-verify="{}" ng-model="demand.area" ng-init="demand.area ='请选择'">
                     </div>
                 </li>
                 <li class="required">
@@ -24,7 +24,7 @@
                             <option value="项目组2">项目组2</option>
                             <option value="项目组3">项目组3</option>
                         </select>
-                        <input type="text"  class="inputDom" ng-verify="{}" ng-model="demand.projectTeam" placeholder="请输入">
+                        <input type="text"  class="inputDom" ng-verify="{}" ng-model="demand.projectTeam" ng-init="demand.projectTeam ='请选择'">
                     </div>
                 </li>
                 <li class="required">
@@ -35,7 +35,7 @@
                             <option value="佛山负责人">佛山负责人</option>
                             <option value="湛江负责人">湛江负责人</option>
                         </select>
-                        <input type="text"  class="inputDom" ng-verify="{}" ng-model="demand.needer" placeholder="请输入">
+                        <input type="text"  class="inputDom" ng-verify="{}" ng-model="demand.needer" ng-init="demand.needer ='请选择'">
                     </div>
                 </li>
                 <li class="required">
@@ -49,7 +49,7 @@
                             <option value="硬件">硬件</option>
                             <option value="软件">软件</option>
                         </select>
-                        <input type="text"  class="inputDom" ng-verify="{}" ng-model="demand.deviceType" placeholder="请输入">
+                        <input type="text"  class="inputDom" ng-verify="{}" ng-model="demand.deviceType" ng-init="demand.deviceType ='请选择'">
                     </div>
                 </li>
                 <li class="required">
@@ -79,7 +79,7 @@
                             <option value="广州">广州</option>
                             <option value="佛山">佛山</option>
                         </select>
-                        <input type="text"  class="inputDom" ng-verify="{}" ng-model="demand.areaAuditor" placeholder="请输入">
+                        <input type="text"  class="inputDom" ng-verify="{}" ng-model="demand.areaAuditor" ng-init="demand.areaAuditor ='请选择'">
                     </div>
                 </li>
                 <li class="required">

@@ -50,11 +50,4 @@ app.factory('demandSer',function ($http) {
             params: data
         })
     }
-
-    //
-    // //获取所有名称
-    // function allProject(){
-    //     return $http.get('/siginmanage/projectName')
-    // }
-
 });

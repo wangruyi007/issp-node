@@ -69,7 +69,7 @@ app.controller('demandListCtrl',function($scope,demandSer,toastr,$stateParams,$s
         }
         $scope.cancel = function(){//取消删除
             $scope.delShow = false;
-            $state.go('root.materialBuy.deviceType.list[12]',{id:null,name:null});
+            $state.go('root.materialBuy.materialDemand.list[12]',{id:null,name:null});
         };
         var count = 0;
         $scope.delFn = function(){//确认删除

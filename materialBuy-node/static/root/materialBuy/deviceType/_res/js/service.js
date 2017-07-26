@@ -44,18 +44,4 @@ app.factory('deviceSer',function ($http) {
             params: data
         })
     }
-    /*
-    //分页总条数
-    function countInventory(data){
-        return $http.get('/inventory/count',{params:data})
-    }
-
-
-
-    //excel导出获取
-    function getExcel(data){
-        return $http.get('/inventory/list',{
-            params:data
-        })
-    }*/
 });

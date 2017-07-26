@@ -50,7 +50,8 @@ app.controller('deviceCtrl',function ($scope,$state) {
         }
     };
     $scope.list = function(){
-        $scope.menuClass = 'listMenu'
+        $scope.menuClass = 'listMenu';
+        $scope.idListd = ''
     };
     $scope.add = function(){
         $scope.menuClass = 'addMenu';

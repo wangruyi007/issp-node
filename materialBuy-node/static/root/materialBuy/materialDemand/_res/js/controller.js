@@ -62,7 +62,8 @@ app.controller('demandCtrl',function ($scope,$state) {
         }
     };
     $scope.list = function(){
-        $scope.menuClass = 'listMenu'
+        $scope.menuClass = 'listMenu',
+        $scope.idListd = ''
     };
     $scope.add = function(){
         $scope.menuClass = 'addMenu';
@@ -74,4 +75,21 @@ app.controller('demandCtrl',function ($scope,$state) {
             $scope.menuClass = 'viewMenu'
         }
     };
+});
+
+//自定义过滤器
+app.filter('cover',function(){
+    return function(val){
+        var result;
+        switch(val){
+            case "UNAUDITED":
+                result = "未审核";
+                break;
+            case "AUDITED":
+                result = "已审核";
+                break;
+        }
+        return result;
+    }
+
 });

@@ -128,7 +128,7 @@ module.exports = function(){
         };
         return request(options);
     };
-    //列表
+    //设备类型列表
     this.getDemandList = function(argvs){
         var options = {
             method : 'GET',
@@ -204,7 +204,7 @@ module.exports = function(){
         return request(options);
     };
     //删除临时物资需求
-    this.deviceDelete = function(argvs){
+    this.demandDelete = function(argvs){
         var options = {
             method : 'DELETE',
             timeout : 3000,
@@ -215,24 +215,36 @@ module.exports = function(){
         };
         return request(options);
     };
- /*   //获取查找总记录数
-    this.getInventoryTotal = function(argvs){
+    //物资购买菜单功能权限
+    this.guideMatrial = function(argvs){
         var options = {
             method : 'GET',
             timeout : 3000,
-            uri : config()['rurl'] + `/inventory/v1/count`,// 2017-07-15
+            uri : config()['rurl'] + `/materialbuy/v1/guidePermission?guideAddrStatus=`+argvs.name,//2017-07-26
             headers:{
                 userToken:argvs.userToken
             }
         };
         return request(options);
     };
-    //获取盘点
-    this.getInventory = function(argvs){
+    //设备类型列表
+    this.materialbuyList = function(argvs){
         var options = {
-            method : 'PUT',
+            method : 'GET',
             timeout : 3000,
-            uri : config()['rurl'] + `/inventory/v1/inventory`,// 2017-07-19
+            uri : config()['rurl'] + `/materialbuy/v1/list${urlEncode(argvs,true)}`,// 2017-07-24
+            headers:{
+                userToken:argvs.userToken
+            }
+        };
+        return request(options);
+    };
+    // 添加物资购买
+    this.purchaseAdd = function(argvs){
+        var options = {
+            method : 'POST',
+            timeout : 3000,
+            uri : config()['rurl'] + `/materialbuy/v1/add`,
             form:argvs,
             headers:{
                 userToken:argvs.userToken
@@ -240,41 +252,114 @@ module.exports = function(){
         };
         return request(options);
     };
-    //获取盘点id
-    this.findInventId = function(argvs){
+    //获取物资购买总条数
+    this.getPurchaseTotal = function(argvs){
         var options = {
             method : 'GET',
             timeout : 3000,
-            uri : config()['rurl'] + `/inventory/v1/inventoryOne/${argvs.id}`,// 2017-07-19
+            uri : config()['rurl'] + `/materialbuy/v1/count${urlEncode(argvs,true)}`,
             headers:{
                 userToken:argvs.userToken
             }
         };
         return request(options);
     };
-    //盘点记录菜单功能权限
-    this.reGuidePermission = function(argvs){
+    //获取ID临时物资需求
+    this.findPurId = function(argvs){
         var options = {
             method : 'GET',
             timeout : 3000,
-            uri : config()['rurl'] + `/inventoryrecord/v1/guidePermission?guideAddrStatus=`+argvs.name,//2017-07-20
+            uri : config()['rurl'] + `/materialbuy/v1/findbyid/${argvs.id}`,
             headers:{
                 userToken:argvs.userToken
             }
         };
         return request(options);
     };
-    //盘点记录列表
-    this.recordList = function(argvs){
+    //物资购买编辑
+    this.purchaseEdit = function(argvs){
+        var options = {
+            method : 'PUT',
+            timeout : 3000,
+            uri : config()['rurl'] + '/materialbuy/v1/edit',
+            headers:{
+                userToken:argvs.userToken
+            },
+            form:argvs
+        };
+        return request(options);
+    };
+    //获取所有地区
+    this.purchaseProject = function(argvs){
         var options = {
             method : 'GET',
             timeout : 3000,
-            uri : config()['rurl'] + `/inventoryrecord/v1/list${urlEncode(argvs,true)}`,// 2017-07-21
+            uri : config()['rurl'] + '/materialbuy/v1/findArea',
             headers:{
                 userToken:argvs.userToken
             }
         };
         return request(options);
-    };*/
+    };
+    /*************************/
+
+
+
+
+
+
+
+
+
+
+
+    //权限设置
+    this.listSetting = function(argvs){
+        var options = {
+            method : 'GET',
+            timeout : 3000,
+            uri : config()['rurl'] + `/cuspermission/v1/list?limit=10&page=${argvs.page}`,
+            headers : {
+                userToken : argvs.userToken
+            }
+        };
+        return request(options);
+    };
+    this.countSetting = function(){
+        var options = {
+            method : 'GET',
+            timeout : 3000,
+            uri : config()['rurl'] + '/cuspermission/v1/count',
+        };
+        return request(options);
+    };
+    this.getpermit = function(argvs){
+        var options = {
+            method : 'GET',
+            timeout : 3000,
+            uri : config()['rurl'] + `/cuspermission/v1/getOneById/${argvs.id}`,
+        };
+        return request(options);
+    };
+    this.getListpermit = function(argvs){
+        var options = {
+            method : 'GET',
+            timeout : 3000,
+            uri : config()['rurl'] + `/cuspermission/v1/listOperateById/${argvs.id}`,
+        };
+        return request(options);
+    };
+    this.editSetting = function(argvs){
+        var options = {
+            method : 'PUT',
+            timeout : 3000,
+            uri : config()['rurl'] + '/cuspermission/v1/edit',
+            headers:{
+                userToken:argvs.userToken
+            },
+            form:argvs
+        };
+        return request(options);
+    };
     return this;
 };

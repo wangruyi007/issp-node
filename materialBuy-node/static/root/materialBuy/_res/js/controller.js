@@ -21,7 +21,6 @@ app.controller('materialCtrl', function ($scope,$state) {
     };
     // 前面下拉导航权限
     materialSer.navPermission().then(function(response){
-        // console.log(response)
         if(response.data.code == 0){
             var data = response.data.data;
             if(data && data.length){
@@ -55,8 +54,8 @@ app.controller('materialCtrl', function ($scope,$state) {
         }
     });
     $scope.showsList = [
-        {id:"1",item:"物资购买",menuList:[{name1:"设备类型",msg:'deviceType'},{name2:"临时物资需求",msg:'materialDemand'},{name3:"物资购买",msg:'materialBuy'}],showIs:false},
-        {id:"2",item:"设置",menuList:[{name3:'设置',msg:'setting'}],showIs:false}
+        {id:"1",item:"物资购买",menuList:[{name1:"设备类型",msg:'deviceType'},{name2:"临时物资需求",msg:'materialDemand'},{name3:"物资购买",msg:'materialPurchase'}],showIs:false},
+        {id:"2",item:"设置",menuList:[{name4:'设置',msg:'setting'}],showIs:false}
     ];
     if(active){
         for(var i = 0; i < $scope.showsList.length; i++){
