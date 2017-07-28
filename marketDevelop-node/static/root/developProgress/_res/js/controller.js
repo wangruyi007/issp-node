@@ -69,7 +69,6 @@ app.controller('progressCtrl', function ($scope,$state) {
                 obj.showIs=!event;
             }else{
                 obj.showIs=event;
-                /* angular.forEach(function(item){ showSubAble sublist*/
                 this.showsList.forEach(function(item){
                     if(item.id!=obj.id){
                         item.showIs=!event;
