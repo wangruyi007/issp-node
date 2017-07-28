@@ -64,14 +64,16 @@
                 </li>
                 <li class="required">
                     <label><i><img src="/images/mandatory.png"></i><em>合同属性</em></label>
-                    <select class="sele" ng-model="signing.contractProperty" ng-init="signing.contractProperty='FRAMECONTRACT'">
+                    <select class="sele" ng-model="signing.contractProperty" ng-verify="option:0">
+                        <option value="">请选择</option>
                         <option value="FRAMECONTRACT">框架合同</option>
                         <option value="SINGLECONTRACT">单次合同</option>
                     </select>
                 </li>
                 <li class="required">
                     <label><i><img src="/images/mandatory.png"></i><em>立项情况</em></label>
-                    <select class="sele" ng-model="signing.makeProject" ng-init="signing.makeProject='已立项'">
+                    <select class="sele" ng-model="signing.makeProject" ng-verify="option:0">
+                        <option value="">请选择</option>
                         <option value="已立项">已立项</option>
                         <option value="未立项">未立项</option>
                     </select>
