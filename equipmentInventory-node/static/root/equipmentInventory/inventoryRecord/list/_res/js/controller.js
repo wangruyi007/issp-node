@@ -38,15 +38,5 @@ app.controller('recordListCtrl',function($scope,inRecordSer,toastr,$stateParams,
         take: 10, //每页显示
         activatePage: activatePage
     };
-    $scope.selectList = function(event){
-        angular.forEach($scope.recordLists,function(obj){
-            obj._selectList = false
-        });
-        event._selectList = true;
-        $scope.idListd = event.id;
-        //向父Ctrl传递事件
-        $scope.$emit('changeId', $scope.idListd);
-        $scope.$emit('page', $location.search().page);
-    };
 });
 

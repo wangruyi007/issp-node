@@ -31,7 +31,7 @@ app.factory('inRecordSer',function ($http) {
     }
     //部门汇总
     function recordDep(data) {
-        return $http.get('/inventoryrecord/areaCount',{
+        return $http.get('/inventoryrecord/projectGroupCount',{
             params: data
         })
     }

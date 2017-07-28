@@ -287,19 +287,6 @@ module.exports = function(){
                 console.error(error.error);
             }));
     });
-        /*.get('/inventory/export', function*() { //获取excel
-            var $self = this;
-            var page = $self.request.query;
-            page.userToken = $self.cookies.get('token');
-            yield (server().inExcel(page)
-                .then((parsedBody) => {
-                    var responseText = JSON.parse(parsedBody);
-                    $self.body = responseText;
-                }).catch((error) => {
-                    $self.set('Content-Type', 'application/json;charset=utf-8');
-                    $self.body = error.error;
-                    console.error(error.error);
-                }));
-        });*/
+
     return router;
 };
