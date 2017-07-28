@@ -9,6 +9,10 @@ app.factory('demandSer',function ($http) {
         editMaterial : editMaterial,
         auditDemand : auditDemand,
         deleteDemandWorkers : deleteDemandWorkers,
+        getAllArea : getAllArea,
+        getAllName : getAllName,
+        getAllTeam : getAllTeam,
+        demandViewList : demandViewList,
     };
     //菜单权限
     function menuPermission(data) {
@@ -20,7 +24,7 @@ app.factory('demandSer',function ($http) {
             params: data
         })
     }
-    //分页总条数
+    //临时物资需求分页总条数
     function countDemand(data){
         return $http.get('/tempmatterdemand/count',{params:data})
     }
@@ -43,11 +47,28 @@ app.factory('demandSer',function ($http) {
     function auditDemand(data){
         return $http.post('/tempmatterdemand/audit',data)
     }
-
+    //查看详情
+    function demandViewList(data){
+        return $http.get('/tempmatterdemand/checkdetail',{
+            params: data
+        })
+    }
     //删除
     function deleteDemandWorkers(data){
         return $http.get('/tempmatterdemand/delete',{
             params: data
         })
+    }
+    //获取所有地区
+    function getAllArea(data){
+        return $http.get('/materialbuy/findArea',data)
+    }
+    //获取所有姓名
+    function getAllName(data){
+        return $http.get('/materialbuy/findUserNames',data)
+    }
+    //获取所有项目组
+    function getAllTeam(data){
+        return $http.get('/materialbuy/findStatus',data)
     }
 });

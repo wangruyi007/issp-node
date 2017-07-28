@@ -1,5 +1,5 @@
 <div class="content-tab list">
-    <ul class="table">
+    <ul class="table hideView">
         <li class="list-head">
             <span></span>
             <span>地区</span>
@@ -11,10 +11,10 @@
             <span>型号</span>
             <span></span>
         </li>
-        <li class="list-all" ng-repeat="lists in purchaseLists" style="display: {{lists._delete?'none':'block'}};">
+        <li class="list-all" ng-repeat="lists in purSeeLists" style="display: {{lists._delete?'none':'block'}};">
             <section>
                 <div class="list-text {{lists._selectList?'selectList':''}}" ng-click="selectList(lists)">
-                    <p mod>{{$index+1+num}}</p>
+                    <p mod></p>
                     <p mod>{{::lists.area}}</p>
                     <p mod>{{::lists.projectTeam}}</p>
                     <p mod>{{::lists.requisitioner}}</p>
@@ -51,40 +51,40 @@
                             </p>
                         </li>
                         <li>
-                          <p class="see-parent">
-                              <span>收件人</span>
-                              <span>收件人联系方式</span>
-                              <span>借款人</span>
-                              <span>借款方式</span>
-                              <span>是否为代写借支</span>
-                              <span>预计借款时间</span>
-                              <span>是否付款</span>
-                              <span>快递单号</span>
-                          </p>
-                          <p class="see-children">
-                              <span mod>{{::lists.receiver}}</span>
-                              <span mod>{{::lists.receiverPhone}}</span>
-                              <span mod>{{::lists.borrower}}</span>
-                              <span mod>{{::lists.borrowManner}}</span>
-                              <span mod>{{::lists.ifReplaceBorrow}}</span>
-                              <span mod>{{::lists.planBorrowTime}}</span>
-                              <span mod>{{::lists.ifPayment|cover}}</span>
-                              <span mod>{{::lists.expressNumber}}</span>
-                          </p>
+                            <p class="see-parent">
+                                <span>收件人</span>
+                                <span>收件人联系方式</span>
+                                <span>借款人</span>
+                                <span>借款方式</span>
+                                <span>是否为代写借支</span>
+                                <span>预计借款时间</span>
+                                <span>是否付款</span>
+                                <span>快递单号</span>
+                            </p>
+                            <p class="see-children">
+                                <span mod>{{::lists.receiver}}</span>
+                                <span mod>{{::lists.receiverPhone}}</span>
+                                <span mod>{{::lists.borrower}}</span>
+                                <span mod>{{::lists.borrowManner}}</span>
+                                <span mod>{{::lists.ifReplaceBorrow}}</span>
+                                <span mod>{{::lists.planBorrowTime}}</span>
+                                <span mod>{{::lists.ifPayment}}</span>
+                                <span mod>{{::lists.expressNumber}}</span>
+                            </p>
                         </li>
                         <li>
-                        <p class="see-parent">
-                             <span>备注(款打到谁的卡内)</span>
-                             <span>地区审核人</span>
-                             <span>审核状态</span>
-                             <span>审核意见</span>
-                        </p>
-                         <p class="see-children">
-                             <span mod>{{::lists.comment}}</span>
-                             <span mod>{{::lists.areaAuditor}}</span>
-                             <span mod>{{::lists.auditState|cover}}</span>
-                             <span mod>{{::lists.auditOpinion}}</span>
-                         </p>
+                            <p class="see-parent">
+                                <span>备注(款打到谁的卡内)</span>
+                                <span>地区审核人</span>
+                                <span>审核状态</span>
+                                <span>审核意见</span>
+                            </p>
+                            <p class="see-children">
+                                <span mod>{{::lists.comment}}</span>
+                                <span mod>{{::lists.areaAuditor}}</span>
+                                <span mod>{{::lists.auditState}}</span>
+                                <span mod>{{::lists.auditOpinion}}</span>
+                            </p>
                         </li>
                     </ul>
                 </div>
@@ -98,24 +98,4 @@
             <button class="btn" modclose>关闭</button>
         </div>
     </div>
-    <footer class="footer">
-        <pagination count="custom.itemsCount" take="custom.take" activate="custom.activatePage"></pagination>
-    </footer>
 </div>
-<div class="delete mod" ng-show="delShow">
-    <div class="del-head">
-        <h5>温馨提示</h5>
-    </div>
-    <div class="del-con">
-        <p>确定要删除这条数据？</p>
-        <div class="btn">
-            <button ng-click="delFn()">确定</button>
-            <button ng-click="cancel()">取消</button>
-        </div>
-    </div>
-</div>
-<div id="modalbg" ng-show="delShow"></div>
-
-
-
-

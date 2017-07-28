@@ -44,7 +44,7 @@ app.config(function($provide, $stateProvider){
             }
         }
     }).state("root.materialBuy.materialDemand.view[12]",{
-        url:"/view[12]?id=&view=",
+        url:"/view[12]?id=&page=",
         views:{
             "content@root.materialBuy.materialDemand":{
                 templateUrl : "root/materialBuy/materialDemand/view/_res/html/index.html",

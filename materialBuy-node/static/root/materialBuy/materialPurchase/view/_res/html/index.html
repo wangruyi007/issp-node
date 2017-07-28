@@ -29,7 +29,7 @@
         </div>
         <div class="content-file">
             <ul>
-                <li ng-repeat="lists in encloSigning" class="list-text {{lists.checked?'checked':''}}" ng-click="checkedFun(lists)" ng-hide="lists.delel">
+                <li ng-repeat="lists in encloPurchase" class="list-text {{lists.checked?'checked':''}}" ng-click="checkedFun(lists)" ng-hide="lists.delel">
                     <div class="checked-box">
                         <input type="checkbox" ng-checked="lists.checked" class="checked-none" data-style="checked" ng-model="lists.checked">
                         <label class="tick"></label>
@@ -65,10 +65,9 @@
              </span>
         </div>
     </div>
-    <!--|orderBy:sort:sortIsAsc-->
     <div class="content-file">
         <ul class="cont-line">
-            <li  ng-repeat="lists in encloSigning"  class="list-text {{lists.checked?'checked':''}}" ng-hide="lists.delel" ng-click="checkedFun(lists)">
+            <li  ng-repeat="lists in encloPurchase"  class="list-text {{lists.checked?'checked':''}}" ng-hide="lists.delel" ng-click="checkedFun(lists)">
                 <div class="cont-one">
                     <div class="checked-box2">
                         <input type="checkbox" ng-checked="lists.checked" class="checked-none" data-style="checked" ng-model="lists.checked">

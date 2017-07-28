@@ -8,9 +8,12 @@ app.factory('purchaseSer',function ($http) {
         findPurchaseId : findPurchaseId,
         editPurchaseW : editPurchaseW,
         getAllArea : getAllArea,
-
-        // auditDemand : auditDemand,
-        // deletePurchaseWorkers : deletePurchaseWorkers,
+        getAllName : getAllName,
+        getAllTeam : getAllTeam,
+        reviewPurchase : reviewPurchase,
+        purSeeList : purSeeList,
+        viewFiles : viewFiles,
+        deletePurchaseWorkers : deletePurchaseWorkers,
     };
     //菜单权限
     function menuPermission(data) {
@@ -19,6 +22,12 @@ app.factory('purchaseSer',function ($http) {
     //物资购买列表
     function purchaseList(data) {
         return $http.get('/materialbuy/list',{
+            params: data
+        })
+    }
+    //查看详情
+    function purSeeList(data) {
+        return $http.get('/materialbuy/checkdetail',{
             params: data
         })
     }
@@ -45,18 +54,29 @@ app.factory('purchaseSer',function ($http) {
     function getAllArea(data){
         return $http.get('/materialbuy/findArea',data)
     }
-
-    // //审核
-    // function auditDemand(data){
-    //     return $http.post('/tempmatterdemand/audit',data)
-    // }
-    //
-    // //删除
-    // function deleteDemandWorkers(data){
-    //     return $http.get('/tempmatterdemand/delete',{
-    //         params: data
-    //     })
-    // }
-
+    //获取所有姓名
+    function getAllName(data){
+        return $http.get('/materialbuy/findUserNames',data)
+    }
+    //获取所有项目组
+    function getAllTeam(data){
+        return $http.get('/materialbuy/findStatus',data)
+    }
+    //审核
+    function reviewPurchase(data){
+        return $http.post('/materialbuy/areaprincipalaudit',data)
+    }
+    //删除
+    function deletePurchaseWorkers(data){
+        return $http.get('/materialbuy/delete',{
+            params: data
+        })
+    }
+    //获取文件列表
+    function viewFiles(data){
+        return $http.get('/materialbuy/listFile',{
+            params: data
+        })
+    }
 
 });

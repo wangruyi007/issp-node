@@ -62,7 +62,7 @@ app.controller('demandCtrl',function ($scope,$state) {
         }
     };
     $scope.list = function(){
-        $scope.menuClass = 'listMenu',
+        $scope.menuClass = 'listMenu';
         $scope.idListd = ''
     };
     $scope.add = function(){
@@ -71,12 +71,11 @@ app.controller('demandCtrl',function ($scope,$state) {
     };
     $scope.view = function(){
         if($scope.idListd){
-            $state.go('root.materialBuy.materialDemand.view[12]',{id:$scope.idListd,view:1,page:$scope.page});
+            $state.go('root.materialBuy.materialDemand.view[12]',{id:$scope.idListd,page:$scope.page});
             $scope.menuClass = 'viewMenu'
         }
     };
 });
-
 //自定义过滤器
 app.filter('cover',function(){
     return function(val){

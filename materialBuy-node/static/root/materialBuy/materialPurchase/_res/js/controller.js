@@ -49,30 +49,65 @@ app.controller('purchaseCtrl',function ($scope,$state) {
             $scope.menuClass = 'deleteMenu';
         }
     };
-    $scope.edit = function(){
+    $scope.amend = function(){
         if($scope.idListd){
             $state.go('root.materialBuy.materialPurchase.amend[12]',{id:$scope.idListd,page:$scope.page});
-            $scope.menuClass = 'editMenu'
+            $scope.menuClass = 'amendMenu'
         }
     };
-    $scope.audit = function(){
+    $scope.review = function(){
         if($scope.idListd){
-            $state.go('root.materialBuy.materialPurchase.audit[12]',{id:$scope.idListd,page:$scope.page});
-            $scope.menuClass = 'auditMenu';
+            $state.go('root.materialBuy.materialPurchase.review[12]',{id:$scope.idListd,page:$scope.page});
+            $scope.menuClass = 'reviewMenu';
+        }
+    };
+    $scope.upload = function(){
+        if($scope.idListd){
+            $state.go('root.materialBuy.materialPurchase.upload[12]',{id:$scope.idListd,page:$scope.page});
+            $scope.menuClass = 'uploadMenu';
+        }
+    };
+    $scope.view = function(){
+        if($scope.idListd){
+            $state.go('root.materialBuy.materialPurchase.view[12]',{id:$scope.idListd,page:$scope.page});
+            $scope.menuClass = 'viewMenu';
         }
     };
     $scope.list = function(){
-        $scope.menuClass = 'listMenu',
+        $scope.menuClass = 'listMenu';
         $scope.idListd = ''
     };
     $scope.add = function(){
         $scope.menuClass = 'addMenu';
         $scope.idListd = ''
     };
-    $scope.view = function(){
+    $scope.see = function(){
         if($scope.idListd){
-            $state.go('root.materialBuy.materialPurchase.view[12]',{id:$scope.idListd,view:1,page:$scope.page});
-            $scope.menuClass = 'viewMenu'
+            $state.go('root.materialBuy.materialPurchase.see[12]',{id:$scope.idListd,see:1,page:$scope.page});
+            $scope.menuClass = 'seeMenu'
         }
     };
+});
+//自定义过滤器
+app.filter('cover',function(){
+    return function(val){
+        var result;
+        switch(val){
+            case "UNAUDITED":
+                result = "未审核";
+                break;
+            case "AUDITED":
+                result = "已审核";
+                break;
+            case true:
+                 result = "是";
+            break;
+            case false:
+                result = "否";
+                break;
+
+        }
+        return result;
+    }
+
 });

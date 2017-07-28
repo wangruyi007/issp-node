@@ -1,6 +1,5 @@
-var app = angular.module('signingView', ['toastr']);
-app.controller('signingViewCtrl', function($scope,signingSer,$stateParams,toastr,$http,$state){
-
+var app = angular.module('purchaseView', ['toastr']);
+app.controller('purchaseViewCtrl', function($scope,purchaseSer,$stateParams,toastr,$http,$state){
     var pathData ={id: $stateParams.id};
     $scope.isView = false;
     $scope.isChild = true;
@@ -9,51 +8,49 @@ app.controller('signingViewCtrl', function($scope,signingSer,$stateParams,toastr
         $scope.isChild = true;
     }else if($stateParams.view == '2'){
         $scope.isChild = false;
-
     }
     //获取ID
-    signingSer.viewSigning(pathData).then(function(response){
+    purchaseSer.viewFiles(pathData).then(function(response){
         if(response.data.code== 0){
-            $scope.encloSigning = response.data.data;
-            $scope.length = $scope.encloSigning ? $scope.encloSigning.length : 0;
+            $scope.encloPurchase = response.data.data;
+            $scope.length = $scope.encloPurchase ? $scope.encloPurchase.length : 0;
         }else{
             toastr.error( response.data.msg, '温馨提示');
         }
     });
-
     //切换视图
     $scope.view  =function(){
         $scope.isChild = !$scope.isChild;//控制试图的出现
         $scope.isLength = 0;//让选择的功能样式清空
         angular.element('.checked-none').attr('checked',false);//清空全选框
-            if($scope.encloSigning){
-            for(var i = 0; i < $scope.encloSigning.length;i++){//清空所有的checked
-                $scope.encloSigning[i].checked = false;
+            if($scope.encloPurchase){
+            for(var i = 0; i < $scope.encloPurchase.length;i++){//清空所有的checked
+                $scope.encloPurchase[i].checked = false;
             }
-            if($stateParams.view == '1'){
-                $state.go('root.businessContract.signingProject.view[12]',{view:'2'});
-            }else if($stateParams.view == '2'){
-                $state.go('root.businessContract.signingProject.view[12]',{view:'1'});
+            if($stateParams.view == '2'){
+                $state.go('root.materialBuy.materialPurchase.view[12]',{view:'1'});
+            }else if($stateParams.view == '1'){
+                $state.go('root.materialBuy.materialPurchase.view[12]',{view:'2'});
             }
         }
     };
     $scope.checkedSingle=false;
     $scope.checked=false;
     $scope.all= function (m) {//全选功能
-        if(!$scope.length){return};
+        if(!$scope.length){return}
         $scope.isLength = m ? 0 : 1;
         if($scope.checked){
             $scope.checked = false;
         }else{
             $scope.checked = true;
         }
-        if($scope.encloSigning){
-            for(var i=0;i<$scope.encloSigning.length;i++){
+        if($scope.encloPurchase){
+            for(var i=0;i<$scope.encloPurchase.length;i++){
                 if(m===true){
-                    $scope.encloSigning[i].checked=false;
+                    $scope.encloPurchase[i].checked=false;
                 }else {
-                    $scope.encloSigning[i].checked=true;
-                    $scope.encloSigning[i].checkedSingle=true;
+                    $scope.encloPurchase[i].checked=true;
+                    $scope.encloPurchase[i].checkedSingle=true;
                 }
             }
         }
@@ -68,12 +65,12 @@ app.controller('signingViewCtrl', function($scope,signingSer,$stateParams,toastr
             $scope.checkedSingle = true;
         }
         var checkAllCount = 0;
-        for(var i =0,len=$scope.encloSigning.length;i<len;i++){
-            if($scope.encloSigning[i]['checked']){
+        for(var i =0,len=$scope.encloPurchase.length;i<len;i++){
+            if($scope.encloPurchase[i]['checked']){
                 checkAllCount++;
             }
         }
-        if(checkAllCount==$scope.encloSigning.length){
+        if(checkAllCount==$scope.encloPurchase.length){
             $scope.checked= true;
         }else{
             $scope.checked=false;
@@ -82,19 +79,16 @@ app.controller('signingViewCtrl', function($scope,signingSer,$stateParams,toastr
     };
 
     $scope.fn = function(){//下载
-        for(var i=0,len=$scope.encloSigning.length;i<len;i++){
-            if($scope.encloSigning[i].checked){
+        for(var i=0,len=$scope.encloPurchase.length;i<len;i++){
+            if($scope.encloPurchase[i].checked){
                 var obj = {
-                path:$scope.encloSigning[i].path,
-                fileType:$scope.encloSigning[i].fileType
-            };
-            var iframe = document.createElement('iframe');
-
-            iframe.src=`/siginmanage/download${encode(obj,true)}`;
-
-            iframe.style.display = 'none';
-
-            document.body.appendChild(iframe);
+                    path:$scope.encloPurchase[i].path,
+                    fileType:$scope.encloPurchase[i].fileType
+                };
+                var iframe = document.createElement('iframe');
+                iframe.src=`/materialbuy/downloadFile${encode(obj,true)}`;
+                iframe.style.display = 'none';
+                document.body.appendChild(iframe);
             }
         }
         setTimeout(function(){
@@ -122,16 +116,16 @@ app.controller('signingViewCtrl', function($scope,signingSer,$stateParams,toastr
             path: $scope.path
         };
         var fd = new FormData();
-        for(let i=0,len=$scope.encloSigning.length;i<len;i++){
-            if($scope.encloSigning[i].checked){
-                fd.append('paths', $scope.encloSigning[i].path);
+        for(let i=0,len=$scope.encloPurchase.length;i<len;i++){
+            if($scope.encloPurchase[i].checked){
+                fd.append('paths', $scope.encloPurchase[i].path);
                 delNum.push(i);
             }
-            $scope.encloSigning[i].checked = false;
+            $scope.encloPurchase[i].checked = false;
         }
           $http({
                 method: 'POST',
-                url: '/siginmanage/delFile',
+                url: '/materialbuy/deleteFile/',
                 headers: {
                     'Content-Type': undefined
                 },
@@ -150,7 +144,7 @@ app.controller('signingViewCtrl', function($scope,signingSer,$stateParams,toastr
                     toastr.success('成功删除文件','温馨提示');
                     $scope.delShow = false;
                     for(var i = 0;i<delNum.length;i++){
-                        $scope.encloSigning[delNum[i]].delel = true;
+                        $scope.encloPurchase[delNum[i]].delel = true;
                         $scope.length--;
                     }
                     if(!$scope.length){
@@ -167,7 +161,7 @@ app.controller('signingViewCtrl', function($scope,signingSer,$stateParams,toastr
     $scope.actions = {setCurrent: function (param) {$scope.sortCur.current = param;}};
     $scope.ifIf = false;
     $scope.sortSize = function() {
-        var sortArr = $scope.encloSigning;
+        var sortArr = $scope.encloPurchase;
         $scope.sortIsAsc = !$scope.sortIsAsc;
         sortArr.sort(function des(a, b) {
             if ($scope.sortIsAsc) {
@@ -194,7 +188,7 @@ app.controller('signingViewCtrl', function($scope,signingSer,$stateParams,toastr
         });
     };
     $scope.sortSize2 = function() {
-        var sortArr = $scope.encloSigning;
+        var sortArr = $scope.encloPurchase;
         $scope.sortIsAsc = !$scope.sortIsAsc;
         sortArr.sort(function des(a, b) {
             if ($scope.sortIsAsc) {
@@ -221,7 +215,7 @@ app.controller('signingViewCtrl', function($scope,signingSer,$stateParams,toastr
         });
     };
     $scope.sortTime = function() {
-        var sortArr = $scope.encloSigning;
+        var sortArr = $scope.encloPurchase;
         $scope.sortIsAsc = !$scope.sortIsAsc;
         sortArr.sort(function des(a, b) {
             if ($scope.sortIsAsc) {

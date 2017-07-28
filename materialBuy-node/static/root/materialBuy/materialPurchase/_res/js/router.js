@@ -40,7 +40,7 @@ app.config(function($provide, $stateProvider){
         views:{
             "content@root.materialBuy.materialPurchase":{
                 templateUrl : "root/materialBuy/materialPurchase/review/_res/html/index.html",
-                controller:'signingReviewCtrl'
+                controller:'purchaseReviewCtrl'
             }
         }
     }).state("root.materialBuy.materialPurchase.upload[12]",{
@@ -48,7 +48,15 @@ app.config(function($provide, $stateProvider){
         views:{
             "content@root.materialBuy.materialPurchase":{
                 templateUrl : "root/materialBuy/materialPurchase/upload/_res/html/index.html",
-                controller:'signingUploadCtrl'
+                controller:'purchaseUploadCtrl'
+            }
+        }
+    }).state("root.materialBuy.materialPurchase.see[12]",{
+        url:"/see[12]?id=&see=",
+        views:{
+            "content@root.materialBuy.materialPurchase":{
+                templateUrl : "root/materialBuy/materialPurchase/see/_res/html/index.html",
+                controller:'purchaseSeeCtrl'
             }
         }
     }).state("root.materialBuy.materialPurchase.view[12]",{
@@ -56,7 +64,7 @@ app.config(function($provide, $stateProvider){
         views:{
             "content@root.materialBuy.materialPurchase":{
                 templateUrl : "root/materialBuy/materialPurchase/view/_res/html/index.html",
-                controller:'signingViewCtrl'
+                controller:'purchaseViewCtrl'
             }
         }
     })

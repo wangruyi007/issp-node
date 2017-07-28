@@ -186,6 +186,19 @@ module.exports = function(){
                 $self.body=error.error;
                 console.error(error.error);
             }));
+    }).get('/tempmatterdemand/checkdetail', function*(){//ID查询临时物资需求详情
+        var $self = this;
+        var page = $self.request.query;
+        page.userToken = $self.cookies.get('token');
+        yield (server().checkDemand(page)
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
     }).post('/tempmatterdemand/edit', function*(){//临时物资需求编辑
         var $self = this;
         var editData = $self.request.body;
@@ -305,7 +318,33 @@ module.exports = function(){
         var $self = this;
         var listData = $self.request.query;
         listData.userToken = $self.cookies.get('token');
-        yield (server().purchaseProject(listData)
+        yield (server().purchaseArea(listData)
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
+    }).get('/materialbuy/findUserNames',function*(){// 获取所有姓名
+        var $self = this;
+        var listData = $self.request.query;
+        listData.userToken = $self.cookies.get('token');
+        yield (server().purchaseNames(listData)
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
+    }).get('/materialbuy/findStatus',function*(){// 获取所有项目组
+        var $self = this;
+        var listData = $self.request.query;
+        listData.userToken = $self.cookies.get('token');
+        yield (server().purchaseTeam(listData)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
                 $self.body = responseText;
@@ -326,6 +365,101 @@ module.exports = function(){
                 $self.body=error.error;
                 console.error(error.error);
             }));
+    }).post('/materialbuy/areaprincipalaudit', function*(){//物资购买审核
+        var $self = this;
+        var auditData = $self.request.body;
+        auditData.userToken = $self.cookies.get('token');
+        yield (server().purchaseAudit(auditData)
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
+    }).get('/materialbuy/checkdetail', function*(){//ID查询物资购买详情
+        var $self = this;
+        var findById = $self.request.query;
+        findById.userToken = $self.cookies.get('token');
+        yield (server().checkBuy(findById)
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
+    }).get('/materialbuy/delete', function*(){//删除物资购买
+        var $self = this;
+        var deleteData = $self.request.query;
+        deleteData.userToken = $self.cookies.get('token');
+        yield (server().purchaseDelete(deleteData)
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
+    }).get('/materialbuy/download', function*(){//下载文件 物资购买
+        var $self = this;
+        var count = $self.request.query;
+        var data = {
+            path:count.path
+        };
+        yield (fetch(config()['rurl']+`/materialbuy/v1/downloadFile${urlEncode(data,true)}`, {
+            method : 'GET',
+            headers : {'userToken' : $self.cookies.get('token')}
+        }).then((res)=>{
+            fileType(count,this);
+            return res.buffer();
+        }).then(function(data){
+            $self.body = data;
+        }));
+    }).post('/materialbuy/deleteFile', koaBody({multipart:true}), function*(){//合同签订与立项 删除文件
+        var $self = this;
+        var delData = $self.request.body;
+        delData.userToken = $self.cookies.get('token');
+        yield (server().delFile(delData)
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
+    }).get('/materialbuy/listFile', function*(){//ID查询临时物资需求详情
+        var $self = this;
+        var page = $self.request.query;
+        page.userToken = $self.cookies.get('token');
+        yield (server().getFileList(page)
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
+    }).get('/materialbuy/downloadFile', function*(){//下载文件 物资购买
+        var $self = this;
+        var count = $self.request.query;
+        var data = {
+            path:count.path
+        };
+        yield (fetch(config()['rurl']+`/materialbuy/v1/downloadFile${urlEncode(data,true)}`, {
+            method : 'GET',
+            headers : {'userToken' : $self.cookies.get('token')}
+        }).then((res)=>{
+            fileType(count,this);
+            return res.buffer();
+        }).then(function(data){
+            $self.body = data;
+        }));
     })
 
 

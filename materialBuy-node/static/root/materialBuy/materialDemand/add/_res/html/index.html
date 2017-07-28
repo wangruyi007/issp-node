@@ -6,36 +6,27 @@
                     <label><i><img src="/images/mandatory.png"></i><em>地区</em></label>
                     <div class="sele side">
                         <select class="sele" ng-model="demand.area" >
-                            <option value="广州">广州</option>
-                            <option value="北京">北京</option>
-                            <option value="深圳">深圳</option>
-                            <option value="佛山">佛山</option>
-                            <option value="江门">江门</option>
-                            <option value="湛江">湛江</option>
+                            <option ng-repeat="areas in getAllAreas">{{areas.area}}</option>
                         </select>
-                        <input type="text"  class="inputDom" ng-verify="{}" ng-model="demand.area" ng-init="demand.area ='请选择'">
+                        <input type="text"  class="inputDom" ng-verify="{}" ng-model="demand.area" >
                     </div>
                 </li>
                 <li class="required">
                     <label><i><img src="/images/mandatory.png"></i><em>项目组</em></label>
                     <div class="sele side">
                         <select class="sele" ng-model="demand.projectTeam">
-                            <option value="项目组1">项目组1</option>
-                            <option value="项目组2">项目组2</option>
-                            <option value="项目组3">项目组3</option>
+                            <option ng-repeat="team in getAllTeams">{{team.department}}</option>
                         </select>
-                        <input type="text"  class="inputDom" ng-verify="{}" ng-model="demand.projectTeam" ng-init="demand.projectTeam ='请选择'">
+                        <input type="text"  class="inputDom" ng-verify="{}" ng-model="demand.projectTeam" >
                     </div>
                 </li>
                 <li class="required">
                     <label ><i><img src="/images/mandatory.png"></i><em>需求人</em></label>
                     <div class="sele side">
                         <select class="sele" ng-model="demand.needer">
-                            <option value="广州负责人">广州负责人</option>
-                            <option value="佛山负责人">佛山负责人</option>
-                            <option value="湛江负责人">湛江负责人</option>
+                            <option ng-repeat="name in getAllNames">{{name}}</option>
                         </select>
-                        <input type="text"  class="inputDom" ng-verify="{}" ng-model="demand.needer" ng-init="demand.needer ='请选择'">
+                        <input type="text"  class="inputDom" ng-verify="{}" ng-model="demand.needer">
                     </div>
                 </li>
                 <li class="required">
@@ -49,7 +40,7 @@
                             <option value="硬件">硬件</option>
                             <option value="软件">软件</option>
                         </select>
-                        <input type="text"  class="inputDom" ng-verify="{}" ng-model="demand.deviceType" ng-init="demand.deviceType ='请选择'">
+                        <input type="text"  class="inputDom" ng-verify="{}" ng-model="demand.deviceType" >
                     </div>
                 </li>
                 <li class="required">
@@ -76,10 +67,9 @@
                     <label ><i><img src="/images/mandatory.png"></i><em>地区审核人</em></label>
                     <div class="sele side">
                         <select class="sele" ng-model="demand.areaAuditor">
-                            <option value="广州">广州</option>
-                            <option value="佛山">佛山</option>
+                            <option ng-repeat="name in getAllNames">{{name}}</option>
                         </select>
-                        <input type="text"  class="inputDom" ng-verify="{}" ng-model="demand.areaAuditor" ng-init="demand.areaAuditor ='请选择'">
+                        <input type="text"  class="inputDom" ng-verify="{}" ng-model="demand.areaAuditor" >
                     </div>
                 </li>
                 <li class="required">

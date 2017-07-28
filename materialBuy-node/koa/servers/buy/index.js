@@ -190,6 +190,18 @@ module.exports = function(){
         };
         return request(options);
     };
+    //查看购买物资详情
+    this.checkDemand = function(argvs){
+        var options = {
+            method : 'GET',
+            timeout : 3000,
+            uri : config()['rurl'] +`/tempmatterdemand/v1/checkdetail/${argvs.id}`,
+            headers:{
+                userToken:argvs.userToken
+            }
+        };
+        return request(options);
+    };
     // 物资需求审核
     this.demandAudit = function(argvs){
         var options = {
@@ -276,6 +288,7 @@ module.exports = function(){
         };
         return request(options);
     };
+
     //物资购买编辑
     this.purchaseEdit = function(argvs){
         var options = {
@@ -289,12 +302,112 @@ module.exports = function(){
         };
         return request(options);
     };
+    //物资购买 上传附件
+    this.purchaseUploadFile = function(argvs){
+        var options = {
+            url: config()['rurl']+`/materialbuy/v1/uploadFile/${argvs.fields.id}`,
+            method: 'POST',
+            formData: {
+                files: uploadFile(argvs.files.files)
+            },
+            headers:{
+                userToken:argvs.userToken
+            }
+        };
+        return request(options);
+    };
     //获取所有地区
-    this.purchaseProject = function(argvs){
+    this.purchaseArea = function(argvs){
         var options = {
             method : 'GET',
             timeout : 3000,
             uri : config()['rurl'] + '/materialbuy/v1/findArea',
+            headers:{
+                userToken:argvs.userToken
+            }
+        };
+        return request(options);
+    };
+    //获取所有姓名
+    this.purchaseNames = function(argvs){
+        var options = {
+            method : 'GET',
+            timeout : 3000,
+            uri : config()['rurl'] + '/materialbuy/v1/findUserNames',
+            headers:{
+                userToken:argvs.userToken
+            }
+        };
+        return request(options);
+    };
+    //获取所有项目组
+    this.purchaseTeam = function(argvs){
+        var options = {
+            method : 'GET',
+            timeout : 3000,
+            uri : config()['rurl'] + '/materialbuy/v1/findStatus',
+            headers:{
+                userToken:argvs.userToken
+            }
+        };
+        return request(options);
+    };
+    // 物资购买审核
+    this.purchaseAudit = function(argvs){
+        var options = {
+            method : 'PUT',
+            timeout : 3000,
+            uri : config()['rurl'] + `/materialbuy/v1/areaprincipalaudit`,
+            form:argvs,
+            headers:{
+                userToken:argvs.userToken
+            },
+        };
+        return request(options);
+    };
+    //查看购买物资详情
+    this.checkBuy = function(argvs){
+        var options = {
+            method : 'GET',
+            timeout : 3000,
+            uri : config()['rurl'] + `/materialbuy/v1/checkdetail/${argvs.id}`,
+            headers:{
+                userToken:argvs.userToken
+            }
+        };
+        return request(options);
+    };
+    //删除物资审核
+    this.purchaseDelete = function(argvs){
+        var options = {
+            method : 'DELETE',
+            timeout : 3000,
+            uri : config()['rurl'] + `/materialbuy/v1/delete/${argvs.id}`,    //2017-07-27
+            headers:{
+                userToken:argvs.userToken
+            }
+        };
+        return request(options);
+    };
+    //物资购买 删除文件
+    this.delFile = function(argvs){
+        var options = {
+            method : 'POST',
+            timeout : 3000,
+            uri : config()['rurl'] + `/materialbuy/v1/deleteFile`,
+            headers:{
+                userToken:argvs.userToken
+            },
+            form:argvs.fields
+        };
+        return request(options);
+    };
+    //查看文件附件列表
+    this.getFileList = function(argvs){
+        var options = {
+            method : 'GET',
+            timeout : 3000,
+            uri : config()['rurl'] +`/materialbuy/v1/listFile/${argvs.id}`,
             headers:{
                 userToken:argvs.userToken
             }

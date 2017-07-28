@@ -1,5 +1,5 @@
 <div class="content-tab list">
-    <ul class="table">
+    <ul class="table hideView">
         <li class="list-head">
             <span></span>
             <span>地区</span>
@@ -11,10 +11,10 @@
             <span>型号</span>
             <span></span>
         </li>
-        <li class="list-all" ng-repeat="lists in demandLists" style="display: {{lists._delete?'none':'block'}};">
+        <li class="list-all" ng-repeat="lists in demandViewLists" style="display: {{lists._delete?'none':'block'}};">
             <section>
-                <div class="list-text ng-click="selectList(lists)">
-                    <p mod>{{$index+1+num}}</p>
+                <div class="list-text" ng-click="selectList(lists)">
+                    <p mod></p>
                     <p mod>{{::lists.area}}</p>
                     <p mod>{{::lists.projectTeam}}</p>
                     <p mod>{{::lists.needer}}</p>
@@ -60,9 +60,9 @@
             <button class="btn" modclose>关闭</button>
         </div>
     </div>
-    <footer class="footer">
-        <pagination count="custom.itemsCount" take="custom.take" activate="custom.activatePage"></pagination>
-    </footer>
+    <!--<footer class="footer">-->
+        <!--<pagination count="custom.itemsCount" take="custom.take" activate="custom.activatePage"></pagination>-->
+    <!--</footer>-->
 </div>
 
 

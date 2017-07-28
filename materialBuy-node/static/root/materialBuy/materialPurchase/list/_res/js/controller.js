@@ -1,14 +1,5 @@
 var app = angular.module('materialListM', ['ng-pagination','toastr']);
 app.controller('materialListCtrl',function($scope,purchaseSer,toastr,$stateParams,$state,$location){
-    //获取所有地区
-    purchaseSer.getAllArea().then(function (response) {
-        if(response.data.code==0){
-            $scope.getAllAreas = response.data.data;
-        }else{
-            toastr.error( response.data.msg, '温馨提示');
-        }
-    });
-
     //列表
     function activatePage(page) {
         var listData = {
@@ -85,7 +76,7 @@ app.controller('materialListCtrl',function($scope,purchaseSer,toastr,$stateParam
         var data = {
             id:$stateParams.id
         };
-        materialSer.deletePurchaseWorkers(data).then(function(response){
+        purchaseSer.deletePurchaseWorkers(data).then(function(response){
             if(response.data.code==0){
                 count++;
                 toastr.info( "信息已删除", '温馨提示');
