@@ -67,7 +67,8 @@ app.controller('recordCtrl',function ($scope,$state) {
         $scope.menuClass = 'listMenu'
     };
     $scope.add = function(){
-        $scope.menuClass = 'addMenu'
+        $scope.menuClass = 'addMenu';
+        $scope.idList=''
     };
     $scope.monthAll = function(){
         $scope.menuClass = 'monthAllMenu'
@@ -84,14 +85,14 @@ app.controller('recordCtrl',function ($scope,$state) {
     $scope.group = function(){
         $scope.menuClass = 'groupMenu'
     };
-    //编辑
+    //上传
     $scope.upload = function(){
         if($scope.idList){
             $state.go('root.flow.record.upload[12]',{id:$scope.idList});
             $scope.menuClass = 'uploadMenu'
         }
     };
-    //编辑
+    //查看下载
     $scope.view = function(){
         if($scope.idList){
             $state.go('root.flow.record.view[12]',{id:$scope.idList});

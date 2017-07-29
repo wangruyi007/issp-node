@@ -14,6 +14,7 @@ app.controller('ssuiExportCtrl', function($scope, ssuiSer,$state,toastr){
         var obj = {
             contractInProject:$scope.contractInProject
         };
+        console.log(obj)
         window.open(`/ssuiExport/export${encode(obj,true)}`);
     };
 

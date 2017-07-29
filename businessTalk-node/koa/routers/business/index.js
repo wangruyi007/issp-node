@@ -340,11 +340,13 @@ module.exports = function(){
         }).get('/ssuiExport/export', function*(){//导出 
         var $self = this;
         var count = $self.request.query;
+        var fileName = count.contractInProject+'.xlsx';
         yield (fetch(config()['rurl']+`/contract/v1/export${urlEncode(count,true)}`, {
             method : 'GET',
             headers : {'userToken' : $self.cookies.get('token')}
         }).then(function(res){
             $self.set('content-type', 'application/vnd.ms-excel;charset=utf-8');
+            $self.set('Content-Disposition', 'attachment;  filename='+encodeURI(fileName));
             return res.buffer();
         }).then(function(data){
             $self.body = data;
@@ -357,7 +359,7 @@ module.exports = function(){
         var data = {
             path:count.path
         };
-        // console.log(111111111111)
+        console.log(1231234124124214124124)
         yield (fetch(config()['rurl']+`/contract/v1/download${urlEncode(data,true)}`, {
             method : 'GET',
             headers : {'userToken' : $self.cookies.get('token')}
@@ -468,11 +470,13 @@ module.exports = function(){
         }).get('/outExport/export', function*(){
         var $self = this;
         var count = $self.request.query;
+        var fileName = count.contractInProject+'.xlsx';
         yield (fetch(config()['rurl']+`/outsource/v1/export${urlEncode(count,true)}`, {
             method : 'GET',
             headers : {'userToken' : $self.cookies.get('token')}
         }).then(function(res){
             $self.set('content-type', 'application/vnd.ms-excel;charset=utf-8');
+            $self.set('Content-Disposition', 'attachment;  filename='+encodeURI(fileName));
             return res.buffer();
         }).then(function(data){
             $self.body = data;

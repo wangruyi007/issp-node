@@ -1,10 +1,20 @@
 var app = angular.module('ssuiList', ['ng-pagination','toastr']);
 app.controller('ssuiListCtrl',function($scope,ssuiSer,toastr,$state,$stateParams) {
-    $scope.$emit('changeId', null);
+	$scope.$emit('changeId', null);
     //监听切换搜索是否出现
     $scope.$on('iSsearch',function(event,newIs){
         $scope.isView = newIs;
     });
+    //获取搜索字段
+    $scope.communicateUser = $stateParams.communicateUser?$stateParams.communicateUser:'';
+    $scope.communicateObj = $stateParams.communicateObj?$stateParams.communicateObj:'';
+    $scope.communicateResult = $stateParams.communicateResult?$stateParams.communicateResult:'';
+    if($stateParams.communicateUser || $stateParams.communicateObj || $stateParams.communicateResult){
+        $scope.$emit('isId', false);
+        $scope.isView = false;
+    }else{
+        $scope.$emit('isId', true);
+    }
     //删除
     //获取id
     if($stateParams.id){
@@ -35,9 +45,16 @@ app.controller('ssuiListCtrl',function($scope,ssuiSer,toastr,$state,$stateParams
             }
         });
     };
+    //搜索功能
+    $scope.collect = function(){
+        $state.go('root.borrowRefund.borrowManage.applyErr.list[12]',{communicateUser:$scope.communicateUser,communicateObj:$scope.communicateObj,communicateResult:$scope.communicateResult,page:1});
+    };
     function activatePage(page) {
         var listData = {
-            page:page
+            page:page || 1,
+            communicateUser:$scope.communicateUser || " ",
+            communicateObj:$scope.communicateObj || " ",
+            communicateResult:$scope.communicateResult || " "
         };
         ssuiSer.listMarketserve(listData).then(function(response){
             if(response.data.code==0){
@@ -55,39 +72,13 @@ app.controller('ssuiListCtrl',function($scope,ssuiSer,toastr,$state,$stateParams
                 toastr.error( response.data.msg, '温馨提示');
             }
         });
-        //搜索功能
-        $scope.collect = function(){
-            $scope.abili = {
-                itemsCount: 12,//总条数
-                take: 10,        //每页显示
-                activatePage: activatePage, //当前页
-            };
-            var keywords = {
-                communicateUser: $scope.communicateUser,
-                communicateObj: $scope.communicateObj,
-                communicateResult: $scope.communicateResult
-            };
-            ssuiSer.countBaseInfo(keywords).then(function (response) {
-                if(response.data.code==0){
-                    $scope.abili.itemsCount = response.data.data;
-                }else{
-                    toastr.error( response.data.msg, '温馨提示');
-                }
-            });
-            var data = {
-                communicateUser: $scope.communicateUser,
-                communicateObj: $scope.communicateObj,
-                communicateResult: $scope.communicateResult,
-                page: page
-            };
-            ssuiSer.listMarketserve(data).then(function(response){
-                if(response.data.code == 0){
-                    $scope.marketserveLists = response.data
-                }else{
-                    toastr.error( response.data.msg, '温馨提示');
-                }
-            });
-        };
+        ssuiSer.countBaseInfo(listData).then(function(response){
+        if(response.data.code == 0){
+            $scope.abili.itemsCount = response.data.data;
+        }else{
+            toastr.error( response.data.msg, '温馨提示');
+        }
+    });
 
     }
    //选择
@@ -115,13 +106,7 @@ app.controller('ssuiListCtrl',function($scope,ssuiSer,toastr,$state,$stateParams
         take: 10, //每页显示
         activatePage: activatePage
     };
-    ssuiSer.countBaseInfo().then(function(response){
-        if(response.data.code == 0){
-            $scope.abili.itemsCount = response.data.data;
-        }else{
-            toastr.error( response.data.msg, '温馨提示');
-        }
-    });
+    
     //删除
     $scope.$on('deletedId',function(event,delid){
         angular.forEach($scope.marketserveLists,function(obj){

@@ -7,7 +7,7 @@ app.controller('flowCtrl', function ($scope,$state) {
     }
     $scope.$on('sId',function(event,msg) {
         $scope.$broadcast('getId', msg)
-        console.log(msg)
+        
     });
     $scope.$on('page',function(event,msg){
         $scope.$broadcast('pageId',msg)
@@ -55,9 +55,21 @@ app.controller('flowCtrl', function ($scope,$state) {
         }
     });
     $scope.showsList = [
-        {id:"1",item:"资金流水管理",menuList:[{name:'资金流水记录'}],showIs:true},
-        {id:"2",item:"设置",menuList:[{name2:'设置'}],showIs:true}
+        {id:"1",item:"资金流水管理",menuList:[{name:'资金流水记录',msg:'record'}],showIs:false},
+        {id:"2",item:"设置",menuList:[{name2:'设置',msg:'setting'}],showIs:false}
     ];
+    if(active){
+        for(var i=0;i<$scope.showsList.length;i++){
+            var n=$scope.showsList[i].menuList;
+            for(var j=0;j<n.length;j++){
+                var m=n[j].msg;
+                if(m==active){
+                    $scope.showsList[i].showIs=true;
+                    break;
+                }
+            }
+        }
+    }
     $scope.showMenu = function(obj,event) {
         if(event){
             if(obj.showIs){

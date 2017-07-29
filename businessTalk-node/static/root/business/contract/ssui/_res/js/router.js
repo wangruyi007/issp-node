@@ -12,7 +12,7 @@ app.config(function($provide, $stateProvider){
             }
         }
     }).state("root.business.contract.ssui.list[12]",{
-        url:"/list[12]?id=&name=",
+        url:"/list[12]?id=&name=&communicateUser=&communicateObj=&communicateResult=",
         views:{
             "content@root.business.contract.ssui":{
                 templateUrl : "root/business/contract/ssui/list/_res/html/index.html",
