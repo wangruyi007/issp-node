@@ -152,3 +152,21 @@ app.filter('cov',function(){
         return result;
     }
 })
+//自定义过滤
+app.filter('cover', function(){
+    return function (val) {
+        var result;
+        switch(val){
+            case "COOPERATE":
+                result = "项目合作";
+                break;
+            case "TRAIL":
+                result = "项目跟进";
+                break;
+            case "ABANDON":
+                result = "项目丢弃";
+                break;
+        }
+        return result;
+    }
+});

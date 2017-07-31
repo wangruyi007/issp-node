@@ -110,7 +110,7 @@ module.exports = function(){
                 $self.body = error.error;
                 console.error(error.error);
             }));
-            //外包
+            //------------------------------外包------------------------------
     }).post('/business/outsource/list', function*(){
        var $self = this;
        var pageData = this.request.body;
@@ -340,7 +340,7 @@ module.exports = function(){
         }).get('/ssuiExport/export', function*(){//导出 
         var $self = this;
         var count = $self.request.query;
-        var fileName = count.contractInProject+'.xlsx';
+        var fileName = '项目承包洽谈.xlsx';
         yield (fetch(config()['rurl']+`/contract/v1/export${urlEncode(count,true)}`, {
             method : 'GET',
             headers : {'userToken' : $self.cookies.get('token')}
@@ -359,7 +359,6 @@ module.exports = function(){
         var data = {
             path:count.path
         };
-        console.log(1231234124124214124124)
         yield (fetch(config()['rurl']+`/contract/v1/download${urlEncode(data,true)}`, {
             method : 'GET',
             headers : {'userToken' : $self.cookies.get('token')}
@@ -470,7 +469,7 @@ module.exports = function(){
         }).get('/outExport/export', function*(){
         var $self = this;
         var count = $self.request.query;
-        var fileName = count.contractInProject+'.xlsx';
+        var fileName = '项目承包洽谈.xlsx';
         yield (fetch(config()['rurl']+`/outsource/v1/export${urlEncode(count,true)}`, {
             method : 'GET',
             headers : {'userToken' : $self.cookies.get('token')}
