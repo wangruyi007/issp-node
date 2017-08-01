@@ -1,6 +1,6 @@
 var app = angular.module('recordArea', ['toastr']);
 app.controller('recordAreaCtrl', function($scope, recordSer,toastr){
-
+$scope.months=['1','2','3','4','5','6','7','8','9','10','11','12']
     $scope.showed=true;
     // 地区
     recordSer.areas().then(function(response){
@@ -14,7 +14,7 @@ app.controller('recordAreaCtrl', function($scope, recordSer,toastr){
         data.sum={
             year:data.year,
             month:data.month,
-            // area:data.area
+            area:data.area
         };
         recordSer.moneyArea(data.sum).then(function(response){
             if(response.data.code == 0){

@@ -4,6 +4,11 @@
             <span></span>
             <span>网站名称</span>
             <span>网址</span>
+            <span>账号</span>
+            <!-- <span>密码</span> -->
+            <span>注册人</span>
+            <span>注册信息</span>
+            <span>状态</span>
         </li>
         <li class="list-all" ng-repeat="lists in websiteLists" style="display: {{lists._delete?'none':'block'}};">
             <section>
@@ -11,6 +16,11 @@
                     <p mod>{{$index+1+num}}</p>
                     <p mod>{{lists.webName}}</p>
                     <p mod>{{lists.url}}</p>
+                    <p mod>{{lists.account}}</p>
+                    <!-- <p mod>{{lists.password}}</p> -->
+                    <p mod>{{lists.registrant}}</p>
+                    <p mod>{{lists.registrationInfo}}</p>
+                    <p mod>{{lists.status|cover}}</p>
                 </div>
             </section>
         </li>

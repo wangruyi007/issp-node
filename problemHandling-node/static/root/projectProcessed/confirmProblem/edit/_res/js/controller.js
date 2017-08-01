@@ -31,8 +31,14 @@ app.controller('confirmEditCtrl', function($scope, confirmSer,$stateParams,$stat
     $scope.problemEditFun = function(){
         var vm = $scope;
 
+        vm.resultEdit.problemAcceptTime = angular.element('.addTime').val();
+        vm.resultEdit.problemOccurrenceTime = angular.element('.occurrence').val();
+        vm.resultEdit.problemSolveTime = angular.element('.solution').val();
         vm.resultEdit.problemRelevantDepartment = angular.element('.po').val();
         vm.resultEdit.internalProjectName = angular.element('.na').val();
+        vm.resultEdit.area = angular.element('.na2').val();
+        vm.resultEdit.externalContractProjectName = angular.element('.na3').val();
+        vm.resultEdit.year = angular.element('.na4').val();
         confirmSer.editResult(vm.resultEdit).then(function(response){
             if(response.data.code == 0){
                 $state.go('root.projectProcessed.confirmProblem.list[12]');

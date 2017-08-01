@@ -2,11 +2,11 @@
     <h3 class="header-menu big" ng-click="showMenu(list,true)">
         <i class="nav-arrow" ng-class="{true: '', false: 'change-angle'}[list.showIs]"></i>
         {{list.item}}</h3>
-    <ul class="menu" ng-if="list.menuList.length" ng-show="fundrecord"  ng-show="list.showIs" ng-repeat="menuInfo in list.menuList">
-        <li ng-click="navClass('record')" ng-class="{'active':navCla=='record'}"  ui-sref="_root.flow.record.list[12]">
+    <ul class="menu" ng-if="list.menuList.length"  ng-show="list.showIs" ng-repeat="menuInfo in list.menuList">
+        <li ng-click="navClass(menuInfo.msg)" ng-class="{'active':navCla==menuInfo.msg}"  ui-sref="_root.flow.record.list[12]" ng-show="fundrecord">
             <a href="javascript:void(0)">{{menuInfo.name}}</a>
         </li>
-        <li ng-click="navClass('setting')" ng-class="{'active':navCla=='setting'}"  ui-sref="_root.flow.setting.list[12]" >
+        <li ng-click="navClass(menuInfo.msg)" ng-class="{'active':navCla==menuInfo.msg}"  ui-sref="_root.flow.setting.list[12]" ng-show="cuspermission">
             <a href="javascript:void(0)">{{menuInfo.name2}}</a>
         </li>
     </ul>
