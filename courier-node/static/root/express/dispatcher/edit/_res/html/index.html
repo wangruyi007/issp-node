@@ -1,0 +1,197 @@
+<div class="content-input edit" verify-scope="tipStyle: 1">
+    <div class="input-list">
+        <section>
+            <ul>
+                <li class="required" style="display: none;">
+                    <label><i><img src="/images/mandatory.png"></i><em>id</em></label>
+                    <input type="text"  class=" disabled" disabled ng-model="editDispatcher.id">
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>地区</em></label>
+                    <input type="text" ng-verify="{}" ng-model="editDispatcher.arrival">
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>部门/项目组</em></label>
+                    <div class="sele side">
+                        <select class="sele" ng-model="editDispatcher.department">
+                            <option ng-repeat="team in getAllTeams">{{team}}</option>
+                        </select>
+                    </div>
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>寄件时间</em></label>
+                    <input type="text"  onClick="laydate({istime: true, format: 'YYYY-MM-DD'})" class="date-icon sendTime" ng-model="editDispatcher.sendTime">
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>预计收件时间</em></label>
+                    <input type="text"  onClick="laydate({istime: true, format: 'YYYY-MM-DD'})" class="date-icon receiptTime" ng-model="editDispatcher.receiptTime">
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>寄件人</em></label>
+                    <div class="sele side">
+                        <select class="sele" ng-model="editDispatcher.sendPerson">
+                            <option ng-repeat="name in getAllNames">{{name}}</option>
+                        </select>
+                        <input type="text"  class="inputDom" ng-verify="{}" ng-model="editDispatcher.sendPerson" >
+                    </div>
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>寄件地</em></label>
+                    <div class="sele side">
+                        <select class="sele" ng-model="editDispatcher.sendArrival" ng-change="selPro()">
+                            <option ng-repeat="area in getAllAreas">{{area}}</option>
+                        </select>
+                        <input type="text"  class="inputDom" ng-verify="{}" ng-model="editDispatcher.sendArrival" >
+                    </div>
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>联系方式(寄)</em></label>
+                    <input type="text" ng-verify="{}" ng-model="editDispatcher.sendTel" >
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>收件地</em></label>
+                    <div class="sele side">
+                        <select class="sele" ng-model="editDispatcher.receiptArrival" ng-change="selPro1()" >
+                            <option ng-repeat="area in getAllAreas">{{area}}</option>
+                        </select>
+                        <input type="text"  class="inputDom" ng-verify="{}" ng-model="editDispatcher.receiptArrival" >
+                    </div>
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>寄收件范围</em></label>
+                    <div class="sele side">
+                        <select class="sele" ng-model="editDispatcher.cityRange">
+                            <option value=""></option>
+                            <option value="LOCAL">同城</option>
+                            <option value="PROVINCE">省内</option>
+                            <option value="OUTSIDE">省外</option>
+                        </select>
+                    </div>
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>收件人</em></label>
+                    <div class="sele side">
+                        <select class="sele" ng-model="editDispatcher.receiptPerson">
+                            <option ng-repeat="name in getAllNames">{{name}}</option>
+                        </select>
+                        <input type="text"  class="inputDom" ng-verify="{}" ng-model="editDispatcher.receiptPerson" >
+                    </div>
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>联系方式(收)</em></label>
+                    <input type="text"  ng-verify="{}" ng-model="editDispatcher.receiptTel" >
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>物品属性</em></label>
+                    <div class="sele side">
+                        <select class="sele" ng-model="editDispatcher.attributeType">
+                            <option value="PRECIOUS">贵重件</option>
+                            <option value="URGENCY">紧急件</option>
+                            <option value="COMMON">普通件</option>
+                        </select>
+                    </div>
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>物品名称</em></label>
+                    <input type="text"  ng-verify="{}" ng-model="editDispatcher.itemsName" >
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>物品数量</em></label>
+                    <input type="number"  ng-verify="{}" ng-model="editDispatcher.itemsNum" >
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>快递公司</em></label>
+                    <div class="sele side">
+                        <select class="sele" ng-model="editDispatcher.courierCompany">
+                            <option ng-repeat="conmpany in getAllCompanys">{{conmpany}}</option>
+                        </select>
+                        <input type="text"  class="inputDom" ng-verify="{}" ng-model="editDispatcher.courierCompany" >
+                    </div>
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>快递重量</em></label>
+                    <input type="number"  ng-verify="{}" ng-model="editDispatcher.courierQuality" >
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>快递单号</em></label>
+                    <input type="text"  ng-verify="{}" ng-model="editDispatcher.courierNumber" >
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>快递费总额</em></label>
+                    <input type="number" min="1" ng-verify="{}" ng-model="editDispatcher.courierSum" >
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>运费(元)</em></label>
+                    <input type="number" min="1" ng-verify="{}" ng-model="editDispatcher.freight" >
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>保险费</em></label>
+                    <input type="number" min="1"  ng-verify="{}" ng-model="editDispatcher.secure" >
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>是否有发票/收据</em></label>
+                    <div class="sele side">
+                        <select class="sele" ng-model="editDispatcher.isInvoice">
+                            <option value="true">是</option>
+                            <option value="false">否</option>
+                        </select>
+                    </div>
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>是否公司支付</em></label>
+                    <div class="sele side">
+                        <select class="sele" ng-model="editDispatcher.isCompanyPay">
+                            <option value="true">是</option>
+                            <option value="false">否</option>
+                        </select>
+                    </div>
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>支付人</em></label>
+                    <div class="sele side">
+                        <select class="sele" ng-model="editDispatcher.payPerson">
+                            <option ng-repeat="name in getAllNames">{{name}}</option>
+                        </select>
+                        <input type="text"  class="inputDom" ng-verify="{}" ng-model="editDispatcher.payPerson" >
+                    </div>
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>是否收件</em></label>
+                    <div class="sele side">
+                        <select class="sele" ng-model="editDispatcher.isReceipt">
+                            <option value="true">是</option>
+                            <option value="false">否</option>
+                        </select>
+                    </div>
+                </li>
+                <li>
+                    <label><em>签收人</em></label>
+                    <input type="text" ng-model="editDispatcher.signPerson">
+                </li>
+                <li>
+                    <label><em>收件清单确认</em></label>
+                    <div class="sele side">
+                        <select class="sele" ng-model="editDispatcher.isConfirm">
+                            <option value="true">确认</option>
+                            <option value="false">未确认</option>
+                        </select>
+                    </div>
+                </li>
+                <li>
+                    <label><em>备注</em></label>
+                    <input type="text" ng-model="editDispatcher.description">
+                </li>
+            </ul>
+        </section>
+    </div>
+    <p class="dataBottom">
+        <span class="imPrompt"><i><img src="/images/prompt.png"></i>带有<i><img src="/images/mandatory.png"></i>的为必填项</span>
+        <button ng-verify="{control:'myform'}" ng-click="dispatcherEditFun()">提交</button>
+    </p>
+</div>
+<script type="text/javascript">
+    !function(){
+        laydate.skin('dahong');//切换皮肤，请查看skins下面皮肤库
+    }();
+
+</script>

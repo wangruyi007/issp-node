@@ -235,17 +235,6 @@ module.exports = function(){
         };
         return request(options);
     };
-   /* //获取excel
-    this.inExcel = function(argvs){
-        var options = {
-            method : 'GET',
-            timeout : 3000,
-            uri : config()['rurl'] + `/inventory/v1/export${urlEncode(argvs,true)}`,// 2017-07-21
-            headers:{
-                userToken:argvs.userToken
-            }
-        };
-        return request(options);
-    };*/
+
     return this;
 };

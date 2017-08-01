@@ -1,0 +1,27 @@
+<div class="collect weekC">
+    <div class="collect-select">
+        <span>
+            <select class="sele year" style="width: 100px;">
+            <option value="" >请选择</option>
+            <option value="{{list}}" ng-repeat="list in getAllYs">{{list}}</option>
+             </select>年
+        </span>
+        <button ng-click="collect()">汇总</button>
+    </div>
+    <ul class="sum-list">
+        <li class="sum-thead">
+            <span>地区</span>
+            <span>部门/项目组</span>
+            <span>快递公司</span>
+            <span>快递单号量</span>
+            <span>总费用合计</span>
+        </li>
+        <li class="sum-tbody" ng-repeat="Lists in allYearLists">
+            <span>{{::Lists.arrival}}</span>
+            <span>{{::Lists.department}}</span>
+            <span>{{::Lists.courierCompany}}</span>
+            <span>{{::Lists.countNum}}</span>
+            <span>{{::Lists.total}}</span>
+        </li>
+    </ul>
+</div>
