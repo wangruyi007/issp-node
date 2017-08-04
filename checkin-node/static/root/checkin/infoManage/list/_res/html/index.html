@@ -1,0 +1,78 @@
+<div class="content-tab list" verify-scope="tipStyle: 1">
+    <ul class="table">
+        <li class="list-head">
+            <span></span>
+            <span>地区</span>
+            <span>项目组</span>
+            <span>宿舍地址</span>
+            <span>宿舍钥匙数量(把)</span>
+            <span>宿舍钥匙分配情况</span>
+            <span>宿舍负责人</span>
+            <span>负责人联系方式</span>
+            <span></span>
+        </li>
+        <li class="list-all" ng-repeat="lists in infoLists" style="display: {{lists._delete?'none':'block'}};">
+            <section>
+                <div class="list-text {{lists._selectList?'selectList':''}}" ng-click="selectList(lists)">
+                    <p mod>{{$index+1+num}}</p>
+                    <p mod>{{::lists.area}}</p>
+                    <p mod>{{::lists.projectGroup}}</p>
+                    <p mod>{{::lists.address}}</p>
+                    <p mod>{{::lists.keysNumber}}</p>
+                    <p mod>{{::lists.keysDistribution}}</p>
+                    <p mod>{{::lists.head}}</p>
+                    <p mod>{{::lists.headContact}}</p>
+                    <p>
+                        <a href="javascript:void(0)" class="more" ng-click="moreList(lists)">更多详细</a>
+                    </p>
+                </div>
+                <div class="can">
+                    <ul class="can-see" style="display: {{lists._moreList?'block':'none'}};">
+                        <li>
+                            <p class="see-parent">
+                                <span>宿舍床位数量(个)</span>
+                                <span>已入住床位(个)</span>
+                                <span>闲置床位(个)</span>
+                                <span>宿舍床上3件套数量(件)</span>
+                                <span>已领用数量(件)</span>
+                                <span>闲置数量(件)</span>
+                                <span>宿舍被褥数量(件)</span>
+                                <span>备注</span>
+                            </p>
+                            <p class="see-children">
+                                <span mod>{{::lists.berth}}</span>
+                                <span mod>{{::lists.beeBerth}}</span>
+                                <span mod>{{::lists.idleBerth}}</span>
+                                <span mod>{{::lists.suit}}</span>
+                                <span mod>{{::lists.recipientsSuit}}</span>
+                                <span mod>{{::lists.idleSuit}}</span>
+                                <span mod>{{::lists.bedding}}</span>
+                                <span mod>{{::lists.remark}}</span>
+                            </p>
+                        </li>
+                    </ul>
+                </div>
+            </section>
+        </li>
+    </ul>
+    <footer class="footer">
+        <pagination count="custom.itemsCount" take="custom.take" activate="custom.activatePage"></pagination>
+    </footer>
+</div>
+<div class="delete mod" ng-show="delShow">
+    <div class="del-head">
+        <h5>温馨提示</h5>
+    </div>
+    <div class="del-con">
+        <p>确定要删除这条数据？</p>
+        <div class="btn">
+            <button ng-click="delFn()">确定</button>
+            <button ng-click="cancel()">取消</button>
+        </div>
+    </div>
+</div>
+<div id="modalbg" ng-show="delShow"></div>
+
+
+
+

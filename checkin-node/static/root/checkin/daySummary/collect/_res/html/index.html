@@ -1,0 +1,38 @@
+<div class="collect">
+    <div class="sum-select">
+        <label><i><img src="/images/mandatory.png"></i><em>名字</em></label>
+        <div class="select">
+            <p class="select-text" >
+                <span ng-repeat="innerName in names">{{innerName}}, </span>
+            </p>
+            <div class="mymultiselect" events="getSummary" ng-dropdown-multiselect="" options="workOptions" selected-model="names" extra-settings="stringSettings"></div>
+        </div>
+    </div>
+    <ul class="sum-list">
+        <li class="sum-thead">
+            <span>姓名</span>
+            <span>员工编号</span>
+            <span>地区</span>
+            <span>项目组</span>
+            <span>入住宿舍</span>
+            <span>入住时间</span>
+            <span>离宿时间</span>
+            <span>领用/归还钥匙</span>
+            <span>领用/归还床上用品</span>
+        </li>
+        <li class="sum-tbody" ng-repeat="Lists in summaryLists">
+            <span>{{::Lists.name}}</span>
+            <span>{{::Lists.num}}</span>
+            <span>{{::Lists.area}}</span>
+            <span>{{::Lists.projectGroup}}</span>
+            <span>{{::Lists.address}}</span>
+            <span>{{::Lists.stayTime}}</span>
+            <span>{{::Lists.hostTime}}</span>
+            <span>{{::Lists.receiveKey}}</span>
+            <span>{{::Lists.bed}}</span>
+        </li>
+    </ul>
+</div>
+
+
+
