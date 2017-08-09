@@ -60,14 +60,7 @@ app.controller('openingListCtrl',function($scope,openingSer,toastr,$stateParams,
             competitive:$scope.competitive || " ",
             page:page || 1
         };
-        openingSer.countBidOpening(listData).then(function(response){
-            if(response.data.code==0){
-                $scope.custom.itemsCount = response.data.data;
-                $scope.num = $stateParams.search().page*10>10?($stateParams.search().page-1)*10:null;
-            }else{
-                toastr.error( response.data.msg, '温馨提示');
-            }
-        })
+    
         openingSer.bidOpeningList(listData).then(function(response){
             if(response.data.code == 0){
                 $scope.openLists = response.data.data;
@@ -79,11 +72,21 @@ app.controller('openingListCtrl',function($scope,openingSer,toastr,$stateParams,
                     });
                     //向父Ctrl传递事件
                     $scope.$emit('changeId', $stateParams.id);
+                    $scope.$emit('page',$location.search().page);
                 }
             }else{
                 toastr.error( response.data.msg, '温馨提示');
             }
         });
+        openingSer.countBidOpening(listData).then(function(response){
+            if(response.data.code==0){
+                $scope.custom.itemsCount = response.data.data;
+                $scope.num = $location.search().page*10>10?($location.search().page-1)*10:null;
+
+            }else{
+                toastr.error( response.data.msg, '温馨提示');
+            }
+        })
     }
     // 搜索功能字段
     $scope.titles = ['竞争公司'];

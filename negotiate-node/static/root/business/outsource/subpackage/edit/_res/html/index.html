@@ -1,0 +1,92 @@
+<div class="content-input edit" verify-scope="tipStyle: 1">
+    <!--表单验证插件-->
+    <div class="input-list">
+        <section>
+            <ul>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>合同外部项目名称</em></label>
+                     <input type="text" ng-model="data.contractExtProject" ng-verify="{}">
+               </li>
+               <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>合同外部编号</em></label>
+                    <input type="text"  ng-model="data.contractExtCode" ng-verify="{}">
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>合同内部项目名称</em></label>
+                     <input type="text" ng-model="data.contractInProject" ng-verify="{}">
+               </li>
+               <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>合同内部编号</em></label>
+                    <input type="text"  ng-model="data.contractInCode" ng-verify="{}">
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>外包项目名称</em></label>
+                    <input type="text"  ng-model="data.outsourcingProject" ng-verify="{}">
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>外包项目编号</em></label>
+                    <input type="text"  ng-model="data.outsourcingCode" ng-verify="{}">
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>项目外包信息</em></label>
+                    <input type="text"  ng-model="data.outsourcingInfo" ng-verify="{}">
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>洽谈轮次</em></label>
+                    <input type="text"  ng-model="data.communicateTimes" ng-verify="{}">
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>洽谈目的</em></label>
+                    <input type="text"  ng-model="data.communicateGoal" ng-verify="{}">
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>洽谈时间</em></label>
+                    <input type="text" onClick="laydate({istime: true, format: 'YYYY-MM-DD hh:mm:ss'})" class="Time" ng-model="data.communicateDate">
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>洽谈人</em></label>
+                    <input type="text"  ng-model="data.communicateUser" ng-verify="{}">
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>洽谈对象</em></label>
+                    <input type="text" ng-model="data.communicateObj" ng-verify="{}">
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>洽谈地址</em></label>
+                    <input type="text" ng-model="data.communicateAddress" ng-verify="{}">
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>费用预算</em></label>
+                    <input type="number" ng-model="data.costBudget" ng-verify="{}">
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>合同内部项目名称</em></label>
+                     <select class="sele" ng-model="data.projectResult" ng-init="data.projectResult='选择'">
+                        <option value="COOPERATE">项目合作</option>
+                        <option value="TRAIL">项目跟进</option>
+                        <option value="ABANDON">项目丢弃</option>
+                    </select>
+               </li>
+               <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>记录人</em></label>
+                    <input type="text" ng-model="data.recordUser" ng-verify="{}">
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>洽谈内容</em></label>
+                    <textarea ng-model="data.communicateContent" ng-verify="{}"></textarea>
+                </li>
+            </ul>
+        </section>
+    </div>
+    <p class="dataBottom">
+        <span class="imPrompt"><i><img src="/images/prompt.png"></i>带有<i><img src="/images/mandatory.png"></i>的为必填项</span>
+        <button ng-verify="{control:'myform'}" ng-click="EditFun()">提交</button>
+    </p>
+</div>
+
+<script type="text/javascript">
+    !function () {
+        laydate.skin('dahong');//切换皮肤，请查看skins下面皮肤库
+    } ();
+
+</script>

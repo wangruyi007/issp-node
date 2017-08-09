@@ -10,7 +10,7 @@
                     <label><i><img src="/images/mandatory.png"></i><em>地区</em></label>
                     <div class="sele ng-valid ng-not-empty ng-dirty ng-valid-parse ng-touched area side">
                         <select ng-model="data.area" class="sele">
-                            <option value="请选择1">请选择1</option>
+                            
                             <option ng-repeat="area in areas" value="{{area.area}}">{{area.area}}</option>
                         </select> 
 
@@ -21,7 +21,7 @@
                     <label><i><img src="/images/mandatory.png"></i><em>项目组</em></label>
                     <div class="sele ng-valid ng-not-empty ng-dirty ng-valid-parse ng-touched projectGroup side">
                         <select ng-model="data.projectGroup" class="sele">
-                            <option value="请选择1">请选择1</option>
+                            
                             <option ng-repeat="projectGroup in projectGroups" value="{{projectGroup.value}}">{{projectGroup.value}}</option>
                         </select> 
 
@@ -32,7 +32,7 @@
                     <label><i><img src="/images/mandatory.png"></i><em>项目名称</em></label>
                     <div class="sele ng-valid ng-not-empty ng-dirty ng-valid-parse ng-touched project side">
                         <select ng-model="data.project" class="sele">
-                            <option value="请选择1">请选择1</option>
+                            
                             <option ng-repeat="project in projects" value="{{project.value}}">{{project.value}}</option>
                         </select> 
 
@@ -51,10 +51,6 @@
                 <li class="required f-l">
                     <label><i><img src="/images/mandatory.png"></i><em>支出</em></label>
                     <input type="text"  ng-verify="{}" ng-model="expenditure">
-                </li>
-                <li class="required f-l">
-                    <label><i><img src="/images/mandatory.png"></i><em>数据来源</em></label>
-                    <input type="text"  ng-verify="{}" ng-model="data.dataSource">
                 </li>
             </ul>
         </section>

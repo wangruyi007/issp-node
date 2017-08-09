@@ -54,9 +54,21 @@ app.controller('moneyCtrl', function ($scope,$state) {
         }
     });
     $scope.showsList = [
-        {id:"1",item:"房屋费用准备与支付",menuList:[{name:'资金准备审核表'},{name2:"等待付款"},{name3:"已付款记录"}],showIs:true},
-        {id:"2",item:"设置",menuList:[{name4:'设置'}],showIs:true}
+        {id:"1",item:"房屋费用准备与支付",menuList:[{name:'资金准备审核表',msg:'review'},{name2:'等待付款',msg:'wait'},{name3:'已付款记录',msg:'pay'}],showIs:false},
+        {id:"2",item:"设置",menuList:[{name4:'设置',msg:'setting'}],showIs:false}
     ];
+    if(active){
+        for(var i=0;i<$scope.showsList.length;i++){
+            var n=$scope.showsList[i].menuList;
+            for(var j=0;j<n.length;j++){
+                var m=n[j].msg;
+                if(m==active){
+                    $scope.showsList[i].showIs=true;
+                    break;
+                }
+            }
+        }
+    }
     $scope.showMenu = function(obj,event) {
         if(event){
             if(obj.showIs){

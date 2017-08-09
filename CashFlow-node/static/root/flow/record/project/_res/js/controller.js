@@ -1,12 +1,11 @@
 var app = angular.module('recordProject', ['toastr']);
 app.controller('recordProjectCtrl', function($scope, recordSer,toastr){
-
+$scope.months=['1','2','3','4','5','6','7','8','9','10','11','12']
     $scope.showed=true;
     // 项目名称
     recordSer.projects().then(function(response){
         if(response.data.code == 0){
             $scope.projects = response.data.data;
-            console.log($scope.projects)
         }
     });
     $scope.collect = function(){

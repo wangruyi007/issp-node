@@ -1,0 +1,45 @@
+<div class="content-input edit" verify-scope="tipStyle: 1">
+    <div class="input-list">
+        <section>
+            <ul>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>可参保人员姓名</em></label>
+                    <input type="text" ng-verify="{}" ng-model="incre.name">
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>需增员时间</em></label>
+                    <input type="text" onClick="laydate({istime: true, format: 'YYYY-MM-DD'})" class="add_image addTime" ng-model="incre.addTime">
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>需参保时长</em></label>
+                    <input type="text" ng-verify="{}" ng-model="incre.time">
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>增员参保周期特殊要求</em></label>
+                    <input type="text" ng-verify="{}" ng-model="incre.request">
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>可参保人员新增的地市</em></label>
+                    <input type="text" ng-verify="{}" ng-model="incre.addCity">
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>备注</em></label>
+                    <input type="text" ng-verify="{}" ng-model="incre.description">
+                </li>
+            </ul>
+        </section>
+    </div>
+    <p class="dataBottom">
+        <span class="imPrompt"><i><img src="/images/prompt.png"></i>带有<i><img src="/images/mandatory.png"></i>的为必填项</span>
+        <button ng-verify="{control:'myform'}" ng-click="webEditFun()">提交</button>
+    </p>
+</div>
+
+<script type="text/javascript">
+
+    !function(){
+        laydate.skin('dahong');//切换皮肤，请查看skins下面皮肤库
+    }();
+
+
+</script>

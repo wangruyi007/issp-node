@@ -43,27 +43,30 @@
                         <li>
                             <p class="see-parent">
                                 <span>项目名称</span>
-                                <span>报名时间</span>
+                                <span>报名开始时间</span>
+                                <span>报名结束时间</span>
                                 <span>投标时间</span>
                                 <span>投标资格要求</span>
                                 <span>省份</span>
                                 <span>地市</span>
                                 <span>账号</span>
-                                <span>密码</span>
+                                
                             </p>
                             <p class="see-children">
                                 <span mod>{{lists.projectName}}</span>
-                                <span mod>{{lists.registrationTime}}</span>
+                                <span mod>{{lists.registrationStartTime}}</span>
+                                <span mod>{{lists.registrationEndTime}}</span>
                                 <span mod>{{lists.biddingTime}}</span>
                                 <span mod>{{lists.biddingQualifications}}</span>
                                 <span mod>{{lists.provinces}}</span>
                                 <span mod>{{lists.cities}}</span>
                                 <span mod>{{lists.account}}</span>
-                                <span mod>{{lists.password}}</span>
+                                
                             </p>
                         </li>
                         <li>
                             <p class="see-parent">
+                                <span>密码</span>
                                 <span>注册人</span>
                                 <span>注册信息</span>
                                 <span>状态</span>
@@ -71,9 +74,10 @@
                                 <span>价格</span>
                                 <span>购买标书要求</span>
                                 <span>交保证金时间</span>
-                                <span>交保证金方式</span>
+                                
                             </p>
                             <p class="see-children">
+                                <span mod>{{lists.password}}</span>
                                 <span mod>{{lists.registrant}}</span>
                                 <span mod>{{lists.registrationInfo}}</span>
                                 <span mod>{{lists.status|cover}}</span>
@@ -81,15 +85,17 @@
                                 <span mod>{{lists.price}}</span>
                                 <span mod>{{lists.buyTenderRequirements}}</span>
                                 <span mod>{{lists.marginTime}}</span>
-                                <span mod>{{lists.marginMethod}}</span>
+                                
                             </p>
                         </li>
                         <li>
                             <p class="see-parent">
+                                <span>交保证金方式</span>
                                 <span>保证金退回时间</span>
                                 <span>备注</span>
                             </p>
                             <p class="see-children">
+                                <span mod>{{lists.marginMethod}}</span>
                                 <span mod>{{lists.backTimeDeposit}}</span>
                                 <span mod>{{lists.remark}}</span>
                             </p>

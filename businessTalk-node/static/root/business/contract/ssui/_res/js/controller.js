@@ -24,8 +24,6 @@ app.controller('ssuiCtrl',function ($scope,$state) {
         var buttonName = name;
         $scope.buttonShow = true;
         ssuiSer.ssuiGuide(buttonName).then(function(response){
-
-                  debugger
             if(response.data.code == 0 && response.data.data){
                 $scope[buttonName] = true;
             }else{
@@ -88,4 +86,22 @@ app.controller('ssuiCtrl',function ($scope,$state) {
     $scope.export = function(){
         $scope.menuClass = 'exportMenu'
     };
+});
+//自定义过滤
+app.filter('cover', function(){
+    return function (val) {
+        var result;
+        switch(val){
+            case "COOPERATE":
+                result = "项目合作";
+                break;
+            case "TRAIL":
+                result = "项目跟进";
+                break;
+            case "ABANDON":
+                result = "项目丢弃";
+                break;
+        }
+        return result;
+    }
 });

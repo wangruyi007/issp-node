@@ -1,7 +1,7 @@
 <!--Angular-UI-Router里的指令ui-sref-active 查看当前激活状态并设置 Class-->
 <ul class="list">
-    <li ng-click="list()" ng-class="{'current':menuClass=='listMenu'}" ui-sref=".list[12]" class="lis">
-        <a href="javascript:void(0)" class="same-two">列表</a>
+    <li ng-click="list()" ng-class="{'current':menuClass=='listMenu'}" ui-sref=".list[12]">
+        <a href="javascript:void(0)" class="same-two lis">列表</a>
     </li>
     <li ng-click="add()" ng-class="{'current':menuClass=='addMenu'}" ui-sref=".add[12]" ng-show="ADD" ng-init="menuCheck('ADD')">
         <a href="javascript:void(0)"  class="same-three">添加</a>
@@ -28,9 +28,9 @@
         <a href="javascript:void(0)" class="same-three">项目组分析</a>
     </li>
     <li ng-click="upload()" ng-class="{'current':menuClass=='uploadMenu','seeParent':idList}" ng-show="UPLOAD" ng-init="menuCheck('UPLOAD')">
-        <a href="javascript:void(0)"  class="same-one see" >上传</a>
+        <a href="javascript:void(0)"  class="same-one see" >上传文件</a>
     </li>
     <li ng-click="view()" ng-class="{'current':menuClass=='viewMenu','seeParent':idList}" ng-show="DOWNLOAD" ng-init="menuCheck('DOWNLOAD')">
-        <a href="javascript:void(0)"  class="same-one see" >下载</a>
+        <a href="javascript:void(0)"  class="same-one see" >查看附件</a>
     </li>
 </ul>
