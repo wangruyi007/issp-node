@@ -92,12 +92,64 @@ module.exports = function(){
         };
         return request(options);
     };
-    // 审核
-    this.popAudit = function(argvs){
+    // 调往决策层审核
+    this.popAuditD = function(argvs){
         var options = {
             method : 'POST',
             timeout : 3000,
-            uri : config()['rurl'] + `/staffmovementapply/v1/audit?userToken=${argvs.userToken}`,
+            uri : config()['rurl'] + `/staffmovementapply/v1/transferAudit?userToken=${argvs.userToken}`,
+            form:argvs,
+            headers:{
+                userToken:argvs.userToken
+            }
+        };
+        return request(options);
+    };
+    // 规划模块审核
+    this.popAuditG = function(argvs){
+        var options = {
+            method : 'POST',
+            timeout : 3000,
+            uri : config()['rurl'] + `/staffmovementapply/v1/planAudit?userToken=${argvs.userToken}`,
+            form:argvs,
+            headers:{
+                userToken:argvs.userToken
+            }
+        };
+        return request(options);
+    };
+    // 预算模块审核
+    this.popAuditS = function(argvs){
+        var options = {
+            method : 'POST',
+            timeout : 3000,
+            uri : config()['rurl'] + `/staffmovementapply/v1/budgetAudit?userToken=${argvs.userToken}`,
+            form:argvs,
+            headers:{
+                userToken:argvs.userToken
+            }
+        };
+        return request(options);
+    };
+    // 原决策层审核
+    this.popAuditY = function(argvs){
+        var options = {
+            method : 'POST',
+            timeout : 3000,
+            uri : config()['rurl'] + `/staffmovementapply/v1/originalAudit?userToken=${argvs.userToken}`,
+            form:argvs,
+            headers:{
+                userToken:argvs.userToken
+            }
+        };
+        return request(options);
+    };
+    // 总经办审核
+    this.popAuditZ = function(argvs){
+        var options = {
+            method : 'POST',
+            timeout : 3000,
+            uri : config()['rurl'] + `/staffmovementapply/v1/generalAudit?userToken=${argvs.userToken}`,
             form:argvs,
             headers:{
                 userToken:argvs.userToken

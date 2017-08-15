@@ -101,11 +101,63 @@ module.exports = function(){
                 $self.set('Content-Type','application/json;charset=utf-8');
                 $self.body=error.error;
             }));
-    }).post('/popAudit/audit', function*(){//审核
+    }).post('/popAuditD/auditD', function*(){//审核
         var $self = this;
         var editData = $self.request.body;
         editData.userToken = $self.cookies.get('token');
-        yield (server().popAudit(editData)
+        yield (server().popAuditD(editData)
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
+    }).post('/popAuditG/auditG', function*(){//审核
+        var $self = this;
+        var editData = $self.request.body;
+        editData.userToken = $self.cookies.get('token');
+        yield (server().popAuditG(editData)
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
+    }).post('/popAuditS/auditS', function*(){//审核
+        var $self = this;
+        var editData = $self.request.body;
+        editData.userToken = $self.cookies.get('token');
+        yield (server().popAuditS(editData)
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
+    }).post('/popAuditY/auditY', function*(){//审核
+        var $self = this;
+        var editData = $self.request.body;
+        editData.userToken = $self.cookies.get('token');
+        yield (server().popAuditY(editData)
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
+    }).post('/popAuditZ/auditZ', function*(){//审核
+        var $self = this;
+        var editData = $self.request.body;
+        editData.userToken = $self.cookies.get('token');
+        yield (server().popAuditZ(editData)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
                 $self.body = responseText;

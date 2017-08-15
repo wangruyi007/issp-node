@@ -15,7 +15,7 @@ app.controller('peopleAuditSCtrl', function($scope, peopleSer,$stateParams,$stat
     //编辑点击提交
     $scope.peopleEditFun = function(){
         var vm = $scope;
-        peopleSer.popAudit(vm.pop).then(function(response){
+        peopleSer.popAuditS(vm.pop).then(function(response){
             if(response.data.code == 0){
                 $state.go('root.personnel.people.list[12]');
                 toastr.success( "编辑成功", '温馨提示');

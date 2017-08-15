@@ -16,7 +16,7 @@ app.controller('peopleAuditDCtrl', function($scope, peopleSer,$stateParams,$stat
     $scope.peopleEditFun = function(){
         var vm = $scope;
         // vm.pop.transferAuditOpinion = angular.element('.num').val();
-        peopleSer.popAudit(vm.pop).then(function(response){
+        peopleSer.popAuditD(vm.pop).then(function(response){
             if(response.data.code == 0){
                 $state.go('root.personnel.people.list[12]');
                 toastr.success( "编辑成功", '温馨提示');

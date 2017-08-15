@@ -11,8 +11,11 @@
     <li ng-click="delete()" ng-class="{'current':menuClass=='deleteMenu','seeParent':idListd}" ng-show="DELETE" ng-init="menuCheck('DELETE')">
         <a href="javascript:void(0)" title="删除" class="same-two see" >删除<span></span></a>
     </li>
-    <li ng-click="auditZ()" ng-class="{'current':menuClass=='auditZMenu','seeParent':idListd}" ng-show="GENAUDIT" ng-init="menuCheck('GENAUDIT')">
-        <a href="javascript:void(0)" title="总经办审核" class="same-two see" >总经办审核<span></span></a>
+    <li ng-click="auditG()" ng-class="{'current':menuClass=='auditGMenu','seeParent':idListd}" ng-show="BUDGETAUDIT" ng-init="menuCheck('BUDGETAUDIT')">
+        <a href="javascript:void(0)" title="规划模块审核" class="same-two see" >规划模块审核<span></span></a>
+    </li>
+    <li ng-click="auditS()" ng-class="{'current':menuClass=='auditSMenu','seeParent':idListd}" ng-show="PLANAUDIT" ng-init="menuCheck('PLANAUDIT')">
+        <a href="javascript:void(0)" title="预算审核" class="same-two see" >预算审核<span></span></a>
     </li>
     <li ng-click="auditY()" ng-class="{'current':menuClass=='auditYMenu','seeParent':idListd}" ng-show="ORANAUDIT" ng-init="menuCheck('ORANAUDIT')">
         <a href="javascript:void(0)" title="原决策层审核" class="same-two see" >原决策层审核<span></span></a>
@@ -20,10 +23,7 @@
     <li ng-click="auditD()" ng-class="{'current':menuClass=='auditDMenu','seeParent':idListd}" ng-show="TRAAUDIT" ng-init="menuCheck('TRAAUDIT')">
         <a href="javascript:void(0)" title="调往决策层审核" class="same-two see" >调往决策层审核<span></span></a>
     </li>
-    <li ng-click="auditG()" ng-class="{'current':menuClass=='auditGMenu','seeParent':idListd}" ng-show="BUDGETAUDIT" ng-init="menuCheck('BUDGETAUDIT')">
-        <a href="javascript:void(0)" title="规划模块审核" class="same-two see" >规划模块审核<span></span></a>
-    </li>
-    <li ng-click="auditS()" ng-class="{'current':menuClass=='auditSMenu','seeParent':idListd}" ng-show="PLANAUDIT" ng-init="menuCheck('PLANAUDIT')">
-        <a href="javascript:void(0)" title="预算审核" class="same-two see" >预算审核<span></span></a>
+    <li ng-click="auditZ()" ng-class="{'current':menuClass=='auditZMenu','seeParent':idListd}" ng-show="GENAUDIT" ng-init="menuCheck('GENAUDIT')">
+        <a href="javascript:void(0)" title="总经办审核" class="same-two see" >总经办审核<span></span></a>
     </li>
 </ul>

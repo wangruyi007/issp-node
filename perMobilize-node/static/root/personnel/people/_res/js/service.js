@@ -4,7 +4,11 @@ app.factory('peopleSer',function ($http) {
         popAdd:popAdd,
         popList:popList,
         popEdit:popEdit,
-        popAudit:popAudit,
+        popAuditS:popAuditS,
+        popAuditG:popAuditG,
+        popAuditD:popAuditD,
+        popAuditY:popAuditY,
+        popAuditZ:popAuditZ,
         popCount:popCount,
         popId:popId,
         popDelete:popDelete,
@@ -30,8 +34,24 @@ app.factory('peopleSer',function ($http) {
         return $http.post('/popEdit/edit',data)
     }
     //审核
-    function popAudit(data){
-        return $http.post('/popAudit/audit',data)
+    function popAuditS(data){
+        return $http.post('/popAuditS/auditS',data)
+    }
+    //审核
+    function popAuditG(data){
+        return $http.post('/popAuditG/auditG',data)
+    }
+    //审核
+    function popAuditD(data){
+        return $http.post('/popAuditD/auditD',data)
+    }
+    //审核
+    function popAuditY(data){
+        return $http.post('/popAuditY/auditY',data)
+    }
+    //审核
+    function popAuditZ(data){
+        return $http.post('/popAuditZ/auditZ',data)
     }
     //id查询
     function popId(data){

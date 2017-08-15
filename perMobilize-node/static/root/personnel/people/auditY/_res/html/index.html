@@ -2,10 +2,20 @@
     <div class="input-list">
         <section>
             <ul>
-                
                 <li class="required">
-                    <label><i><img src="/images/mandatory.png"></i><em>审核意见</em></label>
+                    <label><i><img src="/images/mandatory.png"></i><em>原决策层审核人</em></label>
+                    <input type="text" ng-model="pop.originalAuditor" ng-verify="{}">
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>原决策层审核意见</em></label>
                     <input type="text" ng-model="pop.originalAuditOpinion" ng-verify="{}">
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>原决策层是否同意调动</em></label>
+                    <select class="sele" ng-model="pop.originalMove">
+                        <option value="是">同意</option>
+                        <option value="否">不同意</option>
+                    </select>
                 </li>
             </ul>
         </section>

@@ -54,22 +54,38 @@
                         </li>
                         <li>
                             <p class="see-parent">
-                                
-                                <!-- <span>审核人</span> -->
-                                <span title="总经办审核意见">总经办审核意见</span>
-                                <span title="原决策层审核意见">原决策层审核意见</span>
-                                <span title="调往决策层审核意见">调往决策层审核意见</span>
+                                <span title="规划模块审核人">规划模块审核人</span>
                                 <span title="规划模块审核意见">规划模块审核意见</span>
+                                <span title="预算审核人">预算审核人</span>
                                 <span title="预算审核意见">预算审核意见</span>
+                                <span title="原决策层审核人">原决策层审核人</span>
+                                <span title="原决策层审核意见">原决策层审核意见</span>
+                                <span title="原决策层是否同意调动">原决策层是否同意调动</span>
+                                <span title="调往决策层审核人">调往决策层审核人</span>
                             </p>
                             <p class="see-children">
-                                
-                                <!-- <span mod>{{lists.auditor | cover}}</span> -->
-                                <span mod>{{lists.generalAuditOpinion}}</span>
-                                <span mod>{{lists.originalAuditOpinion}}</span>
-                                <span mod>{{lists.transferAuditOpinion}}</span>
+                                <span mod>{{lists.planAuditor}}</span>
                                 <span mod>{{lists.planAuditOpinion}}</span>
+                                <span mod>{{lists.budgetAuditor}}</span>
                                 <span mod>{{lists.budgetAuditOpinion}}</span>
+                                <span mod>{{lists.originalAuditor}}</span>
+                                <span mod>{{lists.originalAuditOpinion}}</span>
+                                <span mod>{{lists.originalMove}}</span>
+                                <span mod>{{lists.transferAuditor}}</span>
+                            </p>
+                        </li>
+                        <li>
+                            <p class="see-parent">
+                                <span title="调往决策层审核意见">调往决策层审核意见</span>
+                                <span title="调往决策层是否同意调动">调往决策层是否同意调动</span>
+                                <span title="总经办审核人">总经办审核人</span>
+                                <span title="总经办审核意见">总经办审核意见</span>
+                            </p>
+                            <p class="see-children">
+                                <span mod>{{lists.transferAuditOpinion}}</span>
+                                <span mod>{{lists.transferMove}}</span>
+                                <span mod>{{lists.generalAuditor}}</span>
+                                <span mod>{{lists.generalAuditOpinion}}</span>
                             </p>
                         </li>
                     </ul>
