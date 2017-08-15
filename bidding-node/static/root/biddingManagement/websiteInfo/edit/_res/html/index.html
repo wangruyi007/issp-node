@@ -14,6 +14,32 @@
                     <label><i><img src="/images/mandatory.png"></i><em>网址</em></label>
                     <input type="text" ng-verify="{}" ng-model="webInfoEdit.url">
                 </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>账号</em></label>
+                    <input type="text" ng-model="webInfoEdit.account">
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>密码</em></label>
+                    <input type="text" ng-model="webInfoEdit.password">
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>注册人</em></label>
+                    <input type="text" ng-model="webInfoEdit.registrant">
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>注册信息</em></label>
+                    <input type="text" ng-model="webInfoEdit.registrationInfo">
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>状态</em></label>
+                    <select class="sele" ng-model="webInfoEdit.status" ng-init="webInfoEdit.status='THAW'">
+                        <option value="THAW">解冻</option>
+                        <option value="CONGEAL">冻结</option>
+                        <option value="DELETE">删除</option>
+                        <option value="NOACTIVE">未激活</option>
+                        <option value="UNREVIEW">未审核</option>
+                    </select>
+                </li>
             </ul>
         </section>
     </div>

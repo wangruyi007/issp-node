@@ -3,6 +3,7 @@
         <li class="list-head">
             <span></span>
             <span>汇总类型</span>
+            <span>汇总条件</span>
             <span>备注</span>
             <span>发送间隔和单位</span>
             <span>发送对象</span>    
@@ -15,6 +16,7 @@
                 <div class="list-text {{lists._selectList?'selectList':''}}" ng-click="selectList(lists)">
                     <p mod>{{$index+1+num}}</p>
                     <p mod>{{lists.type}}</p>
+                    <p mod>{{lists.condi}}</p>
                     <p mod>{{lists.remark}}</p>
                     <p mod>{{lists.sendNumAndUnit}}</p>
                     <p mod>{{lists.sendObject}}</p>

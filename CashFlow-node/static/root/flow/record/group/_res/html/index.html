@@ -1,20 +1,26 @@
 <div class="collect">
     <div class="collect-select" style="margin:20px 20px 20px 88px">
-        <span>  
+        <i><img src="/images/mandatory.png"></i><span>  
             年份:
-            <input type="number" style="border:1px solid black;" ng-model="year">
+            <input type="number" class="stime" ng-model="year">
         </span>
-        <span>  
+        <i><img src="/images/mandatory.png"></i><span>  
             月份:
-            <input type="number" style="border:1px solid black;" ng-model="month">
+            <div class="recordse">
+                <select ng-model="month" style="padding-left:10%;">
+                    <option ng-repeat="month in months" value="{{month}}">{{month}}</option>
+                </select>
+            </div>
         </span>
         <span>
             项目组：
-            <select ng-model="projectGroup" class="recordse">
-                <option value="请选择1">请选择</option>
-                <option ng-repeat="projectGroup in projectGroups" value="{{projectGroup.value}}">{{projectGroup.value}}</option>
-            </select>
-            <input type="text" ng-model="projectGroup" class="recordin">
+            <div class="recordse">
+                <select ng-model="group">
+                    <option value="请选择1">请选择</option>
+                    <option ng-repeat="projectGroup in projectGroups" value="{{projectGroup.value}}">{{projectGroup.value}}</option>
+                </select>
+                <input type="text" ng-model="group" class="recordin">
+            </div>
         </span>
         <button ng-click="collect()" class="aaa">汇总</button>
     </div>

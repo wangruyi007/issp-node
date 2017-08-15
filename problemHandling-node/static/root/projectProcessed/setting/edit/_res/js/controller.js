@@ -5,7 +5,7 @@ app.controller('settingEditCtrl', function($scope, settingSer, $state,$statePara
     settingSer.getpermit($scope.getId).then(function(response){
         if(response.data.code==0){
             $scope.edit = response.data.data;
-            $scope.positions=$scope.edit.cusOperateVO;
+            $scope.positions=$scope.edit.proOperateVO;
         }else {
             toastr.error( response.data.msg, '温馨提示');
         }
@@ -16,7 +16,7 @@ app.controller('settingEditCtrl', function($scope, settingSer, $state,$statePara
     settingSer.getListpermit($scope.getId).then(function(response){
         if(response.data.code==0){
             $scope.workOptions= response.data.data;
-        }else {
+        }else{
             toastr.error( response.data.msg, '温馨提示');
         }
     });
@@ -32,9 +32,9 @@ app.controller('settingEditCtrl', function($scope, settingSer, $state,$statePara
         $scope.edit.operator = null;
         settingSer.editSetting($scope.edit).then(function(response){
             if(response.data.code == 0){
-                $state.go('root.projectProcessed.setting.list[12]');
+                $state.go('root.borrowRefund.setting.list[12]');
                 toastr.success("已成功编辑", '温馨提示');
-            }else {
+            }else{
                 toastr.error( response.data.msg, '温馨提示');
             }
         });
@@ -42,4 +42,8 @@ app.controller('settingEditCtrl', function($scope, settingSer, $state,$statePara
     }
 
 });
+
+
+
+
 

@@ -1,0 +1,101 @@
+<div class="content-tab list">
+    <div class="search-big" style="display :{{ isView?'none':'block'}}">
+        <select class="salc" ng-model="checkedName"  ng-init="checkedName='洽谈人'">
+            <option ng-repeat="item in titles">{{item}}</option>
+        </select>
+        <input type="text" ng-model="communicateUser" ng-show="checkedName=='洽谈人'">
+        <input type="text" ng-model="communicateObj" ng-show="checkedName=='洽谈对象'">
+        <select class="sle" ng-model="communicateResult" ng-show="checkedName=='项目结果'">
+            <option value=""></option>
+            <option value="COOPERATE">项目合作</option>
+            <option value="TRAIL">项目跟进</option>
+            <option value="ABANDON">项目丢弃</option>
+        </select>
+        <a href="javascript:void(0)" ng-click="collect()"><img src="/images/search2.png"></a>
+    </div>
+    <ul class="table com-table">
+        <li class="list-head">
+            <span></span>
+            <span class="data-id">id</span>
+            <span>合同外部项目名称</span>
+            <span>合同外部编号</span>
+            <span>内部项目名称</span>
+            <span>内部项目编号</span>
+            <span>外包项目名称</span>
+            <span>外包项目编号</span>
+            <span>项目外包信息</span>
+            <span>洽谈轮次</span>
+            <span>洽谈目的</span>
+            <span></span>
+        </li>
+        <li class="list-all"  ng-repeat="list in marketserveLists" style="display: {{list._delete?'none':'block'}};">
+            <section>
+                <div  class="list-text {{list._selectList?'selectList':''}}" ng-click="selectList(list)">
+                    <p>{{$index+1}}</p>
+                    <p class="data-id"></p>
+                    <p mod>{{::list.contractExtProject}}</p>
+                    <p mod>{{::list.contractExtCode}}</p>
+                    <p mod>{{::list.contractInProject}}</p>
+                    <p mod>{{::list.contractInCode}}</p>
+                    <p mod>{{::list.outsourcingProject}}</p>
+                    <p mod>{{::list.outsourcingCode}}</p>
+                    <p mod>{{::list.outsourcingInfo}}</p>
+                    <p mod>{{::list.communicateTimes}}</p>
+                    <p mod>{{::list.communicateGoal}}</p>
+                    <p>
+                        <a href="javascript:void(0)" class="more"  ng-click="moreList(list)">更多详细</a>
+                    </p>
+                </div>
+                <div class="can">
+                    <ul class="can-see" style="display: {{list._moreList?'block':'none'}};">
+                        <li>
+                            <p class="see-parent">
+                                <span>洽谈时间</span>
+                                <span>洽谈人</span>
+                                <span>洽谈对象</span>
+                                <span>洽谈地址</span>
+                                <span>洽谈内容</span>
+                                <span>费用预算</span>
+                                <span>项目结果</span>
+                                <span>记录人</span>
+                            </p>
+                            <p class="see-children">
+                                <span mod>{{::list.communicateDate}}</span>
+                                <span mod>{{::list.communicateUser}}</span>
+                                <span mod>{{::list.communicateObj}}</span>
+                                <span mod>{{::list.communicateAddress}}</span>
+                                <span mod>{{::list.communicateContent}}</span>
+                                <span mod>{{::list.costBudget}}</span>
+                                <span mod>{{::list.projectResult | cov}}</span>
+                                <span mod>{{::list.recordUser}}</span>
+                            </p>
+                        </li>
+                    </ul>
+                </div>
+            </section>
+        </li>
+     </ul>
+     <div class="module">
+        <div class="see-module">
+            <p class="see-type">体现类型</p>
+            <p class="see-description"></p>
+            <button class="btn" modclose>关闭</button>
+        </div>
+    </div>
+    <footer class="footer">
+        <pagination count="abili.itemsCount" take="abili.take" activate="abili.activatePage"></pagination>
+    </footer>
+</div>
+<div class="delete mod" ng-show="delShow">
+    <div class="del-head">
+        <h5>温馨提示</h5>
+    </div>
+    <div class="del-con">
+        <p>确定要删除这条数据？</p>
+        <div class="btn">
+            <button ng-click="delFn()">确定</button>
+            <button ng-click="cancel()">取消</button>
+        </div>
+    </div>
+</div>
+<div id="modalbg" ng-show="delShow"></div>

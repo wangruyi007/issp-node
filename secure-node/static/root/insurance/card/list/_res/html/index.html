@@ -1,0 +1,78 @@
+<div class="content-tab list">
+    <ul class="table">
+        <li class="list-head">
+            <span></span>
+            <span>姓名</span>
+            <span>员工编号</span>
+            <span>社保卡管理分类</span>
+            <span>地区</span>
+            <span>社保帐户号码</span>
+            <span>领卡机构</span>
+            <span>物品状态</span>
+            <span></span>
+        </li>
+        <li class="list-all" ng-repeat="lists in cardLists" style="display: {{lists._delete?'none':'block'}};">
+            <section>
+                <div class="list-text {{lists._selectList?'selectList':''}}" ng-click="selectList(lists)">
+                    <p mod>{{$index+1+num}}</p>
+                    <p mod>{{lists.name}}</p>
+                    <p mod>{{lists.employeeId}}</p>
+                    <p mod>{{lists.cartStatus|cover}}</p>
+                    <p mod>{{lists.arrival}}</p>
+                    <p mod>{{lists.cartNum}}</p>
+                    <p mod>{{lists.institutions}}</p>
+                    <p mod>{{lists.status}}</p>
+                    <p>
+                        <a href="javascript:void(0)" class="more" ng-click="moreList(lists)">更多详细</a>
+                    </p>
+                </div>
+                <div class="can">
+                    <ul class="can-see" style="display: {{lists._moreList?'block':'none'}};">
+                        <li>
+                            <p class="see-parent">
+                                <span>储存位置</span>
+                                <span>曾补办时间</span>
+                                <span>曾补办次数</span>
+                                <span>曾补办原因明细</span>
+                            </p>
+                            <p class="see-children">
+                                <span mod>{{lists.location}}</span>
+                                <span mod>{{lists.reapply}}</span>
+                                <span mod>{{lists.reapplyNum}}</span>
+                                <span mod>{{lists.reason}}</span>
+                            </p>
+                        </li>
+                    </ul>
+                    
+                </div>
+            </section>
+        </li>
+    </ul>
+    <div class="module">
+        <div class="see-module">
+            <p class="see-type">体现类型</p>
+            <p class="see-description"></p>
+            <button class="btn" modclose>关闭</button>
+        </div>
+    </div>
+    <footer class="footer">
+        <pagination count="custom.itemsCount" take="custom.take" activate="custom.activatePage"></pagination>
+    </footer>
+</div>
+<!-- <div ui-view="modal"></div> -->
+<div class="delete mod" ng-show="delShow">
+    <div class="del-head">
+        <h5>温馨提示</h5>
+    </div>
+    <div class="del-con">
+        <p>确定要删除这条数据？</p>
+        <div class="btn">
+            <button ng-click="delFn()">确定</button>
+            <button ng-click="cancel()">取消</button>
+        </div>
+    </div>
+</div>
+<div id="modalbg" ng-show="delShow"></div>
+
+
+

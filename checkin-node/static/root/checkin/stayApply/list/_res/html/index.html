@@ -1,0 +1,54 @@
+<div class="content-tab list" verify-scope="tipStyle: 1">
+    <ul class="table">
+        <li class="list-head">
+            <span></span>
+            <span>新入职员工姓名</span>
+            <span>申请入住日期</span>
+            <span>申请入住地区</span>
+            <span>申请入住宿舍</span>
+            <span>申请入住原因	</span>
+            <span>住宿负责人</span>
+            <span>福利负责人</span>
+            <span>审核状态</span>
+            <span>新员工确认入住</span>
+            <span>备注</span>
+        </li>
+        <li class="list-all" ng-repeat="lists in applyLists" style="display: {{lists._delete?'none':'block'}};">
+            <section>
+                <div class="list-text {{lists._selectList?'selectList':''}}" ng-click="selectList(lists)">
+                    <p mod>{{$index+1+num}}</p>
+                    <p mod>{{::lists.name}}</p>
+                    <p mod>{{::lists.stayDate}}</p>
+                    <p mod>{{::lists.area}}</p>
+                    <p mod>{{::lists.stayDormitory}}</p>
+                    <p mod>{{::lists.stayCause}}</p>
+                    <p mod>{{::lists.stayHead}}</p>
+                    <p mod>{{::lists.headAudit}}</p>
+                    <p mod>{{::lists.checkStatus|cover}}</p>
+                    <p mod>{{::lists.stay|cover}}</p>
+                    <p mod>{{::lists.remark}}</p>
+                </div>
+            </section>
+        </li>
+    </ul>
+    <footer class="footer">
+        <pagination count="custom.itemsCount" take="custom.take" activate="custom.activatePage"></pagination>
+    </footer>
+</div>
+<div class="delete mod" ng-show="delShow">
+    <div class="del-head">
+        <h5>温馨提示</h5>
+    </div>
+    <div class="del-con">
+        <p>确定要删除这条数据？</p>
+        <div class="btn">
+            <button ng-click="delFn()">确定</button>
+            <button ng-click="cancel()">取消</button>
+        </div>
+    </div>
+</div>
+<div id="modalbg" ng-show="delShow"></div>
+
+
+
+

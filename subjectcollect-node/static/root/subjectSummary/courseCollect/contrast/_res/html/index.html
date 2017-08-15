@@ -2,17 +2,24 @@
     <div class="collect-select" style="margin:20px 20px 20px 88px">
         <span>  
             开始月份:
-            <input type="number" style="border:1px solid black;" ng-model="monthsa">
+            <div class="recordse">
+                <select ng-model="monthsa" style="padding-left:10%;">
+                    <option ng-repeat="month in months" value="{{month}}">{{month}}</option>
+                </select>
+            </div>
         </span>
         <span>  
             结束月份:
-            <input type="number" style="border:1px solid black;" ng-model="monthsb">
+            <div class="recordse">
+                <select ng-model="monthsb" style="padding-left:10%;">
+                    <option ng-repeat="month in months" value="{{month}}">{{month}}</option>
+                </select>
+            </div>
         </span>
-        <button ng-click="collect()">汇总</button>
+        <button ng-click="collect()">对比汇总</button>
     </div>
     <ul class="sum-list">
         <li class="sum-thead">
-            <span>代码</span>
             <span>月份</span>
             <span>一级科目</span>
             <span>地区</span>
@@ -29,8 +36,7 @@
             <span>期末差额</span>
             
         </li>
-        <li class="sum-tbody" ng-repeat="list in courseCollectLists">     
-            <span>{{::list.code}}</span>
+        <li class="sum-tbody" ng-repeat="list in courseCollectLists">
             <span>{{::list.months}}</span>
             <span>{{::list.firstSubject}}</span>
             <span>{{::list.area}}</span>

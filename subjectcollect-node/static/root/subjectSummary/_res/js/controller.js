@@ -53,9 +53,21 @@ app.controller('subjectCtrl', function ($scope,$state) {
         }
     });
     $scope.showsList = [
-        {id:"1",item:"科目汇总表",menuList:[{name:'科目汇总表'}],showIs:true},
-        {id:"2",item:"设置",menuList:[{name2:'设置'}],showIs:true}
+        {id:"1",item:"科目汇总表",menuList:[{name:'科目汇总表',msg:'courseCollect'}],showIs:false},
+        {id:"2",item:"设置",menuList:[{name2:'设置',msg:'setting'}],showIs:false}
     ];
+    if(active){
+        for(var i=0;i<$scope.showsList.length;i++){
+            var n=$scope.showsList[i].menuList;
+            for(var j=0;j<n.length;j++){
+                var m=n[j].msg;
+                if(m==active){
+                    $scope.showsList[i].showIs=true;
+                    break;
+                }
+            }
+        }
+    }
     $scope.showMenu = function(obj,event) {
         if(event){
             if(obj.showIs){
@@ -64,11 +76,11 @@ app.controller('subjectCtrl', function ($scope,$state) {
                 obj.showIs=event;
                 /* angular.forEach(function(item){ showSubAble sublist*/
                 this.showsList.forEach(function(item){
-                    // if(item.id!=obj.id){
-                    //     item.showIs=!event;
-                    // }else{
-                    //     item.showIs=event;
-                    // }
+                    if(item.id!=obj.id){
+                        item.showIs=!event;
+                    }else{
+                        item.showIs=event;
+                    }
                 });
             }
         }

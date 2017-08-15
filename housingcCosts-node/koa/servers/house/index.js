@@ -334,7 +334,7 @@ module.exports = function(){
         var options = {
             method : 'GET',
             timeout : 3000,
-            uri : config()['rurl'] + '/moneyready/v1/collect?month='+encodeURIComponent(argvs.month),
+            uri : config()['rurl'] + '/moneyready/v1/collect?date='+encodeURIComponent(argvs.date),
             headers:{
                 userToken:argvs.userToken
             }

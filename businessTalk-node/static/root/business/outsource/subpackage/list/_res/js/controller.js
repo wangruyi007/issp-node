@@ -1,10 +1,6 @@
 var app = angular.module('subpackageList', ['ng-pagination','toastr']);
 app.controller('subpackageListCtrl',function($scope,subpackageSer,toastr,$state,$stateParams) {
     $scope.$emit('changeId', null);
-    //监听切换搜索是否出现
-    $scope.$on('iSsearch',function(event,newIs){
-        $scope.isView = newIs;
-    });
     //删除
     //获取id
     if($stateParams.id){

@@ -1,0 +1,121 @@
+<div class="content-tab list" verify-scope="tipStyle: 1">
+    <ul class="table">
+        <li class="list-head">
+            <span></span>
+            <span>地区</span>
+            <span>部门/项目组</span>
+            <span>寄件时间</span>
+            <span>预计收件时间</span>
+            <span>寄件人</span>
+            <span>寄件地</span>
+            <span>联系方式(寄)</span>
+            <span></span>
+        </li>
+        <li class="list-all" ng-repeat="lists in dispatcherLists" style="display: {{lists._delete?'none':'block'}};">
+            <section>
+                <div class="list-text {{lists._selectList?'selectList':''}}" ng-click="selectList(lists)">
+                    <p mod>{{$index+1+num}}</p>
+                    <p mod>{{::lists.arrival}}</p>
+                    <p mod>{{::lists.department}}</p>
+                    <p mod>{{::lists.sendTime}}</p>
+                    <p mod>{{::lists.receiptTime}}</p>
+                    <p mod>{{::lists.sendPerson}}</p>
+                    <p mod>{{::lists.sendArrival}}</p>
+                    <p mod>{{::lists.sendTel}}</p>
+                    <p>
+                        <a href="javascript:void(0)" class="more" ng-click="moreList(lists)">更多详细</a>
+                    </p>
+                </div>
+                <div class="can">
+                    <ul class="can-see" style="display: {{lists._moreList?'block':'none'}};">
+                        <li>
+                            <p class="see-parent">
+                                <span>收件地</span>
+                                <span>联系方式(收)</span>
+                                <span>寄收件范围</span>
+                                <span>收件人</span>
+                                <span>物品属性</span>
+                                <span>物品名称</span>
+                                <span>物品数量</span>
+                                <span>快递公司</span>
+                            </p>
+                            <p class="see-children">
+                                <span mod>{{::lists.receiptArrival}}</span>
+                                <span mod>{{::lists.receiptTel}}</span>
+                                <span mod>{{::lists.cityRange|cover}}</span>
+                                <span mod>{{::lists.receiptPerson}}</span>
+                                <span mod>{{::lists.attributeType|cover}}</span>
+                                <span mod>{{::lists.itemsName}}</span>
+                                <span mod>{{::lists.itemsNum}}</span>
+                                <span mod>{{::lists.courierCompany}}</span>
+                            </p>
+                        </li>
+                        <li>
+                            <p class="see-parent">
+                                <span>快递公司联系方式</span>
+                                <span>快递重量</span>
+                                <span>快递单号</span>
+                                <span>快递费总额(元)</span>
+                                <span>运费(元)</span>
+                                <span>保险费(元)</span>
+                                <span>总费用</span>
+                                <span>余额</span>
+                            </p>
+                            <p class="see-children">
+                                <span mod>{{::lists.courierTel}}</span>
+                                <span mod>{{::lists.courierQuality}}</span>
+                                <span mod>{{::lists.courierNumber}}</span>
+                                <span mod>{{::lists.courierSum|cover}}</span>
+                                <span mod>{{::lists.freight|cover}}</span>
+                                <span mod>{{::lists.secure}}</span>
+                                <span mod>{{::lists.feeSum|cover}}</span>
+                                <span mod>{{::lists.remainingSum}}</span>
+                            </p>
+                        </li>
+                        <li>
+                            <p class="see-parent">
+                                <span>是否有发票/收据</span>
+                                <span>是否公司支付</span>
+                                <span>支付人</span>
+                                <span>是否收件</span>
+                                <span>签收人</span>
+                                <span>收件清单确认</span>
+                                <span>备注</span>
+                            </p>
+                            <p class="see-children">
+                                <span mod>{{::lists.isInvoice|cover}}</span>
+                                <span mod>{{::lists.isCompanyPay|cover}}</span>
+                                <span mod>{{::lists.payPerson}}%</span>
+                                <span mod>{{::lists.isReceipt|cover}}</span>
+                                <span mod>{{::lists.signPerson}}</span>
+                                <span mod>{{::lists.isConfirm|cover}}</span>
+                                <span mod>{{::lists.description}}</span>
+                            </p>
+                        </li>
+                    </ul>
+                </div>
+            </section>
+        </li>
+
+    </ul>
+    <footer class="footer">
+        <pagination count="custom.itemsCount" take="custom.take" activate="custom.activatePage"></pagination>
+    </footer>
+</div>
+<div class="delete mod" ng-show="delShow">
+    <div class="del-head">
+        <h5>温馨提示</h5>
+    </div>
+    <div class="del-con">
+        <p>确定要删除这条数据？</p>
+        <div class="btn">
+            <button ng-click="delFn()">确定</button>
+            <button ng-click="cancel()">取消</button>
+        </div>
+    </div>
+</div>
+<div id="modalbg" ng-show="delShow"></div>
+
+
+
+
