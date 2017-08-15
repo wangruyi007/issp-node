@@ -21,38 +21,38 @@ app.controller('personnelCtrl', function ($scope,$state) {
         $scope.$emit('isId',true);//每次切换页面更新搜索值
     };
 
-    // bidSer.navPermission().then(function(response){
-    //     if(response.data.code == 0){
-    //         var data = response.data.data;
-    //         if(data && data.length){
-    //             $scope.isHide = false;
-    //             for(var i =0,len=data.length;i<len;i++){
-    //                 var obj = data[i];
-    //                 $scope[obj.name]=obj.flag;
-    //             }
-    //         }else if(response.data.data.length == 0){
-    //             $scope.isHide = true;
-    //         }
-    //     }else{
-    //         $scope.isHide = false;
-    //     }
-    // });
-    // bidSer.setPermission().then(function(response){
-    //     if(response.data.code == 0){
-    //         var data = response.data.data;
-    //         if(data && data.length){
-    //             $scope.isHide = false;
-    //             for(var i =0,len=data.length;i<len;i++){
-    //                 var obj = data[i];
-    //                 $scope[obj.name]=obj.flag;
-    //             }
-    //         }else if(response.data.data.length == 0){
-    //             $scope.isHide = true;
-    //         }
-    //     }else{
-    //         $scope.isHide = false;
-    //     }
-    // });
+    personnelSer.navPermission().then(function(response){
+        if(response.data.code == 0){
+            var data = response.data.data;
+            if(data && data.length){
+                $scope.isHide = false;
+                for(var i =0,len=data.length;i<len;i++){
+                    var obj = data[i];
+                    $scope[obj.name]=obj.flag;
+                }
+            }else if(response.data.data.length == 0){
+                $scope.isHide = true;
+            }
+        }else{
+            $scope.isHide = false;
+        }
+    });
+    personnelSer.setPermission().then(function(response){
+        if(response.data.code == 0){
+            var data = response.data.data;
+            if(data && data.length){
+                $scope.isHide = false;
+                for(var i =0,len=data.length;i<len;i++){
+                    var obj = data[i];
+                    $scope[obj.name]=obj.flag;
+                }
+            }else if(response.data.data.length == 0){
+                $scope.isHide = true;
+            }
+        }else{
+            $scope.isHide = false;
+        }
+    });
     $scope.showsList = [
         {id:"1",item:"人员调动",menuList:[{name:'人员调动申请',msg:'people'}],showIs:false},
         {id:"2",item:"设置",menuList:[{name2:'设置',msg:'setting'}],showIs:false}

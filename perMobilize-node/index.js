@@ -8,7 +8,7 @@ const staticCache = require('koa-static-cache');
 const routersPath = '/koa/routers/';
 const sendfile = require('koa-sendfile');
 var configsCache = {};
-const port = 5552;
+const port = 8088;
 
 const config = require(path.resolve('plugins/read-config.js'));
 

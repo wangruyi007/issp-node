@@ -155,7 +155,7 @@ module.exports = function(){
         var options = {
             method : 'GET',
             timeout : 3000,
-            uri : config()['rurl'] + '/biddinginfo/v1/sonPermission',//2017-06-10
+            uri : config()['rurl'] + '/staffmovementapply/v1/sonPermission',//2017-06-10
             headers:{
                 userToken:argvs.userToken
             }
@@ -167,7 +167,7 @@ module.exports = function(){
         var options = {
             method : 'GET',
             timeout : 3000,
-            uri : config()['rurl'] + '/biddinginfo/v1/setButtonPermission',//2017-06-12
+            uri : config()['rurl'] + '/staffmovementapply/v1/setButtonPermission',//2017-06-12
             headers:{
                 userToken:argvs.userToken
             }

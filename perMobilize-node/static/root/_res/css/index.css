@@ -1217,6 +1217,13 @@ body {
   border-color: #93c1bb;
 }
 
+.right-section .top-content .content .menu .list li a{
+  white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+
 .right-section .top-content .content .menu .list li a.same-two {
   border-color: #ddcfac;
 }
@@ -1728,13 +1735,15 @@ ul li .data-add{
   margin-left:15px;
 }
 .select .select-text{
-  width:65%;
+  width:54%;
   line-height:40px;
   height:40px;
-  padding-left: 15px;
+  padding-left: 10px;
   position:absolute;
   left:0;
   overflow:hidden;
+  text-overflow:ellipsis;
+  white-space: nowrap;
 }
 .select .select-text.verifyError{
   border: 1px solid #1aafea;
@@ -1746,7 +1755,7 @@ ul li .data-add{
   z-index:10;
 }
 .select .mymultiselect .btn{
-  width:100px;
+  width:46%;
   position:absolute;
   right:0;
   height:40px;

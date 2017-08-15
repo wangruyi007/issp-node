@@ -21,18 +21,18 @@ app.controller('peopleCtrl',function ($scope,$state) {
         $scope.menuClass = $location.search().name + 'Menu';
 
     }
-    // $scope.menuCheck = function (name) {
-    //     var buttonName = name;
-    //     $scope.buttonShow = true;
-    //     peopleSer.popPermission(buttonName).then(function(response){
-    //         if(response.data.code == 0 && response.data.data){
-    //             $scope[buttonName] = true;
-    //         }else{
-    //             $scope[buttonName] = false;
-    //         }
-    //     });
-    //     $scope.menuAdd = false;
-    // };
+    $scope.menuCheck = function (name) {
+        var buttonName = name;
+        $scope.buttonShow = true;
+        peopleSer.popPermission(buttonName).then(function(response){
+            if(response.data.code == 0 && response.data.data){
+                $scope[buttonName] = true;
+            }else{
+                $scope[buttonName] = false;
+            }
+        });
+        $scope.menuAdd = false;
+    };
     //监听到父Ctrl后改变事件
     $scope.$on("getId", function(event, msg){
        $scope.idListd = msg;
