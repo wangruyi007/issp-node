@@ -1,5 +1,5 @@
 var app = angular.module('summaryProject', ['toastr','angularjs-dropdown-multiselect','ng-laybox']);
-app.controller('summaryProjectCtrl', function($scope, paingSer,toastr){
+app.controller('summaryProjectCtrl', function($scope, waitSer,toastr){
     $scope.project = [];
     $scope.stringSettings = {template : '{{option}}', smartButtonTextConverter(skip, option) { return option; }};
     $scope.show =false;
@@ -22,7 +22,7 @@ app.controller('summaryProjectCtrl', function($scope, paingSer,toastr){
     }
     
     //获取项目
-    paingSer.projectPaying().then(function(response){
+    waitSer.projectPaying().then(function(response){
         if(response.data.code == 0){
             $scope.workOptions = response.data.data;
         }else {
@@ -53,7 +53,7 @@ app.controller('summaryProjectCtrl', function($scope, paingSer,toastr){
             return;
         }
         if(bool){//汇总
-            paingSer.summaryProject(vm.sum).then(function(response){
+            waitSer.summaryProject(vm.sum).then(function(response){
                 if(response.data.code == 0){
                     $scope.isShow = false;
                     $scope.summaryLists = response.data.data;
@@ -65,7 +65,7 @@ app.controller('summaryProjectCtrl', function($scope, paingSer,toastr){
                 }
             })
         }else if(!bool){//汇总详情
-            paingSer.summaryProjectDetail(vm.sum).then(function(response){
+            waitSer.summaryProjectDetail(vm.sum).then(function(response){
                 if(response.data.code == 0){
                     if(isLay){
                         var arr = [];

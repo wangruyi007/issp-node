@@ -1,6 +1,6 @@
-var app = angular.module('summaryProject', ['toastr','angularjs-dropdown-multiselect','ng-laybox']);
-app.controller('summaryProjectCtrl', function($scope, paingSer,toastr){
-    $scope.project = [];
+var app = angular.module('summaryArea', ['toastr','angularjs-dropdown-multiselect','ng-laybox']);
+app.controller('summaryAreaCtrl', function($scope, waitSer,toastr){
+    $scope.area = [];
     $scope.stringSettings = {template : '{{option}}', smartButtonTextConverter(skip, option) { return option; }};
     $scope.show =false;
     $scope.lists = ['地区','项目','年份','月份','房租地址','租金','水费','电费','管理费','其他费用','合计','房东姓名','联系电话','交租确认'];
@@ -20,16 +20,16 @@ app.controller('summaryProjectCtrl', function($scope, paingSer,toastr){
             $scope.collect(false,arr);
         }
     }
-    
-    //获取项目
-    paingSer.projectPaying().then(function(response){
+
+    //获取地区
+    waitSer.areaPaying().then(function(response){
         if(response.data.code == 0){
             $scope.workOptions = response.data.data;
         }else {
             toastr.error(response.data.msg,'温馨提示')
         }
     });
-    
+
     //修改时间格式
     $scope.back = function(val,bool){
         var time = val.split('-').splice(0,2).join('-');
@@ -42,18 +42,18 @@ app.controller('summaryProjectCtrl', function($scope, paingSer,toastr){
     $scope.start = $scope.end = year + '-' + month;
     $scope.collect = function(bool,isLay){
         var vm = $scope;
-        var o = isLay ||  vm.project;
+        var o = isLay ||  vm.area;
         vm.sum={
             startTime:$scope.start,
             endTime:$scope.end,
-            projects:o.join(',')
+            areas:o.join(',')
         };
         if(!$scope.start || !$scope.end){
             toastr.info( '请填写日期', '温馨提示');
             return;
         }
         if(bool){//汇总
-            paingSer.summaryProject(vm.sum).then(function(response){
+            waitSer.summaryArea(vm.sum).then(function(response){
                 if(response.data.code == 0){
                     $scope.isShow = false;
                     $scope.summaryLists = response.data.data;
@@ -65,7 +65,7 @@ app.controller('summaryProjectCtrl', function($scope, paingSer,toastr){
                 }
             })
         }else if(!bool){//汇总详情
-            paingSer.summaryProjectDetail(vm.sum).then(function(response){
+            waitSer.summaryAreaDetail(vm.sum).then(function(response){
                 if(response.data.code == 0){
                     if(isLay){
                         var arr = [];

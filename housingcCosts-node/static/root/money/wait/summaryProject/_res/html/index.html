@@ -12,9 +12,9 @@
             <label><i><img src="/images/mandatory.png"></i><em>项目：</em></label>
                 <div class="select">
                     <p class="select-text">
-                        <span ng-repeat="city in area">{{city}}, </span>
+                        <span ng-repeat="city in project">{{city}}, </span>
                     </p>
-                    <div class="mymultiselect" ng-dropdown-multiselect options="workOptions" selected-model="area" extra-settings="stringSettings"></div>
+                    <div class="mymultiselect" ng-dropdown-multiselect options="workOptions" selected-model="project" extra-settings="stringSettings"></div>
                 </div>
         </div>
         <button class="button" ng-click="collect(true)">汇总</button>
@@ -23,8 +23,8 @@
     <p class="isDate" ng-show="isShow">时间：{{ isDate }}</p>
     <ul class="sum-list">
         <li class="sum-thead">
-            <span>地区</span>
-            <span ng-show="isShow">项目</span>
+            <span ng-show="isShow">地区</span>
+            <span>项目</span>
             <span ng-show="isShow">年份</span>
             <span ng-show="isShow">月份</span>
             <span ng-show="isShow">房租地址</span>
@@ -38,9 +38,9 @@
             <span ng-show="isShow">联系电话</span>
             <span ng-show="isShow">交租确认</span>
         </li>
-        <li class="sum-tbody" ng-repeat="Lists in summaryLists" ng-dblclick="layClick(Lists.area)">
-            <span>{{::Lists.area}}</span>
-            <span ng-show="isShow">{{::Lists.project}}</span>
+        <li class="sum-tbody" ng-repeat="Lists in summaryLists" ng-dblclick="layClick(Lists.project)">
+            <span ng-show="isShow">{{::Lists.area}}</span>
+            <span>{{::Lists.project}}</span>
             <span ng-show="isShow">{{::Lists.year}}</span>
             <span ng-show="isShow">{{::Lists.month}}</span>
             <span ng-show="isShow">{{::Lists.rentAddress}}</span>
