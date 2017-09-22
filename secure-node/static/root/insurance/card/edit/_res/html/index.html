@@ -1,0 +1,87 @@
+<div class="content-input edit" verify-scope="tipStyle: 1">
+    <div class="input-list">
+        <section>
+            <ul>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>姓名</em></label>
+                    <div class="sele ng-valid ng-not-empty ng-dirty ng-valid-parse ng-touched area side">
+                        <select ng-model="card.name" class="sele">
+                            <option ng-repeat="name in names" value="{{name.username}}">{{name.username}}</option>
+                        </select> 
+
+                         <input type="text"  class="inputDom ng-valid ng-not-empty ng-dirty ng-touched" ng-model="card.name">
+                    </div>
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>员工编号</em></label>
+                    <div class="sele ng-valid ng-not-empty ng-dirty ng-valid-parse ng-touched area side">
+                        <select ng-model="card.employeeId" class="sele">
+                            <option ng-repeat="employeeNum in employeeNums" value="{{employeeNum.employeeNumber}}">{{employeeNum.employeeNumber}}</option>
+                        </select> 
+
+                         <input type="text"  class="inputDom ng-valid ng-not-empty ng-dirty ng-touched" ng-model="card.employeeId">
+                    </div>
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>社保卡管理分类</em></label>
+                    <select class="sele num" ng-model="card.cartStatus">
+                        <option value="ALREADYRECEIVED">已领社保卡帐户</option>
+                        <option value="UNRECEIVED">未领社保卡帐户</option>
+                        <option value="CANRECEIVED">预计可领取社保卡帐户</option>
+                    </select>
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>地区</em></label>
+                    <div class="sele ng-valid ng-not-empty ng-dirty ng-valid-parse ng-touched area side">
+                        <select ng-model="card.city" class="sele">
+                            <option ng-repeat="city in citys" value="{{city.area}}">{{city.area}}</option>
+                        </select> 
+
+                         <input type="text"  class="inputDom ng-valid ng-not-empty ng-dirty ng-touched" ng-model="card.arrival">
+                    </div>
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>社保帐户号码</em></label>
+                    <input type="text" ng-verify="{}" ng-model="card.cartNum">
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>领卡机构</em></label>
+                    <input type="text" ng-verify="{}" ng-model="card.institutions">
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>物品状态</em></label>
+                    <input type="text" ng-verify="{}" ng-model="card.status">
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>储存位置</em></label>
+                    <input type="text" ng-verify="{}" ng-model="card.location">
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>曾补办时间</em></label>
+                    <input type="text" onClick="laydate({istime: true, format: 'YYYY-MM-DD'})" class="add_image reapply" ng-model="card.reapply">
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>曾补办次数</em></label>
+                    <input type="number" ng-verify="{}" ng-model="card.reapplyNum">
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>曾补办原因明细</em></label>
+                    <input type="text" ng-verify="{}" ng-model="card.reason">
+                </li>
+            </ul>
+        </section>
+    </div>
+    <p class="dataBottom">
+        <span class="imPrompt"><i><img src="/images/prompt.png"></i>带有<i><img src="/images/mandatory.png"></i>的为必填项</span>
+        <button ng-verify="{control:'myform'}" ng-click="cardEditFun()">提交</button>
+    </p>
+</div>
+
+<script type="text/javascript">
+
+    !function(){
+        laydate.skin('dahong');//切换皮肤，请查看skins下面皮肤库
+    }();
+
+
+</script>

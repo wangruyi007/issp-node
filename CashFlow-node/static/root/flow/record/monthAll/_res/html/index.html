@@ -1,12 +1,16 @@
 <div class="collect">
     <div class="collect-select" style="margin:20px 20px 20px 88px">
-        <span>  
+        <i><img src="/images/mandatory.png"></i><span>  
             年份:
-            <input type="number" style="border:1px solid black;" ng-model="year">
+            <input type="number" ng-model="year" class="stime">
         </span>
-        <span>  
+        <i><img src="/images/mandatory.png"></i><span>  
             月份:
-            <input type="number" style="border:1px solid black;" ng-model="month">
+            <div class="recordse">
+                <select ng-model="month" style="padding-left:10%;">
+                    <option ng-repeat="month in months" value="{{month}}">{{month}}</option>
+                </select>
+            </div>
         </span>
         <button ng-click="collect()" class="aaa">汇总</button>
     </div>
@@ -19,11 +23,11 @@
             <span>支出</span>
         </li>
         <li class="sum-tbody">
-            <span mod>{{::recordLists.month}}</span>
-            <span mod>{{::recordLists.lastBalance}}</span>
-            <span mod>{{::recordLists.currentBalance}}</span>
-            <span mod>{{::recordLists.income}}</span>
-            <span mod>{{::recordLists.expenditure}}</span>
+            <span mod>{{recordLists.month}}</span>
+            <span mod>{{recordLists.lastBalance}}</span>
+            <span mod>{{recordLists.currentBalance}}</span>
+            <span mod>{{recordLists.income}}</span>
+            <span mod>{{recordLists.expenditure}}</span>
         </li>
     </ul>
     <div class="module">

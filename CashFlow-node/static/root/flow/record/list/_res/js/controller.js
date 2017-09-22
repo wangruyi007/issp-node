@@ -85,12 +85,4 @@ app.controller('recordListCtrl',function($scope,recordSer,toastr,$stateParams,$s
                 toastr.error( response.data.msg, '温馨提示');
             }
     });
-    // 删除
-    $scope.$on('deletedId',function(event,delid){
-        angular.forEach($scope.recordLists.data,function(obj){
-            if(obj.id == delid){
-                obj._delete = true
-            }
-        })
-    });
 });

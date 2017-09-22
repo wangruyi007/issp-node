@@ -1,6 +1,6 @@
 var app = angular.module('recordGroup', ['toastr']);
 app.controller('recordGroupCtrl', function($scope, recordSer,toastr){
-
+$scope.months=['1','2','3','4','5','6','7','8','9','10','11','12']
     $scope.showed=true;
     // 项目组
     recordSer.projectGroups().then(function(response){
@@ -14,9 +14,7 @@ app.controller('recordGroupCtrl', function($scope, recordSer,toastr){
         data.sum={
             year:data.year,
             month:data.month,
-            // area:data.area,
-            projectGroup:data.group,
-            // project:data.project
+            group:data.group
         };
         recordSer.moneyGroup(data.sum).then(function(response){
             if(response.data.code == 0){

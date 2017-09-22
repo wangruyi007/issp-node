@@ -80,7 +80,8 @@ module.exports = function(){
             }));
     }).get('/problemaccept/count', function*(){//获取项目执行中的问题受理总条数
         var $self = this;
-        var token ={userToken:$self.cookies.get('token')};
+        var token = $self.request.query;
+        token.userToken = this.cookies.get('token');
         yield (server().getProblemTotal(token)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -149,11 +150,13 @@ module.exports = function(){
     }).get('/problemExport/export', function*(){//导出
         var $self = this;
         var count = $self.request.query;
+        var fileName = '项目执行中的问题受理'+'.xlsx';
         yield (fetch(config()['rurl']+`/problemaccept/v1/export${urlEncode(count,true)}`, {
             method : 'GET',
             headers : {'userToken' : $self.cookies.get('token')}
         }).then(function(res){
             $self.set('content-type', 'application/vnd.ms-excel;charset=utf-8');
+            $self.set('Content-Disposition', 'attachment;  filename='+encodeURI(fileName));
             return res.buffer();
         }).then(function(data){
             $self.body = data;
@@ -274,7 +277,8 @@ module.exports = function(){
             }));
     }).get('/problemhandlingresult/count', function*(){//获取确认问题处理结果总条数
         var $self = this;
-        var token ={userToken:$self.cookies.get('token')};
+        var token = $self.request.query;
+        token.userToken = this.cookies.get('token');
         yield (server().getConfirmTotal(token)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -343,11 +347,13 @@ module.exports = function(){
     }).get('/confirmExport/export', function*(){//导出
         var $self = this;
         var count = $self.request.query;
+        var fileName = '确认问题处理结果'+'.xlsx';
         yield (fetch(config()['rurl']+`/problemhandlingresult/v1/export${urlEncode(count,true)}`, {
             method : 'GET',
             headers : {'userToken' : $self.cookies.get('token')}
         }).then(function(res){
             $self.set('content-type', 'application/vnd.ms-excel;charset=utf-8');
+            $self.set('Content-Disposition', 'attachment;  filename='+encodeURI(fileName));
             return res.buffer();
         }).then(function(data){
             $self.body = data;
@@ -457,11 +463,13 @@ module.exports = function(){
     }).get('/exportAssignment/export', function*(){//导出
         var $self = this;
         var count = $self.request.query;
+        var fileName = '参与人员的任务分配'+'.xlsx';
         yield (fetch(config()['rurl']+`/involvedprocessingtask/v1/exportExcel${urlEncode(count,true)}`, {
             method : 'GET',
             headers : {'userToken' : $self.cookies.get('token')}
         }).then(function(res){
             $self.set('content-type', 'application/vnd.ms-excel;charset=utf-8');
+            $self.set('Content-Disposition', 'attachment;  filename='+encodeURI(fileName));
             return res.buffer();
         }).then(function(data){
             $self.body = data;
@@ -545,7 +553,8 @@ module.exports = function(){
             }));
     }).get('/involvedprocessingtask/count', function*(){//获取参与处理人员的任务分配总条数
         var $self = this;
-        var token ={userToken:$self.cookies.get('token')};
+        var token = $self.request.query;
+        token.userToken = this.cookies.get('token');
         yield (server().getTaskTotal(token)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);

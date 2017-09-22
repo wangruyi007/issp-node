@@ -18,7 +18,9 @@ app.controller('waitCtrl',function ($scope,$state) {
     });
     if (window.location.href.split('id=')[1]) {//如果是刷新进来的页面，没有经过list
         $scope.idListd = window.location.href.split('id=')[1];
-        $scope.menuClass = $location.search().name + 'Menu';
+        if($location.search().name){
+            $scope.menuClass = $location.search().name + 'Menu';
+        }
 
     }
     $scope.menuCheck = function (name) {
@@ -68,6 +70,12 @@ app.controller('waitCtrl',function ($scope,$state) {
     $scope.add = function(){
         $scope.menuClass = 'addMenu';
         $scope.idListd = ''
+    };
+     $scope.summaryArea = function(){
+        $scope.menuClass = 'summaryAreaMenu'
+    };
+    $scope.summaryProject = function(){
+        $scope.menuClass = 'summaryProjectMenu'
     };
 });
 //自定义过滤

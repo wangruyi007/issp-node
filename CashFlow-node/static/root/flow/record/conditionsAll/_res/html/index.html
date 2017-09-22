@@ -1,39 +1,52 @@
 <div class="collect">
     <div class="collect-select" style="margin:20px 20px 20px 88px">
-        <span>  
+        <i><img src="/images/mandatory.png"></i><span>  
             年份:
-            <input type="number" style="border:1px solid black;" ng-model="year" class="stime">
+            <input type="number" ng-model="year" class="stime">
         </span>
-        <span>  
+        <i><img src="/images/mandatory.png"></i><span>  
             月份:
-            <input type="number" style="border:1px solid black;" ng-model="month" class="stime">
+            <div class="recordse">
+                <select ng-model="month" style="padding-left:10%;">
+                    <option ng-repeat="month in months" value="{{month}}">{{month}}</option>
+                </select>
+            </div>
         </span>
         <span>
             地区：
-            <select ng-model="area" class="recordse">
-                <option value="请选择1">请选择</option>
-                <!-- <option value="请选择2">请选择2</option> -->
-                <option ng-repeat="area in areas" value="{{area.area}}">{{area.area}}</option>
-            </select>
-            <input type="text" ng-model="area" class="recordin">
+            <div class="recordse">
+                <select ng-model="area">
+                    <option value="请选择1">请选择</option>
+                    <!-- <option value="请选择2">请选择2</option> -->
+                    <option ng-repeat="area in areas" value="{{area.area}}">{{area.area}}</option>
+                </select>
+                <input type="text" ng-model="area" class="recordin">
+            </div>
+            
         </span>
         <span>
             项目组：
-            <select ng-model="projectGroup" class="recordse">
-                <option value="请选择1">请选择</option>
-                <!-- <option value="请选择2">请选择2</option> -->
-                <option ng-repeat="projectGroup in projectGroups" value="{{projectGroup.value}}">{{projectGroup.value}}</option>
-            </select>
-            <input type="text" ng-model="projectGroup" class="recordin">
+            <div class="recordse">
+                <select ng-model="projectGroup">
+                    <option value="请选择1">请选择</option>
+                    <!-- <option value="请选择2">请选择2</option> -->
+                    <option ng-repeat="projectGroup in projectGroups" value="{{projectGroup.value}}">{{projectGroup.value}}</option>
+                </select>
+                <input type="text" ng-model="projectGroup" class="recordin">
+            </div>
+            
         </span>
         <span>
             项目名称：
-            <select ng-model="project" class="recordse">
-                <option value="请选择1">请选择</option>
-                <!-- <option value="请选择2">请选择2</option> -->
-                <option ng-repeat="project in projects" value="{{project.value}}">{{project.value}}</option>
-            </select>
-            <input type="text" ng-model="project" class="recordin">
+            <div class="recordse">
+                <select ng-model="project">
+                    <option value="请选择1">请选择</option>
+                    <!-- <option value="请选择2">请选择2</option> -->
+                    <option ng-repeat="project in projects" value="{{project.value}}">{{project.value}}</option>
+                </select>
+                <input type="text" ng-model="project" class="recordin">
+            </div>
+            
         </span>
         <button ng-click="collect()" class="aaa">汇总</button>
     </div>

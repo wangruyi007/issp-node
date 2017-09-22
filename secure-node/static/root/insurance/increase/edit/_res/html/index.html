@@ -1,0 +1,163 @@
+<div class="content-input edit" verify-scope="tipStyle: 1">
+    <div class="input-list">
+        <section>
+            <ul>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>姓名</em></label>
+                    <div class="sele ng-valid ng-not-empty ng-dirty ng-valid-parse ng-touched area side">
+                        <select ng-model="incre.name" class="sele" ng-change="changSelect()">
+                            <option ng-repeat="name in names" value="{{name.username}}">{{name.username}}</option>
+                        </select> 
+
+                         <input type="text"  class="inputDom ng-valid ng-not-empty ng-dirty ng-touched" ng-model="incre.name">
+                    </div>
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>员工编号</em></label>
+                    <div class="sele ng-valid ng-not-empty ng-dirty ng-valid-parse ng-touched area side">
+                        <select ng-model="incre.employeeNum" class="sele">
+                            <option ng-repeat="employeeNum in employeeNums" value="{{employeeNum.employeeNumber}}">{{employeeNum.employeeNumber}}</option>
+                        </select> 
+
+                         <input type="text"  class="inputDom ng-valid ng-not-empty ng-dirty ng-touched" ng-model="incre.employeeNum">
+                    </div>
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>地区</em></label>
+                    <div class="sele ng-valid ng-not-empty ng-dirty ng-valid-parse ng-touched area side">
+                        <select ng-model="incre.city" class="sele">
+                            <option ng-repeat="city in citys" value="{{city.area}}">{{city.area}}</option>
+                        </select> 
+
+                         <input type="text"  class="inputDom ng-valid ng-not-empty ng-dirty ng-touched" ng-model="incre.city">
+                    </div>
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>项目组</em></label>
+                    <div class="sele ng-valid ng-not-empty ng-dirty ng-valid-parse ng-touched area side">
+                        <select ng-model="incre.team" class="sele">
+                            <option ng-repeat="team in teams" value="{{team.department}}">{{team.department}}</option>
+                        </select> 
+
+                         <input type="text"  class="inputDom ng-valid ng-not-empty ng-dirty ng-touched" ng-model="incre.team">
+                    </div>
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>岗位</em></label>
+                    <div class="sele ng-valid ng-not-empty ng-dirty ng-valid-parse ng-touched area side">
+                        <select ng-model="incre.job" class="sele">
+                            <option ng-repeat="job in jobs" value="{{job.position}}">{{job.position}}</option>
+                        </select> 
+
+                         <input type="text"  class="inputDom ng-valid ng-not-empty ng-dirty ng-touched" ng-model="incre.job">
+                    </div>
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>岗位层级</em></label>
+                    <div class="sele ng-valid ng-not-empty ng-dirty ng-valid-parse ng-touched area side">
+                        <select ng-model="incre.jobLevel" class="sele">
+                            <option ng-repeat="jobLevel in jobLevels" value="{{jobLevel.arrangementName}}">{{jobLevel.arrangementName}}</option>
+                        </select> 
+
+                         <input type="text"  class="inputDom ng-valid ng-not-empty ng-dirty ng-touched" ng-model="incre.jobLevel">
+                    </div>
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>身份证号码</em></label>
+                    <div class="sele ng-valid ng-not-empty ng-dirty ng-valid-parse ng-touched area side">
+                        <select ng-model="incre.idCart" class="sele">
+                            <option ng-repeat="idCart in idCarts" value="{{idCart.identityCard}}">{{idCart.identityCard}}</option>
+                        </select> 
+
+                         <input type="text"  class="inputDom ng-valid ng-not-empty ng-dirty ng-touched" ng-model="incre.idCart">
+                    </div>
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>身份证籍贯</em></label>
+                    <div class="sele ng-valid ng-not-empty ng-dirty ng-valid-parse ng-touched area side">
+                        <select ng-model="incre.born" class="sele">
+                            <option ng-repeat="born in borns" value="{{born.address}}">{{born.address}}</option>
+                        </select> 
+
+                         <input type="text"  class="inputDom ng-valid ng-not-empty ng-dirty ng-touched" ng-model="incre.born">
+                    </div>
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>联系方式</em></label>
+                    <div class="sele ng-valid ng-not-empty ng-dirty ng-valid-parse ng-touched area side">
+                        <select ng-model="incre.tel" class="sele">
+                            <option ng-repeat="tel in tels" value="{{tel.telephone}}">{{tel.telephone}}</option>
+                        </select> 
+
+                         <input type="text"  class="inputDom ng-valid ng-not-empty ng-dirty ng-touched" ng-model="incre.tel">
+                    </div>
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>入职时间</em></label>
+                    <input type="text" onClick="laydate({istime: true, format: 'YYYY-MM-DD'})" class="add_image startTime" ng-model="incre.startTime">
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>转正时间</em></label>
+                    <input type="text" onClick="laydate({istime: true, format: 'YYYY-MM-DD'})" class="add_image officialTime" ng-model="incre.officialTime">
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>参保公司</em></label>
+                    <input type="text" ng-verify="{}" ng-model="incre.company">
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>参保地市</em></label>
+                    <input type="text" ng-verify="{}" ng-model="incre.secureCity">
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>参保户口</em></label>
+                    <input type="text" ng-verify="{}" ng-model="incre.bornLocal">
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>参保类型</em></label>
+                    <input type="text" ng-verify="{}" ng-model="incre.type">
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>购买方式</em></label>
+                    <input type="text" ng-verify="{}" ng-model="incre.payType">
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>增员时间</em></label>
+                    <input type="text" onClick="laydate({istime: true, format: 'YYYY-MM-DD'})" class="add_image secureTime" ng-model="incre.secureTime">
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>运营商务部意见</em></label>
+                    <input type="text" ng-verify="{}" ng-model="incre.businessAdvice">
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>前参保地市</em></label>
+                    <input type="text" ng-verify="{}" ng-model="incre.beforeCity">
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>前参保公司</em></label>
+                    <input type="text" ng-verify="{}" ng-model="incre.beforeCompany">
+                </li>
+                <!-- <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>前参保时间</em></label>
+                    <input type="text" onClick="laydate({istime: true, format: 'YYYY-MM-DD'})" class="add_image startTime" ng-model="affil.startTime">
+                </li> -->
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>已参保年限</em></label>
+                    <input type="text" ng-verify="{}" ng-model="incre.insuredYear">
+                </li>
+            </ul>
+        </section>
+    </div>
+    <p class="dataBottom">
+        <span class="imPrompt"><i><img src="/images/prompt.png"></i>带有<i><img src="/images/mandatory.png"></i>的为必填项</span>
+        <button ng-verify="{control:'myform'}" ng-click="increEditFun()">提交</button>
+    </p>
+</div>
+
+<script type="text/javascript">
+
+    !function(){
+        laydate.skin('dahong');//切换皮肤，请查看skins下面皮肤库
+    }();
+
+
+</script>

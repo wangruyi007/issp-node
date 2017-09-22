@@ -2,10 +2,10 @@ var app = angular.module('recordConditionsAll', ['toastr']);
 app.controller('recordConditionsAllCtrl', function($scope, recordSer,toastr){
     // $scope.showed=true;
     // 地区
+    $scope.months=['1','2','3','4','5','6','7','8','9','10','11','12']
     recordSer.areas().then(function(response){
         if(response.data.code == 0){
             $scope.areas = response.data.data;
-           
         }
     });
     // 项目名称

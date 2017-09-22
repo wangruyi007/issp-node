@@ -1,0 +1,132 @@
+<div class="content-tab list">
+    <ul class="table">
+        <li class="list-head">
+            <span></span>
+            <span>姓名</span>
+            <span>员工编号</span>
+            <span>地区</span>
+            <span>项目组</span>
+            <span>岗位</span>
+            <span>岗位层级</span>
+            <span>身份证号码</span>
+            <span></span>
+        </li>
+        <li class="list-all" ng-repeat="lists in increLists" style="display: {{lists._delete?'none':'block'}};">
+            <section>
+                <div class="list-text {{lists._selectList?'selectList':''}}" ng-click="selectList(lists)">
+                    <p mod>{{$index+1+num}}</p>
+                    <p mod>{{lists.name}}</p>
+                    <p mod>{{lists.employeeNum}}</p>
+                    <p mod>{{lists.city}}</p>
+                    <p mod>{{lists.team}}</p>
+                    <p mod>{{lists.job}}</p>
+                    <p mod>{{lists.jobLevel}}</p>
+                    <p mod>{{lists.idCart}}</p>
+                    <p>
+                        <a href="javascript:void(0)" class="more" ng-click="moreList(lists)">更多详细</a>
+                    </p>
+                </div>
+                <div class="can">
+                    <ul class="can-see" style="display: {{lists._moreList?'block':'none'}};">
+                        <li>
+                            <p class="see-parent">
+                                <span>身份证籍贯</span>
+                                <span>联系方式</span>
+                                <span>入职时间</span>
+                                <span>转正时间</span>
+                                <span>参保公司</span>
+                                <span>参保地市</span>
+                                <span>参保户口</span>
+                                <span>参保类型</span>
+                            </p>
+                            <p class="see-children">
+                                <span mod>{{lists.born}}</span>
+                                <span mod>{{lists.tel}}</span>
+                                <span mod>{{lists.startTime}}</span>
+                                <span mod>{{lists.officialTime}}</span>
+                                <span mod>{{lists.company}}</span>
+                                <span mod>{{lists.secureCity}}</span>
+                                <span mod>{{lists.bornLocal}}</span>
+                                <span mod>{{lists.type}}</span>
+                            </p>
+                        </li>
+                        <li>
+                            <p class="see-parent">
+                                <span>购买方式</span>
+                                <span>前参保公司</span>
+                                <span>前参保地市</span>
+                                <span>已参保年限</span>
+                                <span>运营商务部意见</span>
+                                <span>增员时间</span>
+                            </p>
+                            <p class="see-children">
+                                <span mod>{{lists.payType}}</span>
+                                <span mod>{{lists.beforeCompany}}</span>
+                                <span mod>{{lists.beforeCity}}</span>
+                                <span mod>{{lists.insuredYear}}</span>
+                                <span mod>{{lists.businessAdvice}}</span>
+                                <span mod>{{lists.secureTime}}</span>
+                            </p>
+                        </li>
+                    </ul>
+                </div>
+            </section>
+        </li>
+    </ul>
+    <div class="module">
+        <div class="see-module">
+            <p class="see-type">体现类型</p>
+            <p class="see-description"></p>
+            <button class="btn" modclose>关闭</button>
+        </div>
+    </div>
+    <footer class="footer">
+        <pagination count="custom.itemsCount" take="custom.take" activate="custom.activatePage"></pagination>
+    </footer>
+</div>
+<!-- <div ui-view="modal"></div> -->
+<div class="delete mod" ng-show="manShow">
+    <div class="del-head">
+        <h5>温馨提示</h5>
+    </div>
+    <div class="del-con">
+        <p>总经办审核</p>
+        <div class="btn">
+            <button ng-click="manFn()">确认新增</button>
+            <button ng-click="mancel()">取消</button>
+        </div>
+    </div>
+</div>
+<div id="modalbg" ng-show="manShow"></div>
+
+
+<div class="delete mod" ng-show="headShow">
+    <div class="del-head">
+        <h5>温馨提示</h5>
+    </div>
+    <div class="del-con">
+        <p>社保管理负责人审核</p>
+        <div class="btn">
+            <button ng-click="headFn()">确认增员</button>
+            <button ng-click="headcel()">取消</button>
+        </div>
+    </div>
+</div>
+<div id="modalbg" ng-show="headShow"></div>
+
+
+
+<div class="delete mod" ng-show="delShow">
+    <div class="del-head">
+        <h5>温馨提示</h5>
+    </div>
+    <div class="del-con">
+        <p>确定要删除这条数据？</p>
+        <div class="btn">
+            <button ng-click="delFn()">确定</button>
+            <button ng-click="cancel()">取消</button>
+        </div>
+    </div>
+</div>
+<div id="modalbg" ng-show="delShow"></div>
+

@@ -1,0 +1,51 @@
+<div class="content-input add" verify-scope="tipStyle: 1">
+    <div class="input-list">
+        <section>
+            <ul>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>资质名称</em></label>
+                    <input type="text" ng-verify="{}" ng-model="incre.intelligence">
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>公司名称</em></label>
+                    <div class="sele ng-valid ng-not-empty ng-dirty ng-valid-parse ng-touched area side">
+                        <select ng-model="incre.company" class="sele">
+                            <option ng-repeat="company in companys" value="{{company}}">{{company}}</option>
+                        </select> 
+
+                         <input type="text"  class="inputDom ng-valid ng-not-empty ng-dirty ng-touched" ng-model="incre.company">
+                    </div>
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>社保需增地市</em></label>
+                    <input type="text" ng-verify="{}" ng-model="incre.arrival">
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>社保地市特殊说明</em></label>
+                    <input type="text" ng-verify="{}" ng-model="incre.arrivalDescrption">
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>当前各公司参保总人数</em></label>
+                    <input type="text" ng-verify="{}" ng-model="incre.companyCount">
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>当前各地市总参保人员</em></label>
+                    <input type="text" ng-verify="{}" ng-model="incre.cityCount">
+                </li>
+            </ul>
+        </section>
+    </div>
+    <p class="dataBottom">
+        <span class="imPrompt"><i><img src="/images/prompt.png"></i>带有<i><img src="/images/mandatory.png"></i>的为必填项</span>
+        <button ng-verify="{control:'myform'}" ng-click="increAddFun()">提交</button>
+    </p>
+</div>
+
+<script type="text/javascript">
+
+    !function(){
+        laydate.skin('dahong');//切换皮肤，请查看skins下面皮肤库
+    }();
+
+
+</script>

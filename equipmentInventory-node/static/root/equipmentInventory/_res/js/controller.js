@@ -87,7 +87,7 @@ app.controller('equipmentCtrl', function ($scope,$state) {
         }
     };
 });
-
+//绑定的数据出现很多显示不完全的时候,后面加小数点显示,之后双击可以显示完全部内容
 app.directive('mod',function(){
     return{
         restrict:'AE',

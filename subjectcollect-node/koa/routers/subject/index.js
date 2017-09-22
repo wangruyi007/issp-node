@@ -288,11 +288,13 @@ module.exports = function(){
     }).get('/subjectsExport/Export', function*(){//导出
         var $self = this;
         var count = $self.request.query;
+        var fileName = '科目汇总表.xlsx';
         yield (fetch(config()['rurl']+`/subjectcollect/v1/export${urlEncode(count,true)}`, {
             method : 'GET',
             headers : {'userToken' : $self.cookies.get('token')}
         }).then(function(res){
             $self.set('content-type', 'application/vnd.ms-excel;charset=utf-8');
+            $self.set('Content-Disposition', 'attachment;  filename='+encodeURI(fileName));
             return res.buffer();
         }).then(function(data){
             $self.body = data;

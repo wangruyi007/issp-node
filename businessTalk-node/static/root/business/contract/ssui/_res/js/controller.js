@@ -24,8 +24,6 @@ app.controller('ssuiCtrl',function ($scope,$state) {
         var buttonName = name;
         $scope.buttonShow = true;
         ssuiSer.ssuiGuide(buttonName).then(function(response){
-
-                  debugger
             if(response.data.code == 0 && response.data.data){
                 $scope[buttonName] = true;
             }else{

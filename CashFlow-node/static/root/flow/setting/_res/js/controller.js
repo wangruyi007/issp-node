@@ -28,11 +28,12 @@ app.controller('settingCtrl',function ($scope,$state) {
         $scope.menuClass = 'listMenu'
     };
     $scope.edit = function(){
+    
         if($scope.editId){
             $state.go('root.flow.setting.edit[12]',{id:$scope.editId});
             $scope.menuClass = 'editMenu'
         }
-
+        console.log($scope.editId)
     }
 });
 
